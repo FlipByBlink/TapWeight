@@ -15,10 +15,3 @@ struct TapWeightApp: App {
         }
     }
 }
-
-
-enum 🄴numUnit: String, CaseIterable {
-    case kg
-    case lbs
-    case st
-}

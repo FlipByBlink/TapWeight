@@ -3,6 +3,13 @@ import SwiftUI
 import HealthKit
 
 
+enum 🄴numUnit: String, CaseIterable {
+    case kg
+    case lbs
+    case st
+}
+
+
 struct ContentView: View {
     
     let 🏥HealthStore = HKHealthStore()

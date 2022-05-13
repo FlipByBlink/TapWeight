@@ -62,7 +62,52 @@ struct MenuButton: View { // ⚙️
                     }
                     
                     NavigationLink {
-                        📄Document()
+                        List {
+                            Section {
+                                let 🔗 = "https://apps.apple.com/developer/id1347562710"
+                                Link(destination: URL(string: 🔗)!) {
+                                    HStack {
+                                        Label("Open AppStore page", systemImage: "link")
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "arrow.up.forward.app")
+                                    }
+                                }
+                                .font(.subheadline)
+                                
+                                Text("""
+                                    placeholder
+                                    """)
+                                .font(.subheadline)
+                                .padding(8)
+                                
+                                Label("version 1.0", systemImage: "signpost.left")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                            } header: {
+                                Text("About")
+                            }
+                            
+                            Section {
+                                Text("""
+                                    2022-05-13
+                                    (English)This application don't collect user infomation.
+                                    (Japanese)このアプリ自身において、ユーザーの情報を一切収集しません。
+                                    """)
+                                .font(.subheadline)
+                                .padding(8)
+                            } header: {
+                                Text("Privacy Policy")
+                            }
+                            
+                            NavigationLink {
+                                Text("placeholder") //📓SourceCodeDoc()
+                            } label: {
+                                Label("Source code", systemImage: "doc.plaintext")
+                            }
+                        }
+                        .navigationTitle("Document")
                     } label: {
                         Label("Document", systemImage: "doc")
                     }
@@ -83,58 +128,5 @@ struct MenuButton: View { // ⚙️
                 }
             }
         }
-    }
-}
-
-
-struct 📄Document: View {
-    var body: some View {
-        List {
-            Section {
-                let 🔗 = "https://apps.apple.com/developer/id1347562710"
-                Link(destination: URL(string: 🔗)!) {
-                    HStack {
-                        Label("Open AppStore page", systemImage: "link")
-                        
-                        Spacer()
-                        
-                        Image(systemName: "arrow.up.forward.app")
-                    }
-                }
-                .font(.subheadline)
-                
-                Text("""
-                    about text
-                    """)
-                .font(.subheadline)
-                .padding(8)
-                
-                Label("version 1.0", systemImage: "signpost.left")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            } header: {
-                Text("About")
-            }
-            
-            Section {
-                Text("""
-                    2022-05-13
-                    (English)This application don't collect user infomation.
-                    (Japanese)このアプリ自身において、ユーザーの情報を一切収集しません。
-                    """)
-                .font(.subheadline)
-                .padding(8)
-            } header: {
-                Text("Privacy Policy")
-            }
-            
-            NavigationLink {
-                Text("placeholder") //📓SourceCodeDoc()
-            } label: {
-                Label("Source code", systemImage: "doc")
-            }
-            .font(.subheadline)
-        }
-        .navigationTitle("Document")
     }
 }
