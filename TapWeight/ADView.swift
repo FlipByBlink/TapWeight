@@ -70,3 +70,14 @@ struct ADView: View {
         }
     }
 }
+
+
+struct ADViewOnList: View {
+    var body: some View {
+        Section {
+            Text("⚠️ placeholder")
+        } header: {
+            Text("🌏self-AD")
+        }
+    }
+}
