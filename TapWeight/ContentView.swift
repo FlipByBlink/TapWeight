@@ -58,7 +58,7 @@ struct ContentView: View {
     @State private var 🚩LogSuccess: Bool = false
     
     
-    @AppStorage("Unit") var 🛠Unit: EnumUnit = .kg
+    @AppStorage("Unit") var 🛠Unit: 🄴numUnit = .kg
     
     
     var body: some View {

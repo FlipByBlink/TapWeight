@@ -12,7 +12,7 @@ struct TapWeightApp: App {
     
     @AppStorage("LaunchHealthAppAfterLog") var 🚩LaunchHealthAppAfterLog: Bool = false
     
-    @AppStorage("Unit") var 🛠Unit: EnumUnit = .kg
+    @AppStorage("Unit") var 🛠Unit: 🄴numUnit = .kg
     
     var body: some Scene {
         WindowGroup {
@@ -42,7 +42,7 @@ struct TapWeightApp: App {
                                 }
                                 
                                 Picker(selection: $🛠Unit) {
-                                    ForEach(EnumUnit.allCases, id: \.self) { 🏷 in
+                                    ForEach(🄴numUnit.allCases, id: \.self) { 🏷 in
                                         Text(🏷.rawValue)
                                     }
                                 } label: {
@@ -87,7 +87,7 @@ struct TapWeightApp: App {
 }
 
 
-enum EnumUnit: String, CaseIterable {
+enum 🄴numUnit: String, CaseIterable {
     case kg
     case lbs
     case st
