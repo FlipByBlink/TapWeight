@@ -34,11 +34,11 @@ struct TapWeightApp: App {
                         List {
                             Section {
                                 Toggle(isOn: $🚩BodyFat) {
-                                    Label("Body fat percentage", systemImage: "percent")
+                                    Label("🌏Body fat percentage", systemImage: "percent")
                                 }
                                 
                                 Toggle(isOn: $🚩LaunchHealthAppAfterLog) {
-                                    Label("Show \"Health\" app after log", systemImage: "arrowshape.turn.up.right")
+                                    Label("🌏Show \"Health\" app after log", systemImage: "arrowshape.turn.up.right")
                                 }
                                 
                                 Picker(selection: $🛠Unit) {
@@ -46,17 +46,17 @@ struct TapWeightApp: App {
                                         Text(🏷.rawValue)
                                     }
                                 } label: {
-                                    Label("Unit", systemImage: "scalemass")
+                                    Label("🌏Unit", systemImage: "scalemass")
                                 }
                             } header: {
-                                Text("Option")
+                                Text("🌏Option")
                             }
                             
                             
                             Section {
                                 Link(destination: URL(string: "x-apple-health://")!) {
                                     HStack {
-                                        Label("Open Apple \"Health\" app", systemImage: "heart")
+                                        Label("🌏Open Apple \"Health\" app", systemImage: "heart")
                                         
                                         Spacer()
                                         
@@ -66,7 +66,7 @@ struct TapWeightApp: App {
                                 }
                             }
                         }
-                        .navigationTitle("TapWeight")
+                        .navigationTitle("🌏TapWeight")
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button {
@@ -77,7 +77,7 @@ struct TapWeightApp: App {
                                         .grayscale(1.0)
                                         .padding(8)
                                 }
-                                .accessibilityLabel("Dismiss")
+                                .accessibilityLabel("🌏Dismiss")
                             }
                         }
                     }

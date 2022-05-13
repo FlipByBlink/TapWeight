@@ -82,7 +82,7 @@ struct ContentView: View {
                     📝BodyMass = 💾BodyMass
                 }
             } header: {
-                Text("Body Mass")
+                Text("🌏Body Mass")
             }
             
             
@@ -106,7 +106,7 @@ struct ContentView: View {
                         📝BodyFat = 💾BodyFat
                     }
                 } header: {
-                    Text("Body fat percentage")
+                    Text("🌏Body fat percentage")
                 }
             }
         }
@@ -168,7 +168,7 @@ struct ContentView: View {
                     .foregroundStyle(.white, .pink)
                     .padding()
             }
-            .accessibilityLabel("DONE")
+            .accessibilityLabel("🌏DONE")
         }
         .fullScreenCover(isPresented: $🚩InputDone) {
             ZStack {
@@ -177,7 +177,7 @@ struct ContentView: View {
                 VStack(spacing: 16) {
                     Image(systemName: 🚩Success ? "heart" : "heart.slash")
                     
-                    Text(🚩Success ? "OK!" : "Error!?")
+                    Text(🚩Success ? "OK!" : "🌏Error!?")
                         .lineLimit(1)
                         .minimumScaleFactor(0.1)
                 }
