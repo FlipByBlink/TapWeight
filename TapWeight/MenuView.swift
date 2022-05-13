@@ -25,61 +25,57 @@ struct MenuView: View { // ⚙️
         .accessibilityLabel("🌏Open menu")
         .sheet(isPresented: $🚩Menu) {
             NavigationView {
-                ZStack {
-                    List {
-                        Section {
-                            Toggle(isOn: $🚩BodyFat) {
-                                Label("🌏Body fat percentage", systemImage: "percent")
-                            }
-                            
-                            Toggle(isOn: $🚩LaunchHealthAppAfterLog) {
-                                Label("🌏Show \"Health\" app after log", systemImage: "arrowshape.turn.up.right")
-                            }
-                            
-                            Picker(selection: $🛠Unit) {
-                                ForEach(🄴numUnit.allCases, id: \.self) { 🏷 in
-                                    Text(🏷.rawValue)
-                                }
-                            } label: {
-                                Label("🌏Unit", systemImage: "scalemass")
-                            }
-                        } header: {
-                            Text("🌏Option")
+                List {
+                    Section {
+                        Toggle(isOn: $🚩BodyFat) {
+                            Label("🌏Body fat percentage", systemImage: "percent")
                         }
                         
-                        
-                        Section {
-                            Link(destination: URL(string: "x-apple-health://")!) {
-                                HStack {
-                                    Label("🌏Open Apple \"Health\" app", systemImage: "heart")
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "arrow.up.forward.app")
-                                }
-                                .font(.body.bold())
-                            }
+                        Toggle(isOn: $🚩LaunchHealthAppAfterLog) {
+                            Label("🌏Show \"Health\" app after log", systemImage: "arrowshape.turn.up.right")
                         }
                         
-                        
-                        📄DocumentView()
+                        Picker(selection: $🛠Unit) {
+                            ForEach(🄴numUnit.allCases, id: \.self) { 🏷 in
+                                Text(🏷.rawValue)
+                            }
+                        } label: {
+                            Label("🌏Unit", systemImage: "scalemass")
+                        }
+                    } header: {
+                        Text("🌏Option")
                     }
-                    .navigationTitle("🌏TapWeight")
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button {
-                                🚩Menu = false
-                            } label: {
-                                Image(systemName: "chevron.down")
-                                    .foregroundStyle(.secondary)
-                                    .grayscale(1.0)
-                                    .padding(8)
+                    
+                    
+                    Section {
+                        Link(destination: URL(string: "x-apple-health://")!) {
+                            HStack {
+                                Label("🌏Open Apple \"Health\" app", systemImage: "heart")
+                                
+                                Spacer()
+                                
+                                Image(systemName: "arrow.up.forward.app")
                             }
-                            .accessibilityLabel("🌏Dismiss")
+                            .font(.body.bold())
                         }
                     }
                     
-                    ADViewOnMenu()
+                    
+                    📄DocumentView()
+                }
+                .navigationTitle("🌏TapWeight")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            🚩Menu = false
+                        } label: {
+                            Image(systemName: "chevron.down")
+                                .foregroundStyle(.secondary)
+                                .grayscale(1.0)
+                                .padding(8)
+                        }
+                        .accessibilityLabel("🌏Dismiss")
+                    }
                 }
             }
         }

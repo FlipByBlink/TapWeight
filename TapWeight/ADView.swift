@@ -36,25 +36,36 @@ struct ADView: View {
             Spacer()
             
             if 🄿resentAdBanner {
-                Button {
-                    🄿resentNote = true
-                } label: {
-                    Text("🌏self-AD")
-                        .kerning(0.5)
-                        .underline()
-                        .foregroundColor(🎨)
-                        .opacity(0.5)
-                        .font(.body.weight(.heavy))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.1)
-                }
-                .alert("🌏About self-AD", isPresented: $🄿resentNote) {
-                    Button("🌏OK") {
-                        print("Pressed OK button.")
+                HStack {
+                    Button {
+                        🄿resentNote = true
+                    } label: {
+                        Text("🌏self-AD")
+                            .kerning(0.5)
+                            .underline()
+                            .foregroundColor(🎨)
+                            .font(.body.weight(.black))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.1)
                     }
-                } message: {
-                    Text("🌏TextAboutAD")
+                    .alert("🌏About self-AD", isPresented: $🄿resentNote) {
+                        Button("🌏OK") {
+                            print("Pressed OK button.")
+                        }
+                    } message: {
+                        Text("🌏TextAboutAD")
+                    }
+                    
+                    Button {
+                        🄿resentAdBanner = false
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(🎨)
+                            .font(.body.bold())
+                            .minimumScaleFactor(0.1)
+                    }
                 }
+                .opacity(0.5)
                 .transition(.move(edge: .bottom))
                 .padding(6)
                 .padding(.bottom, 100)
@@ -74,16 +85,15 @@ struct ADView: View {
 }
 
 
-
-struct ADViewOnResult: View {
+struct ADViewOnHome: View {
     var body: some View {
-        ADView(ⓣiming: 10, 🎨: .white)
+        ADView(ⓣiming: 1, 🎨: .secondary)
     }
 }
 
 
-struct ADViewOnMenu: View {
+struct ADViewOnResult: View {
     var body: some View {
-        ADView(ⓣiming: 3, 🎨: .secondary)
+        ADView(ⓣiming: 1, 🎨: .white)
     }
 }
