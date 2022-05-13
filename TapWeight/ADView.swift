@@ -85,14 +85,11 @@ enum AppAdList: String {
         }
     }
     
-    var 📄: String {
+    var 📄: LocalizedStringKey {
         switch self {
-        case .FlipByBlink:
-            return "まばたきでページめくり出来る電子書籍リーダーアプリ。"
-        case .FadeInAlarm:
-            return "時間をかけて少しずつ音量が大きくなるアラームアプリ。"
-        case .Plain将棋盤:
-            return "ただの将棋盤。"
+        case .FlipByBlink: return "🌏AboutFlipByBlink"
+        case .FadeInAlarm: return "🌏AboutFadeInAlarm"
+        case .Plain将棋盤: return "🌏AboutPlain将棋盤"
         }
     }
 }

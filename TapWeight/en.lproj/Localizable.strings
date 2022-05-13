@@ -31,6 +31,12 @@
 
 "🌏OK" = "OK";
 
+"🌏AboutFlipByBlink" = "Simple and normal ebook reader (for fixed-layout). Only a special feature. Turn a page with slightly longish voluntary blink";
+
+"🌏AboutFadeInAlarm" = "Alarm clock with taking a long time from small volume to max volume.";
+
+"🌏AboutPlain将棋盤" = "Simple Shogi board App.";
+
 
 // ======== Accessibility label =========
 "🌏Open menu" = "Open menu";
