@@ -5,9 +5,7 @@ import StoreKit
 
 struct ADView: View {
     
-    var ⓣiming: Int
-    
-    var 🎨: Color
+    var ⓣiming: Int = 1
     
     @State private var 🄿resentAdBanner = false
     
@@ -36,34 +34,23 @@ struct ADView: View {
             Spacer()
             
             if 🄿resentAdBanner {
-                HStack {
-                    Button {
-                        🄿resentNote = true
-                    } label: {
-                        Text("🌏self-AD")
-                            .kerning(0.5)
-                            .underline()
-                            .foregroundColor(🎨)
-                            .font(.body.weight(.black))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.1)
+                Button {
+                    🄿resentNote = true
+                } label: {
+                    Text("🌏self-AD")
+                        .kerning(0.5)
+                        .underline()
+                        .foregroundColor(.white)
+                        .font(.body.weight(.black))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.1)
+                }
+                .alert("🌏About self-AD", isPresented: $🄿resentNote) {
+                    Button("🌏OK") {
+                        print("Pressed OK button.")
                     }
-                    .alert("🌏About self-AD", isPresented: $🄿resentNote) {
-                        Button("🌏OK") {
-                            print("Pressed OK button.")
-                        }
-                    } message: {
-                        Text("🌏TextAboutAD")
-                    }
-                    
-                    Button {
-                        🄿resentAdBanner = false
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(🎨)
-                            .font(.body.bold())
-                            .minimumScaleFactor(0.1)
-                    }
+                } message: {
+                    Text("🌏TextAboutAD")
                 }
                 .opacity(0.5)
                 .transition(.move(edge: .bottom))
@@ -81,12 +68,5 @@ struct ADView: View {
                 🄿resentAdBanner = true
             }
         }
-    }
-}
-
-
-struct ADViewOnResult: View {
-    var body: some View {
-        ADView(ⓣiming: 1, 🎨: .white)
     }
 }
