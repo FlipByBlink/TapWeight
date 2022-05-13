@@ -3,7 +3,7 @@ import SwiftUI
 import StoreKit
 
 
-struct ADView: View {
+struct AdView: View {
     
     var 🅃iming: Int = 1
     
@@ -72,29 +72,69 @@ struct ADView: View {
 }
 
 
-struct ADViewOnList: View {
+enum AppAdList: String {
+    case FlipByBlink
+    case FadeInAlarm
+    case Plain将棋盤
+    
+    var 🔗: URL {
+        switch self {
+        case .FlipByBlink: return URL(string: "https://apps.apple.com/app/id1444571751")!
+        case .FadeInAlarm: return URL(string: "https://apps.apple.com/app/id1465336070")!
+        case .Plain将棋盤: return URL(string: "https://apps.apple.com/app/id1620268476")!
+        }
+    }
+    
+    var 📄: String {
+        switch self {
+        case .FlipByBlink:
+            return "まばたきでページめくり出来る電子書籍リーダーアプリ。"
+        case .FadeInAlarm:
+            return "時間をかけて少しずつ音量が大きくなるアラームアプリ。"
+        case .Plain将棋盤:
+            return "ただの将棋盤。"
+        }
+    }
+}
+
+
+struct AdOnList: View {
+    var 🄰ppName: AppAdList
+    
+    var body: some View {
+        Link(destination: 🄰ppName.🔗) {
+            HStack {
+                Image(🄰ppName.rawValue)
+                    .resizable()
+                    .frame(width: 60, height: 60)
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    .shadow(radius: 1.5, y: 0.5)
+                    .padding(8)
+                
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(🄰ppName.rawValue)
+                        .font(.headline)
+                    
+                    Text(🄰ppName.📄)
+                        .font(.subheadline)
+                }
+                
+                Spacer()
+                
+                Image(systemName: "arrow.up.forward.app")
+            }
+            .padding(.vertical)
+        }
+    }
+}
+
+
+struct AdSection: View {
     var body: some View {
         Section {
-            Link(destination: URL(string: "https://apps.apple.com/app/id1465336070")!) {
-                HStack {
-                    Image("FadeInAlarm")
-                        .resizable()
-                        .frame(width: 64, height: 64)
-                        .padding(8)
-                    
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("FadeInAlarm")
-                            .font(.headline)
-                        
-                        Text("時間をかけて少しずつ音量が大きくなるアラームアプリ。")
-                            .font(.subheadline)
-                    }
-                    
-                    Spacer()
-                    
-                    Image(systemName: "arrow.up.forward.app")
-                }
-            }
+            AdOnList(🄰ppName: .FadeInAlarm)
+            AdOnList(🄰ppName: .FlipByBlink)
+            AdOnList(🄰ppName: .Plain将棋盤)
         } header: {
             Text("🌏self-AD")
         }

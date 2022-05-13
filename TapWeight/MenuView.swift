@@ -64,7 +64,7 @@ struct MenuView: View { // ⚙️
                     📄DocumentView()
                     
                     
-                    ADViewOnList()
+                    AdSection()
                 }
                 .navigationTitle("🌏TapWeight")
                 .toolbar {
