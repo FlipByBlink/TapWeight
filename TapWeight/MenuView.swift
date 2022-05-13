@@ -102,8 +102,8 @@ struct 📄DocumentView: View {
                     .font(.subheadline)
                     
                     Text("""
-                                    ⚠️placeholder
-                                    """)
+                        ⚠️ placeholder
+                        """)
                     .font(.subheadline)
                     .padding(8)
                     
@@ -116,20 +116,34 @@ struct 📄DocumentView: View {
                 
                 Section {
                     Text("""
-                                    2022-05-13
-                                    (English)This application don't collect user infomation.
-                                    (Japanese)このアプリ自身において、ユーザーの情報を一切収集しません。
-                                    """)
+                        2022-05-13
+                        (English)This application don't collect user infomation.
+                        (Japanese)このアプリ自身において、ユーザーの情報を一切収集しません。
+                        """)
                     .font(.subheadline)
                     .padding(8)
                 } header: {
                     Text("Privacy Policy")
                 }
                 
+                
+                Section {
+                    NavigationLink {
+                        Text("🌏広告説明文 ⚠️ placeholder")
+                            .padding()
+                            .navigationTitle("🌏セルフ広告について")
+                    } label: {
+                        Label("🌏セルフ広告について", systemImage: "exclamationmark.bubble")
+                            .font(.subheadline)
+                    }
+                }
+                
+                
                 NavigationLink {
                     📓SourceCodeDoc()
                 } label: {
                     Label("Source code", systemImage: "doc.plaintext")
+                        .font(.subheadline)
                 }
             }
             .navigationTitle("Document")
@@ -169,9 +183,26 @@ struct 📓SourceCodeDoc: View {
             
             📑BundleMainInfoDictionary()
             
-            let 🔗 = "https://github.com/FlipByBlink/TapWeight"
+            
+            let 🔗HealthKit = "https://developer.apple.com/documentation/healthkit"
             Section {
-                Link(destination: URL(string: 🔗)!) {
+                Link(destination: URL(string: 🔗HealthKit)!) {
+                    HStack {
+                        Label("HealthKit document link", systemImage: "link")
+                        
+                        Spacer()
+                        
+                        Image(systemName: "arrow.up.forward.app")
+                    }
+                }
+            } footer: {
+                Text(🔗HealthKit)
+            }
+            
+            
+            let Repository🔗 = "https://github.com/FlipByBlink/TapWeight"
+            Section {
+                Link(destination: URL(string: Repository🔗)!) {
                     HStack {
                         Label("Web Repository link", systemImage: "link")
                         
@@ -181,7 +212,7 @@ struct 📓SourceCodeDoc: View {
                     }
                 }
             } footer: {
-                Text(🔗)
+                Text(Repository🔗)
             }
         }
         .navigationTitle("Source code")
