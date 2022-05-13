@@ -21,8 +21,6 @@
 
 "🌏TapWeight" = "TapWeight";
 
-"🌏Dismiss" = "Dismiss";
-
 
 // ======== AD label =========
 "🌏self-AD" = "self-AD";
@@ -35,4 +33,6 @@
 
 
 // ======== Accessibility label =========
+"🌏Open menu" = "Open menu";
 
+"🌏Dismiss" = "Dismiss";
