@@ -9,6 +9,8 @@
 "🌏Error!?" = "Error!?";
 
 
+
+// ======== Menu ========
 "🌏Option" = "Option";
 
 "🌏Show \"Health\" app after log" = "Show \"Health\" app after log";
@@ -20,3 +22,17 @@
 "🌏TapWeight" = "TapWeight";
 
 "🌏Dismiss" = "Dismiss";
+
+
+// ======== AD label =========
+"🌏self-AD" = "self-AD";
+
+"🌏About self-AD" = "About self-AD";
+
+"🌏TextAboutAD" = "This App shows banner advertisement about applications on AppStore. These are Apps by PlainShogiBoard developer. AD banner is rarely presented. It appears one in every six times. To hide the banner, tap the × OR swipe down.";
+
+"🌏OK" = "OK";
+
+
+// ======== Accessibility label =========
+
