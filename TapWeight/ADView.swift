@@ -85,13 +85,6 @@ struct ADView: View {
 }
 
 
-struct ADViewOnHome: View {
-    var body: some View {
-        ADView(ⓣiming: 1, 🎨: .secondary)
-    }
-}
-
-
 struct ADViewOnResult: View {
     var body: some View {
         ADView(ⓣiming: 1, 🎨: .white)
