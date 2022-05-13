@@ -122,6 +122,7 @@ struct AdOnList: View {
             }
             .padding(.vertical)
         }
+        .accessibilityLabel(🄰ppName.rawValue)
     }
 }
 
