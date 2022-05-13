@@ -75,7 +75,26 @@ struct ADView: View {
 struct ADViewOnList: View {
     var body: some View {
         Section {
-            Text("⚠️ placeholder")
+            Link(destination: URL(string: "https://apps.apple.com/app/id1465336070")!) {
+                HStack {
+                    Image("FadeInAlarm")
+                        .resizable()
+                        .frame(width: 64, height: 64)
+                        .padding(8)
+                    
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("FadeInAlarm")
+                            .font(.headline)
+                        
+                        Text("時間をかけて少しずつ音量が大きくなるアラームアプリ。")
+                            .font(.subheadline)
+                    }
+                    
+                    Spacer()
+                    
+                    Image(systemName: "arrow.up.forward.app")
+                }
+            }
         } header: {
             Text("🌏self-AD")
         }
