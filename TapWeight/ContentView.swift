@@ -191,7 +191,7 @@ struct ContentView: View {
                 .font(.system(size: 128).weight(.black))
                 .foregroundColor(.white)
                 
-                ADView()
+                ADViewOnResult()
             }
             .ignoresSafeArea()
             .statusBar(hidden: true)
