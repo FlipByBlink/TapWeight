@@ -5,7 +5,7 @@ import StoreKit
 
 struct ADView: View {
     
-    var ⓣiming: Int = 1
+    var 🅃iming: Int = 1
     
     @State private var 🄿resentAdBanner = false
     
@@ -14,14 +14,14 @@ struct ADView: View {
     @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
     
     var 🚩AdBanner: Bool {
-        ( 🄻aunchCount % ⓣiming ) == 0
+        ( 🄻aunchCount % 🅃iming ) == 0
     }
     
     var 🆔: String {
         //FlipByBlink appIdentifier: 1444571751
         //FadeInAlarm appIdentifier: 1465336070
         //Plain将棋盤 appIdentifier: 1620268476
-        switch ( 🄻aunchCount / ⓣiming ) % 3 {
+        switch ( 🄻aunchCount / 🅃iming ) % 3 {
         case 0: return "1444571751"
         case 1: return "1465336070"
         default: return "1620268476"
@@ -64,7 +64,7 @@ struct ADView: View {
         }
         .onAppear {
             🄻aunchCount += 1
-            if 🄻aunchCount % ⓣiming == 0 {
+            if 🄻aunchCount % 🅃iming == 0 {
                 🄿resentAdBanner = true
             }
         }
