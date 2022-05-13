@@ -129,11 +129,11 @@ struct 📄DocumentView: View {
                 
                 Section {
                     NavigationLink {
-                        Text("🌏広告説明文 ⚠️ placeholder")
+                        Text("🌏TextAboutAD")
                             .padding()
-                            .navigationTitle("🌏セルフ広告について")
+                            .navigationTitle("🌏About self-AD")
                     } label: {
-                        Label("🌏セルフ広告について", systemImage: "exclamationmark.bubble")
+                        Label("🌏About self-AD", systemImage: "exclamationmark.bubble")
                             .font(.subheadline)
                     }
                 }

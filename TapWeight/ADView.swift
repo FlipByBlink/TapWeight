@@ -37,7 +37,7 @@ struct ADView: View {
                 Button {
                     🄿resentNote = true
                 } label: {
-                    Text("🌏セルフ広告")
+                    Text("🌏self-AD")
                         .kerning(0.5)
                         .underline()
                         .foregroundColor(.white)
@@ -46,12 +46,12 @@ struct ADView: View {
                         .lineLimit(1)
                         .minimumScaleFactor(0.1)
                 }
-                .alert("🌏セルフ広告について", isPresented: $🄿resentNote) {
-                    Button("🌏了解しました") {
+                .alert("🌏About self-AD", isPresented: $🄿resentNote) {
+                    Button("🌏OK") {
                         print("Pressed OK button.")
                     }
                 } message: {
-                    Text("🌏広告説明文")
+                    Text("🌏TextAboutAD")
                 }
                 .transition(.move(edge: .bottom))
                 .padding(6)
