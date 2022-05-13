@@ -113,9 +113,26 @@ struct ContentView: View {
         .listStyle(.plain)
         .overlay(alignment: .bottom) {
             Button {
+                UISelectionFeedbackGenerator().selectionChanged()
+                
+                if 🏥HealthStore.authorizationStatus(for: HKQuantityType(.bodyMass)) == .sharingDenied {
+                    🚩Success = false
+                    🚩InputDone = true
+                    return
+                }
+                
+                if 🚩BodyFat {
+                    if 🏥HealthStore.authorizationStatus(for: HKQuantityType(.bodyFatPercentage)) == .sharingDenied {
+                        🚩Success = false
+                        🚩InputDone = true
+                        return
+                    }
+                }
+                
                 🏥HealthStore.save(🄳ataBodyMass) { 🆗, 👿 in
                     if 🆗 {
                         🚩Success = true
+                        print(".save/.bodyMass: Success")
                     } else {
                         🚩Success = false
                         print("👿:", 👿.debugDescription)
@@ -128,6 +145,7 @@ struct ContentView: View {
                     🏥HealthStore.save(🄳ataBodyFat) { 🆗, 👿 in
                         if 🆗 {
                             🚩Success = true
+                            print(".save/.bodyFatPercentage: Success")
                         } else {
                             🚩Success = false
                             print("👿:", 👿.debugDescription)
