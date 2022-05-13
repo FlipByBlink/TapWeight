@@ -10,7 +10,7 @@ struct TapWeightApp: App {
             ContentView()
                 .statusBar(hidden: true)
                 .overlay(alignment: .bottomTrailing) {
-                    MenuButton()
+                    MenuView()
                 }
         }
     }

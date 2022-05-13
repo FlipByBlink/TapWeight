@@ -15,7 +15,25 @@
 		126B3EBF282E0F45009BD28B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3EC1282E0F45009BD28B /* Localizable.strings */; };
 		126B3ECE282E15E5009BD28B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3ED0282E15E5009BD28B /* InfoPlist.strings */; };
 		126B3ED3282E1968009BD28B /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3ED2282E1968009BD28B /* MenuView.swift */; };
+		126B3ED5282E2100009BD28B /* TapWeightApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */; };
+		126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
+		126B3ED7282E2100009BD28B /* MenuView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3ED2282E1968009BD28B /* MenuView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		126B3ED4282E20ED009BD28B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "📁";
+			dstSubfolderSpec = 7;
+			files = (
+				126B3ED5282E2100009BD28B /* TapWeightApp.swift in CopyFiles */,
+				126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */,
+				126B3ED7282E2100009BD28B /* MenuView.swift in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		126B3EA7282DFEDF009BD28B /* TapWeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapWeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +122,7 @@
 				126B3EA3282DFEDF009BD28B /* Sources */,
 				126B3EA4282DFEDF009BD28B /* Frameworks */,
 				126B3EA5282DFEDF009BD28B /* Resources */,
+				126B3ED4282E20ED009BD28B /* CopyFiles */,
 			);
 			buildRules = (
 			);
