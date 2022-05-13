@@ -66,7 +66,7 @@ struct TapWeightApp: App {
                                 }
                             }
                         }
-                        .navigationTitle("Log weight")
+                        .navigationTitle("TapWeight")
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button {
