@@ -53,9 +53,9 @@ struct ContentView: View {
     @AppStorage("LaunchHealthAppAfterLog") var 🚩LaunchHealthAppAfterLog: Bool = false
     
     
-    @State private var 🚩LogDone: Bool = false
+    @State private var 🚩InputDone: Bool = false
     
-    @State private var 🚩LogSuccess: Bool = false
+    @State private var 🚩Success: Bool = false
     
     
     @AppStorage("Unit") var 🛠Unit: 🄴numUnit = .kg
@@ -115,9 +115,9 @@ struct ContentView: View {
             Button {
                 🏥HealthStore.save(🄳ataBodyMass) { 🆗, 👿 in
                     if 🆗 {
-                        🚩LogSuccess = true
+                        🚩Success = true
                     } else {
-                        🚩LogSuccess = false
+                        🚩Success = false
                         print("👿:", 👿.debugDescription)
                     }
                 }
@@ -127,9 +127,9 @@ struct ContentView: View {
                 if 🚩BodyFat {
                     🏥HealthStore.save(🄳ataBodyFat) { 🆗, 👿 in
                         if 🆗 {
-                            🚩LogSuccess = true
+                            🚩Success = true
                         } else {
-                            🚩LogSuccess = false
+                            🚩Success = false
                             print("👿:", 👿.debugDescription)
                         }
                     }
@@ -141,7 +141,7 @@ struct ContentView: View {
                     let 📍 = URL(string: "x-apple-health://")!
                     UIApplication.shared.open(📍)
                 } else {
-                    🚩LogDone = true
+                    🚩InputDone = true
                 }
             } label: {
                 Image(systemName: "checkmark.circle.fill")
@@ -152,14 +152,14 @@ struct ContentView: View {
             }
             .accessibilityLabel("DONE")
         }
-        .fullScreenCover(isPresented: $🚩LogDone) {
+        .fullScreenCover(isPresented: $🚩InputDone) {
             ZStack {
-                🚩LogSuccess ? Color.pink : Color.gray
+                🚩Success ? Color.pink : Color.gray
                 
                 VStack(spacing: 16) {
-                    Image(systemName: 🚩LogSuccess ? "heart" : "heart.slash")
+                    Image(systemName: 🚩Success ? "heart" : "heart.slash")
                     
-                    Text(🚩LogSuccess ? "OK!" : "Error!?")
+                    Text(🚩Success ? "OK!" : "Error!?")
                         .lineLimit(1)
                         .minimumScaleFactor(0.1)
                 }
@@ -169,7 +169,7 @@ struct ContentView: View {
             .ignoresSafeArea()
             .statusBar(hidden: true)
             .onTapGesture {
-                🚩LogDone = false
+                🚩InputDone = false
             }
         }
         .onAppear {
@@ -192,18 +192,5 @@ struct ContentView: View {
                 }
             }
         }
-    }
-}
-
-
-
-
-
-
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
