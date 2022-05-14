@@ -38,7 +38,7 @@ Unit: kg, lbs, st
 [https://github.com/FlipByBlink/TapWeight](https://github.com/FlipByBlink/TapWeight)
 
 
-## ✉️ Contanct
+## ✉️ Contact
 
 sear_pandora_0x@icloud.com
 
