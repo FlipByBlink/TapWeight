@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		122ECF5F282F69A2007FF031 /* AdView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3ED8282E53AB009BD28B /* AdView.swift */; };
 		126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */; };
 		126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
 		126B3EAF282DFEE0009BD28B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 126B3EAE282DFEE0009BD28B /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 			dstPath = "📁";
 			dstSubfolderSpec = 7;
 			files = (
+				122ECF5F282F69A2007FF031 /* AdView.swift in CopyFiles */,
 				126B3ED5282E2100009BD28B /* TapWeightApp.swift in CopyFiles */,
 				126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */,
 				126B3ED7282E2100009BD28B /* MenuView.swift in CopyFiles */,
@@ -343,7 +345,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TapWeight/TapWeight.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"TapWeight/Preview Content\"";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
@@ -375,7 +377,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TapWeight/TapWeight.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"TapWeight/Preview Content\"";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
