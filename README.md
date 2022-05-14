@@ -22,3 +22,31 @@ Appleヘルスケアアプリに体重を最速で登録するためのアプリ
 データ登録後に自動的にAppleヘルスケアアプリを立ち上げ。
 
 単位: kg, lbs, st
+
+
+
+
+
+------
+
+<br>
+
+<br>
+
+
+## Privacy Policy for AppStore
+2022-05-13
+
+
+### Japanese
+このアプリ自身において、ユーザーの情報を一切収集しません。
+
+### English
+This application don't collect user infomation.
+
+
+<br>
+
+<br>
+
+------
