@@ -1,4 +1,4 @@
-# iPhone App "TapWeight" / "体重メモ"
+# iPhone app "TapWeight"/"体重メモ" Support page
 
 
 ![](TapWeight/Assets.xcassets/LaunchIcon.imageset/rounded_LogWeightIcon256.png)
