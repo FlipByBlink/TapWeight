@@ -1,4 +1,4 @@
-# 📱 TapWeight 体重メモ
+# iPhone App "TapWeight" / "体重メモ"
 
 
 ![](TapWeight/Assets.xcassets/LaunchIcon.imageset/rounded_LogWeightIcon256.png)
@@ -38,7 +38,7 @@ Unit: kg, lbs, st
 [https://github.com/FlipByBlink/TapWeight](https://github.com/FlipByBlink/TapWeight)
 
 
-## Contanct
+## ✉️ Contanct
 
 sear_pandora_0x@icloud.com
 
@@ -53,13 +53,17 @@ sear_pandora_0x@icloud.com
 
 
 ## Privacy Policy for AppStore
+
 2022-05-13
 
 
 ### Japanese
+
 このアプリ自身において、ユーザーの情報を一切収集しません。
 
+
 ### English
+
 This application don't collect user infomation.
 
 
