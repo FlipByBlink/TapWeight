@@ -37,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		125AFEDA282F2B6E00E3BC4A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		126B3EA7282DFEDF009BD28B /* TapWeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapWeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapWeightApp.swift; sourceTree = "<group>"; };
 		126B3EAC282DFEDF009BD28B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 		126B3E9E282DFEDF009BD28B = {
 			isa = PBXGroup;
 			children = (
+				125AFEDA282F2B6E00E3BC4A /* README.md */,
 				126B3EA9282DFEDF009BD28B /* TapWeight */,
 				126B3EA8282DFEDF009BD28B /* Products */,
 				126B3EB9282E001E009BD28B /* Frameworks */,
