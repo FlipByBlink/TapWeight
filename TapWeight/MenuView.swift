@@ -103,9 +103,7 @@ struct 📄DocumentView: View {
                     }
                     .font(.subheadline)
                     
-                    Text("""
-                        ⚠️ placeholder
-                        """)
+                    Text("🌏About")
                     .font(.subheadline)
                     .padding(8)
                     

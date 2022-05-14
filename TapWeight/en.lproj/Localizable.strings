@@ -21,6 +21,8 @@
 
 "🌏TapWeight" = "TapWeight";
 
+"🌏About" = "Tool for fastest recording body weight to Apple Health app.\n\n【Option】\nWith body fat percentage.\nAutomatically launch Apple Health app after record.\nUnit: kg, lbs, st";
+
 
 // ======== AD label =========
 "🌏self-AD" = "self-AD";
