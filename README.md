@@ -1,4 +1,4 @@
-# iPhone app TapWeight / 体重メモ Support page
+# iPhone app TapWeight / 体重メモ support page
 
 
 ![](TapWeight/Assets.xcassets/LaunchIcon.imageset/rounded_LogWeightIcon256.png)
@@ -8,11 +8,11 @@ Tool for fastest recording body weight to Apple Health app.
 
 【OPTION】
 
-With body fat percentage.
+- With body fat percentage.
 
-Automatically launch Apple Health app after record.
+- Automatically launch Apple Health app after record.
 
-Unit: kg, lbs, st
+- Unit: kg, lbs, st
 
 
 > ==== Japanese(native) ====
@@ -21,21 +21,21 @@ Unit: kg, lbs, st
 >
 > 【オプション】
 >
-> 体脂肪率も一緒に登録。
+> - 体脂肪率も一緒に登録。
 >
-> データ登録後に自動的にAppleヘルスケアアプリを立ち上げ。
+> - データ登録後に自動的にAppleヘルスケアアプリを立ち上げ。
 >
-> 単位: kg, lbs, st
+> - 単位: kg, lbs, st
 
 
 ## 🔗 AppStore link
 
-[https://apps.apple.com/app/id1624159721](https://apps.apple.com/app/id1624159721)
+[apps.apple.com/app/id1624159721](https://apps.apple.com/app/id1624159721)
 
 
 ## 🧰 Source code link
 
-[https://github.com/FlipByBlink/TapWeight](https://github.com/FlipByBlink/TapWeight)
+[github.com/FlipByBlink/TapWeight](https://github.com/FlipByBlink/TapWeight)
 
 
 ## ✉️ Contact
@@ -44,6 +44,10 @@ sear_pandora_0x@icloud.com
 
 
 
+
+<br>
+
+<br>
 
 ------
 
@@ -72,3 +76,7 @@ This application don't collect user infomation.
 <br>
 
 ------
+
+<br>
+
+<br>
