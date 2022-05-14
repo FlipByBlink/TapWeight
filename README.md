@@ -2,7 +2,7 @@
 
 Tool for fastest recording body weight to Apple Health app.
 
-【Option】
+【OPTION】
 
 With body fat percentage.
 
