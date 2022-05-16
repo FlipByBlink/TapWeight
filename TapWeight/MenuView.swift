@@ -61,6 +61,9 @@ struct MenuView: View { // ⚙️
                     }
                     
                     
+                    🕛HistoryView()
+                    
+                    
                     📄DocumentView()
                     
                     
@@ -80,6 +83,41 @@ struct MenuView: View { // ⚙️
                         .accessibilityLabel("🌏Dismiss")
                     }
                 }
+            }
+        }
+    }
+}
+
+
+struct 🕛HistoryView: View {
+    @AppStorage("history") var 🄷istory: String = ""
+    
+    var body: some View {
+        Section {
+            NavigationLink  {
+                if 🄷istory == "" {
+                    Image(systemName: "text.insert")
+                        .foregroundStyle(.tertiary)
+                        .font(.system(size: 64))
+                        .navigationTitle("History")
+                } else {
+                    ScrollView {
+                        📄View(🄷istory, "Local history")
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarTrailing) {
+                                    Button {
+                                        🄷istory = ""
+                                    } label: {
+                                        Image(systemName: "trash")
+                                            .tint(.red)
+                                    }
+                                    
+                                }
+                            }
+                    }
+                }
+            } label: {
+                Label("Local history (plain text)", systemImage: "clock")
             }
         }
     }
@@ -146,9 +184,9 @@ struct 📄DocumentView: View {
                         .font(.subheadline)
                 }
             }
-            .navigationTitle("Document")
+            .navigationTitle("App Document")
         } label: {
-            Label("Document", systemImage: "doc")
+            Label("App Document", systemImage: "doc")
         }
     }
 }
@@ -231,6 +269,7 @@ struct 📄View: View {
             .navigationBarTitleDisplayMode(.inline)
             .font(.caption.monospaced())
             .padding()
+            .textSelection(.enabled)
     }
     
     init(_ 📄: String, _ 🏷: String) {

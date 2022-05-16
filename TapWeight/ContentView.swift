@@ -60,6 +60,9 @@ struct ContentView: View {
     @AppStorage("LaunchHealthAppAfterLog") var 🚩LaunchHealthAppAfterLog: Bool = false
     
     
+    @AppStorage("history") var 🄷istory: String = ""
+    
+    
     @State private var 🚩InputDone: Bool = false
     
     @State private var 🚩Success: Bool = false
@@ -140,6 +143,8 @@ struct ContentView: View {
                     if 🆗 {
                         🚩Success = true
                         print(".save/.bodyMass: Success")
+                        🄷istory += Date.now.formatted(date: .numeric, time: .omitted) + " : "
+                        🄷istory += 🄳ataBodyMass.quantity.doubleValue(for: 🅄nit).description + " " + 🅄nit.unitString
                     } else {
                         🚩Success = false
                         print("👿:", 👿.debugDescription)
@@ -153,6 +158,7 @@ struct ContentView: View {
                         if 🆗 {
                             🚩Success = true
                             print(".save/.bodyFatPercentage: Success")
+                            🄷istory += " / " + (🄳ataBodyFat.quantity.doubleValue(for: .percent())*100).description + " %"
                         } else {
                             🚩Success = false
                             print("👿:", 👿.debugDescription)
@@ -161,6 +167,8 @@ struct ContentView: View {
                     
                     💾BodyFat = 📝BodyFat
                 }
+                
+                🄷istory += "\n"
                 
                 if 🚩LaunchHealthAppAfterLog {
                     let 📍 = URL(string: "x-apple-health://")!
