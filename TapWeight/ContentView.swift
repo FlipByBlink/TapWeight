@@ -254,21 +254,27 @@ struct ContentView: View {
             ZStack {
                 🚩Success ? Color.pink : Color.gray
                 
-                VStack(spacing: 16) {
-                    Image(systemName: 🚩Success ? "heart" : "heart.slash")
-                    
-                    Text(🚩Success ? "OK!" : "🌏Error!?")
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.1)
+                Button {
+                    🚩InputDone = false
+                } label: {
+                    VStack(spacing: 16) {
+                        Spacer()
+                        
+                        Image(systemName: 🚩Success ? "heart" : "heart.slash")
+                        
+                        Text(🚩Success ? "OK!" : "🌏Error!?")
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.1)
+                        
+                        Spacer()
+                    }
+                    .font(.system(size: 128).weight(.black))
+                    .foregroundColor(.white)
                 }
-                .font(.system(size: 128).weight(.black))
-                .foregroundColor(.white)
+                .accessibilityLabel("🌏Dismiss")
             }
             .ignoresSafeArea()
             .statusBar(hidden: true)
-            .onTapGesture {
-                🚩InputDone = false
-            }
             .overlay {
                 🗯AdView()
             }
