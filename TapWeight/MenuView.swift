@@ -97,10 +97,11 @@ struct 🕛HistoryView: View {
                     Image(systemName: "text.insert")
                         .foregroundStyle(.tertiary)
                         .font(.system(size: 64))
-                        .navigationTitle("Local history")
+                        .navigationTitle("History")
+                        .navigationBarTitleDisplayMode(.inline)
                 } else {
                     ScrollView {
-                        📄View(🄷istory, "Local history")
+                        📄View(🄷istory, "History")
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarTrailing) {
                                     Button {
