@@ -112,7 +112,7 @@ struct ContentView: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    Text("Body mass index")
+                    Text("Body mass index (" + 💾Height.description + "cm)")
                         .font(.headline)
                     
                     Text(📝BMI.description)

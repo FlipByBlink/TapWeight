@@ -12,6 +12,12 @@ struct MenuView: View { // ⚙️
     
     @AppStorage("LaunchHealthAppAfterLog") var 🚩LaunchHealthAppAfterLog: Bool = false
     
+    
+    @State private var 📝Height: Int = 170
+    
+    @AppStorage("Height") var 💾Height: Int = 165
+    
+    
     @AppStorage("Unit") var 🛠Unit: 🄴numUnit = .kg
     
     var body: some View {
@@ -46,7 +52,24 @@ struct MenuView: View { // ⚙️
                         }
                         
                         Toggle(isOn: $🚩BMI) {
-                            Label("🌏Body mass index", systemImage: "scalemass")
+                            Label("🌏Body mass index", systemImage: "function")
+                        }
+                        
+                        Stepper {
+                            VStack {
+                                Label("Height (for BMI)", systemImage: "ruler")
+                                Text(📝Height.description + " cm")
+                            }
+                        } onIncrement: {
+                            📝Height += 1
+                        } onDecrement: {
+                            📝Height -= 1
+                        }
+                        .onAppear {
+                            📝Height = 💾Height
+                        }
+                        .onDisappear {
+                            💾Height = 📝Height
                         }
                     } header: {
                         Text("🌏Option")
