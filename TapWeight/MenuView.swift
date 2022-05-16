@@ -8,6 +8,8 @@ struct MenuView: View { // ⚙️
     
     @AppStorage("AbleBodyFat") var 🚩BodyFat: Bool = false
     
+    @AppStorage("AbleBMI") var 🚩BMI: Bool = false
+    
     @AppStorage("LaunchHealthAppAfterLog") var 🚩LaunchHealthAppAfterLog: Bool = false
     
     @AppStorage("Unit") var 🛠Unit: 🄴numUnit = .kg
@@ -41,6 +43,10 @@ struct MenuView: View { // ⚙️
                             }
                         } label: {
                             Label("🌏Unit", systemImage: "scalemass")
+                        }
+                        
+                        Toggle(isOn: $🚩BMI) {
+                            Label("🌏Body mass index", systemImage: "scalemass")
                         }
                     } header: {
                         Text("🌏Option")

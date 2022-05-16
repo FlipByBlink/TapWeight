@@ -30,6 +30,10 @@ struct ContentView: View {
         HKQuantity(unit: .percent(), doubleValue: Double(📝BodyFat)/1000)
     }
     
+    var 🅀uantityBMI: HKQuantity {
+        HKQuantity(unit: .count(), doubleValue: 📝BMI)
+    }
+    
     var 🄳ataBodyMass: HKQuantitySample {
         HKQuantitySample(type: HKQuantityType(.bodyMass),
                          quantity: 🅀uantityBodyMass,
@@ -44,18 +48,33 @@ struct ContentView: View {
                          end: .now)
     }
     
+    var 🄳ataBMI: HKQuantitySample {
+        HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
+                         quantity: 🅀uantityBMI,
+                         start: .now,
+                         end: .now)
+    }
+    
     
     @State private var 📝BodyMass: Int = 650
     
     @State private var 📝BodyFat: Int = 200
+    
+    @State private var 📝BMI: Double = 25.0
     
     
     @AppStorage("BodyMass") var 💾BodyMass: Int = 600
     
     @AppStorage("BodyFat") var 💾BodyFat: Int = 100
     
+    @AppStorage("BMI") var 💾BMI: Double = 100
+    
+    @AppStorage("Height") var 💾Height: Int = 165
+    
     
     @AppStorage("AbleBodyFat") var 🚩BodyFat: Bool = false
+    
+    @AppStorage("AbleBMI") var 🚩BMI: Bool = false
     
     @AppStorage("LaunchHealthAppAfterLog") var 🚩LaunchHealthAppAfterLog: Bool = false
     
@@ -63,7 +82,7 @@ struct ContentView: View {
     @AppStorage("history") var 🄷istory: String = ""
     
     
-    @State private var 🚩InputDone: Bool = true
+    @State private var 🚩InputDone: Bool = false
     
     @State private var 🚩Success: Bool = false
     
@@ -91,6 +110,19 @@ struct ContentView: View {
                 .onAppear {
                     📝BodyMass = 💾BodyMass
                 }
+                
+                VStack(alignment: .leading) {
+                    Text("Body mass index")
+                        .font(.headline)
+                    
+                    Text(📝BMI.description)
+                        .font(.title)
+                        .fontWeight(.medium)
+                }
+                .padding(12)
+                .padding(.leading, 32)
+                .monospacedDigit()
+                .foregroundStyle(.secondary)
             } header: {
                 Text("🌏Body Mass")
             }
@@ -139,6 +171,14 @@ struct ContentView: View {
                     }
                 }
                 
+                if 🚩BMI {
+                    if 🏥HealthStore.authorizationStatus(for: HKQuantityType(.bodyMassIndex)) == .sharingDenied {
+                        🚩Success = false
+                        🚩InputDone = true
+                        return
+                    }
+                }
+                
                 🏥HealthStore.save(🄳ataBodyMass) { 🆗, 👿 in
                     if 🆗 {
                         🚩Success = true
@@ -166,6 +206,21 @@ struct ContentView: View {
                     }
                     
                     💾BodyFat = 📝BodyFat
+                }
+                
+                if 🚩BMI {
+                    🏥HealthStore.save(🄳ataBMI) { 🆗, 👿 in
+                        if 🆗 {
+                            🚩Success = true
+                            print(".save/.bodyMassIndex: Success")
+                            🄷istory += " / " + 🄳ataBMI.quantity.doubleValue(for: .count()).description
+                        } else {
+                            🚩Success = false
+                            print("👿:", 👿.debugDescription)
+                        }
+                    }
+                    
+                    💾BMI = 📝BMI
                 }
                 
                 🄷istory += "\n"
@@ -227,6 +282,20 @@ struct ContentView: View {
                     print("👿:", 👿.debugDescription)
                 }
             }
+        }
+        .onChange(of: 🚩BMI) { _ in
+            let 🅃ype: Set<HKSampleType> = [HKQuantityType(.bodyMassIndex)]
+            🏥HealthStore.requestAuthorization(toShare: 🅃ype, read: nil) { 🆗, 👿 in
+                if 🆗 {
+                    print("requestAuthorization/bodyMassIndex: Success")
+                } else {
+                    print("👿:", 👿.debugDescription)
+                }
+            }
+        }
+        .onChange(of: 📝BodyMass) { 📝 in
+            📝BMI = Double(📝BodyMass)/10 / pow(Double(💾Height)/100, 2)
+            📝BMI = round(📝BMI*100) / 100
         }
     }
 }
