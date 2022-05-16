@@ -112,12 +112,17 @@ struct ContentView: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    Text("Body mass index (" + 💾Height.description + "cm)")
-                        .font(.headline)
+                    HStack(alignment: .firstTextBaseline, spacing: 4) {
+                        Text("Body Mass Index")
+                        
+                        Text("(" + 💾Height.description + "cm)")
+                            .scaleEffect(0.9, anchor: .leading)
+                    }
+                    .font(.system(size: 14, weight: .semibold))
                     
                     Text(📝BMI.description)
                         .font(.title)
-                        .fontWeight(.medium)
+                        .fontWeight(.bold)
                 }
                 .padding(12)
                 .padding(.leading, 32)
@@ -148,7 +153,7 @@ struct ContentView: View {
                         📝BodyFat = 💾BodyFat
                     }
                 } header: {
-                    Text("🌏Body fat percentage")
+                    Text("🌏Body Fat Percentage")
                 }
             }
         }

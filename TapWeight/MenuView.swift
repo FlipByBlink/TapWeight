@@ -35,14 +35,6 @@ struct MenuView: View { // ⚙️
             NavigationView {
                 List {
                     Section {
-                        Toggle(isOn: $🚩BodyFat) {
-                            Label("🌏Body fat percentage", systemImage: "percent")
-                        }
-                        
-                        Toggle(isOn: $🚩LaunchHealthAppAfterLog) {
-                            Label("🌏Show \"Health\" app after log", systemImage: "arrowshape.turn.up.right")
-                        }
-                        
                         Picker(selection: $🛠Unit) {
                             ForEach(🄴numUnit.allCases, id: \.self) { 🏷 in
                                 Text(🏷.rawValue)
@@ -51,13 +43,24 @@ struct MenuView: View { // ⚙️
                             Label("🌏Unit", systemImage: "scalemass")
                         }
                         
+                        Toggle(isOn: $🚩LaunchHealthAppAfterLog) {
+                            Label("🌏Show \"Health\" app after log", systemImage: "arrowshape.turn.up.right")
+                        }
+                        
+                        Toggle(isOn: $🚩BodyFat) {
+                            Label("🌏Body Fat Percentage", systemImage: "percent")
+                        }
+                        
                         Toggle(isOn: $🚩BMI) {
-                            Label("🌏Body mass index", systemImage: "function")
+                            Label("🌏Body Mass Index", systemImage: "function")
                         }
                         
                         Stepper {
-                            VStack {
-                                Label("Height (for BMI)", systemImage: "ruler")
+                            HStack {
+                                Label("Height", systemImage: "ruler")
+                                
+                                Spacer()
+                                
                                 Text(📝Height.description + " cm")
                             }
                         } onIncrement: {
@@ -71,6 +74,9 @@ struct MenuView: View { // ⚙️
                         .onDisappear {
                             💾Height = 📝Height
                         }
+                        .listRowSeparator(.hidden)
+                        .padding(.trailing, 6)
+                        .scaleEffect(0.9, anchor: .trailing)
                     } header: {
                         Text("🌏Option")
                     }
