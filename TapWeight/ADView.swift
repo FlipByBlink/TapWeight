@@ -5,7 +5,7 @@ import StoreKit
 
 struct 🗯AdView: View {
     
-    var 🅃iming: Int = 7
+    var 🅃iming: Int = 1
     
     @State private var 🄿resentAdBanner = false
     

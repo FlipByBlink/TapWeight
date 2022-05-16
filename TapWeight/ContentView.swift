@@ -63,7 +63,7 @@ struct ContentView: View {
     @AppStorage("history") var 🄷istory: String = ""
     
     
-    @State private var 🚩InputDone: Bool = false
+    @State private var 🚩InputDone: Bool = true
     
     @State private var 🚩Success: Bool = false
     
@@ -198,13 +198,14 @@ struct ContentView: View {
                 }
                 .font(.system(size: 128).weight(.black))
                 .foregroundColor(.white)
-                
-                🗯AdView()
             }
             .ignoresSafeArea()
             .statusBar(hidden: true)
             .onTapGesture {
                 🚩InputDone = false
+            }
+            .overlay {
+                🗯AdView()
             }
         }
         .onAppear {
