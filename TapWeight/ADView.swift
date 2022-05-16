@@ -3,7 +3,7 @@ import SwiftUI
 import StoreKit
 
 
-struct AdView: View {
+struct 🗯AdView: View {
     
     var 🅃iming: Int = 7
     
@@ -72,7 +72,7 @@ struct AdView: View {
 }
 
 
-enum AppAdList: String {
+enum 🗯AppList: String {
     case FlipByBlink
     case FadeInAlarm
     case Plain将棋盤
@@ -95,8 +95,8 @@ enum AppAdList: String {
 }
 
 
-struct AdOnList: View {
-    var 🄰ppName: AppAdList
+struct 🗯AdOnList: View {
+    var 🄰ppName: 🗯AppList
     
     var body: some View {
         Link(destination: 🄰ppName.🔗) {
@@ -127,12 +127,12 @@ struct AdOnList: View {
 }
 
 
-struct AdSection: View {
+struct 🗯AdSection: View {
     var body: some View {
         Section {
-            AdOnList(🄰ppName: .FadeInAlarm)
-            AdOnList(🄰ppName: .FlipByBlink)
-            AdOnList(🄰ppName: .Plain将棋盤)
+            🗯AdOnList(🄰ppName: .FadeInAlarm)
+            🗯AdOnList(🄰ppName: .FlipByBlink)
+            🗯AdOnList(🄰ppName: .Plain将棋盤)
         } header: {
             Text("🌏self-AD")
         }
