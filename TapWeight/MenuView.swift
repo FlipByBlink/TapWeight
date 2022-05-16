@@ -63,9 +63,7 @@ struct MenuView: View { // ⚙️
                     
                     🕛HistoryView()
                     
-                    
                     📄DocumentView()
-                    
                     
                     AdSection()
                 }
@@ -99,7 +97,7 @@ struct 🕛HistoryView: View {
                     Image(systemName: "text.insert")
                         .foregroundStyle(.tertiary)
                         .font(.system(size: 64))
-                        .navigationTitle("History")
+                        .navigationTitle("Local history")
                 } else {
                     ScrollView {
                         📄View(🄷istory, "Local history")
@@ -111,7 +109,6 @@ struct 🕛HistoryView: View {
                                         Image(systemName: "trash")
                                             .tint(.red)
                                     }
-                                    
                                 }
                             }
                     }
