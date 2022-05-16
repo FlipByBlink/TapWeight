@@ -60,7 +60,10 @@ struct ContentView: View {
     
     @State private var 📝BodyFat: Int = 200
     
-    @State private var 📝BMI: Double = 25.0
+    var 📝BMI: Double {
+        let 📝 = Double(📝BodyMass)/10 / pow(Double(💾Height)/100, 2)
+        return round(📝*100) / 100
+    }
     
     
     @AppStorage("BodyMass") var 💾BodyMass: Int = 600
@@ -299,10 +302,6 @@ struct ContentView: View {
                     print("👿:", 👿.debugDescription)
                 }
             }
-        }
-        .onChange(of: 📝BodyMass) { 📝 in
-            📝BMI = Double(📝BodyMass)/10 / pow(Double(💾Height)/100, 2)
-            📝BMI = round(📝BMI*100) / 100
         }
     }
 }
