@@ -23,15 +23,15 @@ struct ContentView: View {
     }
     
     var 🅀uantityBodyMass: HKQuantity {
-        HKQuantity(unit: 🅄nit, doubleValue: Double(📝BodyMass)/10)
+        HKQuantity(unit: 🅄nit, doubleValue: Double(📝BodyMass10)/10)
     }
     
     var 🅀uantityBodyFat: HKQuantity {
-        HKQuantity(unit: .percent(), doubleValue: Double(📝BodyFat)/1000)
+        HKQuantity(unit: .percent(), doubleValue: Double(📝BodyFat10)/1000)
     }
     
     var 🅀uantityBMI: HKQuantity {
-        HKQuantity(unit: .count(), doubleValue: 📝BMI)
+        HKQuantity(unit: .count(), doubleValue: Double(📝BMI100)/100)
     }
     
     var 🄳ataBodyMass: HKQuantitySample {
@@ -56,21 +56,19 @@ struct ContentView: View {
     }
     
     
-    @State private var 📝BodyMass: Int = 650
+    @State private var 📝BodyMass10: Int = 650
     
-    @State private var 📝BodyFat: Int = 200
+    @State private var 📝BodyFat10: Int = 200
     
-    var 📝BMI: Double {
-        let 📝 = Double(📝BodyMass)/10 / pow(Double(💾Height)/100, 2)
-        return round(📝*100) / 100
+    var 📝BMI100: Int {
+        let 📝 = Double(📝BodyMass10)/10 / pow(Double(💾Height)/100, 2)
+        return Int(round(📝*100))
     }
     
     
     @AppStorage("BodyMass") var 💾BodyMass: Int = 600
     
     @AppStorage("BodyFat") var 💾BodyFat: Int = 100
-    
-    @AppStorage("BMI") var 💾BMI: Double = 100
     
     @AppStorage("Height") var 💾Height: Int = 165
     
@@ -98,20 +96,20 @@ struct ContentView: View {
             Section {
                 Stepper {
                     HStack(alignment: .firstTextBaseline) {
-                        Text((Double(📝BodyMass)/10).description)
+                        Text((Double(📝BodyMass10)/10).description)
                             .font(.system(size: 54).monospacedDigit().weight(.black))
                         
                         Text(🛠Unit.rawValue)
                             .font(.title.weight(.black))
                     }
                 } onIncrement: {
-                    📝BodyMass += 1
+                    📝BodyMass10 += 1
                 } onDecrement: {
-                    📝BodyMass -= 1
+                    📝BodyMass10 -= 1
                 }
                 .padding()
                 .onAppear {
-                    📝BodyMass = 💾BodyMass
+                    📝BodyMass10 = 💾BodyMass
                 }
                 
                 if 🚩BMI {
@@ -124,7 +122,7 @@ struct ContentView: View {
                         }
                         .font(.system(size: 14, weight: .semibold))
                         
-                        Text(📝BMI.description)
+                        Text((Double(📝BMI100)/100).description)
                             .font(.title)
                             .fontWeight(.bold)
                     }
@@ -142,20 +140,20 @@ struct ContentView: View {
                 Section {
                     Stepper {
                         HStack(alignment: .firstTextBaseline, spacing: 6) {
-                            Text((Double(📝BodyFat)/10).description)
+                            Text((Double(📝BodyFat10)/10).description)
                                 .font(.system(size: 54).monospacedDigit().weight(.black))
                             
                             Text("%")
                                 .font(.title.weight(.black))
                         }
                     } onIncrement: {
-                        📝BodyFat += 1
+                        📝BodyFat10 += 1
                     } onDecrement: {
-                        📝BodyFat -= 1
+                        📝BodyFat10 -= 1
                     }
                     .padding()
                     .onAppear {
-                        📝BodyFat = 💾BodyFat
+                        📝BodyFat10 = 💾BodyFat
                     }
                 } header: {
                     Text("🌏Body Fat Percentage")
@@ -201,7 +199,7 @@ struct ContentView: View {
                     }
                 }
                 
-                💾BodyMass = 📝BodyMass
+                💾BodyMass = 📝BodyMass10
                 
                 if 🚩BodyFat {
                     🏥HealthStore.save(🄳ataBodyFat) { 🆗, 👿 in
@@ -215,7 +213,7 @@ struct ContentView: View {
                         }
                     }
                     
-                    💾BodyFat = 📝BodyFat
+                    💾BodyFat = 📝BodyFat10
                 }
                 
                 if 🚩BMI {
@@ -229,8 +227,6 @@ struct ContentView: View {
                             print("👿:", 👿.debugDescription)
                         }
                     }
-                    
-                    💾BMI = 📝BMI
                 }
                 
                 🄷istory += "\n"
