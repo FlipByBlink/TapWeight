@@ -111,23 +111,25 @@ struct ContentView: View {
                     📝BodyMass = 💾BodyMass
                 }
                 
-                VStack(alignment: .leading) {
-                    HStack(alignment: .firstTextBaseline, spacing: 4) {
-                        Text("Body Mass Index")
+                if 🚩BMI {
+                    VStack(alignment: .leading) {
+                        HStack(alignment: .firstTextBaseline, spacing: 4) {
+                            Text("Body Mass Index")
+                            
+                            Text("(" + 💾Height.description + "cm)")
+                                .scaleEffect(0.9, anchor: .leading)
+                        }
+                        .font(.system(size: 14, weight: .semibold))
                         
-                        Text("(" + 💾Height.description + "cm)")
-                            .scaleEffect(0.9, anchor: .leading)
+                        Text(📝BMI.description)
+                            .font(.title)
+                            .fontWeight(.bold)
                     }
-                    .font(.system(size: 14, weight: .semibold))
-                    
-                    Text(📝BMI.description)
-                        .font(.title)
-                        .fontWeight(.bold)
+                    .padding(12)
+                    .padding(.leading, 32)
+                    .monospacedDigit()
+                    .foregroundStyle(.secondary)
                 }
-                .padding(12)
-                .padding(.leading, 32)
-                .monospacedDigit()
-                .foregroundStyle(.secondary)
             } header: {
                 Text("🌏Body Mass")
             }
