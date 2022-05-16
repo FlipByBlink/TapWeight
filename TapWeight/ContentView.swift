@@ -117,10 +117,10 @@ struct ContentView: View {
                 if 🚩BMI {
                     VStack(alignment: .leading) {
                         HStack(alignment: .firstTextBaseline, spacing: 4) {
-                            Text("Body Mass Index")
+                            Text("🌏Body Mass Index")
                             
                             Text("(" + 💾Height.description + "cm)")
-                                .scaleEffect(0.9, anchor: .leading)
+                                .scaleEffect(0.8, anchor: .leading)
                         }
                         .font(.system(size: 14, weight: .semibold))
                         
