@@ -18,22 +18,26 @@ Tool for fastest and most comfortable recording body weight to Apple Health app.
 
 - Local history as plain text.
 
+- Check source code in app.
 
-> ==== Japanese(native) ====
->
-> Appleヘルスケアアプリに体重を最速で登録するためのアプリです。
->
-> 【オプション】
->
-> - 体脂肪率も登録。
->
-> - 自動的にBMIも同時に登録。
->
-> - データ登録後に自動的にAppleヘルスケアアプリを立ち上げ。
->
-> - 単位: kg, lbs, st
->
-> - 端末内での履歴(プレーンテキスト)
+
+======== Japanese(native) ========
+
+Appleヘルスケアアプリに体重を最速で登録するためのアプリです。
+
+【オプション】
+
+- 体脂肪率も登録。
+
+- 自動的にBMIも同時に登録。
+
+- データ登録後に自動的にAppleヘルスケアアプリを立ち上げ。
+
+- 単位: kg, lbs, st
+
+- 端末内での履歴(プレーンテキスト)
+
+- アプリ内でアプリ自身のソースコードを確認。
 
 
 ## 🔗 AppStore link
