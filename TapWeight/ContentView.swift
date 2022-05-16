@@ -65,7 +65,8 @@ struct ContentView: View {
     }
     
     var 📝BMI: Double {
-        let 📝 = Double(📝BodyMass10)/10 / pow(Double(💾Height)/100, 2)
+        let 🄺iloBodyMass = 🅀uantityBodyMass.doubleValue(for: .gramUnit(with: .kilo))
+        let 📝 = 🄺iloBodyMass / pow(Double(💾Height)/100, 2)
         return Double(Int(round(📝*100)))/100
     }
     
