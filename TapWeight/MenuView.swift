@@ -59,7 +59,7 @@ struct MenuView: View { // ⚙️
                             HStack {
                                 Spacer()
                                 
-                                Label("Height", systemImage: "ruler")
+                                Label("🌏Height", systemImage: "ruler")
                                 
                                 Text(📝Height.description + " cm")
                             }
@@ -131,7 +131,7 @@ struct 🕛HistoryView: View {
         Section {
             NavigationLink  {
                 if 🄷istory == "" {
-                    Image(systemName: "text.insert")
+                    Image(systemName: "text.append")
                         .foregroundStyle(.tertiary)
                         .font(.system(size: 64))
                         .navigationTitle("History")
@@ -152,7 +152,7 @@ struct 🕛HistoryView: View {
                     }
                 }
             } label: {
-                Label("Local history (plain text)", systemImage: "clock")
+                Label("🌏Local history (plain text)", systemImage: "clock")
             }
         }
     }

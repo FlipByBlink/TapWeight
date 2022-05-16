@@ -20,7 +20,11 @@
 
 "🌏Open Apple \"Health\" app" = "Appleヘルスケアアプリを開く";
 
-"🌏TapWeight" = "体重メモ";
+"🌏Height" = "身長";
+
+"🌏Local history (plain text)" = "履歴 (プレーンテキスト)";
+
+"🌏TapWeight" = "体重メモ / TapWeight";
 
 "🌏About" = "Appleヘルスケアアプリに体重を最速で登録するためのアプリです。\n\n【オプション】\n体脂肪率も一緒に登録。\nデータ登録後に自動的にAppleヘルスケアアプリを立ち上げ。\n単位: kg, lbs, st";
 

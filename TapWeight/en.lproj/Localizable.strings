@@ -21,6 +21,10 @@
 
 "🌏Open Apple \"Health\" app" = "Open Apple \"Health\" app";
 
+"🌏Height" = "Height";
+
+"🌏Local history (plain text)" = "Local history (plain text)";
+
 "🌏TapWeight" = "TapWeight";
 
 "🌏About" = "Tool for fastest recording body weight to Apple Health app.\n\n【Option】\nWith body fat percentage.\nAutomatically launch Apple Health app after record.\nUnit: kg, lbs, st";
