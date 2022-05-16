@@ -163,7 +163,7 @@ struct ContentView: View {
             }
         }
         .listStyle(.plain)
-        .overlay(alignment: .bottom) {
+        .overlay(alignment: .bottom) {  // ✓
             Button {
                 UISelectionFeedbackGenerator().selectionChanged()
                 
