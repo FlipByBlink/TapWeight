@@ -4,15 +4,19 @@
 ![](TapWeight/Assets.xcassets/LaunchIcon.imageset/rounded_LogWeightIcon256.png)
 
 
-Tool for fastest recording body weight to Apple Health app.
+Tool for fastest and most comfortable recording body weight to Apple Health app.
 
 【OPTION】
 
 - With body fat percentage.
 
+- With body mass index automatically.
+
 - Automatically launch Apple Health app after record.
 
 - Unit: kg, lbs, st
+
+- Local history as plain text.
 
 
 > ==== Japanese(native) ====
@@ -21,11 +25,15 @@ Tool for fastest recording body weight to Apple Health app.
 >
 > 【オプション】
 >
-> - 体脂肪率も一緒に登録。
+> - 体脂肪率も登録。
+>
+> - 自動的にBMIも同時に登録。
 >
 > - データ登録後に自動的にAppleヘルスケアアプリを立ち上げ。
 >
 > - 単位: kg, lbs, st
+>
+> - 端末内での履歴(プレーンテキスト)
 
 
 ## 🔗 AppStore link
