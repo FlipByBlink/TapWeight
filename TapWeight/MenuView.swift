@@ -57,13 +57,10 @@ struct MenuView: View { // ⚙️
                         
                         Stepper {
                             HStack {
-                                Spacer()
-                                
                                 Label("🌏Height", systemImage: "ruler")
                                 
                                 Text(📝Height.description + " cm")
                             }
-                            .padding(.trailing, 6)
                             .monospacedDigit()
                         } onIncrement: {
                             📝Height += 1
@@ -77,7 +74,6 @@ struct MenuView: View { // ⚙️
                             💾Height = 📝Height
                         }
                         .listRowSeparator(.hidden)
-                        .padding(.trailing, 4)
                         .scaleEffect(0.9, anchor: .trailing)
                     } header: {
                         Text("🌏Option")
