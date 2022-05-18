@@ -107,24 +107,24 @@ struct 🗯AdOnList: View {
                 .shadow(radius: 1.5, y: 0.5)
                 .padding(8)
             
-        Link(destination: 🄰ppName.🔗) {
-            HStack {
-                
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(🄰ppName.rawValue)
-                        .font(.headline)
+            Link(destination: 🄰ppName.🔗) {
+                HStack {
                     
-                    Text(🄰ppName.📄)
-                        .font(.subheadline)
-                        .multilineTextAlignment(.leading)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(🄰ppName.rawValue)
+                            .font(.headline)
+                        
+                        Text(🄰ppName.📄)
+                            .font(.subheadline)
+                            .multilineTextAlignment(.leading)
+                    }
+                    
+                    Spacer()
+                    
+                    Image(systemName: "arrow.up.forward.app")
                 }
-                
-                Spacer()
-                
-                Image(systemName: "arrow.up.forward.app")
+                .padding(.vertical)
             }
-            .padding(.vertical)
-        }
             .accessibilityLabel(🄰ppName.rawValue)
         }
         

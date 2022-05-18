@@ -283,7 +283,7 @@ struct ContentView: View {
                             .fontWeight(.heavy)
                             .underline()
                             .kerning(1.5)
-                            .offset(y: 6)
+                            .offset(y: 8)
                             .foregroundStyle(.secondary)
                             .padding(.leading, 32)
                         
@@ -296,7 +296,7 @@ struct ContentView: View {
                         🗯AdOnList(🄰ppName: .FadeInAlarm)
                             .padding(.horizontal)
                             .background {
-                                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                RoundedRectangle(cornerRadius: 16, style: .continuous)
                                     .shadow(radius: 3)
                             }
                             .padding(.horizontal)
