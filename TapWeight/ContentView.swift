@@ -194,7 +194,7 @@ struct ContentView: View {
                     if 🆗 {
                         🚩Success = true
                         print(".save/.bodyMass: Success")
-                        🄷istory += Date.now.formatted(date: .numeric, time: .omitted) + " : "
+                        🄷istory += Date.now.formatted(date: .numeric, time: .omitted) + ": Weight "
                         🄷istory += 🄳ataBodyMass.quantity.doubleValue(for: 🅄nit).description + " " + 🅄nit.unitString
                     } else {
                         🚩Success = false
@@ -209,7 +209,7 @@ struct ContentView: View {
                         if 🆗 {
                             🚩Success = true
                             print(".save/.bodyFatPercentage: Success")
-                            🄷istory += " / " + (🄳ataBodyFat.quantity.doubleValue(for: .percent())*100).description + " %"
+                            🄷istory += " / BFP " + (🄳ataBodyFat.quantity.doubleValue(for: .percent())*100).description + " %"
                         } else {
                             🚩Success = false
                             print("👿:", 👿.debugDescription)
@@ -224,7 +224,7 @@ struct ContentView: View {
                         if 🆗 {
                             🚩Success = true
                             print(".save/.bodyMassIndex: Success")
-                            🄷istory += " / " + 📝BMI.description
+                            🄷istory += " / BMI " + 📝BMI.description
                         } else {
                             🚩Success = false
                             print("👿:", 👿.debugDescription)

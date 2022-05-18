@@ -113,24 +113,26 @@ struct 🕛HistoryView: View {
                         .navigationBarTitleDisplayMode(.inline)
                 } else {
                     ScrollView {
-                        📄View(🄷istory, "History")
-                            .toolbar {
-                                ToolbarItem(placement: .navigationBarTrailing) {
-                                    Button {
-                                        🄷istory = ""
-                                    } label: {
-                                        Image(systemName: "trash")
-                                            .tint(.red)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            📄View(🄷istory, "History")
+                                .toolbar {
+                                    ToolbarItem(placement: .navigationBarTrailing) {
+                                        Button {
+                                            🄷istory = ""
+                                        } label: {
+                                            Image(systemName: "trash")
+                                                .tint(.red)
+                                        }
                                     }
                                 }
-                            }
+                        }
                     }
                 }
             } label: {
                 Label("🌏Local history", systemImage: "clock")
             }
         } footer: {
-            Text("For the porpose of \"checking of operations\" / \"temporary backup\"")
+            Text("For the porpose of \"operation check\" / \"temporary backup\"")
         }
     }
 }
