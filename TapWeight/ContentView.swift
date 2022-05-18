@@ -269,6 +269,15 @@ struct ContentView: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.1)
                         
+                        if 🚩Success == false {
+                        Text("Please check permission on \"Health\" app")
+                            .font(.body.weight(.semibold))
+                            .foregroundColor(.secondary)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.1)
+                            .padding(.horizontal)
+                        }
+                        
                         Spacer()
                     }
                     .foregroundColor(.white)
@@ -331,5 +340,6 @@ struct 💟JumpButton: View {
         .font(.largeTitle)
         .foregroundStyle(.secondary)
         .padding(24)
+        .accessibilityLabel("🌏Open Apple \"Health\" app")
     }
 }
