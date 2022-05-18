@@ -82,8 +82,6 @@ struct ContentView: View {
     
     @AppStorage("AbleBMI") var 🚩BMI: Bool = false
     
-    @AppStorage("LaunchHealthAppAfterLog") var 🚩LaunchHealthAppAfterLog: Bool = false
-    
     
     @AppStorage("history") var 🄷istory: String = ""
     
@@ -236,12 +234,7 @@ struct ContentView: View {
                 
                 🄷istory += "\n"
                 
-                if 🚩LaunchHealthAppAfterLog {
-                    let 📍 = URL(string: "x-apple-health://")!
-                    UIApplication.shared.open(📍)
-                } else {
-                    🚩InputDone = true
-                }
+                🚩InputDone = true
             } label: {
                 Image(systemName: "checkmark.circle.fill")
                     .font(.system(size: 120))

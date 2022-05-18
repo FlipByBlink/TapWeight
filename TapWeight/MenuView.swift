@@ -10,8 +10,6 @@ struct MenuView: View { // ⚙️
     
     @AppStorage("AbleBMI") var 🚩BMI: Bool = false
     
-    @AppStorage("LaunchHealthAppAfterLog") var 🚩LaunchHealthAppAfterLog: Bool = false
-    
     
     @State private var 📝Height: Int = 170
     
@@ -40,10 +38,6 @@ struct MenuView: View { // ⚙️
                             }
                         } label: {
                             Label("🌏Unit", systemImage: "scalemass")
-                        }
-                        
-                        Toggle(isOn: $🚩LaunchHealthAppAfterLog) {
-                            Label("🌏Show \"Health\" app after log", systemImage: "arrowshape.turn.up.right")
                         }
                         
                         Toggle(isOn: $🚩BodyFat) {
