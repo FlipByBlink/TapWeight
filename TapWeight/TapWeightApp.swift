@@ -13,18 +13,8 @@ struct TapWeightApp: App {
                         .padding(24)
                 }
                 .overlay(alignment: .bottomTrailing) {
-                    Link(destination: URL(string: "x-apple-health://")!) {
-                        Image(systemName: "app")
-                            .imageScale(.large)
-                            .overlay {
-                                Image(systemName: "heart")
-                                    .imageScale(.small)
-                            }
-                    }
-                    .font(.largeTitle)
-                    .foregroundStyle(.secondary)
-                    .foregroundColor(.pink)
-                    .padding(24)
+                    💟JumpButton()
+                        .foregroundColor(.pink)
                 }
         }
     }
