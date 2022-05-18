@@ -276,6 +276,19 @@ struct ContentView: View {
             }
             .ignoresSafeArea()
             .preferredColorScheme(.dark)
+            .overlay(alignment: .bottomTrailing) {
+                Link(destination: URL(string: "x-apple-health://")!) {
+                    Image(systemName: "app")
+                        .imageScale(.large)
+                        .overlay {
+                            Image(systemName: "heart")
+                                .imageScale(.small)
+                        }
+                }
+                .font(.largeTitle)
+                .foregroundColor(.white.opacity(0.66))
+                .padding(24)
+            }
             .overlay {
                 🗯AdView()
             }
