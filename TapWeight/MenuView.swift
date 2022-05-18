@@ -127,8 +127,10 @@ struct 🕛HistoryView: View {
                     }
                 }
             } label: {
-                Label("🌏Local history (plain text)", systemImage: "clock")
+                Label("🌏Local history", systemImage: "clock")
             }
+        } footer: {
+            Text("For the porpose of \"checking of operations\" / \"temporary backup\"")
         }
     }
 }
