@@ -28,7 +28,6 @@ struct MenuView: View { // ⚙️
                 .font(.largeTitle)
                 .foregroundStyle(.secondary)
                 .foregroundColor(.pink)
-                .padding(22)
         }
         .accessibilityLabel("🌏Open menu")
         .sheet(isPresented: $🚩Menu) {
