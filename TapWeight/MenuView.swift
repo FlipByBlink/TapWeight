@@ -73,20 +73,6 @@ struct MenuView: View { // ⚙️
                     }
                     
                     
-                    Section {
-                        Link(destination: URL(string: "x-apple-health://")!) {
-                            HStack {
-                                Label("🌏Open Apple \"Health\" app", systemImage: "heart")
-                                
-                                Spacer()
-                                
-                                Image(systemName: "arrow.up.forward.app")
-                            }
-                            .font(.body.bold())
-                        }
-                    }
-                    
-                    
                     🕛HistoryView()
                     
                     📄DocumentView()
