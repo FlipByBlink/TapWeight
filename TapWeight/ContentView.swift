@@ -275,7 +275,7 @@ struct ContentView: View {
                 .accessibilityLabel("🌏Dismiss")
             }
             .ignoresSafeArea()
-            .statusBar(hidden: true)
+            .preferredColorScheme(.dark)
             .overlay {
                 🗯AdView()
             }
