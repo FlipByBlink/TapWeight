@@ -70,6 +70,8 @@ struct MenuView: View { // ⚙️
                         .scaleEffect(0.9, anchor: .trailing)
                     } header: {
                         Text("🌏Option")
+                    } footer: {
+                        Text("BMI = Weight(kg) / { Height(m) × Height(m) }")
                     }
                     
                     
