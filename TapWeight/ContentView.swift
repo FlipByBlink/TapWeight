@@ -248,43 +248,64 @@ struct ContentView: View {
             ZStack {
                 🚩Success ? Color.pink : Color.gray
                 
-                Button {
-                    🚩InputDone = false
-                } label: {
-                    VStack(spacing: 16) {
-                        Spacer()
-                        
-                        Image(systemName: 🚩Success ? "figure.wave" : "exclamationmark.triangle")
-                            .font(.system(size: 128).weight(.semibold))
-                        
-                        Text(🚩Success ? "OK!" : "🌏Error!?")
-                            .font(.system(size: 128).weight(.black))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.1)
-                        
-                        if 🚩Success == false {
-                        Text("Please check permission on \"Health\" app")
-                            .font(.body.weight(.semibold))
-                            .foregroundColor(.secondary)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.1)
-                            .padding(.horizontal)
+                VStack {
+                    Button {
+                        🚩InputDone = false
+                    } label: {
+                        VStack(spacing: 16) {
+                            Spacer()
+                            
+                            Image(systemName: 🚩Success ? "figure.wave" : "exclamationmark.triangle")
+                                .font(.system(size: 128).weight(.semibold))
+                            
+                            Text(🚩Success ? "OK!" : "🌏Error!?")
+                                .font(.system(size: 128).weight(.black))
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.1)
+                            
+                            if 🚩Success == false {
+                                Text("Please check permission on \"Health\" app")
+                                    .font(.body.weight(.semibold))
+                                    .foregroundColor(.secondary)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.1)
+                                    .padding(.horizontal)
+                            }
+                            
+                            Spacer()
                         }
+                        .foregroundColor(.white)
+                    }
+                    .accessibilityLabel("🌏Dismiss")
+                    
+                    HStack(alignment: .bottom) {
+                        Text("self-AD")
+                            .fontWeight(.heavy)
+                            .underline()
+                            .kerning(1.5)
+                            .offset(y: 6)
+                            .foregroundStyle(.secondary)
+                            .padding(.leading, 32)
                         
                         Spacer()
+                        
+                        💟JumpButton()
                     }
-                    .foregroundColor(.white)
+                    
+                    if true {
+                        🗯AdOnList(🄰ppName: .FadeInAlarm)
+                            .padding(.horizontal)
+                            .background {
+                                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                    .shadow(radius: 3)
+                            }
+                            .padding(.horizontal)
+                            .padding(.bottom)
+                    }
                 }
-                .accessibilityLabel("🌏Dismiss")
             }
             .ignoresSafeArea()
             .preferredColorScheme(.dark)
-            .overlay(alignment: .bottomTrailing) {
-                💟JumpButton()
-            }
-            .overlay {
-                🗯AdView()
-            }
         }
         .onAppear {
             let 🅃ype: Set<HKSampleType> = [HKQuantityType(.bodyMass)]
@@ -332,7 +353,8 @@ struct 💟JumpButton: View {
         }
         .font(.largeTitle)
         .foregroundStyle(.secondary)
-        .padding(24)
+        .padding(.bottom, 24)
+        .padding(.trailing, 24)
         .accessibilityLabel("🌏Open Apple \"Health\" app")
     }
 }

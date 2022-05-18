@@ -99,14 +99,16 @@ struct 🗯AdOnList: View {
     var 🄰ppName: 🗯AppList
     
     var body: some View {
+        HStack {
+            Image(🄰ppName.rawValue)
+                .resizable()
+                .frame(width: 60, height: 60)
+                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                .shadow(radius: 1.5, y: 0.5)
+                .padding(8)
+            
         Link(destination: 🄰ppName.🔗) {
             HStack {
-                Image(🄰ppName.rawValue)
-                    .resizable()
-                    .frame(width: 60, height: 60)
-                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                    .shadow(radius: 1.5, y: 0.5)
-                    .padding(8)
                 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(🄰ppName.rawValue)
@@ -114,6 +116,7 @@ struct 🗯AdOnList: View {
                     
                     Text(🄰ppName.📄)
                         .font(.subheadline)
+                        .multilineTextAlignment(.leading)
                 }
                 
                 Spacer()
@@ -122,7 +125,9 @@ struct 🗯AdOnList: View {
             }
             .padding(.vertical)
         }
-        .accessibilityLabel(🄰ppName.rawValue)
+            .accessibilityLabel(🄰ppName.rawValue)
+        }
+        
     }
 }
 
