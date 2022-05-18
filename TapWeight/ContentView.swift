@@ -261,15 +261,16 @@ struct ContentView: View {
                     VStack(spacing: 16) {
                         Spacer()
                         
-                        Image(systemName: 🚩Success ? "heart" : "heart.slash")
+                        Image(systemName: 🚩Success ? "figure.wave" : "exclamationmark.triangle")
+                            .font(.system(size: 128).weight(.semibold))
                         
                         Text(🚩Success ? "OK!" : "🌏Error!?")
+                            .font(.system(size: 128).weight(.black))
                             .lineLimit(1)
                             .minimumScaleFactor(0.1)
                         
                         Spacer()
                     }
-                    .font(.system(size: 128).weight(.black))
                     .foregroundColor(.white)
                 }
                 .accessibilityLabel("🌏Dismiss")
