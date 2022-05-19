@@ -9,7 +9,7 @@ struct ResultView: View {
     @Environment(\.dismiss) var 🔙: DismissAction
     
     
-    @State private var 🄿resentAdBanner = false
+    @State private var 🚩AdBanner = false
     
     var 🄰ppName: 🗯AppList {
         switch ( 🄻aunchCount / 🅃iming ) % 3 {
@@ -18,8 +18,6 @@ struct ResultView: View {
             default: return .Plain将棋盤
         }
     }
-    
-    @State private var 🄿resentNote = false
     
     var 🅃iming: Int = 7
     
@@ -63,39 +61,8 @@ struct ResultView: View {
                 
                 
                 HStack(alignment: .bottom) {
-                    if 🄿resentAdBanner {
-                        VStack(alignment: .leading) {
-                            Button {
-                                🄿resentNote = true
-                            } label: {
-                                Text("🌏self-AD")
-                                    .kerning(0.5)
-                                    .underline()
-                                    .foregroundColor(.white)
-                                    .font(.body.weight(.black))
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.1)
-                            }
-                            .alert("🌏About self-AD", isPresented: $🄿resentNote) {
-                                Button("🌏OK") {
-                                    print("Pressed OK button.")
-                                }
-                            } message: {
-                                Text("🌏TextAboutAD")
-                            }
-                            .opacity(0.5)
-                            .padding(.leading, 32)
-                            .offset(y: 8)
-                            
-                            
-                            AdView(🄰ppName)
-                                .background {
-                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                        .shadow(radius: 3)
-                                }
-                                .padding(.horizontal)
-                                .padding(.bottom)
-                        }
+                    if 🚩AdBanner {
+                        🗯AdBanner(🄰ppName)
                     }
                     
                     Spacer()
@@ -109,7 +76,7 @@ struct ResultView: View {
         .onAppear {
             🄻aunchCount += 1
             if 🄻aunchCount % 🅃iming == 0 {
-                🄿resentAdBanner = true
+                🚩AdBanner = true
             }
         }
     }
