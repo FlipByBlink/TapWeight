@@ -146,32 +146,57 @@ struct 🕛HistoryView: View {
     @Binding var 🄷istory: String
     
     var body: some View {
-            if 🄷istory == "" {
-                Image(systemName: "text.append")
-                    .foregroundStyle(.tertiary)
-                    .font(.system(size: 64))
-                    .navigationTitle("History")
-                    .navigationBarTitleDisplayMode(.inline)
-            } else {
-                ScrollView {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        📄View(🄷istory, "History")
-                            .toolbar {
-                                ToolbarItem(placement: .navigationBarTrailing) {
-                                    Button {
-                                        🄷istory = ""
-                                    } label: {
-                                        Image(systemName: "trash")
-                                            .tint(.red)
-                                    }
+        if 🄷istory == "" {
+            Image(systemName: "text.append")
+                .foregroundStyle(.tertiary)
+                .font(.system(size: 64))
+                .navigationTitle("History")
+                .navigationBarTitleDisplayMode(.inline)
+        } else {
+            ScrollView {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    📄View(🄷istory, "History")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button {
+                                    🄷istory = ""
+                                } label: {
+                                    Image(systemName: "trash")
+                                        .tint(.red)
                                 }
                             }
-                    }
+                        }
                 }
             }
+        }
     }
 }
 
+
+let AboutEN = """
+                    Tool for fastest and most comfortable recording body weight to Apple Health app.
+                    
+                    【OPTION】
+                    - With body fat percentage.
+                    - With body mass index automatically.
+                    - Automatically launch Apple Health app after record.
+                    - Unit: kg, lbs, st
+                    - Local history as plain text.
+                    - Check source code in app.
+                    """
+
+let AboutJA = """
+                    # Japanese(native)
+                    Appleヘルスケアアプリに体重を最速で登録するためのアプリです。
+                    
+                    【オプション】
+                    - 体脂肪率も登録。
+                    - 自動的にBMIも同時に登録。
+                    - データ登録後に自動的にAppleヘルスケアアプリを立ち上げ。
+                    - 単位: kg, lbs, st
+                    - 端末内での履歴(プレーンテキスト)
+                    - アプリ内でアプリ自身のソースコードを確認。
+                    """
 
 struct 📄DocumentView: View {
     var body: some View {
@@ -190,36 +215,21 @@ struct 📄DocumentView: View {
                     }
                     .font(.subheadline)
                     
-                    Text("""
-                    Tool for fastest and most comfortable recording body weight to Apple Health app.
+                    NavigationLink {
+                        📄View(AboutEN, "About app")
+                    } label: {
+                        Text(AboutEN)
+                            .font(.subheadline)
+                            .lineLimit(6)
+                    }
                     
-                    【OPTION】
-                    - With body fat percentage.
-                    - With body mass index automatically.
-                    - Automatically launch Apple Health app after record.
-                    - Unit: kg, lbs, st
-                    - Local history as plain text.
-                    - Check source code in app.
-                    """)
-                    .font(.subheadline)
-                    .padding(8)
-                    .textSelection(.enabled)
-                    
-                    Text("""
-                    # Japanese(native)
-                    Appleヘルスケアアプリに体重を最速で登録するためのアプリです。
-                    
-                    【オプション】
-                    - 体脂肪率も登録。
-                    - 自動的にBMIも同時に登録。
-                    - データ登録後に自動的にAppleヘルスケアアプリを立ち上げ。
-                    - 単位: kg, lbs, st
-                    - 端末内での履歴(プレーンテキスト)
-                    - アプリ内でアプリ自身のソースコードを確認。
-                    """)
-                    .font(.subheadline)
-                    .padding(8)
-                    .textSelection(.enabled)
+                    NavigationLink {
+                        📄View(AboutJA, "アプリのついて")
+                    } label: {
+                        Text(AboutJA)
+                            .font(.subheadline)
+                            .lineLimit(6)
+                    }
                     
                     Label("version 1.0", systemImage: "signpost.left")
                         .font(.subheadline)
