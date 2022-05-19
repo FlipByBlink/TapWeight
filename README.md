@@ -4,38 +4,44 @@
 ![](TapWeight/Assets.xcassets/LaunchIcon.imageset/rounded_LogWeightIcon256.png)
 
 
-Tool for fastest and most comfortable recording body weight to Apple Health app.
-
-【OPTION】
-
-- With body fat percentage.
-
-- With body mass index automatically.
-
-- Automatically launch Apple Health app after record.
-
-- Unit: kg, lbs, st
-
-- Local history as plain text.
-
-- Check source code in app.
+<!--Tool for fastest and most comfortable recording body weight to Apple Health app.-->
+<!---->
+<!--【OPTION】-->
+<!---->
+<!--- With body fat percentage.-->
+<!---->
+<!--- With body mass index automatically.-->
+<!---->
+<!--- Automatically launch Apple Health app after record.-->
+<!---->
+<!--- Unit: kg, lbs, st-->
+<!---->
+<!--- Local history as plain text.-->
+<!---->
+<!--- Check source code in app.-->
 
 
 ======== Japanese(native) ========
 
-Appleヘルスケアアプリに体重を最速で登録するためのアプリです。
+iPhoneにプリインストールされているApple「ヘルスケア」アプリに体重データを(手動としては)最速で登録するためのアプリです。
+
+人々は体重計を用いて体重や体脂肪率は日々頻繁に計測します。多くのiPhoneユーザーはApple「ヘルスケア」アプリ上に体重や体脂肪率のデータを登録しています。Apple「ヘルスケア」と連携して自動的に計測データを保存してくれるスマート体重計(例えば Withings製など)を用いることが最高の解決策ではありますが、それらは高価であったり入手性が低かったりします。手動でもデータ登録は可能ですが、残念ながらApple「ヘルスケア」アプリは計測データを日常的に手動登録することを想定されていません。そのため体重測定のような日々継続的に発生するデータを手動で入力することは大変でストレスフルな体験になります。そうした課題を解決するためにこのアプリは開発されました。
+
+
+このアプリでは「ヘルスケア」アプリ上の過去のデータの読み込みや閲覧、管理等をサポートしません。このアプリは「ヘルスケア」アプリへのデータ登録のみを目的としています。
+
 
 【オプション】
 
-- 体脂肪率も登録。
+- 体脂肪率も同時に登録。
 
 - 自動的にBMIも同時に登録。
 
-- データ登録後に自動的にAppleヘルスケアアプリを立ち上げ。
+- アプリ内からAppleヘルスケアアプリをワンタップで立ち上げ可能。
 
 - 単位: kg, lbs, st
 
-- 端末内での履歴(プレーンテキスト)
+- 動作確認や簡易バックアップを想定した端末内での履歴機能(プレーンテキストとして書き出し可)。
 
 - アプリ内でアプリ自身のソースコードを確認。
 
