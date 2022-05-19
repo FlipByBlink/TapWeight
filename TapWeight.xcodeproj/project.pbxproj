@@ -21,6 +21,7 @@
 		126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
 		126B3ED7282E2100009BD28B /* MenuView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3ED2282E1968009BD28B /* MenuView.swift */; };
 		126B3ED9282E53AB009BD28B /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3ED8282E53AB009BD28B /* AdView.swift */; };
+		12B694CD28360B73005F47B3 /* AD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B694CC28360B73005F47B3 /* AD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +57,7 @@
 		126B3ED1282E15E8009BD28B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		126B3ED2282E1968009BD28B /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		126B3ED8282E53AB009BD28B /* AdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdView.swift; sourceTree = "<group>"; };
+		12B694CC28360B73005F47B3 /* AD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				12579D152835FE8900536547 /* ResultView.swift */,
 				126B3ED2282E1968009BD28B /* MenuView.swift */,
 				126B3ED8282E53AB009BD28B /* AdView.swift */,
+				12B694CC28360B73005F47B3 /* AD.swift */,
 				126B3ED0282E15E5009BD28B /* InfoPlist.strings */,
 				126B3EC1282E0F45009BD28B /* Localizable.strings */,
 				126B3EAE282DFEE0009BD28B /* Assets.xcassets */,
@@ -198,6 +201,7 @@
 			files = (
 				126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */,
 				126B3ED3282E1968009BD28B /* MenuView.swift in Sources */,
+				12B694CD28360B73005F47B3 /* AD.swift in Sources */,
 				12579D162835FE8900536547 /* ResultView.swift in Sources */,
 				126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */,
 				126B3ED9282E53AB009BD28B /* AdView.swift in Sources */,
