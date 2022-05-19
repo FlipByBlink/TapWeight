@@ -74,9 +74,9 @@ struct MenuView: View { // ⚙️
                         Text("BMI = Weight(kg) / { Height(m) × Height(m) }")
                     }
                     
-                    📄DocumentView()
-                    
                     🕛HistorySection()
+                    
+                    📄DocumentView()
                     
                     🗯AdSection()
                 }
@@ -106,31 +106,33 @@ struct 🕛HistorySection: View {
     @AppStorage("historyBMI") var 🄷istoryBMI: String = ""
     
     var body: some View {
-        Section {
-            NavigationLink  {
-                🕛HistoryView(🄷istory: $🄷istoryBodyMass)
-            } label: {
-                Label("Body Mass history", systemImage: "clock")
+        NavigationLink {
+            List {
+                Section {
+                    NavigationLink  {
+                        🕛HistoryView(🄷istory: $🄷istoryBodyMass)
+                    } label: {
+                        Label("Body Mass", systemImage: "scalemass")
+                    }
+                    
+                    NavigationLink  {
+                        🕛HistoryView(🄷istory: $🄷istoryBodyFat)
+                    } label: {
+                        Label("Body Fat Percentage", systemImage: "percent")
+                    }
+                    
+                    NavigationLink  {
+                        🕛HistoryView(🄷istory: $🄷istoryBMI)
+                    } label: {
+                        Label("Body Mass Index", systemImage: "function")
+                    }
+                } footer: {
+                    Text("\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
+                }
             }
-            .foregroundStyle(.secondary)
-            
-            NavigationLink  {
-                🕛HistoryView(🄷istory: $🄷istoryBodyFat)
-            } label: {
-                Label("Body Fat Percentage history", systemImage: "clock")
-            }
-            .foregroundStyle(.secondary)
-            
-            NavigationLink  {
-                🕛HistoryView(🄷istory: $🄷istoryBMI)
-            } label: {
-                Label("BMI history", systemImage: "clock")
-            }
-            .foregroundStyle(.secondary)
-        } header: {
-            Text("Local History")
-        } footer: {
-            Text("For the porpose of \"operation check\" / \"temporary backup\"")
+            .navigationTitle("Local history")
+        } label: {
+            Label("Local history", systemImage: "clock")
         }
     }
 }
