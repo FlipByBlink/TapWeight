@@ -25,6 +25,7 @@ struct ResultView: View {
                         
                         Image(systemName: 🚩Success ? "figure.wave" : "exclamationmark.triangle")
                             .font(.system(size: 128).weight(.semibold))
+                            .minimumScaleFactor(0.1)
                         
                         Text(🚩Success ? "OK!" : "🌏Error!?")
                             .font(.system(size: 128).weight(.black))
