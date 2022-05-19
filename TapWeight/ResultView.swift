@@ -35,7 +35,7 @@ struct ResultView: View {
                     VStack(spacing: 16) {
                         Spacer()
                         
-                        Image(systemName: 🚩Success ? "figure.wave" : "exclamationmark.triangle")
+                        Image(systemName: 🚩Success ? "app.badge.checkmark" : "exclamationmark.triangle")
                             .font(.system(size: 128).weight(.semibold))
                             .minimumScaleFactor(0.1)
                         

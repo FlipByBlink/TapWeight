@@ -237,7 +237,7 @@ struct ContentView: View {
                 
                 🚩InputDone = true
             } label: {
-                Image(systemName: "checkmark.circle.fill")
+                Image(systemName: "plus.rectangle.fill")
                     .font(.system(size: 120))
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(.white, .pink)
