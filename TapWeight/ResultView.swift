@@ -4,6 +4,10 @@ import SwiftUI
 
 struct ResultView: View {
     
+    var 🄰ppName: 🗯AppList
+    
+    @State private var 🄿resentNote = false
+    
     @Binding var 🚩InputDone: Bool
     
     @Binding var 🚩Success: Bool
@@ -42,22 +46,57 @@ struct ResultView: View {
                 }
                 .accessibilityLabel("🌏Dismiss")
                 
-                HStack(alignment: .bottom) {
-                    Text("self-AD")
-                        .fontWeight(.heavy)
-                        .underline()
-                        .kerning(1.5)
-                        .offset(y: 8)
-                        .foregroundStyle(.secondary)
-                        .padding(.leading, 32)
-                    
-                    Spacer()
-                    
-                    💟JumpButton()
-                }
                 
-                if true {
-                    🗯AdOnList(🄰ppName: .FadeInAlarm)
+                HStack(alignment: .bottom) {
+                    VStack(alignment: .leading) {
+                        Button {
+                            🄿resentNote = true
+                        } label: {
+                            Text("🌏self-AD")
+                                .kerning(0.5)
+                                .underline()
+                                .foregroundColor(.white)
+                                .font(.body.weight(.black))
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.1)
+                        }
+                        .alert("🌏About self-AD", isPresented: $🄿resentNote) {
+                            Button("🌏OK") {
+                                print("Pressed OK button.")
+                            }
+                        } message: {
+                            Text("🌏TextAboutAD")
+                        }
+                        .opacity(0.5)
+                        .padding(.leading, 32)
+                        .offset(y: 8)
+                        
+                        
+                        HStack {
+                            Image(🄰ppName.rawValue)
+                                .resizable()
+                                .frame(width: 60, height: 60)
+                                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                                .shadow(radius: 1.5, y: 0.5)
+                            
+                            Link(destination: 🄰ppName.🔗) {
+                                VStack(alignment: .leading, spacing: 2) {
+                                    HStack {
+                                        Text(🄰ppName.rawValue)
+                                            .font(.headline)
+                                        
+                                        Image(systemName: "arrow.up.forward.app")
+                                            .imageScale(.small)
+                                    }
+                                    
+                                    Text(🄰ppName.📄)
+                                        .font(.subheadline)
+                                        .multilineTextAlignment(.leading)
+                                }
+                                .padding(.vertical)
+                            }
+                            .accessibilityLabel(🄰ppName.rawValue)
+                        }
                         .padding(.horizontal)
                         .background {
                             RoundedRectangle(cornerRadius: 16, style: .continuous)
@@ -65,6 +104,11 @@ struct ResultView: View {
                         }
                         .padding(.horizontal)
                         .padding(.bottom)
+                    }
+                    
+                    Spacer()
+                    
+                    💟JumpButton()
                 }
             }
         }
@@ -78,6 +122,8 @@ struct ResultView: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(🚩InputDone: .constant(true), 🚩Success: .constant(true))
+        ResultView(🄰ppName: .FadeInAlarm,
+                   🚩InputDone: .constant(true),
+                   🚩Success: .constant(true))
     }
 }

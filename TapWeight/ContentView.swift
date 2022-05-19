@@ -245,7 +245,7 @@ struct ContentView: View {
             .accessibilityLabel("🌏DONE")
         }
         .fullScreenCover(isPresented: $🚩InputDone) {
-            ResultView(🚩InputDone: $🚩InputDone, 🚩Success: $🚩Success)
+            ResultView(🄰ppName: .FadeInAlarm, 🚩InputDone: $🚩InputDone, 🚩Success: $🚩Success)
         }
         .onAppear {
             let 🅃ype: Set<HKSampleType> = [HKQuantityType(.bodyMass)]
