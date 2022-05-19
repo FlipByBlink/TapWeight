@@ -29,7 +29,7 @@ struct 🗯AdView: View {
     var 🄰ppName: 🗯AppList = .FadeInAlarm
     
     var body: some View {
-        HStack {
+        HStack(spacing: 12) {
             Image(🄰ppName.rawValue)
                 .resizable()
                 .frame(width: 60, height: 60)
@@ -54,7 +54,6 @@ struct 🗯AdView: View {
             }
             .accessibilityLabel(🄰ppName.rawValue)
         }
-        .padding(.horizontal)
     }
     
     init(_ 🄰ppName: 🗯AppList) {
@@ -67,8 +66,11 @@ struct 🗯AdSection: View {
     var body: some View {
         Section {
             🗯AdView(.FlipByBlink)
+                .padding(.leading, 4)
             🗯AdView(.FadeInAlarm)
+                .padding(.leading, 4)
             🗯AdView(.Plain将棋盤)
+                .padding(.leading, 4)
         } header: {
             Text("🌏self-AD")
         }
@@ -107,6 +109,7 @@ struct 🗯AdBanner: View {
             
             
             🗯AdView(🄰ppName)
+                .padding(.horizontal)
                 .background {
                     RoundedRectangle(cornerRadius: 16, style: .continuous)
                         .shadow(radius: 3)
