@@ -196,7 +196,7 @@ struct ContentView: View {
                         🚩Success = true
                         print(".save/.bodyMass: Success")
                         🄷istory += Date.now.formatted(date: .numeric, time: .omitted) + ": Weight "
-                        🄷istory += 🄳ataBodyMass.quantity.doubleValue(for: 🅄nit).description + " " + 🅄nit.unitString
+                        🄷istory += 📝BodyMass.description + " " + 🅄nit.unitString
                     } else {
                         🚩Success = false
                         print("👿:", 👿.debugDescription)
@@ -210,7 +210,7 @@ struct ContentView: View {
                         if 🆗 {
                             🚩Success = true
                             print(".save/.bodyFatPercentage: Success")
-                            🄷istory += " / BFP " + (🄳ataBodyFat.quantity.doubleValue(for: .percent())*100).description + " %"
+                            🄷istory += " / BFP " + (round(📝BodyFat*1000)/10).description + " %"
                         } else {
                             🚩Success = false
                             print("👿:", 👿.debugDescription)
