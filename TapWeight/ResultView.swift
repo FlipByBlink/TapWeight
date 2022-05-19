@@ -4,9 +4,9 @@ import SwiftUI
 
 struct ResultView: View {
     
-    @Binding var 🚩InputDone: Bool
-    
     @Binding var 🚩Success: Bool
+    
+    @Environment(\.dismiss) var 🔙: DismissAction
     
     
     @State private var 🄿resentAdBanner = false
@@ -32,7 +32,7 @@ struct ResultView: View {
             
             VStack {
                 Button {
-                    🚩InputDone = false
+                    🔙.callAsFunction()
                 } label: {
                     VStack(spacing: 16) {
                         Spacer()
