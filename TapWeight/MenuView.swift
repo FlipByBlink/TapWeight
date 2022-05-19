@@ -74,10 +74,9 @@ struct MenuView: View { // ⚙️
                         Text("BMI = Weight(kg) / { Height(m) × Height(m) }")
                     }
                     
-                    
-                    🕛HistoryView()
-                    
                     📄DocumentView()
+                    
+                    🕛HistorySection()
                     
                     🗯AdSection()
                 }
@@ -101,41 +100,69 @@ struct MenuView: View { // ⚙️
 }
 
 
-struct 🕛HistoryView: View {
-    @AppStorage("history") var 🄷istory: String = ""
+struct 🕛HistorySection: View {
+    @AppStorage("historyBodyMass") var 🄷istoryBodyMass: String = ""
+    @AppStorage("historyBodyFat") var 🄷istoryBodyFat: String = ""
+    @AppStorage("historyBMI") var 🄷istoryBMI: String = ""
     
     var body: some View {
         Section {
             NavigationLink  {
-                if 🄷istory == "" {
-                    Image(systemName: "text.append")
-                        .foregroundStyle(.tertiary)
-                        .font(.system(size: 64))
-                        .navigationTitle("History")
-                        .navigationBarTitleDisplayMode(.inline)
-                } else {
-                    ScrollView {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            📄View(🄷istory, "History")
-                                .toolbar {
-                                    ToolbarItem(placement: .navigationBarTrailing) {
-                                        Button {
-                                            🄷istory = ""
-                                        } label: {
-                                            Image(systemName: "trash")
-                                                .tint(.red)
-                                        }
-                                    }
-                                }
-                        }
-                    }
-                }
+                🕛HistoryView(🄷istory: $🄷istoryBodyMass)
             } label: {
-                Label("🌏Local history", systemImage: "clock")
+                Label("Body Mass history", systemImage: "clock")
             }
+            .foregroundStyle(.secondary)
+            
+            NavigationLink  {
+                🕛HistoryView(🄷istory: $🄷istoryBodyFat)
+            } label: {
+                Label("Body Fat Percentage history", systemImage: "clock")
+            }
+            .foregroundStyle(.secondary)
+            
+            NavigationLink  {
+                🕛HistoryView(🄷istory: $🄷istoryBMI)
+            } label: {
+                Label("BMI history", systemImage: "clock")
+            }
+            .foregroundStyle(.secondary)
+        } header: {
+            Text("Local History")
         } footer: {
             Text("For the porpose of \"operation check\" / \"temporary backup\"")
         }
+    }
+}
+
+
+struct 🕛HistoryView: View {
+    @Binding var 🄷istory: String
+    
+    var body: some View {
+            if 🄷istory == "" {
+                Image(systemName: "text.append")
+                    .foregroundStyle(.tertiary)
+                    .font(.system(size: 64))
+                    .navigationTitle("History")
+                    .navigationBarTitleDisplayMode(.inline)
+            } else {
+                ScrollView {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        📄View(🄷istory, "History")
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarTrailing) {
+                                    Button {
+                                        🄷istory = ""
+                                    } label: {
+                                        Image(systemName: "trash")
+                                            .tint(.red)
+                                    }
+                                }
+                            }
+                    }
+                }
+            }
     }
 }
 

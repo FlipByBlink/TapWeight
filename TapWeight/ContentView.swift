@@ -80,7 +80,11 @@ struct ContentView: View {
     @AppStorage("AbleBMI") var 🚩BMI: Bool = false
     
     
-    @AppStorage("history") var 🄷istory: String = ""
+    @AppStorage("historyBodyMass") var 🄷istoryBodyMass: String = ""
+    
+    @AppStorage("historyBodyFat") var 🄷istoryBodyFat: String = ""
+    
+    @AppStorage("historyBMI") var 🄷istoryBMI: String = ""
     
     
     @State private var 🚩InputDone: Bool = false
@@ -192,48 +196,52 @@ struct ContentView: View {
                 }
                 
                 🏥HealthStore.save(🄳ataBodyMass) { 🆗, 👿 in
+                    🄷istoryBodyMass += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyMass "
+                    
                     if 🆗 {
                         🚩Success = true
-                        print(".save/.bodyMass: Success")
-                        🄷istory += Date.now.formatted(date: .numeric, time: .omitted) + ": Weight "
-                        🄷istory += 📝BodyMass.description + " " + 🅄nit.unitString
+                        🄷istoryBodyMass += 📝BodyMass.description + " " + 🅄nit.unitString + "\n"
+                        💾BodyMass = 📝BodyMass
                     } else {
                         🚩Success = false
                         print("👿:", 👿.debugDescription)
+                        🄷istoryBodyMass += "HealthStore.save error?!\n"
+                        return
                     }
                 }
                 
-                💾BodyMass = 📝BodyMass
-                
                 if 🚩BodyFat {
+                    🄷istoryBodyFat += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyFat "
+                    
                     🏥HealthStore.save(🄳ataBodyFat) { 🆗, 👿 in
                         if 🆗 {
                             🚩Success = true
-                            print(".save/.bodyFatPercentage: Success")
-                            🄷istory += " / BFP " + (round(📝BodyFat*1000)/10).description + " %"
+                            🄷istoryBodyFat += (round(📝BodyFat*1000)/10).description + " %\n"
+                            💾BodyFat = 📝BodyFat
                         } else {
                             🚩Success = false
                             print("👿:", 👿.debugDescription)
+                            🄷istoryBodyFat += "HealthStore.save error?!\n"
+                            return
                         }
                     }
-                    
-                    💾BodyFat = 📝BodyFat
                 }
                 
                 if 🚩BMI {
+                    🄷istoryBMI += Date.now.formatted(date: .numeric, time: .shortened) + ": BMI "
+                    
                     🏥HealthStore.save(🄳ataBMI) { 🆗, 👿 in
                         if 🆗 {
                             🚩Success = true
-                            print(".save/.bodyMassIndex: Success")
-                            🄷istory += " / BMI " + 📝BMI.description
+                            🄷istoryBMI += 📝BMI.description + "\n"
                         } else {
                             🚩Success = false
                             print("👿:", 👿.debugDescription)
+                            🄷istoryBMI += "HealthStore.save error?!\n"
+                            return
                         }
                     }
                 }
-                
-                🄷istory += "\n"
                 
                 🚩InputDone = true
             } label: {
