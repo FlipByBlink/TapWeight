@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		122ECF5F282F69A2007FF031 /* AdView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3ED8282E53AB009BD28B /* AdView.swift */; };
+		12579D162835FE8900536547 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* ResultView.swift */; };
 		126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */; };
 		126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
 		126B3EAF282DFEE0009BD28B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 126B3EAE282DFEE0009BD28B /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		12579D152835FE8900536547 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		125AFEDA282F2B6E00E3BC4A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		126B3EA7282DFEDF009BD28B /* TapWeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapWeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapWeightApp.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				126B3EB8282E001E009BD28B /* TapWeight.entitlements */,
 				126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */,
 				126B3EAC282DFEDF009BD28B /* ContentView.swift */,
+				12579D152835FE8900536547 /* ResultView.swift */,
 				126B3ED2282E1968009BD28B /* MenuView.swift */,
 				126B3ED8282E53AB009BD28B /* AdView.swift */,
 				126B3ED0282E15E5009BD28B /* InfoPlist.strings */,
@@ -195,6 +198,7 @@
 			files = (
 				126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */,
 				126B3ED3282E1968009BD28B /* MenuView.swift in Sources */,
+				12579D162835FE8900536547 /* ResultView.swift in Sources */,
 				126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */,
 				126B3ED9282E53AB009BD28B /* AdView.swift in Sources */,
 			);
