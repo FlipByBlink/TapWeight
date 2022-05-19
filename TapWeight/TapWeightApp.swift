@@ -9,7 +9,7 @@ struct TapWeightApp: App {
         WindowGroup {
             ContentView()
                 .overlay(alignment: .bottomLeading) {
-                    MenuView()
+                    🛠Menu()
                         .padding(24)
                 }
                 .overlay(alignment: .bottomTrailing) {

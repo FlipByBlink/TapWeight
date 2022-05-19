@@ -254,7 +254,7 @@ struct ContentView: View {
             .accessibilityLabel("🌏DONE")
         }
         .fullScreenCover(isPresented: $🚩InputDone) {
-            ResultView(🚩Success: $🚩Success)
+            🆗Result($🚩Success)
         }
         .onAppear {
             let 🅃ype: Set<HKSampleType> = [HKQuantityType(.bodyMass)]

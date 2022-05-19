@@ -2,7 +2,7 @@
 import SwiftUI
 
 
-struct MenuView: View { // ⚙️
+struct 🛠Menu: View { // ⚙️
     
     @State private var 🚩Menu: Bool = false
     

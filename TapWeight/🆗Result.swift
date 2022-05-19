@@ -2,7 +2,7 @@
 import SwiftUI
 
 
-struct ResultView: View {
+struct 🆗Result: View {
     
     @Binding var 🚩Success: Bool
     
@@ -32,7 +32,7 @@ struct ResultView: View {
                 Button {
                     🔙.callAsFunction()
                 } label: {
-                    VStack(spacing: 16) {
+                    VStack(spacing: 12) {
                         Spacer()
                         
                         Image(systemName: 🚩Success ? "app.badge.checkmark" : "exclamationmark.triangle")
@@ -61,13 +61,24 @@ struct ResultView: View {
                 
                 
                 HStack(alignment: .bottom) {
-                    if 🚩AdBanner {
+                    if 🚩AdBanner && 🚩Success {
                         🗯AdBanner(🄰ppName)
                     }
                     
                     Spacer()
                     
-                    💟JumpButton()
+                    VStack {
+                        if 🚩Success == false {
+                            Image(systemName: "arrow.down")
+                                .imageScale(.small)
+                                .font(.largeTitle)
+                                .foregroundStyle(.tertiary)
+                                .padding(.trailing, 24)
+                                .padding(.bottom, 8)
+                        }
+                        
+                        💟JumpButton()
+                    }
                 }
             }
         }
@@ -79,5 +90,9 @@ struct ResultView: View {
                 🚩AdBanner = true
             }
         }
+    }
+    
+    init(_ 🚩Success: Binding<Bool>) {
+        self._🚩Success = 🚩Success
     }
 }
