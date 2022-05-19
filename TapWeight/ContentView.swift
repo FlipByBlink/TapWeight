@@ -27,7 +27,7 @@ struct ContentView: View {
     }
     
     var 🅀uantityBodyFat: HKQuantity {
-        HKQuantity(unit: .percent(), doubleValue: Double(📝BodyFat1000)/1000)
+        HKQuantity(unit: .percent(), doubleValue: 📝BodyFat)
     }
     
     var 🅀uantityBMI: HKQuantity {
@@ -58,11 +58,8 @@ struct ContentView: View {
     
     @State private var 📝BodyMass10: Int = 650
     
-    @State private var 📝BodyFat1000: Int = 200
+    @State private var 📝BodyFat: Double = 0.2
     
-    var 📝BodyFatPercentage: Double {
-        Double(📝BodyFat1000) / 10
-    }
     
     var 📝BMI: Double {
         let 🄺iloBodyMass = 🅀uantityBodyMass.doubleValue(for: .gramUnit(with: .kilo))
@@ -73,7 +70,7 @@ struct ContentView: View {
     
     @AppStorage("BodyMass") var 💾BodyMass10: Int = 600
     
-    @AppStorage("BodyFat") var 💾BodyFat1000: Int = 100
+    @AppStorage("BodyFat") var 💾BodyFat: Double = 0.1
     
     @AppStorage("Height") var 💾Height: Int = 165
     
@@ -143,20 +140,22 @@ struct ContentView: View {
                 Section {
                     Stepper {
                         HStack(alignment: .firstTextBaseline, spacing: 6) {
-                            Text((Double(📝BodyFat1000)/10).description)
+                            Text((round(📝BodyFat*1000)/10).description)
                                 .font(.system(size: 54).monospacedDigit().weight(.black))
                             
                             Text("%")
                                 .font(.title.weight(.black))
                         }
                     } onIncrement: {
-                        📝BodyFat1000 += 1
+                        📝BodyFat += 0.001
+                        📝BodyFat = round(📝BodyFat*1000)/1000
                     } onDecrement: {
-                        📝BodyFat1000 -= 1
+                        📝BodyFat -= 0.001
+                        📝BodyFat = round(📝BodyFat*1000)/1000
                     }
                     .padding()
                     .onAppear {
-                        📝BodyFat1000 = 💾BodyFat1000
+                        📝BodyFat = 💾BodyFat
                     }
                 } header: {
                     Text("🌏Body Fat Percentage")
@@ -216,7 +215,7 @@ struct ContentView: View {
                         }
                     }
                     
-                    💾BodyFat1000 = 📝BodyFat1000
+                    💾BodyFat = 📝BodyFat
                 }
                 
                 if 🚩BMI {
