@@ -23,7 +23,7 @@ struct ContentView: View {
     }
     
     var 🅀uantityBodyMass: HKQuantity {
-        HKQuantity(unit: 🅄nit, doubleValue: Double(📝BodyMass10)/10)
+        HKQuantity(unit: 🅄nit, doubleValue: 📝BodyMass)
     }
     
     var 🅀uantityBodyFat: HKQuantity {
@@ -56,7 +56,7 @@ struct ContentView: View {
     }
     
     
-    @State private var 📝BodyMass10: Int = 650
+    @State private var 📝BodyMass: Double = 65.0
     
     @State private var 📝BodyFat: Double = 0.2
     
@@ -68,7 +68,7 @@ struct ContentView: View {
     }
     
     
-    @AppStorage("BodyMass") var 💾BodyMass10: Int = 600
+    @AppStorage("BodyMass") var 💾BodyMass: Double = 60.0
     
     @AppStorage("BodyFat") var 💾BodyFat: Double = 0.1
     
@@ -96,20 +96,22 @@ struct ContentView: View {
             Section {
                 Stepper {
                     HStack(alignment: .firstTextBaseline) {
-                        Text((Double(📝BodyMass10)/10).description)
+                        Text(📝BodyMass.description)
                             .font(.system(size: 54).monospacedDigit().weight(.black))
                         
                         Text(🛠Unit.rawValue)
                             .font(.title.weight(.black))
                     }
                 } onIncrement: {
-                    📝BodyMass10 += 1
+                    📝BodyMass += 0.1
+                    📝BodyMass = round(📝BodyMass*10)/10
                 } onDecrement: {
-                    📝BodyMass10 -= 1
+                    📝BodyMass -= 0.1
+                    📝BodyMass = round(📝BodyMass*10)/10
                 }
                 .padding()
                 .onAppear {
-                    📝BodyMass10 = 💾BodyMass10
+                    📝BodyMass = 💾BodyMass
                 }
                 
                 if 🚩BMI {
@@ -201,7 +203,7 @@ struct ContentView: View {
                     }
                 }
                 
-                💾BodyMass10 = 📝BodyMass10
+                💾BodyMass = 📝BodyMass
                 
                 if 🚩BodyFat {
                     🏥HealthStore.save(🄳ataBodyFat) { 🆗, 👿 in
