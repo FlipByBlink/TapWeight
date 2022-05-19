@@ -25,8 +25,8 @@ enum 🗯AppList: String {
 }
 
 
-struct 🗯AdOnList: View {
-    var 🄰ppName: 🗯AppList
+struct AdView: View {
+    var 🄰ppName: 🗯AppList = .FadeInAlarm
     
     var body: some View {
         HStack {
@@ -35,29 +35,30 @@ struct 🗯AdOnList: View {
                 .frame(width: 60, height: 60)
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 .shadow(radius: 1.5, y: 0.5)
-                .padding(8)
             
             Link(destination: 🄰ppName.🔗) {
-                HStack {
-                    
-                    VStack(alignment: .leading, spacing: 2) {
+                VStack(alignment: .leading, spacing: 2) {
+                    HStack {
                         Text(🄰ppName.rawValue)
                             .font(.headline)
                         
-                        Text(🄰ppName.📄)
-                            .font(.subheadline)
-                            .multilineTextAlignment(.leading)
+                        Image(systemName: "arrow.up.forward.app")
+                            .imageScale(.small)
                     }
                     
-                    Spacer()
-                    
-                    Image(systemName: "arrow.up.forward.app")
+                    Text(🄰ppName.📄)
+                        .font(.subheadline)
+                        .multilineTextAlignment(.leading)
                 }
                 .padding(.vertical)
             }
             .accessibilityLabel(🄰ppName.rawValue)
         }
-        
+        .padding(.horizontal)
+    }
+    
+    init(_ 🄰ppName: 🗯AppList) {
+        self.🄰ppName = 🄰ppName
     }
 }
 
@@ -65,9 +66,9 @@ struct 🗯AdOnList: View {
 struct 🗯AdSection: View {
     var body: some View {
         Section {
-            🗯AdOnList(🄰ppName: .FadeInAlarm)
-            🗯AdOnList(🄰ppName: .FlipByBlink)
-            🗯AdOnList(🄰ppName: .Plain将棋盤)
+            AdView(.FlipByBlink)
+            AdView(.FadeInAlarm)
+            AdView(.Plain将棋盤)
         } header: {
             Text("🌏self-AD")
         }

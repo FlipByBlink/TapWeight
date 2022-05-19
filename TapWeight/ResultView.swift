@@ -88,38 +88,13 @@ struct ResultView: View {
                             .offset(y: 8)
                             
                             
-                            HStack {
-                                Image(🄰ppName.rawValue)
-                                    .resizable()
-                                    .frame(width: 60, height: 60)
-                                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                                    .shadow(radius: 1.5, y: 0.5)
-                                
-                                Link(destination: 🄰ppName.🔗) {
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        HStack {
-                                            Text(🄰ppName.rawValue)
-                                                .font(.headline)
-                                            
-                                            Image(systemName: "arrow.up.forward.app")
-                                                .imageScale(.small)
-                                        }
-                                        
-                                        Text(🄰ppName.📄)
-                                            .font(.subheadline)
-                                            .multilineTextAlignment(.leading)
-                                    }
-                                    .padding(.vertical)
+                            AdView(🄰ppName)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                        .shadow(radius: 3)
                                 }
-                                .accessibilityLabel(🄰ppName.rawValue)
-                            }
-                            .padding(.horizontal)
-                            .background {
-                                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                    .shadow(radius: 3)
-                            }
-                            .padding(.horizontal)
-                            .padding(.bottom)
+                                .padding(.horizontal)
+                                .padding(.bottom)
                         }
                     }
                     
