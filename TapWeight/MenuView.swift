@@ -74,9 +74,13 @@ struct MenuView: View { // ⚙️
                         Text("BMI = Weight(kg) / { Height(m) × Height(m) }")
                     }
                     
-                    🕛HistorySection()
+                    Section {
+                        🕛HistorySection()
+                    }
                     
-                    📄DocumentView()
+                    Section {
+                        📄DocumentView()
+                    }
                     
                     🗯AdSection()
                 }
