@@ -37,7 +37,7 @@ This app cannot read, view, or manage past data in "Health" app. This app is int
 
 <br>
 
-======== Japanese(native) ========
+==== Native(japanese) ====
 
 iPhoneにプリインストールされているApple「ヘルスケア」アプリに体重データを(手動としては)最速で登録するためのアプリです。
 
