@@ -1,7 +1,9 @@
 # iPhoneApp TapWeight / 体重メモ for Apple "Health"
 
 <br>
+
 ![](TapWeight/Assets.xcassets/LaunchIcon.imageset/rounded_LogWeightIcon256.png)
+
 <br>
 
 This application is designed to register weight data to the Apple "Health" application pre-installed on iPhone in the fastest possible way (as manual).
