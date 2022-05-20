@@ -6,17 +6,15 @@ struct 🛠Menu: View { // ⚙️
     
     @State private var 🚩Menu: Bool = false
     
+    @AppStorage("Unit") var 🛠Unit: 📏Enum = .kg
+    
     @AppStorage("AbleBodyFat") var 🚩BodyFat: Bool = false
     
     @AppStorage("AbleBMI") var 🚩BMI: Bool = false
     
-    
     @State private var 📝Height: Int = 170
     
     @AppStorage("Height") var 💾Height: Int = 165
-    
-    
-    @AppStorage("Unit") var 🛠Unit: 🄴numUnit = .kg
     
     var body: some View {
         Button {
@@ -33,7 +31,7 @@ struct 🛠Menu: View { // ⚙️
                 List {
                     Section {
                         Picker(selection: $🛠Unit) {
-                            ForEach(🄴numUnit.allCases, id: \.self) { 🏷 in
+                            ForEach(📏Enum.allCases, id: \.self) { 🏷 in
                                 Text(🏷.rawValue)
                             }
                         } label: {
@@ -79,7 +77,7 @@ struct 🛠Menu: View { // ⚙️
                     }
                     
                     Section {
-                        📄DocumentView()
+                        📄DocumentMenu()
                     }
                     
                     🗯AdSection()
@@ -155,7 +153,7 @@ struct 🕛HistoryView: View {
         } else {
             ScrollView {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    📄View(🄷istory, "History")
+                    📄PageView(🄷istory, "History")
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button {
@@ -173,32 +171,7 @@ struct 🕛HistoryView: View {
 }
 
 
-let AboutEN = """
-                    Tool for fastest and most comfortable recording body weight to Apple Health app.
-                    
-                    【OPTION】
-                    - With body fat percentage.
-                    - With body mass index automatically.
-                    - Automatically launch Apple Health app after record.
-                    - Unit: kg, lbs, st
-                    - Local history as plain text.
-                    - Check source code in app.
-                    """
-
-let AboutJA = """
-                    # Japanese(native)
-                    Appleヘルスケアアプリに体重を最速で登録するためのアプリです。
-                    
-                    【オプション】
-                    - 体脂肪率も登録。
-                    - 自動的にBMIも同時に登録。
-                    - データ登録後に自動的にAppleヘルスケアアプリを立ち上げ。
-                    - 単位: kg, lbs, st
-                    - 端末内での履歴(プレーンテキスト)
-                    - アプリ内でアプリ自身のソースコードを確認。
-                    """
-
-struct 📄DocumentView: View {
+struct 📄DocumentMenu: View {
     var body: some View {
         NavigationLink {
             List {
@@ -216,17 +189,17 @@ struct 📄DocumentView: View {
                     .font(.subheadline)
                     
                     NavigationLink {
-                        📄View(AboutEN, "About app")
+                        📄PageView(📄AboutEN, "About app")
                     } label: {
-                        Text(AboutEN)
+                        Text(📄AboutEN)
                             .font(.subheadline)
                             .lineLimit(6)
                     }
                     
                     NavigationLink {
-                        📄View(AboutJA, "アプリのついて")
+                        📄PageView(📄AboutJA, "アプリのついて")
                     } label: {
-                        Text(AboutJA)
+                        Text(📄AboutJA)
                             .font(.subheadline)
                             .lineLimit(6)
                     }
@@ -299,7 +272,7 @@ struct 📓SourceCodeDoc: View {
                         let 📍 = 📁URL.appendingPathComponent(📃)
                         ScrollView {
                             ScrollView(.horizontal, showsIndicators: false) {
-                                📄View(try! String(contentsOf: 📍), 📃)
+                                📄PageView(try! String(contentsOf: 📍), 📃)
                             }
                         }
                     }
@@ -346,7 +319,7 @@ struct 📓SourceCodeDoc: View {
 }
 
 
-struct 📄View: View {
+struct 📄PageView: View {
     var 📄: String
     
     var 🏷: String
@@ -373,9 +346,35 @@ struct 📑BundleMainInfoDictionary: View {
         Section {
             NavigationLink("Bundle.main.infoDictionary") {
                 ScrollView {
-                    📄View(🄱undleMainInfoDictionary, "Bundle.main.infoDictionary")
+                    📄PageView(🄱undleMainInfoDictionary, "Bundle.main.infoDictionary")
                 }
             }
         }
     }
 }
+
+
+let 📄AboutEN = """
+                    Tool for fastest and most comfortable recording body weight to Apple Health app.
+                    
+                    【OPTION】
+                    - With body fat percentage.
+                    - With body mass index automatically.
+                    - Automatically launch Apple Health app after record.
+                    - Unit: kg, lbs, st
+                    - Local history as plain text.
+                    - Check source code in app.
+                    """
+
+let 📄AboutJA = """
+                    # Japanese(native)
+                    Appleヘルスケアアプリに体重を最速で登録するためのアプリです。
+                    
+                    【オプション】
+                    - 体脂肪率も登録。
+                    - 自動的にBMIも同時に登録。
+                    - データ登録後に自動的にAppleヘルスケアアプリを立ち上げ。
+                    - 単位: kg, lbs, st
+                    - 端末内での履歴(プレーンテキスト)
+                    - アプリ内でアプリ自身のソースコードを確認。
+"""

@@ -3,10 +3,18 @@ import SwiftUI
 import HealthKit
 
 
-enum 🄴numUnit: String, CaseIterable {
+enum 📏Enum: String, CaseIterable {
     case kg
     case lbs
     case st
+    
+    var 🅄nit: HKUnit {
+        switch self {
+            case .kg: return .gramUnit(with: .kilo)
+            case .lbs: return .pound()
+            case .st: return .stone()
+        }
+    }
 }
 
 
@@ -14,16 +22,10 @@ struct ContentView: View {
     
     let 🏥HealthStore = HKHealthStore()
     
-    var 🅄nit: HKUnit {
-        switch 🛠Unit {
-        case .kg: return .gramUnit(with: .kilo)
-        case .lbs: return .pound()
-        case .st: return .stone()
-        }
-    }
+    @AppStorage("Unit") var 📏: 📏Enum = .kg
     
     var 🅀uantityBodyMass: HKQuantity {
-        HKQuantity(unit: 🅄nit, doubleValue: 📝BodyMass)
+        HKQuantity(unit: 📏.🅄nit, doubleValue: 📝BodyMass)
     }
     
     var 🅀uantityBodyFat: HKQuantity {
@@ -92,9 +94,6 @@ struct ContentView: View {
     @State private var 🚩Success: Bool = false
     
     
-    @AppStorage("Unit") var 🛠Unit: 🄴numUnit = .kg
-    
-    
     var body: some View {
         List {
             Section {
@@ -103,7 +102,7 @@ struct ContentView: View {
                         Text(📝BodyMass.description)
                             .font(.system(size: 54).monospacedDigit().weight(.black))
                         
-                        Text(🛠Unit.rawValue)
+                        Text(📏.rawValue)
                             .font(.title.weight(.black))
                     }
                 } onIncrement: {
@@ -200,7 +199,7 @@ struct ContentView: View {
                     
                     if 🆗 {
                         🚩Success = true
-                        🄷istoryBodyMass += 📝BodyMass.description + " " + 🅄nit.unitString + "\n"
+                        🄷istoryBodyMass += 📝BodyMass.description + " " + 📏.🅄nit.unitString + "\n"
                         💾BodyMass = 📝BodyMass
                     } else {
                         🚩Success = false
