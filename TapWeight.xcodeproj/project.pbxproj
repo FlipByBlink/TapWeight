@@ -20,6 +20,9 @@
 		126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
 		126B3ED7282E2100009BD28B /* 🛠Menu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3ED2282E1968009BD28B /* 🛠Menu.swift */; };
 		12B694CD28360B73005F47B3 /* 🗯AD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B694CC28360B73005F47B3 /* 🗯AD.swift */; };
+		12F0E79828371A7400FDFE72 /* README.md in CopyFiles */ = {isa = PBXBuildFile; fileRef = 125AFEDA282F2B6E00E3BC4A /* README.md */; };
+		12F0E79928371A7400FDFE72 /* 🆗Result.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🆗Result.swift */; };
+		12F0E79A28371A7400FDFE72 /* 🗯AD.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12B694CC28360B73005F47B3 /* 🗯AD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +32,9 @@
 			dstPath = "📁";
 			dstSubfolderSpec = 7;
 			files = (
+				12F0E79828371A7400FDFE72 /* README.md in CopyFiles */,
+				12F0E79928371A7400FDFE72 /* 🆗Result.swift in CopyFiles */,
+				12F0E79A28371A7400FDFE72 /* 🗯AD.swift in CopyFiles */,
 				126B3ED5282E2100009BD28B /* TapWeightApp.swift in CopyFiles */,
 				126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */,
 				126B3ED7282E2100009BD28B /* 🛠Menu.swift in CopyFiles */,
