@@ -72,11 +72,26 @@ struct 🛠Menu: View { // ⚙️
                         Text("🌏BMI = Weight(kg) / { Height(m) × Height(m) }")
                     }
                     
+                    
+                    Link (destination: URL(string: "x-apple-health://")!) {
+                        HStack {
+                            Label("🌏Open \"Health\" app", systemImage: "heart")
+                            
+                            Spacer()
+                            
+                            Image(systemName: "arrow.up.forward.app")
+                        }
+                        .font(.body.weight(.semibold))
+                    }
+                    
+                    
                     🕛HistorySection()
+                    
                     
                     Section {
                         📄DocumentMenu()
                     }
+                    
                     
                     🗯AdSection()
                 }
