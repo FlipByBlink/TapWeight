@@ -27,7 +27,11 @@
 
 "🌏TapWeight" = "TapWeight";
 
-"🌏About" = "Tool for fastest recording body weight to Apple Health app.\n\n【Option】\nWith body fat percentage.\nAutomatically launch Apple Health app after record.\nUnit: kg, lbs, st";
+
+// ======== Accessibility label =========
+"🌏Open menu" = "Open menu";
+
+"🌏Dismiss" = "Dismiss";
 
 
 // ======== AD label =========
@@ -44,9 +48,3 @@
 "🌏AboutFadeInAlarm" = "Alarm clock with taking a long time from small volume to max volume.";
 
 "🌏AboutPlain将棋盤" = "Simple Shogi board App.";
-
-
-// ======== Accessibility label =========
-"🌏Open menu" = "Open menu";
-
-"🌏Dismiss" = "Dismiss";

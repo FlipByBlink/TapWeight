@@ -26,7 +26,12 @@
 
 "🌏TapWeight" = "体重メモ / TapWeight";
 
-"🌏About" = "Appleヘルスケアアプリに体重を最速で登録するためのアプリです。\n\n【オプション】\n体脂肪率も一緒に登録。\nデータ登録後に自動的にAppleヘルスケアアプリを立ち上げ。\n単位: kg, lbs, st";
+
+// ======== Accessibility label =========
+"🌏Open menu" = "メニューを開く";
+
+"🌏Dismiss" = "閉じる";
+
 
 // ======== AD label =========
 "🌏self-AD" = "セルフ広告";
@@ -42,9 +47,3 @@
 "🌏AboutFadeInAlarm" = "時間をかけて少しずつ音量が大きくなるアラームアプリ。";
 
 "🌏AboutPlain将棋盤" = "ただの将棋盤。";
-
-
-// ======== Accessibility label =========
-"🌏Open menu" = "メニューを開く";
-
-"🌏Dismiss" = "閉じる";
