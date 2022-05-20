@@ -1,29 +1,46 @@
 # iPhoneApp TapWeight / 体重メモ for Apple "Health"
 
 
+
 ![](TapWeight/Assets.xcassets/LaunchIcon.imageset/rounded_LogWeightIcon256.png)
 
 
-<!--Tool for fastest and most comfortable recording body weight to Apple Health app.-->
-<!---->
-<!--【OPTION】-->
-<!---->
-<!--- With body fat percentage.-->
-<!---->
-<!--- With body mass index automatically.-->
-<!---->
-<!--- Automatically launch Apple Health app after record.-->
-<!---->
-<!--- Unit: kg, lbs, st-->
-<!---->
-<!--- Local history as plain text.-->
-<!---->
-<!--- Check source code in app.-->
+
+This application is designed to register weight data to the Apple "Health" application pre-installed on iPhone in the fastest possible way (as manual).
+
+
+People frequently measure their weight and body fat percentage daily using a scale. Many iPhone users register their weight and body fat percentage data on "Health" app. The best solution is to use a smart scale that works with "Health" app and automatically stores measurements, but they are expensive and inaccessible. Manual data registration is possible in "Health" app, but "Health" app is not designed for daily manual data registration. Therefore, manually entering data that occurs continuously daily, such as weight measurements, is a very time-consuming and stressful experience. This app was developed to solve such problems.
+
+
+This app cannot read, view, or manage past data in "Health" app. This app is intended only to register data to the "Health" app. Please check the registered data on the "Health" app.
+
+
+【OPTION】
+
+- With body fat percentage.
+
+- With body mass index automatically.
+
+- Unit: kg, lbs, st
+
+
+【OTHERS】
+
+- Launch "Health" app by one tap.
+
+- Local history for the porpose of "operation check" / "temporary backup".
+
+- Check source code in app.
+
+- All feature is free.
+
+- Rarely appear AD banner of app by TapWeight developer.
 
 
 ======== Japanese(native) ========
 
 iPhoneにプリインストールされているApple「ヘルスケア」アプリに体重データを(手動としては)最速で登録するためのアプリです。
+
 
 人々は体重計を用いて体重や体脂肪率は日々頻繁に計測します。多くのiPhoneユーザーは「ヘルスケア」アプリ上に体重や体脂肪率のデータを登録しています。「ヘルスケア」アプリと連携して自動的に計測データを保存してくれるスマート体重計を用いることが最高の解決策ではありますが、それらは高価であったり入手性が低かったりします。「ヘルスケア」アプリ上で手動でもデータ登録は可能ですが、残念ながら「ヘルスケア」アプリは計測データを日常的に手動で登録することを想定されていません。そのため体重測定のような日々継続的に発生するデータを手動で入力することは大いに手間が掛かりストレスフルな体験になります。そうした課題を解決するためにこのアプリは開発しました。
 
