@@ -81,7 +81,7 @@ struct 🛠Menu: View { // ⚙️
                             
                             Image(systemName: "arrow.up.forward.app")
                         }
-                        .font(.body.weight(.semibold))
+                        .font(.body.weight(.medium))
                     }
                     
                     

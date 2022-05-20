@@ -1,10 +1,12 @@
 # iPhoneApp TapWeight / 体重メモ for Apple "Health"
 
+
 <br>
 
 ![](TapWeight/Assets.xcassets/LaunchIcon.imageset/rounded_LogWeightIcon256.png)
 
 <br>
+
 
 This application is designed to register weight data to the Apple "Health" application pre-installed on iPhone in the fastest possible way (as manual).
 
@@ -70,6 +72,7 @@ iPhoneにプリインストールされているApple「ヘルスケア」アプ
 
 <br>
 
+
 ## 🔗 AppStore link
 
 [apps.apple.com/app/id1624159721](https://apps.apple.com/app/id1624159721)
@@ -100,7 +103,8 @@ sear_pandora_0x@icloud.com
 
 ## Privacy Policy for AppStore
 
-2022-05-13
+
+2022-05-20
 
 
 ### Japanese
