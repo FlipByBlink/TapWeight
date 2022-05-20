@@ -95,8 +95,6 @@
 		126B3EA9282DFEDF009BD28B /* TapWeight */ = {
 			isa = PBXGroup;
 			children = (
-				126B3EBC282E0159009BD28B /* Info.plist */,
-				126B3EB8282E001E009BD28B /* TapWeight.entitlements */,
 				126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */,
 				126B3EAC282DFEDF009BD28B /* ContentView.swift */,
 				12579D152835FE8900536547 /* 🆗Result.swift */,
@@ -105,6 +103,8 @@
 				126B3ED0282E15E5009BD28B /* InfoPlist.strings */,
 				126B3EC1282E0F45009BD28B /* Localizable.strings */,
 				126B3EAE282DFEE0009BD28B /* Assets.xcassets */,
+				126B3EBC282E0159009BD28B /* Info.plist */,
+				126B3EB8282E001E009BD28B /* TapWeight.entitlements */,
 				126B3EB0282DFEE0009BD28B /* Preview Content */,
 			);
 			path = TapWeight;
