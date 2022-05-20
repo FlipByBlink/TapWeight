@@ -7,6 +7,9 @@
 
 <br>
 
+<!-- Manually sync below text between "🛠Menu.swift/📄AboutEN&📄AboutJA" and "AppStoreConnect/TapWeight/Description" and "/README.md(here)". -->
+
+## 📄 Description
 
 This application is designed to register weight data to the Apple "Health" application pre-installed on iPhone in the fastest possible way (as manual).
 
