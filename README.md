@@ -105,3 +105,10 @@ This application don't collect user infomation.
 <br>
 
 <br>
+
+
+<!-- URL "Support page for AppStore" -->
+<!-- https://flipbyblink.github.io/TapWeight/ -->
+
+<!-- URL "Privacy Policy for AppStore" -->
+<!-- https://github.com/FlipByBlink/TapWeight#privacy-policy-for-appstore -->
