@@ -72,9 +72,7 @@ struct 🛠Menu: View { // ⚙️
                         Text("BMI = Weight(kg) / { Height(m) × Height(m) }")
                     }
                     
-                    Section {
-                        🕛HistorySection()
-                    }
+                    🕛HistorySection()
                     
                     Section {
                         📄DocumentMenu()
@@ -108,33 +106,35 @@ struct 🕛HistorySection: View {
     @AppStorage("historyBMI") var 🄷istoryBMI: String = ""
     
     var body: some View {
-        NavigationLink {
-            List {
-                Section {
-                    NavigationLink  {
-                        🕛HistoryView(🄷istory: $🄷istoryBodyMass)
-                    } label: {
-                        Label("Body Mass", systemImage: "scalemass")
+        Section {
+            NavigationLink {
+                List {
+                    Section {
+                        NavigationLink  {
+                            🕛HistoryView(🄷istory: $🄷istoryBodyMass)
+                        } label: {
+                            Label("Body Mass", systemImage: "scalemass")
+                        }
+                        
+                        NavigationLink  {
+                            🕛HistoryView(🄷istory: $🄷istoryBodyFat)
+                        } label: {
+                            Label("Body Fat Percentage", systemImage: "percent")
+                        }
+                        
+                        NavigationLink  {
+                            🕛HistoryView(🄷istory: $🄷istoryBMI)
+                        } label: {
+                            Label("Body Mass Index", systemImage: "function")
+                        }
+                    } footer: {
+                        Text("\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
                     }
-                    
-                    NavigationLink  {
-                        🕛HistoryView(🄷istory: $🄷istoryBodyFat)
-                    } label: {
-                        Label("Body Fat Percentage", systemImage: "percent")
-                    }
-                    
-                    NavigationLink  {
-                        🕛HistoryView(🄷istory: $🄷istoryBMI)
-                    } label: {
-                        Label("Body Mass Index", systemImage: "function")
-                    }
-                } footer: {
-                    Text("\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
                 }
+                .navigationTitle("Local history")
+            } label: {
+                Label("Local history", systemImage: "clock")
             }
-            .navigationTitle("Local history")
-        } label: {
-            Label("Local history", systemImage: "clock")
         }
     }
 }
@@ -176,7 +176,33 @@ struct 📄DocumentMenu: View {
         NavigationLink {
             List {
                 Section {
-                    let 🔗 = "https://apps.apple.com/developer/id1347562710"
+                    NavigationLink {
+                        📄PageView(📄AboutEN, "About app")
+                    } label: {
+                        Text(📄AboutEN)
+                            .font(.subheadline)
+                            .lineLimit(6)
+                            .padding(8)
+                    }
+                    
+                    NavigationLink {
+                        📄PageView(📄AboutJA, "アプリのついて")
+                    } label: {
+                        Text(📄AboutJA)
+                            .font(.subheadline)
+                            .lineLimit(6)
+                            .padding(8)
+                    }
+                    
+                    Label("version 1.0", systemImage: "signpost.left")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                } header: {
+                    Text("About")
+                }
+                
+                let 🔗 = "https://apps.apple.com/developer/id1347562710"
+                Section {
                     Link(destination: URL(string: 🔗)!) {
                         HStack {
                             Label("Open AppStore page", systemImage: "link")
@@ -187,28 +213,8 @@ struct 📄DocumentMenu: View {
                         }
                     }
                     .font(.subheadline)
-                    
-                    NavigationLink {
-                        📄PageView(📄AboutEN, "About app")
-                    } label: {
-                        Text(📄AboutEN)
-                            .font(.subheadline)
-                            .lineLimit(6)
-                    }
-                    
-                    NavigationLink {
-                        📄PageView(📄AboutJA, "アプリのついて")
-                    } label: {
-                        Text(📄AboutJA)
-                            .font(.subheadline)
-                            .lineLimit(6)
-                    }
-                    
-                    Label("version 1.0", systemImage: "signpost.left")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                } header: {
-                    Text("About")
+                } footer: {
+                    Text(🔗)
                 }
                 
                 Section {
@@ -377,4 +383,4 @@ let 📄AboutJA = """
                     - 単位: kg, lbs, st
                     - 端末内での履歴(プレーンテキスト)
                     - アプリ内でアプリ自身のソースコードを確認。
-"""
+                    """
