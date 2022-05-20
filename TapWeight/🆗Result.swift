@@ -26,7 +26,9 @@ struct 🆗Result: View {
     
     var body: some View {
         ZStack {
-            🚩Success ? Color.pink : Color.gray
+            Rectangle()
+                .foregroundColor(🚩Success ? .pink : .gray)
+                .ignoresSafeArea()
             
             VStack {
                 Button {
@@ -82,7 +84,6 @@ struct 🆗Result: View {
                 }
             }
         }
-        .ignoresSafeArea()
         .preferredColorScheme(.dark)
         .onAppear {
             🄻aunchCount += 1
