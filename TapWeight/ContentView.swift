@@ -194,16 +194,16 @@ struct ContentView: View {
                     }
                 }
                 
-                🏥HealthStore.save(🄳ataBodyMass) { 🆗, 👿 in
+                🏥HealthStore.save(🄳ataBodyMass) { 🙆, 🙅 in
                     🄷istoryBodyMass += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyMass "
                     
-                    if 🆗 {
+                    if 🙆 {
                         🚩Success = true
                         🄷istoryBodyMass += 📝BodyMass.description + " " + 📏.🅄nit.unitString + "\n"
                         💾BodyMass = 📝BodyMass
                     } else {
                         🚩Success = false
-                        print("👿:", 👿.debugDescription)
+                        print("🙅:", 🙅.debugDescription)
                         🄷istoryBodyMass += "HealthStore.save error?!\n"
                         return
                     }
@@ -212,14 +212,14 @@ struct ContentView: View {
                 if 🚩BodyFat {
                     🄷istoryBodyFat += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyFat "
                     
-                    🏥HealthStore.save(🄳ataBodyFat) { 🆗, 👿 in
-                        if 🆗 {
+                    🏥HealthStore.save(🄳ataBodyFat) { 🙆, 🙅 in
+                        if 🙆 {
                             🚩Success = true
                             🄷istoryBodyFat += (round(📝BodyFat*1000)/10).description + " %\n"
                             💾BodyFat = 📝BodyFat
                         } else {
                             🚩Success = false
-                            print("👿:", 👿.debugDescription)
+                            print("🙅:", 🙅.debugDescription)
                             🄷istoryBodyFat += "HealthStore.save error?!\n"
                             return
                         }
@@ -229,13 +229,13 @@ struct ContentView: View {
                 if 🚩BMI {
                     🄷istoryBMI += Date.now.formatted(date: .numeric, time: .shortened) + ": BMI "
                     
-                    🏥HealthStore.save(🄳ataBMI) { 🆗, 👿 in
-                        if 🆗 {
+                    🏥HealthStore.save(🄳ataBMI) { 🙆, 🙅 in
+                        if 🙆 {
                             🚩Success = true
                             🄷istoryBMI += 📝BMI.description + "\n"
                         } else {
                             🚩Success = false
-                            print("👿:", 👿.debugDescription)
+                            print("🙅:", 🙅.debugDescription)
                             🄷istoryBMI += "HealthStore.save error?!\n"
                             return
                         }
@@ -257,31 +257,31 @@ struct ContentView: View {
         }
         .onAppear {
             let 🅃ype: Set<HKSampleType> = [HKQuantityType(.bodyMass)]
-            🏥HealthStore.requestAuthorization(toShare: 🅃ype, read: nil) { 🆗, 👿 in
-                if 🆗 {
+            🏥HealthStore.requestAuthorization(toShare: 🅃ype, read: nil) { 🙆, 🙅 in
+                if 🙆 {
                     print("requestAuthorization/bodyMass: Success")
                 } else {
-                    print("👿:", 👿.debugDescription)
+                    print("🙅:", 🙅.debugDescription)
                 }
             }
         }
         .onChange(of: 🚩BodyFat) { _ in
             let 🅃ype: Set<HKSampleType> = [HKQuantityType(.bodyFatPercentage)]
-            🏥HealthStore.requestAuthorization(toShare: 🅃ype, read: nil) { 🆗, 👿 in
-                if 🆗 {
+            🏥HealthStore.requestAuthorization(toShare: 🅃ype, read: nil) { 🙆, 🙅 in
+                if 🙆 {
                     print("requestAuthorization/bodyFatPercentage: Success")
                 } else {
-                    print("👿:", 👿.debugDescription)
+                    print("🙅:", 🙅.debugDescription)
                 }
             }
         }
         .onChange(of: 🚩BMI) { _ in
             let 🅃ype: Set<HKSampleType> = [HKQuantityType(.bodyMassIndex)]
-            🏥HealthStore.requestAuthorization(toShare: 🅃ype, read: nil) { 🆗, 👿 in
-                if 🆗 {
+            🏥HealthStore.requestAuthorization(toShare: 🅃ype, read: nil) { 🙆, 🙅 in
+                if 🙆 {
                     print("requestAuthorization/bodyMassIndex: Success")
                 } else {
-                    print("👿:", 👿.debugDescription)
+                    print("🙅:", 🙅.debugDescription)
                 }
             }
         }
