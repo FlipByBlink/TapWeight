@@ -45,7 +45,7 @@ struct 🆗Result: View {
                             .minimumScaleFactor(0.1)
                         
                         if 🚩Success == false {
-                            Text("Please check permission on \"Health\" app")
+                            Text("🌏Please check permission on \"Health\" app")
                                 .font(.body.weight(.semibold))
                                 .foregroundColor(.secondary)
                                 .lineLimit(1)

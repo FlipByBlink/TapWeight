@@ -303,6 +303,6 @@ struct 💟JumpButton: View {
         .foregroundStyle(.secondary)
         .padding(.bottom, 24)
         .padding(.trailing, 24)
-        .accessibilityLabel("🌏Open Apple \"Health\" app")
+        .accessibilityLabel("🌏Open \"Health\" app")
     }
 }

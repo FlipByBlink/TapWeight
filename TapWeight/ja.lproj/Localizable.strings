@@ -8,6 +8,9 @@
 "🌏DONE" = "完了";
 
 
+// ======== Result ========
+"🌏Please check permission on \"Health\" app" = "「ヘルスケア」アプリで権限を確認して下さい。";
+
 "🌏Error!?" = "エラー!?";
 
 
@@ -18,16 +21,20 @@
 
 "🌏Unit" = "単位";
 
-"🌏Open Apple \"Health\" app" = "Appleヘルスケアアプリを開く";
-
 "🌏Height" = "身長";
 
+"🌏BMI = Weight(kg) / { Height(m) × Height(m) }" = "BMI = 体重(kg) / { 身長(m) × 身長(m) }";
+
 "🌏Local history" = "ローカル履歴";
+
+"🌏\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"" = "\"ローカル履歴\"は動作確認や簡易バックアップを目的としています。 ";
 
 "🌏TapWeight" = "体重メモ / TapWeight";
 
 
 // ======== Accessibility label =========
+"🌏Open \"Health\" app" = "「ヘルスケア」アプリを開く";
+
 "🌏Open menu" = "メニューを開く";
 
 "🌏Dismiss" = "閉じる";

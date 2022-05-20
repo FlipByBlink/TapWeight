@@ -69,7 +69,7 @@ struct 🛠Menu: View { // ⚙️
                     } header: {
                         Text("🌏Option")
                     } footer: {
-                        Text("BMI = Weight(kg) / { Height(m) × Height(m) }")
+                        Text("🌏BMI = Weight(kg) / { Height(m) × Height(m) }")
                     }
                     
                     🕛HistorySection()
@@ -113,27 +113,27 @@ struct 🕛HistorySection: View {
                         NavigationLink  {
                             🕛HistoryView(🄷istory: $🄷istoryBodyMass)
                         } label: {
-                            Label("Body Mass", systemImage: "scalemass")
+                            Label("🌏Body Mass", systemImage: "scalemass")
                         }
                         
                         NavigationLink  {
                             🕛HistoryView(🄷istory: $🄷istoryBodyFat)
                         } label: {
-                            Label("Body Fat Percentage", systemImage: "percent")
+                            Label("🌏Body Fat Percentage", systemImage: "percent")
                         }
                         
                         NavigationLink  {
                             🕛HistoryView(🄷istory: $🄷istoryBMI)
                         } label: {
-                            Label("Body Mass Index", systemImage: "function")
+                            Label("🌏Body Mass Index", systemImage: "function")
                         }
                     } footer: {
-                        Text("\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
+                        Text("🌏\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
                     }
                 }
-                .navigationTitle("Local history")
+                .navigationTitle("🌏Local history")
             } label: {
-                Label("Local history", systemImage: "clock")
+                Label("🌏Local history", systemImage: "clock")
             }
         }
     }

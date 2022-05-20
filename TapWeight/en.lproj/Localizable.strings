@@ -8,8 +8,10 @@
 "🌏DONE" = "DONE";
 
 
-"🌏Error!?" = "Error!?";
+// ======== Result ========
+"🌏Please check permission on \"Health\" app" = "Please check permission on \"Health\" app";
 
+"🌏Error!?" = "Error!?";
 
 
 // ======== Menu ========
@@ -19,16 +21,20 @@
 
 "🌏Unit" = "Unit";
 
-"🌏Open Apple \"Health\" app" = "Open Apple \"Health\" app";
-
 "🌏Height" = "Height";
 
+"🌏BMI = Weight(kg) / { Height(m) × Height(m) }" = "BMI = Weight(kg) / { Height(m) × Height(m) }";
+
 "🌏Local history" = "Local history";
+
+"🌏\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"" = "\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"";
 
 "🌏TapWeight" = "TapWeight";
 
 
 // ======== Accessibility label =========
+"🌏Open \"Health\" app" = "Open \"Health\" app";
+
 "🌏Open menu" = "Open menu";
 
 "🌏Dismiss" = "Dismiss";
