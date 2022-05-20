@@ -34,30 +34,36 @@ struct 🆗Result: View {
                 Button {
                     🔙.callAsFunction()
                 } label: {
-                    VStack(spacing: 12) {
+                    HStack {
                         Spacer()
                         
-                        Image(systemName: 🚩Success ? "app.badge.checkmark" : "exclamationmark.triangle")
-                            .font(.system(size: 128).weight(.semibold))
-                            .minimumScaleFactor(0.1)
-                        
-                        Text(🚩Success ? "OK!" : "🌏Error!?")
-                            .font(.system(size: 128).weight(.black))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.1)
-                        
-                        if 🚩Success == false {
-                            Text("🌏Please check permission on \"Health\" app")
-                                .font(.body.weight(.semibold))
-                                .foregroundColor(.secondary)
+                        VStack(spacing: 12) {
+                            Spacer()
+                            
+                            Image(systemName: 🚩Success ? "app.badge.checkmark" : "exclamationmark.triangle")
+                                .font(.system(size: 128).weight(.semibold))
+                                .minimumScaleFactor(0.1)
+                            
+                            Text(🚩Success ? "OK!" : "🌏Error!?")
+                                .font(.system(size: 128).weight(.black))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.1)
-                                .padding(.horizontal)
+                            
+                            if 🚩Success == false {
+                                Text("🌏Please check permission on \"Health\" app")
+                                    .font(.body.weight(.semibold))
+                                    .foregroundColor(.secondary)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.1)
+                                    .padding(.horizontal)
+                            }
+                            
+                            Spacer()
                         }
+                        .foregroundColor(.white)
                         
                         Spacer()
                     }
-                    .foregroundColor(.white)
                 }
                 .accessibilityLabel("🌏Dismiss")
                 
