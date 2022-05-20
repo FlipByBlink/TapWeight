@@ -1,10 +1,8 @@
 # iPhoneApp TapWeight / 体重メモ for Apple "Health"
 
-
-
+<br>
 ![](TapWeight/Assets.xcassets/LaunchIcon.imageset/rounded_LogWeightIcon256.png)
-
-
+<br>
 
 This application is designed to register weight data to the Apple "Health" application pre-installed on iPhone in the fastest possible way (as manual).
 
@@ -23,7 +21,6 @@ This app cannot read, view, or manage past data in "Health" app. This app is int
 
 - Unit: kg, lbs, st
 
-
 【OTHERS】
 
 - Launch "Health" app by one tap.
@@ -36,6 +33,7 @@ This app cannot read, view, or manage past data in "Health" app. This app is int
 
 - Rarely appear AD banner of app by TapWeight developer.
 
+<br>
 
 ======== Japanese(native) ========
 
@@ -55,7 +53,6 @@ iPhoneにプリインストールされているApple「ヘルスケア」アプ
 - BMIを自動的に計算して同時に登録可能。
 
 - 単位: kg, lbs, st
-
 
 【その他】
 
