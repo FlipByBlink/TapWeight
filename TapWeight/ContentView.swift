@@ -168,6 +168,7 @@ struct ContentView: View {
             }
         }
         .listStyle(.plain)
+        .clipped()
         .overlay(alignment: .bottom) {  // ☑️
             Button {
                 UISelectionFeedbackGenerator().selectionChanged()
