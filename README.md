@@ -121,7 +121,7 @@ sear_pandora_0x@icloud.com
 ## Privacy Policy for AppStore
 
 
-2022-05-20
+2022-05-22
 
 
 ### Japanese
