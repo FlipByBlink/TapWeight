@@ -386,9 +386,14 @@ struct 📑BundleMainInfoDictionary: View {
 let 📄AboutEN = """
                     This application is designed to register weight data to the Apple "Health" application pre-installed on iPhone in the fastest possible way (as manual).
                     
-                    People frequently measure their weight and body fat percentage daily using a scale. Many iPhone users register their weight and body fat percentage data on "Health" app. The best solution is to use a smart scale that works with "Health" app and automatically stores measurements, but they are expensive and inaccessible. Manual data registration is possible in "Health" app, but "Health" app is not designed for daily manual data registration. Therefore, manually entering data that occurs continuously daily, such as weight measurements, is a very time-consuming and stressful experience. This app was developed to solve such problems.
+                    People frequently measure their weight and body fat percentage daily using a scale. Many iPhone users register their weight and body fat percentage data on "Health" app. The best solution is to use a smart scale that works with "Health" app and automatically stores measurements, but they are expensive and inaccessible. Manual data registration is possible in "Health" app, but "Health" app is not designed for daily manual data registration. Therefore, manually entering data that occur continuously daily, such as weight measurements, is a very time-consuming and stressful experience. This app was developed to solve such problems.
                     
                     This app cannot read, view, or manage past data in "Health" app. This app is intended only to register data to the "Health" app. Please check the registered data on the "Health" app.
+                    
+                    【Target/Use-case】
+                    - No "smart" scale.
+                    - Frequently measure my weight (and body fat percentage) using a scale almost every day.
+                    - Intend to register the data into "Health" app every time, after measuring by a scale.
                     
                     【OPTION】
                     - With body fat percentage.
@@ -397,7 +402,7 @@ let 📄AboutEN = """
                     
                     【OTHERS】
                     - Launch "Health" app by one tap.
-                    - Local history for the porpose of "operation check" / "temporary backup".
+                    - Local history for the purpose of "operation check" / "temporary backup".
                     - Check source code in app.
                     - All feature is free.
                     - Rarely appear AD banner of app by TapWeight developer.
@@ -411,6 +416,11 @@ let 📄AboutJA = """
                     
                     このアプリでは「ヘルスケア」アプリ上の過去のデータの読み込みや閲覧、管理等は出来ません。このアプリは「ヘルスケア」アプリへのデータ登録のみを目的としています。登録したデータは「ヘルスケア」アプリ上で確認してください。
                     
+                    【想定ユーザー/ユースケース】
+                    - スマート体重計を持っていない。
+                    - 日常的に体重や体脂肪率を体重計で計測している。
+                    - 体重計で測定した直後、毎回手動で測定結果を「ヘルスケア」アプリに登録する事を検討している。
+                    
                     【オプション】
                     - 体脂肪率も同時に登録可能。
                     - BMIを自動的に計算して同時に登録可能。
@@ -419,7 +429,7 @@ let 📄AboutJA = """
                     【その他】
                     - このアプリ内からApple「ヘルスケア」アプリをワンタップで立ち上げ可能。
                     - 動作確認や簡易バックアップを想定した端末内での履歴機能。
-                    - アプリ内でアプリ自身のソースコードを確認
+                    - アプリ内でアプリ自身のソースコードを確認。
                     - すべての機能を無料で利用できます。
                     - 自作アプリに関するバナー広告をアプリ内で比較的控えめに表示します。
                     """
