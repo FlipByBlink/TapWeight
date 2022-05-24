@@ -299,11 +299,11 @@ struct 💟JumpButton: View {
                     Image(systemName: "heart")
                         .imageScale(.small)
                 }
+                .font(.largeTitle)
+                .padding(.bottom, 24)
+                .padding(.trailing, 24)
         }
-        .font(.largeTitle)
         .foregroundStyle(.secondary)
-        .padding(.bottom, 24)
-        .padding(.trailing, 24)
         .accessibilityLabel("🌏Open \"Health\" app")
     }
 }

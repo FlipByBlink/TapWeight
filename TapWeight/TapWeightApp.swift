@@ -9,7 +9,6 @@ struct TapWeightApp: App {
             ContentView()
                 .overlay(alignment: .bottomLeading) {
                     🛠Menu()
-                        .padding(24)
                 }
                 .overlay(alignment: .bottomTrailing) {
                     💟JumpButton()
