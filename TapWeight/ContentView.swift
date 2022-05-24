@@ -249,9 +249,9 @@ struct ContentView: View {
                     .font(.system(size: 120))
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(.white, .pink)
-                    .padding()
             }
             .accessibilityLabel("🌏DONE")
+            .padding()
         }
         .fullScreenCover(isPresented: $🚩InputDone) {
             🆗Result($🚩Success)
