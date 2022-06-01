@@ -1,4 +1,4 @@
-# iPhoneApp TapWeight / 体重メモ for Apple "Health"
+# iPhoneApp TapWeight / 体重登録 for "Health"
 
 
 <br>
