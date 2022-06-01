@@ -192,7 +192,7 @@ struct 📄DocumentMenu: View {
         NavigationLink {
             List {
                 Section {
-                    Label("1.0" , systemImage: "signpost.left")
+                    Label("1.1" , systemImage: "signpost.left")
                 } header: {
                     Text("Version")
                 } footer: {
@@ -204,21 +204,10 @@ struct 📄DocumentMenu: View {
                 Section {
                     NavigationLink {
                         ScrollView {
-                            📄PageView(📄AboutEN, "About app")
+                            📄PageView(📄About, "About app")
                         }
                     } label: {
-                        Text(📄AboutEN)
-                            .font(.subheadline)
-                            .lineLimit(7)
-                            .padding(8)
-                    }
-                    
-                    NavigationLink {
-                        ScrollView {
-                            📄PageView(📄AboutJA, "アプリのついて")
-                        }
-                    } label: {
-                        Text(📄AboutJA)
+                        Text(📄About)
                             .font(.subheadline)
                             .lineLimit(7)
                             .padding(8)
@@ -384,7 +373,7 @@ struct 📑BundleMainInfoDictionary: View {
 }
 
 
-let 📄AboutEN = """
+let 📄About = """
                     This application is designed to register weight data to the Apple "Health" application pre-installed on iPhone in the fastest possible way (as manual).
                     
                     People frequently measure their weight and body fat percentage daily using a scale. Many iPhone users register their weight and body fat percentage data on "Health" app. The best solution is to use a smart scale that works with "Health" app and automatically stores measurements, but they are expensive and inaccessible. Manual data registration is possible in "Health" app, but "Health" app is not designed for daily manual data registration. Therefore, manually entering data that occur continuously daily, such as weight measurements, is a very time-consuming and stressful experience. This app was developed to solve such problems.
@@ -407,9 +396,8 @@ let 📄AboutEN = """
                     - Check source code in app.
                     - All feature is free.
                     - Rarely appear AD banner of app by TapWeight developer.
-                    """
-
-let 📄AboutJA = """
+                    
+                    
                     ==== Native(japanese) ====
                     iPhoneにプリインストールされているApple「ヘルスケア」アプリに体重データを(手動としては)最速で登録するためのアプリです。
                     

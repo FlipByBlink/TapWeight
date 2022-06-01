@@ -7,7 +7,7 @@
 
 <br>
 
-<!-- Manually sync below text between "🛠Menu.swift/📄AboutEN&📄AboutJA" and "AppStoreConnect/TapWeight/Description" and "/README.md(here)". -->
+<!-- Manually sync below text between "🛠Menu.swift/📄About" and "AppStoreConnect/TapWeight/Description" and "/README.md(here)". -->
 
 ## 📄 Description
 
