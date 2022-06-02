@@ -44,21 +44,21 @@ class 📱Model: ObservableObject {
         HKQuantity(unit: .count(), doubleValue: 📝BMI)
     }
     
-    var 🄳ataBodyMass: HKQuantitySample {
+    var 🅂ampleBodyMass: HKQuantitySample {
         HKQuantitySample(type: HKQuantityType(.bodyMass),
                          quantity: 🅀uantityBodyMass,
                          start: .now,
                          end: .now)
     }
     
-    var 🄳ataBodyFat: HKQuantitySample {
+    var 🅂ampleBodyFat: HKQuantitySample {
         HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
                          quantity: 🅀uantityBodyFat,
                          start: .now,
                          end: .now)
     }
     
-    var 🄳ataBMI: HKQuantitySample {
+    var 🅂ampleBMI: HKQuantitySample {
         HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
                          quantity: 🅀uantityBMI,
                          start: .now,
@@ -85,7 +85,7 @@ class 📱Model: ObservableObject {
         
         if 🚩BMI && 🏥AuthDenied(.bodyMassIndex) { return }
         
-        🏥HealthStore.save(🄳ataBodyMass) { 🙆, 🙅 in
+        🏥HealthStore.save(🅂ampleBodyMass) { 🙆, 🙅 in
             DispatchQueue.main.async { [self] in
                 🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
 
@@ -102,7 +102,7 @@ class 📱Model: ObservableObject {
         }
 
         if 🚩BodyFat {
-            🏥HealthStore.save(🄳ataBodyFat) { 🙆, 🙅 in
+            🏥HealthStore.save(🅂ampleBodyFat) { 🙆, 🙅 in
                 DispatchQueue.main.async { [self] in
                     🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
                     
@@ -120,7 +120,7 @@ class 📱Model: ObservableObject {
         }
 
         if 🚩BMI {
-            🏥HealthStore.save(🄳ataBMI) { 🙆, 🙅 in
+            🏥HealthStore.save(🅂ampleBMI) { 🙆, 🙅 in
                 DispatchQueue.main.async { [self] in
                     🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", BMI, "
                     
