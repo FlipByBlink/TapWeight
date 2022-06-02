@@ -66,7 +66,7 @@ struct 🛠MenuList: View {
                             
                             HStack {
                                 Text("BMI = ")
-                                    .bold()
+                                    .font(.title2)
                                 
                                 VStack(spacing: 16) {
                                     Text("Weight(kg)")
@@ -79,7 +79,6 @@ struct 🛠MenuList: View {
                                         .frame(height: 2)
                                 }
                             }
-                            .font(.title3)
                         }
                         .padding()
                         .navigationTitle("🌏Height")
@@ -98,7 +97,7 @@ struct 🛠MenuList: View {
                             Text(📱.💾Height.description + " cm")
                         }
                         .padding(.leading)
-                        .foregroundStyle(.secondary)
+                        .foregroundColor(.primary)
                     }
                     .listRowSeparator(.hidden)
                 } header: {
