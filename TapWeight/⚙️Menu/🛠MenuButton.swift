@@ -50,24 +50,50 @@ struct 🛠MenuList: View {
                         Label("🌏Body Mass Index", systemImage: "function")
                     }
                     
-                    Stepper {
-                        HStack {
-                            Label("🌏Height", systemImage: "ruler")
+                    NavigationLink {
+                        VStack {
+                            Spacer()
                             
-                            Text(📝Height.description + " cm")
+                            Stepper {
+                                Text(📝Height.description + " cm")
+                                    .font(.system(size: 54).monospacedDigit())
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.1)
+                                    .padding()
+                            } onIncrement: {
+                                📝Height += 1
+                            } onDecrement: {
+                                📝Height -= 1
+                            }
+                            .padding()
+                            
+                            Spacer()
+                            
+                            Text("🌏BMI = Weight(kg) / { Height(m) × Height(m) }")
+                            
+                            Spacer()
                         }
-                        .monospacedDigit()
-                    } onIncrement: {
-                        📝Height += 1
-                    } onDecrement: {
-                        📝Height -= 1
+                        .padding()
+                        .navigationTitle("🌏Height")
+                        .onAppear {
+                            📝Height = 📱.💾Height
+                        }
+                        .onDisappear {
+                            📱.💾Height = 📝Height
+                        }
+                    } label: {
+                        HStack {
+                            Spacer()
+                            
+                            Text("🌏Height")
+                            
+                            Text(📱.💾Height.description + " cm")
+                        }
+                        .foregroundStyle(.secondary)
                     }
                     .listRowSeparator(.hidden)
-                    .scaleEffect(0.9, anchor: .trailing)
                 } header: {
                     Text("🌏Option")
-                } footer: {
-                    Text("🌏BMI = Weight(kg) / { Height(m) × Height(m) }")
                 }
                 
                 
@@ -107,12 +133,6 @@ struct 🛠MenuList: View {
                     .accessibilityLabel("🌏Dismiss")
                 }
             }
-        }
-        .onAppear {
-            📝Height = 📱.💾Height
-        }
-        .onDisappear {
-            📱.💾Height = 📝Height
         }
     }
 }
