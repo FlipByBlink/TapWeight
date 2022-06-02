@@ -3,26 +3,7 @@ import SwiftUI
 
 
 struct 🆗Result: View {
-    
     @EnvironmentObject var 📱:📱Model
-    
-    @Environment(\.dismiss) var 🔙: DismissAction
-    
-    
-    @State private var 🚩AdBanner = false
-    
-    var 🄰ppName: 🗯AppList {
-        switch ( 🄻aunchCount / 🅃iming ) % 3 {
-            case 0: return .FlipByBlink
-            case 1: return .FadeInAlarm
-            default: return .Plain将棋盤
-        }
-    }
-    
-    var 🅃iming: Int = 7
-    
-    @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
-    
     
     var body: some View {
         ZStack {
@@ -32,7 +13,7 @@ struct 🆗Result: View {
             
             VStack {
                 Button {
-                    🔙.callAsFunction()
+                    📱.🚩InputDone = false
                 } label: {
                     VStack(spacing: 12) {
                         Image(systemName: 📱.🚩Success ? "app.badge.checkmark" : "exclamationmark.triangle")
@@ -60,8 +41,8 @@ struct 🆗Result: View {
                 
                 
                 HStack(alignment: .bottom) {
-                    if 🚩AdBanner && 📱.🚩Success {
-                        🗯AdBanner(🄰ppName)
+                    if 📱.🚩AdBanner && 📱.🚩Success {
+                        🗯AdBanner(📱.🄰ppName)
                     }
                     
                     Spacer()
@@ -83,9 +64,9 @@ struct 🆗Result: View {
         }
         .preferredColorScheme(.dark)
         .onAppear {
-            🄻aunchCount += 1
-            if 🄻aunchCount % 🅃iming == 0 {
-                🚩AdBanner = true
+            📱.🄻aunchCount += 1
+            if 📱.🄻aunchCount % 📱.🅃iming == 0 {
+                📱.🚩AdBanner = true
             }
         }
     }

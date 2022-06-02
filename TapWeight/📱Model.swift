@@ -5,29 +5,6 @@ import HealthKit
 
 class 📱Model: ObservableObject {
     
-//    @AppStorage("Unit") var 📏: 📏Enum = .kg
-//
-//    @AppStorage("BasalTemp") var 🚩BasalTemp: Bool = false
-//
-//    @AppStorage("2DecimalPlace") var 🚩2DecimalPlace: Bool = false
-//
-//    @AppStorage("AutoComplete") var 🚩AutoComplete: Bool = false
-//
-//
-//    @Published var 🧩Temp: [Int] = []
-//
-//
-//    @Published var 🛏BasalSwitch: Bool = true
-//
-//    @Published var 🚩InputDone: Bool = false
-//
-//    @Published var 🚩Success: Bool = false
-//
-//    @Published var 🚩Canceled: Bool = false
-//
-//    @AppStorage("history") var 🄷istory: String = ""
-    
-    
     @AppStorage("Unit") var 💾Unit: 📏Enum = .kg
     
     
@@ -58,6 +35,23 @@ class 📱Model: ObservableObject {
     
     
     let 🏥HealthStore = HKHealthStore()
+    
+    
+    
+    // ======== AD ========
+    @Published var 🚩AdBanner = false
+    
+    var 🄰ppName: 🗯AppList {
+        switch ( 🄻aunchCount / 🅃iming ) % 3 {
+            case 0: return .FlipByBlink
+            case 1: return .FadeInAlarm
+            default: return .Plain将棋盤
+        }
+    }
+    
+    var 🅃iming: Int = 7
+    
+    @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
 }
 
 

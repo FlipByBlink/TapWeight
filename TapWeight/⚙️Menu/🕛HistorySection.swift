@@ -3,7 +3,6 @@ import SwiftUI
 
 
 struct 🕛HistorySection: View {
-    
     @EnvironmentObject var 📱:📱Model
     
     var body: some View {

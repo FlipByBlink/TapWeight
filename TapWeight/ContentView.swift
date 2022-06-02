@@ -4,7 +4,6 @@ import HealthKit
 
 
 struct ContentView: View {
-    
     @EnvironmentObject var 📱:📱Model
     
     var 🅀uantityBodyMass: HKQuantity {
@@ -40,11 +39,9 @@ struct ContentView: View {
                          end: .now)
     }
     
-    
     @State private var 📝BodyMass: Double = 65.0
     
     @State private var 📝BodyFat: Double = 0.2
-    
     
     var 📝BMI: Double {
         let 🄺iloBodyMass = 🅀uantityBodyMass.doubleValue(for: .gramUnit(with: .kilo))
