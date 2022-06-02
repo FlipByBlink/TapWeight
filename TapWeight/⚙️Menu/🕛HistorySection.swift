@@ -7,34 +7,13 @@ struct 🕛HistorySection: View {
     
     var body: some View {
         Section {
-            NavigationLink {
-                List {
-                    Section {
-                        NavigationLink  {
-                            🕛HistoryView(🄷istory: $📱.🄷istory)
-                        } label: {
-                            Label("🌏Local history", systemImage: "scalemass")
-                        }
-                        
-//                        NavigationLink  {
-//                            🕛HistoryView(🄷istory: $📱.🄷istoryBodyFat)
-//                        } label: {
-//                            Label("🌏Body Fat Percentage", systemImage: "percent")
-//                        }
-//
-//                        NavigationLink  {
-//                            🕛HistoryView(🄷istory: $📱.🄷istoryBMI)
-//                        } label: {
-//                            Label("🌏Body Mass Index", systemImage: "function")
-//                        }
-                    } footer: {
-                        Text("🌏\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
-                    }
-                }
-                .navigationTitle("🌏Local history")
+            NavigationLink  {
+                🕛HistoryView(🄷istory: $📱.🄷istory)
             } label: {
                 Label("🌏Local history", systemImage: "clock")
             }
+        } footer: {
+            Text("🌏\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
         }
     }
 }
