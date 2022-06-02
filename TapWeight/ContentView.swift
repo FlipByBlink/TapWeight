@@ -60,11 +60,6 @@ struct ContentView: View {
     @AppStorage("historyBMI") var 🄷istoryBMI: String = ""
     
     
-    @State private var 🚩InputDone: Bool = false
-    
-    @State private var 🚩Success: Bool = false
-    
-    
     var body: some View {
         List {
             Section {
@@ -145,23 +140,23 @@ struct ContentView: View {
                 UISelectionFeedbackGenerator().selectionChanged()
                 
                 if 📱.🏥HealthStore.authorizationStatus(for: HKQuantityType(.bodyMass)) == .sharingDenied {
-                    🚩Success = false
-                    🚩InputDone = true
+                    📱.🚩Success = false
+                    📱.🚩InputDone = true
                     return
                 }
                 
                 if 📱.🚩BodyFat {
                     if 📱.🏥HealthStore.authorizationStatus(for: HKQuantityType(.bodyFatPercentage)) == .sharingDenied {
-                        🚩Success = false
-                        🚩InputDone = true
+                        📱.🚩Success = false
+                        📱.🚩InputDone = true
                         return
                     }
                 }
                 
                 if 📱.🚩BMI {
                     if 📱.🏥HealthStore.authorizationStatus(for: HKQuantityType(.bodyMassIndex)) == .sharingDenied {
-                        🚩Success = false
-                        🚩InputDone = true
+                        📱.🚩Success = false
+                        📱.🚩InputDone = true
                         return
                     }
                 }
@@ -171,12 +166,12 @@ struct ContentView: View {
                         🄷istoryBodyMass += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyMass "
                     
                         if 🙆 {
-                            🚩Success = true
+                            📱.🚩Success = true
                             
                             🄷istoryBodyMass += 📝BodyMass.description + " " + 📱.💾Unit.🅄nit.unitString + "\n"
                             📱.💾BodyMass = 📝BodyMass
                         } else {
-                            🚩Success = false
+                            📱.🚩Success = false
                             print("🙅:", 🙅.debugDescription)
                             
                             🄷istoryBodyMass += "HealthStore.save error?!\n"
@@ -191,11 +186,11 @@ struct ContentView: View {
                     📱.🏥HealthStore.save(🄳ataBodyFat) { 🙆, 🙅 in
                         DispatchQueue.main.async {
                             if 🙆 {
-                                🚩Success = true
+                                📱.🚩Success = true
                                 🄷istoryBodyFat += (round(📝BodyFat*1000)/10).description + " %\n"
                                 📱.💾BodyFat = 📝BodyFat
                             } else {
-                                🚩Success = false
+                                📱.🚩Success = false
                                 print("🙅:", 🙅.debugDescription)
                                 🄷istoryBodyFat += "HealthStore.save error?!\n"
                                 return
@@ -210,10 +205,10 @@ struct ContentView: View {
                     📱.🏥HealthStore.save(🄳ataBMI) { 🙆, 🙅 in
                         DispatchQueue.main.async {
                             if 🙆 {
-                                🚩Success = true
+                                📱.🚩Success = true
                                 🄷istoryBMI += 📝BMI.description + "\n"
                             } else {
-                                🚩Success = false
+                                📱.🚩Success = false
                                 print("🙅:", 🙅.debugDescription)
                                 🄷istoryBMI += "HealthStore.save error?!\n"
                                 return
@@ -222,7 +217,7 @@ struct ContentView: View {
                     }
                 }
                 
-                🚩InputDone = true
+                📱.🚩InputDone = true
             } label: {
                 Image(systemName: "checkmark.circle.fill")
                     .font(.system(size: 120))
@@ -232,8 +227,8 @@ struct ContentView: View {
             .accessibilityLabel("🌏DONE")
             .padding()
         }
-        .fullScreenCover(isPresented: $🚩InputDone) {
-            🆗Result($🚩Success)
+        .fullScreenCover(isPresented: $📱.🚩InputDone) {
+            🆗Result()
         }
         .onAppear {
             let 🅃ype: Set<HKSampleType> = [HKQuantityType(.bodyMass)]

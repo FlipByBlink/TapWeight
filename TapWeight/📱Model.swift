@@ -50,7 +50,11 @@ class 📱Model: ObservableObject {
     @AppStorage("historyBMI") var 🄷istoryBMI: String = ""
     
     
-    @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
+    @Published var 🚩InputDone: Bool = false
+
+    @Published var 🚩Success: Bool = false
+
+    @Published var 🚩Canceled: Bool = false
     
     
     let 🏥HealthStore = HKHealthStore()

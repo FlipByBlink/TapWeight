@@ -6,8 +6,6 @@ struct 🆗Result: View {
     
     @EnvironmentObject var 📱:📱Model
     
-    @Binding var 🚩Success: Bool
-    
     @Environment(\.dismiss) var 🔙: DismissAction
     
     
@@ -29,7 +27,7 @@ struct 🆗Result: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(🚩Success ? .pink : .gray)
+                .foregroundColor(📱.🚩Success ? .pink : .gray)
                 .ignoresSafeArea()
             
             VStack {
@@ -37,16 +35,16 @@ struct 🆗Result: View {
                     🔙.callAsFunction()
                 } label: {
                     VStack(spacing: 12) {
-                        Image(systemName: 🚩Success ? "app.badge.checkmark" : "exclamationmark.triangle")
+                        Image(systemName: 📱.🚩Success ? "app.badge.checkmark" : "exclamationmark.triangle")
                             .font(.system(size: 128).weight(.semibold))
                             .minimumScaleFactor(0.1)
                         
-                        Text(🚩Success ? "OK!" : "🌏Error!?")
+                        Text(📱.🚩Success ? "OK!" : "🌏Error!?")
                             .font(.system(size: 128).weight(.black))
                             .lineLimit(1)
                             .minimumScaleFactor(0.1)
                         
-                        if 🚩Success == false {
+                        if 📱.🚩Success == false {
                             Text("🌏Please check permission on \"Health\" app")
                                 .font(.body.weight(.semibold))
                                 .foregroundColor(.secondary)
@@ -62,14 +60,14 @@ struct 🆗Result: View {
                 
                 
                 HStack(alignment: .bottom) {
-                    if 🚩AdBanner && 🚩Success {
+                    if 🚩AdBanner && 📱.🚩Success {
                         🗯AdBanner(🄰ppName)
                     }
                     
                     Spacer()
                     
                     VStack {
-                        if 🚩Success == false {
+                        if 📱.🚩Success == false {
                             Image(systemName: "arrow.down")
                                 .imageScale(.small)
                                 .font(.largeTitle)
@@ -90,9 +88,5 @@ struct 🆗Result: View {
                 🚩AdBanner = true
             }
         }
-    }
-    
-    init(_ 🚩Success: Binding<Bool>) {
-        self._🚩Success = 🚩Success
     }
 }
