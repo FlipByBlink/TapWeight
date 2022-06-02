@@ -34,7 +34,7 @@ struct 🛠MenuList: View {
         NavigationView {
             List {
                 Section {
-                    Picker(selection: $📱.💾BodyMassUnit) { //選択後の表示挙動がおかしい
+                    Picker(selection: $📱.💾BodyMassUnit) {
                         ForEach(📏BodyMassUnit.allCases, id: \.self) { 🏷 in
                             Text(🏷.rawValue)
                         }
@@ -61,12 +61,6 @@ struct 🛠MenuList: View {
                         📝Height += 1
                     } onDecrement: {
                         📝Height -= 1
-                    }
-                    .onAppear {
-                        📝Height = 📱.💾Height
-                    }
-                    .onDisappear {
-                        📱.💾Height = 📝Height
                     }
                     .listRowSeparator(.hidden)
                     .scaleEffect(0.9, anchor: .trailing)
@@ -113,6 +107,12 @@ struct 🛠MenuList: View {
                     .accessibilityLabel("🌏Dismiss")
                 }
             }
+        }
+        .onAppear {
+            📝Height = 📱.💾Height
+        }
+        .onDisappear {
+            📱.💾Height = 📝Height
         }
     }
 }
