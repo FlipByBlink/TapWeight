@@ -20,10 +20,10 @@
 		126B3EBB282E001E009BD28B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 126B3EBA282E001E009BD28B /* HealthKit.framework */; };
 		126B3EBF282E0F45009BD28B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3EC1282E0F45009BD28B /* Localizable.strings */; };
 		126B3ECE282E15E5009BD28B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3ED0282E15E5009BD28B /* InfoPlist.strings */; };
-		126B3ED3282E1968009BD28B /* 🛠Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3ED2282E1968009BD28B /* 🛠Menu.swift */; };
+		126B3ED3282E1968009BD28B /* 🛠MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */; };
 		126B3ED5282E2100009BD28B /* TapWeightApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */; };
 		126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
-		126B3ED7282E2100009BD28B /* 🛠Menu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3ED2282E1968009BD28B /* 🛠Menu.swift */; };
+		126B3ED7282E2100009BD28B /* 🛠MenuButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */; };
 		12B694CD28360B73005F47B3 /* 🗯AD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B694CC28360B73005F47B3 /* 🗯AD.swift */; };
 		12F0E79828371A7400FDFE72 /* README.md in CopyFiles */ = {isa = PBXBuildFile; fileRef = 125AFEDA282F2B6E00E3BC4A /* README.md */; };
 		12F0E79928371A7400FDFE72 /* 🆗Result.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🆗Result.swift */; };
@@ -42,7 +42,7 @@
 				12F0E79A28371A7400FDFE72 /* 🗯AD.swift in CopyFiles */,
 				126B3ED5282E2100009BD28B /* TapWeightApp.swift in CopyFiles */,
 				126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */,
-				126B3ED7282E2100009BD28B /* 🛠Menu.swift in CopyFiles */,
+				126B3ED7282E2100009BD28B /* 🛠MenuButton.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +68,7 @@
 		126B3EC2282E0F4D009BD28B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		126B3ECF282E15E5009BD28B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		126B3ED1282E15E8009BD28B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		126B3ED2282E1968009BD28B /* 🛠Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menu.swift"; sourceTree = "<group>"; };
+		126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠MenuButton.swift"; sourceTree = "<group>"; };
 		12B694CC28360B73005F47B3 /* 🗯AD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗯AD.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,7 +96,7 @@
 		12428DCC2848608A006837F9 /* ⚙️Menu */ = {
 			isa = PBXGroup;
 			children = (
-				126B3ED2282E1968009BD28B /* 🛠Menu.swift */,
+				126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */,
 				12428DCD284860D0006837F9 /* 🕛HistorySection.swift */,
 				12428DC928485ECD006837F9 /* 📄Document */,
 			);
@@ -233,7 +233,7 @@
 			files = (
 				12428DCB28485F85006837F9 /* 📓SourceCodeMenu.swift in Sources */,
 				126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */,
-				126B3ED3282E1968009BD28B /* 🛠Menu.swift in Sources */,
+				126B3ED3282E1968009BD28B /* 🛠MenuButton.swift in Sources */,
 				12428DCE284860D0006837F9 /* 🕛HistorySection.swift in Sources */,
 				12B694CD28360B73005F47B3 /* 🗯AD.swift in Sources */,
 				124C485F284863BA0085B066 /* 📱Model.swift in Sources */,
