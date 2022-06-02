@@ -83,12 +83,13 @@ struct 🛠MenuList: View {
                         }
                     } label: {
                         HStack {
-                            Spacer()
+                            Label("🌏Height", systemImage: "ruler")
                             
-                            Text("🌏Height")
+                            Spacer()
                             
                             Text(📱.💾Height.description + " cm")
                         }
+                        .padding(.leading)
                         .foregroundStyle(.secondary)
                     }
                     .listRowSeparator(.hidden)
