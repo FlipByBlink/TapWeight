@@ -14,7 +14,7 @@ struct ContentView: View {
                         Text(📱.📝BodyMass.description)
                             .font(.system(size: 54).monospacedDigit().weight(.black))
                         
-                        Text(📱.💾Unit.rawValue)
+                        Text(📱.💾BodyMassUnit.rawValue)
                             .font(.title.weight(.black))
                     }
                 } onIncrement: {

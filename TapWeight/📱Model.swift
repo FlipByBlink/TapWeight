@@ -5,7 +5,7 @@ import HealthKit
 
 class 📱Model: ObservableObject {
     
-    @AppStorage("Unit") var 💾Unit: 📏Enum = .kg
+    @AppStorage("Unit") var 💾BodyMassUnit: 📏BodyMassUnit = .kg
     
     
     @AppStorage("BodyMass") var 💾BodyMass: Double = 60.0
@@ -33,7 +33,7 @@ class 📱Model: ObservableObject {
     let 🏥HealthStore = HKHealthStore()
     
     var 🅀uantityBodyMass: HKQuantity {
-        HKQuantity(unit: 💾Unit.🅄nit, doubleValue: 📝BodyMass)
+        HKQuantity(unit: 💾BodyMassUnit.ⓐsHKUnit, doubleValue: 📝BodyMass)
     }
     
     var 🅀uantityBodyFat: HKQuantity {
@@ -91,7 +91,7 @@ class 📱Model: ObservableObject {
 
                 if 🙆 {
                     🚩Success = true
-                    🄷istory += 📝BodyMass.description + ", " + 💾Unit.🅄nit.unitString + "\n"
+                    🄷istory += 📝BodyMass.description + ", " + 💾BodyMassUnit.rawValue + "\n"
                     💾BodyMass = 📝BodyMass
                 } else {
                     🚩Success = false
@@ -181,12 +181,12 @@ class 📱Model: ObservableObject {
 }
 
 
-enum 📏Enum: String, CaseIterable {
+enum 📏BodyMassUnit: String, CaseIterable {
     case kg
     case lbs
     case st
     
-    var 🅄nit: HKUnit {
+    var ⓐsHKUnit: HKUnit {
         switch self {
             case .kg: return .gramUnit(with: .kilo)
             case .lbs: return .pound()

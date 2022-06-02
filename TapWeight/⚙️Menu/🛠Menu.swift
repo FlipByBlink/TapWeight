@@ -24,8 +24,8 @@ struct 🛠Menu: View { // ⚙️
             NavigationView {
                 List {
                     Section {
-                        Picker(selection: $📱.💾Unit) {
-                            ForEach(📏Enum.allCases, id: \.self) { 🏷 in
+                        Picker(selection: $📱.💾BodyMassUnit) {
+                            ForEach(📏BodyMassUnit.allCases, id: \.self) { 🏷 in
                                 Text(🏷.rawValue)
                             }
                         } label: {
