@@ -97,9 +97,7 @@ struct ContentView: View {
             🆗Result()
         }
         .onAppear {
-            if 📱.🏥HealthStore.authorizationStatus(for: HKQuantityType(.bodyMass)) == .notDetermined {
-                📱.🏥RequestAuth(.bodyMass)
-            }
+            📱.🏥RequestAuth(.bodyMass)
         }
         .onChange(of: 📱.🚩BodyFat) { _ in
             📱.🏥RequestAuth(.bodyFatPercentage)
