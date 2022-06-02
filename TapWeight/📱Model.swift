@@ -20,11 +20,7 @@ class 📱Model: ObservableObject {
     @AppStorage("AbleBMI") var 🚩BMI: Bool = false
     
     
-    @AppStorage("historyBodyMass") var 🄷istoryBodyMass: String = ""
-    
-    @AppStorage("historyBodyFat") var 🄷istoryBodyFat: String = ""
-    
-    @AppStorage("historyBMI") var 🄷istoryBMI: String = ""
+    @AppStorage("history") var 🄷istory: String = ""
     
     
     @Published var 🚩InputDone: Bool = false
@@ -91,54 +87,61 @@ class 📱Model: ObservableObject {
         
         🏥HealthStore.save(🄳ataBodyMass) { 🙆, 🙅 in
             DispatchQueue.main.async { [self] in
-                🄷istoryBodyMass += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyMass "
-                
+                var 🅃ext = ""
+                🅃ext += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyMass "
+
                 if 🙆 {
                     🚩Success = true
-                    🄷istoryBodyMass += 📝BodyMass.description + " " + 💾Unit.🅄nit.unitString + "\n"
+                    🅃ext += 📝BodyMass.description + " " + 💾Unit.🅄nit.unitString + "\n"
                     💾BodyMass = 📝BodyMass
                 } else {
                     🚩Success = false
                     print("🙅:", 🙅.debugDescription)
-                    🄷istoryBodyMass += "HealthStore.save error?!\n"
+                    🅃ext += "HealthStore.save error?!\n"
                     return
                 }
+                
+                🄷istory += 🅃ext
             }
         }
-        
+
         if 🚩BodyFat {
-            🄷istoryBodyFat += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyFat "
-            
             🏥HealthStore.save(🄳ataBodyFat) { 🙆, 🙅 in
                 DispatchQueue.main.async { [self] in
+                    var 🅃ext = ""
+                    🅃ext += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyFat "
+                    
                     if 🙆 {
                         🚩Success = true
-                        🄷istoryBodyFat += (round(📝BodyFat*1000)/10).description + " %\n"
+                        🅃ext += (round(📝BodyFat*1000)/10).description + " %\n"
                         💾BodyFat = 📝BodyFat
                     } else {
                         🚩Success = false
                         print("🙅:", 🙅.debugDescription)
-                        🄷istoryBodyFat += "HealthStore.save error?!\n"
-                        return
+                        🅃ext += "HealthStore.save error?!\n"
                     }
+                    
+                    🄷istory += 🅃ext
                 }
             }
         }
-        
+
         if 🚩BMI {
-            🄷istoryBMI += Date.now.formatted(date: .numeric, time: .shortened) + ": BMI "
-            
             🏥HealthStore.save(🄳ataBMI) { 🙆, 🙅 in
                 DispatchQueue.main.async { [self] in
+                    var 🅃ext = ""
+                    🅃ext += Date.now.formatted(date: .numeric, time: .shortened) + ": BMI "
+                    
                     if 🙆 {
                         🚩Success = true
-                        🄷istoryBMI += 📝BMI.description + "\n"
+                        🅃ext += 📝BMI.description + "\n"
                     } else {
                         🚩Success = false
                         print("🙅:", 🙅.debugDescription)
-                        🄷istoryBMI += "HealthStore.save error?!\n"
-                        return
+                        🅃ext += "HealthStore.save error?!\n"
                     }
+                    
+                    🄷istory += 🅃ext
                 }
             }
         }
