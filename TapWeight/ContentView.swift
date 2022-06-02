@@ -85,11 +85,7 @@ struct ContentView: View {
             Button {
                 UISelectionFeedbackGenerator().selectionChanged()
                 
-                if 📱.🔑AuthDenied(.bodyMass) { return }
-                
-                if 📱.🚩BodyFat && 📱.🔑AuthDenied(.bodyFatPercentage) { return }
-                
-                if 📱.🚩BMI && 📱.🔑AuthDenied(.bodyMassIndex) { return }
+                if 📱.🄲heckAuth() == false { return }
                 
                 📱.🏥HealthStore.save(📱.🄳ataBodyMass) { 🙆, 🙅 in
                     DispatchQueue.main.async {

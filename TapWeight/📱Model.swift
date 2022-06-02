@@ -80,6 +80,16 @@ class 📱Model: ObservableObject {
     }
     
     
+    func 🄲heckAuth() -> Bool {
+        if 🔑AuthDenied(.bodyMass) { return false }
+        
+        if 🚩BodyFat && 🔑AuthDenied(.bodyFatPercentage) { return false }
+        
+        if 🚩BMI && 🔑AuthDenied(.bodyMassIndex) { return false }
+        
+        return true
+    }
+    
     func 🔑AuthDenied(_ ⓣype: HKQuantityTypeIdentifier) -> Bool {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             🚩Success = false
