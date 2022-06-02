@@ -82,13 +82,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		12428DC928485ECD006837F9 /* 📄DocumentView */ = {
+		12428DC928485ECD006837F9 /* 📄Document */ = {
 			isa = PBXGroup;
 			children = (
 				120B44462847796100D491E4 /* 📄DocumentMenu.swift */,
 				12428DCA28485F85006837F9 /* 📓SourceCodeMenu.swift */,
 			);
-			path = "📄DocumentView";
+			path = "📄Document";
 			sourceTree = "<group>";
 		};
 		12428DCC2848608A006837F9 /* ⚙️Menu */ = {
@@ -96,6 +96,7 @@
 			children = (
 				126B3ED2282E1968009BD28B /* 🛠Menu.swift */,
 				12428DCD284860D0006837F9 /* 🕛HistorySection.swift */,
+				12428DC928485ECD006837F9 /* 📄Document */,
 			);
 			path = "⚙️Menu";
 			sourceTree = "<group>";
@@ -123,10 +124,9 @@
 			children = (
 				126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */,
 				126B3EAC282DFEDF009BD28B /* ContentView.swift */,
-				120B4444284778FD00D491E4 /* 💟JumpButton.swift */,
 				12579D152835FE8900536547 /* 🆗Result.swift */,
+				120B4444284778FD00D491E4 /* 💟JumpButton.swift */,
 				12428DCC2848608A006837F9 /* ⚙️Menu */,
-				12428DC928485ECD006837F9 /* 📄DocumentView */,
 				12B694CC28360B73005F47B3 /* 🗯AD.swift */,
 				126B3ED0282E15E5009BD28B /* InfoPlist.strings */,
 				126B3EC1282E0F45009BD28B /* Localizable.strings */,
