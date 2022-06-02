@@ -87,11 +87,11 @@ class 📱Model: ObservableObject {
         
         🏥HealthStore.save(🄳ataBodyMass) { 🙆, 🙅 in
             DispatchQueue.main.async { [self] in
-                🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyMass "
+                🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
 
                 if 🙆 {
                     🚩Success = true
-                    🄷istory += 📝BodyMass.description + " " + 💾Unit.🅄nit.unitString + "\n"
+                    🄷istory += 📝BodyMass.description + ", " + 💾Unit.🅄nit.unitString + "\n"
                     💾BodyMass = 📝BodyMass
                 } else {
                     🚩Success = false
@@ -104,11 +104,11 @@ class 📱Model: ObservableObject {
         if 🚩BodyFat {
             🏥HealthStore.save(🄳ataBodyFat) { 🙆, 🙅 in
                 DispatchQueue.main.async { [self] in
-                    🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyFat "
+                    🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
                     
                     if 🙆 {
                         🚩Success = true
-                        🄷istory += (round(📝BodyFat*1000)/10).description + " %\n"
+                        🄷istory += (round(📝BodyFat*1000)/10).description + ", %\n"
                         💾BodyFat = 📝BodyFat
                     } else {
                         🚩Success = false
@@ -122,7 +122,7 @@ class 📱Model: ObservableObject {
         if 🚩BMI {
             🏥HealthStore.save(🄳ataBMI) { 🙆, 🙅 in
                 DispatchQueue.main.async { [self] in
-                    🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ": BMI "
+                    🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", BMI, "
                     
                     if 🙆 {
                         🚩Success = true
