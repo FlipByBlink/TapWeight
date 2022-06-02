@@ -74,7 +74,7 @@ struct 📄DocumentMenu: View {
                 
                 
                 NavigationLink {
-                    📓SourceCodeDoc()
+                    📓SourceCodeMenu()
                 } label: {
                     Label("Source code", systemImage: "doc.plaintext")
                 }
@@ -83,72 +83,6 @@ struct 📄DocumentMenu: View {
         } label: {
             Label("App Document", systemImage: "doc")
         }
-    }
-}
-
-
-struct 📓SourceCodeDoc: View {
-    @Environment(\.dismiss) var 🔙: DismissAction
-    
-    var 📁URL: URL {
-        Bundle.main.bundleURL.appendingPathComponent("📁")
-    }
-    
-    var 📦: [String] {
-        try! FileManager.default.contentsOfDirectory(atPath: 📁URL.path)
-    }
-    
-    var body: some View {
-        List {
-            Section {
-                ForEach(📦, id: \.self) { 📃 in
-                    NavigationLink(📃) {
-                        let 📍 = 📁URL.appendingPathComponent(📃)
-                        ScrollView {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                📄PageView(try! String(contentsOf: 📍), 📃)
-                            }
-                        }
-                    }
-                }
-            }
-            
-            
-            📑BundleMainInfoDictionary()
-            
-            
-            let 🔗HealthKit = "https://developer.apple.com/documentation/healthkit"
-            Section {
-                Link(destination: URL(string: 🔗HealthKit)!) {
-                    HStack {
-                        Label("HealthKit document link", systemImage: "link")
-                        
-                        Spacer()
-                        
-                        Image(systemName: "arrow.up.forward.app")
-                    }
-                }
-            } footer: {
-                Text(🔗HealthKit)
-            }
-            
-            
-            let Repository🔗 = "https://github.com/FlipByBlink/TapWeight"
-            Section {
-                Link(destination: URL(string: Repository🔗)!) {
-                    HStack {
-                        Label("Web Repository link", systemImage: "link")
-                        
-                        Spacer()
-                        
-                        Image(systemName: "arrow.up.forward.app")
-                    }
-                }
-            } footer: {
-                Text(Repository🔗)
-            }
-        }
-        .navigationTitle("Source code")
     }
 }
 
@@ -170,20 +104,6 @@ struct 📄PageView: View {
     init(_ 📄: String, _ 🏷: String) {
         self.📄 = 📄
         self.🏷 = 🏷
-    }
-}
-
-
-let 🄱undleMainInfoDictionary = Bundle.main.infoDictionary!.description
-struct 📑BundleMainInfoDictionary: View {
-    var body: some View {
-        Section {
-            NavigationLink("Bundle.main.infoDictionary") {
-                ScrollView {
-                    📄PageView(🄱undleMainInfoDictionary, "Bundle.main.infoDictionary")
-                }
-            }
-        }
     }
 }
 
