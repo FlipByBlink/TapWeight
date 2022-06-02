@@ -4,6 +4,8 @@ import SwiftUI
 
 struct 🆗Result: View {
     
+    @EnvironmentObject var 📱:📱Model
+    
     @Binding var 🚩Success: Bool
     
     @Environment(\.dismiss) var 🔙: DismissAction

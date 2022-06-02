@@ -2,6 +2,9 @@
 import SwiftUI
 
 struct 💟JumpButton: View {
+    
+    @EnvironmentObject var 📱:📱Model
+    
     var body: some View {
         Link(destination: URL(string: "x-apple-health://")!) {
             Image(systemName: "app")

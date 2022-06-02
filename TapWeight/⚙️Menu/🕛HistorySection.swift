@@ -3,6 +3,9 @@ import SwiftUI
 
 
 struct 🕛HistorySection: View {
+    
+    @EnvironmentObject var 📱:📱Model
+    
     @AppStorage("historyBodyMass") var 🄷istoryBodyMass: String = ""
     @AppStorage("historyBodyFat") var 🄷istoryBodyFat: String = ""
     @AppStorage("historyBMI") var 🄷istoryBMI: String = ""

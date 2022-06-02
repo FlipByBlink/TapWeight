@@ -4,6 +4,8 @@ import SwiftUI
 
 struct 🛠Menu: View { // ⚙️
     
+    @EnvironmentObject var 📱:📱Model
+    
     @State private var 🚩Menu: Bool = false
     
     @AppStorage("Unit") var 🛠Unit: 📏Enum = .kg
