@@ -36,6 +36,59 @@ class 📱Model: ObservableObject {
     
     let 🏥HealthStore = HKHealthStore()
     
+    var 🅀uantityBodyMass: HKQuantity {
+        HKQuantity(unit: 💾Unit.🅄nit, doubleValue: 📝BodyMass)
+    }
+    
+    var 🅀uantityBodyFat: HKQuantity {
+        HKQuantity(unit: .percent(), doubleValue: 📝BodyFat)
+    }
+    
+    var 🅀uantityBMI: HKQuantity {
+        HKQuantity(unit: .count(), doubleValue: 📝BMI)
+    }
+    
+    var 🄳ataBodyMass: HKQuantitySample {
+        HKQuantitySample(type: HKQuantityType(.bodyMass),
+                         quantity: 🅀uantityBodyMass,
+                         start: .now,
+                         end: .now)
+    }
+    
+    var 🄳ataBodyFat: HKQuantitySample {
+        HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
+                         quantity: 🅀uantityBodyFat,
+                         start: .now,
+                         end: .now)
+    }
+    
+    var 🄳ataBMI: HKQuantitySample {
+        HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
+                         quantity: 🅀uantityBMI,
+                         start: .now,
+                         end: .now)
+    }
+    
+    @Published var 📝BodyMass: Double = 65.0
+    
+    @Published var 📝BodyFat: Double = 0.2
+    
+    var 📝BMI: Double {
+        let 🄺iloBodyMass = 🅀uantityBodyMass.doubleValue(for: .gramUnit(with: .kilo))
+        let 📝 = 🄺iloBodyMass / pow(Double(💾Height)/100, 2)
+        return Double(Int(round(📝*100)))/100
+    }
+    
+    
+    func 🔑AuthDenied(_ ⓣype: HKQuantityTypeIdentifier) -> Bool {
+        if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
+            🚩Success = false
+            🚩InputDone = true
+            return true
+        }
+        
+        return false
+    }
     
     
     // ======== AD ========
