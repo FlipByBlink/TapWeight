@@ -10,6 +10,7 @@
 		120B4445284778FD00D491E4 /* 💟JumpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B4444284778FD00D491E4 /* 💟JumpButton.swift */; };
 		120B44472847796100D491E4 /* 📄DocumentMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B44462847796100D491E4 /* 📄DocumentMenu.swift */; };
 		12428DCB28485F85006837F9 /* 📓SourceCodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12428DCA28485F85006837F9 /* 📓SourceCodeMenu.swift */; };
+		12428DCE284860D0006837F9 /* 🕛HistorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12428DCD284860D0006837F9 /* 🕛HistorySection.swift */; };
 		12579D162835FE8900536547 /* 🆗Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🆗Result.swift */; };
 		126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */; };
 		126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
@@ -50,6 +51,7 @@
 		120B4444284778FD00D491E4 /* 💟JumpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💟JumpButton.swift"; sourceTree = "<group>"; };
 		120B44462847796100D491E4 /* 📄DocumentMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📄DocumentMenu.swift"; sourceTree = "<group>"; };
 		12428DCA28485F85006837F9 /* 📓SourceCodeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📓SourceCodeMenu.swift"; sourceTree = "<group>"; };
+		12428DCD284860D0006837F9 /* 🕛HistorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🕛HistorySection.swift"; sourceTree = "<group>"; };
 		12579D152835FE8900536547 /* 🆗Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🆗Result.swift"; sourceTree = "<group>"; };
 		125AFEDA282F2B6E00E3BC4A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		126B3EA7282DFEDF009BD28B /* TapWeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapWeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,15 @@
 			path = "📄DocumentView";
 			sourceTree = "<group>";
 		};
+		12428DCC2848608A006837F9 /* ⚙️Menu */ = {
+			isa = PBXGroup;
+			children = (
+				126B3ED2282E1968009BD28B /* 🛠Menu.swift */,
+				12428DCD284860D0006837F9 /* 🕛HistorySection.swift */,
+			);
+			path = "⚙️Menu";
+			sourceTree = "<group>";
+		};
 		126B3E9E282DFEDF009BD28B = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +125,7 @@
 				126B3EAC282DFEDF009BD28B /* ContentView.swift */,
 				120B4444284778FD00D491E4 /* 💟JumpButton.swift */,
 				12579D152835FE8900536547 /* 🆗Result.swift */,
-				126B3ED2282E1968009BD28B /* 🛠Menu.swift */,
+				12428DCC2848608A006837F9 /* ⚙️Menu */,
 				12428DC928485ECD006837F9 /* 📄DocumentView */,
 				12B694CC28360B73005F47B3 /* 🗯AD.swift */,
 				126B3ED0282E15E5009BD28B /* InfoPlist.strings */,
@@ -220,6 +231,7 @@
 				12428DCB28485F85006837F9 /* 📓SourceCodeMenu.swift in Sources */,
 				126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */,
 				126B3ED3282E1968009BD28B /* 🛠Menu.swift in Sources */,
+				12428DCE284860D0006837F9 /* 🕛HistorySection.swift in Sources */,
 				12B694CD28360B73005F47B3 /* 🗯AD.swift in Sources */,
 				120B4445284778FD00D491E4 /* 💟JumpButton.swift in Sources */,
 				12579D162835FE8900536547 /* 🆗Result.swift in Sources */,
