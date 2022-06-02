@@ -8,15 +8,7 @@ struct 🛠Menu: View { // ⚙️
     
     @State private var 🚩Menu: Bool = false
     
-    @AppStorage("Unit") var 🛠Unit: 📏Enum = .kg
-    
-    @AppStorage("AbleBodyFat") var 🚩BodyFat: Bool = false
-    
-    @AppStorage("AbleBMI") var 🚩BMI: Bool = false
-    
     @State private var 📝Height: Int = 170
-    
-    @AppStorage("Height") var 💾Height: Int = 165
     
     var body: some View {
         Button {
@@ -33,7 +25,7 @@ struct 🛠Menu: View { // ⚙️
             NavigationView {
                 List {
                     Section {
-                        Picker(selection: $🛠Unit) {
+                        Picker(selection: $📱.💾Unit) {
                             ForEach(📏Enum.allCases, id: \.self) { 🏷 in
                                 Text(🏷.rawValue)
                             }
@@ -41,11 +33,11 @@ struct 🛠Menu: View { // ⚙️
                             Label("🌏Unit", systemImage: "scalemass")
                         }
                         
-                        Toggle(isOn: $🚩BodyFat) {
+                        Toggle(isOn: $📱.🚩BodyFat) {
                             Label("🌏Body Fat Percentage", systemImage: "percent")
                         }
                         
-                        Toggle(isOn: $🚩BMI) {
+                        Toggle(isOn: $📱.🚩BMI) {
                             Label("🌏Body Mass Index", systemImage: "function")
                         }
                         
@@ -62,10 +54,10 @@ struct 🛠Menu: View { // ⚙️
                             📝Height -= 1
                         }
                         .onAppear {
-                            📝Height = 💾Height
+                            📝Height = 📱.💾Height
                         }
                         .onDisappear {
-                            💾Height = 📝Height
+                            📱.💾Height = 📝Height
                         }
                         .listRowSeparator(.hidden)
                         .scaleEffect(0.9, anchor: .trailing)
