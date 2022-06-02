@@ -149,6 +149,18 @@ class 📱Model: ObservableObject {
         return false
     }
     
+    func 🏥RequestAuth(_ ⓣype: HKQuantityTypeIdentifier) {
+        let 🅃ype: Set<HKSampleType> = [HKQuantityType(ⓣype)]
+        🏥HealthStore.requestAuthorization(toShare: 🅃ype, read: nil) { 🙆, 🙅 in
+            if 🙆 {
+                print("🏥RequestAuth/" + ⓣype.rawValue + ": Done")
+            } else {
+                print("🏥RequestAuth/" + ⓣype.rawValue + ": ERROR")
+                print("🙅:", 🙅.debugDescription)
+            }
+        }
+    }
+    
     
     // ======== AD ========
     @Published var 🚩AdBanner = false

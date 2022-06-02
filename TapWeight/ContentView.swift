@@ -97,34 +97,13 @@ struct ContentView: View {
             🆗Result()
         }
         .onAppear {
-            let 🅃ype: Set<HKSampleType> = [HKQuantityType(.bodyMass)]
-            📱.🏥HealthStore.requestAuthorization(toShare: 🅃ype, read: nil) { 🙆, 🙅 in
-                if 🙆 {
-                    print("requestAuthorization/bodyMass: Success")
-                } else {
-                    print("🙅:", 🙅.debugDescription)
-                }
-            }
+            📱.🏥RequestAuth(.bodyMass)
         }
         .onChange(of: 📱.🚩BodyFat) { _ in
-            let 🅃ype: Set<HKSampleType> = [HKQuantityType(.bodyFatPercentage)]
-            📱.🏥HealthStore.requestAuthorization(toShare: 🅃ype, read: nil) { 🙆, 🙅 in
-                if 🙆 {
-                    print("requestAuthorization/bodyFatPercentage: Success")
-                } else {
-                    print("🙅:", 🙅.debugDescription)
-                }
-            }
+            📱.🏥RequestAuth(.bodyFatPercentage)
         }
         .onChange(of: 📱.🚩BMI) { _ in
-            let 🅃ype: Set<HKSampleType> = [HKQuantityType(.bodyMassIndex)]
-            📱.🏥HealthStore.requestAuthorization(toShare: 🅃ype, read: nil) { 🙆, 🙅 in
-                if 🙆 {
-                    print("requestAuthorization/bodyMassIndex: Success")
-                } else {
-                    print("🙅:", 🙅.debugDescription)
-                }
-            }
+            📱.🏥RequestAuth(.bodyMassIndex)
         }
     }
 }
