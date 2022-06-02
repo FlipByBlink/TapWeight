@@ -83,65 +83,7 @@ struct ContentView: View {
         .clipped()
         .overlay(alignment: .bottom) {  // ☑️
             Button {
-                UISelectionFeedbackGenerator().selectionChanged()
-                
-                if 📱.🄲heckAuth() == false { return }
-                
-                📱.🏥HealthStore.save(📱.🄳ataBodyMass) { 🙆, 🙅 in
-                    DispatchQueue.main.async {
-                        📱.🄷istoryBodyMass += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyMass "
-                    
-                        if 🙆 {
-                            📱.🚩Success = true
-                            📱.🄷istoryBodyMass += 📱.📝BodyMass.description + " " + 📱.💾Unit.🅄nit.unitString + "\n"
-                            📱.💾BodyMass = 📱.📝BodyMass
-                        } else {
-                            📱.🚩Success = false
-                            print("🙅:", 🙅.debugDescription)
-                            📱.🄷istoryBodyMass += "HealthStore.save error?!\n"
-                            return
-                        }
-                    }
-                }
-                
-                if 📱.🚩BodyFat {
-                    📱.🄷istoryBodyFat += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyFat "
-                    
-                    📱.🏥HealthStore.save(📱.🄳ataBodyFat) { 🙆, 🙅 in
-                        DispatchQueue.main.async {
-                            if 🙆 {
-                                📱.🚩Success = true
-                                📱.🄷istoryBodyFat += (round(📱.📝BodyFat*1000)/10).description + " %\n"
-                                📱.💾BodyFat = 📱.📝BodyFat
-                            } else {
-                                📱.🚩Success = false
-                                print("🙅:", 🙅.debugDescription)
-                                📱.🄷istoryBodyFat += "HealthStore.save error?!\n"
-                                return
-                            }
-                        }
-                    }
-                }
-                
-                if 📱.🚩BMI {
-                    📱.🄷istoryBMI += Date.now.formatted(date: .numeric, time: .shortened) + ": BMI "
-                    
-                    📱.🏥HealthStore.save(📱.🄳ataBMI) { 🙆, 🙅 in
-                        DispatchQueue.main.async {
-                            if 🙆 {
-                                📱.🚩Success = true
-                                📱.🄷istoryBMI += 📱.📝BMI.description + "\n"
-                            } else {
-                                📱.🚩Success = false
-                                print("🙅:", 🙅.debugDescription)
-                                📱.🄷istoryBMI += "HealthStore.save error?!\n"
-                                return
-                            }
-                        }
-                    }
-                }
-                
-                📱.🚩InputDone = true
+                📱.👆Register()
             } label: {
                 Image(systemName: "checkmark.circle.fill")
                     .font(.system(size: 120))

@@ -80,14 +80,70 @@ class 📱Model: ObservableObject {
     }
     
     
-    func 🄲heckAuth() -> Bool {
-        if 🔑AuthDenied(.bodyMass) { return false }
+    func 👆Register() {
+        UISelectionFeedbackGenerator().selectionChanged()
         
-        if 🚩BodyFat && 🔑AuthDenied(.bodyFatPercentage) { return false }
+        if 🔑AuthDenied(.bodyMass) { return }
         
-        if 🚩BMI && 🔑AuthDenied(.bodyMassIndex) { return false }
+        if 🚩BodyFat && 🔑AuthDenied(.bodyFatPercentage) { return }
         
-        return true
+        if 🚩BMI && 🔑AuthDenied(.bodyMassIndex) { return }
+        
+        🏥HealthStore.save(🄳ataBodyMass) { 🙆, 🙅 in
+            DispatchQueue.main.async { [self] in
+                🄷istoryBodyMass += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyMass "
+                
+                if 🙆 {
+                    🚩Success = true
+                    🄷istoryBodyMass += 📝BodyMass.description + " " + 💾Unit.🅄nit.unitString + "\n"
+                    💾BodyMass = 📝BodyMass
+                } else {
+                    🚩Success = false
+                    print("🙅:", 🙅.debugDescription)
+                    🄷istoryBodyMass += "HealthStore.save error?!\n"
+                    return
+                }
+            }
+        }
+        
+        if 🚩BodyFat {
+            🄷istoryBodyFat += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyFat "
+            
+            🏥HealthStore.save(🄳ataBodyFat) { 🙆, 🙅 in
+                DispatchQueue.main.async { [self] in
+                    if 🙆 {
+                        🚩Success = true
+                        🄷istoryBodyFat += (round(📝BodyFat*1000)/10).description + " %\n"
+                        💾BodyFat = 📝BodyFat
+                    } else {
+                        🚩Success = false
+                        print("🙅:", 🙅.debugDescription)
+                        🄷istoryBodyFat += "HealthStore.save error?!\n"
+                        return
+                    }
+                }
+            }
+        }
+        
+        if 🚩BMI {
+            🄷istoryBMI += Date.now.formatted(date: .numeric, time: .shortened) + ": BMI "
+            
+            🏥HealthStore.save(🄳ataBMI) { 🙆, 🙅 in
+                DispatchQueue.main.async { [self] in
+                    if 🙆 {
+                        🚩Success = true
+                        🄷istoryBMI += 📝BMI.description + "\n"
+                    } else {
+                        🚩Success = false
+                        print("🙅:", 🙅.debugDescription)
+                        🄷istoryBMI += "HealthStore.save error?!\n"
+                        return
+                    }
+                }
+            }
+        }
+        
+        🚩InputDone = true
     }
     
     func 🔑AuthDenied(_ ⓣype: HKQuantityTypeIdentifier) -> Bool {
