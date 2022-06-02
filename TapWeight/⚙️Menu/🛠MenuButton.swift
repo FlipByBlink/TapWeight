@@ -51,15 +51,12 @@ struct 🛠MenuList: View {
                     }
                     
                     NavigationLink {
-                        VStack {
-                            Spacer()
-                            
+                        VStack (spacing: 48) {
                             Stepper {
                                 Text(📝Height.description + " cm")
                                     .font(.system(size: 54).monospacedDigit())
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.1)
-                                    .padding()
                             } onIncrement: {
                                 📝Height += 1
                             } onDecrement: {
@@ -67,11 +64,22 @@ struct 🛠MenuList: View {
                             }
                             .padding()
                             
-                            Spacer()
-                            
-                            Text("🌏BMI = Weight(kg) / { Height(m) × Height(m) }")
-                            
-                            Spacer()
+                            HStack {
+                                Text("BMI = ")
+                                    .bold()
+                                
+                                VStack(spacing: 16) {
+                                    Text("Weight(kg)")
+                                    
+                                    Text("Height(m) × Height(m)")
+                                }
+                                .padding()
+                                .overlay {
+                                    Rectangle()
+                                        .frame(height: 2)
+                                }
+                            }
+                            .font(.title3)
                         }
                         .padding()
                         .navigationTitle("🌏Height")
