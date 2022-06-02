@@ -53,13 +53,6 @@ struct ContentView: View {
     }
     
     
-    @AppStorage("historyBodyMass") var 🄷istoryBodyMass: String = ""
-    
-    @AppStorage("historyBodyFat") var 🄷istoryBodyFat: String = ""
-    
-    @AppStorage("historyBMI") var 🄷istoryBMI: String = ""
-    
-    
     var body: some View {
         List {
             Section {
@@ -163,36 +156,36 @@ struct ContentView: View {
                 
                 📱.🏥HealthStore.save(🄳ataBodyMass) { 🙆, 🙅 in
                     DispatchQueue.main.async {
-                        🄷istoryBodyMass += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyMass "
+                        📱.🄷istoryBodyMass += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyMass "
                     
                         if 🙆 {
                             📱.🚩Success = true
                             
-                            🄷istoryBodyMass += 📝BodyMass.description + " " + 📱.💾Unit.🅄nit.unitString + "\n"
+                            📱.🄷istoryBodyMass += 📝BodyMass.description + " " + 📱.💾Unit.🅄nit.unitString + "\n"
                             📱.💾BodyMass = 📝BodyMass
                         } else {
                             📱.🚩Success = false
                             print("🙅:", 🙅.debugDescription)
                             
-                            🄷istoryBodyMass += "HealthStore.save error?!\n"
+                            📱.🄷istoryBodyMass += "HealthStore.save error?!\n"
                             return
                         }
                     }
                 }
                 
                 if 📱.🚩BodyFat {
-                    🄷istoryBodyFat += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyFat "
+                    📱.🄷istoryBodyFat += Date.now.formatted(date: .numeric, time: .shortened) + ": BodyFat "
                     
                     📱.🏥HealthStore.save(🄳ataBodyFat) { 🙆, 🙅 in
                         DispatchQueue.main.async {
                             if 🙆 {
                                 📱.🚩Success = true
-                                🄷istoryBodyFat += (round(📝BodyFat*1000)/10).description + " %\n"
+                                📱.🄷istoryBodyFat += (round(📝BodyFat*1000)/10).description + " %\n"
                                 📱.💾BodyFat = 📝BodyFat
                             } else {
                                 📱.🚩Success = false
                                 print("🙅:", 🙅.debugDescription)
-                                🄷istoryBodyFat += "HealthStore.save error?!\n"
+                                📱.🄷istoryBodyFat += "HealthStore.save error?!\n"
                                 return
                             }
                         }
@@ -200,17 +193,17 @@ struct ContentView: View {
                 }
                 
                 if 📱.🚩BMI {
-                    🄷istoryBMI += Date.now.formatted(date: .numeric, time: .shortened) + ": BMI "
+                    📱.🄷istoryBMI += Date.now.formatted(date: .numeric, time: .shortened) + ": BMI "
                     
                     📱.🏥HealthStore.save(🄳ataBMI) { 🙆, 🙅 in
                         DispatchQueue.main.async {
                             if 🙆 {
                                 📱.🚩Success = true
-                                🄷istoryBMI += 📝BMI.description + "\n"
+                                📱.🄷istoryBMI += 📝BMI.description + "\n"
                             } else {
                                 📱.🚩Success = false
                                 print("🙅:", 🙅.debugDescription)
-                                🄷istoryBMI += "HealthStore.save error?!\n"
+                                📱.🄷istoryBMI += "HealthStore.save error?!\n"
                                 return
                             }
                         }

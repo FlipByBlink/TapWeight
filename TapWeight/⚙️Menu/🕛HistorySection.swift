@@ -6,29 +6,25 @@ struct 🕛HistorySection: View {
     
     @EnvironmentObject var 📱:📱Model
     
-    @AppStorage("historyBodyMass") var 🄷istoryBodyMass: String = ""
-    @AppStorage("historyBodyFat") var 🄷istoryBodyFat: String = ""
-    @AppStorage("historyBMI") var 🄷istoryBMI: String = ""
-    
     var body: some View {
         Section {
             NavigationLink {
                 List {
                     Section {
                         NavigationLink  {
-                            🕛HistoryView(🄷istory: $🄷istoryBodyMass)
+                            🕛HistoryView(🄷istory: $📱.🄷istoryBodyMass)
                         } label: {
                             Label("🌏Body Mass", systemImage: "scalemass")
                         }
                         
                         NavigationLink  {
-                            🕛HistoryView(🄷istory: $🄷istoryBodyFat)
+                            🕛HistoryView(🄷istory: $📱.🄷istoryBodyFat)
                         } label: {
                             Label("🌏Body Fat Percentage", systemImage: "percent")
                         }
                         
                         NavigationLink  {
-                            🕛HistoryView(🄷istory: $🄷istoryBMI)
+                            🕛HistoryView(🄷istory: $📱.🄷istoryBMI)
                         } label: {
                             Label("🌏Body Mass Index", systemImage: "function")
                         }

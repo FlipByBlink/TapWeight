@@ -54,7 +54,7 @@ class 📱Model: ObservableObject {
 
     @Published var 🚩Success: Bool = false
 
-    @Published var 🚩Canceled: Bool = false
+    //@Published var 🚩Canceled: Bool = false
     
     
     let 🏥HealthStore = HKHealthStore()
