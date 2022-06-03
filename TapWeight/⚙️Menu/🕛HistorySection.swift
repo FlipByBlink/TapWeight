@@ -31,7 +31,7 @@ struct 🕛HistoryView: View {
         } else {
             ScrollView {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    📄PageView(🄷istory, "History")
+                    📋PageView(🄷istory, "History")
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button {

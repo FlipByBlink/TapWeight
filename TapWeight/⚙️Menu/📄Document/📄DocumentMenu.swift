@@ -20,7 +20,7 @@ struct 📄DocumentMenu: View {
                 Section {
                     NavigationLink {
                         ScrollView {
-                            📄PageView(📄About, "About app")
+                            📋PageView(📄About, "About app")
                         }
                     } label: {
                         Text(📄About)
@@ -84,27 +84,6 @@ struct 📄DocumentMenu: View {
         } label: {
             Label("App Document", systemImage: "doc")
         }
-    }
-}
-
-
-struct 📄PageView: View {
-    var 📄: String
-    
-    var 🏷: String
-    
-    var body: some View {
-        Text(📄)
-            .navigationBarTitle(🏷)
-            .navigationBarTitleDisplayMode(.inline)
-            .font(.caption.monospaced())
-            .padding()
-            .textSelection(.enabled)
-    }
-    
-    init(_ 📄: String, _ 🏷: String) {
-        self.📄 = 📄
-        self.🏷 = 🏷
     }
 }
 

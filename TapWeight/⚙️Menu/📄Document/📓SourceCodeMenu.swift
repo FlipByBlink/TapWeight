@@ -20,7 +20,7 @@ struct 📓SourceCodeMenu: View {
                         let 📍 = 📁URL.appendingPathComponent(📃)
                         ScrollView {
                             ScrollView(.horizontal, showsIndicators: false) {
-                                📄PageView(try! String(contentsOf: 📍), 📃)
+                                📋PageView(try! String(contentsOf: 📍), 📃)
                             }
                         }
                     }
@@ -73,7 +73,7 @@ struct 📑BundleMainInfoDictionary: View {
         Section {
             NavigationLink("Bundle.main.infoDictionary") {
                 ScrollView {
-                    📄PageView(🄱undleMainInfoDictionary, "Bundle.main.infoDictionary")
+                    📋PageView(🄱undleMainInfoDictionary, "Bundle.main.infoDictionary")
                 }
             }
         }
