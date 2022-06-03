@@ -51,7 +51,7 @@ struct 🛠MenuList: View {
                     }
                     
                     NavigationLink {
-                        VStack (spacing: 48) {
+                        VStack {
                             Stepper {
                                 Text(📝Height.description + " cm")
                                     .font(.system(size: 54).monospacedDigit())
@@ -63,6 +63,7 @@ struct 🛠MenuList: View {
                                 📝Height -= 1
                             }
                             .padding()
+                            .padding(.vertical, 32)
                             
                             HStack {
                                 Text("BMI = ")
@@ -79,6 +80,8 @@ struct 🛠MenuList: View {
                                         .frame(height: 2)
                                 }
                             }
+                            
+                            Spacer()
                         }
                         .padding()
                         .navigationTitle("🌏Height")
