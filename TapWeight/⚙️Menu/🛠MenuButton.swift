@@ -48,7 +48,7 @@ struct 🛠MenuList: View {
                         Label("🌏Body Mass Index", systemImage: "function")
                     }
                     
-                    HeightMenu()
+                    🧍HeightMenu()
                 } header: {
                     Text("🌏Option")
                 }

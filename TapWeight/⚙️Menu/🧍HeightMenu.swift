@@ -2,12 +2,12 @@
 import SwiftUI
 
 
-struct HeightMenu: View {
+struct 🧍HeightMenu: View {
     @EnvironmentObject var 📱:📱Model
     
     var body: some View {
         NavigationLink {
-            HeightEditView()
+            🧍HeightEditView()
         } label: {
             HStack {
                 Label("🌏Height", systemImage: "ruler")
@@ -24,7 +24,7 @@ struct HeightMenu: View {
 }
 
 
-struct HeightEditView: View {
+struct 🧍HeightEditView: View {
     @EnvironmentObject var 📱:📱Model
     
     @State private var 📝Height: Int = 170
@@ -97,7 +97,7 @@ struct HeightMenu_Previews: PreviewProvider {
     static let 📱 = 📱Model()
     
     static var previews: some View {
-        HeightEditView()
+        🧍HeightEditView()
             .environmentObject(📱)
     }
 }
