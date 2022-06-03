@@ -1,7 +1,6 @@
 
 import SwiftUI
 
-
 enum 🗯AppList: String {
     case FlipByBlink
     case FadeInAlarm

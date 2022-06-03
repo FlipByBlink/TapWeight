@@ -2,7 +2,6 @@
 import SwiftUI
 import HealthKit
 
-
 struct ContentView: View {
     @EnvironmentObject var 📱:📱Model
     

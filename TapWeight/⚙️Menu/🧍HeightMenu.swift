@@ -1,7 +1,6 @@
 
 import SwiftUI
 
-
 struct 🧍HeightMenu: View {
     @EnvironmentObject var 📱:📱Model
     
@@ -15,6 +14,7 @@ struct 🧍HeightMenu: View {
                 Spacer()
                 
                 Text(📱.💾Height.description + " cm")
+                    .foregroundStyle(.secondary)
             }
             .padding(.leading)
             .foregroundColor(.primary)

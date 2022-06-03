@@ -1,9 +1,7 @@
 
 import SwiftUI
 
-
 struct 📄DocumentMenu: View {
-    
     @EnvironmentObject var 📱:📱Model
     
     var body: some View {

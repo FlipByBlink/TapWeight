@@ -1,7 +1,6 @@
 
 import SwiftUI
 
-
 struct 🆗Result: View {
     @EnvironmentObject var 📱:📱Model
     

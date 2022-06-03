@@ -1,7 +1,6 @@
 
 import SwiftUI
 
-
 struct 🕛HistorySection: View {
     @EnvironmentObject var 📱:📱Model
     

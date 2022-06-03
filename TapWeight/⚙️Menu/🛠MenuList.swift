@@ -1,7 +1,6 @@
 
 import SwiftUI
 
-
 struct 🛠MenuList: View {
     @EnvironmentObject var 📱:📱Model
     

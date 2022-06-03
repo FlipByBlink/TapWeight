@@ -2,7 +2,6 @@
 import SwiftUI
 import HealthKit
 
-
 class 📱Model: ObservableObject {
     
     @AppStorage("Unit") var 💾BodyMassUnit: 📏BodyMassUnit = .kg
