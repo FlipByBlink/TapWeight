@@ -14,6 +14,7 @@
 		124C485F284863BA0085B066 /* 📱Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱Model.swift */; };
 		12579D162835FE8900536547 /* 🆗Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🆗Result.swift */; };
 		12630BC12849C63E005F922F /* 🧍HeightMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12630BC02849C63E005F922F /* 🧍HeightMenu.swift */; };
+		12630BC32849CD33005F922F /* 🛠MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12630BC22849CD33005F922F /* 🛠MenuList.swift */; };
 		126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */; };
 		126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
 		126B3EAF282DFEE0009BD28B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 126B3EAE282DFEE0009BD28B /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		12579D152835FE8900536547 /* 🆗Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🆗Result.swift"; sourceTree = "<group>"; };
 		125AFEDA282F2B6E00E3BC4A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		12630BC02849C63E005F922F /* 🧍HeightMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧍HeightMenu.swift"; sourceTree = "<group>"; };
+		12630BC22849CD33005F922F /* 🛠MenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠MenuList.swift"; sourceTree = "<group>"; };
 		126B3EA7282DFEDF009BD28B /* TapWeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapWeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapWeightApp.swift; sourceTree = "<group>"; };
 		126B3EAC282DFEDF009BD28B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */,
+				12630BC22849CD33005F922F /* 🛠MenuList.swift */,
 				12630BC02849C63E005F922F /* 🧍HeightMenu.swift */,
 				12428DCD284860D0006837F9 /* 🕛HistorySection.swift */,
 				12428DC928485ECD006837F9 /* 📄Document */,
@@ -244,6 +247,7 @@
 				120B4445284778FD00D491E4 /* 💟JumpButton.swift in Sources */,
 				12579D162835FE8900536547 /* 🆗Result.swift in Sources */,
 				120B44472847796100D491E4 /* 📄DocumentMenu.swift in Sources */,
+				12630BC32849CD33005F922F /* 🛠MenuList.swift in Sources */,
 				126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
