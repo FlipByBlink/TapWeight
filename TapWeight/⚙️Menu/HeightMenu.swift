@@ -5,8 +5,6 @@ import SwiftUI
 struct HeightMenu: View {
     @EnvironmentObject var 📱:📱Model
     
-    @State private var 📝Height: Int = 170
-    
     var body: some View {
         NavigationLink {
             HeightEditView()
@@ -44,16 +42,33 @@ struct HeightEditView: View {
                 📝Height -= 1
             }
             .padding()
-            .padding(.vertical, 32)
+            .padding(.vertical, 48)
             
             HStack {
                 Text("BMI = ")
                     .font(.title2)
                 
                 VStack(spacing: 16) {
-                    Text("Weight(kg)")
+                    HStack(spacing: 2) {
+                        Text("Weight")
+                        
+                        Text("(kg)")
+                            .font(.subheadline)
+                    }
                     
-                    Text("Height(m) × Height(m)")
+                    HStack(spacing: 2) {
+                        Text("Height")
+                        
+                        Text("(m)")
+                            .font(.subheadline)
+                        
+                        Text(" × ")
+                        
+                        Text("Height")
+                        
+                        Text("(m)")
+                            .font(.subheadline)
+                    }
                 }
                 .padding()
                 .overlay {
