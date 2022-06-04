@@ -4,15 +4,17 @@ import SwiftUI
 struct 🆗Result: View {
     @EnvironmentObject var 📱:📱Model
     
+    @Environment(\.dismiss) var 🔙: DismissAction
+    
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(📱.🚩Success ? .pink : .gray)
+                .foregroundColor(📱.🚩RegisterSuccess ? .pink : .gray)
                 .ignoresSafeArea()
             
             VStack {
                 HStack {
-                    if 📱.🚩Success {
+                    if 📱.🚩RegisterSuccess {
                         Button {
                             📱.🗑Cancel()
                         } label: {
@@ -38,26 +40,22 @@ struct 🆗Result: View {
                     
                     Spacer()
                 }
-                .onDisappear {
-                    📱.🚩Canceled = false
-                    📱.🚩CancelError = false
-                }
                 
                 
                 Button {
-                    📱.🚩InputDone = false
+                    🔙.callAsFunction()
                 } label: {
                     VStack(spacing: 12) {
-                        Image(systemName: 📱.🚩Success ? "checkmark" : "exclamationmark.triangle")
+                        Image(systemName: 📱.🚩RegisterSuccess ? "checkmark" : "exclamationmark.triangle")
                             .font(.system(size: 128).weight(.semibold))
                             .minimumScaleFactor(0.1)
                         
-                        Text(📱.🚩Success ? "DONE!" : "🌏Error!?")
+                        Text(📱.🚩RegisterSuccess ? "DONE!" : "🌏Error!?")
                             .font(.system(size: 128).weight(.black))
                             .lineLimit(1)
                             .minimumScaleFactor(0.1)
                         
-                        if 📱.🚩Success {
+                        if 📱.🚩RegisterSuccess {
                             Text("Registration for \"Health\" app")
                                 .bold()
                                 .opacity(0.8)
@@ -78,14 +76,14 @@ struct 🆗Result: View {
                 
                 
                 HStack(alignment: .bottom) {
-                    if 📱.🚩AdBanner && 📱.🚩Success {
+                    if 📱.🚩AdBanner && 📱.🚩RegisterSuccess {
                         🗯AdBanner(📱.🄰ppName)
                     }
                     
                     Spacer()
                     
                     VStack {
-                        if 📱.🚩Success == false {
+                        if 📱.🚩RegisterError {
                             Image(systemName: "arrow.down")
                                 .imageScale(.small)
                                 .font(.largeTitle)
@@ -105,6 +103,9 @@ struct 🆗Result: View {
             if 📱.🄻aunchCount % 📱.🅃iming == 0 {
                 📱.🚩AdBanner = true
             }
+        }
+        .onDisappear {
+            📱.🅁eset()
         }
     }
 }

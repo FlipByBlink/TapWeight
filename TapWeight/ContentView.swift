@@ -96,7 +96,7 @@ struct ContentView: View {
             .accessibilityLabel("🌏DONE")
             .padding()
         }
-        .fullScreenCover(isPresented: $📱.🚩InputDone) {
+        .fullScreenCover(isPresented: $📱.🚩Registered) {
             🆗Result()
         }
         .onAppear {
