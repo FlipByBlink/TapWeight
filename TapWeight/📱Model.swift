@@ -19,7 +19,7 @@ class 📱Model: ObservableObject {
     @AppStorage("AbleBMI") var 🚩BMI: Bool = false
     
     
-    @AppStorage("history") var 🄷istory: String = ""
+    @AppStorage("History") var 🕒History: String = ""
     
     
     @Published var 🚩Registered: Bool = false
@@ -74,15 +74,15 @@ class 📱Model: ObservableObject {
         
         🏥HealthStore.save(🅂ampleBodyMass) { 🙆, 🙅 in
             DispatchQueue.main.async { [self] in
-                🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
+                🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
                 
                 if 🙆 {
                     💾BodyMass = 📝BodyMass
-                    🄷istory += 📝BodyMass.description + ", " + 💾BodyMassUnit.rawValue + "\n"
+                    🕒History += 📝BodyMass.description + ", " + 💾BodyMassUnit.rawValue + "\n"
                     📦CacheBodyMass = 🅂ampleBodyMass
                 } else {
                     🚩RegisterError = true
-                    🄷istory += "HealthStore.save/BodyMass Error?! " + 🙅.debugDescription + "\n"
+                    🕒History += "HealthStore.save/BodyMass Error?! " + 🙅.debugDescription + "\n"
                 }
             }
         }
@@ -96,15 +96,15 @@ class 📱Model: ObservableObject {
             
             🏥HealthStore.save(🅂ampleBodyFat) { 🙆, 🙅 in
                 DispatchQueue.main.async { [self] in
-                    🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
+                    🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
                     
                     if 🙆 {
                         💾BodyFat = 📝BodyFat
-                        🄷istory += (round(📝BodyFat*1000)/10).description + ", %\n"
+                        🕒History += (round(📝BodyFat*1000)/10).description + ", %\n"
                         📦CacheBodyFat = 🅂ampleBodyFat
                     } else {
                         🚩RegisterError = true
-                        🄷istory += "HealthStore.save/BodyFat Error?! " + 🙅.debugDescription + "\n"
+                        🕒History += "HealthStore.save/BodyFat Error?! " + 🙅.debugDescription + "\n"
                     }
                 }
             }
@@ -119,14 +119,14 @@ class 📱Model: ObservableObject {
             
             🏥HealthStore.save(🅂ampleBMI) { 🙆, 🙅 in
                 DispatchQueue.main.async { [self] in
-                    🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", BMI, "
+                    🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BMI, "
                     
                     if 🙆 {
-                        🄷istory += 📝BMI.description + "\n"
+                        🕒History += 📝BMI.description + "\n"
                         📦CacheBMI = 🅂ampleBMI
                     } else {
                         🚩RegisterError = true
-                        🄷istory += "HealthStore.save/BMI Error?! " + 🙅.debugDescription + "\n"
+                        🕒History += "HealthStore.save/BMI Error?! " + 🙅.debugDescription + "\n"
                     }
                 }
             }
@@ -140,7 +140,7 @@ class 📱Model: ObservableObject {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             🚩RegisterError = true
             🚩Registered = true
-            🄷istory += "Register/authorization/" + ⓣype.rawValue + ": Error?!\n"
+            🕒History += "Register/authorization/" + ⓣype.rawValue + ": Error?!\n"
             return true
         }
         
@@ -168,10 +168,10 @@ class 📱Model: ObservableObject {
             🏥HealthStore.delete(📦) { 🙆, 🙅 in
                 DispatchQueue.main.async {
                     if 🙆 {
-                        self.🄷istory += "Cancel/BodyMass: Success\n"
+                        self.🕒History += "Cancel/BodyMass: Success\n"
                         self.📦CacheBodyMass = nil
                     } else {
-                        self.🄷istory += "Cancel/BodyMass: Error?! " + 🙅.debugDescription + "\n"
+                        self.🕒History += "Cancel/BodyMass: Error?! " + 🙅.debugDescription + "\n"
                         self.🚩CancelError = true
                     }
                 }
@@ -183,10 +183,10 @@ class 📱Model: ObservableObject {
                 🏥HealthStore.delete(📦) { 🙆, 🙅 in
                     DispatchQueue.main.async {
                         if 🙆 {
-                            self.🄷istory += "Cancel/BodyFat: Success\n"
+                            self.🕒History += "Cancel/BodyFat: Success\n"
                             self.📦CacheBodyFat = nil
                         } else {
-                            self.🄷istory += "Cancel/BodyFat: Error?! " + 🙅.debugDescription + "\n"
+                            self.🕒History += "Cancel/BodyFat: Error?! " + 🙅.debugDescription + "\n"
                             self.🚩CancelError = true
                         }
                     }
@@ -199,10 +199,10 @@ class 📱Model: ObservableObject {
                 🏥HealthStore.delete(📦) { 🙆, 🙅 in
                     DispatchQueue.main.async {
                         if 🙆 {
-                            self.🄷istory += "Cancel/BMI: Success\n"
+                            self.🕒History += "Cancel/BMI: Success\n"
                             self.📦CacheBMI = nil
                         } else {
-                            self.🄷istory += "Cancel/BMI: Error?! " + 🙅.debugDescription + "\n"
+                            self.🕒History += "Cancel/BMI: Error?! " + 🙅.debugDescription + "\n"
                             self.🚩CancelError = true
                         }
                     }
@@ -216,7 +216,7 @@ class 📱Model: ObservableObject {
     }
     
     
-    func 👆Reset() {
+    func 🅁eset() {
         🚩Registered = false
         🚩RegisterError = false
         🚩Canceled = false

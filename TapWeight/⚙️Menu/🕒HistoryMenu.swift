@@ -1,13 +1,13 @@
 
 import SwiftUI
 
-struct 🕛HistorySection: View {
+struct 🕒HistoryMenu: View {
     @EnvironmentObject var 📱:📱Model
     
     var body: some View {
         Section {
             NavigationLink  {
-                🕛HistoryView(🄷istory: $📱.🄷istory)
+                🕒HistoryView(🕒History: $📱.🕒History)
             } label: {
                 Label("🌏Local history", systemImage: "clock")
             }
@@ -18,11 +18,11 @@ struct 🕛HistorySection: View {
 }
 
 
-struct 🕛HistoryView: View {
-    @Binding var 🄷istory: String
+struct 🕒HistoryView: View {
+    @Binding var 🕒History: String
     
     var body: some View {
-        if 🄷istory == "" {
+        if 🕒History == "" {
             Image(systemName: "text.append")
                 .foregroundStyle(.tertiary)
                 .font(.system(size: 64))
@@ -31,11 +31,11 @@ struct 🕛HistoryView: View {
         } else {
             ScrollView {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    📋TextView(🄷istory, "History")
+                    📋TextView(🕒History, "History")
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button {
-                                    🄷istory = ""
+                                    🕒History = ""
                                 } label: {
                                     Image(systemName: "trash")
                                         .tint(.red)

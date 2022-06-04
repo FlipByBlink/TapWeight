@@ -44,7 +44,7 @@ struct 🛠MenuList: View {
                 }
                 
                 
-                🕛HistorySection()
+                🕒HistoryMenu()
                 
                 
                 Section {

@@ -105,7 +105,7 @@ struct 🆗Result: View {
             }
         }
         .onDisappear {
-            📱.👆Reset()
+            📱.🅁eset()
         }
     }
 }
