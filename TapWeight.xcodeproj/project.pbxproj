@@ -13,7 +13,7 @@
 		12428DCB28485F85006837F9 /* 📓SourceCodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12428DCA28485F85006837F9 /* 📓SourceCodeMenu.swift */; };
 		12428DCE284860D0006837F9 /* 🕒HistoryMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */; };
 		124C485F284863BA0085B066 /* 📱Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱Model.swift */; };
-		12579D162835FE8900536547 /* 🆗ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🆗ResultView.swift */; };
+		12579D162835FE8900536547 /* 🗯ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🗯ResultView.swift */; };
 		12630BC12849C63E005F922F /* 🧍HeightMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12630BC02849C63E005F922F /* 🧍HeightMenu.swift */; };
 		12630BC32849CD33005F922F /* 🛠MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12630BC22849CD33005F922F /* 🛠MenuList.swift */; };
 		126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */; };
@@ -30,7 +30,7 @@
 		12AA24FB284A393300199A64 /* 📋TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AA24FA284A393300199A64 /* 📋TextView.swift */; };
 		12B694CD28360B73005F47B3 /* 💸AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B694CC28360B73005F47B3 /* 💸AppName.swift */; };
 		12F0E79828371A7400FDFE72 /* README.md in CopyFiles */ = {isa = PBXBuildFile; fileRef = 125AFEDA282F2B6E00E3BC4A /* README.md */; };
-		12F0E79928371A7400FDFE72 /* 🆗ResultView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🆗ResultView.swift */; };
+		12F0E79928371A7400FDFE72 /* 🗯ResultView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🗯ResultView.swift */; };
 		12F0E79A28371A7400FDFE72 /* 💸AppName.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12B694CC28360B73005F47B3 /* 💸AppName.swift */; };
 		12F2F8A3284B703100C3A4BA /* 💸AdBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F2F8A2284B703100C3A4BA /* 💸AdBanner.swift */; };
 		12F2F8A5284B708E00C3A4BA /* 💸AdSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F2F8A4284B708E00C3A4BA /* 💸AdSection.swift */; };
@@ -45,7 +45,7 @@
 			dstSubfolderSpec = 7;
 			files = (
 				12F0E79828371A7400FDFE72 /* README.md in CopyFiles */,
-				12F0E79928371A7400FDFE72 /* 🆗ResultView.swift in CopyFiles */,
+				12F0E79928371A7400FDFE72 /* 🗯ResultView.swift in CopyFiles */,
 				12F0E79A28371A7400FDFE72 /* 💸AppName.swift in CopyFiles */,
 				126B3ED5282E2100009BD28B /* TapWeightApp.swift in CopyFiles */,
 				126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */,
@@ -62,7 +62,7 @@
 		12428DCA28485F85006837F9 /* 📓SourceCodeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📓SourceCodeMenu.swift"; sourceTree = "<group>"; };
 		12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🕒HistoryMenu.swift"; sourceTree = "<group>"; };
 		124C485E284863BA0085B066 /* 📱Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱Model.swift"; sourceTree = "<group>"; };
-		12579D152835FE8900536547 /* 🆗ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🆗ResultView.swift"; sourceTree = "<group>"; };
+		12579D152835FE8900536547 /* 🗯ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗯ResultView.swift"; sourceTree = "<group>"; };
 		125AFEDA282F2B6E00E3BC4A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		12630BC02849C63E005F922F /* 🧍HeightMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧍HeightMenu.swift"; sourceTree = "<group>"; };
 		12630BC22849CD33005F922F /* 🛠MenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠MenuList.swift"; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 				126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */,
 				126B3EAC282DFEDF009BD28B /* ContentView.swift */,
 				124C485E284863BA0085B066 /* 📱Model.swift */,
-				12579D152835FE8900536547 /* 🆗ResultView.swift */,
+				12579D152835FE8900536547 /* 🗯ResultView.swift */,
 				120B4444284778FD00D491E4 /* 💟JumpButton.swift */,
 				120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */,
 				12428DCC2848608A006837F9 /* ⚙️Menu */,
@@ -272,7 +272,7 @@
 				12F2F8A3284B703100C3A4BA /* 💸AdBanner.swift in Sources */,
 				124C485F284863BA0085B066 /* 📱Model.swift in Sources */,
 				120B4445284778FD00D491E4 /* 💟JumpButton.swift in Sources */,
-				12579D162835FE8900536547 /* 🆗ResultView.swift in Sources */,
+				12579D162835FE8900536547 /* 🗯ResultView.swift in Sources */,
 				120B44472847796100D491E4 /* 📄DocumentMenu.swift in Sources */,
 				12630BC32849CD33005F922F /* 🛠MenuList.swift in Sources */,
 				126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */,

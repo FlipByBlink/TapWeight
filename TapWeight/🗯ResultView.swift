@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct 🆗ResultView: View { //🆗を変更
+struct 🗯ResultView: View {
     @EnvironmentObject var 📱:📱Model
     
     let a💰🪙💸 = ""
@@ -42,6 +42,7 @@ struct 🆗ResultView: View { //🆗を変更
                     
                     Spacer()
                 }
+                .opacity(0.75)
                 
                 
                 Button {
@@ -56,6 +57,7 @@ struct 🆗ResultView: View { //🆗を変更
                             .font(.system(size: 128).weight(.black))
                             .lineLimit(1)
                             .minimumScaleFactor(0.1)
+                            .padding(.horizontal)
                         
                         if 📱.🚩RegisterError {
                             Text("🌏Please check permission on \"Health\" app")
@@ -71,9 +73,10 @@ struct 🆗ResultView: View { //🆗を変更
                         }
                     }
                     .foregroundColor(.white)
+                    .padding(.bottom, 48)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                .opacity(📱.🚩Canceled ? 0.5 : 1)
+                .opacity(📱.🚩Canceled ? 0.33 : 1)
                 .accessibilityLabel("🌏Dismiss")
                 
                 
