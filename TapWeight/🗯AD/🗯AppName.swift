@@ -1,8 +1,6 @@
 
 import SwiftUI
 
-//TODO: アイコンアセット整理する
-
 enum 🗯AppName: String {
     case FlipByBlink
     case FadeInAlarm
