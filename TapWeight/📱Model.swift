@@ -43,7 +43,10 @@ class 📱Model: ObservableObject {
     }
     
     
-    var 📦CacheSample: [HKQuantitySample] = []
+    var 📦CacheBodyMass: HKQuantitySample?
+    var 📦CacheBodyFat: HKQuantitySample?
+    var 📦CacheBMI: HKQuantitySample?
+    
     
     func 👆Register() {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
@@ -68,7 +71,7 @@ class 📱Model: ObservableObject {
                     🚩Success = true
                     💾BodyMass = 📝BodyMass
                     🄷istory += 📝BodyMass.description + ", " + 💾BodyMassUnit.rawValue + "\n"
-                    📦CacheSample.append(🅂ampleBodyMass)
+                    📦CacheBodyMass = 🅂ampleBodyMass
                 } else {
                     🚩Success = false
                     print("🙅:", 🙅.debugDescription)
@@ -92,7 +95,7 @@ class 📱Model: ObservableObject {
                         🚩Success = true
                         💾BodyFat = 📝BodyFat
                         🄷istory += (round(📝BodyFat*1000)/10).description + ", %\n"
-                        📦CacheSample.append(🅂ampleBodyFat)
+                        📦CacheBodyFat = 🅂ampleBodyFat
                     } else {
                         🚩Success = false
                         print("🙅:", 🙅.debugDescription)
@@ -116,7 +119,7 @@ class 📱Model: ObservableObject {
                     if 🙆 {
                         🚩Success = true
                         🄷istory += 📝BMI.description + "\n"
-                        📦CacheSample.append(🅂ampleBMI)
+                        📦CacheBMI = 🅂ampleBMI
                     } else {
                         🚩Success = false
                         print("🙅:", 🙅.debugDescription)
@@ -129,6 +132,7 @@ class 📱Model: ObservableObject {
         🚩InputDone = true
     }
     
+    
     func 🏥AuthDenied(_ ⓣype: HKQuantityTypeIdentifier) -> Bool {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             🚩Success = false
@@ -139,28 +143,6 @@ class 📱Model: ObservableObject {
         return false
     }
     
-    func 🏥Save(_ ⓣype: 🏥Type, _ ⓤnit: HKUnit, _ ⓥalue: Double, _ ⓣext: String) {
-        let 🅂ample = HKQuantitySample(type: HKQuantityType(ⓣype.identifier),
-                                       quantity: HKQuantity(unit: ⓤnit, doubleValue: ⓥalue),
-                                       start: .now,
-                                       end: .now)
-        
-        🏥HealthStore.save(🅂ample) { 🙆, 🙅 in
-            DispatchQueue.main.async { [self] in
-                🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", " + ⓣype.rawValue + ", "
-                
-                if 🙆 {
-                    🚩Success = true
-                    🄷istory += ⓣext + ", " + ⓤnit.description + "\n"
-                    📦CacheSample.append(🅂ample)
-                } else {
-                    🚩Success = false
-                    print("🙅:", 🙅.debugDescription)
-                    🄷istory += "HealthStore.save error?!\n"
-                }
-            }
-        }
-    }
     
     func 🏥RequestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓘdentifier)) == .notDetermined {
@@ -178,27 +160,52 @@ class 📱Model: ObservableObject {
     
     
     func 🗑Cancel() { //なんか複数回呼ばれてる？
-        📦CacheSample.forEach { 📦 in
+        if let 📦 = 📦CacheBodyMass {
             🏥HealthStore.delete(📦) { 🙆, 🙅 in
-                if 🙆 {
-                    print(".delete/" + 📦.quantityType.description + ": Success")
-                    
-                    DispatchQueue.main.async {
-                        self.🄷istory += "Cancel/" + 📦.quantityType.description + ": Success\n"
-                    }
-                    
-                    UINotificationFeedbackGenerator().notificationOccurred(.error)
-                } else {
-                    print(".delete/" + 📦.quantityType.description + ": 🙅", 🙅.debugDescription)
-                    
-                    DispatchQueue.main.async {
-                        self.🄷istory += "Cancel/" + 📦.quantityType.description + ": Error\n"
+                DispatchQueue.main.async {
+                    if 🙆 {
+                        self.🄷istory += "Cancel/BodyMass: Success\n"
+                        self.📦CacheBodyMass = nil
+                    } else {
+                        self.🄷istory += "Cancel/BodyMass: Error\n"
+                        self.🄷istory += "🙅:" + 🙅.debugDescription
                     }
                 }
             }
         }
         
-        📦CacheSample.removeAll()
+        if 🚩BodyFat {
+            if let 📦 = 📦CacheBodyFat {
+                🏥HealthStore.delete(📦) { 🙆, 🙅 in
+                    DispatchQueue.main.async {
+                        if 🙆 {
+                            self.🄷istory += "Cancel/BodyFat: Success\n"
+                            self.📦CacheBodyFat = nil
+                        } else {
+                            self.🄷istory += "Cancel/BodyFat: Error " + 🙅.debugDescription + "\n"
+                        }
+                    }
+                }
+            }
+        }
+        
+        if 🚩BMI {
+            if let 📦 = 📦CacheBMI {
+                🏥HealthStore.delete(📦) { 🙆, 🙅 in
+                    DispatchQueue.main.async {
+                        if 🙆 {
+                            self.🄷istory += "Cancel/BMI: Success\n"
+                            self.📦CacheBMI = nil
+                        } else {
+                            self.🄷istory += "Cancel/BMI: Error\n"
+                            self.🄷istory += "🙅:" + 🙅.debugDescription
+                        }
+                    }
+                }
+            }
+        }
+        
+        UINotificationFeedbackGenerator().notificationOccurred(.error)
         
         🚩Canceled = true
     }
