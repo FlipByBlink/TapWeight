@@ -9,12 +9,12 @@ struct 🆗Result: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(📱.🚩RegisterSuccess ? .pink : .gray)
+                .foregroundColor(📱.🚩RegisterError ? .gray : .pink)
                 .ignoresSafeArea()
             
             VStack {
                 HStack {
-                    if 📱.🚩RegisterSuccess {
+                    if 📱.🚩RegisterError == false {
                         Button {
                             📱.🗑Cancel()
                         } label: {
@@ -46,26 +46,26 @@ struct 🆗Result: View {
                     🔙.callAsFunction()
                 } label: {
                     VStack(spacing: 12) {
-                        Image(systemName: 📱.🚩RegisterSuccess ? "checkmark" : "exclamationmark.triangle")
+                        Image(systemName: 📱.🚩RegisterError ? "exclamationmark.triangle" : "checkmark")
                             .font(.system(size: 128).weight(.semibold))
                             .minimumScaleFactor(0.1)
                         
-                        Text(📱.🚩RegisterSuccess ? "DONE!" : "🌏Error!?")
+                        Text(📱.🚩RegisterError ? "🌏Error!?" : "DONE!")
                             .font(.system(size: 128).weight(.black))
                             .lineLimit(1)
                             .minimumScaleFactor(0.1)
                         
-                        if 📱.🚩RegisterSuccess {
-                            Text("Registration for \"Health\" app")
-                                .bold()
-                                .opacity(0.8)
-                        } else {
+                        if 📱.🚩RegisterError {
                             Text("🌏Please check permission on \"Health\" app")
                                 .font(.body.weight(.semibold))
                                 .foregroundColor(.secondary)
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.1)
                                 .padding(.horizontal)
+                        } else {
+                            Text("Registration for \"Health\" app")
+                                .bold()
+                                .opacity(0.8)
                         }
                     }
                     .foregroundColor(.white)
@@ -76,7 +76,7 @@ struct 🆗Result: View {
                 
                 
                 HStack(alignment: .bottom) {
-                    if 📱.🚩AdBanner && 📱.🚩RegisterSuccess {
+                    if 📱.🚩AdBanner && (📱.🚩RegisterError == false) {
                         🗯AdBanner(📱.🄰ppName)
                     }
                     

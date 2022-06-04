@@ -27,15 +27,13 @@ class 📱Model: ObservableObject {
     
     @Published var 🚩RegisterError: Bool = false
     
-    var 🚩RegisterSuccess: Bool { !🚩RegisterError }
-    
-    
     @Published var 🚩Canceled: Bool = false
     
     @Published var 🚩CancelError: Bool = false
     
     
     let 🏥HealthStore = HKHealthStore()
+    
     
     @Published var 📝BodyMass: Double = 65.0
     
