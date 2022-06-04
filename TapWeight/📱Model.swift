@@ -43,6 +43,8 @@ class 📱Model: ObservableObject {
     }
     
     
+    var 🔖CacheSample: [HKQuantitySample] = []
+    
     func 👆Register() {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
         
@@ -90,6 +92,7 @@ class 📱Model: ObservableObject {
                 if 🙆 {
                     🚩Success = true
                     🄷istory += ⓣext + ", " + ⓤnit.description + "\n"
+                    🔖CacheSample.append(🅂ample)
                 } else {
                     🚩Success = false
                     print("🙅:", 🙅.debugDescription)
@@ -115,26 +118,29 @@ class 📱Model: ObservableObject {
     
     
     func 🗑Cancel() {
-//        guard let 📃 = 📃Sample else { return }
-//        
-//        🏥HealthStore.delete(📃) { 🙆, 🙅 in
-//            if 🙆 {
-//                print(".delete: Success")
-//                
-//                DispatchQueue.main.async {
-//                    self.🚩Canceled = true
-//                    self.🄷istory += "Cancellation: success\n"
-//                }
-//                
-//                UINotificationFeedbackGenerator().notificationOccurred(.error)
-//            } else {
-//                print("🙅:", 🙅.debugDescription)
-//                
-//                DispatchQueue.main.async {
-//                    self.🄷istory += "Cancellation: error\n"
-//                }
-//            }
-//        }
+        🔖CacheSample.forEach { sample in
+            🏥HealthStore.delete(sample) { 🙆, 🙅 in
+                if 🙆 {
+                    print(".delete/" + sample.quantityType.description + ": Success")
+                    
+                    DispatchQueue.main.async {
+                        self.🚩Canceled = true
+                        self.🄷istory += "Cancellation/" + sample.quantityType.description + ": success\n"
+                    }
+                    
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
+                } else {
+                    print(".delete/" + sample.quantityType.description + ": 🙅", 🙅.debugDescription)
+                    
+                    DispatchQueue.main.async {
+                        self.🄷istory += "Cancellation/" + sample.quantityType.description + ": error\n"
+                    }
+                }
+            }
+        }
+        
+        🔖CacheSample.removeAll()
+        
         🚩Canceled = true
     }
     
@@ -168,29 +174,4 @@ enum 📏BodyMassUnit: String, CaseIterable {
             case .st: return .stone()
         }
     }
-}
-
-
-enum 🅃ype: String, CaseIterable {
-    case ⓑodyMass
-    case ⓑodyFatPercentage
-    case ⓑodyMassIndex
-    
-    var ⓘdentifier: HKQuantityTypeIdentifier {
-        switch self {
-            case .ⓑodyMass: return .bodyMass
-            case .ⓑodyFatPercentage: return .bodyFatPercentage
-            case .ⓑodyMassIndex: return .bodyMassIndex
-        }
-    }
-    
-    var ⒽKUnit: HKUnit {
-        switch self {
-            case .ⓑodyMass: return .gramUnit(with: .kilo)
-            case .ⓑodyFatPercentage: return .percent()
-            case .ⓑodyMassIndex: return .count()
-        }
-    }
-    
-    
 }
