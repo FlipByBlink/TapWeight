@@ -11,10 +11,11 @@ struct 🗯AdBanner: View {
     @State private var 🄿resentNote = false
     
     var 🄰ppName: 🗯AppName {
-        switch ( 🄻aunchCount / 🅃iming ) % 3 {
+        switch ( 🄻aunchCount / 🅃iming ) % 4 {
             case 0: return .FlipByBlink
             case 1: return .FadeInAlarm
-            default: return .Plain将棋盤
+            case 2: return .Plain将棋盤
+            default: return .TapTemperature
         }
     }
     
