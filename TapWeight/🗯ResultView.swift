@@ -15,8 +15,8 @@ struct 🗯ResultView: View {
                 .ignoresSafeArea()
             
             VStack {
-                HStack {
-                    if 📱.🚩RegisterError == false {
+                if 📱.🚩RegisterError == false {
+                    HStack {
                         Button {
                             📱.🗑Cancel()
                         } label: {
@@ -31,30 +31,45 @@ struct 🗯ResultView: View {
                         .accessibilityLabel("Cancel")
                         
                         if 📱.🚩Canceled {
-                            Text("Canceled")
-                                .fontWeight(.semibold)
-                            
-                            if 📱.🚩CancelError {
-                                Text("(perhaps error)")
+                            VStack {
+                                Text("Canceled")
+                                    .fontWeight(.semibold)
+                                
+                                if 📱.🚩CancelError {
+                                    Text("(perhaps error)")
+                                }
                             }
                         }
-                    }
                     
-                    Spacer()
+                        Spacer()
+                    
+                        VStack(alignment: .trailing, spacing: 6) {
+                            Text("BodyMass: " + 📱.📝BodyMass.description + 📱.📏Unit.rawValue)
+                            
+                            if 📱.🚩BMI {
+                                Text("BMI: " + 📱.📝BMI.description)
+                            }
+                            
+                            if 📱.🚩BodyFat {
+                                Text("BodyFat: " + (round(📱.📝BodyFat*1000)/10).description + "%")
+                            }
+                        }
+                        .font(.body.bold())
+                        .padding(24)
+                    }
+                    .opacity(0.75)
                 }
-                .opacity(0.75)
-                
                 
                 Button {
                     🔙.callAsFunction()
                 } label: {
                     VStack(spacing: 12) {
                         Image(systemName: 📱.🚩RegisterError ? "exclamationmark.triangle" : "checkmark")
-                            .font(.system(size: 128).weight(.semibold))
+                            .font(.system(size: 96).weight(.semibold))
                             .minimumScaleFactor(0.1)
                         
                         Text(📱.🚩RegisterError ? "🌏Error!?" : "DONE!")
-                            .font(.system(size: 128).weight(.black))
+                            .font(.system(size: 96).weight(.black))
                             .lineLimit(1)
                             .minimumScaleFactor(0.1)
                             .padding(.horizontal)
