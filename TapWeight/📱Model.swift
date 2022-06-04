@@ -214,7 +214,7 @@ class 📱Model: ObservableObject {
     }
     
     
-    func 🅁eset() {
+    func 👆Dismiss() {
         🚩Registered = false
         🚩RegisterError = false
         🚩Canceled = false
@@ -236,19 +236,4 @@ class 📱Model: ObservableObject {
     var 🅃iming: Int = 7
     
     @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
-}
-
-
-enum 📏BodyMassUnit: String, CaseIterable {
-    case kg
-    case lbs
-    case st
-    
-    var ⓐsHKUnit: HKUnit {
-        switch self {
-            case .kg: return .gramUnit(with: .kilo)
-            case .lbs: return .pound()
-            case .st: return .stone()
-        }
-    }
 }

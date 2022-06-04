@@ -1,10 +1,8 @@
 
 import SwiftUI
 
-struct 🆗Result: View {
+struct 🆗ResultView: View {
     @EnvironmentObject var 📱:📱Model
-    
-    @Environment(\.dismiss) var 🔙: DismissAction
     
     var body: some View {
         ZStack {
@@ -43,7 +41,7 @@ struct 🆗Result: View {
                 
                 
                 Button {
-                    🔙.callAsFunction()
+                    📱.👆Dismiss()
                 } label: {
                     VStack(spacing: 12) {
                         Image(systemName: 📱.🚩RegisterError ? "exclamationmark.triangle" : "checkmark")
@@ -103,9 +101,6 @@ struct 🆗Result: View {
             if 📱.🄻aunchCount % 📱.🅃iming == 0 {
                 📱.🚩AdBanner = true
             }
-        }
-        .onDisappear {
-            📱.🅁eset()
         }
     }
 }

@@ -97,7 +97,7 @@ struct ContentView: View {
             .padding()
         }
         .fullScreenCover(isPresented: $📱.🚩Registered) {
-            🆗Result()
+            🆗ResultView()
         }
         .onAppear {
             📱.🏥RequestAuth(.bodyMass)
