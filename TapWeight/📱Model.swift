@@ -5,22 +5,29 @@ import HealthKit
 
 class 📱Model: ObservableObject {
     
-    @AppStorage("Unit") var 💾BodyMassUnit: 📏BodyMassUnit = .kg
+    @AppStorage("Unit") var 📏Unit: 📏BodyMassUnit = .kg
+    
+    @AppStorage("AbleBodyFat") var 🚩BodyFat: Bool = false
+    
+    @AppStorage("AbleBMI") var 🚩BMI: Bool = false
+    
+    @AppStorage("Height") var 🧍Height: Int = 165
     
     
     @AppStorage("BodyMass") var 💾BodyMass: Double = 60.0
     
     @AppStorage("BodyFat") var 💾BodyFat: Double = 0.1
     
-    @AppStorage("Height") var 💾Height: Int = 165
+    @Published var 📝BodyMass: Double = 65.0
     
+    @Published var 📝BodyFat: Double = 0.2
     
-    @AppStorage("AbleBodyFat") var 🚩BodyFat: Bool = false
-    
-    @AppStorage("AbleBMI") var 🚩BMI: Bool = false
-    
-    
-    @AppStorage("History") var 🕒History: String = ""
+    var 📝BMI: Double {
+        let 🅀uantity = HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass)
+        let 🄺iloBodyMass = 🅀uantity.doubleValue(for: .gramUnit(with: .kilo))
+        let 📝 = 🄺iloBodyMass / pow(Double(🧍Height)/100, 2)
+        return Double(Int(round(📝*100)))/100
+    }
     
     
     @Published var 🚩Registered: Bool = false
@@ -32,19 +39,10 @@ class 📱Model: ObservableObject {
     @Published var 🚩CancelError: Bool = false
     
     
+    @AppStorage("History") var 🕒History: String = ""
+    
+    
     let 🏥HealthStore = HKHealthStore()
-    
-    
-    @Published var 📝BodyMass: Double = 65.0
-    
-    @Published var 📝BodyFat: Double = 0.2
-    
-    var 📝BMI: Double {
-        let 🅀uantity = HKQuantity(unit: 💾BodyMassUnit.ⓐsHKUnit, doubleValue: 📝BodyMass)
-        let 🄺iloBodyMass = 🅀uantity.doubleValue(for: .gramUnit(with: .kilo))
-        let 📝 = 🄺iloBodyMass / pow(Double(💾Height)/100, 2)
-        return Double(Int(round(📝*100)))/100
-    }
     
     
     var 📦CacheBodyMass: HKQuantitySample?
@@ -68,7 +66,7 @@ class 📱Model: ObservableObject {
         
         do {
             let 🅂ample = HKQuantitySample(type: HKQuantityType(.bodyMass),
-                                           quantity: HKQuantity(unit: 💾BodyMassUnit.ⓐsHKUnit, doubleValue: 📝BodyMass),
+                                           quantity: HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass),
                                            start: .now, end: .now)
             
             🏥HealthStore.save(🅂ample) { 🙆, 🙅 in
@@ -77,7 +75,7 @@ class 📱Model: ObservableObject {
                     
                     if 🙆 {
                         💾BodyMass = 📝BodyMass
-                        🕒History += 📝BodyMass.description + ", " + 💾BodyMassUnit.rawValue + "\n"
+                        🕒History += 📝BodyMass.description + ", " + 📏Unit.rawValue + "\n"
                         📦CacheBodyMass = 🅂ample
                     } else {
                         🚩RegisterError = true

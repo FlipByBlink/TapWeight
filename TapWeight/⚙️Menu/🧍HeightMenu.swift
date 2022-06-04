@@ -13,7 +13,7 @@ struct 🧍HeightMenu: View {
                 
                 Spacer()
                 
-                Text(📱.💾Height.description + " cm")
+                Text(📱.🧍Height.description + " cm")
                     .foregroundStyle(.secondary)
             }
             .padding(.leading)
@@ -85,10 +85,10 @@ struct 🧍HeightEditView: View {
         .padding()
         .navigationTitle("🌏Height")
         .onAppear {
-            📝Height = 📱.💾Height
+            📝Height = 📱.🧍Height
         }
         .onDisappear {
-            📱.💾Height = 📝Height
+            📱.🧍Height = 📝Height
         }
     }
 }

@@ -10,7 +10,7 @@ struct 🛠MenuList: View {
         NavigationView {
             List {
                 Section {
-                    Picker(selection: $📱.💾BodyMassUnit) {
+                    Picker(selection: $📱.📏Unit) {
                         ForEach(📏BodyMassUnit.allCases, id: \.self) { 🏷 in
                             Text(🏷.rawValue)
                         }

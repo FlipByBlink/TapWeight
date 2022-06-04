@@ -13,7 +13,7 @@ struct ContentView: View {
                         Text(📱.📝BodyMass.description)
                             .font(.system(size: 54).monospacedDigit().weight(.black))
                         
-                        Text(📱.💾BodyMassUnit.rawValue)
+                        Text(📱.📏Unit.rawValue)
                             .font(.title.weight(.black))
                     }
                 } onIncrement: {
@@ -35,7 +35,7 @@ struct ContentView: View {
                         HStack(alignment: .firstTextBaseline, spacing: 4) {
                             Text("🌏Body Mass Index")
                             
-                            Text("(" + 📱.💾Height.description + "cm)")
+                            Text("(" + 📱.🧍Height.description + "cm)")
                                 .scaleEffect(0.8, anchor: .leading)
                         }
                         .font(.system(size: 14, weight: .semibold))
