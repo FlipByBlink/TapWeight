@@ -28,10 +28,13 @@
 		126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
 		126B3ED7282E2100009BD28B /* 🛠MenuButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */; };
 		12AA24FB284A393300199A64 /* 📋TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AA24FA284A393300199A64 /* 📋TextView.swift */; };
-		12B694CD28360B73005F47B3 /* 🗯AD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B694CC28360B73005F47B3 /* 🗯AD.swift */; };
+		12B694CD28360B73005F47B3 /* 🗯AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B694CC28360B73005F47B3 /* 🗯AppName.swift */; };
 		12F0E79828371A7400FDFE72 /* README.md in CopyFiles */ = {isa = PBXBuildFile; fileRef = 125AFEDA282F2B6E00E3BC4A /* README.md */; };
 		12F0E79928371A7400FDFE72 /* 🆗ResultView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🆗ResultView.swift */; };
-		12F0E79A28371A7400FDFE72 /* 🗯AD.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12B694CC28360B73005F47B3 /* 🗯AD.swift */; };
+		12F0E79A28371A7400FDFE72 /* 🗯AppName.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12B694CC28360B73005F47B3 /* 🗯AppName.swift */; };
+		12F2F8A3284B703100C3A4BA /* 🗯AdBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F2F8A2284B703100C3A4BA /* 🗯AdBanner.swift */; };
+		12F2F8A5284B708E00C3A4BA /* 🗯ADSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F2F8A4284B708E00C3A4BA /* 🗯ADSection.swift */; };
+		12F2F8A7284B709A00C3A4BA /* 🗯ADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F2F8A6284B709A00C3A4BA /* 🗯ADView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,7 +46,7 @@
 			files = (
 				12F0E79828371A7400FDFE72 /* README.md in CopyFiles */,
 				12F0E79928371A7400FDFE72 /* 🆗ResultView.swift in CopyFiles */,
-				12F0E79A28371A7400FDFE72 /* 🗯AD.swift in CopyFiles */,
+				12F0E79A28371A7400FDFE72 /* 🗯AppName.swift in CopyFiles */,
 				126B3ED5282E2100009BD28B /* TapWeightApp.swift in CopyFiles */,
 				126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */,
 				126B3ED7282E2100009BD28B /* 🛠MenuButton.swift in CopyFiles */,
@@ -77,7 +80,10 @@
 		126B3ED1282E15E8009BD28B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠MenuButton.swift"; sourceTree = "<group>"; };
 		12AA24FA284A393300199A64 /* 📋TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📋TextView.swift"; sourceTree = "<group>"; };
-		12B694CC28360B73005F47B3 /* 🗯AD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗯AD.swift"; sourceTree = "<group>"; };
+		12B694CC28360B73005F47B3 /* 🗯AppName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗯AppName.swift"; sourceTree = "<group>"; };
+		12F2F8A2284B703100C3A4BA /* 🗯AdBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗯AdBanner.swift"; sourceTree = "<group>"; };
+		12F2F8A4284B708E00C3A4BA /* 🗯ADSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗯ADSection.swift"; sourceTree = "<group>"; };
+		12F2F8A6284B709A00C3A4BA /* 🗯ADView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗯ADView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +101,10 @@
 		120B2193284B6ABF007CA829 /* 🗯AD */ = {
 			isa = PBXGroup;
 			children = (
-				12B694CC28360B73005F47B3 /* 🗯AD.swift */,
+				12B694CC28360B73005F47B3 /* 🗯AppName.swift */,
+				12F2F8A6284B709A00C3A4BA /* 🗯ADView.swift */,
+				12F2F8A4284B708E00C3A4BA /* 🗯ADSection.swift */,
+				12F2F8A2284B703100C3A4BA /* 🗯AdBanner.swift */,
 			);
 			path = "🗯AD";
 			sourceTree = "<group>";
@@ -251,13 +260,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12F2F8A7284B709A00C3A4BA /* 🗯ADView.swift in Sources */,
 				12428DCB28485F85006837F9 /* 📓SourceCodeMenu.swift in Sources */,
 				126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */,
 				12630BC12849C63E005F922F /* 🧍HeightMenu.swift in Sources */,
 				126B3ED3282E1968009BD28B /* 🛠MenuButton.swift in Sources */,
+				12F2F8A5284B708E00C3A4BA /* 🗯ADSection.swift in Sources */,
 				12AA24FB284A393300199A64 /* 📋TextView.swift in Sources */,
 				12428DCE284860D0006837F9 /* 🕒HistoryMenu.swift in Sources */,
-				12B694CD28360B73005F47B3 /* 🗯AD.swift in Sources */,
+				12B694CD28360B73005F47B3 /* 🗯AppName.swift in Sources */,
+				12F2F8A3284B703100C3A4BA /* 🗯AdBanner.swift in Sources */,
 				124C485F284863BA0085B066 /* 📱Model.swift in Sources */,
 				120B4445284778FD00D491E4 /* 💟JumpButton.swift in Sources */,
 				12579D162835FE8900536547 /* 🆗ResultView.swift in Sources */,
