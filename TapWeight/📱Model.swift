@@ -212,7 +212,7 @@ class 📱Model: ObservableObject {
     }
     
     
-    func 👆Dismiss() {
+    func 🅁eset() {
         🚩Registered = false
         🚩RegisterError = false
         🚩Canceled = false

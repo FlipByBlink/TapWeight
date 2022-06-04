@@ -1,8 +1,10 @@
 
 import SwiftUI
 
-struct 🆗ResultView: View {
+struct 🆗ResultView: View { //🆗を変更
     @EnvironmentObject var 📱:📱Model
+    
+    @Environment(\.dismiss) var 🔙: DismissAction
     
     var body: some View {
         ZStack {
@@ -41,7 +43,7 @@ struct 🆗ResultView: View {
                 
                 
                 Button {
-                    📱.👆Dismiss()
+                    🔙.callAsFunction()
                 } label: {
                     VStack(spacing: 12) {
                         Image(systemName: 📱.🚩RegisterError ? "exclamationmark.triangle" : "checkmark")
@@ -94,5 +96,8 @@ struct 🆗ResultView: View {
             }
         }
         .preferredColorScheme(.dark)
+        .onDisappear {
+            📱.🅁eset()
+        }
     }
 }
