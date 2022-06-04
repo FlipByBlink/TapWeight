@@ -14,7 +14,6 @@ struct 💟JumpButton: View {
                 .padding(.bottom, 24)
                 .padding(.trailing, 24)
         }
-        .foregroundStyle(.secondary)
         .accessibilityLabel("🌏Open \"Health\" app")
     }
 }

@@ -43,7 +43,7 @@ struct 💸AdBanner: View {
                     } message: {
                         Text("🌏TextAboutAD")
                     }
-                    .opacity(0.5)
+                    .opacity(0.75)
                     .padding(.leading, 32)
                     .offset(y: 8)
                     

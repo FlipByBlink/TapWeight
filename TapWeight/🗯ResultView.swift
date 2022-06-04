@@ -15,34 +15,14 @@ struct 🗯ResultView: View {
                 .ignoresSafeArea()
             
             VStack {
-                if 📱.🚩RegisterError == false {
-                    HStack {
-                        💸AdBanner()
-                    
-                        Spacer()
-                    
-                        VStack(alignment: .trailing, spacing: 6) {
-                            Text(📱.📝BodyMass.description + " " + 📱.📏Unit.rawValue)
-                            
-                            if 📱.🚩BMI {
-                                Text(📱.📝BMI.description)
-                            }
-                            
-                            if 📱.🚩BodyFat {
-                                Text((round(📱.📝BodyFat*1000)/10).description + " %")
-                            }
-                        }
-                        .font(.body.bold())
-                        .padding(.top, 24)
-                        .padding(.trailing, 24)
-                    }
-                    .opacity(0.75)
-                }
+                💸AdBanner()
                 
                 Button {
                     🔙.callAsFunction()
                 } label: {
                     VStack(spacing: 12) {
+                        Spacer()
+                        
                         Image(systemName: 📱.🚩RegisterError ? "exclamationmark.triangle" : "checkmark")
                             .font(.system(size: 96).weight(.semibold))
                             .minimumScaleFactor(0.1)
@@ -51,7 +31,6 @@ struct 🗯ResultView: View {
                             .font(.system(size: 96).weight(.black))
                             .lineLimit(1)
                             .minimumScaleFactor(0.1)
-                            .padding(.horizontal)
                         
                         if 📱.🚩RegisterError {
                             Text("🌏Please check permission on \"Health\" app")
@@ -59,15 +38,39 @@ struct 🗯ResultView: View {
                                 .foregroundColor(.secondary)
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.1)
-                                .padding(.horizontal)
                         } else {
                             Text("Registration for \"Health\" app")
                                 .bold()
                                 .opacity(0.8)
                         }
+                        
+                        Spacer()
+                        
+                        if 📱.🚩RegisterError == false {
+                            HStack(spacing: 4) {
+                                Text(📱.📝BodyMass.description + " " + 📱.📏Unit.rawValue)
+                                
+                                if 📱.🚩BMI {
+                                    Text("/")
+                                    
+                                    Text(📱.📝BMI.description)
+                                }
+                                
+                                if 📱.🚩BodyFat {
+                                    Text("/")
+                                    
+                                    Text((round(📱.📝BodyFat*1000)/10).description + " %")
+                                }
+                            }
+                            .padding()
+                            .font(.subheadline.bold())
+                            .opacity(0.75)
+                        }
+                        
+                        Spacer()
                     }
+                    .padding()
                     .foregroundColor(.white)
-                    .padding(.bottom, 48)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 .opacity(📱.🚩Canceled ? 0.33 : 1)
@@ -89,7 +92,6 @@ struct 🗯ResultView: View {
                                     .padding(.bottom, 8)
                             }
                             .disabled(📱.🚩Canceled)
-                            .opacity(0.75)
                             .opacity(📱.🚩Canceled ? 0.5 : 1)
                             .accessibilityLabel("Cancel")
                             
@@ -114,14 +116,16 @@ struct 🗯ResultView: View {
                             Image(systemName: "arrow.down")
                                 .imageScale(.small)
                                 .font(.largeTitle)
-                                .foregroundStyle(.tertiary)
+                                .foregroundStyle(.secondary)
                                 .padding(.trailing, 24)
                                 .padding(.bottom, 8)
                         }
                         
                         💟JumpButton()
+                            .foregroundStyle(.primary)
                     }
                 }
+                .opacity(0.75)
             }
         }
         .preferredColorScheme(.dark)
