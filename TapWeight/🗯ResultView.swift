@@ -4,8 +4,6 @@ import SwiftUI
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱:📱Model
     
-    let a💰🪙💸 = ""
-    
     @Environment(\.dismiss) var 🔙: DismissAction
     
     var body: some View {
@@ -20,7 +18,7 @@ struct 🗯ResultView: View {
                 Button {
                     🔙.callAsFunction()
                 } label: {
-                    VStack(spacing: 12) {
+                    VStack(spacing: 16) {
                         Spacer()
                         
                         Image(systemName: 📱.🚩RegisterError ? "exclamationmark.triangle" : "checkmark")
@@ -34,14 +32,14 @@ struct 🗯ResultView: View {
                         
                         if 📱.🚩RegisterError {
                             Text("🌏Please check permission on \"Health\" app")
-                                .font(.body.weight(.semibold))
-                                .foregroundColor(.secondary)
+                                .font(.title3.weight(.semibold))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.1)
                         } else {
                             Text("Registration for \"Health\" app")
-                                .bold()
-                                .opacity(0.8)
+                                .font(.title3.weight(.semibold))
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.1)
                         }
                         
                         Spacer()
@@ -62,8 +60,7 @@ struct 🗯ResultView: View {
                                     Text((round(📱.📝BodyFat*1000)/10).description + " %")
                                 }
                             }
-                            .padding()
-                            .font(.subheadline.bold())
+                            .font(.body.bold())
                             .opacity(0.75)
                         }
                         
@@ -84,7 +81,7 @@ struct 🗯ResultView: View {
                                 📱.🗑Cancel()
                             } label: {
                                 Image(systemName: "arrow.uturn.backward.circle")
-                                    .font(.title)
+                                    .font(.largeTitle)
                                     .imageScale(.large)
                                     .foregroundColor(.primary)
                                     .padding()

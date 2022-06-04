@@ -11,7 +11,6 @@ struct 🛠MenuButton: View { // ⚙️
         } label: {
             Image(systemName: "gear")
                 .font(.largeTitle)
-                .foregroundStyle(.secondary)
                 .foregroundColor(.pink)
                 .padding(24)
         }
