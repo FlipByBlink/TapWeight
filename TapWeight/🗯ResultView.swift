@@ -17,29 +17,7 @@ struct 🗯ResultView: View {
             VStack {
                 if 📱.🚩RegisterError == false {
                     HStack {
-                        Button {
-                            📱.🗑Cancel()
-                        } label: {
-                            Image(systemName: "arrow.uturn.backward.circle")
-                                .font(.title)
-                                .imageScale(.large)
-                                .foregroundColor(.primary)
-                                .padding()
-                        }
-                        .disabled(📱.🚩Canceled)
-                        .opacity(📱.🚩Canceled ? 0.5 : 1)
-                        .accessibilityLabel("Cancel")
-                        
-                        if 📱.🚩Canceled {
-                            VStack {
-                                Text("Canceled")
-                                    .fontWeight(.semibold)
-                                
-                                if 📱.🚩CancelError {
-                                    Text("(perhaps error)")
-                                }
-                            }
-                        }
+                        💸AdBanner()
                     
                         Spacer()
                     
@@ -55,7 +33,8 @@ struct 🗯ResultView: View {
                             }
                         }
                         .font(.body.bold())
-                        .padding(24)
+                        .padding(.top, 24)
+                        .padding(.trailing, 24)
                     }
                     .opacity(0.75)
                 }
@@ -96,7 +75,37 @@ struct 🗯ResultView: View {
                 
                 
                 HStack(alignment: .bottom) {
-                    💸AdBanner()
+                    if 📱.🚩RegisterError == false {
+                        HStack {
+                            Button {
+                                📱.🗑Cancel()
+                            } label: {
+                                Image(systemName: "arrow.uturn.backward.circle")
+                                    .font(.title)
+                                    .imageScale(.large)
+                                    .foregroundColor(.primary)
+                                    .padding()
+                                    .padding(.leading, 8)
+                                    .padding(.bottom, 8)
+                            }
+                            .disabled(📱.🚩Canceled)
+                            .opacity(0.75)
+                            .opacity(📱.🚩Canceled ? 0.5 : 1)
+                            .accessibilityLabel("Cancel")
+                            
+                            
+                            if 📱.🚩Canceled {
+                                VStack {
+                                    Text("Canceled")
+                                        .fontWeight(.semibold)
+                                    
+                                    if 📱.🚩CancelError {
+                                        Text("(perhaps error)")
+                                    }
+                                }
+                            }
+                        }
+                    }
                     
                     Spacer()
                     
