@@ -31,45 +31,13 @@ class 📱Model: ObservableObject {
     
     let 🏥HealthStore = HKHealthStore()
     
-    var 🅀uantityBodyMass: HKQuantity {
-        HKQuantity(unit: 💾BodyMassUnit.ⓐsHKUnit, doubleValue: 📝BodyMass)
-    }
-    
-    var 🅀uantityBodyFat: HKQuantity {
-        HKQuantity(unit: .percent(), doubleValue: 📝BodyFat)
-    }
-    
-    var 🅀uantityBMI: HKQuantity {
-        HKQuantity(unit: .count(), doubleValue: 📝BMI)
-    }
-    
-    var 🅂ampleBodyMass: HKQuantitySample {
-        HKQuantitySample(type: HKQuantityType(.bodyMass),
-                         quantity: 🅀uantityBodyMass,
-                         start: .now,
-                         end: .now)
-    }
-    
-    var 🅂ampleBodyFat: HKQuantitySample {
-        HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
-                         quantity: 🅀uantityBodyFat,
-                         start: .now,
-                         end: .now)
-    }
-    
-    var 🅂ampleBMI: HKQuantitySample {
-        HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
-                         quantity: 🅀uantityBMI,
-                         start: .now,
-                         end: .now)
-    }
-    
     @Published var 📝BodyMass: Double = 65.0
     
     @Published var 📝BodyFat: Double = 0.2
     
     var 📝BMI: Double {
-        let 🄺iloBodyMass = 🅀uantityBodyMass.doubleValue(for: .gramUnit(with: .kilo))
+        let 🅀uantity = HKQuantity(unit: 💾BodyMassUnit.ⓐsHKUnit, doubleValue: 📝BodyMass)
+        let 🄺iloBodyMass = 🅀uantity.doubleValue(for: .gramUnit(with: .kilo))
         let 📝 = 🄺iloBodyMass / pow(Double(💾Height)/100, 2)
         return Double(Int(round(📝*100)))/100
     }
@@ -84,55 +52,16 @@ class 📱Model: ObservableObject {
         
         if 🚩BMI && 🏥AuthDenied(.bodyMassIndex) { return }
         
-        🏥HealthStore.save(🅂ampleBodyMass) { 🙆, 🙅 in
-            DispatchQueue.main.async { [self] in
-                🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
-
-                if 🙆 {
-                    🚩Success = true
-                    🄷istory += 📝BodyMass.description + ", " + 💾BodyMassUnit.rawValue + "\n"
-                    💾BodyMass = 📝BodyMass
-                } else {
-                    🚩Success = false
-                    print("🙅:", 🙅.debugDescription)
-                    🄷istory += "HealthStore.save error?!\n"
-                }
-            }
-        }
+        🏥Save(.bodyMass, 💾BodyMassUnit.ⓐsHKUnit, 📝BodyMass, 📝BodyMass.description)
+        💾BodyMass = 📝BodyMass
 
         if 🚩BodyFat {
-            🏥HealthStore.save(🅂ampleBodyFat) { 🙆, 🙅 in
-                DispatchQueue.main.async { [self] in
-                    🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
-                    
-                    if 🙆 {
-                        🚩Success = true
-                        🄷istory += (round(📝BodyFat*1000)/10).description + ", %\n"
-                        💾BodyFat = 📝BodyFat
-                    } else {
-                        🚩Success = false
-                        print("🙅:", 🙅.debugDescription)
-                        🄷istory += "HealthStore.save error?!\n"
-                    }
-                }
-            }
+            🏥Save(.bodyFatPercentage, .percent(), 📝BodyFat, (round(📝BodyFat*1000)/10).description)
+            💾BodyFat = 📝BodyFat
         }
 
         if 🚩BMI {
-            🏥HealthStore.save(🅂ampleBMI) { 🙆, 🙅 in
-                DispatchQueue.main.async { [self] in
-                    🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", BMI, "
-                    
-                    if 🙆 {
-                        🚩Success = true
-                        🄷istory += 📝BMI.description + "\n"
-                    } else {
-                        🚩Success = false
-                        print("🙅:", 🙅.debugDescription)
-                        🄷istory += "HealthStore.save error?!\n"
-                    }
-                }
-            }
+            🏥Save(.bodyMassIndex, .count(), 📝BMI, 📝BMI.description)
         }
         
         🚩InputDone = true
@@ -148,14 +77,36 @@ class 📱Model: ObservableObject {
         return false
     }
     
-    func 🏥RequestAuth(_ ⓣype: HKQuantityTypeIdentifier) {
-        if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .notDetermined {
-            let 🅃ype: Set<HKSampleType> = [HKQuantityType(ⓣype)]
+    func 🏥Save(_ ⓘdentifier: HKQuantityTypeIdentifier, _ ⓤnit: HKUnit, _ ⓥalue: Double, _ ⓣext: String) {
+        let 🅂ample = HKQuantitySample(type: HKQuantityType(ⓘdentifier),
+                                  quantity: HKQuantity(unit: ⓤnit, doubleValue: ⓥalue),
+                                  start: .now,
+                                  end: .now)
+        
+        🏥HealthStore.save(🅂ample) { 🙆, 🙅 in
+            DispatchQueue.main.async { [self] in
+                🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", " + ⓘdentifier.rawValue + ", "
+                
+                if 🙆 {
+                    🚩Success = true
+                    🄷istory += ⓣext + ", " + ⓤnit.description + "\n"
+                } else {
+                    🚩Success = false
+                    print("🙅:", 🙅.debugDescription)
+                    🄷istory += "HealthStore.save error?!\n"
+                }
+            }
+        }
+    }
+    
+    func 🏥RequestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) {
+        if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓘdentifier)) == .notDetermined {
+            let 🅃ype: Set<HKSampleType> = [HKQuantityType(ⓘdentifier)]
             🏥HealthStore.requestAuthorization(toShare: 🅃ype, read: nil) { 🙆, 🙅 in
                 if 🙆 {
-                    print("🏥RequestAuth/" + ⓣype.rawValue + ": Done")
+                    print("🏥RequestAuth/" + ⓘdentifier.rawValue + ": Done")
                 } else {
-                    print("🏥RequestAuth/" + ⓣype.rawValue + ": ERROR")
+                    print("🏥RequestAuth/" + ⓘdentifier.rawValue + ": ERROR")
                     print("🙅:", 🙅.debugDescription)
                 }
             }
@@ -217,4 +168,29 @@ enum 📏BodyMassUnit: String, CaseIterable {
             case .st: return .stone()
         }
     }
+}
+
+
+enum 🅃ype: String, CaseIterable {
+    case ⓑodyMass
+    case ⓑodyFatPercentage
+    case ⓑodyMassIndex
+    
+    var ⓘdentifier: HKQuantityTypeIdentifier {
+        switch self {
+            case .ⓑodyMass: return .bodyMass
+            case .ⓑodyFatPercentage: return .bodyFatPercentage
+            case .ⓑodyMassIndex: return .bodyMassIndex
+        }
+    }
+    
+    var ⒽKUnit: HKUnit {
+        switch self {
+            case .ⓑodyMass: return .gramUnit(with: .kilo)
+            case .ⓑodyFatPercentage: return .percent()
+            case .ⓑodyMassIndex: return .count()
+        }
+    }
+    
+    
 }
