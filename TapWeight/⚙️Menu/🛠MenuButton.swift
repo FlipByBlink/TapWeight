@@ -6,6 +6,7 @@ struct 🛠MenuButton: View { // ⚙️
     
     var body: some View {
         Button {
+            UISelectionFeedbackGenerator().selectionChanged()
             🚩Menu = true
         } label: {
             Image(systemName: "gear")

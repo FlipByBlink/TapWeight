@@ -17,9 +17,11 @@ struct ContentView: View {
                             .font(.title.weight(.black))
                     }
                 } onIncrement: {
+                    UISelectionFeedbackGenerator().selectionChanged()
                     📱.📝BodyMass += 0.1
                     📱.📝BodyMass = round(📱.📝BodyMass*10)/10
                 } onDecrement: {
+                    UISelectionFeedbackGenerator().selectionChanged()
                     📱.📝BodyMass -= 0.1
                     📱.📝BodyMass = round(📱.📝BodyMass*10)/10
                 }
@@ -63,9 +65,11 @@ struct ContentView: View {
                                 .font(.title.weight(.black))
                         }
                     } onIncrement: {
+                        UISelectionFeedbackGenerator().selectionChanged()
                         📱.📝BodyFat += 0.001
                         📱.📝BodyFat = round(📱.📝BodyFat*1000)/1000
                     } onDecrement: {
+                        UISelectionFeedbackGenerator().selectionChanged()
                         📱.📝BodyFat -= 0.001
                         📱.📝BodyFat = round(📱.📝BodyFat*1000)/1000
                     }

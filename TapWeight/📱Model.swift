@@ -76,7 +76,7 @@ class 📱Model: ObservableObject {
     
     
     func 👆Register() {
-        UISelectionFeedbackGenerator().selectionChanged()
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
         
         if 🏥AuthDenied(.bodyMass) { return }
         

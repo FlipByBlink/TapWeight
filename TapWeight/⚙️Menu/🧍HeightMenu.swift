@@ -37,8 +37,10 @@ struct 🧍HeightEditView: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.1)
             } onIncrement: {
+                UISelectionFeedbackGenerator().selectionChanged()
                 📝Height += 1
             } onDecrement: {
+                UISelectionFeedbackGenerator().selectionChanged()
                 📝Height -= 1
             }
             .padding()
