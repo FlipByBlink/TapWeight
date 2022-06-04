@@ -26,9 +26,8 @@ class 📱Model: ObservableObject {
     
     @Published var 🚩RegisterError: Bool = false
     
-    var 🚩RegisterSuccess: Bool {
-        !🚩RegisterError
-    }
+    var 🚩RegisterSuccess: Bool { !🚩RegisterError }
+    
     
     @Published var 🚩Canceled: Bool = false
     
@@ -217,11 +216,11 @@ class 📱Model: ObservableObject {
     }
     
     
-    func 🅁eset() {
+    func 👆Reset() {
         🚩Registered = false
+        🚩RegisterError = false
         🚩Canceled = false
         🚩CancelError = false
-        🚩RegisterError = false
     }
     
     
@@ -240,22 +239,6 @@ class 📱Model: ObservableObject {
     
     @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
 }
-
-
-//enum 🏥Type: String {
-//    case BodyMass
-//    case BodyFatPercentage
-//    case BodyMassIndex
-//
-//
-//    var identifier: HKQuantityTypeIdentifier {
-//        switch self {
-//            case .BodyMass: return .bodyMass
-//            case .BodyFatPercentage: return .bodyFatPercentage
-//            case .BodyMassIndex: return .bodyMassIndex
-//        }
-//    }
-//}
 
 
 enum 📏BodyMassUnit: String, CaseIterable {
