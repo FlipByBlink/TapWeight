@@ -74,9 +74,7 @@ struct 🆗ResultView: View {
                 
                 
                 HStack(alignment: .bottom) {
-                    if 📱.🚩AdBanner && (📱.🚩RegisterError == false) {
-                        🗯AdBanner(📱.🄰ppName)
-                    }
+                    🗯AdBanner()
                     
                     Spacer()
                     
@@ -96,11 +94,5 @@ struct 🆗ResultView: View {
             }
         }
         .preferredColorScheme(.dark)
-        .onAppear {
-            📱.🄻aunchCount += 1
-            if 📱.🄻aunchCount % 📱.🅃iming == 0 {
-                📱.🚩AdBanner = true
-            }
-        }
     }
 }

@@ -218,20 +218,4 @@ class 📱Model: ObservableObject {
         🚩Canceled = false
         🚩CancelError = false
     }
-    
-    
-    // ======== AD ========
-    @Published var 🚩AdBanner = false
-    
-    var 🄰ppName: 🗯AppList {
-        switch ( 🄻aunchCount / 🅃iming ) % 3 {
-            case 0: return .FlipByBlink
-            case 1: return .FadeInAlarm
-            default: return .Plain将棋盤
-        }
-    }
-    
-    var 🅃iming: Int = 7
-    
-    @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
 }
