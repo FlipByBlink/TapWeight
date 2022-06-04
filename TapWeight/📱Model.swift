@@ -28,6 +28,8 @@ class 📱Model: ObservableObject {
     
     @Published var 🚩Canceled: Bool = false
     
+    @Published var 🚩CancelError: Bool = false
+    
     
     let 🏥HealthStore = HKHealthStore()
     
@@ -53,9 +55,13 @@ class 📱Model: ObservableObject {
         
         if 🏥AuthDenied(.bodyMass) { return }
         
-        if 🚩BodyFat && 🏥AuthDenied(.bodyFatPercentage) { return }
+        if 🚩BodyFat {
+            if 🏥AuthDenied(.bodyFatPercentage) { return }
+        }
         
-        if 🚩BMI && 🏥AuthDenied(.bodyMassIndex) { return }
+        if 🚩BMI {
+            if 🏥AuthDenied(.bodyMassIndex) { return }
+        }
         
         
         let 🅂ampleBodyMass = HKQuantitySample(type: HKQuantityType(.bodyMass),
@@ -74,8 +80,7 @@ class 📱Model: ObservableObject {
                     📦CacheBodyMass = 🅂ampleBodyMass
                 } else {
                     🚩Success = false
-                    print("🙅:", 🙅.debugDescription)
-                    🄷istory += "HealthStore.save error?!\n"
+                    🄷istory += "HealthStore.save/BodyMass Error?! " + 🙅.debugDescription + "\n"
                 }
             }
         }
@@ -98,8 +103,7 @@ class 📱Model: ObservableObject {
                         📦CacheBodyFat = 🅂ampleBodyFat
                     } else {
                         🚩Success = false
-                        print("🙅:", 🙅.debugDescription)
-                        🄷istory += "HealthStore.save error?!\n"
+                        🄷istory += "HealthStore.save/BodyFat Error?! " + 🙅.debugDescription + "\n"
                     }
                 }
             }
@@ -122,8 +126,7 @@ class 📱Model: ObservableObject {
                         📦CacheBMI = 🅂ampleBMI
                     } else {
                         🚩Success = false
-                        print("🙅:", 🙅.debugDescription)
-                        🄷istory += "HealthStore.save error?!\n"
+                        🄷istory += "HealthStore.save/BMI Error?! " + 🙅.debugDescription + "\n"
                     }
                 }
             }
@@ -137,6 +140,7 @@ class 📱Model: ObservableObject {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             🚩Success = false
             🚩InputDone = true
+            🄷istory += "Register/authorization/" + ⓣype.rawValue + ": Error?!\n"
             return true
         }
         
@@ -159,7 +163,7 @@ class 📱Model: ObservableObject {
     }
     
     
-    func 🗑Cancel() { //なんか複数回呼ばれてる？
+    func 🗑Cancel() {
         if let 📦 = 📦CacheBodyMass {
             🏥HealthStore.delete(📦) { 🙆, 🙅 in
                 DispatchQueue.main.async {
@@ -167,8 +171,8 @@ class 📱Model: ObservableObject {
                         self.🄷istory += "Cancel/BodyMass: Success\n"
                         self.📦CacheBodyMass = nil
                     } else {
-                        self.🄷istory += "Cancel/BodyMass: Error\n"
-                        self.🄷istory += "🙅:" + 🙅.debugDescription
+                        self.🄷istory += "Cancel/BodyMass: Error?! " + 🙅.debugDescription + "\n"
+                        self.🚩CancelError = true
                     }
                 }
             }
@@ -182,7 +186,8 @@ class 📱Model: ObservableObject {
                             self.🄷istory += "Cancel/BodyFat: Success\n"
                             self.📦CacheBodyFat = nil
                         } else {
-                            self.🄷istory += "Cancel/BodyFat: Error " + 🙅.debugDescription + "\n"
+                            self.🄷istory += "Cancel/BodyFat: Error?! " + 🙅.debugDescription + "\n"
+                            self.🚩CancelError = true
                         }
                     }
                 }
@@ -197,8 +202,8 @@ class 📱Model: ObservableObject {
                             self.🄷istory += "Cancel/BMI: Success\n"
                             self.📦CacheBMI = nil
                         } else {
-                            self.🄷istory += "Cancel/BMI: Error\n"
-                            self.🄷istory += "🙅:" + 🙅.debugDescription
+                            self.🄷istory += "Cancel/BMI: Error?! " + 🙅.debugDescription + "\n"
+                            self.🚩CancelError = true
                         }
                     }
                 }
@@ -228,20 +233,20 @@ class 📱Model: ObservableObject {
 }
 
 
-enum 🏥Type: String {
-    case BodyMass
-    case BodyFatPercentage
-    case BodyMassIndex
-    
-    
-    var identifier: HKQuantityTypeIdentifier {
-        switch self {
-            case .BodyMass: return .bodyMass
-            case .BodyFatPercentage: return .bodyFatPercentage
-            case .BodyMassIndex: return .bodyMassIndex
-        }
-    }
-}
+//enum 🏥Type: String {
+//    case BodyMass
+//    case BodyFatPercentage
+//    case BodyMassIndex
+//
+//
+//    var identifier: HKQuantityTypeIdentifier {
+//        switch self {
+//            case .BodyMass: return .bodyMass
+//            case .BodyFatPercentage: return .bodyFatPercentage
+//            case .BodyMassIndex: return .bodyMassIndex
+//        }
+//    }
+//}
 
 
 enum 📏BodyMassUnit: String, CaseIterable {

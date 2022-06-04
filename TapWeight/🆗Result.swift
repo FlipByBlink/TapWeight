@@ -29,6 +29,10 @@ struct 🆗Result: View {
                         if 📱.🚩Canceled {
                             Text("Canceled")
                                 .fontWeight(.semibold)
+                            
+                            if 📱.🚩CancelError {
+                                Text("(perhaps error)")
+                            }
                         }
                     }
                     
@@ -36,6 +40,7 @@ struct 🆗Result: View {
                 }
                 .onDisappear {
                     📱.🚩Canceled = false
+                    📱.🚩CancelError = false
                 }
                 
                 
