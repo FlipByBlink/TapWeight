@@ -1,8 +1,8 @@
 
 import SwiftUI
 
-struct 🗯AdView: View {
-    var 🄰ppName: 🗯AppName = .FadeInAlarm
+struct 💸AdView: View {
+    var 🄰ppName: 💸AppName = .FadeInAlarm
     
     var body: some View {
         HStack(spacing: 12) {
@@ -32,7 +32,7 @@ struct 🗯AdView: View {
         }
     }
     
-    init(_ ⓐppName: 🗯AppName) {
+    init(_ ⓐppName: 💸AppName) {
         🄰ppName = ⓐppName
     }
 }

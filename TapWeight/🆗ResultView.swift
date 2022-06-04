@@ -4,6 +4,8 @@ import SwiftUI
 struct 🆗ResultView: View { //🆗を変更
     @EnvironmentObject var 📱:📱Model
     
+    let a💰🪙💸 = ""
+    
     @Environment(\.dismiss) var 🔙: DismissAction
     
     var body: some View {
@@ -76,7 +78,7 @@ struct 🆗ResultView: View { //🆗を変更
                 
                 
                 HStack(alignment: .bottom) {
-                    🗯AdBanner()
+                    💸AdBanner()
                     
                     Spacer()
                     

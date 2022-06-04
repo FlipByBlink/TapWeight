@@ -1,16 +1,16 @@
 
 import SwiftUI
 
-struct 🗯AdSection: View {
+struct 💸AdSection: View {
     var body: some View {
         Section {
-            🗯AdView(.FlipByBlink)
+            💸AdView(.FlipByBlink)
                 .padding(.leading, 4)
-            🗯AdView(.FadeInAlarm)
+            💸AdView(.FadeInAlarm)
                 .padding(.leading, 4)
-            🗯AdView(.Plain将棋盤)
+            💸AdView(.Plain将棋盤)
                 .padding(.leading, 4)
-            🗯AdView(.TapTemperature)
+            💸AdView(.TapTemperature)
                 .padding(.leading, 4)
         } header: {
             Text("🌏self-AD")

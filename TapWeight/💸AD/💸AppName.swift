@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-enum 🗯AppName: String {
+enum 💸AppName: String {
     case FlipByBlink
     case FadeInAlarm
     case Plain将棋盤

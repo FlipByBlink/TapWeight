@@ -52,7 +52,7 @@ struct 🛠MenuList: View {
                 }
                 
                 
-                🗯AdSection()
+                💸AdSection()
             }
             .navigationTitle("🌏TapWeight")
             .toolbar {

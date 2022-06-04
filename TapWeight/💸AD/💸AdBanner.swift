@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct 🗯AdBanner: View {
+struct 💸AdBanner: View {
     @EnvironmentObject var 📱:📱Model
     
     @State private var 🚩AdBanner = false
@@ -10,7 +10,7 @@ struct 🗯AdBanner: View {
     
     @State private var 🄿resentNote = false
     
-    var 🄰ppName: 🗯AppName {
+    var 🄰ppName: 💸AppName {
         switch ( 🄻aunchCount / 🅃iming ) % 4 {
             case 0: return .FlipByBlink
             case 1: return .FadeInAlarm
@@ -48,7 +48,7 @@ struct 🗯AdBanner: View {
                     .offset(y: 8)
                     
                     
-                    🗯AdView(🄰ppName)
+                    💸AdView(🄰ppName)
                         .padding(.horizontal)
                         .background {
                             RoundedRectangle(cornerRadius: 16, style: .continuous)
