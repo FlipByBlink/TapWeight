@@ -6,7 +6,7 @@ enum 🗯AppList: String {
     case FadeInAlarm
     case Plain将棋盤
     
-    var 🔗: URL {
+    var 🔗URL: URL {
         switch self {
             case .FlipByBlink: return URL(string: "https://apps.apple.com/app/id1444571751")!
             case .FadeInAlarm: return URL(string: "https://apps.apple.com/app/id1465336070")!
@@ -14,7 +14,7 @@ enum 🗯AppList: String {
         }
     }
     
-    var 📄: LocalizedStringKey {
+    var 📄About: LocalizedStringKey {
         switch self {
             case .FlipByBlink: return "🌏AboutFlipByBlink"
             case .FadeInAlarm: return "🌏AboutFadeInAlarm"
@@ -35,7 +35,7 @@ struct 🗯AdView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 .shadow(radius: 1.5, y: 0.5)
             
-            Link(destination: 🄰ppName.🔗) {
+            Link(destination: 🄰ppName.🔗URL) {
                 VStack(alignment: .leading, spacing: 2) {
                     HStack {
                         Text(🄰ppName.rawValue)
@@ -45,7 +45,7 @@ struct 🗯AdView: View {
                             .imageScale(.small)
                     }
                     
-                    Text(🄰ppName.📄)
+                    Text(🄰ppName.📄About)
                         .font(.subheadline)
                         .multilineTextAlignment(.leading)
                 }
@@ -55,8 +55,8 @@ struct 🗯AdView: View {
         }
     }
     
-    init(_ 🄰ppName: 🗯AppList) {
-        self.🄰ppName = 🄰ppName
+    init(_ ⓐppName: 🗯AppList) {
+        🄰ppName = ⓐppName
     }
 }
 
@@ -118,7 +118,7 @@ struct 🗯AdBanner: View {
         }
     }
     
-    init(_ 🄰ppName: 🗯AppList) {
-        self.🄰ppName = 🄰ppName
+    init(_ ⓐppName: 🗯AppList) {
+        🄰ppName = ⓐppName
     }
 }

@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct 📋PageView: View {
+struct 📋TextView: View {
     var 🅃ext: String
     var 🅃itle: String
     

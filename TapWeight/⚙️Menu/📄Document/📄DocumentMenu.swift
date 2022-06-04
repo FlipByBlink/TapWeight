@@ -20,7 +20,7 @@ struct 📄DocumentMenu: View {
                 Section {
                     NavigationLink {
                         ScrollView {
-                            📋PageView(📄About, "About app")
+                            📋TextView(📄About, "About app")
                         }
                     } label: {
                         Text(📄About)
