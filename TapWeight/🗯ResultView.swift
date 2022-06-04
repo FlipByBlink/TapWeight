@@ -44,14 +44,14 @@ struct 🗯ResultView: View {
                         Spacer()
                     
                         VStack(alignment: .trailing, spacing: 6) {
-                            Text("BodyMass: " + 📱.📝BodyMass.description + 📱.📏Unit.rawValue)
+                            Text(📱.📝BodyMass.description + " " + 📱.📏Unit.rawValue)
                             
                             if 📱.🚩BMI {
-                                Text("BMI: " + 📱.📝BMI.description)
+                                Text(📱.📝BMI.description)
                             }
                             
                             if 📱.🚩BodyFat {
-                                Text("BodyFat: " + (round(📱.📝BodyFat*1000)/10).description + "%")
+                                Text((round(📱.📝BodyFat*1000)/10).description + " %")
                             }
                         }
                         .font(.body.bold())
