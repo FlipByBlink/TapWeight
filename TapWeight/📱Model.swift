@@ -43,7 +43,7 @@ class 📱Model: ObservableObject {
     }
     
     
-    var 🔖CacheSample: [HKQuantitySample] = []
+    var 📦CacheSample: [HKQuantitySample] = []
     
     func 👆Register() {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
@@ -54,16 +54,16 @@ class 📱Model: ObservableObject {
         
         if 🚩BMI && 🏥AuthDenied(.bodyMassIndex) { return }
         
-        🏥Save(.bodyMass, 💾BodyMassUnit.ⓐsHKUnit, 📝BodyMass, 📝BodyMass.description)
+        🏥Save(.BodyMass, 💾BodyMassUnit.ⓐsHKUnit, 📝BodyMass, 📝BodyMass.description)
         💾BodyMass = 📝BodyMass
-
+        
         if 🚩BodyFat {
-            🏥Save(.bodyFatPercentage, .percent(), 📝BodyFat, (round(📝BodyFat*1000)/10).description)
+            🏥Save(.BodyFatPercentage, .percent(), 📝BodyFat, (round(📝BodyFat*1000)/10).description)
             💾BodyFat = 📝BodyFat
         }
-
+        
         if 🚩BMI {
-            🏥Save(.bodyMassIndex, .count(), 📝BMI, 📝BMI.description)
+            🏥Save(.BodyMassIndex, .count(), 📝BMI, 📝BMI.description)
         }
         
         🚩InputDone = true
@@ -79,20 +79,20 @@ class 📱Model: ObservableObject {
         return false
     }
     
-    func 🏥Save(_ ⓘdentifier: HKQuantityTypeIdentifier, _ ⓤnit: HKUnit, _ ⓥalue: Double, _ ⓣext: String) {
-        let 🅂ample = HKQuantitySample(type: HKQuantityType(ⓘdentifier),
-                                  quantity: HKQuantity(unit: ⓤnit, doubleValue: ⓥalue),
-                                  start: .now,
-                                  end: .now)
+    func 🏥Save(_ ⓣype: 🏥Type, _ ⓤnit: HKUnit, _ ⓥalue: Double, _ ⓣext: String) {
+        let 🅂ample = HKQuantitySample(type: HKQuantityType(ⓣype.identifier),
+                                       quantity: HKQuantity(unit: ⓤnit, doubleValue: ⓥalue),
+                                       start: .now,
+                                       end: .now)
         
         🏥HealthStore.save(🅂ample) { 🙆, 🙅 in
             DispatchQueue.main.async { [self] in
-                🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", " + ⓘdentifier.rawValue + ", "
+                🄷istory += Date.now.formatted(date: .numeric, time: .shortened) + ", " + ⓣype.rawValue + ", "
                 
                 if 🙆 {
                     🚩Success = true
                     🄷istory += ⓣext + ", " + ⓤnit.description + "\n"
-                    🔖CacheSample.append(🅂ample)
+                    📦CacheSample.append(🅂ample)
                 } else {
                     🚩Success = false
                     print("🙅:", 🙅.debugDescription)
@@ -117,29 +117,28 @@ class 📱Model: ObservableObject {
     }
     
     
-    func 🗑Cancel() {
-        🔖CacheSample.forEach { sample in
-            🏥HealthStore.delete(sample) { 🙆, 🙅 in
+    func 🗑Cancel() { //なんか複数回呼ばれてる？
+        📦CacheSample.forEach { 📦 in
+            🏥HealthStore.delete(📦) { 🙆, 🙅 in
                 if 🙆 {
-                    print(".delete/" + sample.quantityType.description + ": Success")
+                    print(".delete/" + 📦.quantityType.description + ": Success")
                     
                     DispatchQueue.main.async {
-                        self.🚩Canceled = true
-                        self.🄷istory += "Cancellation/" + sample.quantityType.description + ": success\n"
+                        self.🄷istory += "Cancel/" + 📦.quantityType.description + ": Success\n"
                     }
                     
                     UINotificationFeedbackGenerator().notificationOccurred(.error)
                 } else {
-                    print(".delete/" + sample.quantityType.description + ": 🙅", 🙅.debugDescription)
+                    print(".delete/" + 📦.quantityType.description + ": 🙅", 🙅.debugDescription)
                     
                     DispatchQueue.main.async {
-                        self.🄷istory += "Cancellation/" + sample.quantityType.description + ": error\n"
+                        self.🄷istory += "Cancel/" + 📦.quantityType.description + ": Error\n"
                     }
                 }
             }
         }
         
-        🔖CacheSample.removeAll()
+        📦CacheSample.removeAll()
         
         🚩Canceled = true
     }
@@ -159,6 +158,22 @@ class 📱Model: ObservableObject {
     var 🅃iming: Int = 7
     
     @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
+}
+
+
+enum 🏥Type: String {
+    case BodyMass
+    case BodyFatPercentage
+    case BodyMassIndex
+    
+    
+    var identifier: HKQuantityTypeIdentifier {
+        switch self {
+            case .BodyMass: return .bodyMass
+            case .BodyFatPercentage: return .bodyFatPercentage
+            case .BodyMassIndex: return .bodyMassIndex
+        }
+    }
 }
 
 
