@@ -19,6 +19,7 @@ struct 🧍HeightMenu: View {
             .padding(.leading)
             .foregroundColor(.primary)
         }
+        .font(.subheadline)
         .listRowSeparator(.hidden)
     }
 }

@@ -26,7 +26,7 @@ class 📱Model: ObservableObject {
 
     @Published var 🚩Success: Bool = false
 
-    //@Published var 🚩Canceled: Bool = false
+    @Published var 🚩Canceled: Bool = false
     
     
     let 🏥HealthStore = HKHealthStore()
@@ -160,6 +160,31 @@ class 📱Model: ObservableObject {
                 }
             }
         }
+    }
+    
+    
+    func 🗑Cancel() {
+//        guard let 📃 = 📃Sample else { return }
+//        
+//        🏥HealthStore.delete(📃) { 🙆, 🙅 in
+//            if 🙆 {
+//                print(".delete: Success")
+//                
+//                DispatchQueue.main.async {
+//                    self.🚩Canceled = true
+//                    self.🄷istory += "Cancellation: success\n"
+//                }
+//                
+//                UINotificationFeedbackGenerator().notificationOccurred(.error)
+//            } else {
+//                print("🙅:", 🙅.debugDescription)
+//                
+//                DispatchQueue.main.async {
+//                    self.🄷istory += "Cancellation: error\n"
+//                }
+//            }
+//        }
+        🚩Canceled = true
     }
     
     
