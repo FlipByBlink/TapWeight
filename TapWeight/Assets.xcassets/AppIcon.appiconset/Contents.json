@@ -31,7 +31,7 @@
       "size" : "40x40"
     },
     {
-      "filename" : "LogWeightIcon120.png",
+      "filename" : "TapWeightIcon120.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
@@ -77,19 +77,19 @@
       "size" : "76x76"
     },
     {
-      "filename" : "LogWeightIcon152.png",
+      "filename" : "TapWeightIcon152.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
-      "filename" : "LogWeightIcon167.png",
+      "filename" : "TapWeightIcon167.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "LogWeightIcon1024.png",
+      "filename" : "TapWeightIcon1024.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
