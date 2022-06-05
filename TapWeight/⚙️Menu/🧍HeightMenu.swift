@@ -9,7 +9,7 @@ struct 🧍HeightMenu: View {
             🧍HeightEditView()
         } label: {
             HStack {
-                Label("🌏Height", systemImage: "ruler")
+                Label("🌏Height", systemImage: "figure.stand")
                 
                 Spacer()
                 
@@ -20,7 +20,6 @@ struct 🧍HeightMenu: View {
             .foregroundColor(📱.🚩AbleBMI ? .primary : .secondary)
         }
         .font(.subheadline)
-        .listRowSeparator(.hidden, edges: .top)
     }
 }
 

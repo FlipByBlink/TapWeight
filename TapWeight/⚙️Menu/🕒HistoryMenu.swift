@@ -5,14 +5,10 @@ struct 🕒HistoryMenu: View {
     @EnvironmentObject var 📱:📱Model
     
     var body: some View {
-        Section {
-            NavigationLink  {
-                🕒HistoryView(🕒History: $📱.🕒History)
-            } label: {
-                Label("🌏Local history", systemImage: "clock")
-            }
-        } footer: {
-            Text("🌏\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
+        NavigationLink  {
+            🕒HistoryView(🕒History: $📱.🕒History)
+        } label: {
+            Label("🌏Local history", systemImage: "clock")
         }
     }
 }

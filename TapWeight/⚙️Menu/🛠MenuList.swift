@@ -29,42 +29,44 @@ struct 🛠MenuList: View {
                             .foregroundColor(📱.📏Unit == .kg ? .primary : .secondary)
                     }
                     .font(.subheadline)
-                    .listRowSeparator(.hidden, edges: .top)
                     .disabled(📱.📏Unit != .kg)
-                    
+                } header: {
+                    Text("🌏Option")
+                }
+                 
+                Section {
                     Toggle(isOn: $📱.🚩AbleBMI) {
                         Label("🌏Body Mass Index", systemImage: "function")
                     }
                     
                     🧍HeightMenu()
-                    
+                }
+                
+                Section {
                     Toggle(isOn: $📱.🚩AbleBodyFat) {
                         Label("🌏Body Fat Percentage", systemImage: "percent")
                     }
-                } header: {
-                    Text("🌏Option")
                 }
                 
-                
-                Link (destination: URL(string: "x-apple-health://")!) {
-                    HStack {
-                        Label("🌏Open \"Health\" app", systemImage: "heart")
-                        
-                        Spacer()
-                        
-                        Image(systemName: "arrow.up.forward.app")
+                Section {
+                    Link (destination: URL(string: "x-apple-health://")!) {
+                        HStack {
+                            Label("🌏Open \"Health\" app", systemImage: "heart")
+                            
+                            Spacer()
+                            
+                            Image(systemName: "arrow.up.forward.app")
+                        }
                     }
-                    .font(.body.weight(.medium))
+                    
+                    🕒HistoryMenu()
+                } footer: {
+                    Text("🌏\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
                 }
-                
-                
-                🕒HistoryMenu()
-                
                 
                 Section {
                     📄DocumentMenu()
                 }
-                
                 
                 💸AdSection()
             }
