@@ -45,26 +45,27 @@ struct 🗯ResultView: View {
                         Spacer()
                         
                         if 📱.🚨RegisterError == false {
-                            HStack(spacing: 4) {
-                                Text(📱.📝BodyMass.description + " " + 📱.📏Unit.rawValue)
-                                
-                                if 📱.🚩AbleBMI {
-                                    Text("/")
-                                    
-                                    Text(📱.📝BMI.description)
-                                }
-                                
+                            let 🅂ummary: String = {
+                                var 🪧 = ""
+                                🪧 += 📱.📝BodyMass.description + " " + 📱.📏Unit.rawValue
+                                if 📱.🚩AbleBMI { 🪧 += " / " + 📱.📝BMI.description }
                                 if 📱.🚩AbleBodyFat {
-                                    Text("/")
-                                    
-                                    Text((round(📱.📝BodyFat*1000)/10).description + " %")
+                                    🪧 += " / " + (round(📱.📝BodyFat*1000)/10).description + " %"
                                 }
-                            }
-                            .font(.body.bold())
-                            .opacity(0.75)
+                                return 🪧
+                            }()
+                            
+                            Text(🅂ummary)
+                                .font(.body.bold())
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.1)
+                                .opacity(0.75)
                         }
                         
                         Spacer()
+                        
+                        Color.clear
+                            .frame(height: 32)
                     }
                     .padding()
                     .foregroundColor(.white)
