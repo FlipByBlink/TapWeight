@@ -5,6 +5,9 @@ import HealthKit
 
 class 📱Model: ObservableObject {
     
+    @Published var 🚩Menu: Bool = false
+    
+    
     @AppStorage("Unit") var 📏Unit: 📏BodyMassUnit = .kg
     
     @AppStorage("AbleBodyFat") var 🚩BodyFat: Bool = false

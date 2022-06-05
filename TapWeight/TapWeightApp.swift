@@ -9,13 +9,6 @@ struct TapWeightApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .overlay(alignment: .bottomLeading) {
-                    🛠MenuButton()
-                }
-                .overlay(alignment: .bottomTrailing) {
-                    💟JumpButton()
-                        .foregroundColor(.pink)
-                }
                 .environmentObject(📱)
         }
     }

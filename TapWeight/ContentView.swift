@@ -85,16 +85,27 @@ struct ContentView: View {
         .listStyle(.plain)
         .clipped()
         .overlay(alignment: .bottom) {  // ☑️
-            Button {
-                📱.👆Register()
-            } label: {
-                Image(systemName: "checkmark.circle.fill")
-                    .font(.system(size: 120))
-                    .symbolRenderingMode(.palette)
-                    .foregroundStyle(.white, .pink)
+            HStack(alignment: .bottom) {
+                🛠MenuButton()
+                
+                Spacer()
+                
+                Button {
+                    📱.👆Register()
+                } label: {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.system(size: 120))
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(.white, .pink)
+                }
+                .accessibilityLabel("🌏DONE")
+                .padding()
+                
+                Spacer()
+                
+                💟JumpButton()
+                    .foregroundColor(.pink)
             }
-            .accessibilityLabel("🌏DONE")
-            .padding()
         }
         .fullScreenCover(isPresented: $📱.🚩Registered) {
             🗯ResultView()

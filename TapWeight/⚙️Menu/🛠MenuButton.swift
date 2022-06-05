@@ -2,12 +2,12 @@
 import SwiftUI
 
 struct 🛠MenuButton: View { // ⚙️
-    @State private var 🚩Menu: Bool = false
+    @EnvironmentObject var 📱:📱Model
     
     var body: some View {
         Button {
             UISelectionFeedbackGenerator().selectionChanged()
-            🚩Menu = true
+            📱.🚩Menu = true
         } label: {
             Image(systemName: "gear")
                 .font(.largeTitle)
@@ -15,8 +15,11 @@ struct 🛠MenuButton: View { // ⚙️
                 .padding(24)
         }
         .accessibilityLabel("🌏Open menu")
-        .sheet(isPresented: $🚩Menu) {
+        .sheet(isPresented: $📱.🚩Menu) {
             🛠MenuList()
+                .onDisappear {
+                    📱.🚩Menu = false
+                }
         }
     }
 }
