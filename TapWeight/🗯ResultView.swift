@@ -72,53 +72,51 @@ struct 🗯ResultView: View {
                 }
                 .opacity(📱.🚩Canceled ? 0.33 : 1)
                 .accessibilityLabel("🌏Dismiss")
-                
-                
-                HStack(alignment: .bottom) {
-                    if 📱.🚨RegisterError == false {
-                        HStack {
-                            Button {
-                                📱.🗑Cancel()
-                            } label: {
-                                Image(systemName: "arrow.uturn.backward.circle")
-                                    .font(.largeTitle)
-                                    .imageScale(.large)
-                                    .foregroundColor(.primary)
-                                    .padding(24)
-                            }
-                            .disabled(📱.🚩Canceled)
-                            .opacity(📱.🚩Canceled ? 0.5 : 1)
-                            .accessibilityLabel("Cancel")
-                            
-                            
-                            if 📱.🚩Canceled {
-                                VStack {
-                                    Text("Canceled")
-                                        .fontWeight(.semibold)
-                                    
-                                    if 📱.🚨CancelError {
-                                        Text("(perhaps error)")
-                                    }
-                                }
-                                .offset(x: -24)
-                            }
-                        }
-                    }
-                    
-                    Spacer()
-                    
-                    VStack {
-                        if 📱.🚨RegisterError {
-                            Image(systemName: "arrow.down")
-                                .imageScale(.small)
+            }
+            .overlay(alignment: .bottomLeading) {
+                if 📱.🚨RegisterError == false {
+                    HStack {
+                        Button {
+                            📱.🗑Cancel()
+                        } label: {
+                            Image(systemName: "arrow.uturn.backward.circle")
                                 .font(.largeTitle)
-                                .foregroundStyle(.secondary)
-                                .offset(y: 16)
+                                .imageScale(.large)
+                                .foregroundColor(.primary)
+                                .padding(24)
                         }
+                        .disabled(📱.🚩Canceled)
+                        .opacity(📱.🚩Canceled ? 0.5 : 1)
+                        .accessibilityLabel("Cancel")
                         
-                        💟JumpButton()
-                            .foregroundStyle(.primary)
+                        
+                        if 📱.🚩Canceled {
+                            VStack {
+                                Text("Canceled")
+                                    .fontWeight(.semibold)
+                                
+                                if 📱.🚨CancelError {
+                                    Text("(perhaps error)")
+                                }
+                            }
+                            .offset(x: -24)
+                        }
                     }
+                    .opacity(0.75)
+                }
+            }
+            .overlay(alignment: .bottomTrailing) {
+                VStack {
+                    if 📱.🚨RegisterError {
+                        Image(systemName: "arrow.down")
+                            .imageScale(.small)
+                            .font(.largeTitle)
+                            .foregroundStyle(.secondary)
+                            .offset(y: 16)
+                    }
+                    
+                    💟JumpButton()
+                        .foregroundStyle(.primary)
                 }
                 .opacity(0.75)
             }
