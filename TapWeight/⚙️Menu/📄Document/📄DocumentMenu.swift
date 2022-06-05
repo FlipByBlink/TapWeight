@@ -40,17 +40,22 @@ struct 📄DocumentMenu: View {
                     Text(🔗)
                 }
                 
+                
                 Section {
-                    Text("""
-                        2022-05-22
-                        (English)This application don't collect user infomation.
-                        (Japanese)このアプリ自身において、ユーザーの情報を一切収集しません。
-                        """)
-                    .font(.subheadline)
-                    .padding(8)
-                    .textSelection(.enabled)
-                } header: {
-                    Text("Privacy Policy")
+                    NavigationLink {
+                        Text("""
+                            2022-05-22
+                            
+                            (English)This application don't collect user infomation.
+                            
+                            (Japanese)このアプリ自身において、ユーザーの情報を一切収集しません。
+                            """)
+                        .padding(32)
+                        .textSelection(.enabled)
+                        .navigationTitle("Privacy Policy")
+                    } label: {
+                        Label("Privacy Policy", systemImage: "person.text.rectangle")
+                    }
                 }
                 
                 

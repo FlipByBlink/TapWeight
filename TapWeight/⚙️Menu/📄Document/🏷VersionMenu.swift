@@ -21,7 +21,7 @@ struct 🏷VersionMenu: View {
 }
 
 let 🕒VersionHistory = """
-                        🕒 Version 1.1 : 2022/06/05?
+                        🕒 Version 1.1 : (2022/06/05?)
                         
                         
                         

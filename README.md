@@ -3,11 +3,18 @@
 
 <br>
 
-![](TapWeight/Assets.xcassets/LaunchIcon.imageset/rounded_LogWeightIcon256.png)
+![](TapWeight/Assets.xcassets/LaunchIcon.imageset/TapWeight_LaunchImage.png)
 
 <br>
 
+
+## 🔗 AppStore link
+
+[apps.apple.com/app/id1624159721](https://apps.apple.com/app/id1624159721)
+
+
 <!-- Manually sync below text between "🛠Menu.swift/📄About" and "AppStoreConnect/TapWeight/Description" and "/README.md(here)". -->
+
 
 ## 📄 Description
 
@@ -88,11 +95,6 @@ iPhoneにプリインストールされているApple「ヘルスケア」アプ
 - 自作アプリに関するバナー広告をアプリ内で比較的控えめに表示します。
 
 <br>
-
-
-## 🔗 AppStore link
-
-[apps.apple.com/app/id1624159721](https://apps.apple.com/app/id1624159721)
 
 
 ## 🧰 Source code link

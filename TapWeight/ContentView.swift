@@ -19,8 +19,8 @@ struct ContentView: View {
             🛠MenuButton()
                 .opacity(0.66)
         }
-        .overlay(alignment: .bottom) {  // ☑️
-            Button {
+        .overlay(alignment: .bottom) {
+            Button { // ☑️
                 📱.👆Register()
             } label: {
                 Image(systemName: "checkmark.circle.fill")
