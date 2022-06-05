@@ -7,15 +7,7 @@ struct 📄DocumentMenu: View {
     var body: some View {
         NavigationLink {
             List {
-                Section {
-                    Label("1.1" , systemImage: "signpost.left")
-                } header: {
-                    Text("Version")
-                } footer: {
-                    let 📅 = Date.now.formatted(date: .numeric, time: .omitted)
-                    Text("builded on \(📅)")
-                }
-                
+                🏷VersionMenu()
                 
                 Section {
                     NavigationLink {
