@@ -27,9 +27,10 @@ struct 🕒HistoryView: View {
         } else {
             ScrollView {
                 Text("\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
-                    .font(.subheadline)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
                     .padding(.top)
-                    .padding(.horizontal, 32)
+                    .padding(.horizontal, 24)
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     📋TextView(🕒History, "History")
