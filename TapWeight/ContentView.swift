@@ -18,12 +18,22 @@ struct ContentView: View {
                     }
                 } onIncrement: {
                     UISelectionFeedbackGenerator().selectionChanged()
-                    📱.📝BodyMass += 0.1
-                    📱.📝BodyMass = round(📱.📝BodyMass*10)/10
+                    if 📱.🚩Amount50g {
+                        📱.📝BodyMass += 0.05
+                        📱.📝BodyMass = round(📱.📝BodyMass*100)/100
+                    } else {
+                        📱.📝BodyMass += 0.1
+                        📱.📝BodyMass = round(📱.📝BodyMass*10)/10
+                    }
                 } onDecrement: {
                     UISelectionFeedbackGenerator().selectionChanged()
-                    📱.📝BodyMass -= 0.1
-                    📱.📝BodyMass = round(📱.📝BodyMass*10)/10
+                    if 📱.🚩Amount50g {
+                        📱.📝BodyMass -= 0.05
+                        📱.📝BodyMass = round(📱.📝BodyMass*100)/100
+                    } else {
+                        📱.📝BodyMass -= 0.1
+                        📱.📝BodyMass = round(📱.📝BodyMass*10)/10
+                    }
                 }
                 .padding()
                 .onAppear {

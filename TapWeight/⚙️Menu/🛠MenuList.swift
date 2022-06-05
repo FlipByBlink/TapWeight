@@ -18,6 +18,14 @@ struct 🛠MenuList: View {
                         Label("🌏Unit", systemImage: "scalemass")
                     }
                     
+                    Toggle(isOn: $📱.🚩Amount50g) {
+                        Label("100g → 50g", systemImage: "minus.forwardslash.plus")
+                            .padding(.leading)
+                            .foregroundColor(.primary)
+                    }
+                    .font(.subheadline)
+                    .listRowSeparator(.hidden, edges: .top)
+                    
                     Toggle(isOn: $📱.🚩AbleBodyFat) {
                         Label("🌏Body Fat Percentage", systemImage: "percent")
                     }

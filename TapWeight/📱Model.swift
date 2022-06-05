@@ -10,6 +10,8 @@ class 📱Model: ObservableObject {
     
     @AppStorage("Unit") var 📏Unit: 📏BodyMassUnit = .kg
     
+    @AppStorage("Amount50g") var 🚩Amount50g: Bool = false
+    
     @AppStorage("AbleBodyFat") var 🚩AbleBodyFat: Bool = false
     
     @AppStorage("AbleBMI") var 🚩AbleBMI: Bool = false
