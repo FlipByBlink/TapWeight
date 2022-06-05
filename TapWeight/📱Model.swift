@@ -139,6 +139,7 @@ class 📱Model: ObservableObject {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             🚨RegisterError = true
             🚩ShowResult = true
+            🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", "
             🕒History += "Register/authorization/" + ⓣype.rawValue + ": Error?!\n"
             return true
         }
@@ -166,11 +167,13 @@ class 📱Model: ObservableObject {
         if let 📦 = 📦CacheBodyMass {
             🏥HealthStore.delete(📦) { 🙆, 🙅 in
                 DispatchQueue.main.async {
+                    self.🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
+                    
                     if 🙆 {
-                        self.🕒History += "Cancel/BodyMass: Success\n"
+                        self.🕒History += "Cancel: Success\n"
                         self.📦CacheBodyMass = nil
                     } else {
-                        self.🕒History += "Cancel/BodyMass: Error?! " + 🙅.debugDescription + "\n"
+                        self.🕒History += "Cancel: Error?! " + 🙅.debugDescription + "\n"
                         self.🚨CancelError = true
                     }
                 }
@@ -181,11 +184,13 @@ class 📱Model: ObservableObject {
             if let 📦 = 📦CacheBodyFat {
                 🏥HealthStore.delete(📦) { 🙆, 🙅 in
                     DispatchQueue.main.async {
+                        self.🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
+                        
                         if 🙆 {
-                            self.🕒History += "Cancel/BodyFat: Success\n"
+                            self.🕒History += "Cancel: Success\n"
                             self.📦CacheBodyFat = nil
                         } else {
-                            self.🕒History += "Cancel/BodyFat: Error?! " + 🙅.debugDescription + "\n"
+                            self.🕒History += "Cancel: Error?! " + 🙅.debugDescription + "\n"
                             self.🚨CancelError = true
                         }
                     }
@@ -197,11 +202,13 @@ class 📱Model: ObservableObject {
             if let 📦 = 📦CacheBMI {
                 🏥HealthStore.delete(📦) { 🙆, 🙅 in
                     DispatchQueue.main.async {
+                        self.🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BMI, "
+                        
                         if 🙆 {
-                            self.🕒History += "Cancel/BMI: Success\n"
+                            self.🕒History += "Cancel: Success\n"
                             self.📦CacheBMI = nil
                         } else {
-                            self.🕒History += "Cancel/BMI: Error?! " + 🙅.debugDescription + "\n"
+                            self.🕒History += "Cancel: Error?! " + 🙅.debugDescription + "\n"
                             self.🚨CancelError = true
                         }
                     }
