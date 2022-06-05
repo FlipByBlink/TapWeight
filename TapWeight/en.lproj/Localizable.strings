@@ -9,9 +9,19 @@
 
 
 // ======== Result ========
+"🌏Registration for \"Health\" app" = "Registration for \"Health\" app";
+
 "🌏Please check permission on \"Health\" app" = "Please check permission on \"Health\" app";
 
-"🌏Error!?" = "Error!?";
+"🌏DONE!" = "DONE!";
+
+"🌏ERROR!?" = "ERROR!?";
+
+"🌏Cancel" = "Cancel";
+
+"🌏Canceled" = "Canceled";
+
+"🌏(perhaps error)" = "(perhaps error)";
 
 
 // ======== Menu ========
@@ -21,13 +31,17 @@
 
 "🌏Unit" = "Unit";
 
+"🌏50gram" = "50gram";
+
 "🌏Height" = "Height";
+
+"🌏Weight" = "Weight";
 
 "🌏BMI = Weight(kg) / { Height(m) × Height(m) }" = "BMI = Weight(kg) / { Height(m) × Height(m) }";
 
 "🌏Local history" = "Local history";
 
-"🌏\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"" = "\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"";
+"🌏\"Local history\" is for ..." = "\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"";
 
 "🌏TapWeight" = "TapWeight";
 

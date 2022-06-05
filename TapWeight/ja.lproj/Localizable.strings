@@ -9,9 +9,19 @@
 
 
 // ======== Result ========
+"🌏Registration for \"Health\" app" = "「ヘルスケア」アプリに登録しました。";
+
 "🌏Please check permission on \"Health\" app" = "「ヘルスケア」アプリで権限を確認して下さい。";
 
-"🌏Error!?" = "エラー!?";
+"🌏DONE!" = "完了!";
+
+"🌏ERROR!?" = "エラー!?";
+
+"🌏Cancel" = "取り消す";
+
+"🌏Canceled" = "取り消しました。";
+
+"🌏(perhaps error)" = "(たぶん失敗しました)";
 
 
 // ======== Menu ========
@@ -21,13 +31,17 @@
 
 "🌏Unit" = "単位";
 
+"🌏50gram" = "50グラム";
+
 "🌏Height" = "身長";
+
+"🌏Weight" = "体重";
 
 "🌏BMI = Weight(kg) / { Height(m) × Height(m) }" = "BMI = 体重(kg) / { 身長(m) × 身長(m) }";
 
 "🌏Local history" = "ローカル履歴";
 
-"🌏\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"" = "\"ローカル履歴\"は動作確認や簡易バックアップを目的としています。 ";
+"🌏\"Local history\" is for ..." = "\"ローカル履歴\"は動作確認や簡易バックアップを目的としています。 ";
 
 "🌏TapWeight" = "体重登録";
 

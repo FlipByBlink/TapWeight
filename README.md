@@ -1,20 +1,16 @@
 # iPhoneApp TapWeight / 体重登録 for "Health"
 
-
 <br>
 
 ![](TapWeight/Assets.xcassets/LaunchIcon.imageset/TapWeight_LaunchImage.png)
 
 <br>
 
-
 ## 🔗 AppStore link
 
 [apps.apple.com/app/id1624159721](https://apps.apple.com/app/id1624159721)
 
-
 <!-- Manually sync below text between "🛠Menu.swift/📄About" and "AppStoreConnect/TapWeight/Description" and "/README.md(here)". -->
-
 
 ## 📄 Description
 

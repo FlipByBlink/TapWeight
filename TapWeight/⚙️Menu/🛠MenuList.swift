@@ -30,6 +30,7 @@ struct 🛠MenuList: View {
                     }
                     .font(.subheadline)
                     .disabled(📱.📏Unit != .kg)
+                    .accessibilityLabel("🌏50gram")
                 } header: {
                     Text("🌏Option")
                 }
@@ -61,7 +62,7 @@ struct 🛠MenuList: View {
                     
                     🕒HistoryMenu()
                 } footer: {
-                    Text("🌏\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
+                    Text("🌏\"Local history\" is for ...")
                 }
                 
                 Section {

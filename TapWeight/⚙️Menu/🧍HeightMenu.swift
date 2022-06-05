@@ -54,21 +54,21 @@ struct 🧍HeightEditView: View {
                     
                     VStack(spacing: 16) {
                         HStack(spacing: 2) {
-                            Text("Weight")
+                            Text("🌏Weight")
                             
                             Text("(kg)")
                                 .font(.subheadline)
                         }
                         
                         HStack(spacing: 2) {
-                            Text("Height")
+                            Text("🌏Height")
                             
                             Text("(m)")
                                 .font(.subheadline)
                             
                             Text(" × ")
                             
-                            Text("Height")
+                            Text("🌏Height")
                             
                             Text("(m)")
                                 .font(.subheadline)
