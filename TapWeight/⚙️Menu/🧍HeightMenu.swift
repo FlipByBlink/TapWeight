@@ -17,7 +17,7 @@ struct 🧍HeightMenu: View {
                     .foregroundStyle(.secondary)
             }
             .padding(.leading)
-            .foregroundColor(.primary)
+            .foregroundColor(📱.🚩AbleBMI ? .primary : .secondary)
         }
         .font(.subheadline)
         .listRowSeparator(.hidden)

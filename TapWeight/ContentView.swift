@@ -10,11 +10,22 @@ struct ContentView: View {
             Section {
                 Stepper {
                     HStack(alignment: .firstTextBaseline) {
-                        Text(📱.📝BodyMass.description)
+                        let 🪧BodyMass: String = {
+                            if 📱.🚩Amount50g && 📱.📝BodyMass.description.count == 4 {
+                                return 📱.📝BodyMass.description + "0"
+                            } else {
+                                return 📱.📝BodyMass.description
+                            }
+                        }()
+                        
+                        Text(🪧BodyMass)
                             .font(.system(size: 54).monospacedDigit().weight(.black))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.1)
                         
                         Text(📱.📏Unit.rawValue)
                             .font(.title.weight(.black))
+                            .padding(.trailing, 8)
                     }
                 } onIncrement: {
                     UISelectionFeedbackGenerator().selectionChanged()
@@ -70,6 +81,8 @@ struct ContentView: View {
                         HStack(alignment: .firstTextBaseline, spacing: 6) {
                             Text((round(📱.📝BodyFat*1000)/10).description)
                                 .font(.system(size: 54).monospacedDigit().weight(.black))
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.1)
                             
                             Text("%")
                                 .font(.title.weight(.black))

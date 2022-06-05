@@ -17,24 +17,30 @@ struct 🛠MenuList: View {
                     } label: {
                         Label("🌏Unit", systemImage: "scalemass")
                     }
+                    .onChange(of: 📱.📏Unit) { 📏 in
+                        if 📏 != .kg {
+                            📱.🚩Amount50g = false
+                        }
+                    }
                     
                     Toggle(isOn: $📱.🚩Amount50g) {
                         Label("100g → 50g", systemImage: "minus.forwardslash.plus")
                             .padding(.leading)
-                            .foregroundColor(.primary)
+                            .foregroundColor(📱.📏Unit == .kg ? .primary : .secondary)
                     }
                     .font(.subheadline)
                     .listRowSeparator(.hidden, edges: .top)
-                    
-                    Toggle(isOn: $📱.🚩AbleBodyFat) {
-                        Label("🌏Body Fat Percentage", systemImage: "percent")
-                    }
+                    .disabled(📱.📏Unit != .kg)
                     
                     Toggle(isOn: $📱.🚩AbleBMI) {
                         Label("🌏Body Mass Index", systemImage: "function")
                     }
                     
                     🧍HeightMenu()
+                    
+                    Toggle(isOn: $📱.🚩AbleBodyFat) {
+                        Label("🌏Body Fat Percentage", systemImage: "percent")
+                    }
                 } header: {
                     Text("🌏Option")
                 }
