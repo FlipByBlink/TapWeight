@@ -6,7 +6,15 @@
 "🌏Body Fat Percentage" = "Body Fat Percentage";
 
 
-// ======== Result ========
+// ======== Main View ========
+"🌏DONE" = "DONE";
+
+"🌏Open \"Health\" app" = "Open \"Health\" app";
+
+"🌏Open menu" = "Open menu";
+
+
+// ======== Result View ========
 "🌏Registration for \"Health\" app" = "Registration for \"Health\" app";
 
 "🌏Please check permission on \"Health\" app" = "Please check permission on \"Health\" app";
@@ -15,14 +23,16 @@
 
 "🌏ERROR!?" = "ERROR!?";
 
-"🌏Cancel" = "Cancel";
-
 "🌏Canceled" = "Canceled";
 
 "🌏(perhaps error)" = "(perhaps error)";
 
+"🌏Dismiss" = "Dismiss";
 
-// ======== Menu ========
+"🌏Cancel" = "Cancel";
+
+
+// ======== Menu View ========
 "🌏Option" = "Option";
 
 "🌏Unit" = "Unit";
@@ -33,23 +43,11 @@
 
 "🌏Weight" = "Weight";
 
-"🌏BMI = Weight(kg) / { Height(m) × Height(m) }" = "BMI = Weight(kg) / { Height(m) × Height(m) }";
-
 "🌏Local history" = "Local history";
 
 "🌏\"Local history\" is for ..." = "\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"";
 
 "🌏TapWeight" = "TapWeight";
-
-
-// ======== Accessibility label =========
-"🌏DONE" = "DONE";
-
-"🌏Open \"Health\" app" = "Open \"Health\" app";
-
-"🌏Open menu" = "Open menu";
-
-"🌏Dismiss" = "Dismiss";
 
 
 // ======== AD label =========
@@ -61,7 +59,7 @@
 
 "🌏OK" = "OK";
 
-"🌏AboutFlipByBlink" = "Simple and normal ebook reader (for fixed-layout). Only a special feature. Turn a page with slightly longish voluntary blink";
+"🌏AboutFlipByBlink" = "Simple and normal ebook reader (for fixed-layout). Only a special feature. Turn a page with slightly longish voluntary blink.";
 
 "🌏AboutFadeInAlarm" = "Alarm clock with taking a long time from small volume to max volume.";
 
