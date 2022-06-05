@@ -23,7 +23,7 @@ struct 💸AdBanner: View {
     
     var body: some View {
         Group {
-            if 🚩AdBanner && (📱.🚩RegisterError == false) {
+            if 🚩AdBanner && (📱.🚨RegisterError == false) {
                 VStack(alignment: .leading) {
                     Button {
                         🄿resentNote = true

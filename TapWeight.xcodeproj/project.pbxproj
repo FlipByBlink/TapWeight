@@ -113,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				120B44462847796100D491E4 /* 📄DocumentMenu.swift */,
-				12AA24FA284A393300199A64 /* 📋TextView.swift */,
 				12428DCA28485F85006837F9 /* 📓SourceCodeMenu.swift */,
 			);
 			path = "📄Document";
@@ -126,6 +125,7 @@
 				12630BC22849CD33005F922F /* 🛠MenuList.swift */,
 				12630BC02849C63E005F922F /* 🧍HeightMenu.swift */,
 				12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */,
+				12AA24FA284A393300199A64 /* 📋TextView.swift */,
 				12428DC928485ECD006837F9 /* 📄Document */,
 			);
 			path = "⚙️Menu";

@@ -9,7 +9,7 @@ struct 🗯ResultView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(📱.🚩RegisterError ? .gray : .pink)
+                .foregroundColor(📱.🚨RegisterError ? .gray : .pink)
                 .ignoresSafeArea()
             
             VStack {
@@ -21,16 +21,16 @@ struct 🗯ResultView: View {
                     VStack(spacing: 16) {
                         Spacer()
                         
-                        Image(systemName: 📱.🚩RegisterError ? "exclamationmark.triangle" : "checkmark")
+                        Image(systemName: 📱.🚨RegisterError ? "exclamationmark.triangle" : "checkmark")
                             .font(.system(size: 96).weight(.semibold))
                             .minimumScaleFactor(0.1)
                         
-                        Text(📱.🚩RegisterError ? "🌏Error!?" : "DONE!")
+                        Text(📱.🚨RegisterError ? "🌏Error!?" : "DONE!")
                             .font(.system(size: 96).weight(.black))
                             .lineLimit(1)
                             .minimumScaleFactor(0.1)
                         
-                        if 📱.🚩RegisterError {
+                        if 📱.🚨RegisterError {
                             Text("🌏Please check permission on \"Health\" app")
                                 .font(.title3.weight(.semibold))
                                 .lineLimit(1)
@@ -44,17 +44,17 @@ struct 🗯ResultView: View {
                         
                         Spacer()
                         
-                        if 📱.🚩RegisterError == false {
+                        if 📱.🚨RegisterError == false {
                             HStack(spacing: 4) {
                                 Text(📱.📝BodyMass.description + " " + 📱.📏Unit.rawValue)
                                 
-                                if 📱.🚩BMI {
+                                if 📱.🚩AbleBMI {
                                     Text("/")
                                     
                                     Text(📱.📝BMI.description)
                                 }
                                 
-                                if 📱.🚩BodyFat {
+                                if 📱.🚩AbleBodyFat {
                                     Text("/")
                                     
                                     Text((round(📱.📝BodyFat*1000)/10).description + " %")
@@ -75,7 +75,7 @@ struct 🗯ResultView: View {
                 
                 
                 HStack(alignment: .bottom) {
-                    if 📱.🚩RegisterError == false {
+                    if 📱.🚨RegisterError == false {
                         HStack {
                             Button {
                                 📱.🗑Cancel()
@@ -98,7 +98,7 @@ struct 🗯ResultView: View {
                                     Text("Canceled")
                                         .fontWeight(.semibold)
                                     
-                                    if 📱.🚩CancelError {
+                                    if 📱.🚨CancelError {
                                         Text("(perhaps error)")
                                     }
                                 }
@@ -109,7 +109,7 @@ struct 🗯ResultView: View {
                     Spacer()
                     
                     VStack {
-                        if 📱.🚩RegisterError {
+                        if 📱.🚨RegisterError {
                             Image(systemName: "arrow.down")
                                 .imageScale(.small)
                                 .font(.largeTitle)

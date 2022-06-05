@@ -7,7 +7,7 @@ struct 🛠MenuButton: View { // ⚙️
     var body: some View {
         Button {
             UISelectionFeedbackGenerator().selectionChanged()
-            📱.🚩Menu = true
+            📱.🚩ShowMenu = true
         } label: {
             Image(systemName: "gear")
                 .font(.largeTitle)
@@ -15,10 +15,10 @@ struct 🛠MenuButton: View { // ⚙️
                 .padding(24)
         }
         .accessibilityLabel("🌏Open menu")
-        .sheet(isPresented: $📱.🚩Menu) {
+        .sheet(isPresented: $📱.🚩ShowMenu) {
             🛠MenuList()
                 .onDisappear {
-                    📱.🚩Menu = false
+                    📱.🚩ShowMenu = false
                 }
         }
     }

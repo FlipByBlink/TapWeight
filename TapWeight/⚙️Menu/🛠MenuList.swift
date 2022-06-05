@@ -18,11 +18,11 @@ struct 🛠MenuList: View {
                         Label("🌏Unit", systemImage: "scalemass")
                     }
                     
-                    Toggle(isOn: $📱.🚩BodyFat) {
+                    Toggle(isOn: $📱.🚩AbleBodyFat) {
                         Label("🌏Body Fat Percentage", systemImage: "percent")
                     }
                     
-                    Toggle(isOn: $📱.🚩BMI) {
+                    Toggle(isOn: $📱.🚩AbleBMI) {
                         Label("🌏Body Mass Index", systemImage: "function")
                     }
                     

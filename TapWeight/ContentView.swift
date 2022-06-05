@@ -30,7 +30,7 @@ struct ContentView: View {
                     📱.📝BodyMass = 📱.💾BodyMass
                 }
                 
-                if 📱.🚩BMI {
+                if 📱.🚩AbleBMI {
                     VStack(alignment: .leading) {
                         HStack(alignment: .firstTextBaseline, spacing: 4) {
                             Text("🌏Body Mass Index")
@@ -54,7 +54,7 @@ struct ContentView: View {
             }
             
             
-            if 📱.🚩BodyFat {
+            if 📱.🚩AbleBodyFat {
                 Section {
                     Stepper {
                         HStack(alignment: .firstTextBaseline, spacing: 6) {
@@ -107,16 +107,16 @@ struct ContentView: View {
                     .foregroundColor(.pink)
             }
         }
-        .fullScreenCover(isPresented: $📱.🚩Registered) {
+        .fullScreenCover(isPresented: $📱.🚩ShowResult) {
             🗯ResultView()
         }
         .onAppear {
             📱.🏥RequestAuth(.bodyMass)
         }
-        .onChange(of: 📱.🚩BodyFat) { _ in
+        .onChange(of: 📱.🚩AbleBodyFat) { _ in
             📱.🏥RequestAuth(.bodyFatPercentage)
         }
-        .onChange(of: 📱.🚩BMI) { _ in
+        .onChange(of: 📱.🚩AbleBMI) { _ in
             📱.🏥RequestAuth(.bodyMassIndex)
         }
     }
