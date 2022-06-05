@@ -89,6 +89,8 @@
 		129CBDF9284C93D300C73F4D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		129CBDFA284C93D300C73F4D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		129CBDFB284C980E00C73F4D /* 💸TextAboutAD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💸TextAboutAD.swift"; sourceTree = "<group>"; };
+		129CBDFD284C999000C73F4D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		129CBDFE284C999000C73F4D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		12AA24FA284A393300199A64 /* 📋TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📋TextView.swift"; sourceTree = "<group>"; };
 		12B694CC28360B73005F47B3 /* 💸AppName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💸AppName.swift"; sourceTree = "<group>"; };
 		12F2F8A2284B703100C3A4BA /* 💸AdBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💸AdBanner.swift"; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				Base,
 				ja,
 				"zh-Hant",
+				"zh-Hans",
 			);
 			mainGroup = 126B3E9E282DFEDF009BD28B;
 			productRefGroup = 126B3EA8282DFEDF009BD28B /* Products */;
@@ -316,6 +319,7 @@
 				126B3EC0282E0F45009BD28B /* en */,
 				126B3EC2282E0F4D009BD28B /* ja */,
 				129CBDFA284C93D300C73F4D /* zh-Hant */,
+				129CBDFE284C999000C73F4D /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -326,6 +330,7 @@
 				126B3ECF282E15E5009BD28B /* en */,
 				126B3ED1282E15E8009BD28B /* ja */,
 				129CBDF9284C93D300C73F4D /* zh-Hant */,
+				129CBDFD284C999000C73F4D /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
