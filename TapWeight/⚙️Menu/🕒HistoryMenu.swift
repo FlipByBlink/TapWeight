@@ -26,6 +26,11 @@ struct 🕒HistoryView: View {
                 .navigationBarTitleDisplayMode(.inline)
         } else {
             ScrollView {
+                Text("\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
+                    .font(.subheadline)
+                    .padding(.top)
+                    .padding(.horizontal, 32)
+                
                 ScrollView(.horizontal, showsIndicators: false) {
                     📋TextView(🕒History, "History")
                         .toolbar {

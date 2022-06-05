@@ -61,11 +61,7 @@ struct 🛠MenuList: View {
                     }
                     
                     🕒HistoryMenu()
-                } footer: {
-                    Text("\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
-                }
-                
-                Section {
+                    
                     📄DocumentMenu()
                 }
                 
