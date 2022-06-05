@@ -17,6 +17,7 @@ struct ContentView: View {
         .clipped()
         .overlay(alignment: .bottomLeading) {
             🛠MenuButton()
+                .opacity(0.66)
         }
         .overlay(alignment: .bottom) {  // ☑️
             Button {
@@ -33,6 +34,7 @@ struct ContentView: View {
         .overlay(alignment: .bottomTrailing) {
             💟JumpButton()
                 .foregroundColor(.pink)
+                .opacity(0.66)
         }
         .fullScreenCover(isPresented: $📱.🚩ShowResult) {
             🗯ResultView()
