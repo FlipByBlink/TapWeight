@@ -11,8 +11,7 @@ struct 💟JumpButton: View {
                         .imageScale(.small)
                 }
                 .font(.largeTitle)
-                .padding(.bottom, 24)
-                .padding(.trailing, 24)
+                .padding(24)
         }
         .accessibilityLabel("🌏Open \"Health\" app")
     }

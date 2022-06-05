@@ -84,9 +84,7 @@ struct 🗯ResultView: View {
                                     .font(.largeTitle)
                                     .imageScale(.large)
                                     .foregroundColor(.primary)
-                                    .padding()
-                                    .padding(.leading, 8)
-                                    .padding(.bottom, 8)
+                                    .padding(24)
                             }
                             .disabled(📱.🚩Canceled)
                             .opacity(📱.🚩Canceled ? 0.5 : 1)
@@ -102,6 +100,7 @@ struct 🗯ResultView: View {
                                         Text("(perhaps error)")
                                     }
                                 }
+                                .offset(x: -24)
                             }
                         }
                     }
@@ -114,8 +113,7 @@ struct 🗯ResultView: View {
                                 .imageScale(.small)
                                 .font(.largeTitle)
                                 .foregroundStyle(.secondary)
-                                .padding(.trailing, 24)
-                                .padding(.bottom, 8)
+                                .offset(y: 16)
                         }
                         
                         💟JumpButton()

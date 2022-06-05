@@ -12,8 +12,7 @@ struct 🛠MenuButton: View { // ⚙️
             Image(systemName: "gear")
                 .font(.largeTitle)
                 .foregroundColor(.pink)
-                .padding(.leading, 24)
-                .padding(.bottom, 24)
+                .padding(24)
         }
         .accessibilityLabel("🌏Open menu")
         .sheet(isPresented: $📱.🚩ShowMenu) {
