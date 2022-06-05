@@ -20,7 +20,7 @@ struct 🧍HeightMenu: View {
             .foregroundColor(📱.🚩AbleBMI ? .primary : .secondary)
         }
         .font(.subheadline)
-        .listRowSeparator(.hidden)
+        .listRowSeparator(.hidden, edges: .top)
     }
 }
 
