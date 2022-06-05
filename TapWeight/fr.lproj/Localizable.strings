@@ -1,6 +1,6 @@
 
-"Body Mass" = "";
+"Body Mass" = "Poids";
 
-"Body Mass Index" = "";
+"Body Mass Index" = "Indice de masse corporelle";
 
-"Body Fat Percentage" = "";
+"Body Fat Percentage" = "Indice de masse grasse";
