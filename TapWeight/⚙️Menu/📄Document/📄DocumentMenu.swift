@@ -61,7 +61,7 @@ struct 📄DocumentMenu: View {
                 
                 Section {
                     NavigationLink {
-                        Text("TextAboutAD")
+                        💸TextAboutAD()
                             .padding()
                             .navigationTitle("About self-AD")
                             .textSelection(.enabled)

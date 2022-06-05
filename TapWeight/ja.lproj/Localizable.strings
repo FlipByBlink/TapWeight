@@ -55,14 +55,14 @@
 
 "About self-AD" = "セルフ広告について";
 
-"TextAboutAD" = "広告としてAppStoreアプリケーションに関するバナーを表示します。「体重登録」デベロッパーによるアプリ群が表示対象となります。入力完了画面ではたまに広告が表示されます。それはこのアプリを7回起動する度に一時的に有効になります。";
+"This App shows banner advertisement about applications on AppStore. These are Apps by TapWeight developer. AD banner is rarely presented on result screen. It appears one in every seven times." = "広告としてAppStoreアプリケーションに関するバナーを表示します。「体重登録」デベロッパーによるアプリ群が表示対象となります。入力完了画面ではたまに広告が表示されます。それはこのアプリを7回起動する度に一時的に有効になります。";
 
 "OK" = "了解しました";
 
-"AboutFlipByBlink" = "シンプルで一般的な電子書籍リーダー(固定レイアウト向け)。特殊な機能は1つだけ。目を閉じる時間を意識的にわずかに長くさせた瞬きでページめくりができます。";
+"Simple and normal ebook reader (for fixed-layout). Only a special feature. Turn a page with slightly longish voluntary blink." = "シンプルで一般的な電子書籍リーダー(固定レイアウト向け)。特殊な機能は1つだけ。目を閉じる時間を意識的にわずかに長くさせた瞬きでページめくりができます。";
 
-"AboutFadeInAlarm" = "時間をかけて少しずつ音量が大きくなるアラームアプリ。";
+"Alarm clock with taking a long time from small volume to max volume." = "時間をかけて少しずつ音量が大きくなるアラームアプリ。";
 
-"AboutPlain将棋盤" = "ただの将棋盤。";
+"Simple Shogi board App." = "ただの将棋盤。";
 
-"AboutTapTemperature" = "「ヘルスケア」アプリに体温データを(手動としては)最速で登録するためのアプリ。";
+"Register body temperature data to the \"Health\" app pre-installed on iPhone in the fastest possible way (as manual)." = "「ヘルスケア」アプリに体温データを(手動としては)最速で登録するためのアプリ。";

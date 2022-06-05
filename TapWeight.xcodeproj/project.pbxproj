@@ -30,6 +30,7 @@
 		126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
 		126B3ED7282E2100009BD28B /* 🛠MenuButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */; };
 		129CBDF8284C7F8B00C73F4D /* 🏷VersionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129CBDF7284C7F8B00C73F4D /* 🏷VersionMenu.swift */; };
+		129CBDFC284C980E00C73F4D /* 💸TextAboutAD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129CBDFB284C980E00C73F4D /* 💸TextAboutAD.swift */; };
 		12AA24FB284A393300199A64 /* 📋TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AA24FA284A393300199A64 /* 📋TextView.swift */; };
 		12B694CD28360B73005F47B3 /* 💸AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B694CC28360B73005F47B3 /* 💸AppName.swift */; };
 		12F0E79828371A7400FDFE72 /* README.md in CopyFiles */ = {isa = PBXBuildFile; fileRef = 125AFEDA282F2B6E00E3BC4A /* README.md */; };
@@ -87,6 +88,7 @@
 		129CBDF7284C7F8B00C73F4D /* 🏷VersionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏷VersionMenu.swift"; sourceTree = "<group>"; };
 		129CBDF9284C93D300C73F4D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		129CBDFA284C93D300C73F4D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		129CBDFB284C980E00C73F4D /* 💸TextAboutAD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💸TextAboutAD.swift"; sourceTree = "<group>"; };
 		12AA24FA284A393300199A64 /* 📋TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📋TextView.swift"; sourceTree = "<group>"; };
 		12B694CC28360B73005F47B3 /* 💸AppName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💸AppName.swift"; sourceTree = "<group>"; };
 		12F2F8A2284B703100C3A4BA /* 💸AdBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💸AdBanner.swift"; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				12F2F8A6284B709A00C3A4BA /* 💸AdView.swift */,
 				12F2F8A4284B708E00C3A4BA /* 💸AdSection.swift */,
 				12F2F8A2284B703100C3A4BA /* 💸AdBanner.swift */,
+				129CBDFB284C980E00C73F4D /* 💸TextAboutAD.swift */,
 			);
 			path = "💸AD";
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			files = (
 				12F2F8A7284B709A00C3A4BA /* 💸AdView.swift in Sources */,
 				12428DCB28485F85006837F9 /* 📓SourceCodeMenu.swift in Sources */,
+				129CBDFC284C980E00C73F4D /* 💸TextAboutAD.swift in Sources */,
 				126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */,
 				1232578B284C5EA2002E0057 /* 👆BodyMassStepper.swift in Sources */,
 				12630BC12849C63E005F922F /* 🧍HeightMenu.swift in Sources */,

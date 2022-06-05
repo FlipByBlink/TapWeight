@@ -18,10 +18,17 @@ enum 💸AppName: String {
     
     var 📄About: LocalizedStringKey {
         switch self {
-            case .FlipByBlink: return "AboutFlipByBlink"
-            case .FadeInAlarm: return "AboutFadeInAlarm"
-            case .Plain将棋盤: return "AboutPlain将棋盤"
-            case .TapTemperature: return "AboutTapTemperature"
+            case .FlipByBlink:
+                return "Simple and normal ebook reader (for fixed-layout). Only a special feature. Turn a page with slightly longish voluntary blink."
+                
+            case .FadeInAlarm:
+                return "Alarm clock with taking a long time from small volume to max volume."
+                
+            case .Plain将棋盤:
+                return "Simple Shogi board App."
+                
+            case .TapTemperature:
+                return "Register body temperature data to the \"Health\" app pre-installed on iPhone in the fastest possible way (as manual)."
         }
     }
 }

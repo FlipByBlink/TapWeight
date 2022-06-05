@@ -41,7 +41,7 @@ struct 💸AdBanner: View {
                             print("Pressed OK button.")
                         }
                     } message: {
-                        Text("TextAboutAD")
+                        💸TextAboutAD()
                     }
                     .opacity(0.75)
                     .padding(.leading, 32)
