@@ -204,8 +204,7 @@
 				120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */,
 				12325789284C5E79002E0057 /* 🧩SubView */,
 				12428DCC2848608A006837F9 /* ⚙️Menu */,
-				126B3ED0282E15E5009BD28B /* InfoPlist.strings */,
-				126B3EC1282E0F45009BD28B /* Localizable.strings */,
+				129CBE13284CAD2D00C73F4D /* 🌏Localization */,
 				126B3EAE282DFEE0009BD28B /* Assets.xcassets */,
 				126B3EBC282E0159009BD28B /* Info.plist */,
 				126B3EB8282E001E009BD28B /* TapWeight.entitlements */,
@@ -228,6 +227,15 @@
 				126B3EBA282E001E009BD28B /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		129CBE13284CAD2D00C73F4D /* 🌏Localization */ = {
+			isa = PBXGroup;
+			children = (
+				126B3ED0282E15E5009BD28B /* InfoPlist.strings */,
+				126B3EC1282E0F45009BD28B /* Localizable.strings */,
+			);
+			path = "🌏Localization";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
