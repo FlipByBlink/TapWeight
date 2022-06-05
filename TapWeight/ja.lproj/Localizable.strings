@@ -1,68 +1,68 @@
 
-"🌏Body Mass" = "体重";
+"Body Mass" = "体重";
 
-"🌏Body Mass Index" = "BMI";
+"Body Mass Index" = "BMI";
 
-"🌏Body Fat Percentage" = "体脂肪率";
+"Body Fat Percentage" = "体脂肪率";
 
 
 // ======== Main View ========
-"🌏DONE" = "完了";
+"DONE" = "完了";
 
-"🌏Open \"Health\" app" = "「ヘルスケア」アプリを開く";
+"Open \"Health\" app" = "「ヘルスケア」アプリを開く";
 
-"🌏Open menu" = "メニューを開く";
+"Open menu" = "メニューを開く";
 
 
 // ======== Result View ========
-"🌏Registration for \"Health\" app" = "「ヘルスケア」アプリに登録しました。";
+"Registration for \"Health\" app" = "「ヘルスケア」アプリに登録しました。";
 
-"🌏Please check permission on \"Health\" app" = "「ヘルスケア」アプリで権限を確認して下さい。";
+"Please check permission on \"Health\" app" = "「ヘルスケア」アプリで権限を確認して下さい。";
 
-"🌏DONE!" = "完了!";
+"DONE!" = "完了!";
 
-"🌏ERROR!?" = "エラー!?";
+"ERROR!?" = "エラー!?";
 
-"🌏Canceled" = "取り消しました。";
+"Canceled" = "取り消しました。";
 
-"🌏(perhaps error)" = "(たぶん失敗しました)";
+"(perhaps error)" = "(たぶん失敗しました)";
 
-"🌏Dismiss" = "閉じる";
+"Dismiss" = "閉じる";
 
-"🌏Cancel" = "取り消す";
+"Cancel" = "取り消す";
 
 
 // ======== Menu View ========
-"🌏Option" = "オプション";
+"Option" = "オプション";
 
-"🌏Unit" = "単位";
+"Unit" = "単位";
 
-"🌏50gram" = "50グラム";
+"50gram" = "50グラム";
 
-"🌏Height" = "身長";
+"Height" = "身長";
 
-"🌏Weight" = "体重";
+"Weight" = "体重";
 
-"🌏Local history" = "ローカル履歴";
+"Local history" = "ローカル履歴";
 
-"🌏\"Local history\" is for ..." = "\"ローカル履歴\"は動作確認や簡易バックアップを目的としています。 ";
+"\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"" = "\"ローカル履歴\"は動作確認や簡易バックアップを目的としています。 ";
 
-"🌏TapWeight" = "体重登録";
+"TapWeight" = "体重登録";
 
 
 // ======== AD label =========
-"🌏self-AD" = "セルフ広告";
+"self-AD" = "セルフ広告";
 
-"🌏About self-AD" = "セルフ広告について";
+"About self-AD" = "セルフ広告について";
 
-"🌏TextAboutAD" = "広告としてAppStoreアプリケーションに関するバナーを表示します。「体重登録」デベロッパーによるアプリ群が表示対象となります。入力完了画面ではたまに広告が表示されます。それはこのアプリを7回起動する度に一時的に有効になります。";
+"TextAboutAD" = "広告としてAppStoreアプリケーションに関するバナーを表示します。「体重登録」デベロッパーによるアプリ群が表示対象となります。入力完了画面ではたまに広告が表示されます。それはこのアプリを7回起動する度に一時的に有効になります。";
 
-"🌏OK" = "了解しました";
+"OK" = "了解しました";
 
-"🌏AboutFlipByBlink" = "シンプルで一般的な電子書籍リーダー(固定レイアウト向け)。特殊な機能は1つだけ。目を閉じる時間を意識的にわずかに長くさせた瞬きでページめくりができます。";
+"AboutFlipByBlink" = "シンプルで一般的な電子書籍リーダー(固定レイアウト向け)。特殊な機能は1つだけ。目を閉じる時間を意識的にわずかに長くさせた瞬きでページめくりができます。";
 
-"🌏AboutFadeInAlarm" = "時間をかけて少しずつ音量が大きくなるアラームアプリ。";
+"AboutFadeInAlarm" = "時間をかけて少しずつ音量が大きくなるアラームアプリ。";
 
-"🌏AboutPlain将棋盤" = "ただの将棋盤。";
+"AboutPlain将棋盤" = "ただの将棋盤。";
 
-"🌏AboutTapTemperature" = "「ヘルスケア」アプリに体温データを(手動としては)最速で登録するためのアプリ。";
+"AboutTapTemperature" = "「ヘルスケア」アプリに体温データを(手動としては)最速で登録するためのアプリ。";

@@ -13,6 +13,6 @@ struct 💟JumpButton: View {
                 .font(.largeTitle)
                 .padding(24)
         }
-        .accessibilityLabel("🌏Open \"Health\" app")
+        .accessibilityLabel("Open \"Health\" app")
     }
 }

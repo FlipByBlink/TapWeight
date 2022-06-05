@@ -1,4 +1,11 @@
 
+"Body Mass" = "體重";
+
+"Body Mass Index" = "身體質量指數";
+
+"Body Fat Percentage" = "體脂肪率";
+
+
 // ======== AD label =========
 "TextAboutAD" = "This App shows banner advertisement about applications on AppStore. These are Apps by TapWeight developer. AD banner is rarely presented on result screen. It appears one in every seven times.";
 

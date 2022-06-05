@@ -18,10 +18,10 @@ enum 💸AppName: String {
     
     var 📄About: LocalizedStringKey {
         switch self {
-            case .FlipByBlink: return "🌏AboutFlipByBlink"
-            case .FadeInAlarm: return "🌏AboutFadeInAlarm"
-            case .Plain将棋盤: return "🌏AboutPlain将棋盤"
-            case .TapTemperature: return "🌏AboutTapTemperature"
+            case .FlipByBlink: return "AboutFlipByBlink"
+            case .FadeInAlarm: return "AboutFadeInAlarm"
+            case .Plain将棋盤: return "AboutPlain将棋盤"
+            case .TapTemperature: return "AboutTapTemperature"
         }
     }
 }

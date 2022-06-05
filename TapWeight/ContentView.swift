@@ -28,7 +28,7 @@ struct ContentView: View {
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(.white, .pink)
             }
-            .accessibilityLabel("🌏DONE")
+            .accessibilityLabel("DONE")
             .padding()
         }
         .overlay(alignment: .bottomTrailing) {

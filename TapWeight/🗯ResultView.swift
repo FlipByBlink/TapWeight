@@ -25,18 +25,18 @@ struct 🗯ResultView: View {
                             .font(.system(size: 96).weight(.semibold))
                             .minimumScaleFactor(0.1)
                         
-                        Text(📱.🚨RegisterError ? "🌏ERROR!?" : "🌏DONE!")
+                        Text(📱.🚨RegisterError ? "ERROR!?" : "DONE!")
                             .font(.system(size: 96).weight(.black))
                             .lineLimit(1)
                             .minimumScaleFactor(0.1)
                         
                         if 📱.🚨RegisterError {
-                            Text("🌏Please check permission on \"Health\" app")
+                            Text("Please check permission on \"Health\" app")
                                 .font(.title3.weight(.semibold))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.1)
                         } else {
-                            Text("🌏Registration for \"Health\" app")
+                            Text("Registration for \"Health\" app")
                                 .font(.title3.weight(.semibold))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.1)
@@ -72,7 +72,7 @@ struct 🗯ResultView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 .opacity(📱.🚩Canceled ? 0.33 : 1)
-                .accessibilityLabel("🌏Dismiss")
+                .accessibilityLabel("Dismiss")
             }
             .overlay(alignment: .bottomLeading) {
                 if 📱.🚨RegisterError == false {
@@ -88,16 +88,16 @@ struct 🗯ResultView: View {
                         }
                         .disabled(📱.🚩Canceled)
                         .opacity(📱.🚩Canceled ? 0.5 : 1)
-                        .accessibilityLabel("🌏Cancel")
+                        .accessibilityLabel("Cancel")
                         
                         
                         if 📱.🚩Canceled {
                             VStack {
-                                Text("🌏Canceled")
+                                Text("Canceled")
                                     .fontWeight(.semibold)
                                 
                                 if 📱.🚨CancelError {
-                                    Text("🌏(perhaps error)")
+                                    Text("(perhaps error)")
                                 }
                             }
                             .offset(x: -24)

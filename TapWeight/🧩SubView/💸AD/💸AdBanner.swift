@@ -28,7 +28,7 @@ struct 💸AdBanner: View {
                     Button {
                         🄿resentNote = true
                     } label: {
-                        Text("🌏self-AD")
+                        Text("self-AD")
                             .kerning(0.5)
                             .underline()
                             .foregroundColor(.white)
@@ -36,12 +36,12 @@ struct 💸AdBanner: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.1)
                     }
-                    .alert("🌏About self-AD", isPresented: $🄿resentNote) {
-                        Button("🌏OK") {
+                    .alert("About self-AD", isPresented: $🄿resentNote) {
+                        Button("OK") {
                             print("Pressed OK button.")
                         }
                     } message: {
-                        Text("🌏TextAboutAD")
+                        Text("TextAboutAD")
                     }
                     .opacity(0.75)
                     .padding(.leading, 32)

@@ -61,12 +61,12 @@ struct 📄DocumentMenu: View {
                 
                 Section {
                     NavigationLink {
-                        Text("🌏TextAboutAD")
+                        Text("TextAboutAD")
                             .padding()
-                            .navigationTitle("🌏About self-AD")
+                            .navigationTitle("About self-AD")
                             .textSelection(.enabled)
                     } label: {
-                        Label("🌏About self-AD", systemImage: "exclamationmark.bubble")
+                        Label("About self-AD", systemImage: "exclamationmark.bubble")
                     }
                 }
                 

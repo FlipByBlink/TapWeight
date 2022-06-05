@@ -9,7 +9,7 @@ struct 🧍HeightMenu: View {
             🧍HeightEditView()
         } label: {
             HStack {
-                Label("🌏Height", systemImage: "figure.stand")
+                Label("Height", systemImage: "figure.stand")
                 
                 Spacer()
                 
@@ -54,21 +54,21 @@ struct 🧍HeightEditView: View {
                     
                     VStack(spacing: 16) {
                         HStack(spacing: 2) {
-                            Text("🌏Weight")
+                            Text("Weight")
                             
                             Text("(kg)")
                                 .font(.subheadline)
                         }
                         
                         HStack(spacing: 2) {
-                            Text("🌏Height")
+                            Text("Height")
                             
                             Text("(m)")
                                 .font(.subheadline)
                             
                             Text(" × ")
                             
-                            Text("🌏Height")
+                            Text("Height")
                             
                             Text("(m)")
                                 .font(.subheadline)
@@ -87,7 +87,7 @@ struct 🧍HeightEditView: View {
             Spacer()
         }
         .padding()
-        .navigationTitle("🌏Height")
+        .navigationTitle("Height")
         .onAppear {
             📝Height = 📱.🧍Height
         }

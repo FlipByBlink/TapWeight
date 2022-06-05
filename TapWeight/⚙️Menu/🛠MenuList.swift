@@ -15,7 +15,7 @@ struct 🛠MenuList: View {
                             Text(🏷.rawValue)
                         }
                     } label: {
-                        Label("🌏Unit", systemImage: "scalemass")
+                        Label("Unit", systemImage: "scalemass")
                     }
                     .onChange(of: 📱.📏Unit) { 📏 in
                         if 📏 != .kg {
@@ -30,14 +30,14 @@ struct 🛠MenuList: View {
                     }
                     .font(.subheadline)
                     .disabled(📱.📏Unit != .kg)
-                    .accessibilityLabel("🌏50gram")
+                    .accessibilityLabel("50gram")
                 } header: {
-                    Text("🌏Option")
+                    Text("Option")
                 }
                  
                 Section {
                     Toggle(isOn: $📱.🚩AbleBMI) {
-                        Label("🌏Body Mass Index", systemImage: "function")
+                        Label("Body Mass Index", systemImage: "function")
                     }
                     
                     🧍HeightMenu()
@@ -45,14 +45,14 @@ struct 🛠MenuList: View {
                 
                 Section {
                     Toggle(isOn: $📱.🚩AbleBodyFat) {
-                        Label("🌏Body Fat Percentage", systemImage: "percent")
+                        Label("Body Fat Percentage", systemImage: "percent")
                     }
                 }
                 
                 Section {
                     Link (destination: URL(string: "x-apple-health://")!) {
                         HStack {
-                            Label("🌏Open \"Health\" app", systemImage: "heart")
+                            Label("Open \"Health\" app", systemImage: "heart")
                             
                             Spacer()
                             
@@ -62,7 +62,7 @@ struct 🛠MenuList: View {
                     
                     🕒HistoryMenu()
                 } footer: {
-                    Text("🌏\"Local history\" is for ...")
+                    Text("\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
                 }
                 
                 Section {
@@ -71,7 +71,7 @@ struct 🛠MenuList: View {
                 
                 💸AdSection()
             }
-            .navigationTitle("🌏TapWeight")
+            .navigationTitle("TapWeight")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -82,7 +82,7 @@ struct 🛠MenuList: View {
                             .grayscale(1.0)
                             .padding(8)
                     }
-                    .accessibilityLabel("🌏Dismiss")
+                    .accessibilityLabel("Dismiss")
                 }
             }
         }

@@ -14,7 +14,7 @@ struct 🛠MenuButton: View { // ⚙️
                 .foregroundColor(.pink)
                 .padding(24)
         }
-        .accessibilityLabel("🌏Open menu")
+        .accessibilityLabel("Open menu")
         .sheet(isPresented: $📱.🚩ShowMenu) {
             🛠MenuList()
                 .onDisappear {

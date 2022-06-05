@@ -8,7 +8,7 @@ struct 🕒HistoryMenu: View {
         NavigationLink  {
             🕒HistoryView(🕒History: $📱.🕒History)
         } label: {
-            Label("🌏Local history", systemImage: "clock")
+            Label("Local history", systemImage: "clock")
         }
     }
 }

@@ -53,7 +53,7 @@ struct 👆BodyMassStepper: View {
             if 📱.🚩AbleBMI {
                 VStack(alignment: .leading) {
                     HStack(alignment: .firstTextBaseline, spacing: 4) {
-                        Text("🌏Body Mass Index")
+                        Text("Body Mass Index")
                         
                         Text("(" + 📱.🧍Height.description + "cm)")
                             .scaleEffect(0.8, anchor: .leading)
@@ -70,7 +70,7 @@ struct 👆BodyMassStepper: View {
                 .foregroundStyle(.secondary)
             }
         } header: {
-            Text("🌏Body Mass")
+            Text("Body Mass")
         }
     }
 }

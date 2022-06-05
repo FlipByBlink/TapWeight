@@ -13,7 +13,7 @@ struct 💸AdSection: View {
             💸AdView(.TapTemperature)
                 .padding(.leading, 4)
         } header: {
-            Text("🌏self-AD")
+            Text("self-AD")
         }
     }
 }

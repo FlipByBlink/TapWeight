@@ -30,7 +30,7 @@ struct 👆BodyFatStepper: View {
                 📱.📝BodyFat = 📱.💾BodyFat
             }
         } header: {
-            Text("🌏Body Fat Percentage")
+            Text("Body Fat Percentage")
         }
     }
 }
