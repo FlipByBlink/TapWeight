@@ -46,38 +46,43 @@ struct 🧍HeightEditView: View {
             .padding()
             .padding(.vertical, 48)
             
-            HStack {
-                Text("BMI = ")
-                    .font(.title2)
-                
-                VStack(spacing: 16) {
-                    HStack(spacing: 2) {
-                        Text("Weight")
-                        
-                        Text("(kg)")
-                            .font(.subheadline)
-                    }
+            
+            Group {
+                HStack {
+                    Text("BMI = ")
+                        .font(.title3)
                     
-                    HStack(spacing: 2) {
-                        Text("Height")
+                    VStack(spacing: 16) {
+                        HStack(spacing: 2) {
+                            Text("Weight")
+                            
+                            Text("(kg)")
+                                .font(.subheadline)
+                        }
                         
-                        Text("(m)")
-                            .font(.subheadline)
-                        
-                        Text(" × ")
-                        
-                        Text("Height")
-                        
-                        Text("(m)")
-                            .font(.subheadline)
+                        HStack(spacing: 2) {
+                            Text("Height")
+                            
+                            Text("(m)")
+                                .font(.subheadline)
+                            
+                            Text(" × ")
+                            
+                            Text("Height")
+                            
+                            Text("(m)")
+                                .font(.subheadline)
+                        }
                     }
-                }
-                .padding()
-                .overlay {
-                    Rectangle()
-                        .frame(height: 2)
+                    .padding()
+                    .overlay {
+                        Rectangle()
+                            .frame(height: 2)
+                    }
                 }
             }
+            .lineLimit(1)
+            .minimumScaleFactor(0.1)
             
             Spacer()
         }

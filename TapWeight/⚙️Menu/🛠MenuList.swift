@@ -87,15 +87,3 @@ struct 🛠MenuList: View {
         }
     }
 }
-
-
-
-
-struct MenuList_Previews: PreviewProvider {
-    static let 📱 = 📱Model()
-    
-    static var previews: some View {
-        🛠MenuList()
-            .environmentObject(📱)
-    }
-}
