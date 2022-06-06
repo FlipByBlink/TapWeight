@@ -22,19 +22,19 @@ struct 🏷VersionMenu: View {
 
 let 🕒VersionHistory = """
 🕒 Version 1.1 : (2022-06-06?)
-- Add "Cancel" feature.
+- Add "Cancel" feature just after registration.
 - Add 100g/50g amount opiton of stepper.
 - Improve several small UI design.
 - Change local history format to CSV style.
-- Add 3 keywords(Body Mass/Body Mass Index/Body Fat Percentage) localization for Simplified_Chinese, Traditional_Chinese, Spanish, Portuguese, Russian, Indonesian, French, Arabic, German, Korean.
 - Add Version History to App Document.
-==== Native(japanese) ====
+- Add 3 keywords(Body Mass/Body Mass Index/Body Fat Percentage) localization for Simplified_Chinese, Traditional_Chinese, Spanish, Portuguese, Russian, Indonesian, French, Arabic, German, Korean.
+==== Japanese(native) description ====
 - 取り消し機能の追加
 - 体重の入力単位を100gから50gへ変更するオプションの追加
 - 様々な細かなUIの改善
 - ローカル履歴の形式をCSVスタイルに変更
-- 主要3単語(体重/BMI/体脂肪率)のローカライズを追加。中国語簡体字/繁体字/スペイン語/ポルトガル語/ロシア語/インドネシア語/フランス語/アラビア語/ドイツ語/韓国語。
 - App Documentにバージョン履歴項目を追加
+- 主要3単語(体重/BMI/体脂肪率)のローカライズを追加。中国語簡体字/繁体字/スペイン語/ポルトガル語/ロシア語/インドネシア語/フランス語/アラビア語/ドイツ語/韓国語。
 
 
 🕒 Version 1.0 : 2022-05-23

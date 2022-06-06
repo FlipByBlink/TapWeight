@@ -2,31 +2,8 @@
 import SwiftUI
 
 struct 📓SourceCodeMenu: View {
-    
-//    var 📁URL: URL {
-//        Bundle.main.bundleURL.appendingPathComponent("📁")
-//    }
-//    
-//    var 🏷Name: [String] {
-//        try! FileManager.default.contentsOfDirectory(atPath: 📁URL.path)
-//    }
-    
     var body: some View {
         List {
-//            Section {
-//                ForEach(🏷Name, id: \.self) { 🏷 in
-//                    NavigationLink(🏷) {
-//                        let 📍 = 📁URL.appendingPathComponent(🏷)
-//                        ScrollView {
-//                            ScrollView(.horizontal, showsIndicators: false) {
-//                                📋TextView(try! String(contentsOf: 📍), 🏷)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-            
-            
             📰CodeSection("📁0")
             
             📰CodeSection("📁1")

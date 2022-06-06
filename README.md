@@ -10,7 +10,7 @@
 
 [apps.apple.com/app/id1624159721](https://apps.apple.com/app/id1624159721)
 
-<!-- Manually sync below text between "🛠Menu.swift/📄About" and "AppStoreConnect/TapWeight/Description" and "/README.md(here)". -->
+<!-- Manually sync below text between "🛠Menu.swift/📄About" and "/README.md(here)" and "AppStoreConnect/TapWeight/Description". -->
 
 ## 📄 Description
 
@@ -32,15 +32,19 @@ This app cannot read, view, or manage past data in "Health" app. This app is int
 
 【OPTION】
 
-- With body fat percentage.
+- Unit: kg, lbs, st
+
+- 100g/50g amount option.
 
 - With body mass index automatically.
 
-- Unit: kg, lbs, st
+- With body fat percentage.
 
 【OTHERS】
 
 - Launch "Health" app by one tap.
+
+- Cancel feature just after registration.
 
 - Local history for the purpose of "operation check" / "temporary backup".
 
@@ -50,9 +54,8 @@ This app cannot read, view, or manage past data in "Health" app. This app is int
 
 - Rarely appear AD banner of app by TapWeight developer.
 
-<br>
 
-==== Native(japanese) ====
+==== Japanese(native) Description ====
 
 iPhoneにプリインストールされているApple「ヘルスケア」アプリに体重データを(手動としては)最速で登録するためのアプリです。
 
@@ -72,15 +75,19 @@ iPhoneにプリインストールされているApple「ヘルスケア」アプ
 
 【オプション】
 
-- 体脂肪率も同時に登録可能。
+- 単位: kg, lbs, st
+
+- 入力単位を100gから50gへ変更可能。
 
 - BMIを自動的に計算して同時に登録可能。
 
-- 単位: kg, lbs, st
+- 体脂肪率も同時に登録可能。
 
 【その他】
 
 - このアプリ内からApple「ヘルスケア」アプリをワンタップで立ち上げ可能。
+
+- 登録直後に登録を取り消し可能。
 
 - 動作確認や簡易バックアップを想定した端末内での履歴機能。
 
@@ -89,6 +96,26 @@ iPhoneにプリインストールされているApple「ヘルスケア」アプ
 - すべての機能を無料で利用できます。
 
 - 自作アプリに関するバナー広告をアプリ内で比較的控えめに表示します。
+
+
+==== Localization: All ====
+English
+
+==== Localization: Almost all ====
+Japanese(native)
+
+==== Localization: Main 3 keywords only ====
+(English: Body Mass / Body Mass Index / Body Fat Percentage)
+Simplified_Chinese: 体重 / 身高体重指数 / 体脂率
+Traditional_Chinese: 體重 / 身體質量指數 / 體脂肪率
+Spanish: Peso / Índice de masa corporal / Porcentaje de grasa corporal
+Portuguese: Peso / Índice de massa corporal / Percentagem de gordura
+Russian: Вес / Индекс массы тела / Процент жира в организме
+Indonesian: Berat Badan / Indeks Massa Tubuh / Persentase Lemak Tubuh
+French: Poids / Indice de masse corporelle / Indice de masse grasse
+Arabic: الوزن (Body Mass) / مؤشر كتلة الجسم (Body Mass Index) / نسبة الدهون في الجسم (Body Fat Percentage)
+German: Gewicht / Body-Mass-Index / Körperfettanteil
+Korean: 체중 / 체질량 지수 / 체지방률
 
 <br>
 
