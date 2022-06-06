@@ -30,7 +30,7 @@ struct 🕒HistoryView: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .padding(.top)
-                    .padding(.horizontal, 24)
+                    .padding(32)
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     📋TextView(🕒History, "History")
