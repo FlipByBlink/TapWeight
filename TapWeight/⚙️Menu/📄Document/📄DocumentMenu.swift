@@ -12,12 +12,12 @@ struct 📄DocumentMenu: View {
                 Section {
                     NavigationLink {
                         ScrollView {
-                            📋TextView(📄About, "About app")
+                            📋TextView(📄About, "About App")
                         }
                     } label: {
                         Text(📄About)
                             .font(.subheadline)
-                            .lineLimit(7)
+                            .lineLimit(4)
                             .padding(8)
                     }
                 } header: {
@@ -25,7 +25,7 @@ struct 📄DocumentMenu: View {
                 }
                 
                 
-                let 🔗 = "https://apps.apple.com/developer/id1347562710"
+                let 🔗 = "https://apps.apple.com/app/id1624159721"
                 Section {
                     Link(destination: URL(string: 🔗)!) {
                         HStack {
