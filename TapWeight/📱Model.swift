@@ -49,7 +49,7 @@ class 📱Model: ObservableObject {
     
     let 🏥HealthStore = HKHealthStore()
     
-    var 📦Cache: [HKQuantitySample] = []
+    var 📦Sample: [HKQuantitySample] = []
     
     
     @MainActor
@@ -68,23 +68,23 @@ class 📱Model: ObservableObject {
         
         
         do {
-            var 🅂ample = [HKQuantitySample(type: HKQuantityType(.bodyMass),
+            📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
                                            quantity: HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass),
-                                           start: .now, end: .now)]
+                                           start: .now, end: .now))
             
             if 🚩AbleBodyFat {
-                🅂ample.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
+                📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
                                                 quantity: HKQuantity(unit: .percent(), doubleValue: 📝BodyFat),
                                                 start: .now, end: .now))
             }
             
             if 🚩AbleBMI {
-                🅂ample.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
+                📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
                                                 quantity: HKQuantity(unit: .count(), doubleValue: 📝BMI),
                                                 start: .now, end: .now))
             }
             
-            try await 🏥HealthStore.save(🅂ample)
+            try await 🏥HealthStore.save(📦Sample)
             
             💾BodyMass = 📝BodyMass
             🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
@@ -98,8 +98,6 @@ class 📱Model: ObservableObject {
             
             🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BMI, "
             🕒History += 📝BMI.description + "\n"
-            
-            📦Cache = 🅂ample
             
             🚩ShowResult = true
         } catch {
@@ -145,9 +143,9 @@ class 📱Model: ObservableObject {
         do {
             🚩Canceled = true
             
-            try await 🏥HealthStore.delete(📦Cache)
+            try await 🏥HealthStore.delete(📦Sample)
             
-            📦Cache = []
+            📦Sample = []
             
             🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", "
             🕒History += "Cancel: Success\n"
@@ -168,5 +166,6 @@ class 📱Model: ObservableObject {
         🚨RegisterError = false
         🚩Canceled = false
         🚨CancelError = false
+        📦Sample = []
     }
 }
