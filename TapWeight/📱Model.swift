@@ -141,6 +141,8 @@ class 📱Model: ObservableObject {
     @MainActor
     func 🗑Cancel() async {
         do {
+            🚩Canceled = true
+            
             try await 🏥HealthStore.delete(📦Cache)
             
             📦Cache = []
@@ -149,12 +151,11 @@ class 📱Model: ObservableObject {
             🕒History += "Cancel: Success\n"
             
             UINotificationFeedbackGenerator().notificationOccurred(.error)
-            
-            🚩Canceled = true
         } catch {
-            //うまくいかない
-            🕒History += "Cancel: Error?! " + error.localizedDescription + "\n"
-            🚨CancelError = true
+            DispatchQueue.main.async {
+                self.🕒History += "Cancel: Error?! " + error.localizedDescription + "\n"
+                self.🚨CancelError = true
+            }
         }
     }
     
