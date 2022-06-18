@@ -103,9 +103,12 @@ class 📱Model: ObservableObject {
             
             🚩ShowResult = true
         } catch {
-            print(error)
-            🚨RegisterError = true
-            🕒History += ".save Error?! " + error.localizedDescription + "\n"
+            DispatchQueue.main.async {
+                print(#function, error)
+                self.🚨RegisterError = true
+                self.🕒History += ".save Error?! " + error.localizedDescription + "\n"
+                self.🚩ShowResult = true
+            }
         }
     }
     
@@ -153,6 +156,7 @@ class 📱Model: ObservableObject {
             UINotificationFeedbackGenerator().notificationOccurred(.error)
         } catch {
             DispatchQueue.main.async {
+                print(#function, error)
                 self.🕒History += "Cancel: Error?! " + error.localizedDescription + "\n"
                 self.🚨CancelError = true
             }
