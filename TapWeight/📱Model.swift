@@ -49,11 +49,7 @@ class 📱Model: ObservableObject {
     
     let 🏥HealthStore = HKHealthStore()
     
-    
     var 📦Cache: [HKQuantitySample] = []
-    var 📦CacheBodyMass: HKQuantitySample?
-    var 📦CacheBodyFat: HKQuantitySample?
-    var 📦CacheBMI: HKQuantitySample?
     
     
     @MainActor
@@ -142,62 +138,24 @@ class 📱Model: ObservableObject {
     }
     
     
-    func 🗑Cancel() {
-        if let 📦 = 📦CacheBodyMass {
-            🏥HealthStore.delete(📦) { 🙆, 🙅 in
-                DispatchQueue.main.async {
-                    self.🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
-                    
-                    if 🙆 {
-                        self.🕒History += "Cancel: Success\n"
-                        self.📦CacheBodyMass = nil
-                    } else {
-                        self.🕒History += "Cancel: Error?! " + 🙅.debugDescription + "\n"
-                        self.🚨CancelError = true
-                    }
-                }
-            }
+    @MainActor
+    func 🗑Cancel() async {
+        do {
+            try await 🏥HealthStore.delete(📦Cache)
+            
+            📦Cache = []
+            
+            🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", "
+            🕒History += "Cancel: Success\n"
+            
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            
+            🚩Canceled = true
+        } catch {
+            //うまくいかない
+            🕒History += "Cancel: Error?! " + error.localizedDescription + "\n"
+            🚨CancelError = true
         }
-        
-        if 🚩AbleBodyFat {
-            if let 📦 = 📦CacheBodyFat {
-                🏥HealthStore.delete(📦) { 🙆, 🙅 in
-                    DispatchQueue.main.async {
-                        self.🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
-                        
-                        if 🙆 {
-                            self.🕒History += "Cancel: Success\n"
-                            self.📦CacheBodyFat = nil
-                        } else {
-                            self.🕒History += "Cancel: Error?! " + 🙅.debugDescription + "\n"
-                            self.🚨CancelError = true
-                        }
-                    }
-                }
-            }
-        }
-        
-        if 🚩AbleBMI {
-            if let 📦 = 📦CacheBMI {
-                🏥HealthStore.delete(📦) { 🙆, 🙅 in
-                    DispatchQueue.main.async {
-                        self.🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BMI, "
-                        
-                        if 🙆 {
-                            self.🕒History += "Cancel: Success\n"
-                            self.📦CacheBMI = nil
-                        } else {
-                            self.🕒History += "Cancel: Error?! " + 🙅.debugDescription + "\n"
-                            self.🚨CancelError = true
-                        }
-                    }
-                }
-            }
-        }
-        
-        UINotificationFeedbackGenerator().notificationOccurred(.error)
-        
-        🚩Canceled = true
     }
     
     

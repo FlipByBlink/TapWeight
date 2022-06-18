@@ -78,7 +78,9 @@ struct 🗯ResultView: View {
                 if 📱.🚨RegisterError == false {
                     HStack {
                         Button {
-                            📱.🗑Cancel()
+                            Task {
+                                await 📱.🗑Cancel()
+                            }
                         } label: {
                             Image(systemName: "arrow.uturn.backward.circle")
                                 .font(.largeTitle)
