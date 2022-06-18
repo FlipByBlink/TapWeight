@@ -21,7 +21,9 @@ struct ContentView: View {
         }
         .overlay(alignment: .bottom) {
             Button { // ☑️
-                📱.👆Register()
+                Task {
+                    await 📱.👆Register()
+                }
             } label: {
                 Image(systemName: "checkmark.circle.fill")
                     .font(.system(size: 120))

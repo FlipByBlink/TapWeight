@@ -50,12 +50,14 @@ class 📱Model: ObservableObject {
     let 🏥HealthStore = HKHealthStore()
     
     
+    var 📦Cache: [HKQuantitySample] = []
     var 📦CacheBodyMass: HKQuantitySample?
     var 📦CacheBodyFat: HKQuantitySample?
     var 📦CacheBMI: HKQuantitySample?
     
     
-    func 👆Register() {
+    @MainActor
+    func 👆Register() async {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
         
         if 🏥AuthDenied(.bodyMass) { return }
@@ -70,70 +72,45 @@ class 📱Model: ObservableObject {
         
         
         do {
-            let 🅂ample = HKQuantitySample(type: HKQuantityType(.bodyMass),
+            var 🅂ample = [HKQuantitySample(type: HKQuantityType(.bodyMass),
                                            quantity: HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass),
-                                           start: .now, end: .now)
+                                           start: .now, end: .now)]
             
-            🏥HealthStore.save(🅂ample) { 🙆, 🙅 in
-                DispatchQueue.main.async { [self] in
-                    🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
-                    
-                    if 🙆 {
-                        💾BodyMass = 📝BodyMass
-                        🕒History += 📝BodyMass.description + ", " + 📏Unit.rawValue + "\n"
-                        📦CacheBodyMass = 🅂ample
-                    } else {
-                        🚨RegisterError = true
-                        🕒History += ".save Error?! " + 🙅.debugDescription + "\n"
-                    }
-                }
+            if 🚩AbleBodyFat {
+                🅂ample.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
+                                                quantity: HKQuantity(unit: .percent(), doubleValue: 📝BodyFat),
+                                                start: .now, end: .now))
             }
-        }
-        
-        
-        if 🚩AbleBodyFat {
-            let 🅂ample = HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
-                                           quantity: HKQuantity(unit: .percent(), doubleValue: 📝BodyFat),
-                                           start: .now, end: .now)
             
-            🏥HealthStore.save(🅂ample) { 🙆, 🙅 in
-                DispatchQueue.main.async { [self] in
-                    🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
-                    
-                    if 🙆 {
-                        💾BodyFat = 📝BodyFat
-                        🕒History += (round(📝BodyFat*1000)/10).description + ", %\n"
-                        📦CacheBodyFat = 🅂ample
-                    } else {
-                        🚨RegisterError = true
-                        🕒History += ".save Error?! " + 🙅.debugDescription + "\n"
-                    }
-                }
+            if 🚩AbleBMI {
+                🅂ample.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
+                                                quantity: HKQuantity(unit: .count(), doubleValue: 📝BMI),
+                                                start: .now, end: .now))
             }
-        }
-        
-        
-        if 🚩AbleBMI {
-            let 🅂ample = HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
-                                           quantity: HKQuantity(unit: .count(), doubleValue: 📝BMI),
-                                           start: .now, end: .now)
             
-            🏥HealthStore.save(🅂ample) { 🙆, 🙅 in
-                DispatchQueue.main.async { [self] in
-                    🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BMI, "
-                    
-                    if 🙆 {
-                        🕒History += 📝BMI.description + "\n"
-                        📦CacheBMI = 🅂ample
-                    } else {
-                        🚨RegisterError = true
-                        🕒History += ".save Error?! " + 🙅.debugDescription + "\n"
-                    }
-                }
+            try await 🏥HealthStore.save(🅂ample)
+            
+            💾BodyMass = 📝BodyMass
+            🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
+            🕒History += 📝BodyMass.description + ", " + 📏Unit.rawValue + "\n"
+            
+            if 🚩AbleBodyFat {
+                💾BodyFat = 📝BodyFat
+                🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
+                🕒History += (round(📝BodyFat*1000)/10).description + ", %\n"
             }
+            
+            🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BMI, "
+            🕒History += 📝BMI.description + "\n"
+            
+            📦Cache = 🅂ample
+            
+            🚩ShowResult = true
+        } catch {
+            print(error)
+            🚨RegisterError = true
+            🕒History += ".save Error?! " + error.localizedDescription + "\n"
         }
-        
-        🚩ShowResult = true
     }
     
     
