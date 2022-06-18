@@ -127,14 +127,13 @@ class 📱Model: ObservableObject {
     
     
     func 🏥RequestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) {
-        if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓘdentifier)) == .notDetermined {
-            let 🅃ype: Set<HKSampleType> = [HKQuantityType(ⓘdentifier)]
-            🏥HealthStore.requestAuthorization(toShare: 🅃ype, read: nil) { 🙆, 🙅 in
-                if 🙆 {
-                    print("🏥RequestAuth/" + ⓘdentifier.rawValue + ": Done")
-                } else {
-                    print("🏥RequestAuth/" + ⓘdentifier.rawValue + ": ERROR")
-                    print("🙅:", 🙅.debugDescription)
+        let 🅃ype: HKSampleType = HKQuantityType(ⓘdentifier)
+        if 🏥HealthStore.authorizationStatus(for: 🅃ype) == .notDetermined {
+            Task {
+                do {
+                    try await 🏥HealthStore.requestAuthorization(toShare: [🅃ype], read: [])
+                } catch {
+                    print(#function, error)
                 }
             }
         }
