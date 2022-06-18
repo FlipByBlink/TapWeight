@@ -21,7 +21,14 @@ struct 🏷VersionMenu: View {
 }
 
 let 🕒VersionHistory = """
-🕒 Version 1.1 : (2022-06-06?)
+🕒 Version 1.1.1 : (2022-06-19?)
+==== English Description ====
+- Add "Hide AD banner" option. (in-app-purchase)
+==== Japanese(native) description ====
+- 広告バナー非表示オプション(アプリ内課金)を追加
+
+
+🕒 Version 1.1 : 2022-06-06
 ==== English Description ====
 - Add "Cancel" feature just after registration.
 - Add 100g/50g amount opiton of stepper.

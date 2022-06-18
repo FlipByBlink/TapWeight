@@ -35,7 +35,7 @@ struct 📓SourceCodeMenu: View {
             Section {
                 Link(destination: URL(string: Repository🔗)!) {
                     HStack {
-                        Label("Web Repository link", systemImage: "link")
+                        Label("Web Repository", systemImage: "link")
                         
                         Spacer()
                         
@@ -44,6 +44,22 @@ struct 📓SourceCodeMenu: View {
                 }
             } footer: {
                 Text(Repository🔗)
+            }
+            
+            
+            let Mirror🔗 = "https://gitlab.com/FlipByBlink/FlipByBlink_ver3_Mirror"
+            Section {
+                Link(destination: URL(string: Mirror🔗)!) {
+                    HStack {
+                        Label("Web Repository (Mirror)", systemImage: "link")
+                        
+                        Spacer()
+                        
+                        Image(systemName: "arrow.up.forward.app")
+                    }
+                }
+            } footer: {
+                Text(Mirror🔗)
             }
         }
         .navigationTitle("Source code")
