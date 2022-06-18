@@ -11,9 +11,7 @@ struct 📄DocumentMenu: View {
                 
                 Section {
                     NavigationLink {
-                        ScrollView {
-                            📋TextView(📄About, "About App")
-                        }
+                        📋TextView(📄About, "About App")
                     } label: {
                         Text(📄About)
                             .font(.subheadline)

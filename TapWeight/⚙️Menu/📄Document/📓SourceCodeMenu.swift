@@ -84,11 +84,7 @@ struct 📰CodeSection: View {
                 NavigationLink(🏷) {
                     let 📍 = 📁URL.appendingPathComponent(🏷)
                     
-                    ScrollView(.vertical) {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            📋TextView(try! String(contentsOf: 📍), 🏷)
-                        }
-                    }
+                    📋TextView(try! String(contentsOf: 📍), 🏷, ⓗorizonScroll: true)
                 }
             }
         }
@@ -105,9 +101,7 @@ struct 📑BundleMainInfoDictionary: View {
     var body: some View {
         Section {
             NavigationLink("Bundle.main.infoDictionary") {
-                ScrollView {
-                    📋TextView(🄱undleMainInfoDictionary, "Bundle.main.infoDictionary")
-                }
+                📋TextView(🄱undleMainInfoDictionary, "Bundle.main.infoDictionary")
             }
         }
     }

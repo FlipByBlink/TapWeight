@@ -25,26 +25,25 @@ struct 🕒HistoryView: View {
                 .navigationTitle("History")
                 .navigationBarTitleDisplayMode(.inline)
         } else {
-            ScrollView {
+            VStack (spacing: 0) {
                 Text("\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
                     .font(.caption)
                     .foregroundStyle(.secondary)
-                    .padding(.top)
-                    .padding(32)
+                    .padding(24)
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    📋TextView(🕒History, "History")
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button {
-                                    🕒History = ""
-                                } label: {
-                                    Image(systemName: "trash")
-                                        .tint(.red)
-                                }
+                Color.primary
+                    .frame(height: 0.33)
+                📋TextView(🕒History, "History", ⓗorizonScroll: true)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button {
+                                🕒History = ""
+                            } label: {
+                                Image(systemName: "trash")
+                                    .tint(.red)
                             }
                         }
-                }
+                    }
             }
         }
     }

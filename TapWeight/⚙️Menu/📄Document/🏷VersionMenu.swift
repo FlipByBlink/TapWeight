@@ -9,7 +9,7 @@ struct 🏷VersionMenu: View {
                     📋TextView(🕒VersionHistory, "Version History")
                 }
             } label: {
-                Label("1.1" , systemImage: "signpost.left")
+                Label("1.1.1" , systemImage: "signpost.left")
             }
         } header: {
             Text("Version")
