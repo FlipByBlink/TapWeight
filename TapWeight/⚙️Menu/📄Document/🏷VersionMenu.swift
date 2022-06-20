@@ -21,7 +21,7 @@ struct 🏷VersionMenu: View {
 }
 
 let 🕒VersionHistory = """
-🕒 Version 1.1.1 : (2022-06-19?)
+🕒 Version 1.1.1 : (2022-06-21?)
 ==== English description ====
 - Add "Hide AD banner" option. (in-app-purchase)
 ==== Japanese(native) description ====

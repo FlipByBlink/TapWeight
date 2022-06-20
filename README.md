@@ -42,6 +42,8 @@ This app cannot read, view, or manage past data in "Health" app. This app is int
 
 - With body fat percentage.
 
+- Option to hide AD banner. (In-App-Purchase)
+
 【OTHERS】
 
 - Launch "Health" app by one tap.
@@ -84,6 +86,8 @@ iPhoneにプリインストールされているApple「ヘルスケア」アプ
 - BMIを自動的に計算して同時に登録可能。
 
 - 体脂肪率も同時に登録可能。
+
+- 広告バナー非表示オプション。(アプリ内課金)
 
 【その他】
 
