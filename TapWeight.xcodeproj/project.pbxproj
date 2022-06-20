@@ -52,6 +52,7 @@
 		12BA83C92860525B009E7E3F /* 🏬PurchaseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA83C72860525B009E7E3F /* 🏬PurchaseSection.swift */; };
 		12BA83CA2860525B009E7E3F /* 🏬Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA83C82860525B009E7E3F /* 🏬Store.swift */; };
 		12BA83CC2860535A009E7E3F /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12BA83CB2860535A009E7E3F /* Configuration.storekit */; };
+		12BA83CE28606047009E7E3F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12BA83CD28606047009E7E3F /* StoreKit.framework */; };
 		12F2F8A3284B703100C3A4BA /* 💸ADBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F2F8A2284B703100C3A4BA /* 💸ADBanner.swift */; };
 		12F2F8A7284B709A00C3A4BA /* 💸ADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F2F8A6284B709A00C3A4BA /* 💸ADView.swift */; };
 /* End PBXBuildFile section */
@@ -171,6 +172,7 @@
 		12BA83C72860525B009E7E3F /* 🏬PurchaseSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🏬PurchaseSection.swift"; sourceTree = "<group>"; };
 		12BA83C82860525B009E7E3F /* 🏬Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🏬Store.swift"; sourceTree = "<group>"; };
 		12BA83CB2860535A009E7E3F /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
+		12BA83CD28606047009E7E3F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		12F2F8A2284B703100C3A4BA /* 💸ADBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💸ADBanner.swift"; sourceTree = "<group>"; };
 		12F2F8A6284B709A00C3A4BA /* 💸ADView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💸ADView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				126B3EBB282E001E009BD28B /* HealthKit.framework in Frameworks */,
+				12BA83CE28606047009E7E3F /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +284,7 @@
 		126B3EB9282E001E009BD28B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				12BA83CD28606047009E7E3F /* StoreKit.framework */,
 				126B3EBA282E001E009BD28B /* HealthKit.framework */,
 			);
 			name = Frameworks;
@@ -607,7 +611,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.TapWeight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -639,7 +643,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.TapWeight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
