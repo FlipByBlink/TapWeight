@@ -40,7 +40,7 @@ struct 💸ADView: View {
         if let 🏷 = ⓐppName {
             🄰ppName = 🏷
         } else {
-            🄰ppName = 💸AppName.allCases.randomElement()! //読み込みが途中で行われ点滅するパターンがある
+            🄰ppName = 💸AppName.allCases.randomElement()!
         }
     }
 }
