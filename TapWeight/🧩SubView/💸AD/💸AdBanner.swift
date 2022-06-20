@@ -9,9 +9,7 @@ struct 💸ADBanner: View {
     
     @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
     
-    var 🅃iming: Int = 1 //7
-    
-    @State private var 🆔App = 💸AppName.allCases.randomElement()!
+    var 🅃iming: Int = 1 // 7
     
     var body: some View {
         Group {
@@ -19,7 +17,7 @@ struct 💸ADBanner: View {
                 Spacer()
             } else {
                 if 🚩ShowBanner {
-                    💸ADView(🆔App)
+                    💸ADView()
                         .padding(.horizontal)
                         .overlay(alignment: .topLeading) {
                             Button {

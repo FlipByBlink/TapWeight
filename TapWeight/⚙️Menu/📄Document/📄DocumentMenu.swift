@@ -57,18 +57,6 @@ struct 📄DocumentMenu: View {
                 }
                 
                 
-                Section {
-                    NavigationLink {
-                        💸TextAboutAD()
-                            .padding()
-                            .navigationTitle("About self-AD")
-                            .textSelection(.enabled)
-                    } label: {
-                        Label("About self-AD", systemImage: "exclamationmark.bubble")
-                    }
-                }
-                
-                
                 NavigationLink {
                     📓SourceCodeMenu()
                 } label: {

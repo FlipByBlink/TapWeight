@@ -29,7 +29,6 @@
 		126B3ED5282E2100009BD28B /* TapWeightApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */; };
 		126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
 		129CBDF8284C7F8B00C73F4D /* 🏷VersionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129CBDF7284C7F8B00C73F4D /* 🏷VersionMenu.swift */; };
-		129CBDFC284C980E00C73F4D /* 💸TextAboutAD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129CBDFB284C980E00C73F4D /* 💸TextAboutAD.swift */; };
 		129CBE16284CCF9900C73F4D /* 📱Model.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱Model.swift */; };
 		129CBE17284CD00700C73F4D /* 🗯ResultView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🗯ResultView.swift */; };
 		129CBE18284CD00700C73F4D /* 📏BodyMassUnit.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */; };
@@ -42,7 +41,6 @@
 		129CBE26284CD05100C73F4D /* 💸AppName.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12B694CC28360B73005F47B3 /* 💸AppName.swift */; };
 		129CBE27284CD05100C73F4D /* 💸ADView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F2F8A6284B709A00C3A4BA /* 💸ADView.swift */; };
 		129CBE29284CD05100C73F4D /* 💸ADBanner.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F2F8A2284B703100C3A4BA /* 💸ADBanner.swift */; };
-		129CBE2A284CD05100C73F4D /* 💸TextAboutAD.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 129CBDFB284C980E00C73F4D /* 💸TextAboutAD.swift */; };
 		129CBE2B284CD10D00C73F4D /* 👆BodyMassStepper.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 👆BodyMassStepper.swift */; };
 		129CBE2C284CD10D00C73F4D /* 👆BodyFatStepper.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1232578C284C5F64002E0057 /* 👆BodyFatStepper.swift */; };
 		129CBE2D284CD10D00C73F4D /* 💟JumpButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 120B4444284778FD00D491E4 /* 💟JumpButton.swift */; };
@@ -111,7 +109,6 @@
 				129CBE26284CD05100C73F4D /* 💸AppName.swift in CopyFiles */,
 				129CBE27284CD05100C73F4D /* 💸ADView.swift in CopyFiles */,
 				129CBE29284CD05100C73F4D /* 💸ADBanner.swift in CopyFiles */,
-				129CBE2A284CD05100C73F4D /* 💸TextAboutAD.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +143,6 @@
 		129CBDF7284C7F8B00C73F4D /* 🏷VersionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏷VersionMenu.swift"; sourceTree = "<group>"; };
 		129CBDF9284C93D300C73F4D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		129CBDFA284C93D300C73F4D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		129CBDFB284C980E00C73F4D /* 💸TextAboutAD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💸TextAboutAD.swift"; sourceTree = "<group>"; };
 		129CBDFD284C999000C73F4D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		129CBDFE284C999000C73F4D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		129CBDFF284C9C9300C73F4D /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -198,7 +194,6 @@
 				12B694CC28360B73005F47B3 /* 💸AppName.swift */,
 				12F2F8A6284B709A00C3A4BA /* 💸ADView.swift */,
 				12F2F8A2284B703100C3A4BA /* 💸ADBanner.swift */,
-				129CBDFB284C980E00C73F4D /* 💸TextAboutAD.swift */,
 			);
 			path = "💸AD";
 			sourceTree = "<group>";
@@ -403,7 +398,6 @@
 				12F2F8A7284B709A00C3A4BA /* 💸ADView.swift in Sources */,
 				12BA83CA2860525B009E7E3F /* 🏬Store.swift in Sources */,
 				12428DCB28485F85006837F9 /* 📓SourceCodeMenu.swift in Sources */,
-				129CBDFC284C980E00C73F4D /* 💸TextAboutAD.swift in Sources */,
 				126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */,
 				12BA83C92860525B009E7E3F /* 🏬PurchaseSection.swift in Sources */,
 				12BA83C528605235009E7E3F /* 💸AboutADView.swift in Sources */,

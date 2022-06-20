@@ -34,7 +34,8 @@ struct 🛠MenuList: View {
                 } header: {
                     Text("Option")
                 }
-                 
+                
+                
                 Section {
                     Toggle(isOn: $📱.🚩AbleBMI) {
                         Label("Body Mass Index", systemImage: "function")
@@ -43,11 +44,13 @@ struct 🛠MenuList: View {
                     🧍HeightMenu()
                 }
                 
+                
                 Section {
                     Toggle(isOn: $📱.🚩AbleBodyFat) {
                         Label("Body Fat Percentage", systemImage: "percent")
                     }
                 }
+                
                 
                 Section {
                     Link (destination: URL(string: "x-apple-health://")!) {
@@ -78,8 +81,6 @@ struct 🛠MenuList: View {
                 
                 
                 📄DocumentMenu()
-                
-                //💸AdSection()
             }
             .navigationTitle("TapWeight")
             .toolbar {
