@@ -4,9 +4,9 @@ import SwiftUI
 @main
 struct TapWeightApp: App {
     
-    let 📱 = 📱Model()
+    let 📱 = 📱AppModel()
     
-    let 🏬 = 🏬Store()
+    let 🏬 = 🏬StoreModel()
     
     var body: some Scene {
         WindowGroup {

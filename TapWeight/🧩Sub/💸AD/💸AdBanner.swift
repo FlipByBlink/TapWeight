@@ -2,8 +2,8 @@
 import SwiftUI
 
 struct 💸ADBanner: View {
-    @EnvironmentObject var 📱:📱Model
-    @EnvironmentObject var 🏬: 🏬Store
+    @EnvironmentObject var 📱:📱AppModel
+    @EnvironmentObject var 🏬: 🏬StoreModel
     
     @State private var 🚩ShowBanner = false
     

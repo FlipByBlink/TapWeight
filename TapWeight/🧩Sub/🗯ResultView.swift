@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct 🗯ResultView: View {
-    @EnvironmentObject var 📱:📱Model
+    @EnvironmentObject var 📱:📱AppModel
     
     @Environment(\.dismiss) var 🔙: DismissAction
     

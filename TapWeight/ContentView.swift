@@ -3,7 +3,7 @@ import SwiftUI
 import HealthKit
 
 struct ContentView: View {
-    @EnvironmentObject var 📱:📱Model
+    @EnvironmentObject var 📱:📱AppModel
     
     var body: some View {
         List {

@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct 🕒HistoryMenu: View {
-    @EnvironmentObject var 📱:📱Model
+    @EnvironmentObject var 📱:📱AppModel
     
     var body: some View {
         NavigationLink  {

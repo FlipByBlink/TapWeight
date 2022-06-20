@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct 🧍HeightMenu: View {
-    @EnvironmentObject var 📱:📱Model
+    @EnvironmentObject var 📱:📱AppModel
     
     var body: some View {
         NavigationLink {
@@ -25,7 +25,7 @@ struct 🧍HeightMenu: View {
 
 
 struct 🧍HeightEditView: View {
-    @EnvironmentObject var 📱:📱Model
+    @EnvironmentObject var 📱:📱AppModel
     
     @State private var 📝Height: Int = 170
     
@@ -101,7 +101,7 @@ struct 🧍HeightEditView: View {
 
 
 struct HeightMenu_Previews: PreviewProvider {
-    static let 📱 = 📱Model()
+    static let 📱 = 📱AppModel()
     
     static var previews: some View {
         🧍HeightEditView()

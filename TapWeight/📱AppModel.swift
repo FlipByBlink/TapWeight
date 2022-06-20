@@ -3,7 +3,7 @@ import SwiftUI
 import HealthKit
 
 
-class 📱Model: ObservableObject {
+class 📱AppModel: ObservableObject {
     
     @Published var 🚩ShowMenu: Bool = false
     

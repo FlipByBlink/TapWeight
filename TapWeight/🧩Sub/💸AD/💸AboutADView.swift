@@ -3,7 +3,7 @@ import SwiftUI
 import StoreKit
 
 struct 💸AboutADView: View {
-    @EnvironmentObject var 🏬: 🏬Store
+    @EnvironmentObject var 🏬: 🏬StoreModel
     
     var body: some View {
         Section {

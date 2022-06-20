@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct 👆BodyMassStepper: View {
-    @EnvironmentObject var 📱:📱Model
+    @EnvironmentObject var 📱:📱AppModel
     
     var body: some View {
         Section {
@@ -77,7 +77,7 @@ struct 👆BodyMassStepper: View {
 
 
 struct 👆BodyFatStepper: View {
-    @EnvironmentObject var 📱:📱Model
+    @EnvironmentObject var 📱:📱AppModel
     
     var body: some View {
         Section {

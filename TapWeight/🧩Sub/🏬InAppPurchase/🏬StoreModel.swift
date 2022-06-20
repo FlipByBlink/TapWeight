@@ -11,7 +11,7 @@ public enum 🚨StoreError: Error {
 }
 
 
-class 🏬Store: ObservableObject {
+class 🏬StoreModel: ObservableObject {
     
     @Published var 🎫Product: Product?
     @Published var 🎫PurchasedProduct: Product?
