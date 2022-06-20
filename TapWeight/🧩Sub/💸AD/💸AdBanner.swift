@@ -2,14 +2,14 @@
 import SwiftUI
 
 struct 💸ADBanner: View {
-    @EnvironmentObject var 📱:📱AppModel
+    @EnvironmentObject var 📱: 📱AppModel
     @EnvironmentObject var 🏬: 🏬StoreModel
     
     @State private var 🚩ShowBanner = false
     
     @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
     
-    var 🅃iming: Int = 2 // 7
+    var 🅃iming: Int = 4
     
     var body: some View {
         Group {

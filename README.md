@@ -10,7 +10,7 @@
 
 [apps.apple.com/app/id1624159721](https://apps.apple.com/app/id1624159721)
 
-<!-- Manually sync below text between "🛠Menu.swift/📄About" and "/README.md(here)" and "AppStoreConnect/TapWeight/Description". -->
+<!-- Manually sync below text between "📄DocumentMenu.swift/📄About" and "/README.md(here)" and "AppStoreConnect/TapWeight/Description". -->
 
 ## 📄 Description
 
@@ -142,6 +142,11 @@ Korean: 체중 / 체질량 지수 / 체지방률
 ## 🧰 Source code link
 
 [github.com/FlipByBlink/TapWeight](https://github.com/FlipByBlink/TapWeight)
+
+
+### 🧰 Source code (Mirror) link
+
+[https://gitlab.com/FlipByBlink/FlipByBlink_ver3_Mirror](https://gitlab.com/FlipByBlink/FlipByBlink_ver3_Mirror)
 
 
 ## ✉️ Contact

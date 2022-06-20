@@ -55,15 +55,13 @@
 
 "self-AD" = "セルフ広告";
 
-"About self-AD" = "セルフ広告について";
-
 "About AD" = "広告について";
 
 "In App Purchase" = "アプリ内課金";
 
 "Restore Purchase" = "購入情報を復元する";
 
-"This App shows banner advertisement about applications on AppStore. These are Apps by TapWeight developer. AD banner is rarely presented on result screen. It appears one in every seven times." = "広告としてAppStoreアプリケーションに関するバナーを表示します。「体重登録」デベロッパーによるアプリ群が表示対象となります。入力完了画面ではたまに広告が表示されます。それはこのアプリを7回起動する度に一時的に有効になります。";
+"This App shows banner advertisement about applications on AppStore. These are Apps by TapWeight developer. AD banner is rarely presented on result screen. It appears one in every 4 times." = "広告としてAppStoreアプリケーションに関するバナーを表示します。「体重登録」デベロッパーによるアプリ群が表示対象となります。入力完了画面では、たまに広告が表示されます。それは4回起動する度に一時的に有効になります。";
 
 "OK" = "了解しました";
 

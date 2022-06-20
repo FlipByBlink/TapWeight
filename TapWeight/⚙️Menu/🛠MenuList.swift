@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct 🛠MenuList: View {
-    @EnvironmentObject var 📱:📱AppModel
+    @EnvironmentObject var 📱: 📱AppModel
     
     @Environment(\.dismiss) var 🔙: DismissAction
     

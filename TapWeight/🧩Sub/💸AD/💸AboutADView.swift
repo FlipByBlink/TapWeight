@@ -14,7 +14,7 @@ struct 💸AboutADView: View {
             NavigationLink {
                 List {
                     Section {
-                        Text("This App shows banner advertisement about applications on AppStore. These are Apps by TapWeight developer. AD banner is rarely presented on result screen. It appears one in every seven times.")
+                        Text("This App shows banner advertisement about applications on AppStore. These are Apps by TapWeight developer. AD banner is rarely presented on result screen. It appears one in every 4 times.")
                             .padding()
                     } header: {
                         Text("About")
