@@ -197,15 +197,17 @@
 			path = "💸AD";
 			sourceTree = "<group>";
 		};
-		12325789284C5E79002E0057 /* 🧩SubView */ = {
+		12325789284C5E79002E0057 /* 🧩Sub */ = {
 			isa = PBXGroup;
 			children = (
+				120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */,
+				12579D152835FE8900536547 /* 🗯ResultView.swift */,
 				1232578A284C5EA2002E0057 /* 👆Stepper.swift */,
 				120B4444284778FD00D491E4 /* 💟JumpButton.swift */,
 				12BA83C628605241009E7E3F /* 🏬InAppPurchase */,
 				120B2193284B6ABF007CA829 /* 💸AD */,
 			);
-			path = "🧩SubView";
+			path = "🧩Sub";
 			sourceTree = "<group>";
 		};
 		12428DC928485ECD006837F9 /* 📄Document */ = {
@@ -255,9 +257,7 @@
 				126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */,
 				126B3EAC282DFEDF009BD28B /* ContentView.swift */,
 				124C485E284863BA0085B066 /* 📱Model.swift */,
-				12579D152835FE8900536547 /* 🗯ResultView.swift */,
-				120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */,
-				12325789284C5E79002E0057 /* 🧩SubView */,
+				12325789284C5E79002E0057 /* 🧩Sub */,
 				12428DCC2848608A006837F9 /* ⚙️Menu */,
 				129CBE13284CAD2D00C73F4D /* 🌏Localization */,
 				126B3EAE282DFEE0009BD28B /* Assets.xcassets */,
