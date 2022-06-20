@@ -27,7 +27,7 @@ enum 💸AppName: String, CaseIterable, Identifiable {
                 return "Alarm clock with taking a long time from small volume to max volume."
                 
             case .Plain将棋盤:
-                return "Simple Shogi board App."
+                return "Simple Shogi board App. Based on iOS system UI design."
                 
             case .TapTemperature:
                 return "Register body temperature data to the \"Health\" app pre-installed on iPhone in the fastest possible way (as manual)."

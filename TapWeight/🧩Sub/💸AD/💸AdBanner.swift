@@ -20,20 +20,11 @@ struct 💸ADBanner: View {
                     💸ADView()
                         .padding(.horizontal)
                         .overlay(alignment: .topLeading) {
-                            Button {
-                                🚩ShowBanner = false
-                            } label: {
-                                Image(systemName: "xmark.circle")
-                                    .padding(8)
-                            }
-                            .foregroundStyle(.tertiary)
-                        }
-                        .overlay(alignment: .bottomLeading) {
                             Text("AD")
                                 .scaleEffect(x: 1.2)
                                 .font(.subheadline.weight(.black))
                                 .padding(.leading)
-                                .padding(.bottom, 5)
+                                .padding(.top, 8)
                                 .foregroundStyle(.quaternary)
                         }
                         .background {
