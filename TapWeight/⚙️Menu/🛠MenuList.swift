@@ -71,11 +71,15 @@ struct 🛠MenuList: View {
                     }
                     
                     🕒HistoryMenu()
-                    
-                    📄DocumentMenu()
                 }
                 
-                💸AdSection()
+                
+                💸AboutADView()
+                
+                
+                📄DocumentMenu()
+                
+                //💸AdSection()
             }
             .navigationTitle("TapWeight")
             .toolbar {

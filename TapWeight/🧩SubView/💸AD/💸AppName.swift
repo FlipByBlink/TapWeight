@@ -1,11 +1,13 @@
 
 import SwiftUI
 
-enum 💸AppName: String {
+enum 💸AppName: String, CaseIterable, Identifiable {
     case FlipByBlink
     case FadeInAlarm
     case Plain将棋盤
     case TapTemperature
+    
+    var id: String { self.rawValue }
     
     var 🔗URL: URL {
         switch self {

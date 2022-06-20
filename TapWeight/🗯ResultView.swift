@@ -13,7 +13,7 @@ struct 🗯ResultView: View {
                 .ignoresSafeArea()
             
             VStack {
-                💸AdBanner()
+                💸ADBanner()
                 
                 Button {
                     🔙.callAsFunction()

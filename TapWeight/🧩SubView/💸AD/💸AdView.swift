@@ -1,8 +1,9 @@
 
 import SwiftUI
 
-struct 💸AdView: View {
-    var 🄰ppName: 💸AppName = .FadeInAlarm
+struct 💸ADView: View {
+    
+    var 🄰ppName: 💸AppName
     
     var body: some View {
         HStack(spacing: 12) {
@@ -11,6 +12,7 @@ struct 💸AdView: View {
                 .frame(width: 60, height: 60)
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 .shadow(radius: 1.5, y: 0.5)
+                .padding(.vertical, 40)
             
             Link(destination: 🄰ppName.🔗URL) {
                 VStack(alignment: .leading, spacing: 2) {
@@ -30,9 +32,15 @@ struct 💸AdView: View {
             }
             .accessibilityLabel(🄰ppName.rawValue)
         }
+        .padding(.leading, 4)
     }
     
-    init(_ ⓐppName: 💸AppName) {
-        🄰ppName = ⓐppName
+    
+    init(_ ⓐppName: 💸AppName? = nil) {
+        if let 🏷 = ⓐppName {
+            🄰ppName = 🏷
+        } else {
+            🄰ppName = 💸AppName.allCases.randomElement()!
+        }
     }
 }
