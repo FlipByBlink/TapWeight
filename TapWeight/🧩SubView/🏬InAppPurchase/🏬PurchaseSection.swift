@@ -3,7 +3,7 @@ import SwiftUI
 import StoreKit
 
 struct 🏬PurchaseSection: View {
-    var 🏬 = 🏬Store()
+    @EnvironmentObject var 🏬: 🏬Store
     
     @State var 🚨ErrorTitle = ""
     @State var 🚨ShowError: Bool = false
