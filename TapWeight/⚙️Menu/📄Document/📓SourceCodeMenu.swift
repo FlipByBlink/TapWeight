@@ -10,11 +10,11 @@ struct 📓SourceCodeMenu: View {
             
             📰CodeSection("⚙️Menu")
             
+            📰CodeSection("📄Document")
+            
             📰CodeSection("🏬InAppPurchase")
             
             📰CodeSection("💸AD")
-            
-            📰CodeSection("📄Document")
             
             📑BundleMainInfoDictionary()
             
