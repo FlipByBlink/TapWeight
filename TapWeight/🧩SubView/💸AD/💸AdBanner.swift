@@ -11,13 +11,15 @@ struct 💸ADBanner: View {
     
     var 🅃iming: Int = 1 //7
     
+    @State private var 🆔App = 💸AppName.allCases.randomElement()!
+    
     var body: some View {
         Group {
             if 🏬.🚩Purchased || 📱.🚨RegisterError {
                 Spacer()
             } else {
                 if 🚩ShowBanner {
-                    💸ADView()
+                    💸ADView(🆔App)
                         .padding(.horizontal)
                         .overlay(alignment: .topLeading) {
                             Button {
