@@ -2,7 +2,6 @@
 import SwiftUI
 
 struct 💸ADView: View {
-    
     @State private var 🄰ppName: 💸AppName
     
     var body: some View {

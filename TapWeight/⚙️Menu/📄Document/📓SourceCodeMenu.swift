@@ -4,13 +4,17 @@ import SwiftUI
 struct 📓SourceCodeMenu: View {
     var body: some View {
         List {
-            📰CodeSection("📁0")
+            📰CodeSection("main")
             
-            📰CodeSection("📁1")
+            📰CodeSection("🧩Sub")
             
-            📰CodeSection("📁2")
+            📰CodeSection("⚙️Menu")
             
-            📰CodeSection("📁AD")
+            📰CodeSection("🏬InAppPurchase")
+            
+            📰CodeSection("💸AD")
+            
+            📰CodeSection("📄Document")
             
             📑BundleMainInfoDictionary()
             
@@ -87,6 +91,9 @@ struct 📰CodeSection: View {
                     📋TextView(try! String(contentsOf: 📍), 🏷, ⓗorizonScroll: true)
                 }
             }
+        } header: {
+            Text(🄳irectoryPath)
+                .textCase(.none)
         }
     }
     
