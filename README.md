@@ -144,7 +144,7 @@ Korean: 체중 / 체질량 지수 / 체지방률
 [github.com/FlipByBlink/TapWeight](https://github.com/FlipByBlink/TapWeight)
 
 
-### 🧰 Source code (Mirror) link
+### Source code (Mirror) link
 
 [https://gitlab.com/FlipByBlink/FlipByBlink_ver3_Mirror](https://gitlab.com/FlipByBlink/FlipByBlink_ver3_Mirror)
 
