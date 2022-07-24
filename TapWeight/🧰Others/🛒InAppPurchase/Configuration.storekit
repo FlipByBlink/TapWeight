@@ -20,7 +20,7 @@
           "locale" : "ja"
         }
       ],
-      "productID" : "nonconsumable.adfree",
+      "productID" : "tapweight.adfree",
       "referenceName" : "AD_Free(Xcode)",
       "type" : "NonConsumable"
     }
