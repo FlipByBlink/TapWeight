@@ -6,8 +6,8 @@ struct 🛠MenuButton: View { // ⚙️
     
     var body: some View {
         Button {
-            UISelectionFeedbackGenerator().selectionChanged()
             📱.🚩ShowMenu = true
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
         } label: {
             Image(systemName: "gear")
                 .font(.largeTitle)
@@ -17,9 +17,6 @@ struct 🛠MenuButton: View { // ⚙️
         .accessibilityLabel("Open menu")
         .sheet(isPresented: $📱.🚩ShowMenu) {
             🛠AppMenu()
-                .onDisappear {
-                    📱.🚩ShowMenu = false
-                }
         }
     }
 }

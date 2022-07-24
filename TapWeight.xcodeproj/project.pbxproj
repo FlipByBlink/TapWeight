@@ -29,6 +29,8 @@
 		126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
 		1299C398288D63510086522B /* 🛠OthersMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C397288D63510086522B /* 🛠OthersMenu.swift */; };
 		1299C39A288D63570086522B /* ﹀CloseMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C399288D63570086522B /* ﹀CloseMenuButton.swift */; };
+		1299C3A1288D67470086522B /* 🌏AppStoreDescription.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1299C3A3288D67470086522B /* 🌏AppStoreDescription.strings */; };
+		1299C3A4288D674B0086522B /* 🌏VersionDescription.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1299C3A6288D674B0086522B /* 🌏VersionDescription.strings */; };
 		129CBDF8284C7F8B00C73F4D /* 🏷VersionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129CBDF7284C7F8B00C73F4D /* 🏷VersionMenu.swift */; };
 		129CBE16284CCF9900C73F4D /* 📱AppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
 		129CBE17284CD00700C73F4D /* 🗯ResultView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🗯ResultView.swift */; };
@@ -165,6 +167,10 @@
 		126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠MenuButton.swift"; sourceTree = "<group>"; };
 		1299C397288D63510086522B /* 🛠OthersMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛠OthersMenu.swift"; sourceTree = "<group>"; };
 		1299C399288D63570086522B /* ﹀CloseMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "﹀CloseMenuButton.swift"; sourceTree = "<group>"; };
+		1299C3A2288D67470086522B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/🌏AppStoreDescription.strings"; sourceTree = "<group>"; };
+		1299C3A5288D674B0086522B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/🌏VersionDescription.strings"; sourceTree = "<group>"; };
+		1299C3A7288D67530086522B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/🌏AppStoreDescription.strings"; sourceTree = "<group>"; };
+		1299C3A8288D67560086522B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/🌏VersionDescription.strings"; sourceTree = "<group>"; };
 		129CBDF7284C7F8B00C73F4D /* 🏷VersionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏷VersionMenu.swift"; sourceTree = "<group>"; };
 		129CBDF9284C93D300C73F4D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		129CBDFA284C93D300C73F4D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -245,7 +251,6 @@
 			children = (
 				120B44462847796100D491E4 /* 📄DocumentMenu.swift */,
 				129CBDF7284C7F8B00C73F4D /* 🏷VersionMenu.swift */,
-				12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */,
 				12AA24FA284A393300199A64 /* 📋TextView.swift */,
 				12428DCA28485F85006837F9 /* 📓SourceCodeMenu.swift */,
 			);
@@ -319,6 +324,7 @@
 				126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */,
 				12630BC22849CD33005F922F /* 🛠AppMenu.swift */,
 				12630BC02849C63E005F922F /* 🧍HeightMenu.swift */,
+				12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */,
 			);
 			path = "🛠Menu";
 			sourceTree = "<group>";
@@ -326,8 +332,10 @@
 		129CBE13284CAD2D00C73F4D /* 🌏Localization */ = {
 			isa = PBXGroup;
 			children = (
-				126B3ED0282E15E5009BD28B /* InfoPlist.strings */,
 				126B3EC1282E0F45009BD28B /* Localizable.strings */,
+				126B3ED0282E15E5009BD28B /* InfoPlist.strings */,
+				1299C3A3288D67470086522B /* 🌏AppStoreDescription.strings */,
+				1299C3A6288D674B0086522B /* 🌏VersionDescription.strings */,
 			);
 			path = "🌏Localization";
 			sourceTree = "<group>";
@@ -423,7 +431,9 @@
 				12BA83CC2860535A009E7E3F /* Configuration.storekit in Resources */,
 				126B3ECE282E15E5009BD28B /* InfoPlist.strings in Resources */,
 				126B3EBF282E0F45009BD28B /* Localizable.strings in Resources */,
+				1299C3A4288D674B0086522B /* 🌏VersionDescription.strings in Resources */,
 				126B3EAF282DFEE0009BD28B /* Assets.xcassets in Resources */,
+				1299C3A1288D67470086522B /* 🌏AppStoreDescription.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +513,24 @@
 				129CBE11284C9D7C00C73F4D /* es-419 */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1299C3A3288D67470086522B /* 🌏AppStoreDescription.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1299C3A2288D67470086522B /* en */,
+				1299C3A7288D67530086522B /* ja */,
+			);
+			name = "🌏AppStoreDescription.strings";
+			sourceTree = "<group>";
+		};
+		1299C3A6288D674B0086522B /* 🌏VersionDescription.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1299C3A5288D674B0086522B /* en */,
+				1299C3A8288D67560086522B /* ja */,
+			);
+			name = "🌏VersionDescription.strings";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

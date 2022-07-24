@@ -4,8 +4,6 @@ import SwiftUI
 struct 🛠AppMenu: View {
     @EnvironmentObject var 📱: 📱AppModel
     
-    @Environment(\.dismiss) var 🔙: DismissAction
-    
     var body: some View {
         NavigationView {
             List {
@@ -77,25 +75,11 @@ struct 🛠AppMenu: View {
                 }
                 
                 
-                📣ADMenuLink()
-                
-                
-                📄DocumentMenu()
+                🛠OthersMenu()
             }
             .navigationTitle("TapWeight")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        🔙.callAsFunction()
-                    } label: {
-                        Image(systemName: "chevron.down")
-                            .foregroundStyle(.secondary)
-                            .grayscale(1.0)
-                            .padding(8)
-                    }
-                    .accessibilityLabel("Dismiss")
-                }
-            }
+            .toolbar { ﹀CloseMenuButton($📱.🚩ShowMenu) }
         }
+        .onDisappear { 📱.🚩ShowMenu = false }
     }
 }
