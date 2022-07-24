@@ -35,6 +35,7 @@
 		1299C3B1288D68F50086522B /* 🕒VersionHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3AD288D68F50086522B /* 🕒VersionHistory.swift */; };
 		1299C3B6288D6DA80086522B /* 📣ADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3B3288D6DA80086522B /* 📣ADView.swift */; };
 		1299C3B7288D6DA80086522B /* 📣AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3B4288D6DA80086522B /* 📣AppName.swift */; };
+		1299C3B9288D77270086522B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1299C3B8288D77270086522B /* Launch Screen.storyboard */; };
 		129CBE16284CCF9900C73F4D /* 📱AppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
 		129CBE17284CD00700C73F4D /* 🗯ResultView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🗯ResultView.swift */; };
 		129CBE18284CD00700C73F4D /* 📏BodyMassUnit.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */; };
@@ -145,7 +146,6 @@
 		126B3EB1282DFEE0009BD28B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		126B3EB8282E001E009BD28B /* TapWeight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TapWeight.entitlements; sourceTree = "<group>"; };
 		126B3EBA282E001E009BD28B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		126B3EBC282E0159009BD28B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		126B3EC0282E0F45009BD28B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		126B3EC2282E0F4D009BD28B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		126B3ECF282E15E5009BD28B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -163,6 +163,7 @@
 		1299C3AD288D68F50086522B /* 🕒VersionHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🕒VersionHistory.swift"; sourceTree = "<group>"; };
 		1299C3B3288D6DA80086522B /* 📣ADView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADView.swift"; sourceTree = "<group>"; };
 		1299C3B4288D6DA80086522B /* 📣AppName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣AppName.swift"; sourceTree = "<group>"; };
+		1299C3B8288D77270086522B /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		129CBDF9284C93D300C73F4D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		129CBDFA284C93D300C73F4D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		129CBDFD284C999000C73F4D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -227,7 +228,6 @@
 				120B4444284778FD00D491E4 /* 💟JumpButton.swift */,
 				12F2F8A2284B703100C3A4BA /* 📣ADBanner.swift */,
 				1299C396288D5E420086522B /* 🛠Menu */,
-				126B3EBC282E0159009BD28B /* Info.plist */,
 				126B3EB8282E001E009BD28B /* TapWeight.entitlements */,
 				126B3EB0282DFEE0009BD28B /* Preview Content */,
 			);
@@ -302,6 +302,7 @@
 				12428DCC2848608A006837F9 /* 📄Information */,
 				120B2193284B6ABF007CA829 /* 📣AD */,
 				12BA83C628605241009E7E3F /* 🛒InAppPurchase */,
+				1299C3B8288D77270086522B /* Launch Screen.storyboard */,
 			);
 			path = "🧰Others";
 			sourceTree = "<group>";
@@ -417,6 +418,7 @@
 			files = (
 				126B3EB2282DFEE0009BD28B /* Preview Assets.xcassets in Resources */,
 				12BA83CC2860535A009E7E3F /* Configuration.storekit in Resources */,
+				1299C3B9288D77270086522B /* Launch Screen.storyboard in Resources */,
 				126B3ECE282E15E5009BD28B /* InfoPlist.strings in Resources */,
 				126B3EBF282E0F45009BD28B /* Localizable.strings in Resources */,
 				1299C3A4288D674B0086522B /* 🌏VersionDescription.strings in Resources */,
@@ -652,11 +654,12 @@
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "TapWeight/🧩Sub/Info.plist";
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Activate HeakthKit permission to record data.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Activate HeakthKit permission to record data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -684,11 +687,12 @@
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "TapWeight/🧩Sub/Info.plist";
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Activate HeakthKit permission to record data.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Activate HeakthKit permission to record data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
