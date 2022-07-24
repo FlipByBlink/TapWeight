@@ -210,7 +210,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		120B2193284B6ABF007CA829 /* 💸AD */ = {
+		120B2193284B6ABF007CA829 /* 📣AD */ = {
 			isa = PBXGroup;
 			children = (
 				12BA83C428605235009E7E3F /* 💸AboutADView.swift */,
@@ -218,7 +218,7 @@
 				12F2F8A6284B709A00C3A4BA /* 💸ADView.swift */,
 				12F2F8A2284B703100C3A4BA /* 💸ADBanner.swift */,
 			);
-			path = "💸AD";
+			path = "📣AD";
 			sourceTree = "<group>";
 		};
 		12325789284C5E79002E0057 /* 🧩Sub */ = {
@@ -228,9 +228,7 @@
 				12579D152835FE8900536547 /* 🗯ResultView.swift */,
 				1232578A284C5EA2002E0057 /* 👆Stepper.swift */,
 				120B4444284778FD00D491E4 /* 💟JumpButton.swift */,
-				126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */,
-				12630BC22849CD33005F922F /* 🛠MenuList.swift */,
-				12630BC02849C63E005F922F /* 🧍HeightMenu.swift */,
+				1299C396288D5E420086522B /* 🛠Menu */,
 				126B3EBC282E0159009BD28B /* Info.plist */,
 				126B3EB8282E001E009BD28B /* TapWeight.entitlements */,
 				126B3EB0282DFEE0009BD28B /* Preview Content */,
@@ -302,11 +300,21 @@
 		1299C395288D51E20086522B /* 🧰Others */ = {
 			isa = PBXGroup;
 			children = (
-				120B2193284B6ABF007CA829 /* 💸AD */,
-				12BA83C628605241009E7E3F /* 🏬InAppPurchase */,
 				12428DCC2848608A006837F9 /* 📄Information */,
+				120B2193284B6ABF007CA829 /* 📣AD */,
+				12BA83C628605241009E7E3F /* 🛒InAppPurchase */,
 			);
 			path = "🧰Others";
+			sourceTree = "<group>";
+		};
+		1299C396288D5E420086522B /* 🛠Menu */ = {
+			isa = PBXGroup;
+			children = (
+				126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */,
+				12630BC22849CD33005F922F /* 🛠MenuList.swift */,
+				12630BC02849C63E005F922F /* 🧍HeightMenu.swift */,
+			);
+			path = "🛠Menu";
 			sourceTree = "<group>";
 		};
 		129CBE13284CAD2D00C73F4D /* 🌏Localization */ = {
@@ -318,14 +326,14 @@
 			path = "🌏Localization";
 			sourceTree = "<group>";
 		};
-		12BA83C628605241009E7E3F /* 🏬InAppPurchase */ = {
+		12BA83C628605241009E7E3F /* 🛒InAppPurchase */ = {
 			isa = PBXGroup;
 			children = (
 				12BA83C82860525B009E7E3F /* 🏬StoreModel.swift */,
 				12BA83C72860525B009E7E3F /* 🏬PurchaseSection.swift */,
 				12BA83CB2860535A009E7E3F /* Configuration.storekit */,
 			);
-			path = "🏬InAppPurchase";
+			path = "🛒InAppPurchase";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
