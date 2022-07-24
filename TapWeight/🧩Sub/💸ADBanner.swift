@@ -19,14 +19,6 @@ struct 💸ADBanner: View {
                 if 🚩ShowBanner {
                     📣ADView()
                         .padding(.horizontal)
-                        .overlay(alignment: .topLeading) {
-                            Text("AD")
-                                .scaleEffect(x: 1.2)
-                                .font(.subheadline.weight(.black))
-                                .padding(.leading)
-                                .padding(.top, 8)
-                                .foregroundStyle(.quaternary)
-                        }
                         .background {
                             RoundedRectangle(cornerRadius: 16, style: .continuous)
                                 .foregroundStyle(.background)

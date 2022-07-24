@@ -1,15 +1,10 @@
 
-import Foundation
+let 🛒InAppPurchaseProductID = ["tapweight.adfree"]
+
+
 import StoreKit
 
-
 typealias Transaction = StoreKit.Transaction
-
-
-public enum 🚨StoreError: Error {
-    case failedVerification
-}
-
 
 class 🛒StoreModel: ObservableObject {
     
@@ -65,7 +60,7 @@ class 🛒StoreModel: ObservableObject {
     @MainActor
     func 🅁equestProducts() async {
         do {
-            if let 📦 = try await Product.products(for: ["tapweight.adfree"]).first {
+            if let 📦 = try await Product.products(for: 🛒InAppPurchaseProductID).first {
                 🎫Product = 📦
             }
         } catch {
@@ -142,4 +137,8 @@ class 🛒StoreModel: ObservableObject {
         guard let 🎫 = 🎫Product else { return "🐛" }
         return 🎫.displayPrice
     }
+}
+
+public enum 🚨StoreError: Error {
+    case failedVerification
 }

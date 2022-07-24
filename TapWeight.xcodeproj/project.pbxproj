@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		120B2192284B4E1E007CA829 /* 📏BodyMassUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */; };
 		120B4445284778FD00D491E4 /* 💟JumpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B4444284778FD00D491E4 /* 💟JumpButton.swift */; };
-		120B44472847796100D491E4 /* 📄DocumentMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B44462847796100D491E4 /* 📄DocumentMenu.swift */; };
 		1232578B284C5EA2002E0057 /* 👆Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 👆Stepper.swift */; };
 		12428DCB28485F85006837F9 /* Archive_📓SourceCodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12428DCA28485F85006837F9 /* Archive_📓SourceCodeMenu.swift */; };
 		12428DCE284860D0006837F9 /* 🕒HistoryMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */; };
@@ -38,19 +37,16 @@
 		1299C3B5288D6DA80086522B /* 📣ADBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3B2288D6DA70086522B /* 📣ADBanner.swift */; };
 		1299C3B6288D6DA80086522B /* 📣ADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3B3288D6DA80086522B /* 📣ADView.swift */; };
 		1299C3B7288D6DA80086522B /* 📣AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3B4288D6DA80086522B /* 📣AppName.swift */; };
-		129CBDF8284C7F8B00C73F4D /* 🏷VersionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129CBDF7284C7F8B00C73F4D /* 🏷VersionMenu.swift */; };
 		129CBE16284CCF9900C73F4D /* 📱AppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
 		129CBE17284CD00700C73F4D /* 🗯ResultView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🗯ResultView.swift */; };
 		129CBE18284CD00700C73F4D /* 📏BodyMassUnit.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */; };
 		129CBE1F284CD03300C73F4D /* 🧍HeightMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12630BC02849C63E005F922F /* 🧍HeightMenu.swift */; };
 		129CBE20284CD03300C73F4D /* 🕒HistoryMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */; };
-		129CBE21284CD03300C73F4D /* 📋TextView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12AA24FA284A393300199A64 /* 📋TextView.swift */; };
 		129CBE29284CD05100C73F4D /* 💸ADBanner.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F2F8A2284B703100C3A4BA /* 💸ADBanner.swift */; };
 		129CBE2B284CD10D00C73F4D /* 👆Stepper.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 👆Stepper.swift */; };
 		129CBE2D284CD10D00C73F4D /* 💟JumpButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 120B4444284778FD00D491E4 /* 💟JumpButton.swift */; };
 		129CBE2E284CD12800C73F4D /* 🛠MenuButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */; };
 		129CBE2F284CD12800C73F4D /* 🛠AppMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12630BC22849CD33005F922F /* 🛠AppMenu.swift */; };
-		12AA24FB284A393300199A64 /* 📋TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AA24FA284A393300199A64 /* 📋TextView.swift */; };
 		12BA83C528605235009E7E3F /* 📣ADMenuLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA83C428605235009E7E3F /* 📣ADMenuLink.swift */; };
 		12BA83C92860525B009E7E3F /* 🛒PurchaseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA83C72860525B009E7E3F /* 🛒PurchaseSection.swift */; };
 		12BA83CA2860525B009E7E3F /* 🛒StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA83C82860525B009E7E3F /* 🛒StoreModel.swift */; };
@@ -59,8 +55,6 @@
 		12C67126286068B000FE4C06 /* 🛒PurchaseSection.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BA83C72860525B009E7E3F /* 🛒PurchaseSection.swift */; };
 		12C67127286068B400FE4C06 /* 🛒StoreModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BA83C82860525B009E7E3F /* 🛒StoreModel.swift */; };
 		12C67128286068C700FE4C06 /* 📣ADMenuLink.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BA83C428605235009E7E3F /* 📣ADMenuLink.swift */; };
-		12C6712A286068E800FE4C06 /* 📄DocumentMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 120B44462847796100D491E4 /* 📄DocumentMenu.swift */; };
-		12C6712B286068E800FE4C06 /* 🏷VersionMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 129CBDF7284C7F8B00C73F4D /* 🏷VersionMenu.swift */; };
 		12C6712C286068E800FE4C06 /* Archive_📓SourceCodeMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12428DCA28485F85006837F9 /* Archive_📓SourceCodeMenu.swift */; };
 		12F2F8A3284B703100C3A4BA /* 💸ADBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F2F8A2284B703100C3A4BA /* 💸ADBanner.swift */; };
 /* End PBXBuildFile section */
@@ -101,7 +95,6 @@
 				129CBE2F284CD12800C73F4D /* 🛠AppMenu.swift in CopyFiles */,
 				129CBE1F284CD03300C73F4D /* 🧍HeightMenu.swift in CopyFiles */,
 				129CBE20284CD03300C73F4D /* 🕒HistoryMenu.swift in CopyFiles */,
-				129CBE21284CD03300C73F4D /* 📋TextView.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,8 +126,6 @@
 			dstPath = "📄Document";
 			dstSubfolderSpec = 7;
 			files = (
-				12C6712A286068E800FE4C06 /* 📄DocumentMenu.swift in CopyFiles */,
-				12C6712B286068E800FE4C06 /* 🏷VersionMenu.swift in CopyFiles */,
 				12C6712C286068E800FE4C06 /* Archive_📓SourceCodeMenu.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,7 +135,6 @@
 /* Begin PBXFileReference section */
 		120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📏BodyMassUnit.swift"; sourceTree = "<group>"; };
 		120B4444284778FD00D491E4 /* 💟JumpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💟JumpButton.swift"; sourceTree = "<group>"; };
-		120B44462847796100D491E4 /* 📄DocumentMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📄DocumentMenu.swift"; sourceTree = "<group>"; };
 		1232578A284C5EA2002E0057 /* 👆Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "👆Stepper.swift"; sourceTree = "<group>"; };
 		12428DCA28485F85006837F9 /* Archive_📓SourceCodeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Archive_📓SourceCodeMenu.swift"; sourceTree = "<group>"; };
 		12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🕒HistoryMenu.swift"; sourceTree = "<group>"; };
@@ -179,7 +169,6 @@
 		1299C3B2288D6DA70086522B /* 📣ADBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADBanner.swift"; sourceTree = "<group>"; };
 		1299C3B3288D6DA80086522B /* 📣ADView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADView.swift"; sourceTree = "<group>"; };
 		1299C3B4288D6DA80086522B /* 📣AppName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣AppName.swift"; sourceTree = "<group>"; };
-		129CBDF7284C7F8B00C73F4D /* 🏷VersionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏷VersionMenu.swift"; sourceTree = "<group>"; };
 		129CBDF9284C93D300C73F4D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		129CBDFA284C93D300C73F4D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		129CBDFD284C999000C73F4D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -204,7 +193,6 @@
 		129CBE10284C9D7600C73F4D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		129CBE11284C9D7C00C73F4D /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		129CBE12284C9D7C00C73F4D /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		12AA24FA284A393300199A64 /* 📋TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📋TextView.swift"; sourceTree = "<group>"; };
 		12BA83C428605235009E7E3F /* 📣ADMenuLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADMenuLink.swift"; sourceTree = "<group>"; };
 		12BA83C72860525B009E7E3F /* 🛒PurchaseSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒PurchaseSection.swift"; sourceTree = "<group>"; };
 		12BA83C82860525B009E7E3F /* 🛒StoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒StoreModel.swift"; sourceTree = "<group>"; };
@@ -232,8 +220,6 @@
 				12BA83C428605235009E7E3F /* 📣ADMenuLink.swift */,
 				1299C3B3288D6DA80086522B /* 📣ADView.swift */,
 				1299C3B4288D6DA80086522B /* 📣AppName.swift */,
-				1299C3B2288D6DA70086522B /* 📣ADBanner.swift */,
-				12F2F8A2284B703100C3A4BA /* 💸ADBanner.swift */,
 			);
 			path = "📣AD";
 			sourceTree = "<group>";
@@ -245,6 +231,8 @@
 				12579D152835FE8900536547 /* 🗯ResultView.swift */,
 				1232578A284C5EA2002E0057 /* 👆Stepper.swift */,
 				120B4444284778FD00D491E4 /* 💟JumpButton.swift */,
+				1299C3B2288D6DA70086522B /* 📣ADBanner.swift */,
+				12F2F8A2284B703100C3A4BA /* 💸ADBanner.swift */,
 				1299C396288D5E420086522B /* 🛠Menu */,
 				126B3EBC282E0159009BD28B /* Info.plist */,
 				126B3EB8282E001E009BD28B /* TapWeight.entitlements */,
@@ -260,7 +248,7 @@
 				1299C3AD288D68F50086522B /* 🕒VersionHistory.swift */,
 				1299C3AB288D68F50086522B /* 🧑‍💻AboutDeveloperPublisher.swift */,
 				1299C3AA288D68F50086522B /* 📓SourceCodeMenu.swift */,
-				1299C3A9288D68D90086522B /* Archive */,
+				12428DCA28485F85006837F9 /* Archive_📓SourceCodeMenu.swift */,
 			);
 			path = "📄Information";
 			sourceTree = "<group>";
@@ -335,17 +323,6 @@
 				12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */,
 			);
 			path = "🛠Menu";
-			sourceTree = "<group>";
-		};
-		1299C3A9288D68D90086522B /* Archive */ = {
-			isa = PBXGroup;
-			children = (
-				120B44462847796100D491E4 /* 📄DocumentMenu.swift */,
-				129CBDF7284C7F8B00C73F4D /* 🏷VersionMenu.swift */,
-				12AA24FA284A393300199A64 /* 📋TextView.swift */,
-				12428DCA28485F85006837F9 /* Archive_📓SourceCodeMenu.swift */,
-			);
-			path = Archive;
 			sourceTree = "<group>";
 		};
 		129CBE13284CAD2D00C73F4D /* 🌏Localization */ = {
@@ -477,20 +454,17 @@
 				1232578B284C5EA2002E0057 /* 👆Stepper.swift in Sources */,
 				12630BC12849C63E005F922F /* 🧍HeightMenu.swift in Sources */,
 				126B3ED3282E1968009BD28B /* 🛠MenuButton.swift in Sources */,
-				12AA24FB284A393300199A64 /* 📋TextView.swift in Sources */,
 				12428DCE284860D0006837F9 /* 🕒HistoryMenu.swift in Sources */,
 				1299C3B6288D6DA80086522B /* 📣ADView.swift in Sources */,
 				12F2F8A3284B703100C3A4BA /* 💸ADBanner.swift in Sources */,
 				124C485F284863BA0085B066 /* 📱AppModel.swift in Sources */,
 				120B4445284778FD00D491E4 /* 💟JumpButton.swift in Sources */,
 				12579D162835FE8900536547 /* 🗯ResultView.swift in Sources */,
-				120B44472847796100D491E4 /* 📄DocumentMenu.swift in Sources */,
 				1299C3AF288D68F50086522B /* 🧑‍💻AboutDeveloperPublisher.swift in Sources */,
 				12630BC32849CD33005F922F /* 🛠AppMenu.swift in Sources */,
 				126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */,
 				1299C39A288D63570086522B /* ﹀CloseMenuButton.swift in Sources */,
 				120B2192284B4E1E007CA829 /* 📏BodyMassUnit.swift in Sources */,
-				129CBDF8284C7F8B00C73F4D /* 🏷VersionMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

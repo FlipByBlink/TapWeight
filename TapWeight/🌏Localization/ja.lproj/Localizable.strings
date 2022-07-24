@@ -1,75 +1,113 @@
 
 "Body Mass" = "体重";
-
 "Body Mass Index" = "BMI";
-
 "Body Fat Percentage" = "体脂肪率";
-
 
 // ======== Main View ========
 "DONE" = "完了";
-
 "Open \"Health\" app" = "「ヘルスケア」アプリを開く";
-
 "Open menu" = "メニューを開く";
-
 
 // ======== Result View ========
 "Registration for \"Health\" app" = "「ヘルスケア」アプリに登録しました。";
-
 "Please check permission on \"Health\" app" = "「ヘルスケア」アプリで権限を確認して下さい。";
-
 "DONE!" = "完了!";
-
 "ERROR!?" = "エラー!?";
-
 "Canceled" = "取り消しました。";
-
 "(perhaps error)" = "(たぶん失敗しました)";
-
 "Dismiss" = "閉じる";
-
 "Cancel" = "取り消す";
-
 
 // ======== Menu View ========
 "Option" = "オプション";
-
 "Unit" = "単位";
-
 "50gram" = "50グラム";
-
 "Height" = "身長";
-
 "Weight" = "体重";
-
 "Local history" = "ローカル履歴";
-
 "\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"" = "\"ローカル履歴\"は動作確認や簡易バックアップを目的としています。 ";
-
 "TapWeight" = "体重登録";
+
+
+
+
+// ===========================================
+// ================ Template =================
+// ======= Accessibility =========
+"Open menu" = "メニューを開く";
+"Option" = "オプション";
+"Dismiss" = "閉じる";
+"Cancel" = "取り消す";
+
+
+// ======== Information =========
+"Information" = "情報";
+"Version" = "バージョン";
+"builded on %@" = "%@ にビルドしました";
+"Version History" = "バージョン履歴";
+"About" = "概要";
+"Open AppStore page" = "AppStoreページを開く";
+"Privacy Policy" = "プライバシーポリシー";
+"Source code" = "ソースコード";
+"Web Repository" = "Web リポジトリー";
+"(Mirror)" = "(ミラー)";
+
+
+// ======== Transparency Report ========
+"Transparency Report" = "透明性レポート";
+"Developer / Publisher" = "開発 / パブリッシャー";
+"AppStore Release" = "AppStore リリース";
+"Individual" = "個人系";
+"The System" = "構成";
+"Name" = "名前";
+"only one person" = "1人のみ";
+"identity / circumstance / background" = "身元 / 素性 / 境遇";
+"age" = "年齢";
+"about 28" = "約28才";
+"country" = "国";
+"Japan" = "日本";
+"native language" = "ネイティブ言語";
+"Japanese" = "日本語";
+"income" = "収入";
+"As of 2021" = "2021年時点";
+"Image" = "写真";
+"Taken on 2021-11" = "2021年11月に撮影";
+"Timeline" = "タイムライン";
+"Finished from high school in Okayama Prefecture. Entranced into University-of-the-Ryukyus/faculty-of-engineering in Okinawa Prefecture." = "岡山県の高等学校を卒業。沖縄県の琉球大学工学部に入学。";
+"Final year as an undergraduate student. Developed an iOS application(FlipByBlink) as software for the purpose of research experiments." = "大学学部生として最終学年。研究実験を目的としたiOSアプリ(FlipByBlink)の開発を行う。";
+"Released ebook reader app \"FlipByBlink\" ver 1.0 on AppStore. Special feature is to turn a page by slightly-longish-voluntary-blink." = "特殊なまばたきでページめくりができる電子書籍リーダーアプリ「FlipByBlink」をver1.0としてAppStoreにリリース。";
+"Graduated from University-of-the-Ryukyus." = "琉球大学を卒業。";
+"Released alarm clock app with taking a long time \"FadeInAlarm\" ver 1.0. First paid app." = "時間をかけて徐々に音が大きくなるアラームアプリ「FadeInAlarm」ver1.0をリリース。初めてとなる有料アプリ。";
+"Migrated to Okayama Prefecture." = "岡山に移住。";
+"Released FlipByBlink ver 3.0 for the first time in three years since ver 2.0." = "FlipByBlink、ver2.0以来 約3年ぶりとなるver3.0をリリース。";
+"Released FadeInAlarm ver 2.0 for the first time in three years since ver 1.0." = "FadeInAlarm、ver1.0以来 約3年ぶりとなるver2.0をリリース。";
+"Released simple shogi board app \"PlainShogiBoard\" ver 1.0." = "シンプルな将棋盤アプリ「Plain将棋盤」ver1.0をリリース。";
+"Released body weight registration app \"TapWeight\" ver 1.0." = "体重登録アプリ「TapWeight」ver1.0をリリース。";
+"Released body temperature registration app \"TapTemperature\" ver 1.0." = "体温登録アプリ「TapTemperature」ver1.0をリリース。";
+"Adopted In-App Purchase model for the first time on TapWeight ver 1.1.1" = "TapWeight、有料課金モデルを初めて採用したver1.1.1をリリース。";
 
 
 // ======== AD =========
 "AD" = "広告";
-
-"self-AD" = "セルフ広告";
-
 "About AD" = "広告について";
-
-"In App Purchase" = "アプリ内課金";
-
-"Restore Purchase" = "購入情報を復元する";
-
-"This App shows banner advertisement about applications on AppStore. These are Apps by TapWeight developer. AD banner is rarely presented on result screen. It appears one in every 4 times." = "広告としてAppStoreアプリケーションに関するバナーを表示します。「体重登録」デベロッパーによるアプリ群が表示対象となります。入力完了画面では、たまに広告が表示されます。それは4回起動する度に一時的に有効になります。";
-
+"In-App Purchase" = "アプリ内課金";
+"Hide AD banner" = "広告を非表示にする";
+"Purchased" = "購入済み";
+"Restore Purchases" = "購入情報を復元する";
+"Restored transactions" = "購入情報を確認しました";
+"Done" = "完了";
+"Error" = "エラー";
+"Open AD link" = "広告のリンクを開く";
 "OK" = "了解しました";
 
+"🌏ADDescription" = "広告としてAppStoreアプリケーションに関するバナーを表示します。本アプリのデベロッパーによるアプリ群が表示対象となります。広告バナーはアプリを5回起動すると有効になります。";
 
 "Simple and normal ebook reader (for fixed-layout). Only a special feature. Turn a page with slightly longish voluntary blink." = "シンプルで一般的な電子書籍リーダー(固定レイアウト向け)。特殊な機能は1つだけ。目を閉じる時間を意識的にわずかに長くさせた瞬きでページめくりができます。";
 
 "Alarm clock with taking a long time from small volume to max volume." = "時間をかけて少しずつ音量が大きくなるアラームアプリ。";
 
 "Simple Shogi board App. Based on iOS system UI design." = "ただの将棋盤。iOSの標準デザインに沿ったシンプルなアプリです。";
+
+"Register weight data to the Apple \"Health\" application pre-installed on iPhone in the fastest possible way (as manual)." = "「ヘルスケア」アプリに体重データを(手動としては)最速で登録するためのアプリ。";
 
 "Register body temperature data to the \"Health\" app pre-installed on iPhone in the fastest possible way (as manual)." = "「ヘルスケア」アプリに体温データを(手動としては)最速で登録するためのアプリ。";

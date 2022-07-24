@@ -30,7 +30,16 @@ struct 🕒HistoryView: View {
                 
                 Spacer()
             } else {
-                📋TextView(🕒History, "History", ⓗorizonScroll: true)
+                ScrollView {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        Text(🕒History)
+                            .padding()
+                    }
+                }
+                .navigationBarTitle("History")
+                .navigationBarTitleDisplayMode(.inline)
+                .font(.caption.monospaced())
+                .textSelection(.enabled)
             }
                 
             Color.secondary
