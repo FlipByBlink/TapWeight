@@ -17,7 +17,7 @@ struct 💸ADBanner: View {
                 Spacer()
             } else {
                 if 🚩ShowBanner {
-                    💸ADView()
+                    📣ADView()
                         .padding(.horizontal)
                         .overlay(alignment: .topLeading) {
                             Text("AD")
