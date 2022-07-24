@@ -1,10 +1,17 @@
 
-"2.0" = "AAAA
+"1.2" = "AAAA
 Various bugfixes and improvements.";
 
 
 
 
-"1.2" = "Third release";
-"1.1" = "Second release";
+"1.1.1" = "- Add \"Hide AD banner\" option. (in-app-purchase)";
+
+"1.1" = "- Add \"Cancel\" feature just after registration.
+- Add 100g/50g amount opiton of stepper.
+- Improve several small UI design.
+- Change local history format to CSV style.
+- Add Version History to App Document.
+- Add 3 keywords(Body Mass/Body Mass Index/Body Fat Percentage) localization for Simplified_Chinese, Traditional_Chinese, Spanish, Portuguese, Russian, Indonesian, French, Arabic, German, Korean.";
+
 "1.0" = "Initial release";

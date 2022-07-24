@@ -1,9 +1,9 @@
 
-let 🔗AppStoreProductURL = URL(string: "https://apps.apple.com/app/id1111")!
+let 🔗AppStoreProductURL = URL(string: "https://apps.apple.com/app/id1624159721")!
 
 let 👤PrivacyPolicy = """
-2022-AA-AA
-
+2022-05-22
+                            
 (English)This application don't collect user infomation.
 
 (Japanese)このアプリ自身において、ユーザーの情報を一切収集しません。
