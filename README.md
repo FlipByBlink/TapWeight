@@ -10,7 +10,7 @@
 
 [apps.apple.com/app/id1624159721](https://apps.apple.com/app/id1624159721)
 
-<!-- Manually sync below text between "📄DocumentMenu.swift/📄About" and "/README.md(here)" and "AppStoreConnect/TapWeight/Description". -->
+<!-- Manually sync below text between "/README.md(here)" and "Localizable.strings" and "AppStoreConnect/_/Description". -->
 
 ## 📄 Description
 
