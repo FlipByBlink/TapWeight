@@ -2,31 +2,21 @@
 import SwiftUI
 import HealthKit
 
-
 class 📱AppModel: ObservableObject {
     
     @Published var 🚩ShowMenu: Bool = false
     
-    
     @AppStorage("Unit") var 📏Unit: 📏BodyMassUnit = .kg
-    
     @AppStorage("Amount50g") var 🚩Amount50g: Bool = false
-    
     @AppStorage("AbleBodyFat") var 🚩AbleBodyFat: Bool = false
-    
     @AppStorage("AbleBMI") var 🚩AbleBMI: Bool = false
-    
     @AppStorage("Height") var 🧍Height: Int = 165
     
-    
     @AppStorage("BodyMass") var 💾BodyMass: Double = 60.0
-    
     @AppStorage("BodyFat") var 💾BodyFat: Double = 0.1
     
     @Published var 📝BodyMass: Double = 65.0
-    
     @Published var 📝BodyFat: Double = 0.2
-    
     var 📝BMI: Double {
         let 🅀uantity = HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass)
         let 🄺iloBodyMass = 🅀uantity.doubleValue(for: .gramUnit(with: .kilo))
@@ -34,18 +24,12 @@ class 📱AppModel: ObservableObject {
         return Double(Int(round(📝*100)))/100
     }
     
-    
     @Published var 🚩ShowResult: Bool = false
-    
     @Published var 🚨RegisterError: Bool = false
-    
     @Published var 🚩Canceled: Bool = false
-    
     @Published var 🚨CancelError: Bool = false
     
-    
     @AppStorage("History") var 🕒History: String = ""
-    
     
     let 🏥HealthStore = HKHealthStore()
     
