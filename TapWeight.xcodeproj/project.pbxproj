@@ -155,7 +155,7 @@
 		126B3EB1282DFEE0009BD28B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		126B3EB8282E001E009BD28B /* TapWeight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TapWeight.entitlements; sourceTree = "<group>"; };
 		126B3EBA282E001E009BD28B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		126B3EBC282E0159009BD28B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		126B3EBC282E0159009BD28B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		126B3EC0282E0F45009BD28B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		126B3EC2282E0F4D009BD28B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		126B3ECF282E15E5009BD28B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -231,6 +231,9 @@
 				126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */,
 				12630BC22849CD33005F922F /* 🛠MenuList.swift */,
 				12630BC02849C63E005F922F /* 🧍HeightMenu.swift */,
+				126B3EBC282E0159009BD28B /* Info.plist */,
+				126B3EB8282E001E009BD28B /* TapWeight.entitlements */,
+				126B3EB0282DFEE0009BD28B /* Preview Content */,
 			);
 			path = "🧩Sub";
 			sourceTree = "<group>";
@@ -275,9 +278,6 @@
 				1299C395288D51E20086522B /* 🧰Others */,
 				129CBE13284CAD2D00C73F4D /* 🌏Localization */,
 				126B3EAE282DFEE0009BD28B /* Assets.xcassets */,
-				126B3EBC282E0159009BD28B /* Info.plist */,
-				126B3EB8282E001E009BD28B /* TapWeight.entitlements */,
-				126B3EB0282DFEE0009BD28B /* Preview Content */,
 			);
 			path = TapWeight;
 			sourceTree = "<group>";
@@ -613,14 +613,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TapWeight/TapWeight.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "TapWeight/🧩Sub/TapWeight.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_ASSET_PATHS = "\"TapWeight/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TapWeight/🧩Sub/Preview Content\"";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TapWeight/Info.plist;
+				INFOPLIST_FILE = "TapWeight/🧩Sub/Info.plist";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Activate HeakthKit permission to record data.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Activate HeakthKit permission to record data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -645,14 +645,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TapWeight/TapWeight.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "TapWeight/🧩Sub/TapWeight.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_ASSET_PATHS = "\"TapWeight/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TapWeight/🧩Sub/Preview Content\"";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TapWeight/Info.plist;
+				INFOPLIST_FILE = "TapWeight/🧩Sub/Info.plist";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Activate HeakthKit permission to record data.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Activate HeakthKit permission to record data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
