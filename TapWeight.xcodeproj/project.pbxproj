@@ -228,33 +228,23 @@
 				12579D152835FE8900536547 /* 🗯ResultView.swift */,
 				1232578A284C5EA2002E0057 /* 👆Stepper.swift */,
 				120B4444284778FD00D491E4 /* 💟JumpButton.swift */,
-				12BA83C628605241009E7E3F /* 🏬InAppPurchase */,
-				120B2193284B6ABF007CA829 /* 💸AD */,
+				126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */,
+				12630BC22849CD33005F922F /* 🛠MenuList.swift */,
+				12630BC02849C63E005F922F /* 🧍HeightMenu.swift */,
 			);
 			path = "🧩Sub";
 			sourceTree = "<group>";
 		};
-		12428DC928485ECD006837F9 /* 📄Document */ = {
+		12428DCC2848608A006837F9 /* 📄Information */ = {
 			isa = PBXGroup;
 			children = (
+				12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */,
+				12AA24FA284A393300199A64 /* 📋TextView.swift */,
 				120B44462847796100D491E4 /* 📄DocumentMenu.swift */,
 				129CBDF7284C7F8B00C73F4D /* 🏷VersionMenu.swift */,
 				12428DCA28485F85006837F9 /* 📓SourceCodeMenu.swift */,
 			);
-			path = "📄Document";
-			sourceTree = "<group>";
-		};
-		12428DCC2848608A006837F9 /* ⚙️Menu */ = {
-			isa = PBXGroup;
-			children = (
-				126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */,
-				12630BC22849CD33005F922F /* 🛠MenuList.swift */,
-				12630BC02849C63E005F922F /* 🧍HeightMenu.swift */,
-				12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */,
-				12AA24FA284A393300199A64 /* 📋TextView.swift */,
-				12428DC928485ECD006837F9 /* 📄Document */,
-			);
-			path = "⚙️Menu";
+			path = "📄Information";
 			sourceTree = "<group>";
 		};
 		126B3E9E282DFEDF009BD28B = {
@@ -282,7 +272,7 @@
 				126B3EAC282DFEDF009BD28B /* ContentView.swift */,
 				124C485E284863BA0085B066 /* 📱AppModel.swift */,
 				12325789284C5E79002E0057 /* 🧩Sub */,
-				12428DCC2848608A006837F9 /* ⚙️Menu */,
+				1299C395288D51E20086522B /* 🧰Others */,
 				129CBE13284CAD2D00C73F4D /* 🌏Localization */,
 				126B3EAE282DFEE0009BD28B /* Assets.xcassets */,
 				126B3EBC282E0159009BD28B /* Info.plist */,
@@ -307,6 +297,16 @@
 				126B3EBA282E001E009BD28B /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1299C395288D51E20086522B /* 🧰Others */ = {
+			isa = PBXGroup;
+			children = (
+				120B2193284B6ABF007CA829 /* 💸AD */,
+				12BA83C628605241009E7E3F /* 🏬InAppPurchase */,
+				12428DCC2848608A006837F9 /* 📄Information */,
+			);
+			path = "🧰Others";
 			sourceTree = "<group>";
 		};
 		129CBE13284CAD2D00C73F4D /* 🌏Localization */ = {
