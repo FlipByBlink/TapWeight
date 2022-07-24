@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct 🛠MenuList: View {
+struct 🛠AppMenu: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     @Environment(\.dismiss) var 🔙: DismissAction
@@ -77,7 +77,7 @@ struct 🛠MenuList: View {
                 }
                 
                 
-                💸AboutADView()
+                📣ADMenuLink()
                 
                 
                 📄DocumentMenu()

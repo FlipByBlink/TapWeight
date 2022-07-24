@@ -3,7 +3,7 @@ import SwiftUI
 
 struct 💸ADBanner: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @EnvironmentObject var 🏬: 🏬StoreModel
+    @EnvironmentObject var 🛒: 🛒StoreModel
     
     @State private var 🚩ShowBanner = false
     
@@ -13,7 +13,7 @@ struct 💸ADBanner: View {
     
     var body: some View {
         Group {
-            if 🏬.🚩Purchased || 📱.🚨RegisterError {
+            if 🛒.🚩Purchased || 📱.🚨RegisterError {
                 Spacer()
             } else {
                 if 🚩ShowBanner {

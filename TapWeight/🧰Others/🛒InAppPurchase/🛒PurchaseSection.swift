@@ -2,8 +2,8 @@
 import SwiftUI
 import StoreKit
 
-struct 🏬PurchaseSection: View {
-    @EnvironmentObject var 🏬: 🏬StoreModel
+struct 🛒PurchaseSection: View {
+    @EnvironmentObject var 🛒: 🛒StoreModel
     
     @State var 🚨ErrorTitle = ""
     @State var 🚨ShowError: Bool = false
@@ -13,15 +13,15 @@ struct 🏬PurchaseSection: View {
     var body: some View {
         Section {
             HStack {
-                Label(🏬.🎫Name, systemImage: 🏬.🚩Purchased ? "checkmark" : "questionmark")
+                Label(🛒.🎫Name, systemImage: 🛒.🚩Purchased ? "checkmark" : "questionmark")
                 
                 Spacer()
                 
-                Button(🏬.🎫Price) {
+                Button(🛒.🎫Price) {
                     Task {
                         do {
                             🚩BuyingNow = true
-                            try await 🏬.👆Purchase()
+                            try await 🛒.👆Purchase()
                         } catch 🚨StoreError.failedVerification {
                             🚨ErrorTitle = "Your purchase could not be verified by the App Store."
                             🚨ShowError = true
@@ -32,7 +32,7 @@ struct 🏬PurchaseSection: View {
                     }
                 }
                 .disabled(🚩BuyingNow)
-                .disabled(🏬.🚩Purchased)
+                .disabled(🛒.🚩Purchased)
                 .buttonStyle(.borderedProminent)
             }
             .padding(.vertical, 8)
@@ -45,7 +45,7 @@ struct 🏬PurchaseSection: View {
             } label: {
                 Label("Restore Purchase", systemImage: "arrow.uturn.backward")
                     .font(.subheadline)
-                    .foregroundStyle(🏬.🚩Purchased ? .secondary : .primary)
+                    .foregroundStyle(🛒.🚩Purchased ? .secondary : .primary)
             }
         } header: {
             Text("In App Purchase")
@@ -55,6 +55,6 @@ struct 🏬PurchaseSection: View {
                   message: nil,
                   dismissButton: .default(Text("OK")))
         }
-        .animation(.default, value: 🏬.🚩Purchased)
+        .animation(.default, value: 🛒.🚩Purchased)
     }
 }

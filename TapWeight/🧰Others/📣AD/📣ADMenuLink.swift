@@ -2,12 +2,12 @@
 import SwiftUI
 import StoreKit
 
-struct 💸AboutADView: View {
-    @EnvironmentObject var 🏬: 🏬StoreModel
+struct 📣ADMenuLink: View {
+    @EnvironmentObject var 🛒: 🛒StoreModel
     
     var body: some View {
         Section {
-            if 🏬.🚩Purchased == false {
+            if 🛒.🚩Purchased == false {
                 💸ADView()
             }
             
@@ -21,7 +21,7 @@ struct 💸AboutADView: View {
                     }
                     
                     
-                    🏬PurchaseSection()
+                    🛒PurchaseSection()
                     
                     
                     Section {

@@ -6,13 +6,13 @@ struct TapWeightApp: App {
     
     let 📱 = 📱AppModel()
     
-    let 🏬 = 🏬StoreModel()
+    let 🛒 = 🛒StoreModel()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(📱)
-                .environmentObject(🏬)
+                .environmentObject(🛒)
         }
     }
 }
