@@ -10,7 +10,6 @@
 		120B2192284B4E1E007CA829 /* 📏BodyMassUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */; };
 		120B4445284778FD00D491E4 /* 💟JumpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B4444284778FD00D491E4 /* 💟JumpButton.swift */; };
 		1232578B284C5EA2002E0057 /* 👆Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 👆Stepper.swift */; };
-		12428DCB28485F85006837F9 /* Archive_📓SourceCodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12428DCA28485F85006837F9 /* Archive_📓SourceCodeMenu.swift */; };
 		12428DCE284860D0006837F9 /* 🕒HistoryMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */; };
 		124C485F284863BA0085B066 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
 		12579D162835FE8900536547 /* 🗯ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🗯ResultView.swift */; };
@@ -34,7 +33,6 @@
 		1299C3AF288D68F50086522B /* 🧑‍💻AboutDeveloperPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3AB288D68F50086522B /* 🧑‍💻AboutDeveloperPublisher.swift */; };
 		1299C3B0288D68F50086522B /* 📄InformationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3AC288D68F50086522B /* 📄InformationMenu.swift */; };
 		1299C3B1288D68F50086522B /* 🕒VersionHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3AD288D68F50086522B /* 🕒VersionHistory.swift */; };
-		1299C3B5288D6DA80086522B /* 📣ADBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3B2288D6DA70086522B /* 📣ADBanner.swift */; };
 		1299C3B6288D6DA80086522B /* 📣ADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3B3288D6DA80086522B /* 📣ADView.swift */; };
 		1299C3B7288D6DA80086522B /* 📣AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3B4288D6DA80086522B /* 📣AppName.swift */; };
 		129CBE16284CCF9900C73F4D /* 📱AppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
@@ -42,7 +40,7 @@
 		129CBE18284CD00700C73F4D /* 📏BodyMassUnit.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */; };
 		129CBE1F284CD03300C73F4D /* 🧍HeightMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12630BC02849C63E005F922F /* 🧍HeightMenu.swift */; };
 		129CBE20284CD03300C73F4D /* 🕒HistoryMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */; };
-		129CBE29284CD05100C73F4D /* 💸ADBanner.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F2F8A2284B703100C3A4BA /* 💸ADBanner.swift */; };
+		129CBE29284CD05100C73F4D /* 📣ADBanner.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F2F8A2284B703100C3A4BA /* 📣ADBanner.swift */; };
 		129CBE2B284CD10D00C73F4D /* 👆Stepper.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 👆Stepper.swift */; };
 		129CBE2D284CD10D00C73F4D /* 💟JumpButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 120B4444284778FD00D491E4 /* 💟JumpButton.swift */; };
 		129CBE2E284CD12800C73F4D /* 🛠MenuButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */; };
@@ -55,8 +53,7 @@
 		12C67126286068B000FE4C06 /* 🛒PurchaseSection.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BA83C72860525B009E7E3F /* 🛒PurchaseSection.swift */; };
 		12C67127286068B400FE4C06 /* 🛒StoreModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BA83C82860525B009E7E3F /* 🛒StoreModel.swift */; };
 		12C67128286068C700FE4C06 /* 📣ADMenuLink.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BA83C428605235009E7E3F /* 📣ADMenuLink.swift */; };
-		12C6712C286068E800FE4C06 /* Archive_📓SourceCodeMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12428DCA28485F85006837F9 /* Archive_📓SourceCodeMenu.swift */; };
-		12F2F8A3284B703100C3A4BA /* 💸ADBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F2F8A2284B703100C3A4BA /* 💸ADBanner.swift */; };
+		12F2F8A3284B703100C3A4BA /* 📣ADBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F2F8A2284B703100C3A4BA /* 📣ADBanner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -105,7 +102,7 @@
 			dstSubfolderSpec = 7;
 			files = (
 				12C67128286068C700FE4C06 /* 📣ADMenuLink.swift in CopyFiles */,
-				129CBE29284CD05100C73F4D /* 💸ADBanner.swift in CopyFiles */,
+				129CBE29284CD05100C73F4D /* 📣ADBanner.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +123,6 @@
 			dstPath = "📄Document";
 			dstSubfolderSpec = 7;
 			files = (
-				12C6712C286068E800FE4C06 /* Archive_📓SourceCodeMenu.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +132,6 @@
 		120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📏BodyMassUnit.swift"; sourceTree = "<group>"; };
 		120B4444284778FD00D491E4 /* 💟JumpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💟JumpButton.swift"; sourceTree = "<group>"; };
 		1232578A284C5EA2002E0057 /* 👆Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "👆Stepper.swift"; sourceTree = "<group>"; };
-		12428DCA28485F85006837F9 /* Archive_📓SourceCodeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Archive_📓SourceCodeMenu.swift"; sourceTree = "<group>"; };
 		12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🕒HistoryMenu.swift"; sourceTree = "<group>"; };
 		124C485E284863BA0085B066 /* 📱AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱AppModel.swift"; sourceTree = "<group>"; };
 		12579D152835FE8900536547 /* 🗯ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗯ResultView.swift"; sourceTree = "<group>"; };
@@ -166,7 +161,6 @@
 		1299C3AB288D68F50086522B /* 🧑‍💻AboutDeveloperPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🧑‍💻AboutDeveloperPublisher.swift"; sourceTree = "<group>"; };
 		1299C3AC288D68F50086522B /* 📄InformationMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📄InformationMenu.swift"; sourceTree = "<group>"; };
 		1299C3AD288D68F50086522B /* 🕒VersionHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🕒VersionHistory.swift"; sourceTree = "<group>"; };
-		1299C3B2288D6DA70086522B /* 📣ADBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADBanner.swift"; sourceTree = "<group>"; };
 		1299C3B3288D6DA80086522B /* 📣ADView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADView.swift"; sourceTree = "<group>"; };
 		1299C3B4288D6DA80086522B /* 📣AppName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣AppName.swift"; sourceTree = "<group>"; };
 		129CBDF9284C93D300C73F4D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -198,7 +192,7 @@
 		12BA83C82860525B009E7E3F /* 🛒StoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒StoreModel.swift"; sourceTree = "<group>"; };
 		12BA83CB2860535A009E7E3F /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		12BA83CD28606047009E7E3F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		12F2F8A2284B703100C3A4BA /* 💸ADBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💸ADBanner.swift"; sourceTree = "<group>"; };
+		12F2F8A2284B703100C3A4BA /* 📣ADBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📣ADBanner.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,8 +225,7 @@
 				12579D152835FE8900536547 /* 🗯ResultView.swift */,
 				1232578A284C5EA2002E0057 /* 👆Stepper.swift */,
 				120B4444284778FD00D491E4 /* 💟JumpButton.swift */,
-				1299C3B2288D6DA70086522B /* 📣ADBanner.swift */,
-				12F2F8A2284B703100C3A4BA /* 💸ADBanner.swift */,
+				12F2F8A2284B703100C3A4BA /* 📣ADBanner.swift */,
 				1299C396288D5E420086522B /* 🛠Menu */,
 				126B3EBC282E0159009BD28B /* Info.plist */,
 				126B3EB8282E001E009BD28B /* TapWeight.entitlements */,
@@ -248,7 +241,6 @@
 				1299C3AD288D68F50086522B /* 🕒VersionHistory.swift */,
 				1299C3AB288D68F50086522B /* 🧑‍💻AboutDeveloperPublisher.swift */,
 				1299C3AA288D68F50086522B /* 📓SourceCodeMenu.swift */,
-				12428DCA28485F85006837F9 /* Archive_📓SourceCodeMenu.swift */,
 			);
 			path = "📄Information";
 			sourceTree = "<group>";
@@ -441,9 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12BA83CA2860525B009E7E3F /* 🛒StoreModel.swift in Sources */,
-				1299C3B5288D6DA80086522B /* 📣ADBanner.swift in Sources */,
 				1299C3AE288D68F50086522B /* 📓SourceCodeMenu.swift in Sources */,
-				12428DCB28485F85006837F9 /* Archive_📓SourceCodeMenu.swift in Sources */,
 				126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */,
 				1299C3B1288D68F50086522B /* 🕒VersionHistory.swift in Sources */,
 				12BA83C92860525B009E7E3F /* 🛒PurchaseSection.swift in Sources */,
@@ -456,7 +446,7 @@
 				126B3ED3282E1968009BD28B /* 🛠MenuButton.swift in Sources */,
 				12428DCE284860D0006837F9 /* 🕒HistoryMenu.swift in Sources */,
 				1299C3B6288D6DA80086522B /* 📣ADView.swift in Sources */,
-				12F2F8A3284B703100C3A4BA /* 💸ADBanner.swift in Sources */,
+				12F2F8A3284B703100C3A4BA /* 📣ADBanner.swift in Sources */,
 				124C485F284863BA0085B066 /* 📱AppModel.swift in Sources */,
 				120B4445284778FD00D491E4 /* 💟JumpButton.swift in Sources */,
 				12579D162835FE8900536547 /* 🗯ResultView.swift in Sources */,
