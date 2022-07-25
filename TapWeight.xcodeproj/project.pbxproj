@@ -41,11 +41,19 @@
 		129CBE18284CD00700C73F4D /* 📏BodyMassUnit.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */; };
 		129CBE1F284CD03300C73F4D /* 🧍HeightMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12630BC02849C63E005F922F /* 🧍HeightMenu.swift */; };
 		129CBE20284CD03300C73F4D /* 🕒LocalHistory.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12428DCD284860D0006837F9 /* 🕒LocalHistory.swift */; };
-		129CBE29284CD05100C73F4D /* 📣ADBanner.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F2F8A2284B703100C3A4BA /* 📣ADBanner.swift */; };
 		129CBE2B284CD10D00C73F4D /* 👆Stepper.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 👆Stepper.swift */; };
 		129CBE2D284CD10D00C73F4D /* 💟JumpButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 120B4444284778FD00D491E4 /* 💟JumpButton.swift */; };
 		129CBE2E284CD12800C73F4D /* 🛠MenuButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */; };
 		129CBE2F284CD12800C73F4D /* 🛠AppMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12630BC22849CD33005F922F /* 🛠AppMenu.swift */; };
+		12AF80D4288EBFB70047324A /* 🛠OthersMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C397288D63510086522B /* 🛠OthersMenu.swift */; };
+		12AF80D5288EBFB70047324A /* ﹀CloseMenuButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C399288D63570086522B /* ﹀CloseMenuButton.swift */; };
+		12AF80D6288EBFC10047324A /* 📄InformationMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C3AC288D68F50086522B /* 📄InformationMenu.swift */; };
+		12AF80D7288EBFC10047324A /* 🕒VersionHistory.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C3AD288D68F50086522B /* 🕒VersionHistory.swift */; };
+		12AF80D8288EBFC10047324A /* 🧑‍💻AboutDeveloperPublisher.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C3AB288D68F50086522B /* 🧑‍💻AboutDeveloperPublisher.swift */; };
+		12AF80D9288EBFC10047324A /* 📓SourceCodeMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C3AA288D68F50086522B /* 📓SourceCodeMenu.swift */; };
+		12AF80DA288EBFCB0047324A /* 📣ADView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C3B3288D6DA80086522B /* 📣ADView.swift */; };
+		12AF80DB288EBFCB0047324A /* 📣AppName.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C3B4288D6DA80086522B /* 📣AppName.swift */; };
+		12AF80DC288EBFE10047324A /* 📣ADBanner.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F2F8A2284B703100C3A4BA /* 📣ADBanner.swift */; };
 		12BA83C528605235009E7E3F /* 📣ADMenuLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA83C428605235009E7E3F /* 📣ADMenuLink.swift */; };
 		12BA83C92860525B009E7E3F /* 🛒PurchaseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA83C72860525B009E7E3F /* 🛒PurchaseSection.swift */; };
 		12BA83CA2860525B009E7E3F /* 🛒StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA83C82860525B009E7E3F /* 🛒StoreModel.swift */; };
@@ -76,6 +84,7 @@
 			dstPath = "🧩Sub";
 			dstSubfolderSpec = 7;
 			files = (
+				12AF80DC288EBFE10047324A /* 📣ADBanner.swift in CopyFiles */,
 				129CBE2B284CD10D00C73F4D /* 👆Stepper.swift in CopyFiles */,
 				129CBE2D284CD10D00C73F4D /* 💟JumpButton.swift in CopyFiles */,
 				129CBE17284CD00700C73F4D /* 🗯ResultView.swift in CopyFiles */,
@@ -86,7 +95,7 @@
 		129CBE1B284CD01200C73F4D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "⚙️Menu";
+			dstPath = "🛠Menu";
 			dstSubfolderSpec = 7;
 			files = (
 				129CBE2E284CD12800C73F4D /* 🛠MenuButton.swift in CopyFiles */,
@@ -99,18 +108,30 @@
 		129CBE25284CD03A00C73F4D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "💸AD";
+			dstPath = "📣AD";
 			dstSubfolderSpec = 7;
 			files = (
+				12AF80DA288EBFCB0047324A /* 📣ADView.swift in CopyFiles */,
+				12AF80DB288EBFCB0047324A /* 📣AppName.swift in CopyFiles */,
 				12C67128286068C700FE4C06 /* 📣ADMenuLink.swift in CopyFiles */,
-				129CBE29284CD05100C73F4D /* 📣ADBanner.swift in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12AF80D3288EBFAD0047324A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "🧰Others";
+			dstSubfolderSpec = 7;
+			files = (
+				12AF80D4288EBFB70047324A /* 🛠OthersMenu.swift in CopyFiles */,
+				12AF80D5288EBFB70047324A /* ﹀CloseMenuButton.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		12C67125286068A200FE4C06 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "🏬InAppPurchase";
+			dstPath = "🛒InAppPurchase";
 			dstSubfolderSpec = 7;
 			files = (
 				12C67127286068B400FE4C06 /* 🛒StoreModel.swift in CopyFiles */,
@@ -121,9 +142,13 @@
 		12C67129286068DD00FE4C06 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "📄Document";
+			dstPath = "📄Information";
 			dstSubfolderSpec = 7;
 			files = (
+				12AF80D6288EBFC10047324A /* 📄InformationMenu.swift in CopyFiles */,
+				12AF80D7288EBFC10047324A /* 🕒VersionHistory.swift in CopyFiles */,
+				12AF80D8288EBFC10047324A /* 🧑‍💻AboutDeveloperPublisher.swift in CopyFiles */,
+				12AF80D9288EBFC10047324A /* 📓SourceCodeMenu.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +380,7 @@
 				12C67125286068A200FE4C06 /* CopyFiles */,
 				129CBE25284CD03A00C73F4D /* CopyFiles */,
 				12C67129286068DD00FE4C06 /* CopyFiles */,
+				12AF80D3288EBFAD0047324A /* CopyFiles */,
 			);
 			buildRules = (
 			);
