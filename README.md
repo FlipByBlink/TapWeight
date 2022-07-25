@@ -134,6 +134,9 @@ German: Gewicht / Body-Mass-Index / Körperfettanteil
 
 Korean: 체중 / 체질량 지수 / 체지방률
 
+Ukrainian: Вага / Індекс маси тіла / Відсоток жиру в організмі
+
+
 <br>
 
 

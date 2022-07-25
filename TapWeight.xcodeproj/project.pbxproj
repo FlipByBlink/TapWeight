@@ -189,6 +189,8 @@
 		129CBE10284C9D7600C73F4D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		129CBE11284C9D7C00C73F4D /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		129CBE12284C9D7C00C73F4D /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		12AF80DF288ECA8F0047324A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		12AF80E0288ECA8F0047324A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12BA83C428605235009E7E3F /* 📣ADMenuLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADMenuLink.swift"; sourceTree = "<group>"; };
 		12BA83C72860525B009E7E3F /* 🛒PurchaseSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒PurchaseSection.swift"; sourceTree = "<group>"; };
 		12BA83C82860525B009E7E3F /* 🛒StoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒StoreModel.swift"; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				"pt-PT",
 				es,
 				"es-419",
+				uk,
 			);
 			mainGroup = 126B3E9E282DFEDF009BD28B;
 			productRefGroup = 126B3EA8282DFEDF009BD28B /* Products */;
@@ -464,6 +467,7 @@
 				129CBE0E284C9D5800C73F4D /* pt-PT */,
 				129CBE10284C9D7600C73F4D /* es */,
 				129CBE12284C9D7C00C73F4D /* es-419 */,
+				12AF80DF288ECA8F0047324A /* uk */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -485,6 +489,7 @@
 				129CBE0D284C9D5800C73F4D /* pt-PT */,
 				129CBE0F284C9D7600C73F4D /* es */,
 				129CBE11284C9D7C00C73F4D /* es-419 */,
+				12AF80E0288ECA8F0047324A /* uk */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
