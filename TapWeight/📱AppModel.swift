@@ -50,24 +50,26 @@ class 📱AppModel: ObservableObject {
         }
         
         
+        📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
+                                         quantity: HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass),
+                                         start: .now, end: .now))
+        
+        if 🚩AbleBodyFat {
+            📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
+                                             quantity: HKQuantity(unit: .percent(), doubleValue: 📝BodyFat),
+                                             start: .now, end: .now))
+        }
+        
+        if 🚩AbleBMI {
+            📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
+                                             quantity: HKQuantity(unit: .count(), doubleValue: 📝BMI),
+                                             start: .now, end: .now))
+        }
+        
+        
         do {
-            📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
-                                           quantity: HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass),
-                                           start: .now, end: .now))
-            
-            if 🚩AbleBodyFat {
-                📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
-                                                quantity: HKQuantity(unit: .percent(), doubleValue: 📝BodyFat),
-                                                start: .now, end: .now))
-            }
-            
-            if 🚩AbleBMI {
-                📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
-                                                quantity: HKQuantity(unit: .count(), doubleValue: 📝BMI),
-                                                start: .now, end: .now))
-            }
-            
             try await 🏥HealthStore.save(📦Sample)
+            
             
             💾BodyMass = 📝BodyMass
             🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
@@ -84,7 +86,9 @@ class 📱AppModel: ObservableObject {
                 🕒History += 📝BMI.description + "\n"
             }
             
+            
             🚩ShowResult = true
+            
         } catch {
             DispatchQueue.main.async {
                 print(#function, error)
