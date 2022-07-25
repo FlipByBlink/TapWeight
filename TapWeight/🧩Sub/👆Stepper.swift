@@ -5,72 +5,47 @@ struct 👆BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
-        Section {
-            Stepper {
-                HStack(alignment: .firstTextBaseline) {
-                    let 🪧BodyMass: String = {
-                        if 📱.🚩Amount50g && 📱.📝BodyMass.description.count == 4 {
-                            return 📱.📝BodyMass.description + "0"
-                        } else {
-                            return 📱.📝BodyMass.description
-                        }
-                    }()
-                    
-                    Text(🪧BodyMass)
-                        .font(.system(size: 54).monospacedDigit().weight(.black))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.1)
-                    
-                    Text(📱.📏Unit.rawValue)
-                        .font(.title.weight(.black))
-                        .padding(.trailing, 8)
-                }
-            } onIncrement: {
-                UISelectionFeedbackGenerator().selectionChanged()
-                if 📱.🚩Amount50g {
-                    📱.📝BodyMass += 0.05
-                    📱.📝BodyMass = round(📱.📝BodyMass*100)/100
-                } else {
-                    📱.📝BodyMass += 0.1
-                    📱.📝BodyMass = round(📱.📝BodyMass*10)/10
-                }
-            } onDecrement: {
-                UISelectionFeedbackGenerator().selectionChanged()
-                if 📱.🚩Amount50g {
-                    📱.📝BodyMass -= 0.05
-                    📱.📝BodyMass = round(📱.📝BodyMass*100)/100
-                } else {
-                    📱.📝BodyMass -= 0.1
-                    📱.📝BodyMass = round(📱.📝BodyMass*10)/10
-                }
-            }
-            .padding()
-            .onAppear {
-                📱.📝BodyMass = 📱.💾BodyMass
-            }
-            
-            
-            if 📱.🚩AbleBMI {
-                VStack(alignment: .leading) {
-                    HStack(alignment: .firstTextBaseline, spacing: 4) {
-                        Text("Body Mass Index")
-                        
-                        Text("(" + 📱.🧍Height.description + "cm)")
-                            .scaleEffect(0.8, anchor: .leading)
+        Stepper {
+            HStack(alignment: .firstTextBaseline) {
+                let 🪧BodyMass: String = {
+                    if 📱.🚩Amount50g && 📱.📝BodyMass.description.count == 4 {
+                        return 📱.📝BodyMass.description + "0"
+                    } else {
+                        return 📱.📝BodyMass.description
                     }
-                    .font(.system(size: 14, weight: .semibold))
-                    
-                    Text(📱.📝BMI.description)
-                        .font(.title)
-                        .fontWeight(.bold)
-                }
-                .padding(12)
-                .padding(.leading, 32)
-                .monospacedDigit()
-                .foregroundStyle(.secondary)
+                }()
+                
+                Text(🪧BodyMass)
+                    .font(.system(size: 54).monospacedDigit().weight(.black))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.1)
+                
+                Text(📱.📏Unit.rawValue)
+                    .font(.title.weight(.black))
+                    .padding(.trailing, 8)
             }
-        } header: {
-            Text("Body Mass")
+        } onIncrement: {
+            UISelectionFeedbackGenerator().selectionChanged()
+            if 📱.🚩Amount50g {
+                📱.📝BodyMass += 0.05 // TODO: Refactoring
+                📱.📝BodyMass = round(📱.📝BodyMass*100)/100
+            } else {
+                📱.📝BodyMass += 0.1
+                📱.📝BodyMass = round(📱.📝BodyMass*10)/10
+            }
+        } onDecrement: {
+            UISelectionFeedbackGenerator().selectionChanged()
+            if 📱.🚩Amount50g {
+                📱.📝BodyMass -= 0.05
+                📱.📝BodyMass = round(📱.📝BodyMass*100)/100
+            } else {
+                📱.📝BodyMass -= 0.1
+                📱.📝BodyMass = round(📱.📝BodyMass*10)/10
+            }
+        }
+        .padding()
+        .onAppear {
+            📱.📝BodyMass = 📱.💾BodyMass
         }
     }
 }

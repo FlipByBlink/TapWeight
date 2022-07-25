@@ -7,7 +7,13 @@ struct ContentView: View {
     
     var body: some View {
         List {
-            👆BodyMassStepper()
+            Section {
+                👆BodyMassStepper()
+                
+                🪧BMIView()
+            } header: {
+                Text("Body Mass")
+            }
             
             if 📱.🚩AbleBodyFat {
                 👆BodyFatStepper()
@@ -49,6 +55,33 @@ struct ContentView: View {
         }
         .onChange(of: 📱.🚩AbleBMI) { _ in
             📱.🏥RequestAuth(.bodyMassIndex)
+        }
+    }
+}
+
+
+struct 🪧BMIView: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    
+    var body: some View {
+        if 📱.🚩AbleBMI {
+            VStack(alignment: .leading) {
+                HStack(alignment: .firstTextBaseline, spacing: 4) {
+                    Text("Body Mass Index")
+                    
+                    Text("(" + 📱.🧍Height.description + "cm)")
+                        .scaleEffect(0.8, anchor: .leading)
+                }
+                .font(.system(size: 14, weight: .semibold))
+                
+                Text(📱.📝BMI.description)
+                    .font(.title)
+                    .fontWeight(.bold)
+            }
+            .padding(12)
+            .padding(.leading, 32)
+            .monospacedDigit()
+            .foregroundStyle(.secondary)
         }
     }
 }
