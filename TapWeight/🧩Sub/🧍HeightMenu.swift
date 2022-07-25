@@ -91,15 +91,3 @@ struct 🧍HeightEditView: View {
         .onDisappear { 📱.🧍Height = 📝Height }
     }
 }
-
-
-
-
-struct HeightMenu_Previews: PreviewProvider {
-    static let 📱 = 📱AppModel()
-    
-    static var previews: some View {
-        🧍HeightEditView()
-            .environmentObject(📱)
-    }
-}

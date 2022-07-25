@@ -40,26 +40,6 @@ struct ContentView: View {
 }
 
 
-struct 👆DoneButton: View { // ☑️
-    @EnvironmentObject var 📱: 📱AppModel
-    
-    var body: some View {
-        Button {
-            Task {
-                await 📱.👆Register()
-            }
-        } label: {
-            Image(systemName: "checkmark.circle.fill")
-                .font(.system(size: 120))
-                .symbolRenderingMode(.palette)
-                .foregroundStyle(.white, .pink)
-        }
-        .accessibilityLabel("DONE")
-        .padding()
-    }
-}
-
-
 struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
     
@@ -81,5 +61,42 @@ struct 🪧BMIView: View {
         .padding(.leading, 32)
         .monospacedDigit()
         .foregroundStyle(.secondary)
+    }
+}
+
+
+struct 👆DoneButton: View { // ☑️
+    @EnvironmentObject var 📱: 📱AppModel
+    
+    var body: some View {
+        Button {
+            Task {
+                await 📱.👆Register()
+            }
+        } label: {
+            Image(systemName: "checkmark.circle.fill")
+                .font(.system(size: 120))
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(.white, .pink)
+        }
+        .accessibilityLabel("DONE")
+        .padding()
+    }
+}
+
+
+struct 💟JumpButton: View {
+    var body: some View {
+        Link(destination: URL(string: "x-apple-health://")!) {
+            Image(systemName: "app")
+                .imageScale(.large)
+                .overlay {
+                    Image(systemName: "heart")
+                        .imageScale(.small)
+                }
+                .font(.largeTitle)
+                .padding(24)
+        }
+        .accessibilityLabel("Open \"Health\" app")
     }
 }
