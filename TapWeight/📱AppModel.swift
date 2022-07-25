@@ -80,8 +80,10 @@ class 📱AppModel: ObservableObject {
                 🕒History += (round(📝BodyFat*1000)/10).description + ", %\n"
             }
             
-            🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BMI, "
-            🕒History += 📝BMI.description + "\n"
+            if 🚩AbleBMI {
+                🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BMI, "
+                🕒History += 📝BMI.description + "\n"
+            }
             
             🚩ShowResult = true
         } catch {
