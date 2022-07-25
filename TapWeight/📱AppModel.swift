@@ -39,14 +39,14 @@ class 📱AppModel: ObservableObject {
     func 👆Register() async {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
         
-        if 🏥AuthDenied(.bodyMass) { return }
+        if 🏥CheckAuthDenied(.bodyMass) { return }
         
         if 🚩AbleBodyFat {
-            if 🏥AuthDenied(.bodyFatPercentage) { return }
+            if 🏥CheckAuthDenied(.bodyFatPercentage) { return }
         }
         
         if 🚩AbleBMI {
-            if 🏥AuthDenied(.bodyMassIndex) { return }
+            if 🏥CheckAuthDenied(.bodyMassIndex) { return }
         }
         
         
@@ -96,7 +96,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 🏥AuthDenied(_ ⓣype: HKQuantityTypeIdentifier) -> Bool {
+    func 🏥CheckAuthDenied(_ ⓣype: HKQuantityTypeIdentifier) -> Bool {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             🚨RegisterError = true
             🚩ShowResult = true

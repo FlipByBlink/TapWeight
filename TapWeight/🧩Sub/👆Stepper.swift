@@ -27,7 +27,7 @@ struct 👆BodyMassStepper: View {
         } onIncrement: {
             UISelectionFeedbackGenerator().selectionChanged()
             if 📱.🚩Amount50g {
-                📱.📝BodyMass += 0.05 // TODO: Refactoring
+                📱.📝BodyMass += 0.05
                 📱.📝BodyMass = round(📱.📝BodyMass*100)/100
             } else {
                 📱.📝BodyMass += 0.1
@@ -68,7 +68,7 @@ struct 👆BodyFatStepper: View {
                 }
             } onIncrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
-                📱.📝BodyFat += 0.001 // TODO: Refactoring
+                📱.📝BodyFat += 0.001
                 📱.📝BodyFat = round(📱.📝BodyFat*1000)/1000
             } onDecrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
