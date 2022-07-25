@@ -21,7 +21,7 @@ class 📱AppModel: ObservableObject {
         let 🅀uantity = HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass)
         let 🄺iloBodyMass = 🅀uantity.doubleValue(for: .gramUnit(with: .kilo))
         let 📝 = 🄺iloBodyMass / pow(Double(🧍Height)/100, 2)
-        return Double(Int(round(📝*100)))/100
+        return Double(Int(round(📝*10)))/10
     }
     
     @Published var 🚩ShowResult: Bool = false
