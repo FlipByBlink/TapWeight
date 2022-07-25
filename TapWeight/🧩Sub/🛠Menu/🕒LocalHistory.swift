@@ -1,12 +1,10 @@
 
 import SwiftUI
 
-struct 🕒HistoryMenu: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    
+struct 🕒LocalHistoryLink: View {
     var body: some View {
         NavigationLink  {
-            🕒HistoryView(🕒History: $📱.🕒History)
+            🕒LocalHistoryView()
         } label: {
             Label("Local history", systemImage: "clock")
         }
@@ -14,12 +12,12 @@ struct 🕒HistoryMenu: View {
 }
 
 
-struct 🕒HistoryView: View {
-    @Binding var 🕒History: String
+struct 🕒LocalHistoryView: View {
+    @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
         VStack (spacing: 0) {
-            if 🕒History == "" {
+            if 📱.🕒History == "" {
                 Spacer()
                 
                 Image(systemName: "text.append")
@@ -32,7 +30,7 @@ struct 🕒HistoryView: View {
             } else {
                 ScrollView {
                     ScrollView(.horizontal, showsIndicators: false) {
-                        Text(🕒History)
+                        Text(📱.🕒History)
                             .padding()
                     }
                 }
@@ -53,7 +51,7 @@ struct 🕒HistoryView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    🕒History = ""
+                    📱.🕒History = ""
                 } label: {
                     Image(systemName: "trash")
                         .tint(.red)

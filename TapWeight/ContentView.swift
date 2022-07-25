@@ -10,14 +10,12 @@ struct ContentView: View {
             Section {
                 👆BodyMassStepper()
                 
-                🪧BMIView()
+                if 📱.🚩AbleBMI { 🪧BMIView() }
             } header: {
                 Text("Body Mass")
             }
             
-            if 📱.🚩AbleBodyFat {
-                👆BodyFatStepper()
-            }
+            if 📱.🚩AbleBodyFat { 👆BodyFatStepper() }
         }
         .listStyle(.plain)
         .clipped()
@@ -47,9 +45,7 @@ struct ContentView: View {
         .fullScreenCover(isPresented: $📱.🚩ShowResult) {
             🗯ResultView()
         }
-        .onAppear {
-            📱.🏥RequestAuth(.bodyMass)
-        }
+        .onAppear { 📱.🏥RequestAuth(.bodyMass) }
         .onChange(of: 📱.🚩AbleBodyFat) { _ in
             📱.🏥RequestAuth(.bodyFatPercentage)
         }
@@ -64,24 +60,22 @@ struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
-        if 📱.🚩AbleBMI {
-            VStack(alignment: .leading) {
-                HStack(alignment: .firstTextBaseline, spacing: 4) {
-                    Text("Body Mass Index")
-                    
-                    Text("(" + 📱.🧍Height.description + "cm)")
-                        .scaleEffect(0.8, anchor: .leading)
-                }
-                .font(.system(size: 14, weight: .semibold))
+        VStack(alignment: .leading) {
+            HStack(alignment: .firstTextBaseline, spacing: 4) {
+                Text("Body Mass Index")
                 
-                Text(📱.📝BMI.description)
-                    .font(.title)
-                    .fontWeight(.bold)
+                Text("(" + 📱.🧍Height.description + "cm)")
+                    .scaleEffect(0.8, anchor: .leading)
             }
-            .padding(12)
-            .padding(.leading, 32)
-            .monospacedDigit()
-            .foregroundStyle(.secondary)
+            .font(.system(size: 14, weight: .semibold))
+            
+            Text(📱.📝BMI.description)
+                .font(.title)
+                .fontWeight(.bold)
         }
+        .padding(12)
+        .padding(.leading, 32)
+        .monospacedDigit()
+        .foregroundStyle(.secondary)
     }
 }

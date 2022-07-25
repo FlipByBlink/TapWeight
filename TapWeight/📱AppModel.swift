@@ -32,7 +32,6 @@ class 📱AppModel: ObservableObject {
     @AppStorage("History") var 🕒History: String = ""
     
     let 🏥HealthStore = HKHealthStore()
-    
     var 📦Sample: [HKQuantitySample] = []
     
     

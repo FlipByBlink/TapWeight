@@ -71,7 +71,7 @@ struct 🛠AppMenu: View {
                         }
                     }
                     
-                    🕒HistoryMenu()
+                    🕒LocalHistoryLink()
                 }
                 
                 

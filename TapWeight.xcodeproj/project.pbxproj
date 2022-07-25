@@ -10,7 +10,7 @@
 		120B2192284B4E1E007CA829 /* 📏BodyMassUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */; };
 		120B4445284778FD00D491E4 /* 💟JumpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B4444284778FD00D491E4 /* 💟JumpButton.swift */; };
 		1232578B284C5EA2002E0057 /* 👆Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 👆Stepper.swift */; };
-		12428DCE284860D0006837F9 /* 🕒HistoryMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */; };
+		12428DCE284860D0006837F9 /* 🕒LocalHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12428DCD284860D0006837F9 /* 🕒LocalHistory.swift */; };
 		124C485F284863BA0085B066 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
 		12579D162835FE8900536547 /* 🗯ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🗯ResultView.swift */; };
 		12630BC12849C63E005F922F /* 🧍HeightMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12630BC02849C63E005F922F /* 🧍HeightMenu.swift */; };
@@ -40,7 +40,7 @@
 		129CBE17284CD00700C73F4D /* 🗯ResultView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🗯ResultView.swift */; };
 		129CBE18284CD00700C73F4D /* 📏BodyMassUnit.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */; };
 		129CBE1F284CD03300C73F4D /* 🧍HeightMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12630BC02849C63E005F922F /* 🧍HeightMenu.swift */; };
-		129CBE20284CD03300C73F4D /* 🕒HistoryMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */; };
+		129CBE20284CD03300C73F4D /* 🕒LocalHistory.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12428DCD284860D0006837F9 /* 🕒LocalHistory.swift */; };
 		129CBE29284CD05100C73F4D /* 📣ADBanner.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F2F8A2284B703100C3A4BA /* 📣ADBanner.swift */; };
 		129CBE2B284CD10D00C73F4D /* 👆Stepper.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 👆Stepper.swift */; };
 		129CBE2D284CD10D00C73F4D /* 💟JumpButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 120B4444284778FD00D491E4 /* 💟JumpButton.swift */; };
@@ -92,7 +92,7 @@
 				129CBE2E284CD12800C73F4D /* 🛠MenuButton.swift in CopyFiles */,
 				129CBE2F284CD12800C73F4D /* 🛠AppMenu.swift in CopyFiles */,
 				129CBE1F284CD03300C73F4D /* 🧍HeightMenu.swift in CopyFiles */,
-				129CBE20284CD03300C73F4D /* 🕒HistoryMenu.swift in CopyFiles */,
+				129CBE20284CD03300C73F4D /* 🕒LocalHistory.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,7 +133,7 @@
 		120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📏BodyMassUnit.swift"; sourceTree = "<group>"; };
 		120B4444284778FD00D491E4 /* 💟JumpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💟JumpButton.swift"; sourceTree = "<group>"; };
 		1232578A284C5EA2002E0057 /* 👆Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "👆Stepper.swift"; sourceTree = "<group>"; };
-		12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🕒HistoryMenu.swift"; sourceTree = "<group>"; };
+		12428DCD284860D0006837F9 /* 🕒LocalHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🕒LocalHistory.swift"; sourceTree = "<group>"; };
 		124C485E284863BA0085B066 /* 📱AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱AppModel.swift"; sourceTree = "<group>"; };
 		12579D152835FE8900536547 /* 🗯ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗯ResultView.swift"; sourceTree = "<group>"; };
 		125AFEDA282F2B6E00E3BC4A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 				126B3ED2282E1968009BD28B /* 🛠MenuButton.swift */,
 				12630BC22849CD33005F922F /* 🛠AppMenu.swift */,
 				12630BC02849C63E005F922F /* 🧍HeightMenu.swift */,
-				12428DCD284860D0006837F9 /* 🕒HistoryMenu.swift */,
+				12428DCD284860D0006837F9 /* 🕒LocalHistory.swift */,
 			);
 			path = "🛠Menu";
 			sourceTree = "<group>";
@@ -446,7 +446,7 @@
 				1232578B284C5EA2002E0057 /* 👆Stepper.swift in Sources */,
 				12630BC12849C63E005F922F /* 🧍HeightMenu.swift in Sources */,
 				126B3ED3282E1968009BD28B /* 🛠MenuButton.swift in Sources */,
-				12428DCE284860D0006837F9 /* 🕒HistoryMenu.swift in Sources */,
+				12428DCE284860D0006837F9 /* 🕒LocalHistory.swift in Sources */,
 				1299C3B6288D6DA80086522B /* 📣ADView.swift in Sources */,
 				12F2F8A3284B703100C3A4BA /* 📣ADBanner.swift in Sources */,
 				124C485F284863BA0085B066 /* 📱AppModel.swift in Sources */,
