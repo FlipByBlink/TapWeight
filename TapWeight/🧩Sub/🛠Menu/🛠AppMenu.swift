@@ -39,7 +39,7 @@ struct 🛠AppMenu: View {
                         Label("Body Mass Index", systemImage: "function")
                     }
                     
-                    🧍HeightMenu()
+                    🧍HeightMenuLink()
                 }
                 
                 

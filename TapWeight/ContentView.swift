@@ -23,20 +23,7 @@ struct ContentView: View {
             🛠MenuButton()
                 .opacity(0.66)
         }
-        .overlay(alignment: .bottom) {
-            Button { // ☑️
-                Task {
-                    await 📱.👆Register()
-                }
-            } label: {
-                Image(systemName: "checkmark.circle.fill")
-                    .font(.system(size: 120))
-                    .symbolRenderingMode(.palette)
-                    .foregroundStyle(.white, .pink)
-            }
-            .accessibilityLabel("DONE")
-            .padding()
-        }
+        .overlay(alignment: .bottom) { 👆DoneButton() }
         .overlay(alignment: .bottomTrailing) {
             💟JumpButton()
                 .foregroundColor(.pink)
@@ -52,6 +39,26 @@ struct ContentView: View {
         .onChange(of: 📱.🚩AbleBMI) { _ in
             📱.🏥RequestAuth(.bodyMassIndex)
         }
+    }
+}
+
+
+struct 👆DoneButton: View { // ☑️
+    @EnvironmentObject var 📱: 📱AppModel
+    
+    var body: some View {
+        Button {
+            Task {
+                await 📱.👆Register()
+            }
+        } label: {
+            Image(systemName: "checkmark.circle.fill")
+                .font(.system(size: 120))
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(.white, .pink)
+        }
+        .accessibilityLabel("DONE")
+        .padding()
     }
 }
 

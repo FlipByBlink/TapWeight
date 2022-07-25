@@ -3,7 +3,6 @@ import SwiftUI
 
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    
     @Environment(\.dismiss) var 🔙: DismissAction
     
     var body: some View {

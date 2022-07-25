@@ -68,7 +68,7 @@ struct 👆BodyFatStepper: View {
                 }
             } onIncrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
-                📱.📝BodyFat += 0.001
+                📱.📝BodyFat += 0.001 // TODO: Refactoring
                 📱.📝BodyFat = round(📱.📝BodyFat*1000)/1000
             } onDecrement: {
                 UISelectionFeedbackGenerator().selectionChanged()

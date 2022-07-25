@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct 🧍HeightMenu: View {
+struct 🧍HeightMenuLink: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
@@ -26,7 +26,6 @@ struct 🧍HeightMenu: View {
 
 struct 🧍HeightEditView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    
     @State private var 📝Height: Int = 170
     
     var body: some View {
@@ -88,12 +87,8 @@ struct 🧍HeightEditView: View {
         }
         .padding()
         .navigationTitle("Height")
-        .onAppear {
-            📝Height = 📱.🧍Height
-        }
-        .onDisappear {
-            📱.🧍Height = 📝Height
-        }
+        .onAppear { 📝Height = 📱.🧍Height }
+        .onDisappear { 📱.🧍Height = 📝Height }
     }
 }
 

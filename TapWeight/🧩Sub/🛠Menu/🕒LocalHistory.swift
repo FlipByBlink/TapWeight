@@ -11,7 +11,6 @@ struct 🕒LocalHistoryLink: View {
     }
 }
 
-
 struct 🕒LocalHistoryView: View {
     @EnvironmentObject var 📱: 📱AppModel
     
