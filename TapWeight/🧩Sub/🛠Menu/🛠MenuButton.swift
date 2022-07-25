@@ -12,6 +12,7 @@ struct 🛠MenuButton: View { // ⚙️
             Image(systemName: "gear")
                 .font(.largeTitle)
                 .foregroundColor(.pink)
+                .opacity(0.66)
                 .padding(24)
         }
         .accessibilityLabel("Open menu")

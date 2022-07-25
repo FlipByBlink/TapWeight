@@ -19,10 +19,7 @@ struct ContentView: View {
         }
         .listStyle(.plain)
         .clipped()
-        .overlay(alignment: .bottomLeading) {
-            🛠MenuButton()
-                .opacity(0.66)
-        }
+        .overlay(alignment: .bottomLeading) { 🛠MenuButton() }
         .overlay(alignment: .bottom) { 👆DoneButton() }
         .overlay(alignment: .bottomTrailing) {
             💟JumpButton()
