@@ -50,11 +50,12 @@ struct 🪧BMIView: View {
                 Text("(" + 📱.🧍Height.description + "cm)")
                     .scaleEffect(0.85, anchor: .leading)
             }
-            .font(.caption.weight(.semibold))
+            .font(.footnote.weight(.semibold))
             
             Text(📱.📝BMI.description)
                 .fontWeight(.heavy)
         }
+        .padding(.vertical, 4)
         .padding(.leading, 32)
         .monospacedDigit()
         .foregroundStyle(.secondary)
