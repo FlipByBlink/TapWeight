@@ -108,7 +108,6 @@ class 📱AppModel: ObservableObject {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             🚨RegisterError = true
             🚩ShowResult = true
-            🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", "
             🕒History += "Register/authorization/" + ⓣype.rawValue + ": Error?!\n"
             return true
         }
