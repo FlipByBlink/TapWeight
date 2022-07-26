@@ -18,10 +18,10 @@ struct ContentView: View {
             if 📱.🚩AbleBodyFat { 👆BodyFatStepper() }
             
             📅DatePicker()
-            📅LastDateLabel()
         }
         .listStyle(.plain)
         .clipped()
+        .overlay(alignment: .top) { 📅LastDateLabel() }
         .overlay(alignment: .bottomLeading) { 🛠MenuButton() }
         .overlay(alignment: .bottom) { 👆DoneButton() }
         .overlay(alignment: .bottomTrailing) {
@@ -112,10 +112,10 @@ struct 📅DatePicker: View {
     var body: some View {
         HStack {
             Spacer()
-            
-            DatePicker("DatePicker", selection: $📅Date)
-                .labelsHidden()
+            DatePicker("DatePicker", selection: $📅Date) //FIXME: 日付選択表示の調整
                 .padding()
+                .padding(.bottom, 180)
+                .labelsHidden()
         }
         .listRowSeparator(.hidden)
     }
@@ -130,19 +130,14 @@ struct 📅LastDateLabel: View {
     var body: some View {
         if let 📅 = 📅LastDate {
             HStack {
-                Spacer()
-                
-                VStack(alignment: .trailing) {
-                    Text(📅, style: .date)
-                    Text(📅, style: .time)
-                }
+                Text(📅, style: .date)
+                Text(📅, style: .time)
             }
             .font(.caption.weight(.medium))
             .minimumScaleFactor(0.1)
             .foregroundStyle(.secondary)
-            .padding(.trailing)
+            .padding(8)
             .opacity(🚩Show ? 1 : 0)
-            .listRowSeparator(.hidden)
             .animation(.default.speed(0.5), value: 🚩Show)
             .onChange(of: 📱.📝BodyMass) { 📝 in
                 if 📝 != 📱.💾BodyMass {
@@ -157,7 +152,6 @@ struct 📅LastDateLabel: View {
             .onChange(of: 📱.🚩ShowResult) { _ in
                 🚩Show = false
             }
-            .padding(.bottom, 180)
         }
     }
 }
