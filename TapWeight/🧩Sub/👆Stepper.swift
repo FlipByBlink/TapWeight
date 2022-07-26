@@ -3,13 +3,7 @@ import SwiftUI
 
 struct 👆BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 🔠Font: Font {
-        if 📱.🚩AbleDatePicker {
-            return Font.largeTitle
-        } else {
-            return Font.system(size: 48)
-        }
-    }
+    var 🔠Font: Font { 📱.🚩AbleDatePicker ? .largeTitle : .system(size: 50) }
     
     var body: some View {
         Stepper {
@@ -60,13 +54,7 @@ struct 👆BodyMassStepper: View {
 
 struct 👆BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 🔠Font: Font {
-        if 📱.🚩AbleDatePicker {
-            return Font.largeTitle
-        } else {
-            return Font.system(size: 48)
-        }
-    }
+    var 🔠Font: Font { 📱.🚩AbleDatePicker ? .largeTitle : .system(size: 50) }
     
     var body: some View {
         Section {
