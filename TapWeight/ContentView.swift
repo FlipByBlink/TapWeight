@@ -45,14 +45,14 @@ struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: -4) {
             HStack(alignment: .firstTextBaseline, spacing: 4) {
                 Text("Body Mass Index")
-                    .font(.footnote.weight(.semibold))
+                    .font(.footnote.bold())
                 
                 Text("(" + 📱.🧍Height.description + "cm)")
                     .font(.caption2.weight(.semibold))
-                    .frame(height: 24)
+                    .frame(maxHeight: 24)
             }
             
             Text(📱.📝BMI.description)
