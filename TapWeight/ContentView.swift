@@ -17,6 +17,7 @@ struct ContentView: View {
             
             if 📱.🚩AbleBodyFat { 👆BodyFatStepper() }
             
+            📅DatePicker()
             📅LastDateLabel()
         }
         .listStyle(.plain)
@@ -104,6 +105,23 @@ struct 💟JumpButton: View {
 }
 
 
+struct 📅DatePicker: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    @State private var 📅Date = Date.now
+    
+    var body: some View {
+        HStack {
+            Spacer()
+            
+            DatePicker("DatePicker", selection: $📅Date)
+                .labelsHidden()
+                .padding()
+        }
+        .listRowSeparator(.hidden)
+    }
+}
+
+
 struct 📅LastDateLabel: View {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var 🚩Show: Bool = true
@@ -111,13 +129,18 @@ struct 📅LastDateLabel: View {
     
     var body: some View {
         if let 📅 = 📅LastDate {
-            VStack(alignment: .leading) {
-                Text(📅, style: .date)
-                Text(📅, style: .time)
+            HStack {
+                Spacer()
+                
+                VStack(alignment: .trailing) {
+                    Text(📅, style: .date)
+                    Text(📅, style: .time)
+                }
             }
             .font(.caption.weight(.medium))
+            .minimumScaleFactor(0.1)
             .foregroundStyle(.secondary)
-            .padding()
+            .padding(.trailing)
             .opacity(🚩Show ? 1 : 0)
             .listRowSeparator(.hidden)
             .animation(.default.speed(0.5), value: 🚩Show)
@@ -134,6 +157,7 @@ struct 📅LastDateLabel: View {
             .onChange(of: 📱.🚩ShowResult) { _ in
                 🚩Show = false
             }
+            .padding(.bottom, 180)
         }
     }
 }
