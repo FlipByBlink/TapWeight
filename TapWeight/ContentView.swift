@@ -107,15 +107,16 @@ struct 💟JumpButton: View {
 struct 📅LastRegisterDateLabel: View {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var 🚩Show: Bool = true
+    @State private var 📅LastRegisterDate: Date? = UserDefaults.standard.object(forKey: "LastRegisterDate") as? Date
     
     var body: some View {
-        if let 📅 = UserDefaults.standard.object(forKey: "LastRegisterDate") as? Date {
+        if let 📅 = 📅LastRegisterDate {
             VStack(alignment: .leading) {
                 Text(📅, style: .date)
                 Text(📅, style: .time)
             }
             .font(.caption.weight(.medium))
-            .foregroundStyle(.tertiary)
+            .foregroundStyle(.secondary)
             .padding()
             .opacity(🚩Show ? 1 : 0)
             .listRowSeparator(.hidden)
