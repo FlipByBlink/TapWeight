@@ -106,31 +106,28 @@ struct 💟JumpButton: View {
 
 struct 📅LastRegisterDateLabel: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @State private var 🚩Edited: Bool = false
     @State private var 🚩Show: Bool = true
     
     var body: some View {
         if let 📅 = UserDefaults.standard.object(forKey: "LastRegisterDate") as? Date {
-            HStack {
+            VStack(alignment: .leading) {
                 Text(📅, style: .date)
                 Text(📅, style: .time)
             }
             .font(.caption.weight(.medium))
             .foregroundStyle(.tertiary)
             .padding()
-            .opacity(🚩Edited ? 0.5 : 1)
             .opacity(🚩Show ? 1 : 0)
             .listRowSeparator(.hidden)
-            .animation(.default.speed(0.66), value: 🚩Edited)
-            .animation(.default.speed(0.66), value: 🚩Show)
+            .animation(.default.speed(0.5), value: 🚩Show)
             .onChange(of: 📱.📝BodyMass) { 📝 in
                 if 📝 != 📱.💾BodyMass {
-                    🚩Edited = true
+                    🚩Show = false
                 }
             }
             .onChange(of: 📱.📝BodyFat) { 📝 in
                 if 📝 != 📱.💾BodyFat {
-                    🚩Edited = true
+                    🚩Show = false
                 }
             }
             .onChange(of: 📱.🚩ShowResult) { _ in
