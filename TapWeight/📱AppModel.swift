@@ -24,6 +24,8 @@ class 📱AppModel: ObservableObject {
         return Double(Int(round(📝*10)))/10
     }
     
+    @Published var 📅Date = Date.now
+    
     @Published var 🚩ShowResult: Bool = false
     @Published var 🚨RegisterError: Bool = false
     @Published var 🚩Canceled: Bool = false
@@ -52,18 +54,18 @@ class 📱AppModel: ObservableObject {
         
         📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
                                          quantity: HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass),
-                                         start: .now, end: .now))
+                                         start: 📅Date, end: 📅Date))
         
         if 🚩AbleBodyFat {
             📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
                                              quantity: HKQuantity(unit: .percent(), doubleValue: 📝BodyFat),
-                                             start: .now, end: .now))
+                                             start: 📅Date, end: 📅Date))
         }
         
         if 🚩AbleBMI {
             📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
                                              quantity: HKQuantity(unit: .count(), doubleValue: 📝BMI),
-                                             start: .now, end: .now))
+                                             start: 📅Date, end: 📅Date))
         }
         
         
@@ -72,23 +74,23 @@ class 📱AppModel: ObservableObject {
             
             
             💾BodyMass = 📝BodyMass
-            🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
+            🕒History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
             🕒History += 📝BodyMass.description + ", " + 📏Unit.rawValue + "\n"
             
             if 🚩AbleBodyFat {
                 💾BodyFat = 📝BodyFat
-                🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
+                🕒History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
                 🕒History += (round(📝BodyFat*1000)/10).description + ", %\n"
             }
             
             if 🚩AbleBMI {
-                🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", BMI, "
+                🕒History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BMI, "
                 🕒History += 📝BMI.description + "\n"
             }
             
             
             🚩ShowResult = true
-            UserDefaults.standard.set(Date.now, forKey: "LastDate")
+            UserDefaults.standard.set(📅Date, forKey: "LastDate")
             
         } catch {
             DispatchQueue.main.async {
@@ -137,7 +139,7 @@ class 📱AppModel: ObservableObject {
             
             📦Sample = []
             
-            🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", "
+            🕒History += 📅Date.formatted(date: .numeric, time: .shortened) + ", "
             🕒History += "Cancel: Success\n"
             
             UserDefaults.standard.removeObject(forKey: "LastDate")

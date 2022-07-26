@@ -106,20 +106,19 @@ struct 💟JumpButton: View {
 //TODO: 日時入力のモデル部分を実装
 struct 📅DatePicker: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @State private var 📅Date = Date.now
     
     var body: some View {
         HStack {
             Spacer()
             VStack(alignment: .trailing, spacing: 16) {
-                DatePicker(selection: $📅Date, displayedComponents: .date) {
+                DatePicker(selection: $📱.📅Date, displayedComponents: .date) {
                     HStack {
                         Spacer()
                         Image(systemName: "calendar")
                     }
                 }
                     
-                DatePicker(selection: $📅Date, displayedComponents: .hourAndMinute) {
+                DatePicker(selection: $📱.📅Date, displayedComponents: .hourAndMinute) {
                     HStack {
                         Spacer()
                         Image(systemName: "clock")
