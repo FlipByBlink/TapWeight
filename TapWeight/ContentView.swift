@@ -28,6 +28,11 @@ struct ContentView: View {
             💟JumpButton()
                 .foregroundColor(.pink)
                 .opacity(0.66)
+                .background {
+                    RoundedRectangle(cornerRadius: 16)
+                        .foregroundStyle(.background)
+                }
+                .padding(22)
         }
         .fullScreenCover(isPresented: $📱.🚩ShowResult) {
             🗯ResultView()
@@ -80,6 +85,10 @@ struct 👆DoneButton: View { // ☑️
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(.white, .pink)
         }
+        .background {
+            Circle()
+                .foregroundStyle(.background)
+        }
         .accessibilityLabel("DONE")
         .padding()
     }
@@ -96,7 +105,7 @@ struct 💟JumpButton: View {
                         .imageScale(.small)
                 }
                 .font(.largeTitle)
-                .padding(24)
+                .padding(2)
         }
         .accessibilityLabel("Open \"Health\" app")
     }
@@ -143,6 +152,8 @@ struct 📅LastDateLabel: View {
             Text(📅.formatted(date: .numeric, time: .shortened))
                 .font(.caption.weight(.medium))
                 .minimumScaleFactor(0.1)
+                .lineLimit(1)
+                .frame(maxWidth: 160)
                 .foregroundStyle(.secondary)
                 .padding(8)
                 .opacity(🚩Show ? 1 : 0)

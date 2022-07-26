@@ -13,8 +13,13 @@ struct 🛠MenuButton: View { // ⚙️
                 .font(.largeTitle)
                 .foregroundColor(.pink)
                 .opacity(0.66)
-                .padding(24)
+                .padding(8)
         }
+        .background {
+            Circle()
+                .foregroundStyle(.background)
+        }
+        .padding(16)
         .accessibilityLabel("Open menu")
         .sheet(isPresented: $📱.🚩ShowMenu) {
             🛠AppMenu()

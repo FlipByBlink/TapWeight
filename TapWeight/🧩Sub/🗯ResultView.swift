@@ -126,6 +126,7 @@ struct 🗯ResultView: View {
                     
                     💟JumpButton()
                         .foregroundStyle(.primary)
+                        .padding(22)
                 }
                 .opacity(0.75)
             }
@@ -158,6 +159,7 @@ struct 📣ADBanner: View {
                                 .shadow(radius: 3)
                         }
                         .padding()
+                        .frame(maxHeight: 180)
                         .environment(\.colorScheme, .light)
                 } else {
                     Spacer()
