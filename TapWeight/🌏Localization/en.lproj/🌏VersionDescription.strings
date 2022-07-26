@@ -1,10 +1,10 @@
 
-"1.2" = "Add [Edit mode for date]
+"1.2" = "Add \"Edit mode for date\"
 Change decimal point of BMI
 Show last date
-Bug fix [BMI local history]
+Bug fix \"BMI local history\"
 Change frequency of AD
-Add localization [Ukrainian]
+Add localization \"Ukrainian\"
 refactoring, several improvement";
 
 

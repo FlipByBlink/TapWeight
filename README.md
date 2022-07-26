@@ -44,8 +44,6 @@ This app cannot read, view, or manage past data in "Health" app. This app is int
 
 - Option to hide AD banner. (In-App-Purchase)
 
-- Edit mode for date
-
 【OTHERS】
 
 - Launch "Health" app by one tap.

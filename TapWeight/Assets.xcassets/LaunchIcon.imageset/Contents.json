@@ -1,8 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "TapWeight_LaunchImage.png",
-      "idiom" : "universal"
+      "filename" : "LaunchIcon.heic",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "LaunchIcon-1.heic",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "LaunchIcon-2.heic",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
