@@ -73,6 +73,13 @@ struct 🛠AppMenu: View {
                 
                 
                 Section {
+                    Toggle(isOn: $📱.🚩AbleDatePicker) {
+                        Label("Date picker", systemImage: "calendar.badge.clock")
+                    }
+                }
+                
+                
+                Section {
                     Link (destination: URL(string: "x-apple-health://")!) {
                         HStack {
                             Image(systemName: "app")

@@ -11,6 +11,7 @@ class 📱AppModel: ObservableObject {
     @AppStorage("AbleBodyFat") var 🚩AbleBodyFat: Bool = false
     @AppStorage("AbleBMI") var 🚩AbleBMI: Bool = false
     @AppStorage("Height") var 🧍Height: Int = 165
+    @AppStorage("AbleDatePicker") var 🚩AbleDatePicker: Bool = false
     
     @AppStorage("BodyMass") var 💾BodyMass: Double = 60.0
     @AppStorage("BodyFat") var 💾BodyFat: Double = 0.1

@@ -108,28 +108,30 @@ struct 📅DatePicker: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
-        HStack {
-            Spacer()
-            VStack(alignment: .trailing, spacing: 16) {
-                DatePicker(selection: $📱.📅Date, displayedComponents: .date) {
-                    HStack {
-                        Spacer()
-                        Image(systemName: "calendar")
+        if 📱.🚩AbleDatePicker {
+            HStack {
+                Spacer()
+                VStack(alignment: .trailing, spacing: 16) {
+                    DatePicker(selection: $📱.📅Date, displayedComponents: .date) {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "calendar")
+                        }
+                    }
+                        
+                    DatePicker(selection: $📱.📅Date, displayedComponents: .hourAndMinute) {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "clock")
+                        }
                     }
                 }
-                    
-                DatePicker(selection: $📱.📅Date, displayedComponents: .hourAndMinute) {
-                    HStack {
-                        Spacer()
-                        Image(systemName: "clock")
-                    }
-                }
+                .padding(.vertical)
+                .padding(.trailing, 8)
+                .padding(.bottom, 180)
             }
-            .padding(.vertical)
-            .padding(.trailing, 8)
-            .padding(.bottom, 180)
+            .listRowSeparator(.hidden)
         }
-        .listRowSeparator(.hidden)
     }
 }
 

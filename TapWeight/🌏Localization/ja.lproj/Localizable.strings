@@ -24,6 +24,7 @@
 "50gram" = "50グラム";
 "Height" = "身長";
 "Weight" = "体重";
+"Date picker" = "日時を変更";
 "Local history" = "ローカル履歴";
 "History" = "履歴";
 "\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"" = "\"ローカル履歴\"は動作確認や簡易バックアップを目的としています。 ";
