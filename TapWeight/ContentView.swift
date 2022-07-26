@@ -109,27 +109,24 @@ struct 📅DatePicker: View {
     
     var body: some View {
         if 📱.🚩AbleDatePicker {
-            HStack {
-                Spacer()
-                VStack(alignment: .trailing, spacing: 16) {
-                    DatePicker(selection: $📱.📅Date, displayedComponents: .date) {
-                        HStack {
-                            Spacer()
-                            Image(systemName: "calendar")
-                        }
-                    }
-                        
-                    DatePicker(selection: $📱.📅Date, displayedComponents: .hourAndMinute) {
-                        HStack {
-                            Spacer()
-                            Image(systemName: "clock")
-                        }
+            VStack(alignment: .trailing, spacing: 16) {
+                DatePicker(selection: $📱.📅Date, displayedComponents: .date) {
+                    HStack {
+                        Spacer()
+                        Image(systemName: "calendar")
                     }
                 }
-                .padding(.vertical)
-                .padding(.trailing, 8)
-                .padding(.bottom, 180)
+                    
+                DatePicker(selection: $📱.📅Date, displayedComponents: .hourAndMinute) {
+                    HStack {
+                        Spacer()
+                        Image(systemName: "clock")
+                    }
+                }
             }
+            .padding(.vertical)
+            .padding(.trailing, 8)
+            .padding(.bottom, 180)
             .listRowSeparator(.hidden)
         }
     }
