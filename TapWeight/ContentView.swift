@@ -24,16 +24,7 @@ struct ContentView: View {
         .overlay(alignment: .top) { 📅LastDateLabel() }
         .overlay(alignment: .bottomLeading) { 🛠MenuButton() }
         .overlay(alignment: .bottom) { 👆DoneButton() }
-        .overlay(alignment: .bottomTrailing) {
-            💟JumpButton()
-                .foregroundColor(.pink)
-                .opacity(0.66)
-                .background {
-                    RoundedRectangle(cornerRadius: 16)
-                        .foregroundStyle(.background)
-                }
-                .padding(22)
-        }
+        .overlay(alignment: .bottomTrailing) { 💟JumpButtonOnMainView() }
         .fullScreenCover(isPresented: $📱.🚩ShowResult) {
             🗯ResultView()
         }
@@ -57,12 +48,12 @@ struct 🪧BMIView: View {
                 Text("Body Mass Index")
                 
                 Text("(" + 📱.🧍Height.description + "cm)")
-                    .scaleEffect(0.7, anchor: .leading)
+                    .scaleEffect(0.85, anchor: .leading)
             }
             .font(.caption.weight(.semibold))
             
             Text(📱.📝BMI.description)
-                .bold()
+                .fontWeight(.heavy)
         }
         .padding(.leading, 32)
         .monospacedDigit()
@@ -108,6 +99,19 @@ struct 💟JumpButton: View {
                 .padding(2)
         }
         .accessibilityLabel("Open \"Health\" app")
+    }
+}
+
+struct 💟JumpButtonOnMainView: View {
+    var body: some View {
+        💟JumpButton()
+            .foregroundColor(.pink)
+            .opacity(0.66)
+            .background {
+                RoundedRectangle(cornerRadius: 16)
+                    .foregroundStyle(.background)
+            }
+            .padding(22)
     }
 }
 
