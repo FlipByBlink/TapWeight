@@ -88,6 +88,7 @@ class 📱AppModel: ObservableObject {
             
             
             🚩ShowResult = true
+            UserDefaults.standard.set(Date.now, forKey: "LastRegisterDate")
             
         } catch {
             DispatchQueue.main.async {
@@ -138,6 +139,8 @@ class 📱AppModel: ObservableObject {
             
             🕒History += Date.now.formatted(date: .numeric, time: .shortened) + ", "
             🕒History += "Cancel: Success\n"
+            
+            UserDefaults.standard.removeObject(forKey: "LastRegisterDate")
             
             UINotificationFeedbackGenerator().notificationOccurred(.error)
         } catch {
