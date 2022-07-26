@@ -40,6 +40,8 @@ struct 📣ADView: View {
             Text("AD")
                 .scaleEffect(x: 1.2)
                 .font(.subheadline.weight(.black))
+                .frame(maxHeight: 32)
+                .minimumScaleFactor(0.1)
                 .padding(.top, 8)
                 .padding(.leading, 3)
                 .foregroundStyle(.tertiary)
