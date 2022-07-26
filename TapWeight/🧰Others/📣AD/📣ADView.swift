@@ -21,7 +21,8 @@ struct 📣ADView: View {
                             .lineLimit(1)
                         
                         Image(systemName: "arrow.up.forward.app")
-                            .imageScale(.small)
+                            .resizable()
+                            .frame(width: 15, height: 15)
                     }
                     .minimumScaleFactor(0.1)
                     .padding(.trailing, 32)
