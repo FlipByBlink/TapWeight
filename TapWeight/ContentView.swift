@@ -103,7 +103,6 @@ struct 💟JumpButton: View {
 }
 
 
-//TODO: 日時入力のモデル部分を実装
 struct 📅DatePicker: View {
     @EnvironmentObject var 📱: 📱AppModel
     
@@ -124,6 +123,7 @@ struct 📅DatePicker: View {
                     }
                 }
             }
+            .foregroundStyle(📱.📅Date.timeIntervalSinceNow < -300 ? .primary : .secondary)
             .padding(.vertical)
             .padding(.trailing, 8)
             .padding(.bottom, 180)
