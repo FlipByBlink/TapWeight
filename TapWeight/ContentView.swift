@@ -17,7 +17,7 @@ struct ContentView: View {
             
             if 📱.🚩AbleBodyFat { 👆BodyFatStepper() }
             
-            📅LastRegisterDateLabel()
+            📅LastDateLabel()
         }
         .listStyle(.plain)
         .clipped()
@@ -104,13 +104,13 @@ struct 💟JumpButton: View {
 }
 
 
-struct 📅LastRegisterDateLabel: View {
+struct 📅LastDateLabel: View {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var 🚩Show: Bool = true
-    @State private var 📅LastRegisterDate: Date? = UserDefaults.standard.object(forKey: "LastRegisterDate") as? Date
+    @State private var 📅LastDate: Date? = UserDefaults.standard.object(forKey: "LastDate") as? Date
     
     var body: some View {
-        if let 📅 = 📅LastRegisterDate {
+        if let 📅 = 📅LastDate {
             VStack(alignment: .leading) {
                 Text(📅, style: .date)
                 Text(📅, style: .time)
