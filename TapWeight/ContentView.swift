@@ -13,6 +13,8 @@ struct ContentView: View {
                 if 📱.🚩AbleBMI { 🪧BMIView() }
             } header: {
                 Text("Body Mass")
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.1)
             }
             
             if 📱.🚩AbleBodyFat { 👆BodyFatStepper() }
@@ -43,18 +45,22 @@ struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .firstTextBaseline, spacing: 4) {
                 Text("Body Mass Index")
+                    .font(.footnote.weight(.semibold))
+                    .lineLimit(1)
                 
                 Text("(" + 📱.🧍Height.description + "cm)")
-                    .scaleEffect(0.85, anchor: .leading)
+                    .font(.caption2.weight(.semibold))
+                    .lineLimit(1)
+                    .frame(height: 24)
             }
-            .font(.footnote.weight(.semibold))
             
             Text(📱.📝BMI.description)
                 .fontWeight(.heavy)
         }
+        .minimumScaleFactor(0.1)
         .padding(.vertical, 4)
         .padding(.leading, 32)
         .monospacedDigit()
