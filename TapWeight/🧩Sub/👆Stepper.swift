@@ -28,8 +28,8 @@ struct 👆BodyMassStepper: View {
                     .monospacedDigit()
                 
                 Text(📱.📏Unit.rawValue)
-                    .font(.title3.weight(.black))
-                    .padding(.trailing, 8)
+                    .font(.title2.weight(.black))
+                    .frame(maxHeight: 54)
             }
         } onIncrement: {
             UISelectionFeedbackGenerator().selectionChanged()
@@ -78,7 +78,8 @@ struct 👆BodyFatStepper: View {
                         .monospacedDigit()
                     
                     Text("%")
-                        .font(.title3.weight(.black))
+                        .font(.title2.weight(.black))
+                        .frame(maxHeight: 54)
                 }
             } onIncrement: {
                 UISelectionFeedbackGenerator().selectionChanged()

@@ -21,9 +21,9 @@ struct ContentView: View {
         }
         .listStyle(.plain)
         .clipped()
-        .overlay(alignment: .top) { 📅LastDateLabel() }
         .lineLimit(1)
         .minimumScaleFactor(0.1)
+        .overlay(alignment: .top) { 📅LastDateLabel() }
         .overlay(alignment: .bottomLeading) { 🛠MenuButton() }
         .overlay(alignment: .bottom) { 👆DoneButton() }
         .overlay(alignment: .bottomTrailing) { 💟JumpButtonOnMainView() }
@@ -52,7 +52,7 @@ struct 🪧BMIView: View {
                 
                 Text("(" + 📱.🧍Height.description + "cm)")
                     .font(.caption2.weight(.semibold))
-                    .frame(maxHeight: 24)
+                    .frame(maxHeight: 28)
             }
             
             Text(📱.📝BMI.description)
@@ -162,6 +162,8 @@ struct 📅LastDateLabel: View {
                 .frame(maxWidth: 160)
                 .foregroundStyle(.secondary)
                 .padding(8)
+                .lineLimit(1)
+                .minimumScaleFactor(0.1)
                 .opacity(🚩Show ? 1 : 0)
                 .animation(.default.speed(0.5), value: 🚩Show)
                 .onChange(of: 📱.📝BodyMass) { 📝 in
