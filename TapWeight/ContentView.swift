@@ -13,8 +13,6 @@ struct ContentView: View {
                 if 📱.🚩AbleBMI { 🪧BMIView() }
             } header: {
                 Text("Body Mass")
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.1)
             }
             
             if 📱.🚩AbleBodyFat { 👆BodyFatStepper() }
@@ -24,6 +22,8 @@ struct ContentView: View {
         .listStyle(.plain)
         .clipped()
         .overlay(alignment: .top) { 📅LastDateLabel() }
+        .lineLimit(1)
+        .minimumScaleFactor(0.1)
         .overlay(alignment: .bottomLeading) { 🛠MenuButton() }
         .overlay(alignment: .bottom) { 👆DoneButton() }
         .overlay(alignment: .bottomTrailing) { 💟JumpButtonOnMainView() }
@@ -49,18 +49,15 @@ struct 🪧BMIView: View {
             HStack(alignment: .firstTextBaseline, spacing: 4) {
                 Text("Body Mass Index")
                     .font(.footnote.weight(.semibold))
-                    .lineLimit(1)
                 
                 Text("(" + 📱.🧍Height.description + "cm)")
                     .font(.caption2.weight(.semibold))
-                    .lineLimit(1)
                     .frame(height: 24)
             }
             
             Text(📱.📝BMI.description)
                 .fontWeight(.heavy)
         }
-        .minimumScaleFactor(0.1)
         .padding(.vertical, 4)
         .padding(.leading, 32)
         .monospacedDigit()
@@ -162,8 +159,6 @@ struct 📅LastDateLabel: View {
         if let 📅 = 📅LastDate {
             Text(📅.formatted(date: .numeric, time: .shortened))
                 .font(.caption.weight(.medium))
-                .minimumScaleFactor(0.1)
-                .lineLimit(1)
                 .frame(maxWidth: 160)
                 .foregroundStyle(.secondary)
                 .padding(8)

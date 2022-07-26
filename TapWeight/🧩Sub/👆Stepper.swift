@@ -26,8 +26,6 @@ struct 👆BodyMassStepper: View {
                     .font(🔠Font)
                     .fontWeight(.black)
                     .monospacedDigit()
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.1)
                 
                 Text(📱.📏Unit.rawValue)
                     .font(.title3.weight(.black))
@@ -78,8 +76,6 @@ struct 👆BodyFatStepper: View {
                         .font(🔠Font)
                         .fontWeight(.black)
                         .monospacedDigit()
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.1)
                     
                     Text("%")
                         .font(.title3.weight(.black))
@@ -99,8 +95,6 @@ struct 👆BodyFatStepper: View {
             }
         } header: {
             Text("Body Fat Percentage")
-                .minimumScaleFactor(0.1)
-                .lineLimit(1)
         }
     }
 }

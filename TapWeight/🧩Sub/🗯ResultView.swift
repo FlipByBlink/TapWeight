@@ -22,23 +22,16 @@ struct 🗯ResultView: View {
                         
                         Image(systemName: 📱.🚨RegisterError ? "exclamationmark.triangle" : "checkmark")
                             .font(.system(size: 96).weight(.semibold))
-                            .minimumScaleFactor(0.1)
                         
                         Text(📱.🚨RegisterError ? "ERROR!?" : "DONE!")
                             .font(.system(size: 96).weight(.black))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.1)
                         
                         if 📱.🚨RegisterError {
                             Text("Please check permission on \"Health\" app")
                                 .font(.title3.weight(.semibold))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.1)
                         } else {
                             Text("Registration for \"Health\" app")
                                 .font(.title3.weight(.semibold))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.1)
                         }
                         
                         Spacer()
@@ -63,8 +56,6 @@ struct 🗯ResultView: View {
                                         .font(.caption.weight(.semibold))
                                 }
                             }
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.1)
                             .opacity(0.75)
                         }
                         
@@ -73,6 +64,8 @@ struct 🗯ResultView: View {
                         Color.clear
                             .frame(height: 32)
                     }
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.1)
                     .padding()
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
