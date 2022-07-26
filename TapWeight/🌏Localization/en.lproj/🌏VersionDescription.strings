@@ -1,6 +1,11 @@
 
-"1.2" = "AAAA
-Various bugfixes and improvements.";
+"1.2" = "Add [Edit mode for date]
+Change decimal point of BMI
+Show last date
+Bug fix [BMI local history]
+Change frequency of AD
+Add localization [Ukrainian]
+refactoring, several improvement";
 
 
 
