@@ -52,15 +52,13 @@ struct 🪧BMIView: View {
                 Text("Body Mass Index")
                 
                 Text("(" + 📱.🧍Height.description + "cm)")
-                    .scaleEffect(0.8, anchor: .leading)
+                    .scaleEffect(0.7, anchor: .leading)
             }
-            .font(.system(size: 14, weight: .semibold))
+            .font(.caption.weight(.semibold))
             
             Text(📱.📝BMI.description)
-                .font(.title)
-                .fontWeight(.bold)
+                .bold()
         }
-        .padding(12)
         .padding(.leading, 32)
         .monospacedDigit()
         .foregroundStyle(.secondary)
@@ -128,7 +126,8 @@ struct 📅DatePicker: View {
                     }
                 }
             }
-            .padding()
+            .padding(.vertical)
+            .padding(.trailing, 8)
             .padding(.bottom, 180)
         }
         .listRowSeparator(.hidden)

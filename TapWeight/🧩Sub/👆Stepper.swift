@@ -16,12 +16,13 @@ struct 👆BodyMassStepper: View {
                 }()
                 
                 Text(🪧BodyMass)
-                    .font(.system(size: 54).monospacedDigit().weight(.black))
+                    //.font(.system(size: 54).monospacedDigit().weight(.black))
+                    .font(.largeTitle.monospacedDigit().weight(.black))
                     .lineLimit(1)
                     .minimumScaleFactor(0.1)
                 
                 Text(📱.📏Unit.rawValue)
-                    .font(.title.weight(.black))
+                    .font(.title3.weight(.black))
                     .padding(.trailing, 8)
             }
         } onIncrement: {
@@ -43,7 +44,7 @@ struct 👆BodyMassStepper: View {
                 📱.📝BodyMass = round(📱.📝BodyMass*10)/10
             }
         }
-        .padding()
+        .padding(8)
         .onAppear {
             📱.📝BodyMass = 📱.💾BodyMass
         }
@@ -59,12 +60,13 @@ struct 👆BodyFatStepper: View {
             Stepper {
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
                     Text((round(📱.📝BodyFat*1000)/10).description)
-                        .font(.system(size: 54).monospacedDigit().weight(.black))
+                        //.font(.system(size: 54).monospacedDigit().weight(.black))
+                        .font(.largeTitle.monospacedDigit().weight(.black))
                         .lineLimit(1)
                         .minimumScaleFactor(0.1)
                     
                     Text("%")
-                        .font(.title.weight(.black))
+                        .font(.title3.weight(.black))
                 }
             } onIncrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
@@ -75,7 +77,7 @@ struct 👆BodyFatStepper: View {
                 📱.📝BodyFat -= 0.001
                 📱.📝BodyFat = round(📱.📝BodyFat*1000)/1000
             }
-            .padding()
+            .padding(8)
             .onAppear {
                 📱.📝BodyFat = 📱.💾BodyFat
             }
