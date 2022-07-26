@@ -105,6 +105,7 @@ struct 💟JumpButton: View {
 }
 
 
+//TODO: 日時入力のモデル部分を実装
 struct 📅DatePicker: View {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var 📅Date = Date.now
@@ -112,10 +113,23 @@ struct 📅DatePicker: View {
     var body: some View {
         HStack {
             Spacer()
-            DatePicker("DatePicker", selection: $📅Date) //FIXME: 日付選択表示の調整
-                .padding()
-                .padding(.bottom, 180)
-                .labelsHidden()
+            VStack(alignment: .trailing, spacing: 16) {
+                DatePicker(selection: $📅Date, displayedComponents: .date) {
+                    HStack {
+                        Spacer()
+                        Image(systemName: "calendar")
+                    }
+                }
+                    
+                DatePicker(selection: $📅Date, displayedComponents: .hourAndMinute) {
+                    HStack {
+                        Spacer()
+                        Image(systemName: "clock")
+                    }
+                }
+            }
+            .padding()
+            .padding(.bottom, 180)
         }
         .listRowSeparator(.hidden)
     }
@@ -129,29 +143,26 @@ struct 📅LastDateLabel: View {
     
     var body: some View {
         if let 📅 = 📅LastDate {
-            HStack {
-                Text(📅, style: .date)
-                Text(📅, style: .time)
-            }
-            .font(.caption.weight(.medium))
-            .minimumScaleFactor(0.1)
-            .foregroundStyle(.secondary)
-            .padding(8)
-            .opacity(🚩Show ? 1 : 0)
-            .animation(.default.speed(0.5), value: 🚩Show)
-            .onChange(of: 📱.📝BodyMass) { 📝 in
-                if 📝 != 📱.💾BodyMass {
+            Text(📅.formatted(date: .numeric, time: .shortened))
+                .font(.caption.weight(.medium))
+                .minimumScaleFactor(0.1)
+                .foregroundStyle(.secondary)
+                .padding(8)
+                .opacity(🚩Show ? 1 : 0)
+                .animation(.default.speed(0.5), value: 🚩Show)
+                .onChange(of: 📱.📝BodyMass) { 📝 in
+                    if 📝 != 📱.💾BodyMass {
+                        🚩Show = false
+                    }
+                }
+                .onChange(of: 📱.📝BodyFat) { 📝 in
+                    if 📝 != 📱.💾BodyFat {
+                        🚩Show = false
+                    }
+                }
+                .onChange(of: 📱.🚩ShowResult) { _ in
                     🚩Show = false
                 }
-            }
-            .onChange(of: 📱.📝BodyFat) { 📝 in
-                if 📝 != 📱.💾BodyFat {
-                    🚩Show = false
-                }
-            }
-            .onChange(of: 📱.🚩ShowResult) { _ in
-                🚩Show = false
-            }
         }
     }
 }
