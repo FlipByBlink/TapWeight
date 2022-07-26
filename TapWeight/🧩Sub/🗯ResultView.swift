@@ -54,11 +54,18 @@ struct 🗯ResultView: View {
                                 return 🪧
                             }()
                             
-                            Text(🅂ummary)
-                                .font(.body.bold())
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.1)
-                                .opacity(0.75)
+                            Group {
+                                Text(🅂ummary)
+                                    .font(.body.bold())
+                                
+                                if 📱.📅Date.timeIntervalSinceNow < -300 {
+                                    Text(📱.📅Date.formatted(date: .numeric, time: .shortened))
+                                        .font(.caption.weight(.semibold))
+                                }
+                            }
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.1)
+                            .opacity(0.75)
                         }
                         
                         Spacer()
