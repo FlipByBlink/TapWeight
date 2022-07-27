@@ -10,7 +10,7 @@ struct 🛠MenuButton: ToolbarContent { // ⚙️
                 🚩ShowMenu = true
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
             } label: {
-                Image(systemName: "gear")
+                Image(systemName: "gearshape")
                     .foregroundColor(.primary)
             }
             .accessibilityLabel("Open menu")

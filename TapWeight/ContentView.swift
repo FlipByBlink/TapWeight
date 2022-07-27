@@ -22,9 +22,12 @@ struct ContentView: View {
             .lineLimit(1)
             .navigationTitle("Body Mass")
             .toolbar { 🛠MenuButton($📱.🚩ShowMenu) } // ⚙️
+            .toolbar {
+                📅LastDateLabel()
+            }
         }
         .minimumScaleFactor(0.1)
-        .overlay(alignment: .top) { 📅LastDateLabel() }
+//        .overlay(alignment: .top) { 📅LastDateLabel() }
         .overlay(alignment: .bottomLeading) { 👆DoneButton() }
         .overlay(alignment: .bottomTrailing) { 💟JumpButtonOnMainView() }
         .fullScreenCover(isPresented: $📱.🚩ShowResult) {
@@ -111,7 +114,7 @@ struct 💟JumpButtonOnMainView: View {
     var body: some View {
         💟JumpButton()
             .foregroundColor(.pink)
-            .opacity(0.66)
+            .opacity(0.8)
             .background {
                 RoundedRectangle(cornerRadius: 16)
                     .foregroundStyle(.background)
@@ -176,9 +179,7 @@ struct 📅LastDateLabel: View {
             Text(📅.formatted(date: .numeric, time: .shortened))
                 .font(.caption.weight(.medium))
                 .kerning(0.33)
-                .frame(maxWidth: 160)
                 .foregroundStyle(.secondary)
-                .padding(8)
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
                 .opacity(🚩Show ? 1 : 0)
