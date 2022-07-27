@@ -55,16 +55,21 @@ struct 🧍HeightEditView: View {
                         
                         HStack(spacing: 2) {
                             Text("Height")
+                                .layoutPriority(1)
                             
                             Text("(m)")
                                 .font(.subheadline)
+                                .layoutPriority(1)
                             
                             Text(" × ")
+                                .layoutPriority(1)
                             
                             Text("Height")
+                                .layoutPriority(1)
                             
                             Text("(m)")
                                 .font(.subheadline)
+                                .layoutPriority(1)
                         }
                     }
                     .padding()
@@ -75,7 +80,7 @@ struct 🧍HeightEditView: View {
                 }
             }
             .lineLimit(1)
-            .minimumScaleFactor(0.3)
+            .minimumScaleFactor(0.1)
             
             Spacer()
         }
