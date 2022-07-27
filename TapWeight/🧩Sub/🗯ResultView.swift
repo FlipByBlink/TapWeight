@@ -54,15 +54,17 @@ struct 🗯ResultView: View {
                                 if 📱.📅Date.timeIntervalSinceNow < -300 {
                                     Text(📱.📅Date.formatted(date: .numeric, time: .shortened))
                                         .font(.caption.weight(.semibold))
+                                        .padding(.horizontal)
                                 }
                             }
                             .opacity(0.75)
+                            .padding(.horizontal, 42)
                         }
                         
                         Spacer()
                         
                         Color.clear
-                            .frame(height: 32)
+                            .frame(height: 72)
                     }
                     .lineLimit(1)
                     .minimumScaleFactor(0.1)
