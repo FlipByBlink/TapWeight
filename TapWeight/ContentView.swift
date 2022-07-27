@@ -6,26 +6,26 @@ struct ContentView: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
-        List {
-            Section {
-                👆BodyMassStepper()
+        NavigationView {
+            List {
+                Section {
+                    👆BodyMassStepper()
+                    
+                    if 📱.🚩AbleBMI { 🪧BMIView() }
+                }
                 
-                if 📱.🚩AbleBMI { 🪧BMIView() }
-            } header: {
-                Text("Body Mass")
+                if 📱.🚩AbleBodyFat { 👆BodyFatStepper() }
+                
+                📅DatePicker()
             }
-            
-            if 📱.🚩AbleBodyFat { 👆BodyFatStepper() }
-            
-            📅DatePicker()
+            .listStyle(.plain)
+            .lineLimit(1)
+            .navigationTitle("Body Mass")
+            .toolbar { 🛠MenuButton($📱.🚩ShowMenu) } // ⚙️
         }
-        .listStyle(.plain)
-        .clipped()
-        .lineLimit(1)
         .minimumScaleFactor(0.1)
         .overlay(alignment: .top) { 📅LastDateLabel() }
-        .overlay(alignment: .bottomLeading) { 🛠MenuButton() }
-        .overlay(alignment: .bottom) { 👆DoneButton() }
+        .overlay(alignment: .bottomLeading) { 👆DoneButton() }
         .overlay(alignment: .bottomTrailing) { 💟JumpButtonOnMainView() }
         .fullScreenCover(isPresented: $📱.🚩ShowResult) {
             🗯ResultView()

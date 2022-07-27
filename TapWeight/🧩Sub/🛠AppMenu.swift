@@ -1,29 +1,27 @@
 
 import SwiftUI
 
-struct 🛠MenuButton: View { // ⚙️
-    @EnvironmentObject var 📱: 📱AppModel
+struct 🛠MenuButton: ToolbarContent { // ⚙️
+    @Binding var 🚩ShowMenu: Bool
     
-    var body: some View {
-        Button {
-            📱.🚩ShowMenu = true
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        } label: {
-            Image(systemName: "gear")
-                .font(.largeTitle)
-                .foregroundColor(.pink)
-                .opacity(0.66)
-                .padding(8)
+    var body: some ToolbarContent {
+        ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
+            Button {
+                🚩ShowMenu = true
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            } label: {
+                Image(systemName: "gear")
+                    .foregroundColor(.primary)
+            }
+            .accessibilityLabel("Open menu")
+            .sheet(isPresented: $🚩ShowMenu) {
+                🛠AppMenu()
+            }
         }
-        .background {
-            Circle()
-                .foregroundStyle(.background)
-        }
-        .padding(16)
-        .accessibilityLabel("Open menu")
-        .sheet(isPresented: $📱.🚩ShowMenu) {
-            🛠AppMenu()
-        }
+    }
+    
+    init(_ 🚩ShowMenu: Binding<Bool>) {
+        _🚩ShowMenu = 🚩ShowMenu
     }
 }
 
