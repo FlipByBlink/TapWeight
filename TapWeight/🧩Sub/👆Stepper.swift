@@ -45,6 +45,7 @@ struct 👆BodyMassStepper: View {
             }
         }
         .padding(8)
+        .padding(.vertical, 4)
         .onAppear {
             📱.📝BodyMass = 📱.💾BodyMass
         }
@@ -79,6 +80,7 @@ struct 👆BodyFatStepper: View {
                 📱.📝BodyFat = round(📱.📝BodyFat*1000)/1000
             }
             .padding(8)
+            .padding(.vertical, 4)
             .onAppear {
                 📱.📝BodyFat = 📱.💾BodyFat
             }
