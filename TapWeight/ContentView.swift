@@ -52,10 +52,11 @@ struct 🪧BMIView: View {
                 
                 Text("(" + 📱.🧍Height.description + "cm)")
                     .font(.caption2.weight(.semibold))
-                    .frame(maxHeight: 28)
+                    .frame(maxHeight: 32)
             }
             
             Text(📱.📝BMI.description)
+                .font(.title2)
                 .fontWeight(.heavy)
         }
         .padding(.vertical, 4)
@@ -159,6 +160,7 @@ struct 📅LastDateLabel: View {
         if let 📅 = 📅LastDate {
             Text(📅.formatted(date: .numeric, time: .shortened))
                 .font(.caption.weight(.medium))
+                .kerning(0.33)
                 .frame(maxWidth: 160)
                 .foregroundStyle(.secondary)
                 .padding(8)
