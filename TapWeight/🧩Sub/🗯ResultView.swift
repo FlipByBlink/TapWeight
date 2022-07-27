@@ -67,7 +67,7 @@ struct 🗯ResultView: View {
                             .frame(height: 72)
                     }
                     .lineLimit(1)
-                    .minimumScaleFactor(0.1)
+                    .minimumScaleFactor(0.3)
                     .padding()
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -28,7 +28,7 @@ struct 🧍HeightEditView: View {
                 Text(📝Height.description + " cm")
                     .font(.system(size: 54).monospacedDigit())
                     .lineLimit(1)
-                    .minimumScaleFactor(0.1)
+                    .minimumScaleFactor(0.3)
             } onIncrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
                 📝Height += 1
@@ -75,7 +75,7 @@ struct 🧍HeightEditView: View {
                 }
             }
             .lineLimit(1)
-            .minimumScaleFactor(0.1)
+            .minimumScaleFactor(0.3)
             
             Spacer()
         }
