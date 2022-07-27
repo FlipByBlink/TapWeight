@@ -110,8 +110,8 @@ struct 🛠AppMenu: View {
                     }
                 }
                 
-                
-                🛠OthersMenu()
+                ℹ️AboutAppLink()
+                📣ADMenuLink()
             }
             .navigationTitle("Menu")
             .toolbar { ﹀CloseMenuButton($📱.🚩ShowMenu) }
@@ -165,6 +165,52 @@ struct 🕒LocalHistoryView: View {
                     Image(systemName: "trash")
                         .tint(.red)
                 }
+            }
+        }
+    }
+}
+
+
+
+struct ℹ️AboutAppLink: View {
+    var body: some View {
+        Section {
+            ZStack {
+                Color.clear
+                
+                VStack(spacing: 12) {
+                    Image("TapWeight")
+                        .resizable()
+                        .mask {
+                            RoundedRectangle(cornerRadius: 22.5, style: .continuous)
+                        }
+                        .shadow(radius: 3, y: 1)
+                        .frame(width: 100, height: 100)
+                    
+                    Text("TapWeight")
+                        .font(.title2)
+                        .fontWeight(.medium)
+                        .tracking(2)
+                        .opacity(0.8)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.1)
+                }
+                .padding(24)
+                .padding(.top, 12)
+            }
+            
+            Link(destination: URL(string: "https://apps.apple.com/app/id1624159721")!) {
+                HStack {
+                    Label("Open AppStore page", systemImage: "link")
+                    Spacer()
+                    Image(systemName: "arrow.up.forward.app")
+                }
+            }
+            
+            NavigationLink  {
+                📄InformationMenu()
+            } label: {
+                Label("About App", systemImage: "doc")
             }
         }
     }
