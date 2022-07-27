@@ -35,15 +35,14 @@
 "Option" = "オプション";
 "Dismiss" = "閉じる";
 "Cancel" = "取り消す";
+
+
+// ======== About App =========
 "About App" = "アプリについて";
-
-
-// ======== Information =========
-"Information" = "情報";
 "Version" = "バージョン";
 "builded on %@" = "%@ にビルドしました";
 "Version History" = "バージョン履歴";
-"About" = "概要";
+"Description" = "概要";
 "Open AppStore page" = "AppStoreページを開く";
 "Privacy Policy" = "プライバシーポリシー";
 "Source code" = "ソースコード";

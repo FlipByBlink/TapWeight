@@ -12,17 +12,7 @@ let 👤PrivacyPolicy = """
 
 import SwiftUI
 
-struct 📄InformationMenuLink: View {
-    var body: some View {
-        NavigationLink {
-            📄InformationMenu()
-        } label: {
-            Label("Information", systemImage: "doc")
-        }
-    }
-}
-
-struct 📄InformationMenu: View {
+struct ℹ️AboutAppMenu: View {
     var body: some View {
         List {
             📰AppStoreDescriptionSection()
@@ -32,7 +22,7 @@ struct 📄InformationMenu: View {
             📓SourceCodeLink()
             🧑‍💻AboutDeveloperPublisherLink()
         }
-        .navigationTitle("Information")
+        .navigationTitle("About App")
     }
 }
 
@@ -44,7 +34,7 @@ struct 📰AppStoreDescriptionSection: View {
                     Text("📃", tableName: "🌏AppStoreDescription")
                         .padding()
                 }
-                .navigationBarTitle("About")
+                .navigationBarTitle("Description")
                 .navigationBarTitleDisplayMode(.inline)
                 .textSelection(.enabled)
             } label: {
@@ -52,9 +42,9 @@ struct 📰AppStoreDescriptionSection: View {
                     .font(.subheadline)
                     .lineLimit(7)
                     .padding(8)
-                    .accessibilityLabel("About")
+                    .accessibilityLabel("Description")
             }
-        } header: { Text("About") }
+        } header: { Text("Description") }
     }
 }
 

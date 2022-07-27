@@ -22,13 +22,11 @@
 		126B3ECE282E15E5009BD28B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3ED0282E15E5009BD28B /* InfoPlist.strings */; };
 		126B3ED5282E2100009BD28B /* TapWeightApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */; };
 		126B3ED6282E2100009BD28B /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
-		1299C398288D63510086522B /* 🛠OthersMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C397288D63510086522B /* 🛠OthersMenu.swift */; };
-		1299C39A288D63570086522B /* ﹀CloseMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C399288D63570086522B /* ﹀CloseMenuButton.swift */; };
 		1299C3A1288D67470086522B /* 🌏AppStoreDescription.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1299C3A3288D67470086522B /* 🌏AppStoreDescription.strings */; };
 		1299C3A4288D674B0086522B /* 🌏VersionDescription.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1299C3A6288D674B0086522B /* 🌏VersionDescription.strings */; };
 		1299C3AE288D68F50086522B /* 📓SourceCodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3AA288D68F50086522B /* 📓SourceCodeMenu.swift */; };
 		1299C3AF288D68F50086522B /* 🧑‍💻AboutDeveloperPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3AB288D68F50086522B /* 🧑‍💻AboutDeveloperPublisher.swift */; };
-		1299C3B0288D68F50086522B /* 📄InformationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3AC288D68F50086522B /* 📄InformationMenu.swift */; };
+		1299C3B0288D68F50086522B /* ℹ️AboutAppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3AC288D68F50086522B /* ℹ️AboutAppMenu.swift */; };
 		1299C3B1288D68F50086522B /* 🕒VersionHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3AD288D68F50086522B /* 🕒VersionHistory.swift */; };
 		1299C3B6288D6DA80086522B /* 📣ADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3B3288D6DA80086522B /* 📣ADView.swift */; };
 		1299C3B7288D6DA80086522B /* 📣AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299C3B4288D6DA80086522B /* 📣AppName.swift */; };
@@ -37,9 +35,7 @@
 		129CBE17284CD00700C73F4D /* 🗯ResultView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🗯ResultView.swift */; };
 		129CBE18284CD00700C73F4D /* 📏BodyMassUnit.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */; };
 		129CBE2B284CD10D00C73F4D /* 👆Stepper.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 👆Stepper.swift */; };
-		12AF80D4288EBFB70047324A /* 🛠OthersMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C397288D63510086522B /* 🛠OthersMenu.swift */; };
-		12AF80D5288EBFB70047324A /* ﹀CloseMenuButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C399288D63570086522B /* ﹀CloseMenuButton.swift */; };
-		12AF80D6288EBFC10047324A /* 📄InformationMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C3AC288D68F50086522B /* 📄InformationMenu.swift */; };
+		12AF80D6288EBFC10047324A /* ℹ️AboutAppMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C3AC288D68F50086522B /* ℹ️AboutAppMenu.swift */; };
 		12AF80D7288EBFC10047324A /* 🕒VersionHistory.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C3AD288D68F50086522B /* 🕒VersionHistory.swift */; };
 		12AF80D8288EBFC10047324A /* 🧑‍💻AboutDeveloperPublisher.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C3AB288D68F50086522B /* 🧑‍💻AboutDeveloperPublisher.swift */; };
 		12AF80D9288EBFC10047324A /* 📓SourceCodeMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1299C3AA288D68F50086522B /* 📓SourceCodeMenu.swift */; };
@@ -96,17 +92,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		12AF80D3288EBFAD0047324A /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "🧰Others";
-			dstSubfolderSpec = 7;
-			files = (
-				12AF80D4288EBFB70047324A /* 🛠OthersMenu.swift in CopyFiles */,
-				12AF80D5288EBFB70047324A /* ﹀CloseMenuButton.swift in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		12C67125286068A200FE4C06 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -121,10 +106,10 @@
 		12C67129286068DD00FE4C06 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "📄Information";
+			dstPath = "ℹ️AboutApp";
 			dstSubfolderSpec = 7;
 			files = (
-				12AF80D6288EBFC10047324A /* 📄InformationMenu.swift in CopyFiles */,
+				12AF80D6288EBFC10047324A /* ℹ️AboutAppMenu.swift in CopyFiles */,
 				12AF80D7288EBFC10047324A /* 🕒VersionHistory.swift in CopyFiles */,
 				12AF80D8288EBFC10047324A /* 🧑‍💻AboutDeveloperPublisher.swift in CopyFiles */,
 				12AF80D9288EBFC10047324A /* 📓SourceCodeMenu.swift in CopyFiles */,
@@ -152,15 +137,13 @@
 		126B3EC2282E0F4D009BD28B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		126B3ECF282E15E5009BD28B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		126B3ED1282E15E8009BD28B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1299C397288D63510086522B /* 🛠OthersMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛠OthersMenu.swift"; sourceTree = "<group>"; };
-		1299C399288D63570086522B /* ﹀CloseMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "﹀CloseMenuButton.swift"; sourceTree = "<group>"; };
 		1299C3A2288D67470086522B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/🌏AppStoreDescription.strings"; sourceTree = "<group>"; };
 		1299C3A5288D674B0086522B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/🌏VersionDescription.strings"; sourceTree = "<group>"; };
 		1299C3A7288D67530086522B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/🌏AppStoreDescription.strings"; sourceTree = "<group>"; };
 		1299C3A8288D67560086522B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/🌏VersionDescription.strings"; sourceTree = "<group>"; };
 		1299C3AA288D68F50086522B /* 📓SourceCodeMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📓SourceCodeMenu.swift"; sourceTree = "<group>"; };
 		1299C3AB288D68F50086522B /* 🧑‍💻AboutDeveloperPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🧑‍💻AboutDeveloperPublisher.swift"; sourceTree = "<group>"; };
-		1299C3AC288D68F50086522B /* 📄InformationMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📄InformationMenu.swift"; sourceTree = "<group>"; };
+		1299C3AC288D68F50086522B /* ℹ️AboutAppMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutAppMenu.swift"; sourceTree = "<group>"; };
 		1299C3AD288D68F50086522B /* 🕒VersionHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🕒VersionHistory.swift"; sourceTree = "<group>"; };
 		1299C3B3288D6DA80086522B /* 📣ADView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADView.swift"; sourceTree = "<group>"; };
 		1299C3B4288D6DA80086522B /* 📣AppName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣AppName.swift"; sourceTree = "<group>"; };
@@ -235,15 +218,15 @@
 			path = "🧩Sub";
 			sourceTree = "<group>";
 		};
-		12428DCC2848608A006837F9 /* 📄Information */ = {
+		12428DCC2848608A006837F9 /* ℹ️AboutApp */ = {
 			isa = PBXGroup;
 			children = (
-				1299C3AC288D68F50086522B /* 📄InformationMenu.swift */,
+				1299C3AC288D68F50086522B /* ℹ️AboutAppMenu.swift */,
 				1299C3AD288D68F50086522B /* 🕒VersionHistory.swift */,
 				1299C3AB288D68F50086522B /* 🧑‍💻AboutDeveloperPublisher.swift */,
 				1299C3AA288D68F50086522B /* 📓SourceCodeMenu.swift */,
 			);
-			path = "📄Information";
+			path = "ℹ️AboutApp";
 			sourceTree = "<group>";
 		};
 		126B3E9E282DFEDF009BD28B = {
@@ -298,9 +281,7 @@
 		1299C395288D51E20086522B /* 🧰Others */ = {
 			isa = PBXGroup;
 			children = (
-				1299C397288D63510086522B /* 🛠OthersMenu.swift */,
-				1299C399288D63570086522B /* ﹀CloseMenuButton.swift */,
-				12428DCC2848608A006837F9 /* 📄Information */,
+				12428DCC2848608A006837F9 /* ℹ️AboutApp */,
 				120B2193284B6ABF007CA829 /* 📣AD */,
 				12BA83C628605241009E7E3F /* 🛒InAppPurchase */,
 				1299C3B8288D77270086522B /* Launch Screen.storyboard */,
@@ -344,7 +325,6 @@
 				12C67125286068A200FE4C06 /* CopyFiles */,
 				129CBE25284CD03A00C73F4D /* CopyFiles */,
 				12C67129286068DD00FE4C06 /* CopyFiles */,
-				12AF80D3288EBFAD0047324A /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -431,9 +411,8 @@
 				1299C3B1288D68F50086522B /* 🕒VersionHistory.swift in Sources */,
 				12BA83C92860525B009E7E3F /* 🛒PurchaseSection.swift in Sources */,
 				12BA83C528605235009E7E3F /* 📣ADMenuLink.swift in Sources */,
-				1299C398288D63510086522B /* 🛠OthersMenu.swift in Sources */,
 				1299C3B7288D6DA80086522B /* 📣AppName.swift in Sources */,
-				1299C3B0288D68F50086522B /* 📄InformationMenu.swift in Sources */,
+				1299C3B0288D68F50086522B /* ℹ️AboutAppMenu.swift in Sources */,
 				1232578B284C5EA2002E0057 /* 👆Stepper.swift in Sources */,
 				12630BC12849C63E005F922F /* 🧍HeightMenu.swift in Sources */,
 				1299C3B6288D6DA80086522B /* 📣ADView.swift in Sources */,
@@ -442,7 +421,6 @@
 				1299C3AF288D68F50086522B /* 🧑‍💻AboutDeveloperPublisher.swift in Sources */,
 				12630BC32849CD33005F922F /* 🛠AppMenu.swift in Sources */,
 				126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */,
-				1299C39A288D63570086522B /* ﹀CloseMenuButton.swift in Sources */,
 				120B2192284B4E1E007CA829 /* 📏BodyMassUnit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
