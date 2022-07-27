@@ -1,11 +1,11 @@
 
 "1.2" = "Add \"Edit mode for date\"
-Change decimal point of BMI
 Show last date
 Bug fix \"BMI local history\"
-Change frequency of AD
+Change significant digits of BMI
+Change frequency in AD (\"1 in 3\" → \"after 5, every\")
 Add localization \"Ukrainian\"
-refactoring, several improvement";
+Various bugfixes and improvements";
 
 
 

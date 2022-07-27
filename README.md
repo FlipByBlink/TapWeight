@@ -42,6 +42,8 @@ This app cannot read, view, or manage past data in "Health" app. This app is int
 
 - With body fat percentage.
 
+- Function to change the registration date and time
+
 - Option to hide AD banner. (In-App-Purchase)
 
 【OTHERS】
@@ -56,7 +58,7 @@ This app cannot read, view, or manage past data in "Health" app. This app is int
 
 - All feature is free.
 
-- Rarely appear AD banner of app by TapWeight developer.
+- AD banner of apps by TapWeight developer.
 
 
 ==== Japanese(native) Description ====
@@ -87,6 +89,8 @@ iPhoneにプリインストールされているApple「ヘルスケア」アプ
 
 - 体脂肪率も同時に登録可能。
 
+- 登録日時を変更できる機能。
+
 - 広告バナー非表示オプション。(アプリ内課金)
 
 【その他】
@@ -101,7 +105,7 @@ iPhoneにプリインストールされているApple「ヘルスケア」アプ
 
 - すべての機能を無料で利用できます。
 
-- 自作アプリに関するバナー広告をアプリ内で比較的控えめに表示します。
+- 自作アプリに関するバナー広告をアプリ内で表示します。
 
 
 ==== Localization: All ====
