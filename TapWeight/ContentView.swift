@@ -123,6 +123,8 @@ struct 💟JumpButtonOnMainView: View {
 
 struct 📅DatePicker: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @Environment(\.scenePhase) var 🚥Phase: ScenePhase
+    @State private var 🕒BackgroundTime: Date = .now
     
     var body: some View {
         if 📱.🚩AbleDatePicker {
@@ -146,6 +148,17 @@ struct 📅DatePicker: View {
             .padding(.trailing, 8)
             .padding(.bottom, 180)
             .listRowSeparator(.hidden)
+            .onChange(of: 🚥Phase) { 🚥 in
+                switch 🚥 {
+                    case .background:
+                        🕒BackgroundTime = .now
+                    case .active:
+                        if 🕒BackgroundTime.timeIntervalSinceNow < -300 {
+                            📱.📅Date = .now
+                        }
+                    default: break
+                }
+            }
         }
     }
 }
