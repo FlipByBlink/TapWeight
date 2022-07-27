@@ -114,7 +114,7 @@ struct 🛠AppMenu: View {
                 📣ADMenuLink()
             }
             .navigationTitle("Menu")
-            .toolbar { ﹀CloseMenuButton($📱.🚩ShowMenu) }
+            .toolbar { ﹀CloseMenuButton() }
         }
         .onDisappear { 📱.🚩ShowMenu = false }
     }
@@ -217,25 +217,19 @@ struct ℹ️AboutAppLink: View {
 }
 
 
-struct ﹀CloseMenuButton: ToolbarContent {
-    @Binding var 🚩ShowMenu: Bool
+struct ﹀CloseMenuButton: View {
+    @EnvironmentObject var 📱: 📱AppModel
     
-    var body: some ToolbarContent {
-        ToolbarItem(placement: .navigationBarTrailing) {
-            Button {
-                🚩ShowMenu = false
-                UISelectionFeedbackGenerator().selectionChanged()
-            } label: {
-                Image(systemName: "chevron.down")
-                    .foregroundStyle(.secondary)
-                    .grayscale(1.0)
-                    .padding(8)
-            }
-            .accessibilityLabel("Dismiss")
+    var body: some View {
+        Button {
+            📱.🚩ShowMenu = false
+            UISelectionFeedbackGenerator().selectionChanged()
+        } label: {
+            Image(systemName: "chevron.down")
+                .foregroundStyle(.secondary)
+                .grayscale(1.0)
+                .padding(8)
         }
-    }
-    
-    init(_ 🚩: Binding<Bool>) {
-        _🚩ShowMenu = 🚩
+        .accessibilityLabel("Dismiss")
     }
 }
