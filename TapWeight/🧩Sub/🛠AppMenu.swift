@@ -5,7 +5,7 @@ struct 🛠MenuButton: ToolbarContent { // ⚙️
     @Binding var 🚩ShowMenu: Bool
     
     var body: some ToolbarContent {
-        ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
+        ToolbarItem(placement: .navigationBarTrailing) {
             Button {
                 🚩ShowMenu = true
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -49,7 +49,7 @@ struct 🛠AppMenu: View {
                     Toggle(isOn: $📱.🚩Amount50g) {
                         Label("100g → 50g", systemImage: "minus.forwardslash.plus")
                             .padding(.leading)
-                            .foregroundColor(📱.📏Unit == .kg ? .primary : .secondary)
+                            .foregroundColor(📱.📏Unit != .kg ? .secondary : nil)
                     }
                     .font(.subheadline)
                     .disabled(📱.📏Unit != .kg)
@@ -113,7 +113,7 @@ struct 🛠AppMenu: View {
                 
                 🛠OthersMenu()
             }
-            .navigationTitle("TapWeight")
+            .navigationTitle("Menu")
             .toolbar { ﹀CloseMenuButton($📱.🚩ShowMenu) }
         }
         .onDisappear { 📱.🚩ShowMenu = false }

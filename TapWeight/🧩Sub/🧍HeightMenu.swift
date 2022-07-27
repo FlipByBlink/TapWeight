@@ -8,17 +8,11 @@ struct 🧍HeightMenuLink: View {
         NavigationLink {
             🧍HeightEditView()
         } label: {
-            HStack {
-                Label("Height", systemImage: "figure.stand")
-                
-                Spacer()
-                
-                Text(📱.🧍Height.description + " cm")
-                    .foregroundStyle(.secondary)
-            }
-            .padding(.leading)
-            .foregroundColor(📱.🚩AbleBMI ? .primary : .secondary)
+            Label("Height", systemImage: "figure.stand")
+                .padding(.leading)
+                .badge(Text(📱.🧍Height.description + " cm"))
         }
+        .disabled(📱.🚩AbleBMI == false)
         .font(.subheadline)
     }
 }

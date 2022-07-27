@@ -19,6 +19,7 @@
 "Cancel" = "取り消す";
 
 // ======== Menu View ========
+"Menu" = "メニュー";
 "Option" = "オプション";
 "Unit" = "単位";
 "50gram" = "50グラム";
@@ -28,7 +29,6 @@
 "Local history" = "ローカル履歴";
 "History" = "履歴";
 "\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"" = "\"ローカル履歴\"は動作確認や簡易バックアップを目的としています。 ";
-"TapWeight" = "体重登録";
 
 
 
