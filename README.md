@@ -151,7 +151,7 @@ Ukrainian: Вага / Індекс маси тіла / Відсоток жиру
 
 ### Source code (Mirror) link
 
-[https://gitlab.com/FlipByBlink/FlipByBlink_ver3_Mirror](https://gitlab.com/FlipByBlink/FlipByBlink_ver3_Mirror)
+[gitlab.com/FlipByBlink/TapWeight_Mirror](https://gitlab.com/FlipByBlink/TapWeight_Mirror)
 
 
 ## ✉️ Contact
