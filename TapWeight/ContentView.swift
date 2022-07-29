@@ -143,7 +143,7 @@ struct 📅DatePicker: View {
                     }
                 }
             }
-            .opacity(📱.📅Date.timeIntervalSinceNow < -300 ? 1 : 0.55)
+            .opacity(📱.📅Date.timeIntervalSinceNow < -300 ? 1 : 0.4)
             .padding(.vertical)
             .padding(.trailing, 8)
             .padding(.bottom, 180)
