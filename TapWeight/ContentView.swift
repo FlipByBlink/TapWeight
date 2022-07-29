@@ -4,6 +4,7 @@ import HealthKit
 
 struct ContentView: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @Environment(\.scenePhase) var 🚥Phase: ScenePhase
     
     var body: some View {
         NavigationView {
@@ -36,6 +37,11 @@ struct ContentView: View {
         }
         .onChange(of: 📱.🚩AbleBMI) { _ in
             📱.🏥RequestAuth(.bodyMassIndex)
+        }
+        .onChange(of: 🚥Phase) { _ in
+            if 🚥Phase == .background {
+                📱.📅Date = .now
+            }
         }
     }
 }
@@ -123,7 +129,6 @@ struct 💟JumpButtonOnMainView: View {
 
 struct 📅DatePicker: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.scenePhase) var 🚥Phase: ScenePhase
     
     var body: some View {
         if 📱.🚩AbleDatePicker {
@@ -147,11 +152,6 @@ struct 📅DatePicker: View {
             .padding(.trailing, 8)
             .padding(.bottom, 180)
             .listRowSeparator(.hidden)
-            .onChange(of: 🚥Phase) { _ in
-                if 🚥Phase == .background {
-                    📱.📅Date = .now
-                }
-            }
         }
     }
 }

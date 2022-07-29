@@ -134,12 +134,12 @@ class 📱AppModel: ObservableObject {
     func 🗑Cancel() async {
         do {
             🚩Canceled = true
+            🕒History += 📅Date.formatted(date: .numeric, time: .shortened) + ", "
             
             try await 🏥HealthStore.delete(📦Sample)
             
             📦Sample = []
             
-            🕒History += 📅Date.formatted(date: .numeric, time: .shortened) + ", "
             🕒History += "Cancel: Success\n"
             
             UserDefaults.standard.removeObject(forKey: "LastDate")
