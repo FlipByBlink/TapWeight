@@ -52,6 +52,7 @@ class 📱AppModel: ObservableObject {
             if 🏥CheckAuthDenied(.bodyMassIndex) { return }
         }
         
+        if 🚩AbleDatePicker == false { 📅Date = .now }
         
         📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
                                          quantity: HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass),
