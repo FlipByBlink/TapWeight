@@ -79,6 +79,9 @@ struct 🛠AppMenu: View {
                     Toggle(isOn: $📱.🚩AbleDatePicker) {
                         Label("Date picker", systemImage: "calendar.badge.clock")
                     }
+                    .onChange(of: 📱.🚩AbleDatePicker) { _ in
+                        📱.📅Date = .now
+                    }
                 }
                 
                 
