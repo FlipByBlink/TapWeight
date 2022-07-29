@@ -191,10 +191,10 @@ struct ℹ️AboutAppLink: View {
                         .frame(width: 100, height: 100)
                     
                     Text("TapWeight")
-                        .font(.title2)
+                        .font(.system(.title2, design: .rounded))
                         .fontWeight(.medium)
                         .tracking(1.5)
-                        .opacity(0.66)
+                        .opacity(0.75)
                         .lineLimit(1)
                         .minimumScaleFactor(0.1)
                 }
