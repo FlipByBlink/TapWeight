@@ -25,7 +25,7 @@ class 📱AppModel: ObservableObject {
         return Double(Int(round(📝*10)))/10
     }
     
-    @Published var 📅Date = Date.now
+    @Published var 📅PickerValue = Date.now
     
     @Published var 🚩ShowResult: Bool = false
     @Published var 🚨RegisterError: Bool = false
@@ -52,7 +52,7 @@ class 📱AppModel: ObservableObject {
             if 🏥CheckAuthDenied(.bodyMassIndex) { return }
         }
         
-        if 🚩AbleDatePicker == false { 📅Date = .now }
+        let 📅Date: Date = 🚩AbleDatePicker ? 📅PickerValue : .now
         
         📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
                                          quantity: HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass),
@@ -98,6 +98,7 @@ class 📱AppModel: ObservableObject {
             DispatchQueue.main.async {
                 print(#function, error)
                 self.🚨RegisterError = true
+                self.🕒History += "🕒" + Date.now.formatted(date: .numeric, time: .shortened) + ", "
                 self.🕒History += ".save Error?! " + error.localizedDescription + "\n"
                 self.🚩ShowResult = true
             }
@@ -109,7 +110,8 @@ class 📱AppModel: ObservableObject {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             🚨RegisterError = true
             🚩ShowResult = true
-            🕒History += "Register/authorization/" + ⓣype.rawValue + ": Error?!\n"
+            🕒History += "🕒" + Date.now.formatted(date: .numeric, time: .shortened) + ", "
+            🕒History += "Authorization/" + ⓣype.rawValue + ": Error?!\n"
             return true
         }
         
@@ -135,7 +137,7 @@ class 📱AppModel: ObservableObject {
     func 🗑Cancel() async {
         do {
             🚩Canceled = true
-            🕒History += 📅Date.formatted(date: .numeric, time: .shortened) + ", "
+            🕒History += "🕒" + Date.now.formatted(date: .numeric, time: .shortened) + ", "
             
             try await 🏥HealthStore.delete(📦Sample)
             

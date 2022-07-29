@@ -4,7 +4,6 @@ import HealthKit
 
 struct ContentView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.scenePhase) var 🚥Phase: ScenePhase
     
     var body: some View {
         NavigationView {
@@ -37,11 +36,6 @@ struct ContentView: View {
         }
         .onChange(of: 📱.🚩AbleBMI) { _ in
             📱.🏥RequestAuth(.bodyMassIndex)
-        }
-        .onChange(of: 🚥Phase) { _ in
-            if 🚥Phase == .background {
-                📱.📅Date = .now
-            }
         }
     }
 }
@@ -129,29 +123,35 @@ struct 💟JumpButtonOnMainView: View {
 
 struct 📅DatePicker: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @Environment(\.scenePhase) var 🚥Phase: ScenePhase
     
     var body: some View {
         if 📱.🚩AbleDatePicker {
             VStack(alignment: .trailing, spacing: 16) {
-                DatePicker(selection: $📱.📅Date, in: ...Date.now, displayedComponents: .date) {
+                DatePicker(selection: $📱.📅PickerValue, in: ...Date.now, displayedComponents: .date) {
                     HStack {
                         Spacer()
                         Image(systemName: "calendar")
                     }
                 }
                     
-                DatePicker(selection: $📱.📅Date, in: ...Date.now, displayedComponents: .hourAndMinute) {
+                DatePicker(selection: $📱.📅PickerValue, in: ...Date.now, displayedComponents: .hourAndMinute) {
                     HStack {
                         Spacer()
                         Image(systemName: "clock")
                     }
                 }
             }
-            .opacity(📱.📅Date.timeIntervalSinceNow < -300 ? 1 : 0.4)
+            .opacity(📱.📅PickerValue.timeIntervalSinceNow < -300 ? 1 : 0.4)
             .padding(.vertical)
             .padding(.trailing, 8)
             .padding(.bottom, 180)
             .listRowSeparator(.hidden)
+            .onChange(of: 🚥Phase) { _ in
+                if 🚥Phase == .background {
+                    📱.📅PickerValue = .now
+                }
+            }
         }
     }
 }

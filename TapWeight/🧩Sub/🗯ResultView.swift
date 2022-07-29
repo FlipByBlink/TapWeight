@@ -51,9 +51,9 @@ struct 🗯ResultView: View {
                                 Text(🅂ummary)
                                     .font(.body.bold())
                                 
-                                if 📱.📅Date.timeIntervalSinceNow < -300 {
-                                    Label(📱.📅Date.formatted(date: .numeric, time: .shortened), systemImage: "calendar")
-                                        .font(.caption.weight(.semibold))
+                                if 📱.🚩AbleDatePicker {
+                                    Label(📱.📅PickerValue.formatted(date: .numeric, time: .shortened), systemImage: "calendar")
+                                        .font(.subheadline.weight(.semibold))
                                         .padding(.horizontal)
                                 }
                             }
