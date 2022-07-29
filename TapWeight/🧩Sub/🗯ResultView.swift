@@ -52,7 +52,7 @@ struct 🗯ResultView: View {
                                     .font(.body.bold())
                                 
                                 if 📱.📅Date.timeIntervalSinceNow < -300 {
-                                    Text(📱.📅Date.formatted(date: .numeric, time: .shortened))
+                                    Label(📱.📅Date.formatted(date: .numeric, time: .shortened), systemImage: "calendar")
                                         .font(.caption.weight(.semibold))
                                         .padding(.horizontal)
                                 }
