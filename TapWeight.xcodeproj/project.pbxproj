@@ -51,6 +51,7 @@
 		12C67126286068B000FE4C06 /* 🛒PurchaseSection.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BA83C72860525B009E7E3F /* 🛒PurchaseSection.swift */; };
 		12C67127286068B400FE4C06 /* 🛒StoreModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BA83C82860525B009E7E3F /* 🛒StoreModel.swift */; };
 		12C67128286068C700FE4C06 /* 📣ADMenuLink.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BA83C428605235009E7E3F /* 📣ADMenuLink.swift */; };
+		F5FB6BED28BCCBDF00F55EED /* 🕘LocalHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FB6BEC28BCCBDF00F55EED /* 🕘LocalHistory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -179,6 +180,7 @@
 		12BA83C82860525B009E7E3F /* 🛒StoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒StoreModel.swift"; sourceTree = "<group>"; };
 		12BA83CB2860535A009E7E3F /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		12BA83CD28606047009E7E3F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F5FB6BEC28BCCBDF00F55EED /* 🕘LocalHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🕘LocalHistory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 				12579D152835FE8900536547 /* 🗯ResultView.swift */,
 				1232578A284C5EA2002E0057 /* 👆Stepper.swift */,
 				12630BC22849CD33005F922F /* 🛠AppMenu.swift */,
+				F5FB6BEC28BCCBDF00F55EED /* 🕘LocalHistory.swift */,
 				12630BC02849C63E005F922F /* 🧍HeightMenu.swift */,
 				126B3EB8282E001E009BD28B /* TapWeight.entitlements */,
 				126B3EB0282DFEE0009BD28B /* Preview Content */,
@@ -421,6 +424,7 @@
 				1299C3AF288D68F50086522B /* 🧑‍💻AboutDeveloperPublisher.swift in Sources */,
 				12630BC32849CD33005F922F /* 🛠AppMenu.swift in Sources */,
 				126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */,
+				F5FB6BED28BCCBDF00F55EED /* 🕘LocalHistory.swift in Sources */,
 				120B2192284B4E1E007CA829 /* 📏BodyMassUnit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

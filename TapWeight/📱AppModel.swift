@@ -32,7 +32,7 @@ class 📱AppModel: ObservableObject {
     @Published var 🚩Canceled: Bool = false
     @Published var 🚨CancelError: Bool = false
     
-    @AppStorage("History") var 🕒History: String = ""
+    @AppStorage("History") var 🕘History: String = ""
     
     let 🏥HealthStore = HKHealthStore()
     var 📦Sample: [HKQuantitySample] = []
@@ -76,18 +76,18 @@ class 📱AppModel: ObservableObject {
             
             
             💾BodyMass = 📝BodyMass
-            🕒History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
-            🕒History += 📝BodyMass.description + ", " + 📏Unit.rawValue + "\n"
+            🕘History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
+            🕘History += 📝BodyMass.description + ", " + 📏Unit.rawValue + "\n"
             
             if 🚩AbleBMI {
-                🕒History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BMI, "
-                🕒History += 📝BMI.description + "\n"
+                🕘History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BMI, "
+                🕘History += 📝BMI.description + "\n"
             }
             
             if 🚩AbleBodyFat {
                 💾BodyFat = 📝BodyFat
-                🕒History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
-                🕒History += (round(📝BodyFat*1000)/10).description + ", %\n"
+                🕘History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
+                🕘History += (round(📝BodyFat*1000)/10).description + ", %\n"
             }
             
             
@@ -98,8 +98,8 @@ class 📱AppModel: ObservableObject {
             DispatchQueue.main.async {
                 print(#function, error)
                 self.🚨RegisterError = true
-                self.🕒History += "🕒" + Date.now.formatted(date: .numeric, time: .shortened) + ", "
-                self.🕒History += ".save Error?! " + error.localizedDescription + "\n"
+                self.🕘History += "🕘" + Date.now.formatted(date: .numeric, time: .shortened) + ", "
+                self.🕘History += ".save Error?! " + error.localizedDescription + "\n"
                 self.🚩ShowResult = true
             }
         }
@@ -110,8 +110,8 @@ class 📱AppModel: ObservableObject {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             🚨RegisterError = true
             🚩ShowResult = true
-            🕒History += "🕒" + Date.now.formatted(date: .numeric, time: .shortened) + ", "
-            🕒History += "Authorization/" + ⓣype.rawValue + ": Error?!\n"
+            🕘History += "🕘" + Date.now.formatted(date: .numeric, time: .shortened) + ", "
+            🕘History += "Authorization/" + ⓣype.rawValue + ": Error?!\n"
             return true
         }
         
@@ -137,13 +137,13 @@ class 📱AppModel: ObservableObject {
     func 🗑Cancel() async {
         do {
             🚩Canceled = true
-            🕒History += "🕒" + Date.now.formatted(date: .numeric, time: .shortened) + ", "
+            🕘History += "🕘" + Date.now.formatted(date: .numeric, time: .shortened) + ", "
             
             try await 🏥HealthStore.delete(📦Sample)
             
             📦Sample = []
             
-            🕒History += "Cancel: Success\n"
+            🕘History += "Cancel: Success\n"
             
             UserDefaults.standard.removeObject(forKey: "LastDate")
             
@@ -151,7 +151,7 @@ class 📱AppModel: ObservableObject {
         } catch {
             DispatchQueue.main.async {
                 print(#function, error)
-                self.🕒History += "Cancel: Error?! " + error.localizedDescription + "\n"
+                self.🕘History += "Cancel: Error?! " + error.localizedDescription + "\n"
                 self.🚨CancelError = true
             }
         }
