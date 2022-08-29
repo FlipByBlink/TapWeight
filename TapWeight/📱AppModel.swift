@@ -81,8 +81,8 @@ class 📱AppModel: ObservableObject {
             
             var ⓔntry = 💽Entry(date: 📅Date)
             ⓔntry.addSample("Body Mass", 📝BodyMass.description + " " + 📏Unit.rawValue)
-            if 🚩AbleBMI { ⓔntry.addSample("BMI", 📝BMI.description) }
-            if 🚩AbleBodyFat { ⓔntry.addSample("bodyFat", (round(📝BodyFat*1000)/10).description + " %") }
+            if 🚩AbleBMI { ⓔntry.addSample("Body Mass Index", 📝BMI.description) }
+            if 🚩AbleBodyFat { ⓔntry.addSample("Body Fat Percentage", (round(📝BodyFat*1000)/10).description + " %") }
             💽LocalHistory.addLog(ⓔntry)
             
             🚩ShowResult = true
