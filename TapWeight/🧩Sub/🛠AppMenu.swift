@@ -108,6 +108,7 @@ struct 🛠AppMenu: View {
                     
                     NavigationLink  {
                         🕘LocalHistoryView()
+                            .environmentObject(📱.💽LocalHistory)
                     } label: {
                         Label("Local history", systemImage: "clock")
                     }

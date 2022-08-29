@@ -2,26 +2,33 @@
 import SwiftUI
 
 struct 🕘LocalHistoryView: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 💽: 💽LocalHistoryModel
         
     var body: some View {
         List {
-            Text("\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .listRowBackground(Color.clear)
+            Section {
+                Text("\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .listRowBackground(Color.clear)
+            }
             
-            ForEach(📱.💽LocalHistory.ⓛogs.reversed()) { ⓛog in
+            ForEach(💽.ⓛogs.reversed()) { ⓛog in
                 Section {
                     🄻ogRows(ⓛog)
                 } header: {
                     Text(ⓛog.date.formatted())
-                        .headerProminence(.increased)
                 } footer: {
                     if ⓛog.canceled {
                         Text("Canceled")
                     }
                 }
+            }
+            
+            if 💽.ⓛogs.isEmpty {
+                Text("No log")
+                    .font(.headline)
+                    .foregroundStyle(.tertiary)
             }
             
             🕘LocalHistoryBeforeVer_1_2_Link()
@@ -30,7 +37,9 @@ struct 🕘LocalHistoryView: View {
         .toolbar { //TODO: WIP
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    📱.💽LocalHistory.ⓛogs.removeAll()
+                    withAnimation {
+                        💽.ⓛogs.removeAll()
+                    }
                 } label: {
                     Image(systemName: "trash")
                         .tint(.red)
@@ -44,6 +53,11 @@ struct 🕘LocalHistoryView: View {
         
         var body: some View {
             if let entry = ⓛog.entry {
+                if ⓛog.date.timeIntervalSince(entry.date) > 300 {
+                    Label(entry.date.formatted(), systemImage: "clock")
+                        .foregroundColor(.primary)
+                }
+                
                 ForEach(entry.samples) { sample in
                     Text(sample.type)
                         .strikethrough(entry.cancellation)
