@@ -32,8 +32,6 @@ class 📱AppModel: ObservableObject {
     @Published var 🚩Canceled: Bool = false
     @Published var 🚨CancelError: Bool = false
     
-    @AppStorage("History") var 🕘History: String = "" //TODO: Delete
-    
     let 🏥HealthStore = HKHealthStore()
     var 📦Sample: [HKQuantitySample] = []
     
