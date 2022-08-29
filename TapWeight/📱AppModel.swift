@@ -128,7 +128,6 @@ class 📱AppModel: ObservableObject {
     func 🗑Cancel() async {
         do {
             🚩Canceled = true
-            🕘History += "🕘" + Date.now.formatted(date: .numeric, time: .shortened) + ", "
             
             try await 🏥HealthStore.delete(📦Sample)
             
