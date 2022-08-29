@@ -8,22 +8,22 @@ class 📱AppModel: ObservableObject {
     
     @AppStorage("Unit") var 📏Unit: 📏BodyMassUnit = .kg
     @AppStorage("Amount50g") var 🚩Amount50g: Bool = false
-    @AppStorage("AbleBodyFat") var 🚩AbleBodyFat: Bool = false
     @AppStorage("AbleBMI") var 🚩AbleBMI: Bool = false
     @AppStorage("Height") var 🧍Height: Int = 165
+    @AppStorage("AbleBodyFat") var 🚩AbleBodyFat: Bool = false
     @AppStorage("AbleDatePicker") var 🚩AbleDatePicker: Bool = false
     
     @AppStorage("BodyMass") var 💾BodyMass: Double = 60.0
     @AppStorage("BodyFat") var 💾BodyFat: Double = 0.1
     
     @Published var 📝BodyMass: Double = 65.0
-    @Published var 📝BodyFat: Double = 0.2
     var 📝BMI: Double {
-        let 🅀uantity = HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass)
-        let 🄺iloBodyMass = 🅀uantity.doubleValue(for: .gramUnit(with: .kilo))
-        let 📝 = 🄺iloBodyMass / pow(Double(🧍Height)/100, 2)
+        let ⓠuantity = HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass)
+        let ⓚiloMassValue = ⓠuantity.doubleValue(for: .gramUnit(with: .kilo))
+        let 📝 = ⓚiloMassValue / pow(Double(🧍Height)/100, 2)
         return Double(Int(round(📝*10)))/10
     }
+    @Published var 📝BodyFat: Double = 0.2
     
     @Published var 📅PickerValue = Date.now
     
@@ -44,12 +44,12 @@ class 📱AppModel: ObservableObject {
         
         if 🏥CheckAuthDenied(.bodyMass) { return }
         
-        if 🚩AbleBodyFat {
-            if 🏥CheckAuthDenied(.bodyFatPercentage) { return }
-        }
-        
         if 🚩AbleBMI {
             if 🏥CheckAuthDenied(.bodyMassIndex) { return }
+        }
+        
+        if 🚩AbleBodyFat {
+            if 🏥CheckAuthDenied(.bodyFatPercentage) { return }
         }
         
         let 📅Date: Date = 🚩AbleDatePicker ? 📅PickerValue : .now
@@ -58,15 +58,15 @@ class 📱AppModel: ObservableObject {
                                          quantity: HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass),
                                          start: 📅Date, end: 📅Date))
         
-        if 🚩AbleBodyFat {
-            📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
-                                             quantity: HKQuantity(unit: .percent(), doubleValue: 📝BodyFat),
-                                             start: 📅Date, end: 📅Date))
-        }
-        
         if 🚩AbleBMI {
             📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
                                              quantity: HKQuantity(unit: .count(), doubleValue: 📝BMI),
+                                             start: 📅Date, end: 📅Date))
+        }
+        
+        if 🚩AbleBodyFat {
+            📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
+                                             quantity: HKQuantity(unit: .percent(), doubleValue: 📝BodyFat),
                                              start: 📅Date, end: 📅Date))
         }
         
@@ -79,15 +79,15 @@ class 📱AppModel: ObservableObject {
             🕒History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
             🕒History += 📝BodyMass.description + ", " + 📏Unit.rawValue + "\n"
             
+            if 🚩AbleBMI {
+                🕒History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BMI, "
+                🕒History += 📝BMI.description + "\n"
+            }
+            
             if 🚩AbleBodyFat {
                 💾BodyFat = 📝BodyFat
                 🕒History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
                 🕒History += (round(📝BodyFat*1000)/10).description + ", %\n"
-            }
-            
-            if 🚩AbleBMI {
-                🕒History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BMI, "
-                🕒History += 📝BMI.description + "\n"
             }
             
             
