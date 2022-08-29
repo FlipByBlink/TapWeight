@@ -37,6 +37,8 @@ class 📱AppModel: ObservableObject {
     let 🏥HealthStore = HKHealthStore()
     var 📦Sample: [HKQuantitySample] = []
     
+    var 💽LocalHistory = 💽LocalHistoryModel()
+    
     
     @MainActor
     func 👆Register() async {
@@ -91,12 +93,20 @@ class 📱AppModel: ObservableObject {
             }
             
             
+            var ⓔntry = 💽Entry(date: 📅Date)
+            ⓔntry.addSample("Body Mass", 📝BodyMass.description + " " + 📏Unit.rawValue)
+            if 🚩AbleBMI { ⓔntry.addSample("BMI", 📝BMI.description) }
+            if 🚩AbleBodyFat { ⓔntry.addSample("bodyFat", (round(📝BodyFat*1000)/10).description + " %") }
+            💽LocalHistory.addLog(ⓔntry)
+            
+            
             🚩ShowResult = true
             UserDefaults.standard.set(📅Date, forKey: "LastDate")
             
         } catch {
             DispatchQueue.main.async {
                 print(#function, error)
+                self.💽LocalHistory.addLog("Error: " + #function + error.localizedDescription)
                 self.🚨RegisterError = true
                 self.🕘History += "🕘" + Date.now.formatted(date: .numeric, time: .shortened) + ", "
                 self.🕘History += ".save Error?! " + error.localizedDescription + "\n"
@@ -110,6 +120,7 @@ class 📱AppModel: ObservableObject {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             🚨RegisterError = true
             🚩ShowResult = true
+            self.💽LocalHistory.addLog("Error: " + #function + "\n" + ⓣype.rawValue)
             🕘History += "🕘" + Date.now.formatted(date: .numeric, time: .shortened) + ", "
             🕘History += "Authorization/" + ⓣype.rawValue + ": Error?!\n"
             return true
@@ -144,6 +155,7 @@ class 📱AppModel: ObservableObject {
             📦Sample = []
             
             🕘History += "Cancel: Success\n"
+            💽LocalHistory.modifyCancellation()
             
             UserDefaults.standard.removeObject(forKey: "LastDate")
             
