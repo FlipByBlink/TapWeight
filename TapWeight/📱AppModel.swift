@@ -18,7 +18,7 @@ class 📱AppModel: ObservableObject {
     
     @Published var 📝BodyMass: Double = 65.0
     var 📝BMI: Double {
-        let ⓠuantity = HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass)
+        let ⓠuantity = HKQuantity(unit: 📏Unit.asHKUnit, doubleValue: 📝BodyMass)
         let ⓚiloMassValue = ⓠuantity.doubleValue(for: .gramUnit(with: .kilo))
         let 📝 = ⓚiloMassValue / pow(Double(🧍Height)/100, 2)
         return Double(Int(round(📝*10)))/10
@@ -32,7 +32,7 @@ class 📱AppModel: ObservableObject {
     @Published var 🚩Canceled: Bool = false
     @Published var 🚨CancelError: Bool = false
     
-    @AppStorage("History") var 🕘History: String = ""
+    @AppStorage("History") var 🕘History: String = "" //TODO: Delete
     
     let 🏥HealthStore = HKHealthStore()
     var 📦Sample: [HKQuantitySample] = []
@@ -57,7 +57,7 @@ class 📱AppModel: ObservableObject {
         let 📅Date: Date = 🚩AbleDatePicker ? 📅PickerValue : .now
         
         📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
-                                         quantity: HKQuantity(unit: 📏Unit.ⓐsHKUnit, doubleValue: 📝BodyMass),
+                                         quantity: HKQuantity(unit: 📏Unit.asHKUnit, doubleValue: 📝BodyMass),
                                          start: 📅Date, end: 📅Date))
         
         if 🚩AbleBMI {
@@ -76,22 +76,8 @@ class 📱AppModel: ObservableObject {
         do {
             try await 🏥HealthStore.save(📦Sample)
             
-            
             💾BodyMass = 📝BodyMass
-            🕘History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BodyMass, "
-            🕘History += 📝BodyMass.description + ", " + 📏Unit.rawValue + "\n"
-            
-            if 🚩AbleBMI {
-                🕘History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BMI, "
-                🕘History += 📝BMI.description + "\n"
-            }
-            
-            if 🚩AbleBodyFat {
-                💾BodyFat = 📝BodyFat
-                🕘History += 📅Date.formatted(date: .numeric, time: .shortened) + ", BodyFat, "
-                🕘History += (round(📝BodyFat*1000)/10).description + ", %\n"
-            }
-            
+            if 🚩AbleBodyFat { 💾BodyFat = 📝BodyFat }
             
             var ⓔntry = 💽Entry(date: 📅Date)
             ⓔntry.addSample("Body Mass", 📝BodyMass.description + " " + 📏Unit.rawValue)
@@ -99,17 +85,13 @@ class 📱AppModel: ObservableObject {
             if 🚩AbleBodyFat { ⓔntry.addSample("bodyFat", (round(📝BodyFat*1000)/10).description + " %") }
             💽LocalHistory.addLog(ⓔntry)
             
-            
             🚩ShowResult = true
             UserDefaults.standard.set(📅Date, forKey: "LastDate")
             
         } catch {
             DispatchQueue.main.async {
-                print(#function, error)
-                self.💽LocalHistory.addLog("Error: " + #function + error.localizedDescription)
+                self.💽LocalHistory.addLog("Error: " + error.localizedDescription)
                 self.🚨RegisterError = true
-                self.🕘History += "🕘" + Date.now.formatted(date: .numeric, time: .shortened) + ", "
-                self.🕘History += ".save Error?! " + error.localizedDescription + "\n"
                 self.🚩ShowResult = true
             }
         }
@@ -120,9 +102,7 @@ class 📱AppModel: ObservableObject {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             🚨RegisterError = true
             🚩ShowResult = true
-            self.💽LocalHistory.addLog("Error: " + #function + "\n" + ⓣype.rawValue)
-            🕘History += "🕘" + Date.now.formatted(date: .numeric, time: .shortened) + ", "
-            🕘History += "Authorization/" + ⓣype.rawValue + ": Error?!\n"
+            self.💽LocalHistory.addLog("AuthorizationError: " + #function + "\n" + ⓣype.rawValue)
             return true
         }
         
@@ -137,7 +117,7 @@ class 📱AppModel: ObservableObject {
                 do {
                     try await 🏥HealthStore.requestAuthorization(toShare: [🅃ype], read: [])
                 } catch {
-                    print(#function, error)
+                    self.💽LocalHistory.addLog("RequestAuthError: " + error.localizedDescription)
                 }
             }
         }
@@ -154,7 +134,6 @@ class 📱AppModel: ObservableObject {
             
             📦Sample = []
             
-            🕘History += "Cancel: Success\n"
             💽LocalHistory.modifyCancellation()
             
             UserDefaults.standard.removeObject(forKey: "LastDate")
@@ -162,8 +141,7 @@ class 📱AppModel: ObservableObject {
             UINotificationFeedbackGenerator().notificationOccurred(.error)
         } catch {
             DispatchQueue.main.async {
-                print(#function, error)
-                self.🕘History += "Cancel: Error?! " + error.localizedDescription + "\n"
+                self.💽LocalHistory.addLog("CancelError: " + error.localizedDescription)
                 self.🚨CancelError = true
             }
         }

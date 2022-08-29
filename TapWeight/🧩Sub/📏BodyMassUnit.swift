@@ -6,7 +6,7 @@ enum 📏BodyMassUnit: String, CaseIterable {
     case lbs
     case st
     
-    var ⓐsHKUnit: HKUnit {
+    var asHKUnit: HKUnit {
         switch self {
             case .kg: return .gramUnit(with: .kilo)
             case .lbs: return .pound()

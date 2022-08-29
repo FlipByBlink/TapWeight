@@ -27,6 +27,16 @@ struct 🕘LocalHistoryView: View {
             🕘LocalHistoryBeforeVer_1_2_Link()
         }
         .navigationTitle("Local History")
+        .toolbar { //TODO: WIP
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    📱.💽LocalHistory.ⓛogs.removeAll()
+                } label: {
+                    Image(systemName: "trash")
+                        .tint(.red)
+                }
+            }
+        }
     }
     
     struct 🄻ogRows: View {
