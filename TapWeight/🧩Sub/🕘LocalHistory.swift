@@ -39,6 +39,7 @@ struct 🕘LocalHistoryView: View {
                 Button {
                     withAnimation {
                         📱.💽LocalHistory.ⓛogs.removeAll()
+                        UINotificationFeedbackGenerator().notificationOccurred(.warning)
                     }
                 } label: {
                     Image(systemName: "trash")
