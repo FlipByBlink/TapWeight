@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct 🕘LocalHistoryView: View {
-    @EnvironmentObject var 💽: 💽LocalHistoryModel
+    @ObservedObject var 💽: 💽LocalHistoryModel
         
     var body: some View {
         List {
@@ -73,6 +73,10 @@ struct 🕘LocalHistoryView: View {
         init(_ ⓛog: 💽Log) {
             self.ⓛog = ⓛog
         }
+    }
+    
+    init(_ 💽: 💽LocalHistoryModel) {
+        self.💽 = 💽
     }
 }
 
