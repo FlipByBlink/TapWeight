@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct 🕘LocalHistoryView: View {
-    @ObservedObject var 💽: 💽LocalHistoryModel
+    @EnvironmentObject var 📱: 📱AppModel
         
     var body: some View {
         List {
@@ -13,7 +13,7 @@ struct 🕘LocalHistoryView: View {
                     .listRowBackground(Color.clear)
             }
             
-            ForEach(💽.ⓛogs.reversed()) { ⓛog in
+            ForEach(📱.💽LocalHistory.ⓛogs.reversed()) { ⓛog in
                 Section {
                     🄻ogRows(ⓛog)
                 } header: {
@@ -25,7 +25,7 @@ struct 🕘LocalHistoryView: View {
                 }
             }
             
-            if 💽.ⓛogs.isEmpty {
+            if 📱.💽LocalHistory.ⓛogs.isEmpty {
                 Text("No log")
                     .font(.headline)
                     .foregroundStyle(.tertiary)
@@ -38,7 +38,7 @@ struct 🕘LocalHistoryView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     withAnimation {
-                        💽.ⓛogs.removeAll()
+                        📱.💽LocalHistory.ⓛogs.removeAll()
                     }
                 } label: {
                     Image(systemName: "trash")
@@ -74,15 +74,11 @@ struct 🕘LocalHistoryView: View {
             self.ⓛog = ⓛog
         }
     }
-    
-    init(_ 💽: 💽LocalHistoryModel) {
-        self.💽 = 💽
-    }
 }
 
 
-class 💽LocalHistoryModel: ObservableObject {
-    @Published var ⓛogs: [🄻og] = [] {
+struct 💽LocalHistoryModel {
+    var ⓛogs: [🄻og] = [] {
         didSet {
             guard let DATA = try? JSONEncoder().encode(ⓛogs) else { return }
             UserDefaults.standard.set(DATA, forKey: "💽LocalHistoryModel")
@@ -122,15 +118,15 @@ class 💽LocalHistoryModel: ObservableObject {
         var canceled: Bool { entry?.cancellation == true }
     }
     
-    func addLog(_ entry: 💽Entry) {
+    mutating func addLog(_ entry: 💽Entry) {
         ⓛogs.append(🄻og(entry: entry))
     }
     
-    func addLog(_ comment: String) {
+    mutating func addLog(_ comment: String) {
         ⓛogs.append(🄻og(comment: comment))
     }
     
-    func modifyCancellation() {
+    mutating func modifyCancellation() {
         var ⓛog = ⓛogs.popLast()!
         ⓛog.entry?.cancellation = true
         ⓛogs.append(ⓛog)

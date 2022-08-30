@@ -107,7 +107,7 @@ struct 🛠AppMenu: View {
                     }
                     
                     NavigationLink  {
-                        🕘LocalHistoryView(📱.💽LocalHistory)
+                        🕘LocalHistoryView()
                     } label: {
                         Label("Local history", systemImage: "clock")
                     }

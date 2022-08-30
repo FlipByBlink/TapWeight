@@ -35,7 +35,7 @@ class 📱AppModel: ObservableObject {
     let 🏥HealthStore = HKHealthStore()
     var 📦Sample: [HKQuantitySample] = []
     
-    var 💽LocalHistory = 💽LocalHistoryModel()
+    @Published var 💽LocalHistory = 💽LocalHistoryModel()
     
     
     @MainActor
