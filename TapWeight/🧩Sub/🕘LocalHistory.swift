@@ -80,15 +80,20 @@ struct 🕘LocalHistoryView: View {
 struct 💽LocalHistoryModel {
     var ⓛogs: [🄻og] = [] {
         didSet {
-            guard let DATA = try? JSONEncoder().encode(ⓛogs) else { return }
-            UserDefaults.standard.set(DATA, forKey: "💽LocalHistoryModel")
+            do {
+                UserDefaults.standard.set(try JSONEncoder().encode(ⓛogs), forKey: "LocalHistory")
+            } catch {
+                print("🚨Error: ", error)
+            }
         }
     }
     
     init() {
-        if let ud = UserDefaults.standard.data(forKey: "💽LocalHistoryModel") {
-            if let data = try? JSONDecoder().decode([🄻og].self, from: ud) {
-                ⓛogs = data
+        if let 💾 = UserDefaults.standard.data(forKey: "LocalHistory") {
+            do {
+                ⓛogs = try JSONDecoder().decode([🄻og].self, from: 💾)
+            } catch {
+                print("🚨Error: ", error)
             }
         }
     }
