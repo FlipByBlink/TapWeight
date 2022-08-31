@@ -52,7 +52,7 @@ struct 🗯ResultView: View {
                                     .font(.body.bold())
                                 
                                 if 📱.🚩AbleDatePicker {
-                                    Label(📱.📅PickerValue.formatted(date: .numeric, time: .shortened), systemImage: "calendar")
+                                    Label(📱.📅PickerValue.formatted(date: .abbreviated, time: .shortened), systemImage: "calendar")
                                         .font(.subheadline.weight(.semibold))
                                         .padding(.horizontal)
                                 }
