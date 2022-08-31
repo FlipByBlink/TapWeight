@@ -33,14 +33,14 @@ struct 🛠AppMenu: View {
         NavigationView {
             List {
                 Section {
-                    Picker(selection: $📱.📏Unit) {
+                    Picker(selection: $📱.📏MassUnit) {
                         ForEach(📏BodyMassUnit.allCases, id: \.self) { 🏷 in
                             Text(🏷.rawValue)
                         }
                     } label: {
                         Label("Unit", systemImage: "scalemass")
                     }
-                    .onChange(of: 📱.📏Unit) { 📏 in
+                    .onChange(of: 📱.📏MassUnit) { 📏 in
                         if 📏 != .kg {
                             📱.🚩Amount50g = false
                         }
@@ -49,10 +49,10 @@ struct 🛠AppMenu: View {
                     Toggle(isOn: $📱.🚩Amount50g) {
                         Label("100g → 50g", systemImage: "minus.forwardslash.plus")
                             .padding(.leading)
-                            .foregroundColor(📱.📏Unit != .kg ? .secondary : nil)
+                            .foregroundColor(📱.📏MassUnit != .kg ? .secondary : nil)
                     }
                     .font(.subheadline)
-                    .disabled(📱.📏Unit != .kg)
+                    .disabled(📱.📏MassUnit != .kg)
                     .accessibilityLabel("50gram")
                 } header: {
                     Text("Option")

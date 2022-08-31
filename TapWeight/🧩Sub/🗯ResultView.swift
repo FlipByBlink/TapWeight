@@ -39,10 +39,10 @@ struct 🗯ResultView: View {
                         if 📱.🚨RegisterError == false {
                             let 🅂ummary: String = {
                                 var 🪧 = ""
-                                🪧 += 📱.📝BodyMass.description + " " + 📱.📏Unit.rawValue
-                                if 📱.🚩AbleBMI { 🪧 += " / " + 📱.📝BMI.description }
+                                🪧 += 📱.📝MassValue.description + " " + 📱.📏MassUnit.rawValue
+                                if 📱.🚩AbleBMI { 🪧 += " / " + 📱.📝BMIValue.description }
                                 if 📱.🚩AbleBodyFat {
-                                    🪧 += " / " + (round(📱.📝BodyFat*1000)/10).description + " %"
+                                    🪧 += " / " + (round(📱.📝BodyFatValue*1000)/10).description + " %"
                                 }
                                 return 🪧
                             }()

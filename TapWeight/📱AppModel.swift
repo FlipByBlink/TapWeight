@@ -6,24 +6,26 @@ class 📱AppModel: ObservableObject {
     
     @Published var 🚩ShowMenu: Bool = false
     
-    @AppStorage("Unit") var 📏Unit: 📏BodyMassUnit = .kg
+    @AppStorage("Unit") var 📏MassUnit: 📏BodyMassUnit = .kg
     @AppStorage("Amount50g") var 🚩Amount50g: Bool = false
     @AppStorage("AbleBMI") var 🚩AbleBMI: Bool = false
-    @AppStorage("Height") var 🧍Height: Int = 165
+    @AppStorage("Height") var 🧍HeightValue: Int = 165
     @AppStorage("AbleBodyFat") var 🚩AbleBodyFat: Bool = false
     @AppStorage("AbleDatePicker") var 🚩AbleDatePicker: Bool = false
     
     @AppStorage("BodyMass") var 💾BodyMass: Double = 60.0
     @AppStorage("BodyFat") var 💾BodyFat: Double = 0.1
     
-    @Published var 📝BodyMass: Double = 65.0
-    var 📝BMI: Double {
-        let ⓠuantity = HKQuantity(unit: 📏Unit.asHKUnit, doubleValue: 📝BodyMass)
+    @Published var 📝MassValue: Double = 65.0
+    var 📝BMIValue: Double {
+        let ⓠuantity = HKQuantity(unit: 📏MassUnit.hkunit, doubleValue: 📝MassValue)
         let ⓚiloMassValue = ⓠuantity.doubleValue(for: .gramUnit(with: .kilo))
-        let 📝 = ⓚiloMassValue / pow(Double(🧍Height)/100, 2)
+        let 📝 = ⓚiloMassValue / pow(Double(🧍HeightValue)/100, 2)
         return Double(Int(round(📝*10)))/10
     }
-    @Published var 📝BodyFat: Double = 0.2
+    @Published var 📝BodyFatValue: Double = 0.2
+    
+    var 🪧BodyFatNotaion: String { (round(📝BodyFatValue*1000)/10).description }
     
     @Published var 📅PickerValue = Date.now
     
@@ -55,18 +57,18 @@ class 📱AppModel: ObservableObject {
         let 📅Date: Date = 🚩AbleDatePicker ? 📅PickerValue : .now
         
         📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
-                                         quantity: HKQuantity(unit: 📏Unit.asHKUnit, doubleValue: 📝BodyMass),
+                                         quantity: HKQuantity(unit: 📏MassUnit.hkunit, doubleValue: 📝MassValue),
                                          start: 📅Date, end: 📅Date))
         
         if 🚩AbleBMI {
             📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
-                                             quantity: HKQuantity(unit: .count(), doubleValue: 📝BMI),
+                                             quantity: HKQuantity(unit: .count(), doubleValue: 📝BMIValue),
                                              start: 📅Date, end: 📅Date))
         }
         
         if 🚩AbleBodyFat {
             📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
-                                             quantity: HKQuantity(unit: .percent(), doubleValue: 📝BodyFat),
+                                             quantity: HKQuantity(unit: .percent(), doubleValue: 📝BodyFatValue),
                                              start: 📅Date, end: 📅Date))
         }
         
@@ -74,13 +76,13 @@ class 📱AppModel: ObservableObject {
         do {
             try await 🏥HealthStore.save(📦Sample)
             
-            💾BodyMass = 📝BodyMass
-            if 🚩AbleBodyFat { 💾BodyFat = 📝BodyFat }
+            💾BodyMass = 📝MassValue
+            if 🚩AbleBodyFat { 💾BodyFat = 📝BodyFatValue }
             
             var ⓔntry = 🕘Entry(date: 📅Date)
-            ⓔntry.addSample("Body Mass", 📝BodyMass.description + " " + 📏Unit.rawValue)
-            if 🚩AbleBMI { ⓔntry.addSample("Body Mass Index", 📝BMI.description) }
-            if 🚩AbleBodyFat { ⓔntry.addSample("Body Fat Percentage", (round(📝BodyFat*1000)/10).description + " %") }
+            ⓔntry.addSample("Body Mass", 📝MassValue.description + " " + 📏MassUnit.rawValue)
+            if 🚩AbleBMI { ⓔntry.addSample("Body Mass Index", 📝BMIValue.description) }
+            if 🚩AbleBodyFat { ⓔntry.addSample("Body Fat Percentage", 🪧BodyFatNotaion + " %") }
             🕘LocalHistory.addLog(ⓔntry)
             
             🚩ShowResult = true
@@ -88,7 +90,7 @@ class 📱AppModel: ObservableObject {
             
         } catch {
             DispatchQueue.main.async {
-                self.🕘LocalHistory.addLog("Error: " + error.localizedDescription)
+                self.🕘LocalHistory.addLog("Error: " + #function + error.localizedDescription)
                 self.🚨RegisterError = true
                 self.🚩ShowResult = true
             }
@@ -100,7 +102,7 @@ class 📱AppModel: ObservableObject {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             🚨RegisterError = true
             🚩ShowResult = true
-            self.🕘LocalHistory.addLog("AuthorizationError: " + #function + "\n" + ⓣype.rawValue)
+            self.🕘LocalHistory.addLog("Error: " + #function + ⓣype.rawValue)
             return true
         }
         
@@ -115,7 +117,7 @@ class 📱AppModel: ObservableObject {
                 do {
                     try await 🏥HealthStore.requestAuthorization(toShare: [🅃ype], read: [])
                 } catch {
-                    self.🕘LocalHistory.addLog("RequestAuthError: " + error.localizedDescription)
+                    self.🕘LocalHistory.addLog("Error: " + #function + error.localizedDescription)
                 }
             }
         }
@@ -138,7 +140,7 @@ class 📱AppModel: ObservableObject {
             UINotificationFeedbackGenerator().notificationOccurred(.error)
         } catch {
             DispatchQueue.main.async {
-                self.🕘LocalHistory.addLog("CancelError: " + error.localizedDescription)
+                self.🕘LocalHistory.addLog("Error: " + error.localizedDescription)
                 self.🚨CancelError = true
             }
         }

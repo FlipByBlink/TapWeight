@@ -9,10 +9,10 @@ struct 👆BodyMassStepper: View {
         Stepper {
             HStack(alignment: .firstTextBaseline) {
                 let 🪧BodyMass: String = {
-                    if 📱.🚩Amount50g && 📱.📝BodyMass.description.count == 4 {
-                        return 📱.📝BodyMass.description + "0"
+                    if 📱.🚩Amount50g && 📱.📝MassValue.description.count == 4 {
+                        return 📱.📝MassValue.description + "0"
                     } else {
-                        return 📱.📝BodyMass.description
+                        return 📱.📝MassValue.description
                     }
                 }()
                 
@@ -21,33 +21,33 @@ struct 👆BodyMassStepper: View {
                     .fontWeight(.black)
                     .monospacedDigit()
                 
-                Text(📱.📏Unit.rawValue)
+                Text(📱.📏MassUnit.rawValue)
                     .font(.title2.weight(.black))
                     .frame(maxHeight: 54)
             }
         } onIncrement: {
             UISelectionFeedbackGenerator().selectionChanged()
             if 📱.🚩Amount50g {
-                📱.📝BodyMass += 0.05
-                📱.📝BodyMass = round(📱.📝BodyMass*100)/100
+                📱.📝MassValue += 0.05
+                📱.📝MassValue = round(📱.📝MassValue*100)/100
             } else {
-                📱.📝BodyMass += 0.1
-                📱.📝BodyMass = round(📱.📝BodyMass*10)/10
+                📱.📝MassValue += 0.1
+                📱.📝MassValue = round(📱.📝MassValue*10)/10
             }
         } onDecrement: {
             UISelectionFeedbackGenerator().selectionChanged()
             if 📱.🚩Amount50g {
-                📱.📝BodyMass -= 0.05
-                📱.📝BodyMass = round(📱.📝BodyMass*100)/100
+                📱.📝MassValue -= 0.05
+                📱.📝MassValue = round(📱.📝MassValue*100)/100
             } else {
-                📱.📝BodyMass -= 0.1
-                📱.📝BodyMass = round(📱.📝BodyMass*10)/10
+                📱.📝MassValue -= 0.1
+                📱.📝MassValue = round(📱.📝MassValue*10)/10
             }
         }
         .padding(8)
         .padding(.vertical, 4)
         .onAppear {
-            📱.📝BodyMass = 📱.💾BodyMass
+            📱.📝MassValue = 📱.💾BodyMass
         }
     }
 }
@@ -61,7 +61,7 @@ struct 👆BodyFatStepper: View {
         Section {
             Stepper {
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
-                    Text((round(📱.📝BodyFat*1000)/10).description)
+                    Text(📱.🪧BodyFatNotaion)
                         .font(🔠Font)
                         .fontWeight(.black)
                         .monospacedDigit()
@@ -72,17 +72,17 @@ struct 👆BodyFatStepper: View {
                 }
             } onIncrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
-                📱.📝BodyFat += 0.001
-                📱.📝BodyFat = round(📱.📝BodyFat*1000)/1000
+                📱.📝BodyFatValue += 0.001
+                📱.📝BodyFatValue = round(📱.📝BodyFatValue*1000)/1000
             } onDecrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
-                📱.📝BodyFat -= 0.001
-                📱.📝BodyFat = round(📱.📝BodyFat*1000)/1000
+                📱.📝BodyFatValue -= 0.001
+                📱.📝BodyFatValue = round(📱.📝BodyFatValue*1000)/1000
             }
             .padding(8)
             .padding(.vertical, 4)
             .onAppear {
-                📱.📝BodyFat = 📱.💾BodyFat
+                📱.📝BodyFatValue = 📱.💾BodyFat
             }
         } header: {
             Text("Body Fat Percentage")

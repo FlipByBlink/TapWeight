@@ -50,12 +50,12 @@ struct 🪧BMIView: View {
                 Text("Body Mass Index")
                     .font(.footnote.bold())
                 
-                Text("(" + 📱.🧍Height.description + "cm)")
+                Text("(" + 📱.🧍HeightValue.description + "cm)")
                     .font(.caption2.weight(.semibold))
                     .frame(maxHeight: 32)
             }
             
-            Text(📱.📝BMI.description)
+            Text(📱.📝BMIValue.description)
                 .font(.title2)
                 .fontWeight(.heavy)
         }
@@ -170,12 +170,12 @@ struct 📅LastDateLabel: View {
                 .minimumScaleFactor(0.3)
                 .opacity(🚩Show ? 1 : 0)
                 .animation(.default.speed(0.5), value: 🚩Show)
-                .onChange(of: 📱.📝BodyMass) { 📝 in
+                .onChange(of: 📱.📝MassValue) { 📝 in
                     if 📝 != 📱.💾BodyMass {
                         🚩Show = false
                     }
                 }
-                .onChange(of: 📱.📝BodyFat) { 📝 in
+                .onChange(of: 📱.📝BodyFatValue) { 📝 in
                     if 📝 != 📱.💾BodyFat {
                         🚩Show = false
                     }
