@@ -25,7 +25,7 @@ struct 🕘LocalHistoryView: View {
             
             🕘LocalHistoryBeforeVer_1_2_Link()
         }
-        .navigationTitle("Local History")
+        .navigationTitle("Local history")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
@@ -72,7 +72,7 @@ struct 🕘LocalHistoryView: View {
                     EmptyView()
                 }
             } header: {
-                Text(ⓛog.date.formatted())
+                Text(ⓛog.date.formatted(date: .abbreviated, time: .shortened))
             } footer: {
                 if ⓛog.entry?.cancellation == true {
                     Text("Canceled")
