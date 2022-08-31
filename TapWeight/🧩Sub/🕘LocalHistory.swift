@@ -109,6 +109,21 @@ struct 🕘LocalHistoryModel {
         }
     }
     
+    mutating func addLog(_ entry: 🕘Entry) {
+        ⓛogs.append(Log(entry: entry))
+    }
+    
+    mutating func addLog(_ comment: String) {
+        ⓛogs.append(Log(comment: comment))
+        print(comment)
+    }
+    
+    mutating func modifyCancellation() {
+        var ⓛog = ⓛogs.popLast()!
+        ⓛog.entry?.cancellation = true
+        ⓛogs.append(ⓛog)
+    }
+    
     struct Log: Codable, Identifiable {
         var date: Date = .now
         var entry: Entry? = nil
@@ -129,20 +144,6 @@ struct 🕘LocalHistoryModel {
         }
         
         var canceled: Bool { entry?.cancellation == true }
-    }
-    
-    mutating func addLog(_ entry: 🕘Entry) {
-        ⓛogs.append(Log(entry: entry))
-    }
-    
-    mutating func addLog(_ comment: String) {
-        ⓛogs.append(Log(comment: comment))
-    }
-    
-    mutating func modifyCancellation() {
-        var ⓛog = ⓛogs.popLast()!
-        ⓛog.entry?.cancellation = true
-        ⓛogs.append(ⓛog)
     }
 }
 

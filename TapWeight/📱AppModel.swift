@@ -37,8 +37,8 @@ class 📱AppModel: ObservableObject {
     @Published var 🕘LocalHistory = 🕘LocalHistoryModel()
     
     let 🏥HealthStore = HKHealthStore()
-    var 📦Sample: [HKQuantitySample] = []
     
+    var 📦Sample: [HKQuantitySample] = []
     
     @MainActor
     func 👆Register() async {
@@ -104,9 +104,9 @@ class 📱AppModel: ObservableObject {
             🚩ShowResult = true
             self.🕘LocalHistory.addLog("Error: " + #function + ⓣype.rawValue)
             return true
+        } else {
+            return false
         }
-        
-        return false
     }
     
     
