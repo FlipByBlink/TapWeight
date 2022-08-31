@@ -55,31 +55,27 @@ struct 🗯ResultView2: View {
                             }
                             .opacity(0.75)
                             .padding(.horizontal, 42)
+                        }
+                        
+                        VStack {
+                            Link(destination: URL(string: "x-apple-health://")!) {
+                                Image(systemName: "app")
+                                    .imageScale(.large)
+                                    .overlay {
+                                        Image(systemName: "heart")
+                                            .imageScale(.small)
+                                    }
+                                    .font(.title)
+                                    .foregroundColor(.primary)
+                                    .padding(12)
+                            }
+                            .accessibilityLabel("Open \"Health\" app")
                             
-                            ZStack {
-                                Button {
-                                    Task {
-                                        await 📱.🗑Cancel()
-                                    }
-                                } label: {
-                                    Image(systemName: "arrow.uturn.backward.circle")
-                                        .foregroundColor(.secondary)
-                                        .font(.title)
-                                }
-                                .disabled(📱.🚩Canceled)
-                                .opacity(📱.🚩Canceled ? 0.5 : 1)
-                                .accessibilityLabel("Cancel")
-                                
-                                if 📱.🚩Canceled {
-                                    HStack {
-                                        Text("Canceled")
-                                            .fontWeight(.semibold)
-                                        
-                                        if 📱.🚨CancelError {
-                                            Text("(perhaps error)")
-                                        }
-                                    }
-                                }
+                            if 📱.🚨RegisterError {
+                                Image(systemName: "arrow.up")
+                                    .imageScale(.small)
+                                    .font(.title)
+                                    .foregroundStyle(.secondary)
                             }
                         }
                     }
@@ -88,6 +84,21 @@ struct 🗯ResultView2: View {
                     .padding()
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .opacity(📱.🚩Canceled ? 0.5 : 1)
+                    .overlay(alignment: .topTrailing) {
+                        if 📱.🚩Canceled {
+                            VStack(alignment: .trailing) {
+                                Text("Canceled")
+                                    .fontWeight(.semibold)
+                                
+                                if 📱.🚨CancelError {
+                                    Text("(perhaps error)")
+                                }
+                            }
+                            .padding(.trailing)
+                            .padding(.top, 4)
+                        }
+                    }
                     
                     📣ADBanner()
                 }
@@ -96,36 +107,41 @@ struct 🗯ResultView2: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Link(destination: URL(string: "x-apple-health://")!) {
-                            Image(systemName: "app")
-                                .imageScale(.large)
-                                .overlay {
-                                    Image(systemName: "heart")
-                                        .imageScale(.small)
-                                }
-                                .font(.title)
-                                .foregroundColor(.primary)
-                        }
-                        .accessibilityLabel("Open \"Health\" app")
-                    }
-                    
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button {
                             🔙.callAsFunction()
                             UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         } label: {
                             Image(systemName: "xmark.circle.fill")
+                                .symbolRenderingMode(.hierarchical)
                                 .foregroundColor(.primary)
                                 .font(.title)
-                                .symbolRenderingMode(.hierarchical)
                         }
                         .accessibilityLabel("Dismiss")
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        if 📱.🚨RegisterError == false {
+                            Button {
+                                Task {
+                                    await 📱.🗑Cancel()
+                                }
+                            } label: {
+                                Image(systemName: "arrow.uturn.backward.circle.fill")
+                                    .symbolRenderingMode(.hierarchical)
+                                    .foregroundColor(.primary)
+                                    .font(.title)
+                            }
+                            .disabled(📱.🚩Canceled)
+                            .opacity(📱.🚩Canceled ? 0.5 : 1)
+                            .accessibilityLabel("Cancel")
+                        }
                     }
                 }
             }
         }
         .preferredColorScheme(.dark)
+        .animation(.default, value: 📱.🚩Canceled)
     }
 }
 
