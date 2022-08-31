@@ -18,7 +18,7 @@ struct 🕘LocalHistoryView: View {
             }
             
             if 📱.🕘LocalHistory.ⓛogs.isEmpty {
-                Text("No log") //TODO: Add localization
+                Text("No log")
                     .font(.headline)
                     .foregroundStyle(.tertiary)
             }
@@ -58,7 +58,7 @@ struct 🕘LocalHistoryView: View {
                     }
                     
                     if let ⓥalue = ⓔntry.bmiValue {
-                        Text("BMI")
+                        Text("Body Mass Index")
                             .strikethrough(ⓔntry.cancellation)
                             .badge(ⓥalue.description)
                     }
@@ -153,12 +153,16 @@ typealias 🕘Entry = 🕘LocalHistoryModel.Log.Entry
 
 
 
+
+
+
+
 struct 🕘LocalHistoryBeforeVer_1_2_Link: View {
     @AppStorage("History") var 🕘History: String = ""
     
     var body: some View {
         if 🕘History != "" {
-            NavigationLink("Old data before ver 1.2") { //TODO: Add localization
+            NavigationLink("Old data before ver 1.2") {
                 🕘MainView()
             }
         }

@@ -24,6 +24,8 @@
 "Local history" = "ローカル履歴";
 "History" = "履歴";
 "\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"" = "\"ローカル履歴\"は動作確認や簡易バックアップを目的としています。 ";
+"No log" = "ログなし";
+"Old data before ver 1.2" = "バージョン1.2以前のログ";
 
 
 
