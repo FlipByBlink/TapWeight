@@ -58,20 +58,6 @@ struct 🕘LocalHistoryView: View {
                         .foregroundColor(.primary)
                 }
                 
-                🄴ntryView(ⓔntry)
-            }
-            
-            if let ⓒomment = ⓛog.comment {
-                Text(ⓒomment)
-            }
-        }
-        init(_ ⓛog: 🕘Log) {
-            self.ⓛog = ⓛog
-        }
-        
-        struct 🄴ntryView: View { //FIXME: この構成でもまだコンパイラが暴走する
-            var ⓔntry: 🕘Entry
-            var body: some View {
                 if let ⓢample = ⓔntry.massSample {
                     Text("Body Mass")
                         .strikethrough(ⓔntry.cancellation)
@@ -89,10 +75,14 @@ struct 🕘LocalHistoryView: View {
                         .strikethrough(ⓔntry.cancellation)
                         .badge((round(ⓥalue*1000)/10).description + " %")
                 }
+            } else if let ⓒomment = ⓛog.comment {
+                Text(ⓒomment)
+            } else {
+                EmptyView()
             }
-            init(_ ⓔntry: 🕘Entry) {
-                self.ⓔntry = ⓔntry
-            }
+        }
+        init(_ ⓛog: 🕘Log) {
+            self.ⓛog = ⓛog
         }
     }
 }
