@@ -47,7 +47,8 @@ struct 👆BodyMassStepper: View {
         .padding(8)
         .padding(.vertical, 4)
         .onAppear {
-            📱.📝MassValue = 📱.💾BodyMass
+            guard let 📝 = 📱.🕘LocalHistory.ⓛogs.last?.entry?.massSample.value else { return }
+            📱.📝MassValue = 📝
         }
     }
 }
@@ -61,7 +62,7 @@ struct 👆BodyFatStepper: View {
         Section {
             Stepper {
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
-                    Text(📱.🪧BodyFatNotaion)
+                    Text((round(📱.📝BodyFatValue*1000)/10).description)
                         .font(🔠Font)
                         .fontWeight(.black)
                         .monospacedDigit()
@@ -82,7 +83,8 @@ struct 👆BodyFatStepper: View {
             .padding(8)
             .padding(.vertical, 4)
             .onAppear {
-                📱.📝BodyFatValue = 📱.💾BodyFat
+                guard let 📝 = 📱.🕘LocalHistory.ⓛogs.last?.entry?.bodyFatValue else { return }
+                📱.📝BodyFatValue = 📝
             }
         } header: {
             Text("Body Fat Percentage")

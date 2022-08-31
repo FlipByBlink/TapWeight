@@ -13,9 +13,6 @@ class 📱AppModel: ObservableObject {
     @AppStorage("AbleBodyFat") var 🚩AbleBodyFat: Bool = false
     @AppStorage("AbleDatePicker") var 🚩AbleDatePicker: Bool = false
     
-    @AppStorage("BodyMass") var 💾BodyMass: Double = 60.0
-    @AppStorage("BodyFat") var 💾BodyFat: Double = 0.1
-    
     @Published var 📝MassValue: Double = 65.0
     var 📝BMIValue: Double {
         let ⓠuantity = HKQuantity(unit: 📏MassUnit.hkunit, doubleValue: 📝MassValue)
@@ -24,8 +21,6 @@ class 📱AppModel: ObservableObject {
         return Double(Int(round(📝*10)))/10
     }
     @Published var 📝BodyFatValue: Double = 0.2
-    
-    var 🪧BodyFatNotaion: String { (round(📝BodyFatValue*1000)/10).description }
     
     @Published var 📅PickerValue = Date.now
     
@@ -76,17 +71,12 @@ class 📱AppModel: ObservableObject {
         do {
             try await 🏥HealthStore.save(📦Sample)
             
-            💾BodyMass = 📝MassValue
-            if 🚩AbleBodyFat { 💾BodyFat = 📝BodyFatValue }
-            
             var ⓔntry = 🕘Entry(date: 📅Date, massSample: .init(unit: 📏MassUnit, value: 📝MassValue))
             ⓔntry.bmiValue = 📝BMIValue
             ⓔntry.bodyFatValue = 📝BodyFatValue
             🕘LocalHistory.addLog(ⓔntry)
             
             🚩ShowResult = true
-            UserDefaults.standard.set(📅Date, forKey: "LastDate")
-            
         } catch {
             DispatchQueue.main.async {
                 self.🕘LocalHistory.addLog("Error: " + #function + error.localizedDescription)
@@ -127,15 +117,9 @@ class 📱AppModel: ObservableObject {
     func 🗑Cancel() async {
         do {
             🚩Canceled = true
-            
             try await 🏥HealthStore.delete(📦Sample)
-            
             📦Sample = []
-            
             🕘LocalHistory.modifyCancellation()
-            
-            UserDefaults.standard.removeObject(forKey: "LastDate")
-            
             UINotificationFeedbackGenerator().notificationOccurred(.error)
         } catch {
             DispatchQueue.main.async {

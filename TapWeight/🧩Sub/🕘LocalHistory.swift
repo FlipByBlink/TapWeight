@@ -74,7 +74,7 @@ struct 🕘LocalHistoryView: View {
             } header: {
                 Text(ⓛog.date.formatted())
             } footer: {
-                if ⓛog.canceled {
+                if ⓛog.entry?.cancellation == true {
                     Text("Canceled")
                 }
             }
@@ -107,13 +107,13 @@ struct 🕘LocalHistoryModel {
         }
     }
     
-    mutating func addLog(_ entry: 🕘Entry) {
-        ⓛogs.append(Log(entry: entry))
+    mutating func addLog(_ ⓔntry: 🕘Entry) {
+        ⓛogs.append(Log(entry: ⓔntry))
     }
     
-    mutating func addLog(_ comment: String) {
-        ⓛogs.append(Log(comment: comment))
-        print(comment)
+    mutating func addLog(_ ⓒomment: String) {
+        ⓛogs.append(Log(comment: ⓒomment))
+        print(ⓒomment)
     }
     
     mutating func modifyCancellation() {
@@ -140,8 +140,6 @@ struct 🕘LocalHistoryModel {
                 var value: Double
             }
         }
-        
-        var canceled: Bool { entry?.cancellation == true }
     }
 }
 

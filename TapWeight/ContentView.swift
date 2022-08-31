@@ -16,9 +16,12 @@ struct ContentView: View {
                 
                 if 📱.🚩AbleBodyFat { 👆BodyFatStepper() }
                 
-                📅LastDateLabel()
-                
-                📅DatePicker()
+                VStack {
+                    🏷LastEntryLabel()
+                    📅DatePicker()
+                }
+                .padding(.top, 12)
+                .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
             .lineLimit(1)
@@ -157,21 +160,21 @@ struct 📅DatePicker: View {
 }
 
 
-struct 📅LastDateLabel: View {
+struct 🏷LastEntryLabel: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var 🪧label: String? {
-        if let lastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry {
-            var 🪧 = "(" + lastEntry.date.formatted(date: .abbreviated, time: .shortened) + "  "
-            🪧 += lastEntry.massSample.value.description + lastEntry.massSample.unit.rawValue
+        if let ⓛastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry {
+            var 🪧 = "(" + ⓛastEntry.date.formatted(date: .abbreviated, time: .shortened) + "  "
+            🪧 += ⓛastEntry.massSample.value.description + ⓛastEntry.massSample.unit.rawValue
             if 📱.🚩AbleBMI {
-                if let value = lastEntry.bmiValue {
-                    🪧 += "  " + value.description
+                if let ⓥalue = ⓛastEntry.bmiValue {
+                    🪧 += "  " + ⓥalue.description
                 }
             }
             if 📱.🚩AbleBodyFat {
-                if let value = lastEntry.bodyFatValue {
-                    🪧 += "  " + (round(value*1000)/10).description + "%"
+                if let ⓥalue = ⓛastEntry.bodyFatValue {
+                    🪧 += "  " + (round(ⓥalue*1000)/10).description + "%"
                 }
             }
             🪧 += ")"
@@ -182,46 +185,18 @@ struct 📅LastDateLabel: View {
     }
     
     var body: some View {
-        if let 🪧 = 🪧label {
-            HStack {
-                Spacer()
-                Text(🪧)
-            }
-            .foregroundStyle(.tertiary)
-            .padding(.trailing, 8)
-            .minimumScaleFactor(0.3)
-            .font(.footnote.weight(.medium))
-            .listRowSeparator(.hidden)
-        }
-    }
-}
-
-struct OLD_📅LastDateLabel: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    @State private var 🚩Show: Bool = true
-    @State private var 📅LastDate: Date? = UserDefaults.standard.object(forKey: "LastDate") as? Date
-    
-    var body: some View {
-        if let 📅 = 📅LastDate {
-            Text(📅.formatted(date: .numeric, time: .shortened))
-                .font(.footnote.weight(.medium))
-                .foregroundStyle(.secondary)
+        if 📱.🕘LocalHistory.ⓛogs.last?.entry?.cancellation == false {
+            if let 🪧 = 🪧label {
+                HStack {
+                    Spacer()
+                    Text(🪧)
+                }
+                .foregroundStyle(.tertiary)
+                .padding(.trailing, 10)
                 .minimumScaleFactor(0.3)
-                .opacity(🚩Show ? 1 : 0)
-                .animation(.default.speed(0.5), value: 🚩Show)
-                .onChange(of: 📱.📝MassValue) { 📝 in
-                    if 📝 != 📱.💾BodyMass {
-                        🚩Show = false
-                    }
-                }
-                .onChange(of: 📱.📝BodyFatValue) { 📝 in
-                    if 📝 != 📱.💾BodyFat {
-                        🚩Show = false
-                    }
-                }
-                .onChange(of: 📱.🚩ShowResult) { _ in
-                    🚩Show = false
-                }
+                .font(.footnote.weight(.medium))
+                .listRowSeparator(.hidden)
+            }
         }
     }
 }
