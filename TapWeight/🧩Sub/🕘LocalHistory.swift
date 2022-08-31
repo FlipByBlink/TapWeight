@@ -13,7 +13,7 @@ struct 🕘LocalHistoryView: View {
                     .listRowBackground(Color.clear)
             }
             
-            ForEach(📱.💽LocalHistory.ⓛogs.reversed()) { ⓛog in
+            ForEach(📱.🕘LocalHistory.ⓛogs.reversed()) { ⓛog in
                 Section {
                     🄻ogRows(ⓛog)
                 } header: {
@@ -25,8 +25,8 @@ struct 🕘LocalHistoryView: View {
                 }
             }
             
-            if 📱.💽LocalHistory.ⓛogs.isEmpty {
-                Text("No log")
+            if 📱.🕘LocalHistory.ⓛogs.isEmpty {
+                Text("No log") //TODO: Add localization
                     .font(.headline)
                     .foregroundStyle(.tertiary)
             }
@@ -34,11 +34,11 @@ struct 🕘LocalHistoryView: View {
             🕘LocalHistoryBeforeVer_1_2_Link()
         }
         .navigationTitle("Local History")
-        .toolbar { //TODO: WIP
+        .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     withAnimation {
-                        📱.💽LocalHistory.ⓛogs.removeAll()
+                        📱.🕘LocalHistory.ⓛogs.removeAll()
                         UINotificationFeedbackGenerator().notificationOccurred(.warning)
                     }
                 } label: {
@@ -50,7 +50,7 @@ struct 🕘LocalHistoryView: View {
     }
     
     struct 🄻ogRows: View {
-        var ⓛog: 💽Log
+        var ⓛog: 🕘Log
         
         var body: some View {
             if let entry = ⓛog.entry {
@@ -71,14 +71,14 @@ struct 🕘LocalHistoryView: View {
             }
         }
         
-        init(_ ⓛog: 💽Log) {
+        init(_ ⓛog: 🕘Log) {
             self.ⓛog = ⓛog
         }
     }
 }
 
 
-struct 💽LocalHistoryModel {
+struct 🕘LocalHistoryModel {
     var ⓛogs: [🄻og] = [] {
         didSet {
             do {
@@ -90,9 +90,9 @@ struct 💽LocalHistoryModel {
     }
     
     init() {
-        if let 💾 = UserDefaults.standard.data(forKey: "LocalHistory") {
+        if let ⓤd = UserDefaults.standard.data(forKey: "LocalHistory") {
             do {
-                ⓛogs = try JSONDecoder().decode([🄻og].self, from: 💾)
+                ⓛogs = try JSONDecoder().decode([🄻og].self, from: ⓤd)
             } catch {
                 print("🚨Error: ", error)
             }
@@ -124,7 +124,7 @@ struct 💽LocalHistoryModel {
         var canceled: Bool { entry?.cancellation == true }
     }
     
-    mutating func addLog(_ entry: 💽Entry) {
+    mutating func addLog(_ entry: 🕘Entry) {
         ⓛogs.append(🄻og(entry: entry))
     }
     
@@ -139,8 +139,8 @@ struct 💽LocalHistoryModel {
     }
 }
 
-typealias 💽Log = 💽LocalHistoryModel.🄻og
-typealias 💽Entry = 💽LocalHistoryModel.🄻og.🄴ntry
+typealias 🕘Log = 🕘LocalHistoryModel.🄻og
+typealias 🕘Entry = 🕘LocalHistoryModel.🄻og.🄴ntry
 
 
 

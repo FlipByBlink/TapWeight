@@ -35,7 +35,7 @@ class 📱AppModel: ObservableObject {
     let 🏥HealthStore = HKHealthStore()
     var 📦Sample: [HKQuantitySample] = []
     
-    @Published var 💽LocalHistory = 💽LocalHistoryModel()
+    @Published var 🕘LocalHistory = 🕘LocalHistoryModel()
     
     
     @MainActor
@@ -77,18 +77,18 @@ class 📱AppModel: ObservableObject {
             💾BodyMass = 📝BodyMass
             if 🚩AbleBodyFat { 💾BodyFat = 📝BodyFat }
             
-            var ⓔntry = 💽Entry(date: 📅Date)
+            var ⓔntry = 🕘Entry(date: 📅Date)
             ⓔntry.addSample("Body Mass", 📝BodyMass.description + " " + 📏Unit.rawValue)
             if 🚩AbleBMI { ⓔntry.addSample("Body Mass Index", 📝BMI.description) }
             if 🚩AbleBodyFat { ⓔntry.addSample("Body Fat Percentage", (round(📝BodyFat*1000)/10).description + " %") }
-            💽LocalHistory.addLog(ⓔntry)
+            🕘LocalHistory.addLog(ⓔntry)
             
             🚩ShowResult = true
             UserDefaults.standard.set(📅Date, forKey: "LastDate")
             
         } catch {
             DispatchQueue.main.async {
-                self.💽LocalHistory.addLog("Error: " + error.localizedDescription)
+                self.🕘LocalHistory.addLog("Error: " + error.localizedDescription)
                 self.🚨RegisterError = true
                 self.🚩ShowResult = true
             }
@@ -100,7 +100,7 @@ class 📱AppModel: ObservableObject {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             🚨RegisterError = true
             🚩ShowResult = true
-            self.💽LocalHistory.addLog("AuthorizationError: " + #function + "\n" + ⓣype.rawValue)
+            self.🕘LocalHistory.addLog("AuthorizationError: " + #function + "\n" + ⓣype.rawValue)
             return true
         }
         
@@ -115,7 +115,7 @@ class 📱AppModel: ObservableObject {
                 do {
                     try await 🏥HealthStore.requestAuthorization(toShare: [🅃ype], read: [])
                 } catch {
-                    self.💽LocalHistory.addLog("RequestAuthError: " + error.localizedDescription)
+                    self.🕘LocalHistory.addLog("RequestAuthError: " + error.localizedDescription)
                 }
             }
         }
@@ -131,14 +131,14 @@ class 📱AppModel: ObservableObject {
             
             📦Sample = []
             
-            💽LocalHistory.modifyCancellation()
+            🕘LocalHistory.modifyCancellation()
             
             UserDefaults.standard.removeObject(forKey: "LastDate")
             
             UINotificationFeedbackGenerator().notificationOccurred(.error)
         } catch {
             DispatchQueue.main.async {
-                self.💽LocalHistory.addLog("CancelError: " + error.localizedDescription)
+                self.🕘LocalHistory.addLog("CancelError: " + error.localizedDescription)
                 self.🚨CancelError = true
             }
         }
