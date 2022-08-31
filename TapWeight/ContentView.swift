@@ -149,7 +149,6 @@ struct 📅DatePicker: View {
             .opacity(📱.📅PickerValue.timeIntervalSinceNow < -300 ? 1 : 0.4)
             .padding(.trailing, 8)
             .padding(.bottom, 180)
-            .listRowSeparator(.hidden)
             .onChange(of: 🚥Phase) { _ in
                 if 🚥Phase == .background {
                     📱.📅PickerValue = .now
@@ -163,7 +162,7 @@ struct 📅DatePicker: View {
 struct 🏷LastEntryLabel: View {
     @EnvironmentObject var 📱: 📱AppModel
     
-    var 🪧label: String? {
+    var 🪧Description: String? {
         if let ⓛastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry {
             var 🪧 = "(" + ⓛastEntry.date.formatted(date: .abbreviated, time: .shortened) + "  "
             🪧 += ⓛastEntry.massSample.value.description + ⓛastEntry.massSample.unit.rawValue
@@ -186,7 +185,7 @@ struct 🏷LastEntryLabel: View {
     
     var body: some View {
         if 📱.🕘LocalHistory.ⓛogs.last?.entry?.cancellation == false {
-            if let 🪧 = 🪧label {
+            if let 🪧 = 🪧Description {
                 HStack {
                     Spacer()
                     Text(🪧)
@@ -195,7 +194,6 @@ struct 🏷LastEntryLabel: View {
                 .padding(.trailing, 10)
                 .minimumScaleFactor(0.3)
                 .font(.footnote.weight(.medium))
-                .listRowSeparator(.hidden)
             }
         }
     }
