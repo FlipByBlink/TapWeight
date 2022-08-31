@@ -14,15 +14,7 @@ struct 🕘LocalHistoryView: View {
             }
             
             ForEach(📱.🕘LocalHistory.ⓛogs.reversed()) { ⓛog in
-                Section {
-                    🄻ogRows(ⓛog)
-                } header: {
-                    Text(ⓛog.date.formatted())
-                } footer: {
-                    if ⓛog.canceled {
-                        Text("Canceled")
-                    }
-                }
+                🄻ogSection(ⓛog)
             }
             
             if 📱.🕘LocalHistory.ⓛogs.isEmpty {
@@ -49,36 +41,44 @@ struct 🕘LocalHistoryView: View {
         }
     }
     
-    struct 🄻ogRows: View {
+    struct 🄻ogSection: View {
         var ⓛog: 🕘Log
         var body: some View {
-            if let ⓔntry = ⓛog.entry {
-                if ⓛog.date.timeIntervalSince(ⓔntry.date) > 300 {
-                    Label(ⓔntry.date.formatted(), systemImage: "clock")
-                        .foregroundColor(.primary)
+            Section {
+                if let ⓔntry = ⓛog.entry {
+                    if ⓛog.date.timeIntervalSince(ⓔntry.date) > 300 {
+                        Label(ⓔntry.date.formatted(), systemImage: "clock")
+                            .foregroundColor(.primary)
+                    }
+                    
+                    if let ⓢample = ⓔntry.massSample {
+                        Text("Body Mass")
+                            .strikethrough(ⓔntry.cancellation)
+                            .badge(ⓢample.value.description + " " + ⓢample.unit.rawValue)
+                    }
+                    
+                    if let ⓥalue = ⓔntry.bmiValue {
+                        Text("BMI")
+                            .strikethrough(ⓔntry.cancellation)
+                            .badge(ⓥalue.description)
+                    }
+                    
+                    if let ⓥalue = ⓔntry.bodyFatValue {
+                        Text("Body Fat Percentage")
+                            .strikethrough(ⓔntry.cancellation)
+                            .badge((round(ⓥalue*1000)/10).description + " %")
+                    }
+                } else if let ⓒomment = ⓛog.comment {
+                    Text(ⓒomment)
+                } else {
+                    EmptyView()
                 }
-                
-                if let ⓢample = ⓔntry.massSample {
-                    Text("Body Mass")
-                        .strikethrough(ⓔntry.cancellation)
-                        .badge(ⓢample.value.description + " " + ⓢample.unit.rawValue)
+            } header: {
+                Text(ⓛog.date.formatted())
+            } footer: {
+                if ⓛog.canceled {
+                    Text("Canceled")
                 }
-                
-                if let ⓥalue = ⓔntry.bmiValue {
-                    Text("BMI")
-                        .strikethrough(ⓔntry.cancellation)
-                        .badge(ⓥalue.description)
-                }
-                
-                if let ⓥalue = ⓔntry.bodyFatValue {
-                    Text("Body Fat Percentage")
-                        .strikethrough(ⓔntry.cancellation)
-                        .badge((round(ⓥalue*1000)/10).description + " %")
-                }
-            } else if let ⓒomment = ⓛog.comment {
-                Text(ⓒomment)
-            } else {
-                EmptyView()
             }
         }
         init(_ ⓛog: 🕘Log) {
@@ -89,7 +89,7 @@ struct 🕘LocalHistoryView: View {
 
 
 struct 🕘LocalHistoryModel {
-    var ⓛogs: [🄻og] = [] {
+    var ⓛogs: [Log] = [] {
         didSet {
             do {
                 UserDefaults.standard.set(try JSONEncoder().encode(ⓛogs), forKey: "LocalHistory")
@@ -102,20 +102,20 @@ struct 🕘LocalHistoryModel {
     init() {
         if let ⓤd = UserDefaults.standard.data(forKey: "LocalHistory") {
             do {
-                ⓛogs = try JSONDecoder().decode([🄻og].self, from: ⓤd)
+                ⓛogs = try JSONDecoder().decode([Log].self, from: ⓤd)
             } catch {
                 print("🚨Error: ", error)
             }
         }
     }
     
-    struct 🄻og: Codable, Identifiable {
+    struct Log: Codable, Identifiable {
         var date: Date = .now
-        var entry: 🄴ntry? = nil
+        var entry: Entry? = nil
         var comment: String? = nil
         var id: Date { date }
         
-        struct 🄴ntry: Codable {
+        struct Entry: Codable {
             var date: Date
             var massSample: MassSample?
             var bmiValue: Double?
@@ -132,11 +132,11 @@ struct 🕘LocalHistoryModel {
     }
     
     mutating func addLog(_ entry: 🕘Entry) {
-        ⓛogs.append(🄻og(entry: entry))
+        ⓛogs.append(Log(entry: entry))
     }
     
     mutating func addLog(_ comment: String) {
-        ⓛogs.append(🄻og(comment: comment))
+        ⓛogs.append(Log(comment: comment))
     }
     
     mutating func modifyCancellation() {
@@ -146,8 +146,8 @@ struct 🕘LocalHistoryModel {
     }
 }
 
-typealias 🕘Log = 🕘LocalHistoryModel.🄻og
-typealias 🕘Entry = 🕘LocalHistoryModel.🄻og.🄴ntry
+typealias 🕘Log = 🕘LocalHistoryModel.Log
+typealias 🕘Entry = 🕘LocalHistoryModel.Log.Entry
 
 
 
