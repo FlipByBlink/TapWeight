@@ -65,9 +65,9 @@ struct 🗯ResultView2: View {
                                         Image(systemName: "heart")
                                             .imageScale(.small)
                                     }
-                                    .font(.title)
                                     .foregroundColor(.primary)
-                                    .padding(12)
+                                    .padding(24)
+                                    .font(.system(size: 32))
                             }
                             .accessibilityLabel("Open \"Health\" app")
                             
@@ -106,6 +106,7 @@ struct 🗯ResultView2: View {
                     📱.🅁eset()
                 }
                 .navigationBarTitleDisplayMode(.inline)
+                .animation(.default, value: 📱.🚩Canceled)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button {
@@ -141,9 +142,45 @@ struct 🗯ResultView2: View {
             }
         }
         .preferredColorScheme(.dark)
-        .animation(.default, value: 📱.🚩Canceled)
     }
 }
+
+struct 📣ADBanner: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 🛒: 🛒StoreModel
+    @State private var 🚩ShowBanner = false
+    @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
+    
+    var body: some View {
+        Group {
+            if 🛒.🚩Purchased || 📱.🚨RegisterError {
+                Spacer()
+            } else {
+                if 🚩ShowBanner {
+                    📣ADView()
+                        .padding(.horizontal)
+                        .background {
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .foregroundStyle(.background)
+                                .shadow(radius: 3)
+                        }
+                        .padding()
+                        .frame(maxHeight: 180)
+                        .environment(\.colorScheme, .light)
+                } else {
+                    Spacer()
+                }
+            }
+        }
+        .onAppear {
+            🄻aunchCount += 1
+            if 🄻aunchCount > 5 { 🚩ShowBanner = true }
+        }
+    }
+}
+
+
+
 
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
@@ -273,41 +310,6 @@ struct 🗯ResultView: View {
         .preferredColorScheme(.dark)
         .onDisappear {
             📱.🅁eset()
-        }
-    }
-}
-
-
-struct 📣ADBanner: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    @EnvironmentObject var 🛒: 🛒StoreModel
-    @State private var 🚩ShowBanner = false
-    @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
-    
-    var body: some View {
-        Group {
-            if 🛒.🚩Purchased || 📱.🚨RegisterError {
-                Spacer()
-            } else {
-                if 🚩ShowBanner {
-                    📣ADView()
-                        .padding(.horizontal)
-                        .background {
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .foregroundStyle(.background)
-                                .shadow(radius: 3)
-                        }
-                        .padding()
-                        .frame(maxHeight: 180)
-                        .environment(\.colorScheme, .light)
-                } else {
-                    Spacer()
-                }
-            }
-        }
-        .onAppear {
-            🄻aunchCount += 1
-            if 🄻aunchCount > 5 { 🚩ShowBanner = true }
         }
     }
 }
