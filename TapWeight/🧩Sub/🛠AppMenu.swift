@@ -5,7 +5,7 @@ struct 🛠MenuButton: ToolbarContent { // ⚙️
     @Binding var 🚩ShowMenu: Bool
     
     var body: some ToolbarContent {
-        ToolbarItem(placement: .navigationBarTrailing) {
+        ToolbarItem(placement: .navigationBarLeading) {
             Button {
                 🚩ShowMenu = true
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()

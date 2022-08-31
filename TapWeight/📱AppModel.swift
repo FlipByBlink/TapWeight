@@ -24,7 +24,7 @@ class 📱AppModel: ObservableObject {
     
     @Published var 📅PickerValue = Date.now
     
-    @Published var 🚩ShowResult: Bool = false
+    @Published var 🚩ShowResult: Bool = true //TODO: 直す
     @Published var 🚨RegisterError: Bool = false
     @Published var 🚩Canceled: Bool = false
     @Published var 🚨CancelError: Bool = false

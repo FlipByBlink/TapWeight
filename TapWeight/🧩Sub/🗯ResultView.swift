@@ -1,6 +1,134 @@
 
 import SwiftUI
 
+struct 🗯ResultView2: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    @Environment(\.dismiss) var 🔙: DismissAction
+    
+    var body: some View {
+        NavigationView {
+            ZStack {
+                Rectangle()
+                    .foregroundColor(📱.🚨RegisterError ? .gray : .pink)
+                    .ignoresSafeArea()
+                
+                VStack {
+                    VStack(spacing: 16) {
+                        Image(systemName: 📱.🚨RegisterError ? "exclamationmark.triangle" : "checkmark")
+                            .font(.system(size: 96).weight(.semibold))
+                        
+                        Text(📱.🚨RegisterError ? "ERROR!?" : "DONE!")
+                            .strikethrough(📱.🚩Canceled)
+                            .font(.system(size: 96).weight(.black))
+                        
+                        if 📱.🚨RegisterError {
+                            Text("Please check permission on \"Health\" app")
+                                .font(.title3.weight(.semibold))
+                        } else {
+                            Text("Registration for \"Health\" app")
+                                .strikethrough(📱.🚩Canceled)
+                                .font(.title3.weight(.semibold))
+                        }
+                        
+                        if 📱.🚨RegisterError == false {
+                            let 🅂ummary: String = {
+                                var 🪧 = ""
+                                🪧 += 📱.📝MassValue.description + " " + 📱.📏MassUnit.rawValue
+                                if 📱.🚩AbleBMI { 🪧 += " / " + 📱.📝BMIValue.description }
+                                if 📱.🚩AbleBodyFat {
+                                    🪧 += " / " + (round(📱.📝BodyFatValue*1000)/10).description + " %"
+                                }
+                                return 🪧
+                            }()
+                            
+                            Group {
+                                Text(🅂ummary)
+                                    .strikethrough(📱.🚩Canceled)
+                                    .font(.body.bold())
+                                
+                                if 📱.🚩AbleDatePicker {
+                                    Text(📱.📅PickerValue.formatted(date: .abbreviated, time: .shortened))
+                                        .strikethrough(📱.🚩Canceled)
+                                        .font(.subheadline.weight(.semibold))
+                                        .padding(.horizontal)
+                                }
+                            }
+                            .opacity(0.75)
+                            .padding(.horizontal, 42)
+                            
+                            ZStack {
+                                Button {
+                                    Task {
+                                        await 📱.🗑Cancel()
+                                    }
+                                } label: {
+                                    Image(systemName: "arrow.uturn.backward.circle")
+                                        .foregroundColor(.secondary)
+                                        .font(.title)
+                                }
+                                .disabled(📱.🚩Canceled)
+                                .opacity(📱.🚩Canceled ? 0.5 : 1)
+                                .accessibilityLabel("Cancel")
+                                
+                                if 📱.🚩Canceled {
+                                    HStack {
+                                        Text("Canceled")
+                                            .fontWeight(.semibold)
+                                        
+                                        if 📱.🚨CancelError {
+                                            Text("(perhaps error)")
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.3)
+                    .padding()
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                    📣ADBanner()
+                }
+                .onDisappear {
+                    📱.🅁eset()
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Link(destination: URL(string: "x-apple-health://")!) {
+                            Image(systemName: "app")
+                                .imageScale(.large)
+                                .overlay {
+                                    Image(systemName: "heart")
+                                        .imageScale(.small)
+                                }
+                                .font(.title)
+                                .foregroundColor(.primary)
+                        }
+                        .accessibilityLabel("Open \"Health\" app")
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            🔙.callAsFunction()
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(.primary)
+                                .font(.title)
+                                .symbolRenderingMode(.hierarchical)
+                        }
+                        .accessibilityLabel("Dismiss")
+                    }
+                }
+            }
+        }
+        .preferredColorScheme(.dark)
+    }
+}
+
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.dismiss) var 🔙: DismissAction

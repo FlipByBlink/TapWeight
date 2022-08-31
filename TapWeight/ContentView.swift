@@ -28,11 +28,26 @@ struct ContentView: View {
             .minimumScaleFactor(0.3)
             .navigationTitle("Body Mass")
             .toolbar { 🛠MenuButton($📱.🚩ShowMenu) } // ⚙️
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Link(destination: URL(string: "x-apple-health://")!) {
+                        Image(systemName: "app")
+                            .imageScale(.large)
+                            .overlay {
+                                Image(systemName: "heart")
+                                    .imageScale(.small)
+                            }
+                            .font(.title2)
+                            .foregroundColor(.primary)
+                    }
+                    .accessibilityLabel("Open \"Health\" app")
+                }
+            }
         }
         .overlay(alignment: .bottomLeading) { 👆DoneButton() }
-        .overlay(alignment: .bottomTrailing) { 💟JumpButtonOnMainView() }
+        //.overlay(alignment: .bottomTrailing) { 💟JumpButtonOnMainView() }
         .fullScreenCover(isPresented: $📱.🚩ShowResult) {
-            🗯ResultView()
+            🗯ResultView2() //TODO: 直す
         }
         .onAppear { 📱.🏥RequestAuth(.bodyMass) }
         .onChange(of: 📱.🚩AbleBodyFat) { _ in
