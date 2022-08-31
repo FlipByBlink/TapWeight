@@ -80,9 +80,9 @@ class 📱AppModel: ObservableObject {
             if 🚩AbleBodyFat { 💾BodyFat = 📝BodyFatValue }
             
             var ⓔntry = 🕘Entry(date: 📅Date)
-            ⓔntry.addSample("Body Mass", 📝MassValue.description + " " + 📏MassUnit.rawValue)
-            if 🚩AbleBMI { ⓔntry.addSample("Body Mass Index", 📝BMIValue.description) }
-            if 🚩AbleBodyFat { ⓔntry.addSample("Body Fat Percentage", 🪧BodyFatNotaion + " %") }
+            ⓔntry.massSample = .init(unit: 📏MassUnit, value: 📝MassValue)
+            ⓔntry.bmiValue = 📝BMIValue
+            ⓔntry.bodyFatValue = 📝BodyFatValue
             🕘LocalHistory.addLog(ⓔntry)
             
             🚩ShowResult = true

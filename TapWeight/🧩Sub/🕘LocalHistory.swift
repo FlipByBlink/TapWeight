@@ -51,28 +51,48 @@ struct 🕘LocalHistoryView: View {
     
     struct 🄻ogRows: View {
         var ⓛog: 🕘Log
-        
         var body: some View {
-            if let entry = ⓛog.entry {
-                if ⓛog.date.timeIntervalSince(entry.date) > 300 {
-                    Label(entry.date.formatted(), systemImage: "clock")
+            if let ⓔntry = ⓛog.entry {
+                if ⓛog.date.timeIntervalSince(ⓔntry.date) > 300 {
+                    Label(ⓔntry.date.formatted(), systemImage: "clock")
                         .foregroundColor(.primary)
                 }
                 
-                ForEach(entry.samples) { sample in
-                    Text(sample.type)
-                        .strikethrough(entry.cancellation)
-                        .badge(sample.value)
-                }
+                🄴ntryView(ⓔntry)
             }
             
-            if let comment = ⓛog.comment {
-                Text(comment)
+            if let ⓒomment = ⓛog.comment {
+                Text(ⓒomment)
             }
         }
-        
         init(_ ⓛog: 🕘Log) {
             self.ⓛog = ⓛog
+        }
+        
+        struct 🄴ntryView: View { //FIXME: この構成でもまだコンパイラが暴走する
+            var ⓔntry: 🕘Entry
+            var body: some View {
+                if let ⓢample = ⓔntry.massSample {
+                    Text("Body Mass")
+                        .strikethrough(ⓔntry.cancellation)
+                        .badge(ⓢample.value.description + " " + ⓢample.unit.rawValue)
+                }
+                
+                if let ⓥalue = ⓔntry.bmiValue {
+                    Text("BMI")
+                        .strikethrough(ⓔntry.cancellation)
+                        .badge(ⓥalue.description)
+                }
+                
+                if let ⓥalue = ⓔntry.bodyFatValue {
+                    Text("Body Fat Percentage")
+                        .strikethrough(ⓔntry.cancellation)
+                        .badge((round(ⓥalue*1000)/10).description + " %")
+                }
+            }
+            init(_ ⓔntry: 🕘Entry) {
+                self.ⓔntry = ⓔntry
+            }
         }
     }
 }
@@ -107,17 +127,14 @@ struct 🕘LocalHistoryModel {
         
         struct 🄴ntry: Codable {
             var date: Date
-            var samples: [🅂ample] = []
+            var massSample: MassSample?
+            var bmiValue: Double?
+            var bodyFatValue: Double?
             var cancellation: Bool = false
             
-            struct 🅂ample: Codable, Identifiable {
-                var type: String
-                var value: String
-                var id: String { type }
-            }
-            
-            mutating func addSample(_ type: String, _ value: String) {
-                samples.append(🅂ample(type: type, value: value))
+            struct MassSample: Codable {
+                var unit: 📏BodyMassUnit
+                var value: Double
             }
         }
         

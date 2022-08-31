@@ -1,7 +1,7 @@
 
 import HealthKit
 
-enum 📏BodyMassUnit: String, CaseIterable {
+enum 📏BodyMassUnit: String, CaseIterable, Codable {
     case kg
     case lbs
     case st
