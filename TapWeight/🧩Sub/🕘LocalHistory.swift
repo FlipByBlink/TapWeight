@@ -151,7 +151,7 @@ struct 🕘LocalHistoryBeforeVer_1_2_Link: View {
     
     var body: some View {
         if 🕘History != "" {
-            NavigationLink("Old data before ver 1.2") {
+            NavigationLink("Old data before ver 1.2") { //TODO: Add localization
                 🕘MainView()
             }
         }

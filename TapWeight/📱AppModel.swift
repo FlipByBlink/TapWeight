@@ -32,10 +32,10 @@ class 📱AppModel: ObservableObject {
     @Published var 🚩Canceled: Bool = false
     @Published var 🚨CancelError: Bool = false
     
+    @Published var 🕘LocalHistory = 🕘LocalHistoryModel()
+    
     let 🏥HealthStore = HKHealthStore()
     var 📦Sample: [HKQuantitySample] = []
-    
-    @Published var 🕘LocalHistory = 🕘LocalHistoryModel()
     
     
     @MainActor
