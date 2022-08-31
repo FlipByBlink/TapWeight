@@ -162,7 +162,7 @@ struct 📅DatePicker: View {
 struct 🏷LastEntryLabel: View {
     @EnvironmentObject var 📱: 📱AppModel
     
-    var 🪧Description: String? {
+    var 🪧Description: String {
         if let ⓛastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry {
             var 🪧 = "(" + ⓛastEntry.date.formatted(date: .abbreviated, time: .shortened) + "  "
             🪧 += ⓛastEntry.massSample.value.description + ⓛastEntry.massSample.unit.rawValue
@@ -179,22 +179,22 @@ struct 🏷LastEntryLabel: View {
             🪧 += ")"
             return 🪧
         } else {
-            return nil
+            return "🐛"
         }
     }
     
     var body: some View {
         if 📱.🕘LocalHistory.ⓛogs.last?.entry?.cancellation == false {
-            if let 🪧 = 🪧Description {
-                HStack {
-                    Spacer()
-                    Text(🪧)
-                }
-                .foregroundStyle(.tertiary)
-                .padding(.trailing, 10)
-                .minimumScaleFactor(0.3)
-                .font(.footnote.weight(.medium))
+            HStack {
+                Spacer()
+                Text(🪧Description)
             }
+            .foregroundStyle(.tertiary)
+            .padding(.trailing, 10)
+            .minimumScaleFactor(0.3)
+            .font(.footnote.weight(.medium))
+        } else {
+            EmptyView()
         }
     }
 }
