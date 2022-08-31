@@ -16,13 +16,14 @@ struct ContentView: View {
                 
                 if 📱.🚩AbleBodyFat { 👆BodyFatStepper() }
                 
+                📅LastDateLabel()
+                
                 📅DatePicker()
             }
             .listStyle(.plain)
             .lineLimit(1)
             .minimumScaleFactor(0.3)
             .navigationTitle("Body Mass")
-            .toolbar { 📅LastDateLabel() }
             .toolbar { 🛠MenuButton($📱.🚩ShowMenu) } // ⚙️
         }
         .overlay(alignment: .bottomLeading) { 👆DoneButton() }
@@ -143,7 +144,6 @@ struct 📅DatePicker: View {
                 }
             }
             .opacity(📱.📅PickerValue.timeIntervalSinceNow < -300 ? 1 : 0.4)
-            .padding(.vertical)
             .padding(.trailing, 8)
             .padding(.bottom, 180)
             .listRowSeparator(.hidden)
@@ -158,6 +158,45 @@ struct 📅DatePicker: View {
 
 
 struct 📅LastDateLabel: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    
+    var 🪧label: String? {
+        if let lastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry {
+            var 🪧 = "(" + lastEntry.date.formatted(date: .abbreviated, time: .shortened) + "  "
+            🪧 += lastEntry.massSample.value.description + lastEntry.massSample.unit.rawValue
+            if 📱.🚩AbleBMI {
+                if let value = lastEntry.bmiValue {
+                    🪧 += "  " + value.description
+                }
+            }
+            if 📱.🚩AbleBodyFat {
+                if let value = lastEntry.bodyFatValue {
+                    🪧 += "  " + (round(value*1000)/10).description + "%"
+                }
+            }
+            🪧 += ")"
+            return 🪧
+        } else {
+            return nil
+        }
+    }
+    
+    var body: some View {
+        if let 🪧 = 🪧label {
+            HStack {
+                Spacer()
+                Text(🪧)
+            }
+            .foregroundStyle(.tertiary)
+            .padding(.trailing, 8)
+            .minimumScaleFactor(0.3)
+            .font(.footnote.weight(.medium))
+            .listRowSeparator(.hidden)
+        }
+    }
+}
+
+struct OLD_📅LastDateLabel: View {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var 🚩Show: Bool = true
     @State private var 📅LastDate: Date? = UserDefaults.standard.object(forKey: "LastDate") as? Date

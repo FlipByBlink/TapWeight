@@ -47,15 +47,13 @@ struct 🕘LocalHistoryView: View {
             Section {
                 if let ⓔntry = ⓛog.entry {
                     if ⓛog.date.timeIntervalSince(ⓔntry.date) > 300 {
-                        Label(ⓔntry.date.formatted(), systemImage: "clock")
+                        Label(ⓔntry.date.formatted(date: .abbreviated, time: .shortened), systemImage: "clock")
                             .foregroundColor(.primary)
                     }
                     
-                    if let ⓢample = ⓔntry.massSample {
-                        Text("Body Mass")
-                            .strikethrough(ⓔntry.cancellation)
-                            .badge(ⓢample.value.description + " " + ⓢample.unit.rawValue)
-                    }
+                    Text("Body Mass")
+                        .strikethrough(ⓔntry.cancellation)
+                        .badge(ⓔntry.massSample.value.description + " " + ⓔntry.massSample.unit.rawValue)
                     
                     if let ⓥalue = ⓔntry.bmiValue {
                         Text("Body Mass Index")
@@ -132,7 +130,7 @@ struct 🕘LocalHistoryModel {
         
         struct Entry: Codable {
             var date: Date
-            var massSample: MassSample?
+            var massSample: MassSample
             var bmiValue: Double?
             var bodyFatValue: Double?
             var cancellation: Bool = false

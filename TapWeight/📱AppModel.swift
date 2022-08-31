@@ -79,8 +79,7 @@ class 📱AppModel: ObservableObject {
             💾BodyMass = 📝MassValue
             if 🚩AbleBodyFat { 💾BodyFat = 📝BodyFatValue }
             
-            var ⓔntry = 🕘Entry(date: 📅Date)
-            ⓔntry.massSample = .init(unit: 📏MassUnit, value: 📝MassValue)
+            var ⓔntry = 🕘Entry(date: 📅Date, massSample: .init(unit: 📏MassUnit, value: 📝MassValue))
             ⓔntry.bmiValue = 📝BMIValue
             ⓔntry.bodyFatValue = 📝BodyFatValue
             🕘LocalHistory.addLog(ⓔntry)
