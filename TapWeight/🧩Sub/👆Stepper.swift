@@ -5,11 +5,7 @@ struct 👆BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     var 🔠Font: Font { 📱.🚩AbleDatePicker ? .largeTitle : .system(size: 50) }
     var 🪧Description: String {
-        if 📱.🚩Amount50g && 📱.📝MassValue.description.count == 4 {
-            return 📱.📝MassValue.description + "0"
-        } else {
-            return 📱.📝MassValue.description
-        }
+        📱.🚩Amount50g ? String(format: "%.2f", 📱.📝MassValue) : 📱.📝MassValue.description
     }
     
     var body: some View {
@@ -24,7 +20,7 @@ struct 👆BodyMassStepper: View {
                         .font(.title2.weight(.black))
                         .frame(maxHeight: 36)
                 }
-                Spacer(minLength: 0)
+                Spacer(minLength: 4)
                 📉DifferenceView(.mass)
             }
         } onIncrement: {
@@ -49,8 +45,8 @@ struct 👆BodyMassStepper: View {
         .padding(8)
         .padding(.vertical, 4)
         .onAppear {
-            guard let 📝 = 📱.🕘LocalHistory.ⓛogs.last?.entry?.massSample.value else { return }
-            📱.📝MassValue = 📝
+            guard let 📝LastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry else { return }
+            📱.📝MassValue = 📝LastEntry.massSample.value
         }
     }
 }
@@ -88,8 +84,8 @@ struct 👆BodyFatStepper: View {
             .padding(8)
             .padding(.vertical, 4)
             .onAppear {
-                guard let 📝 = 📱.🕘LocalHistory.ⓛogs.last?.entry?.bodyFatValue else { return }
-                📱.📝BodyFatValue = 📝
+                guard let 📝LastValue = 📱.🕘LocalHistory.ⓛogs.last?.entry?.bodyFatValue else { return }
+                📱.📝BodyFatValue = 📝LastValue
             }
         } header: {
             Text("Body Fat Percentage")
