@@ -24,7 +24,7 @@ class 📱AppModel: ObservableObject {
     
     @Published var 📅PickerValue = Date.now
     
-    @Published var 🚩ShowResult: Bool = true //TODO: 直す
+    @Published var 🚩ShowResult: Bool = false
     @Published var 🚨RegisterError: Bool = false
     @Published var 🚩Canceled: Bool = false
     @Published var 🚨CancelError: Bool = false
@@ -72,8 +72,8 @@ class 📱AppModel: ObservableObject {
             try await 🏥HealthStore.save(📦Sample)
             
             var ⓔntry = 🕘Entry(date: 📅Date, massSample: .init(unit: 📏MassUnit, value: 📝MassValue))
-            ⓔntry.bmiValue = 📝BMIValue
-            ⓔntry.bodyFatValue = 📝BodyFatValue
+            if 🚩AbleBMI { ⓔntry.bmiValue = 📝BMIValue }
+            if 🚩AbleBodyFat { ⓔntry.bodyFatValue = 📝BodyFatValue }
             🕘LocalHistory.addLog(ⓔntry)
             
             🚩ShowResult = true
