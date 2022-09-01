@@ -31,7 +31,7 @@ struct ContentView: View {
             .toolbar { 🛠MenuButton($📱.🚩ShowMenu) } // ⚙️
         }
         .overlay(alignment: .bottomLeading) { 👆DoneButton() }
-        .overlay(alignment: .bottomTrailing) { 💟JumpButtonOnMainView() }
+        .overlay(alignment: .bottomTrailing) { 💟JumpButton() }
         .fullScreenCover(isPresented: $📱.🚩ShowResult) {
             🗯ResultView()
         }
@@ -106,22 +106,16 @@ struct 💟JumpButton: View {
                         .imageScale(.small)
                 }
                 .font(.largeTitle)
+                .foregroundColor(.pink)
+                .opacity(0.8)
                 .padding(2)
         }
         .accessibilityLabel("Open \"Health\" app")
-    }
-}
-
-struct 💟JumpButtonOnMainView: View {
-    var body: some View {
-        💟JumpButton()
-            .foregroundColor(.pink)
-            .opacity(0.8)
-            .background {
-                RoundedRectangle(cornerRadius: 16)
-                    .foregroundStyle(.background)
-            }
-            .padding(22)
+        .background {
+            RoundedRectangle(cornerRadius: 16)
+                .foregroundStyle(.background)
+        }
+        .padding(22)
     }
 }
 
@@ -170,6 +164,8 @@ struct 🏷LastEntryLabel: View {
         }
     }
     
+    var 🚩CanceledLastLog: Bool { 📱.🕘LocalHistory.ⓛogs.last?.entry?.cancellation == false }
+    
     var body: some View {
         HStack {
             Spacer()
@@ -179,6 +175,7 @@ struct 🏷LastEntryLabel: View {
         .padding(.trailing, 10)
         .minimumScaleFactor(0.3)
         .font(.footnote.weight(.heavy))
-        .opacity(📱.🕘LocalHistory.ⓛogs.last?.entry?.cancellation == false ? 1 : 0)
+        .opacity(🚩CanceledLastLog ? 1 : 0)
+        .animation(.default, value: 🚩CanceledLastLog)
     }
 }
