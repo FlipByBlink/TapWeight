@@ -56,30 +56,32 @@ struct 👆BodyMassStepper: View {
     
     struct 📉DifferenceView: View {
         @EnvironmentObject var 📱: 📱AppModel
-        var 📉DifferenceAmount: Double? {
+        var 🪧Description: String? { //TODO: 50g表記対応
             guard let 📝LastValue = 📱.🕘LocalHistory.ⓛogs.last?.entry?.massSample.value else { return nil }
-            return (round((📱.📝MassValue - 📝LastValue)*100)/100)
+            let 📉Difference = (round((📱.📝MassValue - 📝LastValue)*100)/100)
+            switch 📉Difference {
+                case ..<0: return 📉Difference.description
+                case 0: return nil
+                default: return "+" + 📉Difference.description
+            }
         }
         
         var body: some View {
-            Group {
-                if let 📉 = 📉DifferenceAmount {
-                    switch 📉 {
-                        case ..<0:
-                            Text(📉.description)
-                        case 0...:
-                            Text("+" + 📉.description)
-                                .opacity(📉.isZero ? 0 : 1 )
-                        default: Text("🐛")
+            ZStack {
+                Color.clear
+                if 📱.🕘LocalHistory.🚩CanceledLastEntry {
+                    if let 🪧 = 🪧Description {
+                        Text(🪧)
+                            .font(.body.bold())
+                            .monospacedDigit()
+                            .foregroundStyle(.tertiary)
+                            .minimumScaleFactor(0.1)
                     }
                 }
             }
-            .font(.body.bold())
-            .monospacedDigit()
-            .foregroundStyle(.tertiary)
-            .minimumScaleFactor(0.1)
-            .frame(maxWidth: 48 ,maxHeight: 32)
-            .opacity(📱.🕘LocalHistory.🚩CanceledLastEntry ? 1 : 0)
+            .frame(width: 48, height: 32)
+            .animation(📱.🚩ShowResult ? .default : .default.speed(2), value: 🪧Description == nil)
+            .animation(.default, value: 📱.🕘LocalHistory.🚩CanceledLastEntry)
         }
     }
 }
@@ -127,30 +129,36 @@ struct 👆BodyFatStepper: View {
     
     struct 📉DifferenceView: View {
         @EnvironmentObject var 📱: 📱AppModel
+        var 🪧Description: String? {
+            guard let 📝LastValue = 📱.🕘LocalHistory.ⓛogs.last?.entry?.bodyFatValue else { return nil }
+            let 📉Difference = (round((📱.📝BodyFatValue - 📝LastValue)*1000)/10)
+            switch 📉Difference {
+                case ..<0: return 📉Difference.description
+                case 0: return nil
+                default: return "+" + 📉Difference.description
+            }
+        }
         var 📉DifferenceAmount: Double? {
             guard let 📝LastValue = 📱.🕘LocalHistory.ⓛogs.last?.entry?.bodyFatValue else { return nil }
             return (round((📱.📝BodyFatValue - 📝LastValue)*1000)/10)
         }
         
         var body: some View {
-            Group {
-                if let 📉 = 📉DifferenceAmount {
-                    switch 📉 {
-                        case ..<0:
-                            Text(📉.description)
-                        case 0...:
-                            Text("+" + 📉.description)
-                                .opacity(📉.isZero ? 0 : 1 )
-                        default: Text("🐛")
+            ZStack {
+                Color.clear
+                if 📱.🕘LocalHistory.🚩CanceledLastEntry {
+                    if let 🪧 = 🪧Description {
+                        Text(🪧)
+                            .font(.body.bold())
+                            .monospacedDigit()
+                            .foregroundStyle(.tertiary)
+                            .minimumScaleFactor(0.1)
                     }
                 }
             }
-            .font(.body.bold())
-            .monospacedDigit()
-            .foregroundStyle(.tertiary)
-            .minimumScaleFactor(0.1)
-            .frame(maxWidth: 48 ,maxHeight: 32)
-            .opacity(📱.🕘LocalHistory.🚩CanceledLastEntry ? 1 : 0)
+            .frame(width: 48, height: 32)
+            .animation(📱.🚩ShowResult ? .default : .default.speed(2), value: 🪧Description == nil)
+            .animation(.default, value: 📱.🕘LocalHistory.🚩CanceledLastEntry)
         }
     }
 }

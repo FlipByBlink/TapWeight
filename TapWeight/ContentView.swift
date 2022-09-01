@@ -184,21 +184,27 @@ struct 🏷LastEntryLabel: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
-        if let ⓛastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry {
-            HStack {
-                Spacer()
-                VStack(alignment: .trailing) {
-                    Text(ⓛastEntry.date.formatted(date: .abbreviated, time: .omitted))
-                        .font(.footnote.bold())
-                    Text(ⓛastEntry.date.formatted(date: .omitted, time: .shortened))
-                        .font(.caption.bold())
+        ZStack {
+            Color.clear
+            if 📱.🕘LocalHistory.🚩CanceledLastEntry {
+                if let ⓛastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry {
+                    HStack {
+                        Spacer()
+                        VStack(alignment: .trailing) {
+                            Text(ⓛastEntry.date.formatted(date: .abbreviated, time: .omitted))
+                                .font(.footnote.bold())
+                            Text(ⓛastEntry.date.formatted(date: .omitted, time: .shortened))
+                                .font(.caption.bold())
+                        }
+                    }
+                    .foregroundStyle(.tertiary)
+                    .padding(.trailing, 12)
+                    .minimumScaleFactor(0.3)
                 }
             }
-            .foregroundStyle(.tertiary)
-            .padding(.trailing, 12)
-            .minimumScaleFactor(0.3)
-            .listRowSeparator(.hidden)
-            .opacity(📱.🕘LocalHistory.🚩CanceledLastEntry ? 1 : 0)
         }
+        .listRowSeparator(.hidden)
+        .animation(.default, value: 📱.🕘LocalHistory.🚩CanceledLastEntry)
+        .animation(.default, value: 📱.🕘LocalHistory.ⓛogs.isEmpty)
     }
 }
