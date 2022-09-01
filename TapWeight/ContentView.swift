@@ -21,6 +21,7 @@ struct ContentView: View {
                     📅DatePicker()
                 }
                 .padding(.top, 12)
+                .padding(.bottom, 180)
                 .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
@@ -148,7 +149,6 @@ struct 📅DatePicker: View {
             }
             .opacity(📱.📅PickerValue.timeIntervalSinceNow < -300 ? 1 : 0.4)
             .padding(.trailing, 8)
-            .padding(.bottom, 180)
             .onChange(of: 🚥Phase) { _ in
                 if 🚥Phase == .background {
                     📱.📅PickerValue = .now
@@ -164,37 +164,21 @@ struct 🏷LastEntryLabel: View {
     
     var 🪧Description: String {
         if let ⓛastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry {
-            var 🪧 = "(" + ⓛastEntry.date.formatted(date: .abbreviated, time: .shortened) + "  "
-            🪧 += ⓛastEntry.massSample.value.description + ⓛastEntry.massSample.unit.rawValue
-            if 📱.🚩AbleBMI {
-                if let ⓥalue = ⓛastEntry.bmiValue {
-                    🪧 += "  " + ⓥalue.description
-                }
-            }
-            if 📱.🚩AbleBodyFat {
-                if let ⓥalue = ⓛastEntry.bodyFatValue {
-                    🪧 += "  " + (round(ⓥalue*1000)/10).description + "%"
-                }
-            }
-            🪧 += ")"
-            return 🪧
+            return "(" + ⓛastEntry.date.formatted(date: .abbreviated, time: .shortened) + ")"
         } else {
             return "🐛"
         }
     }
     
     var body: some View {
-        if 📱.🕘LocalHistory.ⓛogs.last?.entry?.cancellation == false {
-            HStack {
-                Spacer()
-                Text(🪧Description)
-            }
-            .foregroundStyle(.tertiary)
-            .padding(.trailing, 10)
-            .minimumScaleFactor(0.3)
-            .font(.footnote.weight(.medium))
-        } else {
-            EmptyView()
+        HStack {
+            Spacer()
+            Text(🪧Description)
         }
+        .foregroundStyle(.quaternary)
+        .padding(.trailing, 10)
+        .minimumScaleFactor(0.3)
+        .font(.footnote.weight(.heavy))
+        .opacity(📱.🕘LocalHistory.ⓛogs.last?.entry?.cancellation == false ? 1 : 0)
     }
 }
