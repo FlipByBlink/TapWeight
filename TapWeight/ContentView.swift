@@ -164,7 +164,7 @@ struct 🏷LastEntryLabel: View {
         }
     }
     
-    var 🚩CanceledLastLog: Bool { 📱.🕘LocalHistory.ⓛogs.last?.entry?.cancellation == false }
+    var 🚩CanceledLastEntry: Bool { 📱.🕘LocalHistory.ⓛogs.last?.entry?.cancellation == false }
     
     var body: some View {
         HStack {
@@ -175,7 +175,7 @@ struct 🏷LastEntryLabel: View {
         .padding(.trailing, 10)
         .minimumScaleFactor(0.3)
         .font(.footnote.weight(.heavy))
-        .opacity(🚩CanceledLastLog ? 1 : 0)
-        .animation(.default, value: 🚩CanceledLastLog)
+        .opacity(🚩CanceledLastEntry ? 1 : 0)
+        .animation(.default, value: 🚩CanceledLastEntry)
     }
 }

@@ -100,11 +100,11 @@ class 📱AppModel: ObservableObject {
     
     
     func 🏥RequestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) {
-        let 🅃ype: HKSampleType = HKQuantityType(ⓘdentifier)
-        if 🏥HealthStore.authorizationStatus(for: 🅃ype) == .notDetermined {
+        let ⓣype: HKSampleType = HKQuantityType(ⓘdentifier)
+        if 🏥HealthStore.authorizationStatus(for: ⓣype) == .notDetermined {
             Task {
                 do {
-                    try await 🏥HealthStore.requestAuthorization(toShare: [🅃ype], read: [])
+                    try await 🏥HealthStore.requestAuthorization(toShare: [ⓣype], read: [])
                 } catch {
                     self.🕘LocalHistory.addLog("Error: " + #function + error.localizedDescription)
                 }

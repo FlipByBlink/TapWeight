@@ -3,7 +3,7 @@ import SwiftUI
 
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.dismiss) var 🔙: DismissAction
+    @Environment(\.dismiss) var 🔙Dismiss: DismissAction
     
     var body: some View {
         NavigationView {
@@ -110,7 +110,7 @@ struct 🗯ResultView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button {
-                            🔙.callAsFunction()
+                            🔙Dismiss.callAsFunction()
                             UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         } label: {
                             Image(systemName: "xmark.circle.fill")

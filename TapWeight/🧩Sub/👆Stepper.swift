@@ -4,19 +4,18 @@ import SwiftUI
 struct 👆BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     var 🔠Font: Font { 📱.🚩AbleDatePicker ? .largeTitle : .system(size: 50) }
+    var 🪧Description: String {
+        if 📱.🚩Amount50g && 📱.📝MassValue.description.count == 4 {
+            return 📱.📝MassValue.description + "0"
+        } else {
+            return 📱.📝MassValue.description
+        }
+    }
     
     var body: some View {
         Stepper {
             HStack(alignment: .firstTextBaseline) {
-                let 🪧BodyMass: String = {
-                    if 📱.🚩Amount50g && 📱.📝MassValue.description.count == 4 {
-                        return 📱.📝MassValue.description + "0"
-                    } else {
-                        return 📱.📝MassValue.description
-                    }
-                }()
-                
-                Text(🪧BodyMass)
+                Text(🪧Description)
                     .font(🔠Font)
                     .fontWeight(.black)
                     .monospacedDigit()
