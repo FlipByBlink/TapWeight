@@ -33,7 +33,7 @@ struct ContentView: View {
         .overlay(alignment: .bottomLeading) { 👆DoneButton() }
         .overlay(alignment: .bottomTrailing) { 💟JumpButtonOnMainView() }
         .fullScreenCover(isPresented: $📱.🚩ShowResult) {
-            🗯ResultView2() //TODO: 直す
+            🗯ResultView()
         }
         .onAppear { 📱.🏥RequestAuth(.bodyMass) }
         .onChange(of: 📱.🚩AbleBodyFat) { _ in
