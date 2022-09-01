@@ -14,15 +14,16 @@ struct 👆BodyMassStepper: View {
     
     var body: some View {
         Stepper {
-            HStack(alignment: .firstTextBaseline) {
-                Text(🪧Description)
-                    .font(🔠Font)
-                    .fontWeight(.black)
-                    .monospacedDigit()
-                
-                Text(📱.📏MassUnit.rawValue)
-                    .font(.title2.weight(.black))
-                    .frame(maxHeight: 36)
+            HStack {
+                HStack(alignment: .firstTextBaseline) {
+                    Text(🪧Description)
+                        .font(🔠Font)
+                        .fontWeight(.black)
+                        .monospacedDigit()
+                    Text(📱.📏MassUnit.rawValue)
+                        .font(.title2.weight(.black))
+                        .frame(maxHeight: 36)
+                }
                 Spacer(minLength: 0)
                 📉DifferenceView()
             }
@@ -78,6 +79,7 @@ struct 👆BodyMassStepper: View {
             .foregroundStyle(.tertiary)
             .minimumScaleFactor(0.1)
             .frame(maxWidth: 48 ,maxHeight: 32)
+            .opacity(📱.🕘LocalHistory.🚩CanceledLastEntry ? 1 : 0)
         }
     }
 }
@@ -90,15 +92,16 @@ struct 👆BodyFatStepper: View {
     var body: some View {
         Section {
             Stepper {
-                HStack(alignment: .firstTextBaseline, spacing: 6) {
-                    Text((round(📱.📝BodyFatValue*1000)/10).description)
-                        .font(🔠Font)
-                        .fontWeight(.black)
-                        .monospacedDigit()
-                    
-                    Text("%")
-                        .font(.title2.weight(.black))
-                        .frame(maxHeight: 54)
+                HStack {
+                    HStack(alignment: .firstTextBaseline, spacing: 6) {
+                        Text((round(📱.📝BodyFatValue*1000)/10).description)
+                            .font(🔠Font)
+                            .fontWeight(.black)
+                            .monospacedDigit()
+                        Text("%")
+                            .font(.title2.weight(.black))
+                            .frame(maxHeight: 54)
+                    }
                     Spacer(minLength: 0)
                     📉DifferenceView()
                 }
@@ -147,6 +150,7 @@ struct 👆BodyFatStepper: View {
             .foregroundStyle(.tertiary)
             .minimumScaleFactor(0.1)
             .frame(maxWidth: 48 ,maxHeight: 32)
+            .opacity(📱.🕘LocalHistory.🚩CanceledLastEntry ? 1 : 0)
         }
     }
 }

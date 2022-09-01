@@ -18,8 +18,8 @@ struct ContentView: View {
                 
                 📅DatePicker()
                     .padding(.top, 12)
-                    .padding(.bottom, 4)
                 🏷LastEntryLabel()
+                    .padding(.top, 4)
                     .padding(.bottom, 180)
             }
             .listStyle(.plain)
@@ -86,6 +86,7 @@ struct 🪧BMIView: View {
                     .minimumScaleFactor(0.1)
                     .frame(maxWidth: 48 ,maxHeight: 32)
                     .padding(.trailing)
+                    .opacity(📱.🕘LocalHistory.🚩CanceledLastEntry ? 1 : 0)
                 }
             }
         }
@@ -181,9 +182,6 @@ struct 📅DatePicker: View {
 
 struct 🏷LastEntryLabel: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 🚩CanceledLastEntry: Bool {
-        📱.🕘LocalHistory.ⓛogs.last?.entry?.cancellation == false
-    }
     
     var body: some View {
         if let ⓛastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry {
@@ -199,9 +197,8 @@ struct 🏷LastEntryLabel: View {
             .foregroundStyle(.tertiary)
             .padding(.trailing, 12)
             .minimumScaleFactor(0.3)
-            .opacity(🚩CanceledLastEntry ? 1 : 0)
             .listRowSeparator(.hidden)
-            .animation(.default, value: 🚩CanceledLastEntry)
+            .opacity(📱.🕘LocalHistory.🚩CanceledLastEntry ? 1 : 0)
         }
     }
 }

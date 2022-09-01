@@ -123,6 +123,10 @@ struct 🕘LocalHistoryModel {
         ⓛogs.append(ⓛog)
     }
     
+    var 🚩CanceledLastEntry: Bool {
+        self.ⓛogs.last?.entry?.cancellation == false
+    }
+    
     struct Log: Codable, Identifiable {
         var date: Date = .now
         var entry: Entry? = nil
