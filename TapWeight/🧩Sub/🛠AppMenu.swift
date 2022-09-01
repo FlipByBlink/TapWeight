@@ -103,12 +103,10 @@ struct 🛠AppMenu: View {
                                 }
                                 .imageScale(.large)
                                 .padding(.horizontal, 2)
-
                             Text("Open \"Health\" app")
-
                             Spacer()
-
                             Image(systemName: "arrow.up.forward.app")
+                                .imageScale(.small)
                                 .foregroundStyle(.secondary)
                         }
                     }
@@ -163,6 +161,8 @@ struct ℹ️AboutAppLink: View {
                     Label("Open AppStore page", systemImage: "link")
                     Spacer()
                     Image(systemName: "arrow.up.forward.app")
+                        .imageScale(.small)
+                        .foregroundStyle(.secondary)
                 }
             }
             
