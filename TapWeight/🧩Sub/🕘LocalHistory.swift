@@ -80,6 +80,7 @@ struct 🕘LocalHistoryView: View {
                 }
             }
         }
+        
         init(_ ⓛog: 🕘Log) {
             self.ⓛog = ⓛog
         }
