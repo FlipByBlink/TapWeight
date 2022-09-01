@@ -202,9 +202,19 @@ struct 📉DifferenceView: View {
         }
         
         switch 📉Difference {
-            case ..<0: return 📉Difference.description
+            case ..<0:
+                if ⓣype == .mass && 📱.🚩Amount50g {
+                    return String(format: "%.2f", 📉Difference)
+                } else {
+                    return 📉Difference.description
+                }
             case 0: return nil
-            default: return "+" + 📉Difference.description
+            default:
+                if ⓣype == .mass && 📱.🚩Amount50g {
+                    return "+" + String(format: "%.2f", 📉Difference)
+                } else {
+                    return "+" + 📉Difference.description
+                }
         }
     }
     
