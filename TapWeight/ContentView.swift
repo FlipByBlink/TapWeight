@@ -16,13 +16,11 @@ struct ContentView: View {
                 
                 if 📱.🚩AbleBodyFat { 👆BodyFatStepper() }
                 
-                VStack {
-                    🏷LastEntryLabel()
-                    📅DatePicker()
-                }
-                .padding(.top, 12)
-                .padding(.bottom, 180)
-                .listRowSeparator(.hidden)
+                📅DatePicker()
+                    .padding(.top, 12)
+                    .padding(.bottom, 4)
+                🏷LastEntryLabel()
+                    .padding(.bottom, 180)
             }
             .listStyle(.plain)
             .lineLimit(1)
@@ -48,6 +46,10 @@ struct ContentView: View {
 
 struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
+    var 📉DifferenceValue: Double? {
+        guard let 📝LastValue = 📱.🕘LocalHistory.ⓛogs.last?.entry?.bmiValue else { return nil }
+        return (round((📱.📝BMIValue - 📝LastValue)*10)/10)
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: -4) {
@@ -60,9 +62,32 @@ struct 🪧BMIView: View {
                     .frame(maxHeight: 32)
             }
             
-            Text(📱.📝BMIValue.description)
-                .font(.title2)
-                .fontWeight(.heavy)
+            HStack(alignment: .firstTextBaseline) {
+                Text(📱.📝BMIValue.description)
+                    .font(.title2)
+                    .fontWeight(.heavy)
+                
+                Spacer()
+                
+                if let 📉 = 📉DifferenceValue {
+                    Group {
+                        switch 📉 {
+                            case ..<0:
+                                Text(📉.description)
+                            case 0...:
+                                Text("+" + 📉.description)
+                                    .opacity(📉.isZero ? 0 : 1 )
+                            default: Text("🐛")
+                        }
+                    }
+                    .font(.body.bold())
+                    .monospacedDigit()
+                    .foregroundStyle(.tertiary)
+                    .minimumScaleFactor(0.1)
+                    .frame(maxWidth: 48 ,maxHeight: 32)
+                    .padding(.trailing)
+                }
+            }
         }
         .padding(.vertical, 4)
         .padding(.leading, 32)
@@ -143,6 +168,7 @@ struct 📅DatePicker: View {
             }
             .opacity(📱.📅PickerValue.timeIntervalSinceNow < -300 ? 1 : 0.4)
             .padding(.trailing, 8)
+            .listRowSeparator(.hidden)
             .onChange(of: 🚥Phase) { _ in
                 if 🚥Phase == .background {
                     📱.📅PickerValue = .now
@@ -155,24 +181,27 @@ struct 📅DatePicker: View {
 
 struct 🏷LastEntryLabel: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 🪧Description: String {
-        guard let ⓛastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry else { return "🐛" }
-        return "(" + ⓛastEntry.date.formatted(date: .abbreviated, time: .shortened) + ")"
-    }
     var 🚩CanceledLastEntry: Bool {
         📱.🕘LocalHistory.ⓛogs.last?.entry?.cancellation == false
     }
     
     var body: some View {
-        HStack {
-            Spacer()
-            Text(🪧Description)
+        if let ⓛastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry {
+            HStack {
+                Spacer()
+                VStack(alignment: .trailing) {
+                    Text(ⓛastEntry.date.formatted(date: .abbreviated, time: .omitted))
+                        .font(.footnote.bold())
+                    Text(ⓛastEntry.date.formatted(date: .omitted, time: .shortened))
+                        .font(.caption.bold())
+                }
+            }
+            .foregroundStyle(.tertiary)
+            .padding(.trailing, 12)
+            .minimumScaleFactor(0.3)
+            .opacity(🚩CanceledLastEntry ? 1 : 0)
+            .listRowSeparator(.hidden)
+            .animation(.default, value: 🚩CanceledLastEntry)
         }
-        .foregroundStyle(.quaternary)
-        .padding(.trailing, 10)
-        .minimumScaleFactor(0.3)
-        .font(.footnote.weight(.heavy))
-        .opacity(🚩CanceledLastEntry ? 1 : 0)
-        .animation(.default, value: 🚩CanceledLastEntry)
     }
 }

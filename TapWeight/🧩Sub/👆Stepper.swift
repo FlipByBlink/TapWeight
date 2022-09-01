@@ -73,9 +73,9 @@ struct 👆BodyMassStepper: View {
                     }
                 }
             }
-            .font(.body.weight(.heavy))
+            .font(.body.bold())
             .monospacedDigit()
-            .foregroundStyle(.quaternary)
+            .foregroundStyle(.tertiary)
             .minimumScaleFactor(0.1)
             .frame(maxWidth: 48 ,maxHeight: 32)
         }
@@ -142,9 +142,9 @@ struct 👆BodyFatStepper: View {
                     }
                 }
             }
-            .font(.body.weight(.heavy))
+            .font(.body.bold())
             .monospacedDigit()
-            .foregroundStyle(.quaternary)
+            .foregroundStyle(.tertiary)
             .minimumScaleFactor(0.1)
             .frame(maxWidth: 48 ,maxHeight: 32)
         }
