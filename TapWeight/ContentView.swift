@@ -155,16 +155,13 @@ struct 📅DatePicker: View {
 
 struct 🏷LastEntryLabel: View {
     @EnvironmentObject var 📱: 📱AppModel
-    
     var 🪧Description: String {
-        if let ⓛastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry {
-            return "(" + ⓛastEntry.date.formatted(date: .abbreviated, time: .shortened) + ")"
-        } else {
-            return "🐛"
-        }
+        guard let ⓛastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry else { return "🐛" }
+        return "(" + ⓛastEntry.date.formatted(date: .abbreviated, time: .shortened) + ")"
     }
-    
-    var 🚩CanceledLastEntry: Bool { 📱.🕘LocalHistory.ⓛogs.last?.entry?.cancellation == false }
+    var 🚩CanceledLastEntry: Bool {
+        📱.🕘LocalHistory.ⓛogs.last?.entry?.cancellation == false
+    }
     
     var body: some View {
         HStack {
