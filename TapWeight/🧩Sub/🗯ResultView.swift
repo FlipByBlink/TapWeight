@@ -125,9 +125,10 @@ struct 🗯ResultView: View {
 struct 🗯SummaryView: View {
     @EnvironmentObject var 📱: 📱AppModel
     var 🪧Description: String {
-        var 🪧 = ""
-        🪧 += 📱.📝MassValue.description + " " + 📱.📏MassUnit.rawValue
-        if 📱.🚩AbleBMI { 🪧 += " / " + 📱.📝BMIValue.description }
+        var 🪧 = 📱.📝MassValue.description + " " + 📱.📏MassUnit.rawValue
+        if 📱.🚩AbleBMI {
+            🪧 += " / " + 📱.📝BMIValue.description
+        }
         if 📱.🚩AbleBodyFat {
             🪧 += " / " + (round(📱.📝BodyFatValue*1000)/10).description + " %"
         }
