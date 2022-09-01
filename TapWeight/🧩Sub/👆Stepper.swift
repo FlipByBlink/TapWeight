@@ -25,7 +25,7 @@ struct 👆BodyMassStepper: View {
                         .frame(maxHeight: 36)
                 }
                 Spacer(minLength: 0)
-                📉DifferenceView()
+                📉DifferenceView(.mass)
             }
         } onIncrement: {
             UISelectionFeedbackGenerator().selectionChanged()
@@ -53,37 +53,6 @@ struct 👆BodyMassStepper: View {
             📱.📝MassValue = 📝
         }
     }
-    
-    struct 📉DifferenceView: View {
-        @EnvironmentObject var 📱: 📱AppModel
-        var 🪧Description: String? { //TODO: 50g表記対応
-            guard let 📝LastValue = 📱.🕘LocalHistory.ⓛogs.last?.entry?.massSample.value else { return nil }
-            let 📉Difference = (round((📱.📝MassValue - 📝LastValue)*100)/100)
-            switch 📉Difference {
-                case ..<0: return 📉Difference.description
-                case 0: return nil
-                default: return "+" + 📉Difference.description
-            }
-        }
-        
-        var body: some View {
-            ZStack {
-                Color.clear
-                if 📱.🕘LocalHistory.🚩CanceledLastEntry {
-                    if let 🪧 = 🪧Description {
-                        Text(🪧)
-                            .font(.body.bold())
-                            .monospacedDigit()
-                            .foregroundStyle(.tertiary)
-                            .minimumScaleFactor(0.1)
-                    }
-                }
-            }
-            .frame(width: 48, height: 32)
-            .animation(📱.🚩ShowResult ? .default : .default.speed(2), value: 🪧Description == nil)
-            .animation(.default, value: 📱.🕘LocalHistory.🚩CanceledLastEntry)
-        }
-    }
 }
 
 
@@ -105,7 +74,7 @@ struct 👆BodyFatStepper: View {
                             .frame(maxHeight: 54)
                     }
                     Spacer(minLength: 0)
-                    📉DifferenceView()
+                    📉DifferenceView(.bodyFat)
                 }
             } onIncrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
@@ -124,41 +93,6 @@ struct 👆BodyFatStepper: View {
             }
         } header: {
             Text("Body Fat Percentage")
-        }
-    }
-    
-    struct 📉DifferenceView: View {
-        @EnvironmentObject var 📱: 📱AppModel
-        var 🪧Description: String? {
-            guard let 📝LastValue = 📱.🕘LocalHistory.ⓛogs.last?.entry?.bodyFatValue else { return nil }
-            let 📉Difference = (round((📱.📝BodyFatValue - 📝LastValue)*1000)/10)
-            switch 📉Difference {
-                case ..<0: return 📉Difference.description
-                case 0: return nil
-                default: return "+" + 📉Difference.description
-            }
-        }
-        var 📉DifferenceAmount: Double? {
-            guard let 📝LastValue = 📱.🕘LocalHistory.ⓛogs.last?.entry?.bodyFatValue else { return nil }
-            return (round((📱.📝BodyFatValue - 📝LastValue)*1000)/10)
-        }
-        
-        var body: some View {
-            ZStack {
-                Color.clear
-                if 📱.🕘LocalHistory.🚩CanceledLastEntry {
-                    if let 🪧 = 🪧Description {
-                        Text(🪧)
-                            .font(.body.bold())
-                            .monospacedDigit()
-                            .foregroundStyle(.tertiary)
-                            .minimumScaleFactor(0.1)
-                    }
-                }
-            }
-            .frame(width: 48, height: 32)
-            .animation(📱.🚩ShowResult ? .default : .default.speed(2), value: 🪧Description == nil)
-            .animation(.default, value: 📱.🕘LocalHistory.🚩CanceledLastEntry)
         }
     }
 }

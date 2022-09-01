@@ -10,7 +10,6 @@ struct ContentView: View {
             List {
                 Section {
                     👆BodyMassStepper()
-                    
                     if 📱.🚩AbleBMI { 🪧BMIView() }
                 }
                 
@@ -63,42 +62,12 @@ struct 🪧BMIView: View {
                     .fontWeight(.heavy)
             }
             Spacer()
-            📉DifferenceView()
+            📉DifferenceView(.bmi)
         }
         .padding(.vertical, 4)
         .padding(.leading, 32)
         .monospacedDigit()
         .foregroundStyle(.secondary)
-    }
-    
-    struct 📉DifferenceView: View {
-        @EnvironmentObject var 📱: 📱AppModel
-        var 🪧Description: String? {
-            guard let 📝LastValue = 📱.🕘LocalHistory.ⓛogs.last?.entry?.bmiValue else { return nil }
-            let 📉Difference = (round((📱.📝BMIValue - 📝LastValue)*10)/10)
-            switch 📉Difference {
-                case ..<0: return 📉Difference.description
-                case 0: return nil
-                default: return "+" + 📉Difference.description
-            }
-        }
-        var body: some View {
-            ZStack {
-                Color.clear
-                if 📱.🕘LocalHistory.🚩CanceledLastEntry {
-                    if let 🪧 = 🪧Description {
-                        Text(🪧)
-                            .font(.body.bold())
-                            .monospacedDigit()
-                            .foregroundStyle(.tertiary)
-                            .minimumScaleFactor(0.1)
-                    }
-                }
-            }
-            .frame(width: 48, height: 32)
-            .animation(📱.🚩ShowResult ? .default : .default.speed(2), value: 🪧Description == nil)
-            .animation(.default, value: 📱.🕘LocalHistory.🚩CanceledLastEntry)
-        }
     }
 }
 
@@ -211,5 +180,59 @@ struct 🏷LastEntryLabel: View {
         .listRowSeparator(.hidden)
         .animation(.default, value: 📱.🕘LocalHistory.🚩CanceledLastEntry)
         .animation(.default, value: 📱.🕘LocalHistory.ⓛogs.isEmpty)
+    }
+}
+
+
+struct 📉DifferenceView: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    var ⓣype: 🅃ype
+    var 🪧Description: String? {
+        guard let 📝LastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry else { return nil }
+        let 📉Difference: Double
+        switch ⓣype {
+            case .mass:
+                📉Difference = (round((📱.📝MassValue - 📝LastEntry.massSample.value)*100)/100)
+            case .bmi:
+                guard let 📝LastValue = 📝LastEntry.bmiValue else { return nil }
+                📉Difference = (round((📱.📝BMIValue - 📝LastValue)*10)/10)
+            case .bodyFat:
+                guard let 📝LastValue = 📝LastEntry.bodyFatValue else { return nil }
+                📉Difference = (round((📱.📝BodyFatValue - 📝LastValue)*1000)/10)
+        }
+        
+        switch 📉Difference {
+            case ..<0: return 📉Difference.description
+            case 0: return nil
+            default: return "+" + 📉Difference.description
+        }
+    }
+    
+    var body: some View {
+        ZStack {
+            Color.clear
+            if 📱.🕘LocalHistory.🚩CanceledLastEntry {
+                if let 🪧 = 🪧Description {
+                    Text(🪧)
+                        .font(.body.bold())
+                        .monospacedDigit()
+                        .foregroundStyle(.tertiary)
+                        .minimumScaleFactor(0.1)
+                }
+            }
+        }
+        .frame(width: 48, height: 32)
+        .animation(📱.🚩ShowResult ? .default : .default.speed(2), value: 🪧Description == nil)
+        .animation(.default, value: 📱.🕘LocalHistory.🚩CanceledLastEntry)
+    }
+    
+    enum 🅃ype {
+        case mass
+        case bmi
+        case bodyFat
+    }
+    
+    init(_ ⓣype: 🅃ype) {
+        self.ⓣype = ⓣype
     }
 }
