@@ -192,6 +192,7 @@ struct 📉DifferenceView: View {
         let 📉Difference: Double
         switch ⓣype {
             case .mass:
+                if 📝LastEntry.massSample.unit != 📱.📏MassUnit { return nil }
                 📉Difference = (round((📱.📝MassValue - 📝LastEntry.massSample.value)*100)/100)
             case .bmi:
                 guard let 📝LastValue = 📝LastEntry.bmiValue else { return nil }

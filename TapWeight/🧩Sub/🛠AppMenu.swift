@@ -41,8 +41,15 @@ struct 🛠AppMenu: View {
                         Label("Unit", systemImage: "scalemass")
                     }
                     .onChange(of: 📱.📏MassUnit) { 📏 in
-                        if 📏 != .kg {
-                            📱.🚩Amount50g = false
+                        switch 📏 {
+                            case .kg:
+                                📱.📝MassValue = 60
+                            case .lbs:
+                                📱.📝MassValue = 130
+                                📱.🚩Amount50g = false
+                            case .st:
+                                📱.📝MassValue = 10
+                                📱.🚩Amount50g = false
                         }
                     }
                     
