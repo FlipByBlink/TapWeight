@@ -43,6 +43,7 @@ struct 🕘LocalHistoryView: View {
     
     struct 🄻ogSection: View {
         var ⓛog: 🕘Log
+        
         var body: some View {
             Section {
                 if let ⓔntry = ⓛog.entry {
@@ -90,7 +91,8 @@ struct 🕘LocalHistoryModel {
     var ⓛogs: [Log] = [] {
         didSet {
             do {
-                UserDefaults.standard.set(try JSONEncoder().encode(ⓛogs), forKey: "LocalHistory")
+                let ⓓata = try JSONEncoder().encode(ⓛogs)
+                UserDefaults.standard.set(ⓓata, forKey: "LocalHistory")
             } catch {
                 print("🚨Error: ", error)
             }
@@ -98,12 +100,11 @@ struct 🕘LocalHistoryModel {
     }
     
     init() {
-        if let ⓤd = UserDefaults.standard.data(forKey: "LocalHistory") {
-            do {
-                ⓛogs = try JSONDecoder().decode([Log].self, from: ⓤd)
-            } catch {
-                print("🚨Error: ", error)
-            }
+        guard let ⓤd = UserDefaults.standard.data(forKey: "LocalHistory") else { return }
+        do {
+            ⓛogs = try JSONDecoder().decode([Log].self, from: ⓤd)
+        } catch {
+            print("🚨Error: ", error)
         }
     }
     
@@ -117,7 +118,7 @@ struct 🕘LocalHistoryModel {
     }
     
     mutating func modifyCancellation() {
-        var ⓛog = ⓛogs.popLast()!
+        guard var ⓛog = ⓛogs.popLast() else { return }
         ⓛog.entry?.cancellation = true
         ⓛogs.append(ⓛog)
     }

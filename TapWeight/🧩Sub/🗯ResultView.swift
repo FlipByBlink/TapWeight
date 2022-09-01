@@ -31,30 +31,7 @@ struct 🗯ResultView: View {
                         }
                         
                         if 📱.🚨RegisterError == false {
-                            let 🅂ummary: String = {
-                                var 🪧 = ""
-                                🪧 += 📱.📝MassValue.description + " " + 📱.📏MassUnit.rawValue
-                                if 📱.🚩AbleBMI { 🪧 += " / " + 📱.📝BMIValue.description }
-                                if 📱.🚩AbleBodyFat {
-                                    🪧 += " / " + (round(📱.📝BodyFatValue*1000)/10).description + " %"
-                                }
-                                return 🪧
-                            }()
-                            
-                            Group {
-                                Text(🅂ummary)
-                                    .strikethrough(📱.🚩Canceled)
-                                    .font(.body.bold())
-                                
-                                if 📱.🚩AbleDatePicker {
-                                    Text(📱.📅PickerValue.formatted(date: .abbreviated, time: .shortened))
-                                        .strikethrough(📱.🚩Canceled)
-                                        .font(.subheadline.weight(.semibold))
-                                        .padding(.horizontal)
-                                }
-                            }
-                            .opacity(0.75)
-                            .padding(.horizontal, 42)
+                            🗯SummaryView()
                         }
                         
                         VStack {
@@ -142,6 +119,36 @@ struct 🗯ResultView: View {
             }
         }
         .preferredColorScheme(.dark)
+    }
+}
+
+struct 🗯SummaryView: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    var 🪧Description: String {
+        var 🪧 = ""
+        🪧 += 📱.📝MassValue.description + " " + 📱.📏MassUnit.rawValue
+        if 📱.🚩AbleBMI { 🪧 += " / " + 📱.📝BMIValue.description }
+        if 📱.🚩AbleBodyFat {
+            🪧 += " / " + (round(📱.📝BodyFatValue*1000)/10).description + " %"
+        }
+        return 🪧
+    }
+    
+    var body: some View {
+        Group {
+            Text(🪧Description)
+                .strikethrough(📱.🚩Canceled)
+                .font(.body.bold())
+            
+            if 📱.🚩AbleDatePicker {
+                Text(📱.📅PickerValue.formatted(date: .abbreviated, time: .shortened))
+                    .strikethrough(📱.🚩Canceled)
+                    .font(.subheadline.weight(.semibold))
+                    .padding(.horizontal)
+            }
+        }
+        .opacity(0.75)
+        .padding(.horizontal, 42)
     }
 }
 
