@@ -46,54 +46,59 @@ struct ContentView: View {
 
 struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 📉DifferenceValue: Double? {
-        guard let 📝LastValue = 📱.🕘LocalHistory.ⓛogs.last?.entry?.bmiValue else { return nil }
-        return (round((📱.📝BMIValue - 📝LastValue)*10)/10)
-    }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: -4) {
-            HStack(alignment: .firstTextBaseline, spacing: 4) {
-                Text("Body Mass Index")
-                    .font(.footnote.bold())
+        HStack {
+            VStack(alignment: .leading, spacing: -4) {
+                HStack(alignment: .firstTextBaseline, spacing: 4) {
+                    Text("Body Mass Index")
+                        .font(.footnote.bold())
+                    Text("(" + 📱.🧍HeightValue.description + "cm)")
+                        .font(.caption2.weight(.semibold))
+                        .frame(maxHeight: 32)
+                }
                 
-                Text("(" + 📱.🧍HeightValue.description + "cm)")
-                    .font(.caption2.weight(.semibold))
-                    .frame(maxHeight: 32)
-            }
-            
-            HStack(alignment: .firstTextBaseline) {
                 Text(📱.📝BMIValue.description)
                     .font(.title2)
                     .fontWeight(.heavy)
-                
-                Spacer()
-                
-                if let 📉 = 📉DifferenceValue {
-                    Group {
-                        switch 📉 {
-                            case ..<0:
-                                Text(📉.description)
-                            case 0...:
-                                Text("+" + 📉.description)
-                                    .opacity(📉.isZero ? 0 : 1 )
-                            default: Text("🐛")
-                        }
-                    }
-                    .font(.body.bold())
-                    .monospacedDigit()
-                    .foregroundStyle(.tertiary)
-                    .minimumScaleFactor(0.1)
-                    .frame(maxWidth: 48 ,maxHeight: 32)
-                    .padding(.trailing)
-                    .opacity(📱.🕘LocalHistory.🚩CanceledLastEntry ? 1 : 0)
-                }
             }
+            Spacer()
+            📉DifferenceView()
         }
         .padding(.vertical, 4)
         .padding(.leading, 32)
         .monospacedDigit()
         .foregroundStyle(.secondary)
+    }
+    
+    struct 📉DifferenceView: View {
+        @EnvironmentObject var 📱: 📱AppModel
+        var 🪧Description: String? {
+            guard let 📝LastValue = 📱.🕘LocalHistory.ⓛogs.last?.entry?.bmiValue else { return nil }
+            let 📉Difference = (round((📱.📝BMIValue - 📝LastValue)*10)/10)
+            switch 📉Difference {
+                case ..<0: return 📉Difference.description
+                case 0: return nil
+                default: return "+" + 📉Difference.description
+            }
+        }
+        var body: some View {
+            ZStack {
+                Color.clear
+                if 📱.🕘LocalHistory.🚩CanceledLastEntry {
+                    if let 🪧 = 🪧Description {
+                        Text(🪧)
+                            .font(.body.bold())
+                            .monospacedDigit()
+                            .foregroundStyle(.tertiary)
+                            .minimumScaleFactor(0.1)
+                    }
+                }
+            }
+            .frame(width: 48, height: 32)
+            .animation(📱.🚩ShowResult ? .default : .default.speed(2), value: 🪧Description == nil)
+            .animation(.default, value: 📱.🕘LocalHistory.🚩CanceledLastEntry)
+        }
     }
 }
 
