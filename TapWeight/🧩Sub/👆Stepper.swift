@@ -22,7 +22,9 @@ struct 👆BodyMassStepper: View {
                 
                 Text(📱.📏MassUnit.rawValue)
                     .font(.title2.weight(.black))
-                    .frame(maxHeight: 54)
+                    .frame(maxHeight: 36)
+                Spacer(minLength: 0)
+                📉DifferenceView()
             }
         } onIncrement: {
             UISelectionFeedbackGenerator().selectionChanged()
@@ -50,6 +52,34 @@ struct 👆BodyMassStepper: View {
             📱.📝MassValue = 📝
         }
     }
+    
+    struct 📉DifferenceView: View {
+        @EnvironmentObject var 📱: 📱AppModel
+        var 📉DifferenceAmount: Double? {
+            guard let 📝LastValue = 📱.🕘LocalHistory.ⓛogs.last?.entry?.massSample.value else { return nil }
+            return (round((📱.📝MassValue - 📝LastValue)*100)/100)
+        }
+        
+        var body: some View {
+            Group {
+                if let 📉 = 📉DifferenceAmount {
+                    switch 📉 {
+                        case ..<0:
+                            Text(📉.description)
+                        case 0...:
+                            Text("+" + 📉.description)
+                                .opacity(📉.isZero ? 0 : 1 )
+                        default: Text("🐛")
+                    }
+                }
+            }
+            .font(.body.weight(.heavy))
+            .monospacedDigit()
+            .foregroundStyle(.quaternary)
+            .minimumScaleFactor(0.1)
+            .frame(maxWidth: 48 ,maxHeight: 32)
+        }
+    }
 }
 
 
@@ -69,6 +99,8 @@ struct 👆BodyFatStepper: View {
                     Text("%")
                         .font(.title2.weight(.black))
                         .frame(maxHeight: 54)
+                    Spacer(minLength: 0)
+                    📉DifferenceView()
                 }
             } onIncrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
@@ -87,6 +119,34 @@ struct 👆BodyFatStepper: View {
             }
         } header: {
             Text("Body Fat Percentage")
+        }
+    }
+    
+    struct 📉DifferenceView: View {
+        @EnvironmentObject var 📱: 📱AppModel
+        var 📉DifferenceAmount: Double? {
+            guard let 📝LastValue = 📱.🕘LocalHistory.ⓛogs.last?.entry?.bodyFatValue else { return nil }
+            return (round((📱.📝BodyFatValue - 📝LastValue)*1000)/10)
+        }
+        
+        var body: some View {
+            Group {
+                if let 📉 = 📉DifferenceAmount {
+                    switch 📉 {
+                        case ..<0:
+                            Text(📉.description)
+                        case 0...:
+                            Text("+" + 📉.description)
+                                .opacity(📉.isZero ? 0 : 1 )
+                        default: Text("🐛")
+                    }
+                }
+            }
+            .font(.body.weight(.heavy))
+            .monospacedDigit()
+            .foregroundStyle(.quaternary)
+            .minimumScaleFactor(0.1)
+            .frame(maxWidth: 48 ,maxHeight: 32)
         }
     }
 }
