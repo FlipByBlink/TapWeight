@@ -100,15 +100,19 @@ class 📱AppModel: ObservableObject {
     
     
     func 🏥RequestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) {
-        let ⓣype: HKSampleType = HKQuantityType(ⓘdentifier)
-        if 🏥HealthStore.authorizationStatus(for: ⓣype) == .notDetermined {
-            Task {
-                do {
+        Task {
+            do {
+                let ⓣype: HKSampleType = HKQuantityType(ⓘdentifier)
+                let 🚩 = try await 🏥HealthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype])
+                print(🚩 == .shouldRequest) //TODO: デバッグ後に削除
+                print(🚩 == .unknown) //TODO: デバッグ後に削除
+                print(🚩 == .unnecessary) //TODO: デバッグ後に削除
+                if 🚩 == .shouldRequest {
                     try await 🏥HealthStore.requestAuthorization(toShare: [ⓣype], read: [ⓣype])
-                    try await 🏥GetPreferredMassUnit()
-                } catch {
-                    self.🕘LocalHistory.addLog("Error: " + #function + error.localizedDescription)
+                    if ⓘdentifier == .bodyMass { try await 🏥GetPreferredMassUnit() }
                 }
+            } catch {
+                self.🕘LocalHistory.addLog("Error: " + #function + error.localizedDescription)
             }
         }
     }
