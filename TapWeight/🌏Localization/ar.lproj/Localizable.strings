@@ -1,6 +1,8 @@
 
 "Body Mass" = "الوزن";
-
 "Body Mass Index" = "مؤشر كتلة الجسم";
-
 "Body Fat Percentage" = "نسبة الدهون في الجسم";
+
+"Open \"Health\" app" = "Open \"صحتي\" app";
+"Registration for \"Health\" app" = "Registration for \"صحتي\" app";
+"Please check permission on \"Health\" app" = "Please check permission on \"صحتي\" app";

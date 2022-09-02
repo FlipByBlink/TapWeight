@@ -1,6 +1,8 @@
 
 "Body Mass" = "Poids";
-
 "Body Mass Index" = "Indice de masse corporelle";
-
 "Body Fat Percentage" = "Indice de masse grasse";
+
+"Open \"Health\" app" = "Open \"Santé\" app";
+"Registration for \"Health\" app" = "Registration for \"Santé\" app";
+"Please check permission on \"Health\" app" = "Please check permission on \"Santé\" app";
