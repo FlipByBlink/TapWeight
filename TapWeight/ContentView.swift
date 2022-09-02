@@ -159,7 +159,7 @@ struct 🏷LastEntryDateLabel: View {
                     HStack {
                         Spacer()
                         VStack(alignment: .trailing) {
-                            Text(ⓛastEntry.date.formatted(date: .abbreviated, time: .omitted))
+                            Text(ⓛastEntry.date.formatted(date: .numeric, time: .omitted))
                                 .font(.footnote.bold())
                             Text(ⓛastEntry.date.formatted(date: .omitted, time: .shortened))
                                 .font(.caption.bold())
