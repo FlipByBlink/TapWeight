@@ -1,4 +1,11 @@
 
+"1.3" = "・Add \"Dismiss\" button on result screen
+・Add a display of difference of last entry
+・Improve \"Local history\"
+・Add \"Health\"-word localization
+・Various bugfixes and improvements
+・Refactoring";
+
 "1.2" = "Add \"Function to edit date\"
 Show last date
 Bug fix \"BMI local history\"
@@ -6,9 +13,6 @@ Change significant digits of BMI
 Change frequency in AD (\"1 in 3\" → \"after 5, every\")
 Add localization \"Ukrainian\"
 Various bugfixes and improvements";
-
-
-
 
 "1.1.1" = "- Add \"Hide AD banner\" option. (in-app-purchase)";
 

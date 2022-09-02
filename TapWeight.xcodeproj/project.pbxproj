@@ -51,6 +51,7 @@
 		12C67126286068B000FE4C06 /* 🛒PurchaseSection.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BA83C72860525B009E7E3F /* 🛒PurchaseSection.swift */; };
 		12C67127286068B400FE4C06 /* 🛒StoreModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BA83C82860525B009E7E3F /* 🛒StoreModel.swift */; };
 		12C67128286068C700FE4C06 /* 📣ADMenuLink.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BA83C428605235009E7E3F /* 📣ADMenuLink.swift */; };
+		F5D1BE1F28C1D475004527EC /* 🕘LocalHistory.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5FB6BEC28BCCBDF00F55EED /* 🕘LocalHistory.swift */; };
 		F5FB6BED28BCCBDF00F55EED /* 🕘LocalHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FB6BEC28BCCBDF00F55EED /* 🕘LocalHistory.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 			dstPath = "🧩Sub";
 			dstSubfolderSpec = 7;
 			files = (
+				F5D1BE1F28C1D475004527EC /* 🕘LocalHistory.swift in CopyFiles */,
 				12AF80DD288EC2420047324A /* 🛠AppMenu.swift in CopyFiles */,
 				12AF80DE288EC2420047324A /* 🧍HeightMenu.swift in CopyFiles */,
 				129CBE2B284CD10D00C73F4D /* 👆Stepper.swift in CopyFiles */,
