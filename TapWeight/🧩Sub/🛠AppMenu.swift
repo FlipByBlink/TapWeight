@@ -63,6 +63,9 @@ struct 🛠AppMenu: View {
                     Toggle(isOn: $📱.🚩AbleBMI) {
                         Label("Body Mass Index", systemImage: "function")
                     }
+                    .onChange(of: 📱.🚩AbleBMI) { _ in
+                        📱.🏥RequestAuth(.bodyMassIndex)
+                    }
                     
                     🧍HeightMenuLink()
                 }
@@ -71,6 +74,9 @@ struct 🛠AppMenu: View {
                 Section {
                     Toggle(isOn: $📱.🚩AbleBodyFat) {
                         Label("Body Fat Percentage", systemImage: "percent")
+                    }
+                    .onChange(of: 📱.🚩AbleBodyFat) { _ in
+                        📱.🏥RequestAuth(.bodyFatPercentage)
                     }
                 }
                 

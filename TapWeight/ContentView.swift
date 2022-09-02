@@ -17,7 +17,7 @@ struct ContentView: View {
                 
                 📅DatePicker()
                     .padding(.top, 12)
-                🏷LastEntryLabel()
+                🏷LastEntryDateLabel()
                     .padding(.top, 4)
                     .padding(.bottom, 180)
             }
@@ -27,18 +27,9 @@ struct ContentView: View {
             .navigationTitle("Body Mass")
             .toolbar { 🛠MenuButton() } // ⚙️
         }
-        .overlay(alignment: .bottomLeading) { 👆DoneButton() }
+        .overlay(alignment: .bottomLeading) { 👆DoneButton() } // ☑️
         .overlay(alignment: .bottomTrailing) { 💟JumpButton() }
-        .fullScreenCover(isPresented: $📱.🚩ShowResult) {
-            🗯ResultView()
-        }
         .onAppear { 📱.🏥RequestAuth(.bodyMass) }
-        .onChange(of: 📱.🚩AbleBodyFat) { _ in
-            📱.🏥RequestAuth(.bodyFatPercentage)
-        }
-        .onChange(of: 📱.🚩AbleBMI) { _ in
-            📱.🏥RequestAuth(.bodyMassIndex)
-        }
     }
 }
 
@@ -92,6 +83,9 @@ struct 👆DoneButton: View { // ☑️
         }
         .accessibilityLabel("DONE")
         .padding()
+        .fullScreenCover(isPresented: $📱.🚩ShowResult) {
+            🗯ResultView()
+        }
     }
 }
 
@@ -154,7 +148,7 @@ struct 📅DatePicker: View {
 }
 
 
-struct 🏷LastEntryLabel: View {
+struct 🏷LastEntryDateLabel: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
