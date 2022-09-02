@@ -108,37 +108,6 @@ iPhoneにプリインストールされているApple「ヘルスケア」アプ
 - 自作アプリに関するバナー広告をアプリ内で表示します。
 
 
-==== Localization: All ====
-
-English
-
-Japanese(native)
-
-==== Localization: Main 3 keywords only ====
-
-(English: Body Mass / Body Mass Index / Body Fat Percentage)
-
-Simplified_Chinese: 体重 / 身高体重指数 / 体脂率
-
-Traditional_Chinese: 體重 / 身體質量指數 / 體脂肪率
-
-Spanish: Peso / Índice de masa corporal / Porcentaje de grasa corporal
-
-Portuguese: Peso / Índice de massa corporal / Percentagem de gordura
-
-Russian: Вес / Индекс массы тела / Процент жира в организме
-
-Indonesian: Berat Badan / Indeks Massa Tubuh / Persentase Lemak Tubuh
-
-French: Poids / Indice de masse corporelle / Indice de masse grasse
-
-Arabic: الوزن (Body Mass) / مؤشر كتلة الجسم (Body Mass Index) / نسبة الدهون في الجسم (Body Fat Percentage)
-
-German: Gewicht / Body-Mass-Index / Körperfettanteil
-
-Korean: 체중 / 체질량 지수 / 체지방률
-
-Ukrainian: Вага / Індекс маси тіла / Відсоток жиру в організмі
 
 
 <br>
