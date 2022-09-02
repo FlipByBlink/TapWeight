@@ -3,13 +3,14 @@
 "Body Mass Index" = "BMI";
 "Body Fat Percentage" = "体脂肪率";
 
-// ======== Main View ========
-"DONE" = "完了";
 "Open \"Health\" app" = "「ヘルスケア」アプリを開く";
-
-// ======== Result View ========
 "Registration for \"Health\" app" = "「ヘルスケア」アプリに登録しました。";
 "Please check permission on \"Health\" app" = "「ヘルスケア」アプリで権限を確認して下さい。";
+
+// ======== Main View ========
+"DONE" = "完了";
+
+// ======== Result View ========
 "DONE!" = "完了!";
 "ERROR!?" = "エラー!?";
 "Canceled" = "取り消しました。";
