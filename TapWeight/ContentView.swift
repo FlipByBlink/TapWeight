@@ -25,7 +25,7 @@ struct ContentView: View {
             .lineLimit(1)
             .minimumScaleFactor(0.3)
             .navigationTitle("Body Mass")
-            .toolbar { 🛠MenuButton($📱.🚩ShowMenu) } // ⚙️
+            .toolbar { 🛠MenuButton() } // ⚙️
         }
         .overlay(alignment: .bottomLeading) { 👆DoneButton() }
         .overlay(alignment: .bottomTrailing) { 💟JumpButton() }

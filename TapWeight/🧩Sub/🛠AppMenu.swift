@@ -1,30 +1,23 @@
 
 import SwiftUI
 
-struct 🛠MenuButton: ToolbarContent { // ⚙️
-    @Binding var 🚩ShowMenu: Bool
+struct 🛠MenuButton: View { // ⚙️
+    @EnvironmentObject var 📱: 📱AppModel
     
-    var body: some ToolbarContent {
-        ToolbarItem(placement: .navigationBarTrailing) {
-            Button {
-                🚩ShowMenu = true
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-            } label: {
-                Image(systemName: "gearshape")
-                    .foregroundColor(.primary)
-            }
-            .accessibilityLabel("Open menu")
-            .sheet(isPresented: $🚩ShowMenu) {
-                🛠AppMenu()
-            }
+    var body: some View {
+        Button {
+            📱.🚩ShowMenu = true
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        } label: {
+            Image(systemName: "gearshape")
+                .foregroundColor(.primary)
+        }
+        .accessibilityLabel("Open menu")
+        .sheet(isPresented: $📱.🚩ShowMenu) {
+            🛠AppMenu()
         }
     }
-    
-    init(_ 🚩ShowMenu: Binding<Bool>) {
-        _🚩ShowMenu = 🚩ShowMenu
-    }
 }
-
 
 struct 🛠AppMenu: View {
     @EnvironmentObject var 📱: 📱AppModel
@@ -124,7 +117,9 @@ struct 🛠AppMenu: View {
             .navigationTitle("Menu")
             .toolbar { ﹀CloseMenuButton() }
         }
-        .onDisappear { 📱.🚩ShowMenu = false }
+        //.onDisappear { 📱.🚩ShowMenu = false }
+        //modalをスワイプダウンで閉じた際に他のmodalに影響を与える不具合に対応するためのコード。
+        //一旦コメントアウトしたが再び誤動作が起きないか注視する。
     }
 }
 
