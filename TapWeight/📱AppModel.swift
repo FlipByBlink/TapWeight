@@ -104,7 +104,8 @@ class 📱AppModel: ObservableObject {
         if 🏥HealthStore.authorizationStatus(for: ⓣype) == .notDetermined {
             Task {
                 do {
-                    try await 🏥HealthStore.requestAuthorization(toShare: [ⓣype], read: [])
+                    try await 🏥HealthStore.requestAuthorization(toShare: [ⓣype], read: [ⓣype])
+                    try await 🏥GetPreferredMassUnit()
                 } catch {
                     self.🕘LocalHistory.addLog("Error: " + #function + error.localizedDescription)
                 }
@@ -125,6 +126,19 @@ class 📱AppModel: ObservableObject {
             DispatchQueue.main.async {
                 self.🕘LocalHistory.addLog("Error: " + error.localizedDescription)
                 self.🚨CancelError = true
+            }
+        }
+    }
+    
+    
+    @MainActor
+    func 🏥GetPreferredMassUnit() async throws {
+        if let 📏 = try await 🏥HealthStore.preferredUnits(for: [HKQuantityType(.bodyMass)]).first {
+            switch 📏.value {
+                case .gramUnit(with: .kilo): 📏MassUnit = .kg
+                case .pound(): 📏MassUnit = .lbs
+                case .stone(): 📏MassUnit = .st
+                default: print("🐛")
             }
         }
     }
