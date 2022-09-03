@@ -118,6 +118,49 @@ class 📱AppModel: ObservableObject {
     }
     
     
+    func 🏥CheckAuthOnLaunch() { //TODO: 実装要検討
+        Task {
+            do {
+                var ⓣypes: Set<HKSampleType> = []
+                
+                do {
+                    let ⓣype = HKQuantityType(.bodyMass)
+                    if try await 🏥HealthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype]) == .shouldRequest {
+                        ⓣypes.insert(ⓣype)
+                    }
+                }
+                
+                if 🚩AbleBMI {
+                    let ⓣype = HKQuantityType(.bodyMassIndex)
+                    if try await 🏥HealthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype]) == .shouldRequest {
+                        ⓣypes.insert(ⓣype)
+                    }
+                }
+                
+                if 🚩AbleBodyFat {
+                    let ⓣype = HKQuantityType(.bodyFatPercentage)
+                    if try await 🏥HealthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype]) == .shouldRequest {
+                        ⓣypes.insert(ⓣype)
+                    }
+                }
+                
+                if !ⓣypes.isEmpty {
+                    if try await 🏥HealthStore.statusForAuthorizationRequest(toShare: ⓣypes, read: ⓣypes) == .shouldRequest {
+                        try await 🏥HealthStore.requestAuthorization(toShare: ⓣypes, read: ⓣypes)
+                    }
+                }
+            } catch {
+                🕘LocalHistory.addLog("Error: " + #function + error.localizedDescription)
+            }
+        }
+    }
+    
+    
+    func 🏥GetLatestValue() {
+        //TODO: 実装
+    }
+    
+    
     @MainActor
     func 🗑Cancel() async {
         do {

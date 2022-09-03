@@ -29,7 +29,8 @@ struct ContentView: View {
         }
         .overlay(alignment: .bottomLeading) { 👆DoneButton() } // ☑️
         .overlay(alignment: .bottomTrailing) { 💟JumpButton() }
-        .onAppear { 📱.🏥RequestAuth(.bodyMass) }
+//        .onAppear { 📱.🏥RequestAuth(.bodyMass) }
+        .onAppear { 📱.🏥CheckAuthOnLaunch() }
     }
 }
 
