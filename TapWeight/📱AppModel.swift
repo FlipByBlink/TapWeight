@@ -14,12 +14,7 @@ class 📱AppModel: ObservableObject {
     @AppStorage("AbleDatePicker") var 🚩AbleDatePicker: Bool = false
     
     @Published var 📝MassValue: Double = 65.0
-    var 📝BMIValue: Double {
-        let ⓠuantity = HKQuantity(unit: 📏MassUnit.hkunit, doubleValue: 📝MassValue)
-        let ⓚiloMassValue = ⓠuantity.doubleValue(for: .gramUnit(with: .kilo))
-        let 📝 = ⓚiloMassValue / pow(Double(🧍HeightValue)/100, 2)
-        return Double(Int(round(📝*10)))/10
-    }
+    var 📝BMIValue: Double { 🧮CalculateBMI(📝MassValue, 📏MassUnit, 🧍HeightValue) }
     @Published var 📝BodyFatValue: Double = 0.2
     
     @Published var 💾LastMassValue: Double? = nil
@@ -106,12 +101,8 @@ class 📱AppModel: ObservableObject {
     func 🏥RequestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) {
         Task {
             do {
-                let ⓣype: HKSampleType = HKQuantityType(ⓘdentifier)
-                let 🚩 = try await 🏥HealthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype])
-                print(🚩 == .shouldRequest) //TODO: デバッグ後に削除
-                print(🚩 == .unknown) //TODO: デバッグ後に削除
-                print(🚩 == .unnecessary) //TODO: デバッグ後に削除
-                if 🚩 == .shouldRequest {
+                if try await 🏥CheckShouldRequestAuth(ⓘdentifier) {
+                    let ⓣype = HKQuantityType(ⓘdentifier)
                     try await 🏥HealthStore.requestAuthorization(toShare: [ⓣype], read: [ⓣype])
                     if ⓘdentifier == .bodyMass { try await 🏥GetPreferredMassUnit() }
                 }
@@ -122,29 +113,30 @@ class 📱AppModel: ObservableObject {
     }
     
     
+    func 🏥CheckShouldRequestAuth(_ identifier: HKQuantityTypeIdentifier) async throws -> Bool {
+        let ⓣype = HKQuantityType(identifier)
+        return try await 🏥HealthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype]) == .shouldRequest
+    }
+    
+    
     func 🏥CheckAuthOnLaunch() { //TODO: 実装要検討
         Task {
             do {
                 var ⓣypes: Set<HKSampleType> = []
                 
-                do {
-                    let ⓣype = HKQuantityType(.bodyMass)
-                    if try await 🏥HealthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype]) == .shouldRequest {
-                        ⓣypes.insert(ⓣype)
-                    }
+                if try await 🏥CheckShouldRequestAuth(.bodyMass) {
+                    ⓣypes.insert(HKQuantityType(.bodyMass))
                 }
                 
                 if 🚩AbleBMI {
-                    let ⓣype = HKQuantityType(.bodyMassIndex)
-                    if try await 🏥HealthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype]) == .shouldRequest {
-                        ⓣypes.insert(ⓣype)
+                    if try await 🏥CheckShouldRequestAuth(.bodyMassIndex) {
+                        ⓣypes.insert(HKQuantityType(.bodyMassIndex))
                     }
                 }
                 
                 if 🚩AbleBodyFat {
-                    let ⓣype = HKQuantityType(.bodyFatPercentage)
-                    if try await 🏥HealthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype]) == .shouldRequest {
-                        ⓣypes.insert(ⓣype)
+                    if try await 🏥CheckShouldRequestAuth(.bodyFatPercentage) {
+                        ⓣypes.insert(HKQuantityType(.bodyFatPercentage))
                     }
                 }
                 
@@ -242,4 +234,12 @@ class 📱AppModel: ObservableObject {
         📦Sample = []
         🏥GetLatestValue()
     }
+}
+
+
+func 🧮CalculateBMI(_ massValue: Double, _ massUnit: 📏BodyMassUnit, _ heightValue: Int) -> Double {
+    let ⓠuantity = HKQuantity(unit: massUnit.hkunit, doubleValue: massValue)
+    let ⓚiloMassValue = ⓠuantity.doubleValue(for: .gramUnit(with: .kilo))
+    let ⓥalue = ⓚiloMassValue / pow(Double(heightValue)/100, 2)
+    return Double(Int(round(ⓥalue*10)))/10
 }
