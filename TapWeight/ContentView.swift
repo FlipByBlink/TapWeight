@@ -4,6 +4,7 @@ import HealthKit
 
 struct ContentView: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @Environment(\.scenePhase) var 🚥Phase: ScenePhase
     
     var body: some View {
         NavigationView {
@@ -27,9 +28,13 @@ struct ContentView: View {
         }
         .overlay(alignment: .bottomLeading) { 👆DoneButton() } // ☑️
         .overlay(alignment: .bottomTrailing) { 💟JumpButton() }
-//        .onAppear { 📱.🏥RequestAuth(.bodyMass) }
         .onAppear { 📱.🏥CheckAuthOnLaunch() }
         .onAppear { 📱.🏥GetLatestValue() }
+        .onChange(of: 🚥Phase) { _ in
+            if 🚥Phase == .background {
+                📱.🏥GetLatestValue()
+            }
+        }
     }
 }
 
@@ -137,7 +142,7 @@ struct 📅DatePicker: View {
                     }
                 }
             }
-            .opacity(📱.📅PickerValue.timeIntervalSinceNow < -300 ? 1 : 0.4)
+            .opacity(📱.🚩DatePickerIsAlmostNow ? 0.4 : 1)
             .padding(.trailing, 8)
             .listRowSeparator(.hidden)
             .onChange(of: 🚥Phase) { _ in
@@ -148,36 +153,6 @@ struct 📅DatePicker: View {
         }
     }
 }
-
-
-//struct 🏷LastEntryDateLabel: View { //TODO: 実装再検討
-//    @EnvironmentObject var 📱: 📱AppModel
-//
-//    var body: some View {
-//        ZStack {
-//            Color.clear
-//            if 📱.🕘LocalHistory.🚩CanceledLastEntry {
-//                if let ⓛastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry {
-//                    HStack {
-//                        Spacer()
-//                        VStack(alignment: .trailing) {
-//                            Text(ⓛastEntry.date.formatted(date: .numeric, time: .omitted))
-//                                .font(.footnote.bold())
-//                            Text(ⓛastEntry.date.formatted(date: .omitted, time: .shortened))
-//                                .font(.caption.bold())
-//                        }
-//                    }
-//                    .foregroundStyle(.tertiary)
-//                    .padding(.trailing, 12)
-//                    .minimumScaleFactor(0.3)
-//                }
-//            }
-//        }
-//        .listRowSeparator(.hidden)
-//        .animation(.default, value: 📱.🕘LocalHistory.🚩CanceledLastEntry)
-//        .animation(.default, value: 📱.🕘LocalHistory.ⓛogs.isEmpty)
-//    }
-//}
 
 
 struct 📉DifferenceView: View { //TODO: 実装再検討
@@ -216,12 +191,10 @@ struct 📉DifferenceView: View { //TODO: 実装再検討
         }
     }
     
-    var 🚩InputDataIsNow: Bool { 📱.📅PickerValue.timeIntervalSinceNow > -300 }
-    
     var body: some View {
         ZStack {
             Color.clear
-            if 🚩InputDataIsNow {
+            if 📱.🚩DatePickerIsAlmostNow {
                 if let 🪧 = 🪧Description {
                     VStack(spacing: 0) {
                         Text(🪧)
@@ -242,7 +215,7 @@ struct 📉DifferenceView: View { //TODO: 実装再検討
         }
         .frame(width: 48, height: 48)
         .animation(📱.🚩ShowResult ? .default : .default.speed(2), value: 🪧Description == nil)
-        .animation(.default, value: 🚩InputDataIsNow)
+        .animation(.default.speed(2), value: 📱.🚩DatePickerIsAlmostNow)
     }
     
     enum 🅃ype {

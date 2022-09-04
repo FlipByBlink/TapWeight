@@ -22,6 +22,7 @@ class 📱AppModel: ObservableObject {
     @Published var 💾LastBodyFatSample: HKQuantitySample? = nil
     
     @Published var 📅PickerValue = Date.now
+    var 🚩DatePickerIsAlmostNow: Bool { 📅PickerValue.timeIntervalSinceNow > -300 }
     
     @Published var 🚩ShowResult: Bool = false
     @Published var 🚨RegisterError: Bool = false
@@ -32,7 +33,7 @@ class 📱AppModel: ObservableObject {
     
     let 🏥HealthStore = HKHealthStore()
     
-    var 📦Sample: [HKQuantitySample] = []
+    var 📦Samples: [HKQuantitySample] = []
     
     @MainActor
     func 👆Register() async {
@@ -50,25 +51,25 @@ class 📱AppModel: ObservableObject {
         
         let 📅Date: Date = 🚩AbleDatePicker ? 📅PickerValue : .now
         
-        📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
+        📦Samples.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
                                          quantity: HKQuantity(unit: 📏MassUnit.hkunit, doubleValue: 📝MassValue),
                                          start: 📅Date, end: 📅Date))
         
         if 🚩AbleBMI {
-            📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
+            📦Samples.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
                                              quantity: HKQuantity(unit: .count(), doubleValue: 📝BMIValue),
                                              start: 📅Date, end: 📅Date))
         }
         
         if 🚩AbleBodyFat {
-            📦Sample.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
+            📦Samples.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
                                              quantity: HKQuantity(unit: .percent(), doubleValue: 📝BodyFatValue),
                                              start: 📅Date, end: 📅Date))
         }
         
         
         do {
-            try await 🏥HealthStore.save(📦Sample)
+            try await 🏥HealthStore.save(📦Samples)
             
             var ⓔntry = 🕘Entry(date: 📅Date, massSample: .init(unit: 📏MassUnit, value: 📝MassValue))
             if 🚩AbleBMI { ⓔntry.bmiValue = 📝BMIValue }
@@ -198,8 +199,9 @@ class 📱AppModel: ObservableObject {
     func 🗑Cancel() async {
         do {
             🚩Canceled = true
-            try await 🏥HealthStore.delete(📦Sample)
-            📦Sample = []
+            try await 🏥HealthStore.delete(📦Samples)
+            📦Samples = []
+            🏥GetLatestValue()
             🕘LocalHistory.modifyCancellation()
             UINotificationFeedbackGenerator().notificationOccurred(.error)
         } catch {
@@ -229,8 +231,18 @@ class 📱AppModel: ObservableObject {
         🚨RegisterError = false
         🚩Canceled = false
         🚨CancelError = false
-        📦Sample = []
+        📦Samples = []
         🏥GetLatestValue()
+    }
+    
+    
+    init() {
+        guard let ⓛastEntry = 🕘LocalHistory.ⓛogs.last?.entry else { return } //FIXME: これだと日付入力変更ずみの分も誤取得してしまう
+        if ⓛastEntry.cancellation { return }
+        📝MassValue = ⓛastEntry.massSample.value
+        if let ⓥalue = ⓛastEntry.bodyFatValue {
+            📝BodyFatValue = ⓥalue
+        }
     }
 }
 

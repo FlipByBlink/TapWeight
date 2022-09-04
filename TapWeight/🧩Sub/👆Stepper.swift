@@ -20,6 +20,7 @@ struct 👆BodyMassStepper: View {
                         .font(.title2.weight(.black))
                         .frame(maxHeight: 36)
                 }
+                
                 Spacer(minLength: 4)
                 📉DifferenceView(.mass)
             }
@@ -65,6 +66,7 @@ struct 👆BodyFatStepper: View {
                             .font(.title2.weight(.black))
                             .frame(maxHeight: 54)
                     }
+                    
                     Spacer(minLength: 0)
                     📉DifferenceView(.bodyFat)
                 }
