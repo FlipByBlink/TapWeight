@@ -17,8 +17,8 @@ struct ContentView: View {
                 
                 📅DatePicker()
                     .padding(.top, 12)
-                🏷LastEntryDateLabel()
-                    .padding(.top, 4)
+//                🏷LastEntryDateLabel()
+//                    .padding(.top, 4)
                     .padding(.bottom, 180)
             }
             .listStyle(.plain)
@@ -54,12 +54,14 @@ struct 🪧BMIView: View {
                     .font(.title2)
                     .fontWeight(.heavy)
             }
+            .monospacedDigit()
+            
             Spacer()
             📉DifferenceView(.bmi)
+                .padding(.trailing, 12)
         }
         .padding(.vertical, 4)
         .padding(.leading, 32)
-        .monospacedDigit()
         .foregroundStyle(.secondary)
     }
 }
@@ -150,7 +152,7 @@ struct 📅DatePicker: View {
 }
 
 
-struct 🏷LastEntryDateLabel: View {
+struct 🏷LastEntryDateLabel: View { //TODO: 実装再検討
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
@@ -180,7 +182,7 @@ struct 🏷LastEntryDateLabel: View {
 }
 
 
-struct 📉DifferenceView: View {
+struct 📉DifferenceView: View { //TODO: 実装再検討
     @EnvironmentObject var 📱: 📱AppModel
     var ⓣype: 🅃ype
     var 🪧Description: String? {
@@ -202,10 +204,18 @@ struct 📉DifferenceView: View {
             case ..<0:
                 guard ⓣype == .mass && 📱.🚩Amount50g else { return 📉Difference.description }
                 return String(format: "%.2f", 📉Difference)
-            case 0: return nil
+            case 0: return "0.0"
             default:
                 guard ⓣype == .mass && 📱.🚩Amount50g else { return "+" + 📉Difference.description }
                 return "+" + String(format: "%.2f", 📉Difference)
+        }
+    }
+    
+    var lastSample: HKQuantitySample? {
+        switch ⓣype {
+            case .mass: return 📱.💾LastMassSample
+            case .bmi: return 📱.💾LastBMISample
+            case .bodyFat: return 📱.💾LastBodyFatSample
         }
     }
     
@@ -214,15 +224,24 @@ struct 📉DifferenceView: View {
             Color.clear
             if 📱.🕘LocalHistory.🚩CanceledLastEntry {
                 if let 🪧 = 🪧Description {
-                    Text(🪧)
-                        .font(.body.bold())
-                        .monospacedDigit()
-                        .foregroundStyle(.tertiary)
-                        .minimumScaleFactor(0.1)
+                    VStack(spacing: 0) {
+                        Text(🪧)
+                            .font(.subheadline.bold())
+                            .monospacedDigit()
+                            .frame(width: 48, height: 24, alignment: .bottomTrailing)
+                        
+                        if let sample = lastSample {
+                            Text(sample.startDate.addingTimeInterval(-8000000), style: .offset) //style: .relative
+                                .font(.caption.bold())
+                                .frame(width: 48, height: 24, alignment: .topTrailing)
+                        }
+                    }
+                    .foregroundStyle(.tertiary)
+                    .minimumScaleFactor(0.1)
                 }
             }
         }
-        .frame(width: 48, height: 32)
+        .frame(width: 48, height: 48)
         .animation(📱.🚩ShowResult ? .default : .default.speed(2), value: 🪧Description == nil)
         .animation(.default, value: 📱.🕘LocalHistory.🚩CanceledLastEntry)
     }

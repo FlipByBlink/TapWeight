@@ -17,9 +17,9 @@ class 📱AppModel: ObservableObject {
     var 📝BMIValue: Double { 🧮CalculateBMI(📝MassValue, 📏MassUnit, 🧍HeightValue) }
     @Published var 📝BodyFatValue: Double = 0.2
     
-    @Published var 💾LastMassValue: Double? = nil
-    @Published var 💾LastBMIValue: Double? = nil
-    @Published var 💾LastBodyFatValue: Double? = nil
+    @Published var 💾LastMassSample: HKQuantitySample? = nil
+    @Published var 💾LastBMISample: HKQuantitySample? = nil
+    @Published var 💾LastBodyFatSample: HKQuantitySample? = nil
     
     @Published var 📅PickerValue = Date.now
     
@@ -157,10 +157,7 @@ class 📱AppModel: ObservableObject {
             let query = HKSampleQuery(sampleType: HKQuantityType(.bodyMass), predicate: nil, limit: 1,
                                       sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, samples, _ in
                 DispatchQueue.main.async {
-                    guard let sample = samples?.first as? HKQuantitySample else { return }
-                    print(sample)
-                    self.📝MassValue = sample.quantity.doubleValue(for: self.📏MassUnit.hkunit)
-                    self.💾LastMassValue = self.📝MassValue
+                    self.💾LastMassSample = samples?.first as? HKQuantitySample
                 }
             }
             
@@ -171,9 +168,7 @@ class 📱AppModel: ObservableObject {
             let query = HKSampleQuery(sampleType: HKQuantityType(.bodyMassIndex), predicate: nil, limit: 1,
                                       sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, samples, _ in
                 DispatchQueue.main.async {
-                    guard let sample = samples?.first as? HKQuantitySample else { return }
-                    print(sample)
-                    self.💾LastBMIValue = self.📝BMIValue
+                    self.💾LastBMISample = samples?.first as? HKQuantitySample
                 }
             }
             
@@ -184,10 +179,7 @@ class 📱AppModel: ObservableObject {
             let query = HKSampleQuery(sampleType: HKQuantityType(.bodyFatPercentage), predicate: nil, limit: 1,
                                       sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, samples, _ in
                 DispatchQueue.main.async {
-                    guard let sample = samples?.first as? HKQuantitySample else { return }
-                    print(sample)
-                    self.📝BodyFatValue = sample.quantity.doubleValue(for: .percent())
-                    self.💾LastBodyFatValue = self.📝BodyFatValue
+                    self.💾LastBodyFatSample = samples?.first as? HKQuantitySample
                 }
             }
             
