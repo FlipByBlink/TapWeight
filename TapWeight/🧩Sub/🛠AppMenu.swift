@@ -33,17 +33,9 @@ struct 🛠AppMenu: View {
                     } label: {
                         Label("Unit", systemImage: "scalemass")
                     }
-                    .onChange(of: 📱.📏MassUnit) { 📏 in
-                        switch 📏 {
-                            case .kg:
-                                📱.📝MassValue = 60
-                            case .lbs:
-                                📱.📝MassValue = 130
-                                📱.🚩Amount50g = false
-                            case .st:
-                                📱.📝MassValue = 10
-                                📱.🚩Amount50g = false
-                        }
+                    .onChange(of: 📱.📏MassUnit) { _ in
+                        📱.🏥GetLatestValue()
+                        📱.🚩Amount50g = false
                     }
                     
                     Toggle(isOn: $📱.🚩Amount50g) {
