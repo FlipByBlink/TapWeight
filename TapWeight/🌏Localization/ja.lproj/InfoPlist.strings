@@ -1,2 +1,5 @@
 
 CFBundleDisplayName = "体重登録";
+
+NSHealthShareUsageDescription = "「ヘルスケア」アプリから直近のデータを読み込み、差分を表示します。";
+NSHealthUpdateUsageDescription = "このアプリは「ヘルスケア」アプリにデータを保存します。";
