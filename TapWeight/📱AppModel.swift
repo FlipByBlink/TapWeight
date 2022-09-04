@@ -14,7 +14,12 @@ class 📱AppModel: ObservableObject {
     @AppStorage("AbleDatePicker") var 🚩AbleDatePicker: Bool = false
     
     @Published var 📝MassValue: Double = 65.0
-    var 📝BMIValue: Double { 🧮CalculateBMI(📝MassValue, 📏MassUnit, 🧍HeightValue) }
+    var 📝BMIValue: Double {
+        let ⓠuantity = HKQuantity(unit: 📏MassUnit.hkunit, doubleValue: 📝MassValue)
+        let ⓚiloMassValue = ⓠuantity.doubleValue(for: .gramUnit(with: .kilo))
+        let ⓥalue = ⓚiloMassValue / pow(Double(🧍HeightValue)/100, 2)
+        return Double(Int(round(ⓥalue*10)))/10
+    }
     @Published var 📝BodyFatValue: Double = 0.2
     
     @Published var 💾LastMassSample: HKQuantitySample? = nil
@@ -244,12 +249,4 @@ class 📱AppModel: ObservableObject {
             📝BodyFatValue = ⓥalue
         }
     }
-}
-
-
-func 🧮CalculateBMI(_ massValue: Double, _ massUnit: 📏BodyMassUnit, _ heightValue: Int) -> Double {
-    let ⓠuantity = HKQuantity(unit: massUnit.hkunit, doubleValue: massValue)
-    let ⓚiloMassValue = ⓠuantity.doubleValue(for: .gramUnit(with: .kilo))
-    let ⓥalue = ⓚiloMassValue / pow(Double(heightValue)/100, 2)
-    return Double(Int(round(ⓥalue*10)))/10
 }
