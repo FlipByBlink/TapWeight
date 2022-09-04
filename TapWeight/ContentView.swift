@@ -31,6 +31,7 @@ struct ContentView: View {
         .overlay(alignment: .bottomTrailing) { 💟JumpButton() }
 //        .onAppear { 📱.🏥RequestAuth(.bodyMass) }
         .onAppear { 📱.🏥CheckAuthOnLaunch() }
+        .onAppear { 📱.🏥GetLatestValue() }
     }
 }
 

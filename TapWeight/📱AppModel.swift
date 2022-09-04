@@ -22,6 +22,10 @@ class 📱AppModel: ObservableObject {
     }
     @Published var 📝BodyFatValue: Double = 0.2
     
+    @Published var 💾LastMassValue: Double? = nil
+    @Published var 💾LastBMIValue: Double? = nil
+    @Published var 💾LastBodyFatValue: Double? = nil
+    
     @Published var 📅PickerValue = Date.now
     
     @Published var 🚩ShowResult: Bool = false
@@ -156,8 +160,47 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 🏥GetLatestValue() {
-        //TODO: 実装
+    func 🏥GetLatestValue() { //TODO: 実装
+        do {
+            let query = HKSampleQuery(sampleType: HKQuantityType(.bodyMass), predicate: nil, limit: 1,
+                                      sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, samples, _ in
+                DispatchQueue.main.async {
+                    guard let sample = samples?.first as? HKQuantitySample else { return }
+                    print(sample)
+                    self.📝MassValue = sample.quantity.doubleValue(for: self.📏MassUnit.hkunit)
+                    self.💾LastMassValue = self.📝MassValue
+                }
+            }
+            
+            🏥HealthStore.execute(query)
+        }
+        
+        do {
+            let query = HKSampleQuery(sampleType: HKQuantityType(.bodyMassIndex), predicate: nil, limit: 1,
+                                      sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, samples, _ in
+                DispatchQueue.main.async {
+                    guard let sample = samples?.first as? HKQuantitySample else { return }
+                    print(sample)
+                    self.💾LastBMIValue = self.📝BMIValue
+                }
+            }
+            
+            🏥HealthStore.execute(query)
+        }
+        
+        do {
+            let query = HKSampleQuery(sampleType: HKQuantityType(.bodyFatPercentage), predicate: nil, limit: 1,
+                                      sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, samples, _ in
+                DispatchQueue.main.async {
+                    guard let sample = samples?.first as? HKQuantitySample else { return }
+                    print(sample)
+                    self.📝BodyFatValue = sample.quantity.doubleValue(for: .percent())
+                    self.💾LastBodyFatValue = self.📝BodyFatValue
+                }
+            }
+            
+            🏥HealthStore.execute(query)
+        }
     }
     
     
@@ -197,5 +240,6 @@ class 📱AppModel: ObservableObject {
         🚩Canceled = false
         🚨CancelError = false
         📦Sample = []
+        🏥GetLatestValue()
     }
 }
