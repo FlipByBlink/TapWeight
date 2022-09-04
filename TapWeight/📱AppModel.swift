@@ -166,7 +166,7 @@ class 📱AppModel: ObservableObject {
                             case .bodyMass:
                                 let ⓥalue = ⓢample.quantity.doubleValue(for: self.📏MassUnit.hkunit)
                                 if self.🚩Amount50g {
-                                    self.📝MassValue = round(ⓥalue*100)/100 //TODO: 50g単位に処理する
+                                    self.📝MassValue = round(ⓥalue*20)/20
                                 } else {
                                     self.📝MassValue = round(ⓥalue*10)/10
                                 }
