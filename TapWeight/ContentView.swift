@@ -158,33 +158,34 @@ struct 📅DatePicker: View {
 struct 📉DifferenceView: View { //TODO: 実装再検討
     @EnvironmentObject var 📱: 📱AppModel
     var ⓣype: HKQuantityTypeIdentifier
+    var ⓛastSample: HKQuantitySample? { 📱.💾LastSamples[ⓣype] }
     var 🪧Description: String? {
         let 📉Difference: Double
         switch ⓣype {
             case .bodyMass:
-                guard let 📝LastValue = lastSample?.quantity else { return nil }
+                guard let 📝LastValue = ⓛastSample?.quantity else { return nil }
                 📉Difference = (round((📱.📝MassValue - 📝LastValue.doubleValue(for: 📱.📏MassUnit.hkunit))*100)/100)
             case .bodyMassIndex:
-                guard let 📝LastValue = lastSample?.quantity else { return nil }
+                guard let 📝LastValue = ⓛastSample?.quantity else { return nil }
                 📉Difference = (round((📱.📝BMIValue - 📝LastValue.doubleValue(for: .count()))*10)/10)
             case .bodyFatPercentage:
-                guard let 📝LastValue = lastSample?.quantity else { return nil }
+                guard let 📝LastValue = ⓛastSample?.quantity else { return nil }
                 📉Difference = (round((📱.📝BodyFatValue - 📝LastValue.doubleValue(for: .percent()))*1000)/10)
             default: return nil
         }
         
         switch 📉Difference {
             case ..<0:
-                guard ⓣype == .bodyMass && 📱.🚩Amount50g else { return 📉Difference.description }
-                return String(format: "%.2f", 📉Difference)
-            case 0: return "0.0"
+                if ⓣype == .bodyMass && 📱.🚩Amount50g { return String(format: "%.2f", 📉Difference) }
+                return 📉Difference.description
+            case 0:
+                if ⓣype == .bodyMass && 📱.🚩Amount50g { return "0.00" }
+                return "0.0"
             default:
-                guard ⓣype == .bodyMass && 📱.🚩Amount50g else { return "+" + 📉Difference.description }
-                return "+" + String(format: "%.2f", 📉Difference)
+                if ⓣype == .bodyMass && 📱.🚩Amount50g { return "+" + String(format: "%.2f", 📉Difference) }
+                return "+" + 📉Difference.description
         }
     }
-    
-    var lastSample: HKQuantitySample? { 📱.💾LastSamples[ⓣype] }
     
     var body: some View {
         ZStack {
@@ -197,8 +198,8 @@ struct 📉DifferenceView: View { //TODO: 実装再検討
                             .monospacedDigit()
                             .frame(width: 48, height: 24, alignment: .bottomTrailing)
                         
-                        if let sample = lastSample {
-                            Text(sample.startDate, style: .offset) //style: .relative
+                        if let ⓢample = ⓛastSample {
+                            Text(ⓢample.startDate, style: .offset) //style: .relative
                                 .font(.caption.bold())
                                 .frame(width: 48, height: 24, alignment: .topTrailing)
                         }

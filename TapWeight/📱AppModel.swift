@@ -30,7 +30,7 @@ class 📱AppModel: ObservableObject {
     @Published var 🚩Canceled: Bool = false
     @Published var 🚨CancelError: Bool = false
     
-    @Published var 💾LastSamples: [HKQuantityTypeIdentifier: HKQuantitySample] = [:]
+    @Published var 💾LastSamples: [HKQuantityTypeIdentifier: HKQuantitySample] = [:] //TODO: 再検討。localhistoryで十分だったかも
     
     @Published var 🕘LocalHistory = 🕘LocalHistoryModel()
     
@@ -158,44 +158,44 @@ class 📱AppModel: ObservableObject {
     
     func 🏥GetLatestValue() { //TODO: 実装
         do {
-            let query = HKSampleQuery(sampleType: HKQuantityType(.bodyMass), predicate: nil, limit: 1,
-                                      sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, samples, _ in
+            let ⓠuery = HKSampleQuery(sampleType: HKQuantityType(.bodyMass), predicate: nil, limit: 1,
+                                      sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, ⓢamples, _ in
                 DispatchQueue.main.async {
-                    if let sample = samples?.first as? HKQuantitySample {
-                        self.📝MassValue = sample.quantity.doubleValue(for: .gramUnit(with: .kilo))
-                        self.💾LastSamples[.bodyMass] = sample
+                    if let ⓢample = ⓢamples?.first as? HKQuantitySample {
+                        self.📝MassValue = ⓢample.quantity.doubleValue(for: .gramUnit(with: .kilo))
+                        self.💾LastSamples[.bodyMass] = ⓢample
                     }
                 }
             }
             
-            🏥HealthStore.execute(query)
+            🏥HealthStore.execute(ⓠuery)
         }
         
         do {
-            let query = HKSampleQuery(sampleType: HKQuantityType(.bodyMassIndex), predicate: nil, limit: 1,
-                                      sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, samples, _ in
+            let ⓠuery = HKSampleQuery(sampleType: HKQuantityType(.bodyMassIndex), predicate: nil, limit: 1,
+                                      sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, ⓢamples, _ in
                 DispatchQueue.main.async {
-                    if let sample = samples?.first as? HKQuantitySample {
-                        self.💾LastSamples[.bodyMassIndex] = sample
+                    if let ⓢample = ⓢamples?.first as? HKQuantitySample {
+                        self.💾LastSamples[.bodyMassIndex] = ⓢample
                     }
                 }
             }
             
-            🏥HealthStore.execute(query)
+            🏥HealthStore.execute(ⓠuery)
         }
         
         do {
-            let query = HKSampleQuery(sampleType: HKQuantityType(.bodyFatPercentage), predicate: nil, limit: 1,
-                                      sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, samples, _ in
+            let ⓠuery = HKSampleQuery(sampleType: HKQuantityType(.bodyFatPercentage), predicate: nil, limit: 1,
+                                      sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, ⓢamples, _ in
                 DispatchQueue.main.async {
-                    if let sample = samples?.first as? HKQuantitySample {
-                        self.📝BodyFatValue = sample.quantity.doubleValue(for: .percent())
-                        self.💾LastSamples[.bodyFatPercentage] = sample
+                    if let ⓢample = ⓢamples?.first as? HKQuantitySample {
+                        self.📝BodyFatValue = ⓢample.quantity.doubleValue(for: .percent())
+                        self.💾LastSamples[.bodyFatPercentage] = ⓢample
                     }
                 }
             }
             
-            🏥HealthStore.execute(query)
+            🏥HealthStore.execute(ⓠuery)
         }
     }
     

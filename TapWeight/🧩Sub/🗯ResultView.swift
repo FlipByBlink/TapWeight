@@ -125,15 +125,15 @@ struct 🗯ResultView: View {
 struct 🗯SummaryView: View {
     @EnvironmentObject var 📱: 📱AppModel
     var 🪧Description: String {
-        return 📱.📦Samples.reduce("") { 🪧, sample in
-            switch sample.quantityType {
+        return 📱.📦Samples.reduce("") { 🪧, ⓢample in
+            switch ⓢample.quantityType {
                 case .init(.bodyMass):
-                    let ⓥalue = sample.quantity.doubleValue(for: 📱.📏MassUnit.hkunit)
+                    let ⓥalue = ⓢample.quantity.doubleValue(for: 📱.📏MassUnit.hkunit)
                     return 🪧 + ⓥalue.description + " " + 📱.📏MassUnit.rawValue
                 case .init(.bodyMassIndex):
-                    return 🪧 +  " / " + sample.quantity.doubleValue(for: .count()).description
+                    return 🪧 +  " / " + ⓢample.quantity.doubleValue(for: .count()).description
                 case .init(.bodyFatPercentage):
-                    let ⓥalue = round(sample.quantity.doubleValue(for: .percent())*1000)/10
+                    let ⓥalue = round(ⓢample.quantity.doubleValue(for: .percent())*1000)/10
                     return 🪧 +  " / " + ⓥalue.description + " %"
                 default: return 🪧
             }
