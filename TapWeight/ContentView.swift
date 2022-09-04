@@ -17,8 +17,6 @@ struct ContentView: View {
                 
                 📅DatePicker()
                     .padding(.top, 12)
-//                🏷LastEntryDateLabel()
-//                    .padding(.top, 4)
                     .padding(.bottom, 180)
             }
             .listStyle(.plain)
@@ -152,52 +150,51 @@ struct 📅DatePicker: View {
 }
 
 
-struct 🏷LastEntryDateLabel: View { //TODO: 実装再検討
-    @EnvironmentObject var 📱: 📱AppModel
-    
-    var body: some View {
-        ZStack {
-            Color.clear
-            if 📱.🕘LocalHistory.🚩CanceledLastEntry {
-                if let ⓛastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry {
-                    HStack {
-                        Spacer()
-                        VStack(alignment: .trailing) {
-                            Text(ⓛastEntry.date.formatted(date: .numeric, time: .omitted))
-                                .font(.footnote.bold())
-                            Text(ⓛastEntry.date.formatted(date: .omitted, time: .shortened))
-                                .font(.caption.bold())
-                        }
-                    }
-                    .foregroundStyle(.tertiary)
-                    .padding(.trailing, 12)
-                    .minimumScaleFactor(0.3)
-                }
-            }
-        }
-        .listRowSeparator(.hidden)
-        .animation(.default, value: 📱.🕘LocalHistory.🚩CanceledLastEntry)
-        .animation(.default, value: 📱.🕘LocalHistory.ⓛogs.isEmpty)
-    }
-}
+//struct 🏷LastEntryDateLabel: View { //TODO: 実装再検討
+//    @EnvironmentObject var 📱: 📱AppModel
+//
+//    var body: some View {
+//        ZStack {
+//            Color.clear
+//            if 📱.🕘LocalHistory.🚩CanceledLastEntry {
+//                if let ⓛastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry {
+//                    HStack {
+//                        Spacer()
+//                        VStack(alignment: .trailing) {
+//                            Text(ⓛastEntry.date.formatted(date: .numeric, time: .omitted))
+//                                .font(.footnote.bold())
+//                            Text(ⓛastEntry.date.formatted(date: .omitted, time: .shortened))
+//                                .font(.caption.bold())
+//                        }
+//                    }
+//                    .foregroundStyle(.tertiary)
+//                    .padding(.trailing, 12)
+//                    .minimumScaleFactor(0.3)
+//                }
+//            }
+//        }
+//        .listRowSeparator(.hidden)
+//        .animation(.default, value: 📱.🕘LocalHistory.🚩CanceledLastEntry)
+//        .animation(.default, value: 📱.🕘LocalHistory.ⓛogs.isEmpty)
+//    }
+//}
 
 
 struct 📉DifferenceView: View { //TODO: 実装再検討
     @EnvironmentObject var 📱: 📱AppModel
     var ⓣype: 🅃ype
     var 🪧Description: String? {
-        guard let 📝LastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry else { return nil }
         let 📉Difference: Double
         switch ⓣype {
             case .mass:
-                if 📝LastEntry.massSample.unit != 📱.📏MassUnit { return nil }
-                📉Difference = (round((📱.📝MassValue - 📝LastEntry.massSample.value)*100)/100)
+                guard let 📝LastValue = lastSample?.quantity else { return nil }
+                📉Difference = (round((📱.📝MassValue - 📝LastValue.doubleValue(for: 📱.📏MassUnit.hkunit))*100)/100)
             case .bmi:
-                guard let 📝LastValue = 📝LastEntry.bmiValue else { return nil }
-                📉Difference = (round((📱.📝BMIValue - 📝LastValue)*10)/10)
+                guard let 📝LastValue = lastSample?.quantity else { return nil }
+                📉Difference = (round((📱.📝BMIValue - 📝LastValue.doubleValue(for: .count()))*10)/10)
             case .bodyFat:
-                guard let 📝LastValue = 📝LastEntry.bodyFatValue else { return nil }
-                📉Difference = (round((📱.📝BodyFatValue - 📝LastValue)*1000)/10)
+                guard let 📝LastValue = lastSample?.quantity else { return nil }
+                📉Difference = (round((📱.📝BodyFatValue - 📝LastValue.doubleValue(for: .percent()))*1000)/10)
         }
         
         switch 📉Difference {
@@ -219,10 +216,12 @@ struct 📉DifferenceView: View { //TODO: 実装再検討
         }
     }
     
+    var 🚩InputDataIsNow: Bool { 📱.📅PickerValue.timeIntervalSinceNow > -300 }
+    
     var body: some View {
         ZStack {
             Color.clear
-            if 📱.🕘LocalHistory.🚩CanceledLastEntry {
+            if 🚩InputDataIsNow {
                 if let 🪧 = 🪧Description {
                     VStack(spacing: 0) {
                         Text(🪧)
@@ -231,7 +230,7 @@ struct 📉DifferenceView: View { //TODO: 実装再検討
                             .frame(width: 48, height: 24, alignment: .bottomTrailing)
                         
                         if let sample = lastSample {
-                            Text(sample.startDate.addingTimeInterval(-8000000), style: .offset) //style: .relative
+                            Text(sample.startDate, style: .offset) //style: .relative
                                 .font(.caption.bold())
                                 .frame(width: 48, height: 24, alignment: .topTrailing)
                         }
@@ -243,7 +242,7 @@ struct 📉DifferenceView: View { //TODO: 実装再検討
         }
         .frame(width: 48, height: 48)
         .animation(📱.🚩ShowResult ? .default : .default.speed(2), value: 🪧Description == nil)
-        .animation(.default, value: 📱.🕘LocalHistory.🚩CanceledLastEntry)
+        .animation(.default, value: 🚩InputDataIsNow)
     }
     
     enum 🅃ype {

@@ -157,7 +157,10 @@ class 📱AppModel: ObservableObject {
             let query = HKSampleQuery(sampleType: HKQuantityType(.bodyMass), predicate: nil, limit: 1,
                                       sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, samples, _ in
                 DispatchQueue.main.async {
-                    self.💾LastMassSample = samples?.first as? HKQuantitySample
+                    if let sample = samples?.first as? HKQuantitySample {
+                        self.📝MassValue = sample.quantity.doubleValue(for: .gramUnit(with: .kilo))
+                        self.💾LastMassSample = sample
+                    }
                 }
             }
             
@@ -179,7 +182,10 @@ class 📱AppModel: ObservableObject {
             let query = HKSampleQuery(sampleType: HKQuantityType(.bodyFatPercentage), predicate: nil, limit: 1,
                                       sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, samples, _ in
                 DispatchQueue.main.async {
-                    self.💾LastBodyFatSample = samples?.first as? HKQuantitySample
+                    if let sample = samples?.first as? HKQuantitySample {
+                        self.📝BodyFatValue = sample.quantity.doubleValue(for: .percent())
+                        self.💾LastBodyFatSample = sample
+                    }
                 }
             }
             

@@ -44,10 +44,6 @@ struct 👆BodyMassStepper: View {
         }
         .padding(8)
         .padding(.vertical, 4)
-        .onAppear {
-            guard let 📝LastEntry = 📱.🕘LocalHistory.ⓛogs.last?.entry else { return }
-            📱.📝MassValue = 📝LastEntry.massSample.value
-        }
     }
 }
 
@@ -83,10 +79,6 @@ struct 👆BodyFatStepper: View {
             }
             .padding(8)
             .padding(.vertical, 4)
-            .onAppear {
-                guard let 📝LastValue = 📱.🕘LocalHistory.ⓛogs.last?.entry?.bodyFatValue else { return }
-                📱.📝BodyFatValue = 📝LastValue
-            }
         } header: {
             Text("Body Fat Percentage")
         }
