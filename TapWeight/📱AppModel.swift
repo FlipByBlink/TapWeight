@@ -118,7 +118,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 🏥CheckAuthOnLaunch() { //TODO: 実装要検討
+    func 🏥CheckAuthOnLaunch() {
         Task {
             do {
                 var ⓣypes: Set<HKSampleType> = []
@@ -166,7 +166,7 @@ class 📱AppModel: ObservableObject {
                             case .bodyMass:
                                 let ⓥalue = ⓢample.quantity.doubleValue(for: self.📏MassUnit.hkunit)
                                 if self.🚩Amount50g {
-                                    self.📝MassValue = round(ⓥalue*100)/100
+                                    self.📝MassValue = round(ⓥalue*100)/100 //TODO: 50g単位に処理する
                                 } else {
                                     self.📝MassValue = round(ⓥalue*10)/10
                                 }

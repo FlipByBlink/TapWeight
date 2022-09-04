@@ -153,7 +153,7 @@ struct 📅DatePicker: View {
 }
 
 
-struct 📉DifferenceView: View { //TODO: 実装再検討
+struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel
     var ⓣype: HKQuantityTypeIdentifier
     var ⓛastSample: HKQuantitySample? { 📱.💾LastSamples[ⓣype] }
@@ -162,13 +162,13 @@ struct 📉DifferenceView: View { //TODO: 実装再検討
         switch ⓣype {
             case .bodyMass:
                 guard let 📝LastValue = ⓛastSample?.quantity else { return nil }
-                📉Difference = (round((📱.📝MassValue - 📝LastValue.doubleValue(for: 📱.📏MassUnit.hkunit))*100)/100)
+                📉Difference = round((📱.📝MassValue - 📝LastValue.doubleValue(for: 📱.📏MassUnit.hkunit))*100)/100
             case .bodyMassIndex:
                 guard let 📝LastValue = ⓛastSample?.quantity else { return nil }
-                📉Difference = (round((📱.📝BMIValue - 📝LastValue.doubleValue(for: .count()))*10)/10)
+                📉Difference = round((📱.📝BMIValue - 📝LastValue.doubleValue(for: .count()))*10)/10
             case .bodyFatPercentage:
                 guard let 📝LastValue = ⓛastSample?.quantity else { return nil }
-                📉Difference = (round((📱.📝BodyFatValue - 📝LastValue.doubleValue(for: .percent()))*1000)/10)
+                📉Difference = round((📱.📝BodyFatValue - 📝LastValue.doubleValue(for: .percent()))*1000)/10
             default: return nil
         }
         
@@ -194,12 +194,12 @@ struct 📉DifferenceView: View { //TODO: 実装再検討
                         Text(🪧) //TODO: アニメーション表示とかの調整
                             .font(.subheadline.bold())
                             .monospacedDigit()
-                            .frame(width: 48, height: 24, alignment: .bottomTrailing)
+                            .frame(width: 72, height: 24, alignment: .bottomTrailing)
                         
                         if let ⓢample = ⓛastSample {
-                            Text(ⓢample.startDate, style: .offset) //style: .relative
+                            Text(ⓢample.startDate, style: .offset)
                                 .font(.caption.bold())
-                                .frame(width: 48, height: 24, alignment: .topTrailing)
+                                .frame(width: 72, height: 24, alignment: .topTrailing)
                         }
                     }
                     .foregroundStyle(.tertiary)
@@ -207,7 +207,7 @@ struct 📉DifferenceView: View { //TODO: 実装再検討
                 }
             }
         }
-        .frame(width: 48, height: 48)
+        .frame(width: 72, height: 48)
         .animation(📱.🚩ShowResult ? .default : .default.speed(2), value: 🪧Description == nil)
         .animation(.default.speed(2), value: 📱.🚩DatePickerIsAlmostNow)
         .onChange(of: 📱.🚩ShowResult) { 🆕 in
