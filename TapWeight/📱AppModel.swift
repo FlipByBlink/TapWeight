@@ -205,7 +205,6 @@ class 📱AppModel: ObservableObject {
         do {
             🚩Canceled = true
             try await 🏥HealthStore.delete(📦Samples)
-            📦Samples = []
             🏥GetLatestValue()
             🕘LocalHistory.modifyCancellation()
             UINotificationFeedbackGenerator().notificationOccurred(.error)

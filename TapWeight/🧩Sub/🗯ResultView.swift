@@ -124,15 +124,20 @@ struct 🗯ResultView: View {
 
 struct 🗯SummaryView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 🪧Description: String { //FIXME: キャンセルした場合が表示がおかしい
-        var 🪧 = 📱.📝MassValue.description + " " + 📱.📏MassUnit.rawValue
-        if 📱.🚩AbleBMI {
-            🪧 += " / " + 📱.📝BMIValue.description
+    var 🪧Description: String {
+        return 📱.📦Samples.reduce("") { 🪧, sample in
+            switch sample.quantityType {
+                case .init(.bodyMass):
+                    let ⓥalue = sample.quantity.doubleValue(for: 📱.📏MassUnit.hkunit)
+                    return 🪧 + ⓥalue.description + " " + 📱.📏MassUnit.rawValue
+                case .init(.bodyMassIndex):
+                    return 🪧 +  " / " + sample.quantity.doubleValue(for: .count()).description
+                case .init(.bodyFatPercentage):
+                    let ⓥalue = round(sample.quantity.doubleValue(for: .percent())*1000)/10
+                    return 🪧 +  " / " + ⓥalue.description + " %"
+                default: return 🪧
+            }
         }
-        if 📱.🚩AbleBodyFat {
-            🪧 += " / " + (round(📱.📝BodyFatValue*1000)/10).description + " %"
-        }
-        return 🪧
     }
     
     var body: some View {
