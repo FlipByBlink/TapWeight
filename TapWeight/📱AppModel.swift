@@ -22,6 +22,8 @@ class 📱AppModel: ObservableObject {
     }
     @Published var 📝BodyFatValue: Double = 0.2
     
+    @Published var 💾LastSamples: [HKQuantityTypeIdentifier: HKQuantitySample] = [:]
+    
     @Published var 📅PickerValue = Date.now
     var 🚩DatePickerIsAlmostNow: Bool { 📅PickerValue.timeIntervalSinceNow > -300 }
     
@@ -30,16 +32,12 @@ class 📱AppModel: ObservableObject {
     @Published var 🚩Canceled: Bool = false
     @Published var 🚨CancelError: Bool = false
     
-    @Published var 💾LastSamples: [HKQuantityTypeIdentifier: HKQuantitySample] = [:] //TODO: 再検討。localhistoryで十分だったかも
-    
     @Published var 🕘LocalHistory = 🕘LocalHistoryModel()
     
     let 🏥HealthStore = HKHealthStore()
-    
     var 📦Samples: [HKQuantitySample] = []
     
-    @MainActor
-    func 👆Register() async {
+    func 👆Register() {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
         
         if 🏥CheckAuthDenied(.bodyMass) { return }
@@ -55,36 +53,34 @@ class 📱AppModel: ObservableObject {
         let 📅Date: Date = 🚩AbleDatePicker ? 📅PickerValue : .now
         
         📦Samples.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
-                                         quantity: HKQuantity(unit: 📏MassUnit.hkunit, doubleValue: 📝MassValue),
-                                         start: 📅Date, end: 📅Date))
+                                          quantity: HKQuantity(unit: 📏MassUnit.hkunit, doubleValue: 📝MassValue),
+                                          start: 📅Date, end: 📅Date))
         
         if 🚩AbleBMI {
             📦Samples.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
-                                             quantity: HKQuantity(unit: .count(), doubleValue: 📝BMIValue),
-                                             start: 📅Date, end: 📅Date))
+                                              quantity: HKQuantity(unit: .count(), doubleValue: 📝BMIValue),
+                                              start: 📅Date, end: 📅Date))
         }
         
         if 🚩AbleBodyFat {
             📦Samples.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
-                                             quantity: HKQuantity(unit: .percent(), doubleValue: 📝BodyFatValue),
-                                             start: 📅Date, end: 📅Date))
+                                              quantity: HKQuantity(unit: .percent(), doubleValue: 📝BodyFatValue),
+                                              start: 📅Date, end: 📅Date))
         }
         
-        
-        do {
-            try await 🏥HealthStore.save(📦Samples)
-            
-            var ⓔntry = 🕘Entry(date: 📅Date, massSample: .init(unit: 📏MassUnit, value: 📝MassValue))
-            if 🚩AbleBMI { ⓔntry.bmiValue = 📝BMIValue }
-            if 🚩AbleBodyFat { ⓔntry.bodyFatValue = 📝BodyFatValue }
-            🕘LocalHistory.addLog(ⓔntry)
-            
-            🚩ShowResult = true
-        } catch {
-            DispatchQueue.main.async {
-                self.🕘LocalHistory.addLog("Error: " + #function + error.localizedDescription)
-                self.🚨RegisterError = true
-                self.🚩ShowResult = true
+        Task { @MainActor in
+            do {
+                try await 🏥HealthStore.save(📦Samples)
+                
+                🕘SaveLogForLocalHistory(📅Date)
+                
+                🚩ShowResult = true
+            } catch {
+                DispatchQueue.main.async {
+                    self.🕘LocalHistory.addLog("Error: " + #function + error.localizedDescription)
+                    self.🚨RegisterError = true
+                    self.🚩ShowResult = true
+                }
             }
         }
     }
@@ -237,6 +233,14 @@ class 📱AppModel: ObservableObject {
         🚨CancelError = false
         📦Samples = []
         🏥GetLatestValue()
+    }
+    
+    
+    func 🕘SaveLogForLocalHistory(_ ⓓate: Date) {
+        var ⓔntry = 🕘Entry(date: ⓓate, massSample: .init(unit: 📏MassUnit, value: 📝MassValue))
+        if 🚩AbleBMI { ⓔntry.bmiValue = 📝BMIValue }
+        if 🚩AbleBodyFat { ⓔntry.bodyFatValue = 📝BodyFatValue }
+        🕘LocalHistory.addLog(ⓔntry)
     }
     
     

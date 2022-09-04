@@ -256,8 +256,8 @@
 			isa = PBXGroup;
 			children = (
 				126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */,
-				126B3EAC282DFEDF009BD28B /* ContentView.swift */,
 				124C485E284863BA0085B066 /* 📱AppModel.swift */,
+				126B3EAC282DFEDF009BD28B /* ContentView.swift */,
 				12325789284C5E79002E0057 /* 🧩Sub */,
 				1299C395288D51E20086522B /* 🧰Others */,
 				129CBE13284CAD2D00C73F4D /* 🌏Localization */,

@@ -75,9 +75,7 @@ struct 👆DoneButton: View { // ☑️
     
     var body: some View {
         Button {
-            Task {
-                await 📱.👆Register()
-            }
+            📱.👆Register()
         } label: {
             Image(systemName: "checkmark.circle.fill")
                 .font(.system(size: 120))
