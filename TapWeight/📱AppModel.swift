@@ -71,9 +71,7 @@ class 📱AppModel: ObservableObject {
         Task { @MainActor in
             do {
                 try await 🏥HealthStore.save(📦Samples)
-                
                 🕘SaveLogForLocalHistory(📅Date)
-                
                 🚩ShowResult = true
             } catch {
                 DispatchQueue.main.async {
@@ -98,6 +96,12 @@ class 📱AppModel: ObservableObject {
     }
     
     
+    func 🏥CheckShouldRequestAuth(_ identifier: HKQuantityTypeIdentifier) async throws -> Bool {
+        let ⓣype = HKQuantityType(identifier)
+        return try await 🏥HealthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype]) == .shouldRequest
+    }
+    
+    
     func 🏥RequestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) {
         Task {
             do {
@@ -111,12 +115,6 @@ class 📱AppModel: ObservableObject {
                 self.🕘LocalHistory.addLog("Error: " + #function + error.localizedDescription)
             }
         }
-    }
-    
-    
-    func 🏥CheckShouldRequestAuth(_ identifier: HKQuantityTypeIdentifier) async throws -> Bool {
-        let ⓣype = HKQuantityType(identifier)
-        return try await 🏥HealthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype]) == .shouldRequest
     }
     
     
@@ -239,10 +237,13 @@ class 📱AppModel: ObservableObject {
     
     
     init() {
+        🕘LoadLastValueFromLocalHistoryOnLaunch()
+    }
+    
+    func 🕘LoadLastValueFromLocalHistoryOnLaunch() {
         let ⓔntrys = 🕘LocalHistory.ⓛogs.compactMap { $0.entry }
         let ⓔntry = ⓔntrys.max { $0.date < $1.date }
         guard let ⓛastEntry = ⓔntry else { return }
-        print(ⓛastEntry)
         if ⓛastEntry.cancellation { return }
         📝MassValue = ⓛastEntry.massSample.value
         if let ⓥalue = ⓛastEntry.bodyFatValue {

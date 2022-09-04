@@ -7,6 +7,9 @@
 "Registration for \"Health\" app" = "「ヘルスケア」アプリに登録しました。";
 "Please check permission on \"Health\" app" = "「ヘルスケア」アプリで権限を確認して下さい。";
 
+"Import latest log to show difference." = "直近のデータを読み込みます。";
+"Add your data to \"Health\" app." = "「ヘルスケア」アプリに保存します。";
+
 // ======== Main View ========
 "DONE" = "完了";
 
