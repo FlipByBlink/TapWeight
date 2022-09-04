@@ -22,7 +22,7 @@ struct 👆BodyMassStepper: View {
                 }
                 
                 Spacer(minLength: 4)
-                📉DifferenceView(.mass)
+                📉DifferenceView(.bodyMass)
             }
         } onIncrement: {
             UISelectionFeedbackGenerator().selectionChanged()
@@ -68,7 +68,7 @@ struct 👆BodyFatStepper: View {
                     }
                     
                     Spacer(minLength: 0)
-                    📉DifferenceView(.bodyFat)
+                    📉DifferenceView(.bodyFatPercentage)
                 }
             } onIncrement: {
                 UISelectionFeedbackGenerator().selectionChanged()

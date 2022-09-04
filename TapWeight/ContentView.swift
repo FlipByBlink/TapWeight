@@ -60,7 +60,7 @@ struct 🪧BMIView: View {
             .monospacedDigit()
             
             Spacer()
-            📉DifferenceView(.bmi)
+            📉DifferenceView(.bodyMassIndex)
                 .padding(.trailing, 12)
         }
         .padding(.vertical, 4)
@@ -157,39 +157,34 @@ struct 📅DatePicker: View {
 
 struct 📉DifferenceView: View { //TODO: 実装再検討
     @EnvironmentObject var 📱: 📱AppModel
-    var ⓣype: 🅃ype
+    var ⓣype: HKQuantityTypeIdentifier
     var 🪧Description: String? {
         let 📉Difference: Double
         switch ⓣype {
-            case .mass:
+            case .bodyMass:
                 guard let 📝LastValue = lastSample?.quantity else { return nil }
                 📉Difference = (round((📱.📝MassValue - 📝LastValue.doubleValue(for: 📱.📏MassUnit.hkunit))*100)/100)
-            case .bmi:
+            case .bodyMassIndex:
                 guard let 📝LastValue = lastSample?.quantity else { return nil }
                 📉Difference = (round((📱.📝BMIValue - 📝LastValue.doubleValue(for: .count()))*10)/10)
-            case .bodyFat:
+            case .bodyFatPercentage:
                 guard let 📝LastValue = lastSample?.quantity else { return nil }
                 📉Difference = (round((📱.📝BodyFatValue - 📝LastValue.doubleValue(for: .percent()))*1000)/10)
+            default: return nil
         }
         
         switch 📉Difference {
             case ..<0:
-                guard ⓣype == .mass && 📱.🚩Amount50g else { return 📉Difference.description }
+                guard ⓣype == .bodyMass && 📱.🚩Amount50g else { return 📉Difference.description }
                 return String(format: "%.2f", 📉Difference)
             case 0: return "0.0"
             default:
-                guard ⓣype == .mass && 📱.🚩Amount50g else { return "+" + 📉Difference.description }
+                guard ⓣype == .bodyMass && 📱.🚩Amount50g else { return "+" + 📉Difference.description }
                 return "+" + String(format: "%.2f", 📉Difference)
         }
     }
     
-    var lastSample: HKQuantitySample? {
-        switch ⓣype {
-            case .mass: return 📱.💾LastMassSample
-            case .bmi: return 📱.💾LastBMISample
-            case .bodyFat: return 📱.💾LastBodyFatSample
-        }
-    }
+    var lastSample: HKQuantitySample? { 📱.💾LastSamples[ⓣype] }
     
     var body: some View {
         ZStack {
@@ -197,7 +192,7 @@ struct 📉DifferenceView: View { //TODO: 実装再検討
             if 📱.🚩DatePickerIsAlmostNow {
                 if let 🪧 = 🪧Description {
                     VStack(spacing: 0) {
-                        Text(🪧)
+                        Text(🪧) //TODO: アニメーション表示とかの調整
                             .font(.subheadline.bold())
                             .monospacedDigit()
                             .frame(width: 48, height: 24, alignment: .bottomTrailing)
@@ -216,15 +211,16 @@ struct 📉DifferenceView: View { //TODO: 実装再検討
         .frame(width: 48, height: 48)
         .animation(📱.🚩ShowResult ? .default : .default.speed(2), value: 🪧Description == nil)
         .animation(.default.speed(2), value: 📱.🚩DatePickerIsAlmostNow)
+        .onChange(of: 📱.🚩ShowResult) { 🆕 in
+            if 🆕 == true {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    📱.🏥GetLatestValue()
+                }
+            }
+        }
     }
     
-    enum 🅃ype {
-        case mass
-        case bmi
-        case bodyFat
-    }
-    
-    init(_ ⓣype: 🅃ype) {
+    init(_ ⓣype: HKQuantityTypeIdentifier) {
         self.ⓣype = ⓣype
     }
 }

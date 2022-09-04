@@ -22,10 +22,6 @@ class 📱AppModel: ObservableObject {
     }
     @Published var 📝BodyFatValue: Double = 0.2
     
-    @Published var 💾LastMassSample: HKQuantitySample? = nil
-    @Published var 💾LastBMISample: HKQuantitySample? = nil
-    @Published var 💾LastBodyFatSample: HKQuantitySample? = nil
-    
     @Published var 📅PickerValue = Date.now
     var 🚩DatePickerIsAlmostNow: Bool { 📅PickerValue.timeIntervalSinceNow > -300 }
     
@@ -33,6 +29,8 @@ class 📱AppModel: ObservableObject {
     @Published var 🚨RegisterError: Bool = false
     @Published var 🚩Canceled: Bool = false
     @Published var 🚨CancelError: Bool = false
+    
+    @Published var 💾LastSamples: [HKQuantityTypeIdentifier: HKQuantitySample] = [:]
     
     @Published var 🕘LocalHistory = 🕘LocalHistoryModel()
     
@@ -165,7 +163,7 @@ class 📱AppModel: ObservableObject {
                 DispatchQueue.main.async {
                     if let sample = samples?.first as? HKQuantitySample {
                         self.📝MassValue = sample.quantity.doubleValue(for: .gramUnit(with: .kilo))
-                        self.💾LastMassSample = sample
+                        self.💾LastSamples[.bodyMass] = sample
                     }
                 }
             }
@@ -177,7 +175,9 @@ class 📱AppModel: ObservableObject {
             let query = HKSampleQuery(sampleType: HKQuantityType(.bodyMassIndex), predicate: nil, limit: 1,
                                       sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, samples, _ in
                 DispatchQueue.main.async {
-                    self.💾LastBMISample = samples?.first as? HKQuantitySample
+                    if let sample = samples?.first as? HKQuantitySample {
+                        self.💾LastSamples[.bodyMassIndex] = sample
+                    }
                 }
             }
             
@@ -190,7 +190,7 @@ class 📱AppModel: ObservableObject {
                 DispatchQueue.main.async {
                     if let sample = samples?.first as? HKQuantitySample {
                         self.📝BodyFatValue = sample.quantity.doubleValue(for: .percent())
-                        self.💾LastBodyFatSample = sample
+                        self.💾LastSamples[.bodyFatPercentage] = sample
                     }
                 }
             }
