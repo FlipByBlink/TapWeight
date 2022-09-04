@@ -242,7 +242,10 @@ class 📱AppModel: ObservableObject {
     
     
     init() {
-        guard let ⓛastEntry = 🕘LocalHistory.ⓛogs.last?.entry else { return } //FIXME: これだと日付入力変更ずみの分も誤取得してしまう
+        let ⓔntrys = 🕘LocalHistory.ⓛogs.compactMap { $0.entry }
+        let ⓔntry = ⓔntrys.max { $0.date < $1.date }
+        guard let ⓛastEntry = ⓔntry else { return }
+        print(ⓛastEntry)
         if ⓛastEntry.cancellation { return }
         📝MassValue = ⓛastEntry.massSample.value
         if let ⓥalue = ⓛastEntry.bodyFatValue {

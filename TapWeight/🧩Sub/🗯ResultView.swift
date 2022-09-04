@@ -124,7 +124,7 @@ struct 🗯ResultView: View {
 
 struct 🗯SummaryView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 🪧Description: String {
+    var 🪧Description: String { //FIXME: キャンセルした場合が表示がおかしい
         var 🪧 = 📱.📝MassValue.description + " " + 📱.📏MassUnit.rawValue
         if 📱.🚩AbleBMI {
             🪧 += " / " + 📱.📝BMIValue.description
