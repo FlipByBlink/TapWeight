@@ -191,7 +191,7 @@ struct 📉DifferenceView: View {
             if 📱.🚩DatePickerIsAlmostNow {
                 if let 🪧 = 🪧Description {
                     VStack(spacing: 0) {
-                        Text(🪧) //TODO: アニメーション表示とかの調整
+                        Text(🪧)
                             .font(.subheadline.bold())
                             .monospacedDigit()
                             .frame(width: 72, height: 24, alignment: .bottomTrailing)

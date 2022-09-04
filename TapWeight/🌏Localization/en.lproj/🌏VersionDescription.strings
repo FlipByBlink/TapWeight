@@ -1,7 +1,8 @@
 
 "1.3" = "・Add \"Dismiss\" button on result screen
-・Add a display of difference of last entry
+・Add a display of difference of last entry from \"Health\" app
 ・Improve \"Local history\"
+・Import mass unit from \"Health\" app on the first launch
 ・Add \"Health\"-word localization
 ・Various bugfixes and improvements
 ・Refactoring";
