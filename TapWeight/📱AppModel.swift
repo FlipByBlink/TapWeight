@@ -152,41 +152,27 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 🏥GetLatestValue() { //TODO: 実装
-        do {
-            let ⓠuery = HKSampleQuery(sampleType: HKQuantityType(.bodyMass), predicate: nil, limit: 1,
-                                      sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, ⓢamples, _ in
-                DispatchQueue.main.async {
-                    if let ⓢample = ⓢamples?.first as? HKQuantitySample {
-                        self.📝MassValue = ⓢample.quantity.doubleValue(for: .gramUnit(with: .kilo))
-                        self.💾LastSamples[.bodyMass] = ⓢample
-                    }
-                }
-            }
-            
-            🏥HealthStore.execute(ⓠuery)
-        }
+    func 🏥GetLatestValue() {
+        let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .bodyFatPercentage]
         
-        do {
-            let ⓠuery = HKSampleQuery(sampleType: HKQuantityType(.bodyMassIndex), predicate: nil, limit: 1,
+        for ⓘdentifier in ⓘdentifiers {
+            let ⓠuery = HKSampleQuery(sampleType: HKQuantityType(ⓘdentifier),
+                                      predicate: nil,
+                                      limit: 1,
                                       sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, ⓢamples, _ in
                 DispatchQueue.main.async {
                     if let ⓢample = ⓢamples?.first as? HKQuantitySample {
-                        self.💾LastSamples[.bodyMassIndex] = ⓢample
-                    }
-                }
-            }
-            
-            🏥HealthStore.execute(ⓠuery)
-        }
-        
-        do {
-            let ⓠuery = HKSampleQuery(sampleType: HKQuantityType(.bodyFatPercentage), predicate: nil, limit: 1,
-                                      sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, ⓢamples, _ in
-                DispatchQueue.main.async {
-                    if let ⓢample = ⓢamples?.first as? HKQuantitySample {
-                        self.📝BodyFatValue = ⓢample.quantity.doubleValue(for: .percent())
-                        self.💾LastSamples[.bodyFatPercentage] = ⓢample
+                        switch ⓘdentifier {
+                            case .bodyMass:
+                                self.📝MassValue = ⓢample.quantity.doubleValue(for: self.📏MassUnit.hkunit)
+                                self.💾LastSamples[.bodyMass] = ⓢample
+                            case .bodyMassIndex:
+                                self.💾LastSamples[.bodyMassIndex] = ⓢample
+                            case .bodyFatPercentage:
+                                self.📝BodyFatValue = ⓢample.quantity.doubleValue(for: .percent())
+                                self.💾LastSamples[.bodyFatPercentage] = ⓢample
+                            default: print("🐛")
+                        }
                     }
                 }
             }
