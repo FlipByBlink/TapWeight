@@ -34,7 +34,6 @@ struct 🛠AppMenu: View {
                         Label("Unit", systemImage: "scalemass")
                     }
                     .onChange(of: 📱.📏MassUnit) { _ in
-                        📱.🏥GetLatestValue()
                         📱.🚩Amount50g = false
                     }
                     
@@ -115,6 +114,7 @@ struct 🛠AppMenu: View {
             .navigationTitle("Menu")
             .toolbar { ﹀CloseMenuButton() }
         }
+        .onDisappear { 📱.🏥GetLatestValue() }
         //.onDisappear { 📱.🚩ShowMenu = false }
         //modalをスワイプダウンで閉じた際に他のmodalに影響を与える不具合に対応するためのコード。
         //一旦コメントアウトしたが再び誤動作が起きないか注視する。
