@@ -166,7 +166,13 @@ class 📱AppModel: ObservableObject {
                     if let ⓢample = ⓢamples?.first as? HKQuantitySample {
                         switch ⓘdentifier {
                             case .bodyMass:
-                                self.📝MassValue = ⓢample.quantity.doubleValue(for: self.📏MassUnit.hkunit)
+                                let ⓥalue = ⓢample.quantity.doubleValue(for: self.📏MassUnit.hkunit)
+                                if self.🚩Amount50g {
+                                    self.📝MassValue = round(ⓥalue*100)/100
+                                } else {
+                                    self.📝MassValue = round(ⓥalue*10)/10
+                                }
+                                
                                 self.💾LastSamples[.bodyMass] = ⓢample
                             case .bodyMassIndex:
                                 self.💾LastSamples[.bodyMassIndex] = ⓢample
