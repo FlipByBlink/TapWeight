@@ -108,7 +108,6 @@ class 📱AppModel: ObservableObject {
                 if try await 🏥CheckShouldRequestAuth(ⓘdentifier) {
                     let ⓣype = HKQuantityType(ⓘdentifier)
                     try await 🏥HealthStore.requestAuthorization(toShare: [ⓣype], read: [ⓣype])
-                    if ⓘdentifier == .bodyMass { try await 🏥GetPreferredMassUnit() }
                     🏥GetLatestValue()
                 }
             } catch {
@@ -142,6 +141,7 @@ class 📱AppModel: ObservableObject {
                 if !ⓣypes.isEmpty {
                     if try await 🏥HealthStore.statusForAuthorizationRequest(toShare: ⓣypes, read: ⓣypes) == .shouldRequest {
                         try await 🏥HealthStore.requestAuthorization(toShare: ⓣypes, read: ⓣypes)
+                        if ⓣypes.contains(HKQuantityType(.bodyMass)) { try await 🏥GetPreferredMassUnit() }
                         🏥GetLatestValue()
                     }
                 }
