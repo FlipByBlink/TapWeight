@@ -188,7 +188,7 @@ struct 📉DifferenceView: View {
     var body: some View {
         ZStack {
             Color.clear
-            if 📱.🚩DatePickerIsAlmostNow {
+            if !📱.🚩AbleDatePicker || 📱.🚩DatePickerIsAlmostNow {
                 if let 🪧 = 🪧Description {
                     VStack(spacing: 0) {
                         Text(🪧)
