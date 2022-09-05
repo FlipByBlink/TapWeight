@@ -209,9 +209,15 @@ class 📱AppModel: ObservableObject {
     func 🏥GetPreferredMassUnit() async throws {
         if let 📏 = try await 🏥HealthStore.preferredUnits(for: [HKQuantityType(.bodyMass)]).first {
             switch 📏.value {
-                case .gramUnit(with: .kilo): 📏MassUnit = .kg
-                case .pound(): 📏MassUnit = .lbs
-                case .stone(): 📏MassUnit = .st
+                case .gramUnit(with: .kilo):
+                    📏MassUnit = .kg
+                    📝MassValue = 60
+                case .pound():
+                    📏MassUnit = .lbs
+                    📝MassValue = 130
+                case .stone():
+                    📏MassUnit = .st
+                    📝MassValue = 10
                 default: print("🐛")
             }
         }
