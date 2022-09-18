@@ -37,10 +37,8 @@ struct ContentView: View {
     }
 }
 
-
 struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: -4) {
@@ -68,10 +66,8 @@ struct 🪧BMIView: View {
     }
 }
 
-
 struct 👆DoneButton: View { // ☑️
     @EnvironmentObject var 📱: 📱AppModel
-    
     var body: some View {
         Button {
             📱.👆Register()
@@ -92,7 +88,6 @@ struct 👆DoneButton: View { // ☑️
         }
     }
 }
-
 
 struct 💟JumpButton: View {
     var body: some View {
@@ -117,11 +112,9 @@ struct 💟JumpButton: View {
     }
 }
 
-
 struct 📅DatePicker: View {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.scenePhase) var 🚥Phase: ScenePhase
-    
     var body: some View {
         if 📱.🚩AbleDatePicker {
             VStack(alignment: .trailing, spacing: 16) {
@@ -150,7 +143,6 @@ struct 📅DatePicker: View {
         }
     }
 }
-
 
 struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel

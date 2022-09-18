@@ -26,8 +26,8 @@ struct 🛠AppMenu: View {
             List {
                 Section {
                     Picker(selection: $📱.📏MassUnit) {
-                        ForEach(📏BodyMassUnit.allCases, id: \.self) { 🏷 in
-                            Text(🏷.rawValue)
+                        ForEach(📏BodyMassUnit.allCases) { 📏 in
+                            Text(📏.rawValue)
                         }
                     } label: {
                         Label("Unit", systemImage: "scalemass")

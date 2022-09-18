@@ -158,7 +158,6 @@ typealias 🕘Entry = 🕘LocalHistoryModel.Log.Entry
 
 struct 🕘LocalHistoryBeforeVer_1_2_Link: View {
     @AppStorage("History") var 🕘History: String = ""
-    
     var body: some View {
         if 🕘History != "" {
             NavigationLink("Old data before ver 1.2") {
@@ -166,21 +165,17 @@ struct 🕘LocalHistoryBeforeVer_1_2_Link: View {
             }
         }
     }
-    
     struct 🕘MainView: View {
         @AppStorage("History") var 🕘History: String = ""
-        
         var body: some View {
             VStack (spacing: 0) {
                 if 🕘History == "" {
                     Spacer()
-                    
                     Image(systemName: "text.append")
                         .foregroundStyle(.tertiary)
                         .font(.system(size: 64))
                         .navigationTitle("History")
                         .navigationBarTitleDisplayMode(.inline)
-                    
                     Spacer()
                 } else {
                     ScrollView {
@@ -197,7 +192,6 @@ struct 🕘LocalHistoryBeforeVer_1_2_Link: View {
                 
                 Color.secondary
                     .frame(height: 0.4)
-                
                 Text("\"Local history\" is for the porpose of \"operation check\" / \"temporary backup\"")
                     .font(.caption)
                     .foregroundStyle(.secondary)
