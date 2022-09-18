@@ -3,9 +3,6 @@ import SwiftUI
 import HealthKit
 
 class 📱AppModel: ObservableObject {
-    
-    @Published var 🚩ShowMenu: Bool = false
-    
     @AppStorage("Unit") var 📏MassUnit: 📏BodyMassUnit = .kg
     @AppStorage("Amount50g") var 🚩Amount50g: Bool = false
     @AppStorage("AbleBMI") var 🚩AbleBMI: Bool = false

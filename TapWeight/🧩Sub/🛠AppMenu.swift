@@ -2,18 +2,17 @@
 import SwiftUI
 
 struct 🛠MenuButton: View { // ⚙️
-    @EnvironmentObject var 📱: 📱AppModel
-    
+    @State private var 🚩ShowMenu: Bool = false
     var body: some View {
         Button {
-            📱.🚩ShowMenu = true
+            🚩ShowMenu = true
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         } label: {
             Image(systemName: "gearshape")
                 .foregroundColor(.primary)
         }
         .accessibilityLabel("Open menu")
-        .sheet(isPresented: $📱.🚩ShowMenu) {
+        .sheet(isPresented: $🚩ShowMenu) {
             🛠AppMenu()
         }
     }
@@ -21,7 +20,7 @@ struct 🛠MenuButton: View { // ⚙️
 
 struct 🛠AppMenu: View {
     @EnvironmentObject var 📱: 📱AppModel
-    
+    @Environment(\.dismiss) var 🔙Dismiss: DismissAction
     var body: some View {
         NavigationView {
             List {
@@ -49,7 +48,6 @@ struct 🛠AppMenu: View {
                     Text("Option")
                 }
                 
-                
                 Section {
                     Toggle(isOn: $📱.🚩AbleBMI) {
                         Label("Body Mass Index", systemImage: "function")
@@ -61,7 +59,6 @@ struct 🛠AppMenu: View {
                     🧍HeightMenuLink()
                 }
                 
-                
                 Section {
                     Toggle(isOn: $📱.🚩AbleBodyFat) {
                         Label("Body Fat Percentage", systemImage: "percent")
@@ -71,7 +68,6 @@ struct 🛠AppMenu: View {
                     }
                 }
                 
-                
                 Section {
                     Toggle(isOn: $📱.🚩AbleDatePicker) {
                         Label("Date picker", systemImage: "calendar.badge.clock")
@@ -80,7 +76,6 @@ struct 🛠AppMenu: View {
                         📱.📅PickerValue = .now
                     }
                 }
-                
                 
                 Section {
                     Link (destination: URL(string: "x-apple-health://")!) {
@@ -112,12 +107,9 @@ struct 🛠AppMenu: View {
                 📣ADMenuLink()
             }
             .navigationTitle("Menu")
-            .toolbar { ﹀CloseMenuButton() }
+            .toolbar { ﹀CloseMenuButton(🔙Dismiss) }
         }
         .onDisappear { 📱.🏥GetLatestValue() }
-        //.onDisappear { 📱.🚩ShowMenu = false }
-        //modalをスワイプダウンで閉じた際に他のmodalに影響を与える不具合に対応するためのコード。
-        //一旦コメントアウトしたが再び誤動作が起きないか注視する。
     }
 }
 
@@ -127,7 +119,6 @@ struct ℹ️AboutAppLink: View {
         Section {
             ZStack {
                 Color.clear
-                
                 VStack(spacing: 12) {
                     Image("TapWeight")
                         .resizable()
@@ -136,7 +127,6 @@ struct ℹ️AboutAppLink: View {
                         }
                         .shadow(radius: 3, y: 1)
                         .frame(width: 100, height: 100)
-                    
                     Text("TapWeight")
                         .font(.system(.title2, design: .rounded))
                         .fontWeight(.medium)
@@ -170,12 +160,11 @@ struct ℹ️AboutAppLink: View {
 
 
 struct ﹀CloseMenuButton: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    
+    var 🔙Dismiss: DismissAction
     var body: some View {
         Button {
-            📱.🚩ShowMenu = false
-            UISelectionFeedbackGenerator().selectionChanged()
+            🔙Dismiss.callAsFunction()
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
         } label: {
             Image(systemName: "chevron.down")
                 .foregroundStyle(.secondary)
@@ -183,5 +172,8 @@ struct ﹀CloseMenuButton: View {
                 .padding(8)
         }
         .accessibilityLabel("Dismiss")
+    }
+    init(_ 🔙Dismiss: DismissAction) {
+        self.🔙Dismiss = 🔙Dismiss
     }
 }

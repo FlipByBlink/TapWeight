@@ -5,7 +5,6 @@ import HealthKit
 struct ContentView: View {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.scenePhase) var 🚥Phase: ScenePhase
-    
     var body: some View {
         NavigationView {
             List {

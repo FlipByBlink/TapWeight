@@ -5,23 +5,19 @@ import HealthKit
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.dismiss) var 🔙Dismiss: DismissAction
-    
     var body: some View {
         NavigationView {
             ZStack {
                 Rectangle()
                     .foregroundColor(📱.🚨RegisterError ? .gray : .pink)
                     .ignoresSafeArea()
-                
                 VStack {
                     VStack(spacing: 16) {
                         Image(systemName: 📱.🚨RegisterError ? "exclamationmark.triangle" : "checkmark")
                             .font(.system(size: 96).weight(.semibold))
-                        
                         Text(📱.🚨RegisterError ? "ERROR!?" : "DONE!")
                             .strikethrough(📱.🚩Canceled)
                             .font(.system(size: 96).weight(.black))
-                        
                         if 📱.🚨RegisterError {
                             Text("Please check permission on \"Health\" app")
                                 .font(.title3.weight(.semibold))
@@ -68,7 +64,6 @@ struct 🗯ResultView: View {
                             VStack(alignment: .trailing) {
                                 Text("Canceled")
                                     .fontWeight(.semibold)
-                                
                                 if 📱.🚨CancelError {
                                     Text("(perhaps error)")
                                 }
