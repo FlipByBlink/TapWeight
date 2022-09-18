@@ -67,27 +67,8 @@ struct 🗯ResultView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .animation(.default, value: 📱.🚩Canceled)
                 .toolbar {
-                    🅧CloseButton {
-                        🔙Dismiss.callAsFunction()
-                    }
-                    
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        if 📱.🚨RegisterError == false {
-                            Button {
-                                Task {
-                                    await 📱.🗑Cancel()
-                                }
-                            } label: {
-                                Image(systemName: "arrow.uturn.backward.circle.fill")
-                                    .symbolRenderingMode(.hierarchical)
-                                    .foregroundColor(.primary)
-                                    .font(.title)
-                            }
-                            .disabled(📱.🚩Canceled)
-                            .opacity(📱.🚩Canceled ? 0.5 : 1)
-                            .accessibilityLabel("Cancel")
-                        }
-                    }
+                    🅧CloseButton { 🔙Dismiss.callAsFunction() }
+                    🗑CancelButton()
                 }
             }
         }
@@ -125,6 +106,27 @@ struct 🗯ResultView: View {
                         .font(.title)
                 }
                 .accessibilityLabel("Dismiss")
+            }
+        }
+    }
+    
+    struct 🗑CancelButton: ToolbarContent {
+        @EnvironmentObject var 📱: 📱AppModel
+        var body: some ToolbarContent {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if 📱.🚨RegisterError == false {
+                    Button {
+                        📱.🗑Cancel()
+                    } label: {
+                        Image(systemName: "arrow.uturn.backward.circle.fill")
+                            .symbolRenderingMode(.hierarchical)
+                            .foregroundColor(.primary)
+                            .font(.title)
+                    }
+                    .disabled(📱.🚩Canceled)
+                    .opacity(📱.🚩Canceled ? 0.5 : 1)
+                    .accessibilityLabel("Cancel")
+                }
             }
         }
     }

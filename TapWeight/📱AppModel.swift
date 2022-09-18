@@ -173,17 +173,17 @@ class 📱AppModel: ObservableObject {
     }
     
     @MainActor
-    func 🗑Cancel() async {
-        do {
-            🚩Canceled = true
-            try await 🏥HealthStore.delete(📦Samples)
-            🏥GetLatestValue()
-            🕘LocalHistory.modifyCancellation()
-            UINotificationFeedbackGenerator().notificationOccurred(.error)
-        } catch {
-            DispatchQueue.main.async {
-                self.🕘LocalHistory.addLog("Error: " + error.localizedDescription)
-                self.🚨CancelError = true
+    func 🗑Cancel() {
+        Task {
+            do {
+                🚩Canceled = true
+                try await 🏥HealthStore.delete(📦Samples)
+                🏥GetLatestValue()
+                🕘LocalHistory.modifyCancellation()
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
+            } catch {
+                🕘LocalHistory.addLog("Error: " + error.localizedDescription)
+                🚨CancelError = true
             }
         }
     }
