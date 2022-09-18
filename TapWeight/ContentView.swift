@@ -68,9 +68,13 @@ struct 🪧BMIView: View {
 
 struct 👆DoneButton: View { // ☑️
     @EnvironmentObject var 📱: 📱AppModel
+    @State private var 🚩ShowResult: Bool = false
     var body: some View {
         Button {
-            📱.👆Register()
+            Task {
+                await 📱.👆Register()
+                🚩ShowResult = true
+            }
         } label: {
             Image(systemName: "checkmark.circle.fill")
                 .font(.system(size: 120))
@@ -83,8 +87,15 @@ struct 👆DoneButton: View { // ☑️
         }
         .accessibilityLabel("DONE")
         .padding()
-        .fullScreenCover(isPresented: $📱.🚩ShowResult) {
+        .fullScreenCover(isPresented: $🚩ShowResult) {
             🗯ResultView()
+        }
+        .onChange(of: 🚩ShowResult) { 🆕 in
+            if 🆕 == true {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    📱.🏥GetLatestValue()
+                }
+            }
         }
     }
 }
@@ -199,15 +210,8 @@ struct 📉DifferenceView: View {
             }
         }
         .frame(width: 72, height: 48)
-        .animation(📱.🚩ShowResult ? .default : .default.speed(2), value: 🪧Description == nil)
+        .animation(.default, value: 🪧Description == nil) //TODO: ShowResult削除のここの影響範囲を注視
         .animation(.default.speed(2), value: 📱.🚩DatePickerIsAlmostNow)
-        .onChange(of: 📱.🚩ShowResult) { 🆕 in
-            if 🆕 == true {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    📱.🏥GetLatestValue()
-                }
-            }
-        }
     }
     
     init(_ ⓣype: HKQuantityTypeIdentifier) {

@@ -24,7 +24,6 @@ class 📱AppModel: ObservableObject {
     @Published var 📅PickerValue = Date.now
     var 🚩DatePickerIsAlmostNow: Bool { 📅PickerValue.timeIntervalSinceNow > -300 }
     
-    @Published var 🚩ShowResult: Bool = false
     @Published var 🚨RegisterError: Bool = false
     @Published var 🚩Canceled: Bool = false
     @Published var 🚨CancelError: Bool = false
@@ -34,7 +33,8 @@ class 📱AppModel: ObservableObject {
     let 🏥HealthStore = HKHealthStore()
     var 📦Samples: [HKQuantitySample] = []
     
-    func 👆Register() {
+    @MainActor
+    func 👆Register() async {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
         
         if 🏥CheckAuthDenied(.bodyMass) { return }
@@ -65,26 +65,18 @@ class 📱AppModel: ObservableObject {
                                               start: 📅Date, end: 📅Date))
         }
         
-        Task { @MainActor in
-            do {
-                try await 🏥HealthStore.save(📦Samples)
-                🕘SaveLogForLocalHistory(📅Date)
-                🚩ShowResult = true
-            } catch {
-                DispatchQueue.main.async {
-                    self.🕘LocalHistory.addLog("Error: " + #function + error.localizedDescription)
-                    self.🚨RegisterError = true
-                    self.🚩ShowResult = true
-                }
-            }
+        do {
+            try await 🏥HealthStore.save(📦Samples)
+            🕘SaveLogForLocalHistory(📅Date)
+        } catch {
+            🕘LocalHistory.addLog("Error: " + #function + error.localizedDescription)
+            🚨RegisterError = true
         }
     }
-    
     
     func 🏥CheckAuthDenied(_ ⓣype: HKQuantityTypeIdentifier) -> Bool {
         if 🏥HealthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             🚨RegisterError = true
-            🚩ShowResult = true
             self.🕘LocalHistory.addLog("Error: " + #function + ⓣype.rawValue)
             return true
         } else {
@@ -92,12 +84,10 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    
     func 🏥CheckShouldRequestAuth(_ identifier: HKQuantityTypeIdentifier) async throws -> Bool {
         let ⓣype = HKQuantityType(identifier)
         return try await 🏥HealthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype]) == .shouldRequest
     }
-    
     
     func 🏥RequestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) {
         Task {
@@ -112,7 +102,6 @@ class 📱AppModel: ObservableObject {
             }
         }
     }
-    
     
     func 🏥CheckAuthOnLaunch() {
         Task {
@@ -147,7 +136,6 @@ class 📱AppModel: ObservableObject {
             }
         }
     }
-    
     
     func 🏥GetLatestValue() {
         let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .bodyFatPercentage]
@@ -184,7 +172,6 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    
     @MainActor
     func 🗑Cancel() async {
         do {
@@ -200,7 +187,6 @@ class 📱AppModel: ObservableObject {
             }
         }
     }
-    
     
     @MainActor
     func 🏥GetPreferredMassUnit() async throws {
@@ -220,9 +206,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    
     func 🅁eset() {
-        🚩ShowResult = false
         🚨RegisterError = false
         🚩Canceled = false
         🚨CancelError = false
@@ -230,17 +214,11 @@ class 📱AppModel: ObservableObject {
         🏥GetLatestValue()
     }
     
-    
     func 🕘SaveLogForLocalHistory(_ ⓓate: Date) {
         var ⓔntry = 🕘Entry(date: ⓓate, massSample: .init(unit: 📏MassUnit, value: 📝MassValue))
         if 🚩AbleBMI { ⓔntry.bmiValue = 📝BMIValue }
         if 🚩AbleBodyFat { ⓔntry.bodyFatValue = 📝BodyFatValue }
         🕘LocalHistory.addLog(ⓔntry)
-    }
-    
-    
-    init() {
-        🕘LoadLastValueFromLocalHistoryOnLaunch()
     }
     
     func 🕘LoadLastValueFromLocalHistoryOnLaunch() {
@@ -252,5 +230,9 @@ class 📱AppModel: ObservableObject {
         if let ⓥalue = ⓛastEntry.bodyFatValue {
             📝BodyFatValue = ⓥalue
         }
+    }
+    
+    init() {
+        🕘LoadLastValueFromLocalHistoryOnLaunch()
     }
 }
