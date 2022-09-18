@@ -111,7 +111,7 @@ struct 🗯ResultView: View {
     }
     
     struct 🗑CancelButton: ToolbarContent {
-        @EnvironmentObject var 📱: 📱AppModel
+        @EnvironmentObject var 📱: 📱AppModel //FIXME: iOS15.5環境だとクラッシュする
         var body: some ToolbarContent {
             ToolbarItem(placement: .navigationBarTrailing) {
                 if 📱.🚨RegisterError == false {
