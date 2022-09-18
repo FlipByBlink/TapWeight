@@ -3,8 +3,8 @@ import SwiftUI
 
 @main
 struct TapWeightApp: App {
-    let 📱 = 📱AppModel()
-    let 🛒 = 🛒StoreModel()
+    @StateObject private var 📱 = 📱AppModel()
+    @StateObject private var 🛒 = 🛒StoreModel()
     
     var body: some Scene {
         WindowGroup {

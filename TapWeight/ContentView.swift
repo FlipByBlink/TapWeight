@@ -68,6 +68,7 @@ struct 🪧BMIView: View {
 
 struct 👆DoneButton: View { // ☑️
     @EnvironmentObject var 📱: 📱AppModel
+    @Environment(\.scenePhase) var 🚥Phase: ScenePhase
     @State private var 🚩ShowResult: Bool = false
     var body: some View {
         Button {
@@ -95,6 +96,11 @@ struct 👆DoneButton: View { // ☑️
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     📱.🏥GetLatestValue()
                 }
+            }
+        }
+        .onChange(of: 🚥Phase) { 🚥 in
+            if 🚥 == .background {
+                🚩ShowResult = false
             }
         }
     }
