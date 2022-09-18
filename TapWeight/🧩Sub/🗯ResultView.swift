@@ -68,7 +68,7 @@ struct 🗯ResultView: View {
                 .animation(.default, value: 📱.🚩Canceled)
                 .toolbar {
                     🅧CloseButton { 🔙Dismiss.callAsFunction() }
-                    🗑CancelButton()
+                    🗑CancelButton(📱)
                 }
             }
         }
@@ -111,7 +111,8 @@ struct 🗯ResultView: View {
     }
     
     struct 🗑CancelButton: ToolbarContent {
-        @EnvironmentObject var 📱: 📱AppModel //FIXME: iOS15.5環境だとクラッシュする
+        @ObservedObject var 📱: 📱AppModel
+        //FIXME: iOS15.5環境だとクラッシュするためEnvironmentObjectではなくObservedObject
         var body: some ToolbarContent {
             ToolbarItem(placement: .navigationBarTrailing) {
                 if 📱.🚨RegisterError == false {
@@ -128,6 +129,9 @@ struct 🗯ResultView: View {
                     .accessibilityLabel("Cancel")
                 }
             }
+        }
+        init(_ 📱: 📱AppModel) {
+            self.📱 = 📱
         }
     }
 }
