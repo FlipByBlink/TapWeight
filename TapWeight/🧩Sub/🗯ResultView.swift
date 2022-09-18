@@ -67,17 +67,8 @@ struct 🗯ResultView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .animation(.default, value: 📱.🚩Canceled)
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            🔙Dismiss.callAsFunction()
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        } label: {
-                            Image(systemName: "xmark.circle.fill")
-                                .symbolRenderingMode(.hierarchical)
-                                .foregroundColor(.primary)
-                                .font(.title)
-                        }
-                        .accessibilityLabel("Dismiss")
+                    🅧CloseButton {
+                        🔙Dismiss.callAsFunction()
                     }
                     
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -117,6 +108,24 @@ struct 🗯ResultView: View {
                     .font(.system(size: 32))
             }
             .accessibilityLabel("Open \"Health\" app")
+        }
+    }
+    
+    struct 🅧CloseButton: ToolbarContent {
+        var ⓐction: () -> Void
+        var body: some ToolbarContent {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    ⓐction()
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundColor(.primary)
+                        .font(.title)
+                }
+                .accessibilityLabel("Dismiss")
+            }
         }
     }
 }
