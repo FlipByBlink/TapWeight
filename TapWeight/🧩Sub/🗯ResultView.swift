@@ -32,19 +32,7 @@ struct 🗯ResultView: View {
                         }
                         
                         VStack {
-                            Link(destination: URL(string: "x-apple-health://")!) {
-                                Image(systemName: "app")
-                                    .imageScale(.large)
-                                    .overlay {
-                                        Image(systemName: "heart")
-                                            .imageScale(.small)
-                                    }
-                                    .foregroundColor(.primary)
-                                    .padding(24)
-                                    .font(.system(size: 32))
-                            }
-                            .accessibilityLabel("Open \"Health\" app")
-                            
+                            💟JumpButton()
                             if 📱.🚨RegisterError {
                                 Image(systemName: "arrow.up")
                                     .imageScale(.small)
@@ -75,9 +63,7 @@ struct 🗯ResultView: View {
                     
                     📣ADBanner()
                 }
-                .onDisappear {
-                    📱.🅁eset()
-                }
+                .onDisappear { 📱.🅁eset() }
                 .navigationBarTitleDisplayMode(.inline)
                 .animation(.default, value: 📱.🚩Canceled)
                 .toolbar {
@@ -115,6 +101,23 @@ struct 🗯ResultView: View {
             }
         }
         .preferredColorScheme(.dark)
+    }
+    
+    struct 💟JumpButton: View {
+        var body: some View {
+            Link(destination: URL(string: "x-apple-health://")!) {
+                Image(systemName: "app")
+                    .imageScale(.large)
+                    .overlay {
+                        Image(systemName: "heart")
+                            .imageScale(.small)
+                    }
+                    .foregroundColor(.primary)
+                    .padding(24)
+                    .font(.system(size: 32))
+            }
+            .accessibilityLabel("Open \"Health\" app")
+        }
     }
 }
 
