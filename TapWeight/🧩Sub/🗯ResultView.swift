@@ -1,5 +1,6 @@
 
 import SwiftUI
+import HealthKit
 
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
@@ -145,12 +146,13 @@ struct 🗯SummaryView: View {
             Text(🪧Description)
                 .strikethrough(📱.🚩Canceled)
                 .font(.body.bold())
-            
             if 📱.🚩AbleDatePicker {
-                Text(📱.📅PickerValue.formatted(date: .abbreviated, time: .shortened))
-                    .strikethrough(📱.🚩Canceled)
-                    .font(.subheadline.weight(.semibold))
-                    .padding(.horizontal)
+                if let 📦Date = 📱.📦Samples.first?.startDate as? Date {
+                    Text(📦Date.formatted(date: .abbreviated, time: .shortened))
+                        .strikethrough(📱.🚩Canceled)
+                        .font(.subheadline.weight(.semibold))
+                        .padding(.horizontal)
+                }
             }
         }
         .opacity(0.75)
