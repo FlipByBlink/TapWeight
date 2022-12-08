@@ -23,12 +23,12 @@ struct 🛠AppMenu: View {
     @Environment(\.dismiss) var 🔙Dismiss: DismissAction
     var body: some View {
         if #available(iOS 16.0, *) {
-            NavigationStack { 🄲ontents() }
+            NavigationStack { 🄲ontent() }
         } else {
-            NavigationView { 🄲ontents() }
+            NavigationView { 🄲ontent() }
         }
     }
-    func 🄲ontents() -> some View {
+    func 🄲ontent() -> some View {
         List {
             Section {
                 Picker(selection: $📱.📏MassUnit) {
