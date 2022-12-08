@@ -68,7 +68,7 @@ struct 🗯ResultView: View {
                 .animation(.default, value: 📱.🚩Canceled)
                 .toolbar {
                     🅧CloseButton()
-                    🗑CancelButton(📱)
+                    🗑CancelButton()
                 }
             }
         }
@@ -105,28 +105,21 @@ struct 🗯ResultView: View {
         }
     }
     
-    struct 🗑CancelButton: ToolbarContent {
-        @ObservedObject var 📱: 📱AppModel
-        //FIXME: iOS15.5環境だとクラッシュするためEnvironmentObjectではなくObservedObject
-        var body: some ToolbarContent {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if 📱.🚨RegisterError == false {
-                    Button {
-                        📱.🗑Cancel()
-                    } label: {
-                        Image(systemName: "arrow.uturn.backward.circle.fill")
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundColor(.primary)
-                            .font(.title)
-                    }
-                    .disabled(📱.🚩Canceled)
-                    .opacity(📱.🚩Canceled ? 0.5 : 1)
-                    .accessibilityLabel("Cancel")
+    func 🗑CancelButton() -> some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            if 📱.🚨RegisterError == false {
+                Button {
+                    📱.🗑Cancel()
+                } label: {
+                    Image(systemName: "arrow.uturn.backward.circle.fill")
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundColor(.primary)
+                        .font(.title)
                 }
+                .disabled(📱.🚩Canceled)
+                .opacity(📱.🚩Canceled ? 0.5 : 1)
+                .accessibilityLabel("Cancel")
             }
-        }
-        init(_ 📱: 📱AppModel) {
-            self.📱 = 📱
         }
     }
 }
