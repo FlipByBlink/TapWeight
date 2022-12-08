@@ -2,46 +2,27 @@
 import SwiftUI
 import StoreKit
 
-///#Example
-///struct ParentView: View {
-/// @State private var 🚩ShowADMenuSheet: Bool = false
-/// var body: some View {
-///     ... 📣ADView($🚩ShowADMenuSheet) ...
-///     .modifier(📣ADMenuSheet($🚩ShowADMenuSheet))
-///} }
+//ADMenuSheetを表示したままアプリをバックグラウンドに移行した際に、ResultViewの自動非表示機能がうまく動作しない。
+//そのためADBanner上のADMenuシートを削除。
 
 struct 📣ADView: View {
     @EnvironmentObject var 🛒: 🛒StoreModel
     @State private var ⓐppName: 📣AppName
-    @Binding var 🚩ShowADMenuSheet: Bool
     var body: some View {
         if 🛒.🚩ADIsActive {
-            HStack {
-                🔗LinkButton()
-                Spacer()
-                Button {
-                    🚩ShowADMenuSheet = true
-                    UISelectionFeedbackGenerator().selectionChanged()
-                } label: {
-                    Image(systemName: "ellipsis.circle")
-                        .padding(.vertical)
-                        .padding(.leading, 8)
+            🔗LinkButton()
+                .overlay(alignment: .topLeading) {
+                    Text("AD")
+                        .scaleEffect(x: 1.2)
+                        .font(.subheadline.weight(.black))
+                        .frame(maxHeight: 32)
+                        .minimumScaleFactor(0.1)
+                        .padding(.top, 8)
+                        .padding(.leading, 3)
+                        .foregroundStyle(.tertiary)
                 }
-                .foregroundStyle(.secondary)
-                .accessibilityLabel("Purchase")
-            }
-            .overlay(alignment: .topLeading) {
-                Text("AD")
-                    .scaleEffect(x: 1.2)
-                    .font(.subheadline.weight(.black))
-                    .frame(maxHeight: 32)
-                    .minimumScaleFactor(0.1)
-                    .padding(.top, 8)
-                    .padding(.leading, 3)
-                    .foregroundStyle(.tertiary)
-            }
-            .padding(.leading, 4)
-            .buttonStyle(.borderless)
+                .padding(.horizontal, 4)
+                .buttonStyle(.borderless)
         } else {
             EmptyView()
         }
@@ -76,10 +57,9 @@ struct 📣ADView: View {
         }
         .accessibilityLabel("Open AD link")
     }
-    init(without: 📣AppName, _ 🚩ShowADMenuSheet: Binding<Bool>) {
+    init(without: 📣AppName) {
         let ⓐpps = 📣AppName.allCases.filter { $0 != without }
         ⓐppName = ⓐpps.randomElement()!
-        self._🚩ShowADMenuSheet = 🚩ShowADMenuSheet
     }
 }
 
@@ -97,32 +77,6 @@ struct 📣ADMenu: View {
             🛒IAPSection()
         }
         .navigationTitle("AD / Purchase")
-    }
-}
-
-struct 📣ADMenuSheet: ViewModifier {
-    @Binding var 🚩ShowSheet: Bool
-    func body(content: Content) -> some View {
-        content
-            .sheet(isPresented: $🚩ShowSheet) {
-                NavigationView {
-                    📣ADMenu()
-                        .toolbar {
-                            Button {
-                                🚩ShowSheet = false
-                                UISelectionFeedbackGenerator().selectionChanged()
-                            } label: {
-                                Image(systemName: "chevron.down")
-                            }
-                            .tint(.secondary)
-                            .accessibilityLabel("Dismiss")
-                        }
-                }
-                .navigationViewStyle(StackNavigationViewStyle())
-            }
-    }
-    init(_ 🚩ShowSheet: Binding<Bool>) {
-        self._🚩ShowSheet = 🚩ShowSheet
     }
 }
 
