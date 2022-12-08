@@ -136,6 +136,7 @@
 		12AF80DF288ECA8F0047324A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		12AF80E0288ECA8F0047324A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12BA83CD28606047009E7E3F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F5AC7BE92941982A00490FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5E2EAA729415F3C0054A208 /* ℹ️AboutAppMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutAppMenu.swift"; sourceTree = "<group>"; };
 		F5E2EAA829415F3C0054A208 /* 📣AD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣AD.swift"; sourceTree = "<group>"; };
 		F5E2EAA929415F3D0054A208 /* 🛒InAppPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒InAppPurchase.swift"; sourceTree = "<group>"; };
@@ -165,6 +166,7 @@
 				12630BC22849CD33005F922F /* 🛠AppMenu.swift */,
 				F5FB6BEC28BCCBDF00F55EED /* 🕘LocalHistory.swift */,
 				12630BC02849C63E005F922F /* 🧍HeightMenu.swift */,
+				F5AC7BE92941982A00490FF0 /* Info.plist */,
 				126B3EB8282E001E009BD28B /* TapWeight.entitlements */,
 				126B3EB0282DFEE0009BD28B /* Preview Content */,
 			);
@@ -547,7 +549,7 @@
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = "TapWeight/🧩Sub/Info.plist";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Import latest log to show difference.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Save your data to \"Health\" app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -583,7 +585,7 @@
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = "TapWeight/🧩Sub/Info.plist";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Import latest log to show difference.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Save your data to \"Health\" app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
