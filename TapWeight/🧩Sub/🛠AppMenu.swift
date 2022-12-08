@@ -22,94 +22,98 @@ struct 🛠AppMenu: View {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.dismiss) var 🔙Dismiss: DismissAction
     var body: some View {
-        //FIXME: iOS16環境で乱れる
-        NavigationView {
-            List {
-                Section {
-                    Picker(selection: $📱.📏MassUnit) {
-                        ForEach(📏BodyMassUnit.allCases) { 📏 in
-                            Text(📏.rawValue)
-                        }
-                    } label: {
-                        Label("Unit", systemImage: "scalemass")
-                    }
-                    .onChange(of: 📱.📏MassUnit) { _ in
-                        📱.🚩Amount50g = false
-                    }
-                    
-                    Toggle(isOn: $📱.🚩Amount50g) {
-                        Label("100g → 50g", systemImage: "minus.forwardslash.plus")
-                            .padding(.leading)
-                            .foregroundColor(📱.📏MassUnit != .kg ? .secondary : nil)
-                    }
-                    .font(.subheadline)
-                    .disabled(📱.📏MassUnit != .kg)
-                    .accessibilityLabel("50gram")
-                } header: {
-                    Text("Option")
-                }
-                
-                Section {
-                    Toggle(isOn: $📱.🚩AbleBMI) {
-                        Label("Body Mass Index", systemImage: "function")
-                    }
-                    .onChange(of: 📱.🚩AbleBMI) { 🆕 in
-                        if 🆕 == true { 📱.🏥RequestAuth(.bodyMassIndex) }
-                    }
-                    
-                    🧍HeightMenuLink()
-                }
-                
-                Section {
-                    Toggle(isOn: $📱.🚩AbleBodyFat) {
-                        Label("Body Fat Percentage", systemImage: "percent")
-                    }
-                    .onChange(of: 📱.🚩AbleBodyFat) { 🆕 in
-                        if 🆕 == true { 📱.🏥RequestAuth(.bodyFatPercentage) }
-                    }
-                }
-                
-                Section {
-                    Toggle(isOn: $📱.🚩AbleDatePicker) {
-                        Label("Date picker", systemImage: "calendar.badge.clock")
-                    }
-                    .onChange(of: 📱.🚩AbleDatePicker) { _ in
-                        📱.📅PickerValue = .now
-                    }
-                }
-                
-                Section {
-                    Link (destination: URL(string: "x-apple-health://")!) {
-                        HStack {
-                            Image(systemName: "app")
-                                .overlay {
-                                    Image(systemName: "heart")
-                                        .scaleEffect(0.55)
-                                        .font(.body.bold())
-                                }
-                                .imageScale(.large)
-                                .padding(.horizontal, 2)
-                            Text("Open \"Health\" app")
-                            Spacer()
-                            Image(systemName: "arrow.up.forward.app")
-                                .imageScale(.small)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                    
-                    NavigationLink  {
-                        🕘LocalHistoryView()
-                    } label: {
-                        Label("Local history", systemImage: "clock")
-                    }
-                }
-                
-                ℹ️AboutAppLink()
-                📣ADMenuLink()
-            }
-            .navigationTitle("Menu")
-            .toolbar { ﹀CloseMenuButton(🔙Dismiss) }
+        if #available(iOS 16.0, *) {
+            NavigationStack { 🄲ontents() }
+        } else {
+            NavigationView { 🄲ontents() }
         }
+    }
+    func 🄲ontents() -> some View {
+        List {
+            Section {
+                Picker(selection: $📱.📏MassUnit) {
+                    ForEach(📏BodyMassUnit.allCases) { 📏 in
+                        Text(📏.rawValue)
+                    }
+                } label: {
+                    Label("Unit", systemImage: "scalemass")
+                }
+                .onChange(of: 📱.📏MassUnit) { _ in
+                    📱.🚩Amount50g = false
+                }
+                
+                Toggle(isOn: $📱.🚩Amount50g) {
+                    Label("100g → 50g", systemImage: "minus.forwardslash.plus")
+                        .padding(.leading)
+                        .foregroundColor(📱.📏MassUnit != .kg ? .secondary : nil)
+                }
+                .font(.subheadline)
+                .disabled(📱.📏MassUnit != .kg)
+                .accessibilityLabel("50gram")
+            } header: {
+                Text("Option")
+            }
+            
+            Section {
+                Toggle(isOn: $📱.🚩AbleBMI) {
+                    Label("Body Mass Index", systemImage: "function")
+                }
+                .onChange(of: 📱.🚩AbleBMI) { 🆕 in
+                    if 🆕 == true { 📱.🏥RequestAuth(.bodyMassIndex) }
+                }
+                
+                🧍HeightMenuLink()
+            }
+            
+            Section {
+                Toggle(isOn: $📱.🚩AbleBodyFat) {
+                    Label("Body Fat Percentage", systemImage: "percent")
+                }
+                .onChange(of: 📱.🚩AbleBodyFat) { 🆕 in
+                    if 🆕 == true { 📱.🏥RequestAuth(.bodyFatPercentage) }
+                }
+            }
+            
+            Section {
+                Toggle(isOn: $📱.🚩AbleDatePicker) {
+                    Label("Date picker", systemImage: "calendar.badge.clock")
+                }
+                .onChange(of: 📱.🚩AbleDatePicker) { _ in
+                    📱.📅PickerValue = .now
+                }
+            }
+            
+            Section {
+                Link (destination: URL(string: "x-apple-health://")!) {
+                    HStack {
+                        Image(systemName: "app")
+                            .overlay {
+                                Image(systemName: "heart")
+                                    .scaleEffect(0.55)
+                                    .font(.body.bold())
+                            }
+                            .imageScale(.large)
+                            .padding(.horizontal, 2)
+                        Text("Open \"Health\" app")
+                        Spacer()
+                        Image(systemName: "arrow.up.forward.app")
+                            .imageScale(.small)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                
+                NavigationLink  {
+                    🕘LocalHistoryView()
+                } label: {
+                    Label("Local history", systemImage: "clock")
+                }
+            }
+            
+            ℹ️AboutAppLink()
+            📣ADMenuLink()
+        }
+        .navigationTitle("Menu")
+        .toolbar { ﹀CloseMenuButton(🔙Dismiss) }
         .onDisappear { 📱.🏥GetLatestValue() }
     }
 }
