@@ -122,28 +122,34 @@ struct 🛠AppMenu: View {
 struct ℹ️AboutAppLink: View {
     var body: some View {
         Section {
-            //FIXME: セパレーターの表示が乱れる
-            ZStack {
-                Color.clear
+            GeometryReader { 📐 in
                 VStack(spacing: 12) {
                     Image("TapWeight")
                         .resizable()
-                        .mask {
-                            RoundedRectangle(cornerRadius: 22.5, style: .continuous)
-                        }
+                        .mask { RoundedRectangle(cornerRadius: 22.5, style: .continuous) }
                         .shadow(radius: 3, y: 1)
                         .frame(width: 100, height: 100)
-                    Text("TapWeight")
-                        .font(.system(.title2, design: .rounded))
-                        .fontWeight(.medium)
-                        .tracking(1.5)
-                        .opacity(0.75)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.1)
+                    VStack(spacing: 6) {
+                        Text("TapWeight")
+                            .font(.system(.title2, design: .rounded))
+                            .fontWeight(.bold)
+                            .tracking(1.5)
+                            .opacity(0.75)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.1)
+                        Text("Application for iPhone")
+                            .font(.footnote)
+                            .fontWeight(.medium)
+                            .foregroundStyle(.secondary)
+                    }
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.1)
                 }
-                .padding(24)
-                .padding(.top, 12)
+                .padding(20)
+                .padding(.top, 8)
+                .frame(width: 📐.size.width)
             }
+            .frame(height: 220)
             
             Link(destination: URL(string: "https://apps.apple.com/app/id1624159721")!) {
                 HStack {
