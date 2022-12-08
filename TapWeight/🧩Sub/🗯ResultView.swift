@@ -67,7 +67,7 @@ struct 🗯ResultView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .animation(.default, value: 📱.🚩Canceled)
                 .toolbar {
-                    🅧CloseButton { 🔙Dismiss.callAsFunction() }
+                    🅧CloseButton()
                     🗑CancelButton(📱)
                 }
             }
@@ -75,38 +75,33 @@ struct 🗯ResultView: View {
         .preferredColorScheme(.dark)
     }
     
-    struct 💟JumpButton: View {
-        var body: some View {
-            Link(destination: URL(string: "x-apple-health://")!) {
-                Image(systemName: "app")
-                    .imageScale(.large)
-                    .overlay {
-                        Image(systemName: "heart")
-                            .imageScale(.small)
-                    }
-                    .foregroundColor(.primary)
-                    .padding(24)
-                    .font(.system(size: 32))
-            }
-            .accessibilityLabel("Open \"Health\" app")
+    func 💟JumpButton() -> some View {
+        Link(destination: URL(string: "x-apple-health://")!) {
+            Image(systemName: "app")
+                .imageScale(.large)
+                .overlay {
+                    Image(systemName: "heart")
+                        .imageScale(.small)
+                }
+                .foregroundColor(.primary)
+                .padding(24)
+                .font(.system(size: 32))
         }
+        .accessibilityLabel("Open \"Health\" app")
     }
     
-    struct 🅧CloseButton: ToolbarContent {
-        var ⓐction: () -> Void
-        var body: some ToolbarContent {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    ⓐction()
-                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                } label: {
-                    Image(systemName: "xmark.circle.fill")
-                        .symbolRenderingMode(.hierarchical)
-                        .foregroundColor(.primary)
-                        .font(.title)
-                }
-                .accessibilityLabel("Dismiss")
+    func 🅧CloseButton() -> some ToolbarContent {
+        ToolbarItem(placement: .navigationBarLeading) {
+            Button {
+                🔙Dismiss.callAsFunction()
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundColor(.primary)
+                    .font(.title)
             }
+            .accessibilityLabel("Dismiss")
         }
     }
     
