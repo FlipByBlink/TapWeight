@@ -2,7 +2,7 @@
 
 <br>
 
-![](TapWeight/Assets.xcassets/LaunchIcon.imageset/LaunchIcon.png)
+![](TapWeight/Assets.xcassets/RoundedIcon.imageset/icon.png)
 
 <br>
 

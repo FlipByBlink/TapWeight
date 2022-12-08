@@ -173,11 +173,13 @@ struct 🗯SummaryView: View {
     }
 }
 
+//FIXME: ADMENU、phase変化時の自動dismissが失敗する
 struct 📣ADBanner: View {
     @EnvironmentObject var 📱: 📱AppModel
     @EnvironmentObject var 🛒: 🛒StoreModel
     @State private var 🚩ShowBanner = false
     @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
+    @State private var 🚩ShowADMenuSheet: Bool = false
     
     var body: some View {
         Group {
@@ -185,7 +187,7 @@ struct 📣ADBanner: View {
                 Spacer()
             } else {
                 if 🚩ShowBanner {
-                    📣ADView()
+                    📣ADView(without: .TapWeight, $🚩ShowADMenuSheet)
                         .padding(.horizontal)
                         .background {
                             RoundedRectangle(cornerRadius: 16, style: .continuous)
@@ -200,6 +202,7 @@ struct 📣ADBanner: View {
                 }
             }
         }
+        .modifier(📣ADMenuSheet($🚩ShowADMenuSheet))
         .onAppear {
             🄻aunchCount += 1
             if 🄻aunchCount > 5 { 🚩ShowBanner = true }

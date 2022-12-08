@@ -5,7 +5,7 @@
   ],
   "products" : [
     {
-      "displayPrice" : "10.0",
+      "displayPrice" : "1.0",
       "familyShareable" : false,
       "internalID" : "4D4A3592",
       "localizations" : [
@@ -32,7 +32,7 @@
 
   ],
   "version" : {
-    "major" : 1,
-    "minor" : 2
+    "major" : 2,
+    "minor" : 0
   }
 }

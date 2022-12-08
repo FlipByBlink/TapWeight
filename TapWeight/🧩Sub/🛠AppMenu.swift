@@ -22,6 +22,7 @@ struct 🛠AppMenu: View {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.dismiss) var 🔙Dismiss: DismissAction
     var body: some View {
+        //FIXME: iOS16環境で乱れる
         NavigationView {
             List {
                 Section {
@@ -117,6 +118,7 @@ struct 🛠AppMenu: View {
 struct ℹ️AboutAppLink: View {
     var body: some View {
         Section {
+            //FIXME: セパレーターの表示が乱れる
             ZStack {
                 Color.clear
                 VStack(spacing: 12) {
