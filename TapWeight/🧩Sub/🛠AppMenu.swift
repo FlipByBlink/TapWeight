@@ -86,15 +86,17 @@ struct 🛠AppMenu: View {
             Section {
                 Link (destination: URL(string: "x-apple-health://")!) {
                     HStack {
-                        Image(systemName: "app")
-                            .overlay {
-                                Image(systemName: "heart")
-                                    .scaleEffect(0.55)
-                                    .font(.body.bold())
-                            }
-                            .imageScale(.large)
-                            .padding(.horizontal, 2)
-                        Text("Open \"Health\" app")
+                        Label {
+                            Text("Open \"Health\" app")
+                        } icon: {
+                            Image(systemName: "app")
+                                .overlay {
+                                    Image(systemName: "heart")
+                                        .scaleEffect(0.55)
+                                        .font(.body.bold())
+                                }
+                                .imageScale(.large)
+                        }
                         Spacer()
                         Image(systemName: "arrow.up.forward.app")
                             .imageScale(.small)
