@@ -13,11 +13,11 @@ struct 🕘LocalHistoryView: View {
                     .listRowBackground(Color.clear)
             }
             
-            ForEach(📱.🕘LocalHistory.ⓛogs.reversed()) { ⓛog in
+            ForEach(📱.🕘localHistory.ⓛogs.reversed()) { ⓛog in
                 🄻ogSection(ⓛog)
             }
             
-            if 📱.🕘LocalHistory.ⓛogs.isEmpty {
+            if 📱.🕘localHistory.ⓛogs.isEmpty {
                 Text("No log")
                     .font(.headline)
                     .foregroundStyle(.tertiary)
@@ -30,7 +30,7 @@ struct 🕘LocalHistoryView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     withAnimation {
-                        📱.🕘LocalHistory.ⓛogs.removeAll()
+                        📱.🕘localHistory.ⓛogs.removeAll()
                         UINotificationFeedbackGenerator().notificationOccurred(.warning)
                     }
                 } label: {

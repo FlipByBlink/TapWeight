@@ -9,9 +9,9 @@ struct 🧍HeightMenuLink: View {
         } label: {
             Label("Height", systemImage: "figure.stand")
                 .padding(.leading)
-                .badge(Text(📱.🧍HeightValue.description + " cm"))
+                .badge(Text(📱.🧍heightValue.description + " cm"))
         }
-        .disabled(📱.🚩AbleBMI == false)
+        .disabled(📱.🚩ableBMI == false)
         .font(.subheadline)
     }
     struct 🧍HeightEditView: View {
@@ -74,8 +74,8 @@ struct 🧍HeightMenuLink: View {
             }
             .padding()
             .navigationTitle("Height")
-            .onAppear { 📝Height = 📱.🧍HeightValue }
-            .onDisappear { 📱.🧍HeightValue = 📝Height }
+            .onAppear { 📝Height = 📱.🧍heightValue }
+            .onDisappear { 📱.🧍heightValue = 📝Height }
         }
     }
 }

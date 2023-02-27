@@ -9,31 +9,31 @@ struct 🗯ResultView: View {
         NavigationView {
             ZStack {
                 Rectangle()
-                    .foregroundColor(📱.🚨RegisterError ? .gray : .pink)
+                    .foregroundColor(📱.🚨registerError ? .gray : .pink)
                     .ignoresSafeArea()
                 VStack {
                     VStack(spacing: 16) {
-                        Image(systemName: 📱.🚨RegisterError ? "exclamationmark.triangle" : "checkmark")
+                        Image(systemName: 📱.🚨registerError ? "exclamationmark.triangle" : "checkmark")
                             .font(.system(size: 96).weight(.semibold))
-                        Text(📱.🚨RegisterError ? "ERROR!?" : "DONE!")
-                            .strikethrough(📱.🚩Canceled)
+                        Text(📱.🚨registerError ? "ERROR!?" : "DONE!")
+                            .strikethrough(📱.🚩canceled)
                             .font(.system(size: 96).weight(.black))
-                        if 📱.🚨RegisterError {
+                        if 📱.🚨registerError {
                             Text("Please check permission on \"Health\" app")
                                 .font(.title3.weight(.semibold))
                         } else {
                             Text("Registration for \"Health\" app")
-                                .strikethrough(📱.🚩Canceled)
+                                .strikethrough(📱.🚩canceled)
                                 .font(.title3.weight(.semibold))
                         }
                         
-                        if 📱.🚨RegisterError == false {
+                        if 📱.🚨registerError == false {
                             🗯SummaryView()
                         }
                         
                         VStack {
                             💟JumpButton()
-                            if 📱.🚨RegisterError {
+                            if 📱.🚨registerError {
                                 Image(systemName: "arrow.up")
                                     .imageScale(.small)
                                     .font(.title)
@@ -46,13 +46,13 @@ struct 🗯ResultView: View {
                     .padding()
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .opacity(📱.🚩Canceled ? 0.5 : 1)
+                    .opacity(📱.🚩canceled ? 0.5 : 1)
                     .overlay(alignment: .topTrailing) {
-                        if 📱.🚩Canceled {
+                        if 📱.🚩canceled {
                             VStack(alignment: .trailing) {
                                 Text("Canceled")
                                     .fontWeight(.semibold)
-                                if 📱.🚨CancelError {
+                                if 📱.🚨cancelError {
                                     Text("(perhaps error)")
                                 }
                             }
@@ -63,9 +63,9 @@ struct 🗯ResultView: View {
                     
                     📣ADBanner()
                 }
-                .onDisappear { 📱.🅁eset() }
+                .onDisappear { 📱.ⓡeset() }
                 .navigationBarTitleDisplayMode(.inline)
-                .animation(.default, value: 📱.🚩Canceled)
+                .animation(.default, value: 📱.🚩canceled)
                 .toolbar {
                     🅧CloseButton()
                     🗑CancelButton()
@@ -107,17 +107,17 @@ struct 🗯ResultView: View {
     
     func 🗑CancelButton() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
-            if 📱.🚨RegisterError == false {
+            if 📱.🚨registerError == false {
                 Button {
-                    📱.🗑Cancel()
+                    📱.🗑cancel()
                 } label: {
                     Image(systemName: "arrow.uturn.backward.circle.fill")
                         .symbolRenderingMode(.hierarchical)
                         .foregroundColor(.primary)
                         .font(.title)
                 }
-                .disabled(📱.🚩Canceled)
-                .opacity(📱.🚩Canceled ? 0.5 : 1)
+                .disabled(📱.🚩canceled)
+                .opacity(📱.🚩canceled ? 0.5 : 1)
                 .accessibilityLabel("Cancel")
             }
         }
@@ -127,11 +127,11 @@ struct 🗯ResultView: View {
 struct 🗯SummaryView: View {
     @EnvironmentObject var 📱: 📱AppModel
     var 🪧Description: String {
-        return 📱.📦Samples.reduce("") { 🪧, ⓢample in
+        return 📱.📦samples.reduce("") { 🪧, ⓢample in
             switch ⓢample.quantityType {
                 case .init(.bodyMass):
-                    let ⓥalue = ⓢample.quantity.doubleValue(for: 📱.📏MassUnit.hkunit)
-                    return 🪧 + ⓥalue.description + " " + 📱.📏MassUnit.rawValue
+                    let ⓥalue = ⓢample.quantity.doubleValue(for: 📱.📏massUnit.hkunit)
+                    return 🪧 + ⓥalue.description + " " + 📱.📏massUnit.rawValue
                 case .init(.bodyMassIndex):
                     return 🪧 +  " / " + ⓢample.quantity.doubleValue(for: .count()).description
                 case .init(.bodyFatPercentage):
@@ -145,12 +145,12 @@ struct 🗯SummaryView: View {
     var body: some View {
         Group {
             Text(🪧Description)
-                .strikethrough(📱.🚩Canceled)
+                .strikethrough(📱.🚩canceled)
                 .font(.body.bold())
-            if 📱.🚩AbleDatePicker {
-                if let 📦Date = 📱.📦Samples.first?.startDate as? Date {
+            if 📱.🚩ableDatePicker {
+                if let 📦Date = 📱.📦samples.first?.startDate as? Date {
                     Text(📦Date.formatted(date: .abbreviated, time: .shortened))
-                        .strikethrough(📱.🚩Canceled)
+                        .strikethrough(📱.🚩canceled)
                         .font(.subheadline.weight(.semibold))
                         .padding(.horizontal)
                 }
@@ -169,7 +169,7 @@ struct 📣ADBanner: View {
     
     var body: some View {
         Group {
-            if 🛒.🚩Purchased || 📱.🚨RegisterError {
+            if 🛒.🚩Purchased || 📱.🚨registerError {
                 Spacer()
             } else {
                 if 🚩ShowBanner {

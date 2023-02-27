@@ -31,55 +31,55 @@ struct 🛠AppMenu: View {
     func 🄲ontent() -> some View {
         List {
             Section {
-                Picker(selection: $📱.📏MassUnit) {
+                Picker(selection: $📱.📏massUnit) {
                     ForEach(📏BodyMassUnit.allCases) { 📏 in
                         Text(📏.rawValue)
                     }
                 } label: {
                     Label("Unit", systemImage: "scalemass")
                 }
-                .onChange(of: 📱.📏MassUnit) { _ in
-                    📱.🚩Amount50g = false
+                .onChange(of: 📱.📏massUnit) { _ in
+                    📱.🚩amount50g = false
                 }
                 
-                Toggle(isOn: $📱.🚩Amount50g) {
+                Toggle(isOn: $📱.🚩amount50g) {
                     Label("100g → 50g", systemImage: "minus.forwardslash.plus")
                         .padding(.leading)
-                        .foregroundColor(📱.📏MassUnit != .kg ? .secondary : nil)
+                        .foregroundColor(📱.📏massUnit != .kg ? .secondary : nil)
                 }
                 .font(.subheadline)
-                .disabled(📱.📏MassUnit != .kg)
+                .disabled(📱.📏massUnit != .kg)
                 .accessibilityLabel("50gram")
             } header: {
                 Text("Option")
             }
             
             Section {
-                Toggle(isOn: $📱.🚩AbleBMI) {
+                Toggle(isOn: $📱.🚩ableBMI) {
                     Label("Body Mass Index", systemImage: "function")
                 }
-                .onChange(of: 📱.🚩AbleBMI) { 🆕 in
-                    if 🆕 == true { 📱.🏥RequestAuth(.bodyMassIndex) }
+                .onChange(of: 📱.🚩ableBMI) { 🆕 in
+                    if 🆕 == true { 📱.🏥requestAuth(.bodyMassIndex) }
                 }
                 
                 🧍HeightMenuLink()
             }
             
             Section {
-                Toggle(isOn: $📱.🚩AbleBodyFat) {
+                Toggle(isOn: $📱.🚩ableBodyFat) {
                     Label("Body Fat Percentage", systemImage: "percent")
                 }
-                .onChange(of: 📱.🚩AbleBodyFat) { 🆕 in
-                    if 🆕 == true { 📱.🏥RequestAuth(.bodyFatPercentage) }
+                .onChange(of: 📱.🚩ableBodyFat) { 🆕 in
+                    if 🆕 == true { 📱.🏥requestAuth(.bodyFatPercentage) }
                 }
             }
             
             Section {
-                Toggle(isOn: $📱.🚩AbleDatePicker) {
+                Toggle(isOn: $📱.🚩ableDatePicker) {
                     Label("Date picker", systemImage: "calendar.badge.clock")
                 }
-                .onChange(of: 📱.🚩AbleDatePicker) { _ in
-                    📱.📅PickerValue = .now
+                .onChange(of: 📱.🚩ableDatePicker) { _ in
+                    📱.📅pickerValue = .now
                 }
             }
             
@@ -116,7 +116,7 @@ struct 🛠AppMenu: View {
         }
         .navigationTitle("Menu")
         .toolbar { ﹀CloseMenuButton(🔙Dismiss) }
-        .onDisappear { 📱.🏥GetLatestValue() }
+        .onDisappear { 📱.🏥getLatestValue() }
     }
 }
 

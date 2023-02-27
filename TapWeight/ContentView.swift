@@ -10,10 +10,10 @@ struct ContentView: View {
             List {
                 Section {
                     👆BodyMassStepper()
-                    if 📱.🚩AbleBMI { 🪧BMIView() }
+                    if 📱.🚩ableBMI { 🪧BMIView() }
                 }
                 
-                if 📱.🚩AbleBodyFat { 👆BodyFatStepper() }
+                if 📱.🚩ableBodyFat { 👆BodyFatStepper() }
                 
                 📅DatePicker()
                     .padding(.top, 12)
@@ -27,11 +27,11 @@ struct ContentView: View {
         }
         .overlay(alignment: .bottomLeading) { 👆DoneButton() } // ☑️
         .overlay(alignment: .bottomTrailing) { 💟JumpButton() }
-        .onAppear { 📱.🏥CheckAuthOnLaunch() }
-        .onAppear { 📱.🏥GetLatestValue() }
+        .onAppear { 📱.🏥checkAuthOnLaunch() }
+        .onAppear { 📱.🏥getLatestValue() }
         .onChange(of: 🚥Phase) { _ in
             if 🚥Phase == .background {
-                📱.🏥GetLatestValue()
+                📱.🏥getLatestValue()
             }
         }
     }
@@ -45,12 +45,12 @@ struct 🪧BMIView: View {
                 HStack(alignment: .firstTextBaseline, spacing: 4) {
                     Text("Body Mass Index")
                         .font(.footnote.bold())
-                    Text("(" + 📱.🧍HeightValue.description + "cm)")
+                    Text("(" + 📱.🧍heightValue.description + "cm)")
                         .font(.caption2.weight(.semibold))
                         .frame(maxHeight: 32)
                 }
                 
-                Text(📱.📝BMIValue.description)
+                Text(📱.📝bmiValue.description)
                     .font(.title2)
                     .fontWeight(.heavy)
             }
@@ -73,7 +73,7 @@ struct 👆DoneButton: View { // ☑️
     var body: some View {
         Button {
             Task {
-                await 📱.👆Register()
+                await 📱.👆register()
                 🚩ShowResult = true
             }
         } label: {
@@ -94,7 +94,7 @@ struct 👆DoneButton: View { // ☑️
         .onChange(of: 🚩ShowResult) { 🆕 in
             if 🆕 == true {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    📱.🏥GetLatestValue()
+                    📱.🏥getLatestValue()
                 }
             }
         }
@@ -133,28 +133,28 @@ struct 📅DatePicker: View {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.scenePhase) var 🚥Phase: ScenePhase
     var body: some View {
-        if 📱.🚩AbleDatePicker {
+        if 📱.🚩ableDatePicker {
             VStack(alignment: .trailing, spacing: 16) {
-                DatePicker(selection: $📱.📅PickerValue, in: ...Date.now, displayedComponents: .date) {
+                DatePicker(selection: $📱.📅pickerValue, in: ...Date.now, displayedComponents: .date) {
                     HStack {
                         Spacer()
                         Image(systemName: "calendar")
                     }
                 }
                     
-                DatePicker(selection: $📱.📅PickerValue, in: ...Date.now, displayedComponents: .hourAndMinute) {
+                DatePicker(selection: $📱.📅pickerValue, in: ...Date.now, displayedComponents: .hourAndMinute) {
                     HStack {
                         Spacer()
                         Image(systemName: "clock")
                     }
                 }
             }
-            .opacity(📱.🚩DatePickerIsAlmostNow ? 0.4 : 1)
+            .opacity(📱.🚩datePickerIsAlmostNow ? 0.4 : 1)
             .padding(.trailing, 8)
             .listRowSeparator(.hidden)
             .onChange(of: 🚥Phase) { _ in
                 if 🚥Phase == .background {
-                    📱.📅PickerValue = .now
+                    📱.📅pickerValue = .now
                 }
             }
         }
@@ -164,31 +164,31 @@ struct 📅DatePicker: View {
 struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel
     var ⓣype: HKQuantityTypeIdentifier
-    var ⓛastSample: HKQuantitySample? { 📱.💾LastSamples[ⓣype] }
+    var ⓛastSample: HKQuantitySample? { 📱.💾lastSamples[ⓣype] }
     var 🪧Description: String? {
         let 📉Difference: Double
         switch ⓣype {
             case .bodyMass:
                 guard let 📝LastValue = ⓛastSample?.quantity else { return nil }
-                📉Difference = round((📱.📝MassValue - 📝LastValue.doubleValue(for: 📱.📏MassUnit.hkunit))*100)/100
+                📉Difference = round((📱.📝massValue - 📝LastValue.doubleValue(for: 📱.📏massUnit.hkunit))*100)/100
             case .bodyMassIndex:
                 guard let 📝LastValue = ⓛastSample?.quantity else { return nil }
-                📉Difference = round((📱.📝BMIValue - 📝LastValue.doubleValue(for: .count()))*10)/10
+                📉Difference = round((📱.📝bmiValue - 📝LastValue.doubleValue(for: .count()))*10)/10
             case .bodyFatPercentage:
                 guard let 📝LastValue = ⓛastSample?.quantity else { return nil }
-                📉Difference = round((📱.📝BodyFatValue - 📝LastValue.doubleValue(for: .percent()))*1000)/10
+                📉Difference = round((📱.📝bodyFatValue - 📝LastValue.doubleValue(for: .percent()))*1000)/10
             default: return nil
         }
         
         switch 📉Difference {
             case ..<0:
-                if ⓣype == .bodyMass && 📱.🚩Amount50g { return String(format: "%.2f", 📉Difference) }
+                if ⓣype == .bodyMass && 📱.🚩amount50g { return String(format: "%.2f", 📉Difference) }
                 return 📉Difference.description
             case 0:
-                if ⓣype == .bodyMass && 📱.🚩Amount50g { return "0.00" }
+                if ⓣype == .bodyMass && 📱.🚩amount50g { return "0.00" }
                 return "0.0"
             default:
-                if ⓣype == .bodyMass && 📱.🚩Amount50g { return "+" + String(format: "%.2f", 📉Difference) }
+                if ⓣype == .bodyMass && 📱.🚩amount50g { return "+" + String(format: "%.2f", 📉Difference) }
                 return "+" + 📉Difference.description
         }
     }
@@ -196,7 +196,7 @@ struct 📉DifferenceView: View {
     var body: some View {
         ZStack {
             Color.clear
-            if !📱.🚩AbleDatePicker || 📱.🚩DatePickerIsAlmostNow {
+            if !📱.🚩ableDatePicker || 📱.🚩datePickerIsAlmostNow {
                 if let 🪧 = 🪧Description {
                     VStack(spacing: 0) {
                         Text(🪧)
@@ -217,7 +217,7 @@ struct 📉DifferenceView: View {
         }
         .frame(width: 72, height: 48)
         .animation(.default, value: 🪧Description == nil) //TODO: ShowResult削除のここの影響範囲を注視
-        .animation(.default.speed(2), value: 📱.🚩DatePickerIsAlmostNow)
+        .animation(.default.speed(2), value: 📱.🚩datePickerIsAlmostNow)
     }
     
     init(_ ⓣype: HKQuantityTypeIdentifier) {

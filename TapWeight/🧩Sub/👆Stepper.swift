@@ -3,9 +3,9 @@ import SwiftUI
 
 struct 👆BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 🔠Font: Font { 📱.🚩AbleDatePicker ? .largeTitle : .system(size: 50) }
+    var 🔠Font: Font { 📱.🚩ableDatePicker ? .largeTitle : .system(size: 50) }
     var 🪧Description: String {
-        📱.🚩Amount50g ? String(format: "%.2f", 📱.📝MassValue) : 📱.📝MassValue.description
+        📱.🚩amount50g ? String(format: "%.2f", 📱.📝massValue) : 📱.📝massValue.description
     }
     
     var body: some View {
@@ -16,7 +16,7 @@ struct 👆BodyMassStepper: View {
                         .font(🔠Font)
                         .fontWeight(.black)
                         .monospacedDigit()
-                    Text(📱.📏MassUnit.rawValue)
+                    Text(📱.📏massUnit.rawValue)
                         .font(.title2.weight(.black))
                         .frame(maxHeight: 36)
                 }
@@ -26,21 +26,21 @@ struct 👆BodyMassStepper: View {
             }
         } onIncrement: {
             UISelectionFeedbackGenerator().selectionChanged()
-            if 📱.🚩Amount50g {
-                📱.📝MassValue += 0.05
-                📱.📝MassValue = round(📱.📝MassValue*100)/100
+            if 📱.🚩amount50g {
+                📱.📝massValue += 0.05
+                📱.📝massValue = round(📱.📝massValue*100)/100
             } else {
-                📱.📝MassValue += 0.1
-                📱.📝MassValue = round(📱.📝MassValue*10)/10
+                📱.📝massValue += 0.1
+                📱.📝massValue = round(📱.📝massValue*10)/10
             }
         } onDecrement: {
             UISelectionFeedbackGenerator().selectionChanged()
-            if 📱.🚩Amount50g {
-                📱.📝MassValue -= 0.05
-                📱.📝MassValue = round(📱.📝MassValue*100)/100
+            if 📱.🚩amount50g {
+                📱.📝massValue -= 0.05
+                📱.📝massValue = round(📱.📝massValue*100)/100
             } else {
-                📱.📝MassValue -= 0.1
-                📱.📝MassValue = round(📱.📝MassValue*10)/10
+                📱.📝massValue -= 0.1
+                📱.📝massValue = round(📱.📝massValue*10)/10
             }
         }
         .padding(8)
@@ -51,14 +51,14 @@ struct 👆BodyMassStepper: View {
 
 struct 👆BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 🔠Font: Font { 📱.🚩AbleDatePicker ? .largeTitle : .system(size: 50) }
+    var 🔠Font: Font { 📱.🚩ableDatePicker ? .largeTitle : .system(size: 50) }
     
     var body: some View {
         Section {
             Stepper {
                 HStack {
                     HStack(alignment: .firstTextBaseline, spacing: 6) {
-                        Text((round(📱.📝BodyFatValue*1000)/10).description)
+                        Text((round(📱.📝bodyFatValue*1000)/10).description)
                             .font(🔠Font)
                             .fontWeight(.black)
                             .monospacedDigit()
@@ -72,12 +72,12 @@ struct 👆BodyFatStepper: View {
                 }
             } onIncrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
-                📱.📝BodyFatValue += 0.001
-                📱.📝BodyFatValue = round(📱.📝BodyFatValue*1000)/1000
+                📱.📝bodyFatValue += 0.001
+                📱.📝bodyFatValue = round(📱.📝bodyFatValue*1000)/1000
             } onDecrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
-                📱.📝BodyFatValue -= 0.001
-                📱.📝BodyFatValue = round(📱.📝BodyFatValue*1000)/1000
+                📱.📝bodyFatValue -= 0.001
+                📱.📝bodyFatValue = round(📱.📝bodyFatValue*1000)/1000
             }
             .padding(8)
             .padding(.vertical, 4)
