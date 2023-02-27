@@ -27,8 +27,6 @@ class 📱AppModel: ObservableObject {
     @Published var 🚩canceled: Bool = false
     @Published var 🚨cancelError: Bool = false
     
-    @Published var 🕘localHistory = 🕘LocalHistoryModel()
-    
     private let 🏥healthStore = HKHealthStore()
     var 📦samples: [HKQuantitySample] = []
     
@@ -61,17 +59,15 @@ class 📱AppModel: ObservableObject {
         }
         do {
             try await self.🏥healthStore.save(self.📦samples)
-            self.🕘saveLogForLocalHistory(ⓓate)
         } catch {
-            self.🕘localHistory.addLog("Error: " + #function + error.localizedDescription)
             self.🚨registerError = true
+            print("🚨", error.localizedDescription)
         }
     }
     
     private func 🏥checkAuthDenied(_ ⓣype: HKQuantityTypeIdentifier) -> Bool {
         if self.🏥healthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             self.🚨registerError = true
-            self.🕘localHistory.addLog("Error: " + #function + ⓣype.rawValue)
             return true
         } else {
             return false
@@ -92,7 +88,7 @@ class 📱AppModel: ObservableObject {
                     self.🏥getLatestValue()
                 }
             } catch {
-                self.🕘localHistory.addLog("Error: " + #function + error.localizedDescription)
+                print("🚨", error.localizedDescription)
             }
         }
     }
@@ -122,7 +118,7 @@ class 📱AppModel: ObservableObject {
                     }
                 }
             } catch {
-                self.🕘localHistory.addLog("Error: " + #function + error.localizedDescription)
+                print("🚨", error.localizedDescription)
             }
         }
     }
@@ -167,11 +163,10 @@ class 📱AppModel: ObservableObject {
                 self.🚩canceled = true
                 try await self.🏥healthStore.delete(self.📦samples)
                 self.🏥getLatestValue()
-                self.🕘localHistory.modifyCancellation()
                 UINotificationFeedbackGenerator().notificationOccurred(.error)
             } catch {
-                self.🕘localHistory.addLog("Error: " + error.localizedDescription)
                 self.🚨cancelError = true
+                print("🚨", error.localizedDescription)
             }
         }
     }
@@ -201,29 +196,5 @@ class 📱AppModel: ObservableObject {
         self.🚨cancelError = false
         self.📦samples = []
         self.🏥getLatestValue()
-    }
-    
-    private func 🕘saveLogForLocalHistory(_ ⓓate: Date) {
-        var ⓔntry = 🕘Entry(date: ⓓate,
-                            massSample: .init(unit: self.📏massUnit,
-                                              value: self.📝massValue))
-        if self.🚩ableBMI { ⓔntry.bmiValue = self.📝bmiValue }
-        if self.🚩ableBodyFat { ⓔntry.bodyFatValue = self.📝bodyFatValue }
-        self.🕘localHistory.addLog(ⓔntry)
-    }
-    
-    private func 🕘loadLastValueFromLocalHistoryOnLaunch() {
-        let ⓔntrys = self.🕘localHistory.ⓛogs.compactMap { $0.entry }
-        let ⓔntry = ⓔntrys.max { $0.date < $1.date }
-        guard let ⓛastEntry = ⓔntry else { return }
-        if ⓛastEntry.cancellation { return }
-        self.📝massValue = ⓛastEntry.massSample.value
-        if let ⓥalue = ⓛastEntry.bodyFatValue {
-            self.📝bodyFatValue = ⓥalue
-        }
-    }
-    
-    init() {
-        self.🕘loadLastValueFromLocalHistoryOnLaunch()
     }
 }

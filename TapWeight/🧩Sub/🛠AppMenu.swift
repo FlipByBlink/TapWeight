@@ -94,11 +94,6 @@ struct 🛠AppMenu: View {
                             .foregroundStyle(.secondary)
                     }
                 }
-                NavigationLink  {
-                    🕘LocalHistoryView()
-                } label: {
-                    Label("Local history", systemImage: "clock")
-                }
             }
             ℹ️AboutAppLink()
             📣ADMenuLink()
