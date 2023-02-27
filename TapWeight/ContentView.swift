@@ -22,14 +22,12 @@ struct ContentView: View {
             .toolbar { 🛠MenuButton() } // ⚙️
             .safeAreaInset(edge: .bottom) {
                 HStack(alignment: .firstTextBaseline) {
-                    👆DoneButton()// ☑️
+                    👆DoneButton() // ☑️
                     Spacer()
                     💟JumpButton()
                 }
             }
         }
-        .onAppear { 📱.🏥checkAuthOnLaunch() }
-        .onAppear { 📱.🏥getLatestValue() }
         .onChange(of: self.scenePhase) {
             if $0 == .background {
                 📱.🏥getLatestValue()
