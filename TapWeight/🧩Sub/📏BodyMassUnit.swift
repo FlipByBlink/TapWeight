@@ -1,10 +1,7 @@
-
 import HealthKit
 
 enum 📏BodyMassUnit: String, CaseIterable, Codable, Identifiable {
-    case kg
-    case lbs
-    case st
+    case kg, lbs, st
     
     var id: Self { self }
     

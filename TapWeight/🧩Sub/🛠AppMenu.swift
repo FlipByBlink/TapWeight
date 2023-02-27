@@ -1,18 +1,17 @@
-
 import SwiftUI
 
 struct 🛠MenuButton: View { // ⚙️
-    @State private var 🚩ShowMenu: Bool = false
+    @State private var 🚩showMenu: Bool = false
     var body: some View {
         Button {
-            🚩ShowMenu = true
+            self.🚩showMenu = true
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         } label: {
             Image(systemName: "gearshape")
                 .foregroundColor(.primary)
         }
         .accessibilityLabel("Open menu")
-        .sheet(isPresented: $🚩ShowMenu) {
+        .sheet(isPresented: self.$🚩showMenu) {
             🛠AppMenu()
         }
     }
@@ -20,28 +19,25 @@ struct 🛠MenuButton: View { // ⚙️
 
 struct 🛠AppMenu: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.dismiss) var 🔙Dismiss: DismissAction
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         if #available(iOS 16.0, *) {
-            NavigationStack { 🄲ontent() }
+            NavigationStack { self.ⓒontent() }
         } else {
-            NavigationView { 🄲ontent() }
+            NavigationView { self.ⓒontent() }
         }
     }
-    func 🄲ontent() -> some View {
+    private func ⓒontent() -> some View {
         List {
             Section {
                 Picker(selection: $📱.📏massUnit) {
-                    ForEach(📏BodyMassUnit.allCases) { 📏 in
-                        Text(📏.rawValue)
-                    }
+                    ForEach(📏BodyMassUnit.allCases) { Text($0.rawValue) }
                 } label: {
                     Label("Unit", systemImage: "scalemass")
                 }
                 .onChange(of: 📱.📏massUnit) { _ in
                     📱.🚩amount50g = false
                 }
-                
                 Toggle(isOn: $📱.🚩amount50g) {
                     Label("100g → 50g", systemImage: "minus.forwardslash.plus")
                         .padding(.leading)
@@ -53,27 +49,23 @@ struct 🛠AppMenu: View {
             } header: {
                 Text("Option")
             }
-            
             Section {
                 Toggle(isOn: $📱.🚩ableBMI) {
                     Label("Body Mass Index", systemImage: "function")
                 }
-                .onChange(of: 📱.🚩ableBMI) { 🆕 in
-                    if 🆕 == true { 📱.🏥requestAuth(.bodyMassIndex) }
+                .onChange(of: 📱.🚩ableBMI) {
+                    if $0 == true { 📱.🏥requestAuth(.bodyMassIndex) }
                 }
-                
                 🧍HeightMenuLink()
             }
-            
             Section {
                 Toggle(isOn: $📱.🚩ableBodyFat) {
                     Label("Body Fat Percentage", systemImage: "percent")
                 }
-                .onChange(of: 📱.🚩ableBodyFat) { 🆕 in
-                    if 🆕 == true { 📱.🏥requestAuth(.bodyFatPercentage) }
+                .onChange(of: 📱.🚩ableBodyFat) {
+                    if $0 == true { 📱.🏥requestAuth(.bodyFatPercentage) }
                 }
             }
-            
             Section {
                 Toggle(isOn: $📱.🚩ableDatePicker) {
                     Label("Date picker", systemImage: "calendar.badge.clock")
@@ -82,7 +74,6 @@ struct 🛠AppMenu: View {
                     📱.📅pickerValue = .now
                 }
             }
-            
             Section {
                 Link (destination: URL(string: "x-apple-health://")!) {
                     HStack {
@@ -103,23 +94,20 @@ struct 🛠AppMenu: View {
                             .foregroundStyle(.secondary)
                     }
                 }
-                
                 NavigationLink  {
                     🕘LocalHistoryView()
                 } label: {
                     Label("Local history", systemImage: "clock")
                 }
             }
-            
             ℹ️AboutAppLink()
             📣ADMenuLink()
         }
         .navigationTitle("Menu")
-        .toolbar { ﹀CloseMenuButton(🔙Dismiss) }
+        .toolbar { ﹀CloseMenuButton(dismiss) }
         .onDisappear { 📱.🏥getLatestValue() }
     }
 }
-
 
 struct ℹ️AboutAppLink: View {
     var body: some View {
@@ -152,7 +140,6 @@ struct ℹ️AboutAppLink: View {
                 .frame(width: 📐.size.width)
             }
             .frame(height: 200)
-            
             Link(destination: URL(string: "https://apps.apple.com/app/id1624159721")!) {
                 HStack {
                     Label("Open AppStore page", systemImage: "link")
@@ -162,7 +149,6 @@ struct ℹ️AboutAppLink: View {
                         .foregroundStyle(.secondary)
                 }
             }
-            
             NavigationLink  {
                 ℹ️AboutAppMenu()
             } label: {
@@ -172,12 +158,11 @@ struct ℹ️AboutAppLink: View {
     }
 }
 
-
 struct ﹀CloseMenuButton: View {
-    var 🔙Dismiss: DismissAction
+    private var 🔙dismiss: DismissAction
     var body: some View {
         Button {
-            🔙Dismiss.callAsFunction()
+            🔙dismiss()
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         } label: {
             Image(systemName: "chevron.down")
@@ -187,7 +172,7 @@ struct ﹀CloseMenuButton: View {
         }
         .accessibilityLabel("Dismiss")
     }
-    init(_ 🔙Dismiss: DismissAction) {
-        self.🔙Dismiss = 🔙Dismiss
+    init(_ 🔙dismiss: DismissAction) {
+        self.🔙dismiss = 🔙dismiss
     }
 }

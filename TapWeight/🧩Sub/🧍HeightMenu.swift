@@ -1,11 +1,10 @@
-
 import SwiftUI
 
 struct 🧍HeightMenuLink: View {
     @EnvironmentObject var 📱: 📱AppModel
     var body: some View {
         NavigationLink {
-            🧍HeightEditView()
+            Self.🧍HeightEditView()
         } label: {
             Label("Height", systemImage: "figure.stand")
                 .padding(.leading)
@@ -14,26 +13,25 @@ struct 🧍HeightMenuLink: View {
         .disabled(📱.🚩ableBMI == false)
         .font(.subheadline)
     }
-    struct 🧍HeightEditView: View {
+    private struct 🧍HeightEditView: View {
         @EnvironmentObject var 📱: 📱AppModel
-        @State private var 📝Height: Int = 170
+        @State private var 📝value: Int = 170
         var body: some View {
             VStack {
                 Stepper {
-                    Text(📝Height.description + " cm")
+                    Text(self.📝value.description + " cm")
                         .font(.system(size: 54).monospacedDigit())
                         .lineLimit(1)
                         .minimumScaleFactor(0.3)
                 } onIncrement: {
                     UISelectionFeedbackGenerator().selectionChanged()
-                    📝Height += 1
+                    self.📝value += 1
                 } onDecrement: {
                     UISelectionFeedbackGenerator().selectionChanged()
-                    📝Height -= 1
+                    self.📝value -= 1
                 }
                 .padding()
                 .padding(.vertical, 48)
-                
                 Group {
                     HStack {
                         Text("BMI = ")
@@ -44,7 +42,6 @@ struct 🧍HeightMenuLink: View {
                                 Text("(kg)")
                                     .font(.subheadline)
                             }
-                            
                             HStack(spacing: 2) {
                                 Text("Height")
                                     .layoutPriority(1)
@@ -69,13 +66,12 @@ struct 🧍HeightMenuLink: View {
                 }
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
-                
                 Spacer()
             }
             .padding()
             .navigationTitle("Height")
-            .onAppear { 📝Height = 📱.🧍heightValue }
-            .onDisappear { 📱.🧍heightValue = 📝Height }
+            .onAppear { self.📝value = 📱.🧍heightValue }
+            .onDisappear { 📱.🧍heightValue = self.📝value }
         }
     }
 }

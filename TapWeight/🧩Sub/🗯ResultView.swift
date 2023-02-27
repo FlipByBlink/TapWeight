@@ -1,10 +1,9 @@
-
 import SwiftUI
 import HealthKit
 
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.dismiss) var 🔙Dismiss: DismissAction
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationView {
             ZStack {
@@ -26,13 +25,11 @@ struct 🗯ResultView: View {
                                 .strikethrough(📱.🚩canceled)
                                 .font(.title3.weight(.semibold))
                         }
-                        
                         if 📱.🚨registerError == false {
                             🗯SummaryView()
                         }
-                        
                         VStack {
-                            💟JumpButton()
+                            self.💟jumpButton()
                             if 📱.🚨registerError {
                                 Image(systemName: "arrow.up")
                                     .imageScale(.small)
@@ -60,22 +57,20 @@ struct 🗯ResultView: View {
                             .padding(.top, 4)
                         }
                     }
-                    
                     📣ADBanner()
                 }
                 .onDisappear { 📱.ⓡeset() }
                 .navigationBarTitleDisplayMode(.inline)
                 .animation(.default, value: 📱.🚩canceled)
                 .toolbar {
-                    🅧CloseButton()
-                    🗑CancelButton()
+                    self.🅧closeButton()
+                    self.🗑cancelButton()
                 }
             }
         }
         .preferredColorScheme(.dark)
     }
-    
-    func 💟JumpButton() -> some View {
+    private func 💟jumpButton() -> some View {
         Link(destination: URL(string: "x-apple-health://")!) {
             Image(systemName: "app")
                 .imageScale(.large)
@@ -89,11 +84,10 @@ struct 🗯ResultView: View {
         }
         .accessibilityLabel("Open \"Health\" app")
     }
-    
-    func 🅧CloseButton() -> some ToolbarContent {
+    private func 🅧closeButton() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button {
-                🔙Dismiss.callAsFunction()
+                self.dismiss()
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
             } label: {
                 Image(systemName: "xmark.circle.fill")
@@ -104,8 +98,7 @@ struct 🗯ResultView: View {
             .accessibilityLabel("Dismiss")
         }
     }
-    
-    func 🗑CancelButton() -> some ToolbarContent {
+    private func 🗑cancelButton() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             if 📱.🚨registerError == false {
                 Button {
@@ -126,30 +119,29 @@ struct 🗯ResultView: View {
 
 struct 🗯SummaryView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 🪧Description: String {
-        return 📱.📦samples.reduce("") { 🪧, ⓢample in
+    private var 🪧description: String {
+        return 📱.📦samples.reduce("") { ⓓescription, ⓢample in
             switch ⓢample.quantityType {
                 case .init(.bodyMass):
                     let ⓥalue = ⓢample.quantity.doubleValue(for: 📱.📏massUnit.hkunit)
-                    return 🪧 + ⓥalue.description + " " + 📱.📏massUnit.rawValue
+                    return ⓓescription + ⓥalue.description + " " + 📱.📏massUnit.rawValue
                 case .init(.bodyMassIndex):
-                    return 🪧 +  " / " + ⓢample.quantity.doubleValue(for: .count()).description
+                    return ⓓescription +  " / " + ⓢample.quantity.doubleValue(for: .count()).description
                 case .init(.bodyFatPercentage):
                     let ⓥalue = round(ⓢample.quantity.doubleValue(for: .percent())*1000)/10
-                    return 🪧 +  " / " + ⓥalue.description + " %"
-                default: return 🪧
+                    return ⓓescription +  " / " + ⓥalue.description + " %"
+                default: return ⓓescription
             }
         }
     }
-    
     var body: some View {
         Group {
-            Text(🪧Description)
+            Text(self.🪧description)
                 .strikethrough(📱.🚩canceled)
                 .font(.body.bold())
             if 📱.🚩ableDatePicker {
-                if let 📦Date = 📱.📦samples.first?.startDate as? Date {
-                    Text(📦Date.formatted(date: .abbreviated, time: .shortened))
+                if let ⓓate = 📱.📦samples.first?.startDate as? Date {
+                    Text(ⓓate.formatted(date: .abbreviated, time: .shortened))
                         .strikethrough(📱.🚩canceled)
                         .font(.subheadline.weight(.semibold))
                         .padding(.horizontal)
@@ -164,15 +156,14 @@ struct 🗯SummaryView: View {
 struct 📣ADBanner: View {
     @EnvironmentObject var 📱: 📱AppModel
     @EnvironmentObject var 🛒: 🛒StoreModel
-    @State private var 🚩ShowBanner = false
-    @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
-    
+    @State private var 🚩showBanner = false
+    @AppStorage("🄻aunchCount") var ⓛaunchCount: Int = 0
     var body: some View {
         Group {
             if 🛒.🚩Purchased || 📱.🚨registerError {
                 Spacer()
             } else {
-                if 🚩ShowBanner {
+                if self.🚩showBanner {
                     📣ADView(without: .TapWeight)
                         .padding(.horizontal)
                         .background {
@@ -189,8 +180,8 @@ struct 📣ADBanner: View {
             }
         }
         .onAppear {
-            🄻aunchCount += 1
-            if 🄻aunchCount > 5 { 🚩ShowBanner = true }
+            self.ⓛaunchCount += 1
+            if self.ⓛaunchCount > 5 { self.🚩showBanner = true }
         }
     }
 }

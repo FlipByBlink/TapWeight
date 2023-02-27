@@ -13,7 +13,7 @@ class 📱AppModel: ObservableObject {
     var 📝bmiValue: Double {
         let ⓠuantity = HKQuantity(unit: self.📏massUnit.hkunit, doubleValue: self.📝massValue)
         let ⓚiloMassValue = ⓠuantity.doubleValue(for: .gramUnit(with: .kilo))
-        let ⓥalue = ⓚiloMassValue / pow(Double(self.🧍heightValue)/100, 2)
+        let ⓥalue = ⓚiloMassValue / pow((Double(self.🧍heightValue) / 100), 2)
         return Double(Int(round(ⓥalue * 10))) / 10
     }
     @Published var 📝bodyFatValue: Double = 0.2
@@ -29,7 +29,7 @@ class 📱AppModel: ObservableObject {
     
     @Published var 🕘localHistory = 🕘LocalHistoryModel()
     
-    let 🏥healthStore = HKHealthStore()
+    private let 🏥healthStore = HKHealthStore()
     var 📦samples: [HKQuantitySample] = []
     
     @MainActor
@@ -68,7 +68,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func 🏥checkAuthDenied(_ ⓣype: HKQuantityTypeIdentifier) -> Bool {
+    private func 🏥checkAuthDenied(_ ⓣype: HKQuantityTypeIdentifier) -> Bool {
         if self.🏥healthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
             self.🚨registerError = true
             self.🕘localHistory.addLog("Error: " + #function + ⓣype.rawValue)
@@ -78,7 +78,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func 🏥checkShouldRequestAuth(_ identifier: HKQuantityTypeIdentifier) async throws -> Bool {
+    private func 🏥checkShouldRequestAuth(_ identifier: HKQuantityTypeIdentifier) async throws -> Bool {
         let ⓣype = HKQuantityType(identifier)
         return try await self.🏥healthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype]) == .shouldRequest
     }
@@ -177,7 +177,7 @@ class 📱AppModel: ObservableObject {
     }
     
     @MainActor
-    func 🏥getPreferredMassUnit() async throws {
+    private func 🏥getPreferredMassUnit() async throws {
         if let 📏 = try await self.🏥healthStore.preferredUnits(for: [HKQuantityType(.bodyMass)]).first {
             switch 📏.value {
                 case .gramUnit(with: .kilo):
@@ -203,7 +203,7 @@ class 📱AppModel: ObservableObject {
         self.🏥getLatestValue()
     }
     
-    func 🕘saveLogForLocalHistory(_ ⓓate: Date) {
+    private func 🕘saveLogForLocalHistory(_ ⓓate: Date) {
         var ⓔntry = 🕘Entry(date: ⓓate,
                             massSample: .init(unit: self.📏massUnit,
                                               value: self.📝massValue))
@@ -212,7 +212,7 @@ class 📱AppModel: ObservableObject {
         self.🕘localHistory.addLog(ⓔntry)
     }
     
-    func 🕘loadLastValueFromLocalHistoryOnLaunch() {
+    private func 🕘loadLastValueFromLocalHistoryOnLaunch() {
         let ⓔntrys = self.🕘localHistory.ⓛogs.compactMap { $0.entry }
         let ⓔntry = ⓔntrys.max { $0.date < $1.date }
         guard let ⓛastEntry = ⓔntry else { return }
