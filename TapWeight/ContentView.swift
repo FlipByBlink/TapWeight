@@ -14,16 +14,20 @@ struct ContentView: View {
                 if 📱.🚩ableBodyFat { 👆BodyFatStepper() }
                 📅DatePicker()
                     .padding(.top, 12)
-                    .padding(.bottom, 180)
             }
             .listStyle(.plain)
             .lineLimit(1)
             .minimumScaleFactor(0.3)
             .navigationTitle("Body Mass")
             .toolbar { 🛠MenuButton() } // ⚙️
+            .safeAreaInset(edge: .bottom) {
+                HStack(alignment: .firstTextBaseline) {
+                    👆DoneButton()// ☑️
+                    Spacer()
+                    💟JumpButton()
+                }
+            }
         }
-        .overlay(alignment: .bottomLeading) { 👆DoneButton() } // ☑️
-        .overlay(alignment: .bottomTrailing) { 💟JumpButton() }
         .onAppear { 📱.🏥checkAuthOnLaunch() }
         .onAppear { 📱.🏥getLatestValue() }
         .onChange(of: self.scenePhase) {
