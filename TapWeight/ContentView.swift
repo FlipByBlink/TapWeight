@@ -3,7 +3,6 @@ import HealthKit
 
 struct ContentView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.scenePhase) var scenePhase
     var body: some View {
         NavigationView {
             List {
@@ -28,11 +27,6 @@ struct ContentView: View {
                 }
             }
         }
-        .onChange(of: self.scenePhase) {
-            if $0 == .background {
-                📱.🏥getLatestValue()
-            }
-        }
     }
 }
 
@@ -44,11 +38,15 @@ struct 🪧BMIView: View {
                 HStack(alignment: .firstTextBaseline, spacing: 4) {
                     Text("Body Mass Index")
                         .font(.footnote.bold())
-                    Text("(" + 📱.🧍heightValue.description + "cm)")
-                        .font(.caption2.weight(.semibold))
-                        .frame(maxHeight: 32)
+                    if let ⓗeightUnit = 📱.📦units[.height] {
+                        if let ⓗeightValue = 📱.📦latestSamples[.height]?.quantity.doubleValue(for: ⓗeightUnit) {
+                            Text("(" + ⓗeightValue.description + ⓗeightUnit.description + ")")
+                                .font(.caption2.weight(.semibold))
+                                .frame(maxHeight: 32)
+                        }
+                    }
                 }
-                Text(📱.📝bmiValue.description)
+                Text(📱.📝bmiValue?.description ?? "nil")
                     .font(.title2)
                     .fontWeight(.heavy)
             }
@@ -87,13 +85,6 @@ struct 👆DoneButton: View { // ☑️
         .padding()
         .fullScreenCover(isPresented: self.$🚩showResult) {
             🗯ResultView()
-        }
-        .onChange(of: self.🚩showResult) {
-            if $0 == true {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    📱.🏥getLatestValue()
-                }
-            }
         }
         .onChange(of: self.scenePhase) {
             if $0 == .background {
@@ -160,16 +151,18 @@ struct 📅DatePicker: View {
 struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓣype: HKQuantityTypeIdentifier
-    private var ⓛastSample: HKQuantitySample? { 📱.💾lastSamples[self.ⓣype] }
+    private var ⓛastSample: HKQuantitySample? { 📱.📦latestSamples[self.ⓣype] }
     private var 🪧description: String? {
         let 📉difference: Double
         switch self.ⓣype {
             case .bodyMass:
                 guard let 📝lastValue = self.ⓛastSample?.quantity else { return nil }
-                📉difference = round((📱.📝massValue - 📝lastValue.doubleValue(for: 📱.📏massUnit.hkunit)) * 100) / 100
+                guard let ⓤnit = 📱.📦units[ⓣype] else { return nil }
+                📉difference = round((📱.📝massValue - 📝lastValue.doubleValue(for: ⓤnit)) * 100) / 100
             case .bodyMassIndex:
                 guard let 📝lastValue = self.ⓛastSample?.quantity else { return nil }
-                📉difference = round((📱.📝bmiValue - 📝lastValue.doubleValue(for: .count())) * 10) / 10
+                guard let ⓥalue = 📱.📝bmiValue else { return nil }
+                📉difference = round((ⓥalue - 📝lastValue.doubleValue(for: .count())) * 10) / 10
             case .bodyFatPercentage:
                 guard let 📝lastValue = self.ⓛastSample?.quantity else { return nil }
                 📉difference = round((📱.📝bodyFatValue - 📝lastValue.doubleValue(for: .percent())) * 1000) / 10

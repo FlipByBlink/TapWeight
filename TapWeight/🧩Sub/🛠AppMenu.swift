@@ -30,21 +30,13 @@ struct 🛠AppMenu: View {
     private func ⓒontent() -> some View {
         List {
             Section {
-                Picker(selection: $📱.📏massUnit) {
-                    ForEach(📏BodyMassUnit.allCases) { Text($0.rawValue) }
-                } label: {
-                    Label("Unit", systemImage: "scalemass")
-                }
-                .onChange(of: 📱.📏massUnit) { _ in
-                    📱.🚩amount50g = false
-                }
                 Toggle(isOn: $📱.🚩amount50g) {
                     Label("100g → 50g", systemImage: "minus.forwardslash.plus")
                         .padding(.leading)
-                        .foregroundColor(📱.📏massUnit != .kg ? .secondary : nil)
+//                        .foregroundColor(📱.📏massUnit != .kg ? .secondary : nil)
                 }
                 .font(.subheadline)
-                .disabled(📱.📏massUnit != .kg)
+//                .disabled(📱.📏massUnit != .kg)
                 .accessibilityLabel("50gram")
             } header: {
                 Text("Option")
@@ -100,7 +92,6 @@ struct 🛠AppMenu: View {
         }
         .navigationTitle("Menu")
         .toolbar { ﹀CloseMenuButton(dismiss) }
-        .onDisappear { 📱.🏥getLatestValue() }
     }
 }
 

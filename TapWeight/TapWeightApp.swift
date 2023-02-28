@@ -8,8 +8,10 @@ struct TapWeightApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .onAppear { 📱.🏥checkAuthOnLaunch() }
-                .onAppear { 📱.🏥getLatestValue() }
+                .task {
+                    📱.🏥checkAuthOnLaunch()
+                    📱.observeChanges()
+                }
                 .modifier(📣ADSheet())
                 .modifier(💬RequestUserReview())
                 .environmentObject(📱)

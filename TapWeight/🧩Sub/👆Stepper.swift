@@ -14,7 +14,7 @@ struct 👆BodyMassStepper: View {
                         .font(self.🔠font)
                         .fontWeight(.black)
                         .monospacedDigit()
-                    Text(📱.📏massUnit.rawValue)
+                    Text(📱.📦units[.bodyMass]?.description ?? "nil")
                         .font(.title2.weight(.black))
                         .frame(maxHeight: 36)
                 }
