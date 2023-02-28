@@ -170,7 +170,10 @@ class 📱AppModel: ObservableObject {
     private func loadUnits() async {
         for ⓘdentifier: HKQuantityTypeIdentifier in [.bodyMass, .height, .leanBodyMass] {
             if let ⓤnit = try? await self.🏥healthStore.preferredUnits(for: [HKQuantityType(ⓘdentifier)]).first?.value {
-                self.📦units[ⓘdentifier] = ⓤnit
+                if self.📦units[ⓘdentifier] != ⓤnit {
+                    self.📦units[ⓘdentifier] = ⓤnit
+                    self.resetPickerValues()
+                }
             }
         }
     }
@@ -184,7 +187,6 @@ class 📱AppModel: ObservableObject {
                 Task {
                     self.loadLatestSamples()
                     await self.loadUnits()
-                    await self.resetPickerValues()
                     ⓒompletionHandler()
                 }
             }
@@ -198,7 +200,6 @@ class 📱AppModel: ObservableObject {
             do {
                 self.🚩canceled = true
                 try await self.🏥healthStore.delete(self.📨cacheSamples)
-                self.loadLatestSamples()
                 UINotificationFeedbackGenerator().notificationOccurred(.error)
             } catch {
                 self.🚨cancelError = true
