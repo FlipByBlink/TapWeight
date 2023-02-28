@@ -91,7 +91,7 @@ class 📱AppModel: ObservableObject {
                     let ⓣype = HKQuantityType(ⓘdentifier)
                     try await self.🏥healthStore.requestAuthorization(toShare: [ⓣype], read: [ⓣype])
                     self.loadLatestSamples()
-                    await self.loadUnitsAndSetLatestValue()
+                    await self.loadUnits()
                 }
             } catch {
                 print("🚨", error.localizedDescription)
@@ -119,7 +119,7 @@ class 📱AppModel: ObservableObject {
                 if !ⓣypes.isEmpty {
                     if try await self.🏥healthStore.statusForAuthorizationRequest(toShare: ⓣypes, read: ⓣypes) == .shouldRequest {
                         try await self.🏥healthStore.requestAuthorization(toShare: ⓣypes, read: ⓣypes)
-                        if ⓣypes.contains(HKQuantityType(.bodyMass)) { await self.loadUnitsAndSetLatestValue() }
+                        if ⓣypes.contains(HKQuantityType(.bodyMass)) { await self.loadUnits() }
                         self.loadLatestSamples()
                     }
                 }
@@ -148,31 +148,31 @@ class 📱AppModel: ObservableObject {
     }
     
     @MainActor
-    private func loadUnitsAndSetLatestValue() async {
-        for ⓘdentifier: HKQuantityTypeIdentifier in [.bodyMass, .height, .leanBodyMass] {
-            if let ⓤnit = try? await self.🏥healthStore.preferredUnits(for: [HKQuantityType(ⓘdentifier)]).first?.value {
-                self.📦units[ⓘdentifier] = ⓤnit
-                switch ⓘdentifier {
-                    case .bodyMass:
-                        if let ⓥalue = self.📦latestSamples[.bodyMass]?.quantity.doubleValue(for: ⓤnit) {
-                            self.📝massValue = ⓥalue
-                        } else {
-                            switch ⓤnit {
-                                case .gramUnit(with: .kilo):
-                                    self.📝massValue = 60.0
-                                case .pound():
-                                    self.📝massValue = 130
-                                case .stone():
-                                    self.📝massValue = 10
-                                default:
-                                    break
-                            }
-                        }
-                    case .bodyFatPercentage:
-                        self.📝bodyFatValue = self.📦latestSamples[.bodyFatPercentage]?.quantity.doubleValue(for: .percent()) ?? 20
+    func setPickerValues() {
+        if let ⓜassUnit = self.📦units[.bodyMass] {
+            if let ⓥalue = self.📦latestSamples[.bodyMass]?.quantity.doubleValue(for: ⓜassUnit) {
+                self.📝massValue = ⓥalue
+            } else {
+                switch ⓜassUnit {
+                    case .gramUnit(with: .kilo):
+                        self.📝massValue = 60.0
+                    case .pound():
+                        self.📝massValue = 130
+                    case .stone():
+                        self.📝massValue = 10
                     default:
                         break
                 }
+            }
+        }
+        self.📝bodyFatValue = self.📦latestSamples[.bodyFatPercentage]?.quantity.doubleValue(for: .percent()) ?? 0.2
+    }
+    
+    @MainActor
+    private func loadUnits() async {
+        for ⓘdentifier: HKQuantityTypeIdentifier in [.bodyMass, .height, .leanBodyMass] {
+            if let ⓤnit = try? await self.🏥healthStore.preferredUnits(for: [HKQuantityType(ⓘdentifier)]).first?.value {
+                self.📦units[ⓘdentifier] = ⓤnit
             }
         }
     }
@@ -185,7 +185,8 @@ class 📱AppModel: ObservableObject {
                 if ⓔrror != nil { return }
                 Task {
                     self.loadLatestSamples()
-                    await self.loadUnitsAndSetLatestValue()
+                    await self.loadUnits()
+                    await self.setPickerValues()
                     ⓒompletionHandler()
                 }
             }
