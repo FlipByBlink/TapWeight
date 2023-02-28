@@ -10,6 +10,8 @@ struct TapWeightApp: App {
             ContentView()
                 .onAppear { 📱.🏥checkAuthOnLaunch() }
                 .onAppear { 📱.🏥getLatestValue() }
+                .modifier(📣ADSheet())
+                .modifier(💬RequestUserReview())
                 .environmentObject(📱)
                 .environmentObject(🛒)
         }
