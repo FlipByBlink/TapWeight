@@ -46,7 +46,7 @@ struct 🪧BMIView: View {
                         }
                     }
                 }
-                Text(📱.📝bmiValue?.description ?? "nil")
+                Text(📱.📝bmiInputValue?.description ?? "nil")
                     .font(.title2)
                     .fontWeight(.heavy)
             }
@@ -89,7 +89,7 @@ struct 👆DoneButton: View { // ☑️
         .onChange(of: self.scenePhase) {
             switch $0 {
                 case .active:
-                    📱.setPickerValues()
+                    📱.resetPickerValues()
                 case .background:
                     self.🚩showResult = false
                 default:
@@ -163,14 +163,14 @@ struct 📉DifferenceView: View {
             case .bodyMass:
                 guard let 📝lastValue = self.ⓛastSample?.quantity else { return nil }
                 guard let ⓤnit = 📱.📦units[ⓣype] else { return nil }
-                📉difference = round((📱.📝massValue - 📝lastValue.doubleValue(for: ⓤnit)) * 100) / 100
+                📉difference = round((📱.📝massInputValue - 📝lastValue.doubleValue(for: ⓤnit)) * 100) / 100
             case .bodyMassIndex:
                 guard let 📝lastValue = self.ⓛastSample?.quantity else { return nil }
-                guard let ⓥalue = 📱.📝bmiValue else { return nil }
+                guard let ⓥalue = 📱.📝bmiInputValue else { return nil }
                 📉difference = round((ⓥalue - 📝lastValue.doubleValue(for: .count())) * 10) / 10
             case .bodyFatPercentage:
                 guard let 📝lastValue = self.ⓛastSample?.quantity else { return nil }
-                📉difference = round((📱.📝bodyFatValue - 📝lastValue.doubleValue(for: .percent())) * 1000) / 10
+                📉difference = round((📱.📝bodyFatInputValue - 📝lastValue.doubleValue(for: .percent())) * 1000) / 10
             default: return nil
         }
         switch 📉difference {

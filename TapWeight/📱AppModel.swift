@@ -7,16 +7,16 @@ class 📱AppModel: ObservableObject {
     @AppStorage("AbleBodyFat") var 🚩ableBodyFat: Bool = false
     @AppStorage("AbleDatePicker") var 🚩ableDatePicker: Bool = false
     
-    @Published var 📝massValue: Double = 65.0
-    var 📝bmiValue: Double? {
+    @Published var 📝massInputValue: Double = 65.0
+    var 📝bmiInputValue: Double? {
         guard let ⓜassUnit = self.📦units[.bodyMass] else { return nil }
-        let ⓠuantity = HKQuantity(unit: ⓜassUnit, doubleValue: self.📝massValue)
+        let ⓠuantity = HKQuantity(unit: ⓜassUnit, doubleValue: self.📝massInputValue)
         let ⓚiloMassValue = ⓠuantity.doubleValue(for: .gramUnit(with: .kilo))
         guard let ⓗeightValue = self.📦latestSamples[.height]?.quantity.doubleValue(for: .meterUnit(with: .centi)) else { return nil }
         let ⓥalue = ⓚiloMassValue / pow((Double(ⓗeightValue) / 100), 2)
         return Double(Int(round(ⓥalue * 10))) / 10
     }
-    @Published var 📝bodyFatValue: Double = 0.2
+    @Published var 📝bodyFatInputValue: Double = 0.2
     
     @Published var 📅pickerValue: Date = .now
     var 🚩datePickerIsAlmostNow: Bool { self.📅pickerValue.timeIntervalSinceNow > -300 }
@@ -29,7 +29,7 @@ class 📱AppModel: ObservableObject {
     @Published var 📦latestSamples: [HKQuantityTypeIdentifier: HKQuantitySample] = [:]
     @Published var 📦units: [HKQuantityTypeIdentifier: HKUnit] = [:]
     
-    var 📨registeringSamples: [HKQuantitySample] = []
+    var 📨cacheSamples: [HKQuantitySample] = []
     
     @MainActor
     func 👆register() async {
@@ -41,29 +41,31 @@ class 📱AppModel: ObservableObject {
         if self.🚩ableBodyFat {
             if self.🏥checkAuthDenied(.bodyFatPercentage) { return }
         }
+        var ⓢamples: [HKQuantitySample] = []
         let ⓓate: Date = self.🚩ableDatePicker ? self.📅pickerValue : .now
         if let ⓤnit = self.📦units[.bodyMass] {
-            self.📨registeringSamples.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
+            ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
                                             quantity: HKQuantity(unit: ⓤnit,
-                                                                 doubleValue: self.📝massValue),
+                                                                 doubleValue: self.📝massInputValue),
                                             start: ⓓate, end: ⓓate))
         }
         if self.🚩ableBMI {
-            if let 📝bmiValue {
-                self.📨registeringSamples.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
+            if let 📝bmiInputValue {
+                ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
                                                 quantity: HKQuantity(unit: .count(),
-                                                                     doubleValue: 📝bmiValue),
+                                                                     doubleValue: 📝bmiInputValue),
                                                 start: ⓓate, end: ⓓate))
             }
         }
         if self.🚩ableBodyFat {
-            self.📨registeringSamples.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
-                                                   quantity: HKQuantity(unit: .percent(),
-                                                                        doubleValue: self.📝bodyFatValue),
-                                                   start: ⓓate, end: ⓓate))
+            ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
+                                            quantity: HKQuantity(unit: .percent(),
+                                                                 doubleValue: self.📝bodyFatInputValue),
+                                            start: ⓓate, end: ⓓate))
         }
         do {
-            try await self.🏥healthStore.save(self.📨registeringSamples)
+            try await self.🏥healthStore.save(ⓢamples)
+            self.📨cacheSamples = ⓢamples
         } catch {
             self.🚨registerError = true
             print("🚨", error.localizedDescription)
@@ -148,24 +150,20 @@ class 📱AppModel: ObservableObject {
     }
     
     @MainActor
-    func setPickerValues() {
+    func resetPickerValues() {
         if let ⓜassUnit = self.📦units[.bodyMass] {
             if let ⓥalue = self.📦latestSamples[.bodyMass]?.quantity.doubleValue(for: ⓜassUnit) {
-                self.📝massValue = ⓥalue
+                self.📝massInputValue = ⓥalue
             } else {
                 switch ⓜassUnit {
-                    case .gramUnit(with: .kilo):
-                        self.📝massValue = 60.0
-                    case .pound():
-                        self.📝massValue = 130
-                    case .stone():
-                        self.📝massValue = 10
-                    default:
-                        break
+                    case .gramUnit(with: .kilo): self.📝massInputValue = 60.0
+                    case .pound(): self.📝massInputValue = 130
+                    case .stone(): self.📝massInputValue = 10
+                    default: break
                 }
             }
         }
-        self.📝bodyFatValue = self.📦latestSamples[.bodyFatPercentage]?.quantity.doubleValue(for: .percent()) ?? 0.2
+        self.📝bodyFatInputValue = self.📦latestSamples[.bodyFatPercentage]?.quantity.doubleValue(for: .percent()) ?? 0.2
     }
     
     @MainActor
@@ -186,7 +184,7 @@ class 📱AppModel: ObservableObject {
                 Task {
                     self.loadLatestSamples()
                     await self.loadUnits()
-                    await self.setPickerValues()
+                    await self.resetPickerValues()
                     ⓒompletionHandler()
                 }
             }
@@ -199,7 +197,7 @@ class 📱AppModel: ObservableObject {
         Task {
             do {
                 self.🚩canceled = true
-                try await self.🏥healthStore.delete(self.📨registeringSamples)
+                try await self.🏥healthStore.delete(self.📨cacheSamples)
                 self.loadLatestSamples()
                 UINotificationFeedbackGenerator().notificationOccurred(.error)
             } catch {
@@ -213,7 +211,7 @@ class 📱AppModel: ObservableObject {
         self.🚨registerError = false
         self.🚩canceled = false
         self.🚨cancelError = false
-        self.📨registeringSamples = []
+        self.📨cacheSamples = []
     }
 }
 
