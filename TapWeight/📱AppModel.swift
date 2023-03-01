@@ -15,11 +15,7 @@ class 📱AppModel: ObservableObject {
     }
     var ⓜassInputDescription: String {
         if let ⓜassInputValue {
-            if self.🚩amount50g {
-                return String(format: "%.2f", ⓜassInputValue)
-            } else {
-                return ⓜassInputValue.description
-            }
+            return self.🚩amount50g ? String(format: "%.2f", ⓜassInputValue) : ⓜassInputValue.description
         } else {
             return self.🚩amount50g ? "00.00" : "00.0"
         }
@@ -328,57 +324,3 @@ class 📱AppModel: ObservableObject {
         self.📨registeredSamples = []
     }
 }
-
-
-//func 🏥getLatestValue() {
-//    let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .bodyFatPercentage]
-//    for ⓘdentifier in ⓘdentifiers {
-//        let ⓠuery = HKSampleQuery(sampleType: HKQuantityType(ⓘdentifier),
-//                                  predicate: nil,
-//                                  limit: 1,
-//                                  sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)]) { _, ⓢamples, _ in
-//            Task { @MainActor in
-//                if let ⓢample = ⓢamples?.first as? HKQuantitySample {
-//                    switch ⓘdentifier {
-//                        case .bodyMass:
-//                            let ⓥalue = ⓢample.quantity.doubleValue(for: self.📏massUnit.hkunit)
-//                            if self.🚩amount50g {
-//                                self.📝massValue = round(ⓥalue * 20) / 20
-//                            } else {
-//                                self.📝massValue = round(ⓥalue * 10) / 10
-//                            }
-//                            self.💾lastSamples[.bodyMass] = ⓢample
-//                        case .bodyMassIndex:
-//                            self.💾lastSamples[.bodyMassIndex] = ⓢample
-//                        case .bodyFatPercentage:
-//                            self.📝bodyFatValue = ⓢample.quantity.doubleValue(for: .percent())
-//                            self.💾lastSamples[.bodyFatPercentage] = ⓢample
-//                        default:
-//                            print("🐛")
-//                    }
-//                }
-//            }
-//        }
-//        self.🏥healthStore.execute(ⓠuery)
-//    }
-//}
-
-
-//@MainActor
-//private func 🏥getPreferredMassUnit() async throws {
-//    if let 📏 = try await self.🏥healthStore.preferredUnits(for: [HKQuantityType(.bodyMass)]).first {
-//        switch 📏.value {
-//            case .gramUnit(with: .kilo):
-//                self.📏massUnit = .kg
-//                self.📝massValue = 60
-//            case .pound():
-//                self.📏massUnit = .lbs
-//                self.📝massValue = 130
-//            case .stone():
-//                self.📏massUnit = .st
-//                self.📝massValue = 10
-//            default:
-//                print("🐛")
-//        }
-//    }
-//}
