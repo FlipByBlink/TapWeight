@@ -10,16 +10,14 @@ class 📱AppModel: ObservableObject {
     
     @Published var 📝massInputQuantity: HKQuantity? = nil
     @Published var 📝bodyFatInputQuantity: HKQuantity? = nil
-    
     @Published var 📅datePickerValue: Date = .now
-    
-    @Published var 🚨registerError: Bool = false
-    @Published var 🚩canceled: Bool = false
-    @Published var 🚨cancelError: Bool = false
     
     @Published var 📦latestSamples: [HKQuantityTypeIdentifier: HKQuantitySample] = [:]
     @Published var 📦preferredUnits: [HKQuantityTypeIdentifier: HKUnit] = [:]
     
+    @Published var 🚨registerError: Bool = false
+    @Published var 🚩canceled: Bool = false
+    @Published var 🚨cancelError: Bool = false
     var 📨registeredSamples: [HKQuantitySample] = []
     
     private let 🏥healthStore = HKHealthStore()
@@ -66,7 +64,7 @@ class 📱AppModel: ObservableObject {
     
     var ⓓifferenceDescriptions: [HKQuantityTypeIdentifier: String] {
         var ⓓescriptions: [HKQuantityTypeIdentifier: String] = [:]
-        for ⓣype: HKQuantityTypeIdentifier in [.bodyMass, .bodyMassIndex, .bodyFatPercentage, .leanBodyMass] {
+        for ⓣype: HKQuantityTypeIdentifier in [.bodyMass, .bodyMassIndex, .bodyFatPercentage] {
             let ⓛastSample = self.📦latestSamples[ⓣype]
             var 📉difference: Double? = nil
             if let 📝lastValue = ⓛastSample?.quantity {
@@ -207,7 +205,7 @@ class 📱AppModel: ObservableObject {
     }
     
     private func 🏥loadLatestSamples() {
-        let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass]
+        let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage]
         for ⓘdentifier in ⓘdentifiers {
             let ⓢortDescriptors = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
             let ⓠuery = HKSampleQuery(sampleType: HKQuantityType(ⓘdentifier),
@@ -258,7 +256,7 @@ class 📱AppModel: ObservableObject {
     
     @MainActor
     private func 🏥loadPreferredUnits() async {
-        for ⓘdentifier: HKQuantityTypeIdentifier in [.bodyMass, .height, .leanBodyMass] {
+        for ⓘdentifier: HKQuantityTypeIdentifier in [.bodyMass, .height] {
             if let ⓤnit = try? await self.🏥healthStore.preferredUnits(for: [HKQuantityType(ⓘdentifier)]).first?.value {
                 if self.📦preferredUnits[ⓘdentifier] != ⓤnit {
                     self.📦preferredUnits[ⓘdentifier] = ⓤnit
@@ -269,7 +267,7 @@ class 📱AppModel: ObservableObject {
     }
     
     private func 🔭observeChanges() {
-        let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass]
+        let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage]
         for ⓘdentifier in ⓘdentifiers {
             let ⓣype = HKQuantityType(ⓘdentifier)
             let ⓠuery = HKObserverQuery(sampleType: ⓣype, predicate: nil) { _, ⓒompletionHandler, ⓔrror in
