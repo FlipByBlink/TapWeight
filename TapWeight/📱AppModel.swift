@@ -7,7 +7,7 @@ class 📱AppModel: ObservableObject {
     @AppStorage("AbleBodyFat") var 🚩ableBodyFat: Bool = false
     @AppStorage("AbleDatePicker") var 🚩ableDatePicker: Bool = false
     
-    @Published var 📝massInputValue: Double = 65.0
+    @AppStorage("massInputValue") var 📝massInputValue: Double = 65.0
     var 📝bmiInputValue: Double? {
         guard let ⓜassUnit = self.📦units[.bodyMass] else { return nil }
         let ⓠuantity = HKQuantity(unit: ⓜassUnit, doubleValue: self.📝massInputValue)
@@ -17,7 +17,7 @@ class 📱AppModel: ObservableObject {
         let ⓥalue = ⓚiloMassValue / pow((Double(ⓗeightValue) / 100), 2)
         return Double(Int(round(ⓥalue * 10))) / 10
     }
-    @Published var 📝bodyFatInputValue: Double = 0.2
+    @AppStorage("bodyFatInputValue") var 📝bodyFatInputValue: Double = 0.2
     
     @Published var 📅pickerValue: Date = .now
     var 🚩datePickerIsAlmostNow: Bool { self.📅pickerValue.timeIntervalSinceNow > -300 }
@@ -93,8 +93,8 @@ class 📱AppModel: ObservableObject {
                 if try await self.🏥checkShouldRequestAuth(ⓘdentifier) {
                     let ⓣype = HKQuantityType(ⓘdentifier)
                     try await self.🏥healthStore.requestAuthorization(toShare: [ⓣype], read: [ⓣype])
-                    self.loadLatestSamples()
-                    await self.loadUnits()
+                    self.🏥loadLatestSamples()
+                    await self.🏥loadUnits()
                 }
             } catch {
                 print("🚨", error.localizedDescription)
@@ -122,8 +122,8 @@ class 📱AppModel: ObservableObject {
                 if !ⓣypes.isEmpty {
                     if try await self.🏥healthStore.statusForAuthorizationRequest(toShare: ⓣypes, read: ⓣypes) == .shouldRequest {
                         try await self.🏥healthStore.requestAuthorization(toShare: ⓣypes, read: ⓣypes)
-                        if ⓣypes.contains(HKQuantityType(.bodyMass)) { await self.loadUnits() }
-                        self.loadLatestSamples()
+                        if ⓣypes.contains(HKQuantityType(.bodyMass)) { await self.🏥loadUnits() }
+                        self.🏥loadLatestSamples()
                     }
                 }
             } catch {
@@ -132,7 +132,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func loadLatestSamples() {
+    func 🏥loadLatestSamples() {
         let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass]
         for ⓘdentifier in ⓘdentifiers {
             let ⓢortDescriptors = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
@@ -143,7 +143,7 @@ class 📱AppModel: ObservableObject {
                 if let ⓢamples {
                     Task { @MainActor in
                         self.📦latestSamples[ⓘdentifier] = ⓢamples.first as? HKQuantitySample
-                        self.resetPickerValues()
+                        self.📝resetPickerValues()
                     }
                 }
             }
@@ -152,7 +152,7 @@ class 📱AppModel: ObservableObject {
     }
     
     @MainActor
-    func resetPickerValues() {
+    func 📝resetPickerValues() {
         if let ⓜassUnit = self.📦units[.bodyMass] {
             if let ⓜassValue = self.📦latestSamples[.bodyMass]?.quantity.doubleValue(for: ⓜassUnit) {
                 self.📝massInputValue = ⓜassValue
@@ -169,12 +169,12 @@ class 📱AppModel: ObservableObject {
     }
     
     @MainActor
-    private func loadUnits() async {
+    private func 🏥loadUnits() async {
         for ⓘdentifier: HKQuantityTypeIdentifier in [.bodyMass, .height, .leanBodyMass] {
             if let ⓤnit = try? await self.🏥healthStore.preferredUnits(for: [HKQuantityType(ⓘdentifier)]).first?.value {
                 if self.📦units[ⓘdentifier] != ⓤnit {
                     self.📦units[ⓘdentifier] = ⓤnit
-                    self.resetPickerValues()
+                    self.📝resetPickerValues()
                 }
             }
         }
@@ -187,8 +187,8 @@ class 📱AppModel: ObservableObject {
             let ⓠuery = HKObserverQuery(sampleType: ⓣype, predicate: nil) { _, ⓒompletionHandler, ⓔrror in
                 if ⓔrror != nil { return }
                 Task {
-                    self.loadLatestSamples()
-                    await self.loadUnits()
+                    self.🏥loadLatestSamples()
+                    await self.🏥loadUnits()
                     ⓒompletionHandler()
                 }
             }
