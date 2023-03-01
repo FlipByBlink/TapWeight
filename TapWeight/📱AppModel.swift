@@ -13,6 +13,17 @@ class 📱AppModel: ObservableObject {
         guard let ⓜassUnit else { return nil }
         return self.📝massInputQuantity?.doubleValue(for: ⓜassUnit)
     }
+    var ⓜassInputDescription: String {
+        if let ⓜassInputValue {
+            if self.🚩amount50g {
+                return String(format: "%.2f", ⓜassInputValue)
+            } else {
+                return ⓜassInputValue.description
+            }
+        } else {
+            return self.🚩amount50g ? "00.00" : "00.0"
+        }
+    }
     
     var 📝bmiInputValue: Double? {
         guard let 📝massInputQuantity else { return nil }
@@ -32,7 +43,14 @@ class 📱AppModel: ObservableObject {
     var ⓑodyFatInputValue: Double? {
         return self.📝bodyFatInputQuantity?.doubleValue(for: .percent())
     }
-    
+    var ⓑodyFatInputDescription: String {
+        if let ⓑodyFatInputValue {
+            return (round(ⓑodyFatInputValue * 1000) / 10).description
+        } else {
+            return "00.0"
+        }
+    }
+
     @Published var 📅pickerValue: Date = .now
     var 🚩datePickerIsAlmostNow: Bool { self.📅pickerValue.timeIntervalSinceNow > -300 }
     

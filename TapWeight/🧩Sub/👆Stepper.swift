@@ -3,19 +3,12 @@ import SwiftUI
 struct 👆BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var 🔠font: Font { 📱.🚩ableDatePicker ? .largeTitle : .system(size: 50) }
-    private var 🪧description: String {
-        if let ⓥalue = 📱.ⓜassInputValue {
-            return 📱.🚩amount50g ? String(format: "%.2f", ⓥalue) : ⓥalue.description
-        } else {
-            return 📱.🚩amount50g ? "00.00" : "00.0"
-        }
-    }
     private var ⓘnputQuantityIsNothing: Bool { 📱.📝massInputQuantity == nil }
     var body: some View {
         Stepper {
             HStack {
                 HStack(alignment: .firstTextBaseline) {
-                    Text(self.🪧description)
+                    Text(📱.ⓜassInputDescription)
                         .font(self.🔠font)
                         .fontWeight(.black)
                         .monospacedDigit()
@@ -43,20 +36,13 @@ struct 👆BodyMassStepper: View {
 struct 👆BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var 🔠font: Font { 📱.🚩ableDatePicker ? .largeTitle : .system(size: 50) }
-    private var 🪧description: String {
-        if let ⓥalue = 📱.ⓑodyFatInputValue {
-            return (round(ⓥalue * 1000) / 10).description
-        } else {
-            return "00.0"
-        }
-    }
     private var ⓘnputQuantityIsNothing: Bool { 📱.📝bodyFatInputQuantity == nil }
     var body: some View {
         Section {
             Stepper {
                 HStack {
                     HStack(alignment: .firstTextBaseline, spacing: 6) {
-                        Text(self.🪧description)
+                        Text(📱.ⓑodyFatInputDescription)
                             .font(self.🔠font)
                             .fontWeight(.black)
                             .monospacedDigit()
