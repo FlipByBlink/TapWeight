@@ -148,6 +148,23 @@ class 📱AppModel: ObservableObject {
                     Task { @MainActor in
                         self.📦latestSamples[ⓘdentifier] = ⓢamples.first as? HKQuantitySample
                         self.📝resetPickerValues()
+                        if ⓢamples.isEmpty {
+                            switch ⓘdentifier {
+                                case .bodyMass:
+                                    if let ⓤnit = self.📦units[.bodyMass] {
+                                        switch ⓤnit {
+                                            case .gramUnit(with: .kilo): self.📝massInputValue = 60.0
+                                            case .pound(): self.📝massInputValue = 130
+                                            case .stone(): self.📝massInputValue = 10
+                                            default: break
+                                        }
+                                    }
+                                case .bodyFatPercentage:
+                                    self.📝bodyFatInputValue = 0.2
+                                default:
+                                    break
+                            }
+                        }
                     }
                 }
             }
@@ -158,18 +175,9 @@ class 📱AppModel: ObservableObject {
     @MainActor
     func 📝resetPickerValues() {
         if let ⓜassUnit = self.📦units[.bodyMass] {
-            if let ⓜassValue = self.📦latestSamples[.bodyMass]?.quantity.doubleValue(for: ⓜassUnit) {
-                self.📝massInputValue = ⓜassValue
-            } else {
-                switch ⓜassUnit {
-                    case .gramUnit(with: .kilo): self.📝massInputValue = 60.0
-                    case .pound(): self.📝massInputValue = 130
-                    case .stone(): self.📝massInputValue = 10
-                    default: break
-                }
-            }
+            self.📝massInputValue = self.📦latestSamples[.bodyMass]?.quantity.doubleValue(for: ⓜassUnit)
         }
-        self.📝bodyFatInputValue = self.📦latestSamples[.bodyFatPercentage]?.quantity.doubleValue(for: .percent()) ?? 0.2
+        self.📝bodyFatInputValue = self.📦latestSamples[.bodyFatPercentage]?.quantity.doubleValue(for: .percent())
     }
     
     @MainActor
