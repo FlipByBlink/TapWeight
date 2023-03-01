@@ -26,7 +26,7 @@ struct 🗯ResultView: View {
                                 .font(.title3.weight(.semibold))
                         }
                         if 📱.🚨registerError == false {
-                            🗯SummaryView()
+                            self.🗯SummaryText()
                         }
                         VStack {
                             self.💟jumpButton()
@@ -83,6 +83,23 @@ struct 🗯ResultView: View {
         }
         .accessibilityLabel("Open \"Health\" app")
     }
+    private func 🗯SummaryText() -> some View {
+        Group {
+            Text(📱.ⓡesultSummaryDescription ?? "🐛")
+                .strikethrough(📱.🚩canceled)
+                .font(.body.bold())
+            if 📱.🚩ableDatePicker {
+                if let ⓓate = 📱.📨registeredSamples.first?.startDate as? Date {
+                    Text(ⓓate.formatted(date: .abbreviated, time: .shortened))
+                        .strikethrough(📱.🚩canceled)
+                        .font(.subheadline.weight(.semibold))
+                        .padding(.horizontal)
+                }
+            }
+        }
+        .opacity(0.75)
+        .padding(.horizontal, 42)
+    }
     private func 🅧closeButton() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button {
@@ -113,26 +130,5 @@ struct 🗯ResultView: View {
                 .accessibilityLabel("Cancel")
             }
         }
-    }
-}
-
-struct 🗯SummaryView: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    var body: some View {
-        Group {
-            Text(📱.ⓡesultSummaryDescription ?? "🐛")
-                .strikethrough(📱.🚩canceled)
-                .font(.body.bold())
-            if 📱.🚩ableDatePicker {
-                if let ⓓate = 📱.📨registeredSamples.first?.startDate as? Date {
-                    Text(ⓓate.formatted(date: .abbreviated, time: .shortened))
-                        .strikethrough(📱.🚩canceled)
-                        .font(.subheadline.weight(.semibold))
-                        .padding(.horizontal)
-                }
-            }
-        }
-        .opacity(0.75)
-        .padding(.horizontal, 42)
     }
 }
