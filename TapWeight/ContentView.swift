@@ -152,34 +152,8 @@ struct 📅DatePicker: View {
 struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓣype: HKQuantityTypeIdentifier
-    private var ⓛastSample: HKQuantitySample? { 📱.📦latestSamples[self.ⓣype] }
-    private var 🪧description: String? { //TODO: refactoring
-        let 📉difference: Double
-        guard let 📝lastValue = self.ⓛastSample?.quantity else { return nil }
-        switch self.ⓣype {
-            case .bodyMass:
-                guard let ⓤnit = 📱.📦units[ⓣype] else { return nil }
-                📉difference = round((📱.📝massInputValue - 📝lastValue.doubleValue(for: ⓤnit)) * 100) / 100
-            case .bodyMassIndex:
-                guard let ⓥalue = 📱.📝bmiInputValue else { return nil }
-                📉difference = round((ⓥalue - 📝lastValue.doubleValue(for: .count())) * 10) / 10
-            case .bodyFatPercentage:
-                📉difference = round((📱.📝bodyFatInputValue - 📝lastValue.doubleValue(for: .percent())) * 1000) / 10
-            default:
-                return nil
-        }
-        switch 📉difference {
-            case ..<0:
-                if self.ⓣype == .bodyMass && 📱.🚩amount50g { return String(format: "%.2f", 📉difference) }
-                return 📉difference.description
-            case 0:
-                if self.ⓣype == .bodyMass && 📱.🚩amount50g { return "0.00" }
-                return "0.0"
-            default:
-                if self.ⓣype == .bodyMass && 📱.🚩amount50g { return "+" + String(format: "%.2f", 📉difference) }
-                return "+" + 📉difference.description
-        }
-    }
+    private var 🪧description: String? { 📱.differenceDescriptions[self.ⓣype] }
+    private var ⓛastSampleDate: Date? { 📱.📦latestSamples[self.ⓣype]?.startDate }
     var body: some View {
         ZStack {
             Color.clear
@@ -190,8 +164,8 @@ struct 📉DifferenceView: View {
                             .font(.subheadline.bold())
                             .monospacedDigit()
                             .frame(width: 72, height: 24, alignment: .bottomTrailing)
-                        if let ⓛastSample {
-                            Text(ⓛastSample.startDate, style: .offset)
+                        if let ⓛastSampleDate {
+                            Text(ⓛastSampleDate, style: .offset)
                                 .font(.caption.bold())
                                 .frame(width: 72, height: 24, alignment: .topTrailing)
                         }
