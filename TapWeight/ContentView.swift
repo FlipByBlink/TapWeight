@@ -155,19 +155,18 @@ struct 📉DifferenceView: View {
     private var ⓛastSample: HKQuantitySample? { 📱.📦latestSamples[self.ⓣype] }
     private var 🪧description: String? {
         let 📉difference: Double
+        guard let 📝lastValue = self.ⓛastSample?.quantity else { return nil }
         switch self.ⓣype {
             case .bodyMass:
-                guard let 📝lastValue = self.ⓛastSample?.quantity else { return nil }
                 guard let ⓤnit = 📱.📦units[ⓣype] else { return nil }
                 📉difference = round((📱.📝massInputValue - 📝lastValue.doubleValue(for: ⓤnit)) * 100) / 100
             case .bodyMassIndex:
-                guard let 📝lastValue = self.ⓛastSample?.quantity else { return nil }
                 guard let ⓥalue = 📱.📝bmiInputValue else { return nil }
                 📉difference = round((ⓥalue - 📝lastValue.doubleValue(for: .count())) * 10) / 10
             case .bodyFatPercentage:
-                guard let 📝lastValue = self.ⓛastSample?.quantity else { return nil }
                 📉difference = round((📱.📝bodyFatInputValue - 📝lastValue.doubleValue(for: .percent())) * 1000) / 10
-            default: return nil
+            default:
+                return nil
         }
         switch 📉difference {
             case ..<0:
@@ -203,7 +202,7 @@ struct 📉DifferenceView: View {
             }
         }
         .frame(width: 72, height: 48)
-        .animation(.default, value: self.🪧description == nil) //TODO: ShowResult削除のここの影響範囲を注視
+        //.animation(.default, value: self.🪧description == nil) //TODO: ShowResult削除のここの影響範囲を注視
         .animation(.default.speed(2), value: 📱.🚩datePickerIsAlmostNow)
     }
     init(_ ⓣype: HKQuantityTypeIdentifier) {
