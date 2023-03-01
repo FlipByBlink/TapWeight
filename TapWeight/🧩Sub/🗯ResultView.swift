@@ -118,7 +118,7 @@ struct 🗯ResultView: View {
 
 struct 🗯SummaryView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    private var 🪧description: String {
+    private var 🪧description: String { //TODO: refactoring
         return 📱.📨cacheSamples.reduce("") { ⓓescription, ⓢample in
             switch ⓢample.quantityType {
                 case .init(.bodyMass):

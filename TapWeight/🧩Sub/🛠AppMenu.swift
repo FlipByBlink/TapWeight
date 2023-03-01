@@ -33,10 +33,10 @@ struct 🛠AppMenu: View {
                 Toggle(isOn: $📱.🚩amount50g) {
                     Label("100g → 50g", systemImage: "minus.forwardslash.plus")
                         .padding(.leading)
-//                        .foregroundColor(📱.📏massUnit != .kg ? .secondary : nil)
+                        //.foregroundColor(📱.📏massUnit != .kg ? .secondary : nil)
                 }
                 .font(.subheadline)
-//                .disabled(📱.📏massUnit != .kg)
+                //.disabled(📱.📏massUnit != .kg)
                 .accessibilityLabel("50gram")
             } header: {
                 Text("Option")
@@ -48,7 +48,7 @@ struct 🛠AppMenu: View {
                 .onChange(of: 📱.🚩ableBMI) {
                     if $0 == true { 📱.🏥requestAuth(.bodyMassIndex) }
                 }
-                🄱MIFormulaView()
+                self.ⓑmiFormula()
             }
             Section {
                 Toggle(isOn: $📱.🚩ableBodyFat) {
@@ -91,15 +91,11 @@ struct 🛠AppMenu: View {
             📣ADMenuLink()
         }
         .navigationTitle("Menu")
-        .toolbar { ﹀CloseMenuButton(dismiss) }
+        .toolbar { self.ⓓismissButton() }
     }
-}
-
-struct ﹀CloseMenuButton: View {
-    private var 🔙dismiss: DismissAction
-    var body: some View {
+    private func ⓓismissButton() -> some View {
         Button {
-            🔙dismiss()
+            self.dismiss()
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         } label: {
             Image(systemName: "chevron.down")
@@ -109,19 +105,11 @@ struct ﹀CloseMenuButton: View {
         }
         .accessibilityLabel("Dismiss")
     }
-    init(_ 🔙dismiss: DismissAction) {
-        self.🔙dismiss = 🔙dismiss
-    }
-}
-
-struct 🄱MIFormulaView: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    var body: some View {
+    private func ⓑmiFormula() -> some View {
         ZStack {
             Color.clear
             HStack {
-                Text("BMI = ")
-                    .font(.title3)
+                Text("BMI = ").font(.title3)
                 VStack(spacing: 16) {
                     HStack(spacing: 2) {
                         Text("Weight")
@@ -129,28 +117,19 @@ struct 🄱MIFormulaView: View {
                             .font(.subheadline)
                     }
                     HStack(spacing: 2) {
-                        Text("Height")
-                            .layoutPriority(1)
-                        Text("(m)")
-                            .font(.subheadline)
-                            .layoutPriority(1)
-                        Text(" × ")
-                            .layoutPriority(1)
-                        Text("Height")
-                            .layoutPriority(1)
-                        Text("(m)")
-                            .font(.subheadline)
-                            .layoutPriority(1)
+                        Text("Height").layoutPriority(1)
+                        Text("(m)").layoutPriority(1).font(.subheadline)
+                        Text(" × ").layoutPriority(1)
+                        Text("Height").layoutPriority(1)
+                        Text("(m)").layoutPriority(1).font(.subheadline)
                     }
                 }
                 .padding()
-                .overlay {
-                    Rectangle()
-                        .frame(height: 2)
-                }
+                .overlay { Rectangle().frame(height: 2) }
             }
         }
         .lineLimit(1)
         .minimumScaleFactor(0.1)
+        .foregroundStyle(.secondary)
     }
 }

@@ -153,7 +153,7 @@ struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓣype: HKQuantityTypeIdentifier
     private var ⓛastSample: HKQuantitySample? { 📱.📦latestSamples[self.ⓣype] }
-    private var 🪧description: String? {
+    private var 🪧description: String? { //TODO: refactoring
         let 📉difference: Double
         guard let 📝lastValue = self.ⓛastSample?.quantity else { return nil }
         switch self.ⓣype {

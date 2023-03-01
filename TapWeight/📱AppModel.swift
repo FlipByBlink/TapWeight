@@ -180,7 +180,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func observeChanges() {
+    func 🔭observeChanges() {
         let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass]
         for ⓘdentifier in ⓘdentifiers {
             let ⓣype = HKQuantityType(ⓘdentifier)

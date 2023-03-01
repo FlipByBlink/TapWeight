@@ -10,7 +10,7 @@ struct TapWeightApp: App {
             ContentView()
                 .task {
                     📱.🏥checkAuthOnLaunch()
-                    📱.observeChanges()
+                    📱.🔭observeChanges()
                 }
                 .modifier(📣ADSheet())
                 .modifier(💬RequestUserReview())
