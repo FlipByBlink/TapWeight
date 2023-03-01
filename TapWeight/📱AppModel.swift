@@ -26,6 +26,7 @@ class 📱AppModel: ObservableObject {
     
     private let 🏥healthStore = HKHealthStore()
     
+    
     //MARK: Computed property
     var ⓜassUnit: HKUnit? { self.📦preferredUnits[.bodyMass] }
     var ⓜassInputValue: Double? {
@@ -116,11 +117,12 @@ class 📱AppModel: ObservableObject {
         return ⓓescriptions
     }
     
+    
     //MARK: Method
     @MainActor
     func 👆register() async {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
-        guard self.🏥sharingAuthorized() else { return }
+        guard self.🏥checkSharingAuth() else { return }
         var ⓢamples: [HKQuantitySample] = []
         let ⓓate: Date = self.🚩ableDatePicker ? self.📅datePickerValue : .now
         if let 📝massInputQuantity {
@@ -152,7 +154,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    private func 🏥sharingAuthorized() -> Bool {
+    private func 🏥checkSharingAuth() -> Bool {
         var ⓣypes: [HKQuantityTypeIdentifier] = [.bodyMass]
         if self.🚩ableBMI { ⓣypes.append(.bodyMassIndex) }
         if self.🚩ableBodyFat { ⓣypes.append(.bodyFatPercentage) }
@@ -195,7 +197,7 @@ class 📱AppModel: ObservableObject {
         self.🔭observeChanges()
     }
     
-    func 🏥loadLatestSamples() {
+    private func 🏥loadLatestSamples() {
         let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass]
         for ⓘdentifier in ⓘdentifiers {
             let ⓢortDescriptors = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
@@ -321,7 +323,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func ⓡeset() {
+    func ⓡesetResultState() {
         self.🚨registerError = false
         self.🚩canceled = false
         self.🚨cancelError = false

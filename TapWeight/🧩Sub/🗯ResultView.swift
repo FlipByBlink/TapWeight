@@ -58,7 +58,7 @@ struct 🗯ResultView: View {
                         }
                     }
                 }
-                .onDisappear { 📱.ⓡeset() }
+                .onDisappear { 📱.ⓡesetResultState() }
                 .navigationBarTitleDisplayMode(.inline)
                 .animation(.default, value: 📱.🚩canceled)
                 .toolbar {
