@@ -87,13 +87,9 @@ struct 👆DoneButton: View { // ☑️
             🗯ResultView()
         }
         .onChange(of: self.scenePhase) {
-            switch $0 {
-                case .active:
-                    📱.resetPickerValues()
-                case .background:
-                    self.🚩showResult = false
-                default:
-                    break
+            if $0 == .background {
+                self.🚩showResult = false
+                📱.resetPickerValues()
             }
         }
     }

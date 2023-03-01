@@ -12,7 +12,8 @@ class 📱AppModel: ObservableObject {
         guard let ⓜassUnit = self.📦units[.bodyMass] else { return nil }
         let ⓠuantity = HKQuantity(unit: ⓜassUnit, doubleValue: self.📝massInputValue)
         let ⓚiloMassValue = ⓠuantity.doubleValue(for: .gramUnit(with: .kilo))
-        guard let ⓗeightValue = self.📦latestSamples[.height]?.quantity.doubleValue(for: .meterUnit(with: .centi)) else { return nil }
+        guard let ⓗeightSample = self.📦latestSamples[.height] else { return nil }
+        let ⓗeightValue = ⓗeightSample.quantity.doubleValue(for: .meterUnit(with: .centi))
         let ⓥalue = ⓚiloMassValue / pow((Double(ⓗeightValue) / 100), 2)
         return Double(Int(round(ⓥalue * 10))) / 10
     }
@@ -81,8 +82,8 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    private func 🏥checkShouldRequestAuth(_ identifier: HKQuantityTypeIdentifier) async throws -> Bool {
-        let ⓣype = HKQuantityType(identifier)
+    private func 🏥checkShouldRequestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) async throws -> Bool {
+        let ⓣype = HKQuantityType(ⓘdentifier)
         return try await self.🏥healthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype]) == .shouldRequest
     }
     
@@ -152,8 +153,8 @@ class 📱AppModel: ObservableObject {
     @MainActor
     func resetPickerValues() {
         if let ⓜassUnit = self.📦units[.bodyMass] {
-            if let ⓥalue = self.📦latestSamples[.bodyMass]?.quantity.doubleValue(for: ⓜassUnit) {
-                self.📝massInputValue = ⓥalue
+            if let ⓜassValue = self.📦latestSamples[.bodyMass]?.quantity.doubleValue(for: ⓜassUnit) {
+                self.📝massInputValue = ⓜassValue
             } else {
                 switch ⓜassUnit {
                     case .gramUnit(with: .kilo): self.📝massInputValue = 60.0
