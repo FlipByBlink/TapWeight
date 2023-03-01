@@ -145,7 +145,7 @@ struct 📅DatePicker: View {
                     }
                 }
             }
-            .opacity(📱.🚩datePickerIsAlmostNow ? 0.4 : 1)
+            .opacity(📱.ⓓatePickerIsAlmostNow ? 0.4 : 1)
             .padding(.trailing, 8)
             .listRowSeparator(.hidden)
             .onChange(of: self.scenePhase) {
@@ -165,7 +165,7 @@ struct 📉DifferenceView: View {
     var body: some View {
         ZStack {
             Color.clear
-            if !📱.🚩ableDatePicker || 📱.🚩datePickerIsAlmostNow {
+            if !📱.🚩ableDatePicker || 📱.ⓓatePickerIsAlmostNow {
                 if let 🪧description {
                     VStack(spacing: 0) {
                         Text(🪧description)
@@ -184,8 +184,7 @@ struct 📉DifferenceView: View {
             }
         }
         .frame(width: 72, height: 48)
-        //.animation(.default, value: self.🪧description == nil) //ShowResult削除のここの影響範囲を注視
-        .animation(.default.speed(2), value: 📱.🚩datePickerIsAlmostNow)
+        .animation(.default.speed(2), value: 📱.ⓓatePickerIsAlmostNow)
     }
     init(_ ⓣype: HKQuantityTypeIdentifier) {
         self.ⓣype = ⓣype

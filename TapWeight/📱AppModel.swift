@@ -13,8 +13,6 @@ class 📱AppModel: ObservableObject {
     
     @Published var 📅datePickerValue: Date = .now
     
-    var 🚩datePickerIsAlmostNow: Bool { self.📅datePickerValue.timeIntervalSinceNow > -300 }
-    
     @Published var 🚨registerError: Bool = false
     @Published var 🚩canceled: Bool = false
     @Published var 🚨cancelError: Bool = false
@@ -63,6 +61,8 @@ class 📱AppModel: ObservableObject {
             return "00.0"
         }
     }
+    
+    var ⓓatePickerIsAlmostNow: Bool { self.📅datePickerValue.timeIntervalSinceNow > -300 }
     
     var ⓓifferenceDescriptions: [HKQuantityTypeIdentifier: String] {
         var ⓓescriptions: [HKQuantityTypeIdentifier: String] = [:]
@@ -206,11 +206,6 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func ⓢetupOnLaunch() {
-        self.🏥requestAuth(.bodyMass)
-        self.🔭observeChanges()
-    }
-    
     private func 🏥loadLatestSamples() {
         let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass]
         for ⓘdentifier in ⓘdentifiers {
@@ -342,5 +337,10 @@ class 📱AppModel: ObservableObject {
         self.🚩canceled = false
         self.🚨cancelError = false
         self.📨registeredSamples = []
+    }
+    
+    func ⓢetupOnLaunch() {
+        self.🏥requestAuth(.bodyMass)
+        self.🔭observeChanges()
     }
 }
