@@ -143,6 +143,7 @@ class 📱AppModel: ObservableObject {
                 if let ⓢamples {
                     Task { @MainActor in
                         self.📦latestSamples[ⓘdentifier] = ⓢamples.first as? HKQuantitySample
+                        self.resetPickerValues()
                     }
                 }
             }
