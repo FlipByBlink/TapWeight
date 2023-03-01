@@ -198,43 +198,35 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func incrementMassStepper() {
+    enum 🅂tepPattern {
+        case increment, decrement
+    }
+    
+    func stepMassValue(_ ⓟattern: 🅂tepPattern) {
         if let ⓜassUnit, var ⓜassInputValue {
             if self.🚩amount50g {
-                ⓜassInputValue += 0.05
+                switch ⓟattern {
+                    case .increment: ⓜassInputValue += 0.05
+                    case .decrement: ⓜassInputValue -= 0.05
+                }
                 ⓜassInputValue = round(ⓜassInputValue * 100) / 100
             } else {
-                ⓜassInputValue += 0.1
+                switch ⓟattern {
+                    case .increment: ⓜassInputValue += 0.1
+                    case .decrement: ⓜassInputValue -= 0.1
+                }
                 ⓜassInputValue = round(ⓜassInputValue * 10) / 10
             }
             self.📝massInputQuantity = HKQuantity(unit: ⓜassUnit, doubleValue: ⓜassInputValue)
         }
     }
     
-    func decrementMassStepper() {
-        if let ⓜassUnit, var ⓜassInputValue {
-            if self.🚩amount50g {
-                ⓜassInputValue -= 0.05
-                ⓜassInputValue = round(ⓜassInputValue * 100) / 100
-            } else {
-                ⓜassInputValue -= 0.1
-                ⓜassInputValue = round(ⓜassInputValue * 10) / 10
+    func stepBodyFatValue(_ ⓟattern: 🅂tepPattern) {
+        if var ⓑodyFatInputValue {
+            switch ⓟattern {
+                case .increment: ⓑodyFatInputValue += 0.001
+                case .decrement: ⓑodyFatInputValue -= 0.001
             }
-            self.📝massInputQuantity = HKQuantity(unit: ⓜassUnit, doubleValue: ⓜassInputValue)
-        }
-    }
-    
-    func incrementBodyFatStepper() {
-        if var ⓑodyFatInputValue {
-            ⓑodyFatInputValue += 0.001
-            ⓑodyFatInputValue = round(ⓑodyFatInputValue * 1000) / 1000
-            self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: ⓑodyFatInputValue)
-        }
-    }
-    
-    func decrementBodyFatStepper() {
-        if var ⓑodyFatInputValue {
-            ⓑodyFatInputValue -= 0.001
             ⓑodyFatInputValue = round(ⓑodyFatInputValue * 1000) / 1000
             self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: ⓑodyFatInputValue)
         }
