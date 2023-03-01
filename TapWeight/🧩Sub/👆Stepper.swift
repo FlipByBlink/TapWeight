@@ -23,10 +23,10 @@ struct 👆BodyMassStepper: View {
             }
         } onIncrement: {
             UISelectionFeedbackGenerator().selectionChanged()
-            📱.stepMassValue(.increment)
+            📱.👆changeMassValue(.increment)
         } onDecrement: {
             UISelectionFeedbackGenerator().selectionChanged()
-            📱.stepMassValue(.decrement)
+            📱.👆changeMassValue(.decrement)
         }
         .padding(8)
         .padding(.vertical, 4)
@@ -57,10 +57,10 @@ struct 👆BodyFatStepper: View {
                 }
             } onIncrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
-                📱.stepBodyFatValue(.increment)
+                📱.👆changeBodyFatValue(.increment)
             } onDecrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
-                📱.stepBodyFatValue(.decrement)
+                📱.👆changeBodyFatValue(.decrement)
             }
             .padding(8)
             .padding(.vertical, 4)

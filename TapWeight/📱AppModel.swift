@@ -45,8 +45,8 @@ class 📱AppModel: ObservableObject {
         }
     }
 
-    @Published var 📅pickerValue: Date = .now
-    var 🚩datePickerIsAlmostNow: Bool { self.📅pickerValue.timeIntervalSinceNow > -300 }
+    @Published var 📅datePickerValue: Date = .now
+    var 🚩datePickerIsAlmostNow: Bool { self.📅datePickerValue.timeIntervalSinceNow > -300 }
     
     @Published var 🚨registerError: Bool = false
     @Published var 🚩canceled: Bool = false
@@ -63,7 +63,7 @@ class 📱AppModel: ObservableObject {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
         guard self.🏥sharingAuthorized() else { return }
         var ⓢamples: [HKQuantitySample] = []
-        let ⓓate: Date = self.🚩ableDatePicker ? self.📅pickerValue : .now
+        let ⓓate: Date = self.🚩ableDatePicker ? self.📅datePickerValue : .now
         if let 📝massInputQuantity {
             ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
                                             quantity: 📝massInputQuantity,
@@ -218,7 +218,7 @@ class 📱AppModel: ObservableObject {
         case increment, decrement
     }
     
-    func stepMassValue(_ ⓟattern: 🅂tepPattern) {
+    func 👆changeMassValue(_ ⓟattern: 🅂tepPattern) {
         if let ⓜassUnit, var ⓜassInputValue {
             if self.🚩amount50g {
                 switch ⓟattern {
@@ -237,7 +237,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func stepBodyFatValue(_ ⓟattern: 🅂tepPattern) {
+    func 👆changeBodyFatValue(_ ⓟattern: 🅂tepPattern) {
         if var ⓑodyFatInputValue {
             switch ⓟattern {
                 case .increment: ⓑodyFatInputValue += 0.001
@@ -248,7 +248,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    var differenceDescriptions: [HKQuantityTypeIdentifier: String] {
+    var 📉differenceDescriptions: [HKQuantityTypeIdentifier: String] {
         var ⓓescriptions: [HKQuantityTypeIdentifier: String] = [:]
         for ⓣype: HKQuantityTypeIdentifier in [.bodyMass, .bodyMassIndex, .bodyFatPercentage, .leanBodyMass] {
             let ⓛastSample = self.📦latestSamples[ⓣype]
@@ -321,4 +321,13 @@ class 📱AppModel: ObservableObject {
         self.🚨cancelError = false
         self.📨registeredSamples = []
     }
+}
+
+struct 🄸nputData {
+    var massQuantity: HKQuantity?
+    var massUnit: HKUnit?
+    var heightUnit: HKUnit?
+    var bodyFatQuantity: HKQuantity?
+    //var leanMassUnit: HKUnit?
+    var date: Date?
 }

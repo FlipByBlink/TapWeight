@@ -63,7 +63,7 @@ struct 🛠AppMenu: View {
                     Label("Date picker", systemImage: "calendar.badge.clock")
                 }
                 .onChange(of: 📱.🚩ableDatePicker) { _ in
-                    📱.📅pickerValue = .now
+                    📱.📅datePickerValue = .now
                 }
             }
             Section {

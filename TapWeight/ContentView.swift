@@ -124,13 +124,13 @@ struct 📅DatePicker: View {
     var body: some View {
         if 📱.🚩ableDatePicker {
             VStack(alignment: .trailing, spacing: 16) {
-                DatePicker(selection: $📱.📅pickerValue, in: ...Date.now, displayedComponents: .date) {
+                DatePicker(selection: $📱.📅datePickerValue, in: ...Date.now, displayedComponents: .date) {
                     HStack {
                         Spacer()
                         Image(systemName: "calendar")
                     }
                 }
-                DatePicker(selection: $📱.📅pickerValue, in: ...Date.now, displayedComponents: .hourAndMinute) {
+                DatePicker(selection: $📱.📅datePickerValue, in: ...Date.now, displayedComponents: .hourAndMinute) {
                     HStack {
                         Spacer()
                         Image(systemName: "clock")
@@ -142,7 +142,7 @@ struct 📅DatePicker: View {
             .listRowSeparator(.hidden)
             .onChange(of: self.scenePhase) {
                 if $0 == .background {
-                    📱.📅pickerValue = .now
+                    📱.📅datePickerValue = .now
                 }
             }
         }
@@ -152,7 +152,7 @@ struct 📅DatePicker: View {
 struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓣype: HKQuantityTypeIdentifier
-    private var 🪧description: String? { 📱.differenceDescriptions[self.ⓣype] }
+    private var 🪧description: String? { 📱.📉differenceDescriptions[self.ⓣype] }
     private var ⓛastSampleDate: Date? { 📱.📦latestSamples[self.ⓣype]?.startDate }
     var body: some View {
         ZStack {
