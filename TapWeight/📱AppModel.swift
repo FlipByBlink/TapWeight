@@ -132,30 +132,30 @@ class 📱AppModel: ObservableObject {
                                       predicate: nil,
                                       limit: 1,
                                       sortDescriptors: [ⓢortDescriptors]) { _, ⓢamples, _ in
-                if let ⓢamples {
-                    Task { @MainActor in
+                Task { @MainActor in
+                    if let ⓢamples {
                         self.📦latestSamples[ⓘdentifier] = ⓢamples.first as? HKQuantitySample
                         self.📝resetPickerValues()
-                        if ⓢamples.isEmpty {
-                            switch ⓘdentifier {
-                                case .bodyMass:
-                                    if let ⓤnit = self.📦units[.bodyMass] {
-                                        switch ⓤnit {
-                                            case .gramUnit(with: .kilo):
-                                                self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 60.0)
-                                            case .pound():
-                                                self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 130.0)
-                                            case .stone():
-                                                self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 10.0)
-                                            default:
-                                                break
-                                        }
+                    }
+                    if ⓢamples == [] {
+                        switch ⓘdentifier {
+                            case .bodyMass:
+                                if let ⓤnit = self.📦units[.bodyMass] {
+                                    switch ⓤnit {
+                                        case .gramUnit(with: .kilo):
+                                            self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 60.0)
+                                        case .pound():
+                                            self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 130.0)
+                                        case .stone():
+                                            self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 10.0)
+                                        default:
+                                            break
                                     }
-                                case .bodyFatPercentage:
-                                    self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
-                                default:
-                                    break
-                            }
+                                }
+                            case .bodyFatPercentage:
+                                self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
+                            default:
+                                break
                         }
                     }
                 }
