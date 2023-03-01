@@ -121,15 +121,13 @@ class 📱AppModel: ObservableObject {
         self.📨registeredSamples.reduce("") { ⓓescription, ⓢample in
             switch ⓢample.quantityType {
                 case .init(.bodyMass):
-                    guard let ⓜassUnit else { return "🐛" }
-                    let ⓥalue = ⓢample.quantity.doubleValue(for: ⓜassUnit)
-                    return ⓓescription + ⓥalue.description + " " + ⓜassUnit.description
+                    return ⓓescription + ⓢample.quantity.description
                 case .init(.bodyMassIndex):
                     return ⓓescription +  " / " + ⓢample.quantity.doubleValue(for: .count()).description
                 case .init(.bodyFatPercentage):
-                    let ⓥalue = round(ⓢample.quantity.doubleValue(for: .percent()) * 1000) / 10
-                    return ⓓescription +  " / " + ⓥalue.description + " %"
-                default: return ⓓescription
+                    return ⓓescription +  " / " + ⓢample.quantity.description
+                default:
+                    return ⓓescription
             }
         }
     }
