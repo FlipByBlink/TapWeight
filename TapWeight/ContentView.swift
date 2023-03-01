@@ -202,7 +202,7 @@ struct 📉DifferenceView: View {
             }
         }
         .frame(width: 72, height: 48)
-        //.animation(.default, value: self.🪧description == nil) //TODO: ShowResult削除のここの影響範囲を注視
+        //.animation(.default, value: self.🪧description == nil) //ShowResult削除のここの影響範囲を注視
         .animation(.default.speed(2), value: 📱.🚩datePickerIsAlmostNow)
     }
     init(_ ⓣype: HKQuantityTypeIdentifier) {

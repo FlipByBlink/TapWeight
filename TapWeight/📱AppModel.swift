@@ -35,13 +35,7 @@ class 📱AppModel: ObservableObject {
     @MainActor
     func 👆register() async {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
-        if self.🏥checkAuthDenied(.bodyMass) { return }
-        if self.🚩ableBMI {
-            if self.🏥checkAuthDenied(.bodyMassIndex) { return }
-        }
-        if self.🚩ableBodyFat {
-            if self.🏥checkAuthDenied(.bodyFatPercentage) { return }
-        }
+        guard self.🏥sharingAuthorized() else { return }
         var ⓢamples: [HKQuantitySample] = []
         let ⓓate: Date = self.🚩ableDatePicker ? self.📅pickerValue : .now
         if let ⓤnit = self.📦units[.bodyMass] {
@@ -73,13 +67,19 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    private func 🏥checkAuthDenied(_ ⓣype: HKQuantityTypeIdentifier) -> Bool {
-        if self.🏥healthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingDenied {
-            self.🚨registerError = true
-            return true
-        } else {
-            return false
+    private func 🏥sharingAuthorized() -> Bool {
+        var ⓣypes: [HKQuantityTypeIdentifier] = [.bodyMass]
+        if self.🚩ableBMI { ⓣypes.append(.bodyMassIndex) }
+        if self.🚩ableBodyFat { ⓣypes.append(.bodyFatPercentage) }
+        for ⓣype in ⓣypes {
+            if self.🏥healthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingAuthorized {
+                continue
+            } else {
+                self.🚨registerError = true
+                return false
+            }
         }
+        return true
     }
     
     private func 🏥checkShouldRequestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) async throws -> Bool {
