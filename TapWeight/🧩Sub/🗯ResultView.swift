@@ -119,7 +119,7 @@ struct 🗯ResultView: View {
 struct 🗯SummaryView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var 🪧description: String { //TODO: refactoring
-        return 📱.📨cacheSamples.reduce("") { ⓓescription, ⓢample in
+        return 📱.📨registeredSamples.reduce("") { ⓓescription, ⓢample in
             switch ⓢample.quantityType {
                 case .init(.bodyMass):
                     guard let ⓤnit = 📱.📦units[.bodyMass] else { return "🐛" }
@@ -140,7 +140,7 @@ struct 🗯SummaryView: View {
                 .strikethrough(📱.🚩canceled)
                 .font(.body.bold())
             if 📱.🚩ableDatePicker {
-                if let ⓓate = 📱.📨cacheSamples.first?.startDate as? Date {
+                if let ⓓate = 📱.📨registeredSamples.first?.startDate as? Date {
                     Text(ⓓate.formatted(date: .abbreviated, time: .shortened))
                         .strikethrough(📱.🚩canceled)
                         .font(.subheadline.weight(.semibold))

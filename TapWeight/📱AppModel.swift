@@ -44,7 +44,7 @@ class 📱AppModel: ObservableObject {
     @Published var 📦latestSamples: [HKQuantityTypeIdentifier: HKQuantitySample] = [:]
     @Published var 📦units: [HKQuantityTypeIdentifier: HKUnit] = [:]
     
-    var 📨cacheSamples: [HKQuantitySample] = []
+    var 📨registeredSamples: [HKQuantitySample] = []
     
     @MainActor
     func 👆register() async {
@@ -74,7 +74,7 @@ class 📱AppModel: ObservableObject {
         }
         do {
             try await self.🏥healthStore.save(ⓢamples)
-            self.📨cacheSamples = ⓢamples
+            self.📨registeredSamples = ⓢamples
         } catch {
             self.🚨registerError = true
             print("🚨", error.localizedDescription)
@@ -294,7 +294,7 @@ class 📱AppModel: ObservableObject {
         Task {
             do {
                 self.🚩canceled = true
-                try await self.🏥healthStore.delete(self.📨cacheSamples)
+                try await self.🏥healthStore.delete(self.📨registeredSamples)
                 UINotificationFeedbackGenerator().notificationOccurred(.error)
             } catch {
                 self.🚨cancelError = true
@@ -307,7 +307,7 @@ class 📱AppModel: ObservableObject {
         self.🚨registerError = false
         self.🚩canceled = false
         self.🚨cancelError = false
-        self.📨cacheSamples = []
+        self.📨registeredSamples = []
     }
 }
 
