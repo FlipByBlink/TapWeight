@@ -166,8 +166,12 @@ class 📱AppModel: ObservableObject {
     
     @MainActor
     func 📝resetPickerValues() {
-        self.📝massInputQuantity = self.📦latestSamples[.bodyMass]?.quantity
-        self.📝bodyFatInputQuantity = self.📦latestSamples[.bodyFatPercentage]?.quantity
+        if let ⓢample = self.📦latestSamples[.bodyMass] {
+            self.📝massInputQuantity = ⓢample.quantity
+        }
+        if let ⓢample = self.📦latestSamples[.bodyFatPercentage] {
+            self.📝bodyFatInputQuantity = ⓢample.quantity
+        }
     }
     
     @MainActor

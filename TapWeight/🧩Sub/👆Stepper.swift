@@ -10,7 +10,7 @@ struct 👆BodyMassStepper: View {
             return 📱.🚩amount50g ? "00.00" : "00.0"
         }
     }
-    private var ⓟreviousSampleIsNothing: Bool { 📱.📦latestSamples[.bodyMass] == nil }
+    private var ⓘnputQuantityIsNothing: Bool { 📱.📝massInputQuantity == nil }
     var body: some View {
         Stepper {
             HStack {
@@ -19,8 +19,8 @@ struct 👆BodyMassStepper: View {
                         .font(self.🔠font)
                         .fontWeight(.black)
                         .monospacedDigit()
-                        .opacity(self.ⓟreviousSampleIsNothing ? 0.2 : 1)
-                        .animation(.default, value: self.ⓟreviousSampleIsNothing)
+                        .opacity(self.ⓘnputQuantityIsNothing ? 0.2 : 1)
+                        .animation(.default, value: self.ⓘnputQuantityIsNothing)
                     Text(📱.📦units[.bodyMass]?.description ?? "nil")
                         .font(.title2.weight(.black))
                         .frame(maxHeight: 36)
@@ -50,7 +50,7 @@ struct 👆BodyFatStepper: View {
             return "00.0"
         }
     }
-    private var ⓟreviousSampleIsNothing: Bool { 📱.📦latestSamples[.bodyFatPercentage] == nil }
+    private var ⓘnputQuantityIsNothing: Bool { 📱.📝bodyFatInputQuantity == nil }
     var body: some View {
         Section {
             Stepper {
@@ -60,8 +60,8 @@ struct 👆BodyFatStepper: View {
                             .font(self.🔠font)
                             .fontWeight(.black)
                             .monospacedDigit()
-                            .opacity(self.ⓟreviousSampleIsNothing ? 0.2 : 1)
-                            .animation(.default, value: self.ⓟreviousSampleIsNothing)
+                            .opacity(self.ⓘnputQuantityIsNothing ? 0.2 : 1)
+                            .animation(.default, value: self.ⓘnputQuantityIsNothing)
                         Text("%")
                             .font(.title2.weight(.black))
                             .frame(maxHeight: 54)
