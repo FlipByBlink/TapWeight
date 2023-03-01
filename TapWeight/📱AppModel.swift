@@ -109,29 +109,8 @@ class 📱AppModel: ObservableObject {
     func 🏥checkAuthOnLaunch() {
         Task {
             do {
-                var ⓣypes: Set<HKSampleType> = []
                 if try await self.🏥checkShouldRequestAuth(.bodyMass) {
-                    ⓣypes.insert(HKQuantityType(.bodyMass))
-                }
-                if self.🚩ableBMI {
-                    if try await self.🏥checkShouldRequestAuth(.bodyMassIndex) {
-                        ⓣypes.insert(HKQuantityType(.bodyMassIndex))
-                    }
-                    if try await self.🏥checkShouldRequestAuth(.height) {
-                        ⓣypes.insert(HKQuantityType(.height))
-                    }
-                }
-                if self.🚩ableBodyFat {
-                    if try await self.🏥checkShouldRequestAuth(.bodyFatPercentage) {
-                        ⓣypes.insert(HKQuantityType(.bodyFatPercentage))
-                    }
-                }
-                if !ⓣypes.isEmpty {
-                    if try await self.🏥healthStore.statusForAuthorizationRequest(toShare: ⓣypes, read: ⓣypes) == .shouldRequest {
-                        try await self.🏥healthStore.requestAuthorization(toShare: ⓣypes, read: ⓣypes)
-                        if ⓣypes.contains(HKQuantityType(.bodyMass)) { await self.🏥loadUnits() }
-                        self.🏥loadLatestSamples()
-                    }
+                    self.🏥requestAuth(.bodyMass)
                 }
             } catch {
                 print("🚨", error.localizedDescription)
