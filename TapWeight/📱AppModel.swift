@@ -63,6 +63,59 @@ class 📱AppModel: ObservableObject {
         }
     }
     
+    var ⓓifferenceDescriptions: [HKQuantityTypeIdentifier: String] {
+        var ⓓescriptions: [HKQuantityTypeIdentifier: String] = [:]
+        for ⓣype: HKQuantityTypeIdentifier in [.bodyMass, .bodyMassIndex, .bodyFatPercentage, .leanBodyMass] {
+            let ⓛastSample = self.📦latestSamples[ⓣype]
+            var 📉difference: Double? = nil
+            if let 📝lastValue = ⓛastSample?.quantity {
+                switch ⓣype {
+                    case .bodyMass:
+                        if let ⓤnit = self.📦preferredUnits[ⓣype] {
+                            if let ⓜassInputValue {
+                                📉difference = round((ⓜassInputValue - 📝lastValue.doubleValue(for: ⓤnit)) * 100) / 100
+                            }
+                        }
+                    case .bodyMassIndex:
+                        if let ⓑmiInputValue {
+                            📉difference = round((ⓑmiInputValue - 📝lastValue.doubleValue(for: .count())) * 10) / 10
+                        } else {
+                            continue
+                        }
+                    case .bodyFatPercentage:
+                        if let ⓑodyFatInputValue {
+                            📉difference = round((ⓑodyFatInputValue - 📝lastValue.doubleValue(for: .percent())) * 1000) / 10
+                        }
+                    default:
+                        continue
+                }
+                if let 📉difference {
+                    switch 📉difference {
+                        case ..<0:
+                            if ⓣype == .bodyMass && self.🚩amount50g {
+                                ⓓescriptions[.bodyMass] = String(format: "%.2f", 📉difference)
+                            } else {
+                                ⓓescriptions[ⓣype] = 📉difference.description
+                            }
+                        case 0:
+                            if ⓣype == .bodyMass && self.🚩amount50g {
+                                ⓓescriptions[.bodyMass] = "0.00"
+                            } else {
+                                ⓓescriptions[ⓣype] = "0.0"
+                            }
+                        default:
+                            if ⓣype == .bodyMass && self.🚩amount50g {
+                                ⓓescriptions[.bodyMass] = "+" + String(format: "%.2f", 📉difference)
+                            } else {
+                                ⓓescriptions[ⓣype] = "+" + 📉difference.description
+                            }
+                    }
+                }
+            }
+        }
+        return ⓓescriptions
+    }
+    
     //MARK: Method
     @MainActor
     func 👆register() async {
@@ -129,7 +182,7 @@ class 📱AppModel: ObservableObject {
                 if ⓢtatus == .shouldRequest {
                     try await self.🏥healthStore.requestAuthorization(toShare: ⓢhareType, read: ⓡeadTypes)
                     self.🏥loadLatestSamples()
-                    await self.🏥loadUnits()
+                    await self.🏥loadPreferredUnits()
                 }
             } catch {
                 print("🚨", error.localizedDescription)
@@ -193,7 +246,7 @@ class 📱AppModel: ObservableObject {
     }
     
     @MainActor
-    private func 🏥loadUnits() async {
+    private func 🏥loadPreferredUnits() async {
         for ⓘdentifier: HKQuantityTypeIdentifier in [.bodyMass, .height, .leanBodyMass] {
             if let ⓤnit = try? await self.🏥healthStore.preferredUnits(for: [HKQuantityType(ⓘdentifier)]).first?.value {
                 if self.📦preferredUnits[ⓘdentifier] != ⓤnit {
@@ -212,7 +265,7 @@ class 📱AppModel: ObservableObject {
                 if ⓔrror != nil { return }
                 Task {
                     self.🏥loadLatestSamples()
-                    await self.🏥loadUnits()
+                    await self.🏥loadPreferredUnits()
                     ⓒompletionHandler()
                 }
             }
@@ -220,11 +273,11 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    enum 🅂tepPattern {
+    enum 🅂tepperAction {
         case increment, decrement
     }
     
-    func 👆changeMassValue(_ ⓟattern: 🅂tepPattern) {
+    func 👆changeMassValue(_ ⓟattern: 🅂tepperAction) {
         if let ⓜassUnit, var ⓜassInputValue {
             if self.🚩amount50g {
                 switch ⓟattern {
@@ -243,7 +296,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func 👆changeBodyFatValue(_ ⓟattern: 🅂tepPattern) {
+    func 👆changeBodyFatValue(_ ⓟattern: 🅂tepperAction) {
         if var ⓑodyFatInputValue {
             switch ⓟattern {
                 case .increment: ⓑodyFatInputValue += 0.001
@@ -252,59 +305,6 @@ class 📱AppModel: ObservableObject {
             ⓑodyFatInputValue = round(ⓑodyFatInputValue * 1000) / 1000
             self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: ⓑodyFatInputValue)
         }
-    }
-    
-    var 📉differenceDescriptions: [HKQuantityTypeIdentifier: String] {
-        var ⓓescriptions: [HKQuantityTypeIdentifier: String] = [:]
-        for ⓣype: HKQuantityTypeIdentifier in [.bodyMass, .bodyMassIndex, .bodyFatPercentage, .leanBodyMass] {
-            let ⓛastSample = self.📦latestSamples[ⓣype]
-            var 📉difference: Double? = nil
-            if let 📝lastValue = ⓛastSample?.quantity {
-                switch ⓣype {
-                    case .bodyMass:
-                        if let ⓤnit = self.📦preferredUnits[ⓣype] {
-                            if let ⓜassInputValue {
-                                📉difference = round((ⓜassInputValue - 📝lastValue.doubleValue(for: ⓤnit)) * 100) / 100
-                            }
-                        }
-                    case .bodyMassIndex:
-                        if let ⓑmiInputValue {
-                            📉difference = round((ⓑmiInputValue - 📝lastValue.doubleValue(for: .count())) * 10) / 10
-                        } else {
-                            continue
-                        }
-                    case .bodyFatPercentage:
-                        if let ⓑodyFatInputValue {
-                            📉difference = round((ⓑodyFatInputValue - 📝lastValue.doubleValue(for: .percent())) * 1000) / 10
-                        }
-                    default:
-                        continue
-                }
-                if let 📉difference {
-                    switch 📉difference {
-                        case ..<0:
-                            if ⓣype == .bodyMass && self.🚩amount50g {
-                                ⓓescriptions[.bodyMass] = String(format: "%.2f", 📉difference)
-                            } else {
-                                ⓓescriptions[ⓣype] = 📉difference.description
-                            }
-                        case 0:
-                            if ⓣype == .bodyMass && self.🚩amount50g {
-                                ⓓescriptions[.bodyMass] = "0.00"
-                            } else {
-                                ⓓescriptions[ⓣype] = "0.0"
-                            }
-                        default:
-                            if ⓣype == .bodyMass && self.🚩amount50g {
-                                ⓓescriptions[.bodyMass] = "+" + String(format: "%.2f", 📉difference)
-                            } else {
-                                ⓓescriptions[ⓣype] = "+" + 📉difference.description
-                            }
-                    }
-                }
-            }
-        }
-        return ⓓescriptions
     }
     
     @MainActor
@@ -327,13 +327,4 @@ class 📱AppModel: ObservableObject {
         self.🚨cancelError = false
         self.📨registeredSamples = []
     }
-}
-
-struct 🄸nputData {
-    var massQuantity: HKQuantity?
-    var massUnit: HKUnit?
-    var heightUnit: HKUnit?
-    var bodyFatQuantity: HKQuantity?
-    //var leanMassUnit: HKUnit?
-    var date: Date?
 }

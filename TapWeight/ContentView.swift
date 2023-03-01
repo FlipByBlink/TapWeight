@@ -160,7 +160,7 @@ struct 📅DatePicker: View {
 struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓣype: HKQuantityTypeIdentifier
-    private var 🪧description: String? { 📱.📉differenceDescriptions[self.ⓣype] }
+    private var 🪧description: String? { 📱.ⓓifferenceDescriptions[self.ⓣype] }
     private var ⓛastSampleDate: Date? { 📱.📦latestSamples[self.ⓣype]?.startDate }
     var body: some View {
         ZStack {
