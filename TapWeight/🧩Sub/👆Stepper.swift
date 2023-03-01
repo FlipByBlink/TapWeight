@@ -7,9 +7,10 @@ struct 👆BodyMassStepper: View {
         if let ⓥalue = 📱.📝massInputValue {
             return 📱.🚩amount50g ? String(format: "%.2f", ⓥalue) : ⓥalue.description
         } else {
-            return "00.00"
+            return 📱.🚩amount50g ? "00.00" : "00.0"
         }
     }
+    private var ⓟreviousSampleIsNothing: Bool { 📱.📦latestSamples[.bodyMass] == nil }
     var body: some View {
         Stepper {
             HStack {
@@ -18,6 +19,7 @@ struct 👆BodyMassStepper: View {
                         .font(self.🔠font)
                         .fontWeight(.black)
                         .monospacedDigit()
+                        .animation(.default, value: self.ⓟreviousSampleIsNothing)
                     Text(📱.📦units[.bodyMass]?.description ?? "nil")
                         .font(.title2.weight(.black))
                         .frame(maxHeight: 36)
@@ -34,7 +36,6 @@ struct 👆BodyMassStepper: View {
         }
         .padding(8)
         .padding(.vertical, 4)
-        .animation(.default, value: 📱.📦latestSamples[.bodyMass] == nil)
     }
 }
 
@@ -45,9 +46,10 @@ struct 👆BodyFatStepper: View {
         if let ⓥalue = 📱.📝bodyFatInputValue {
             return (round(ⓥalue * 1000) / 10).description
         } else {
-            return "0.0"
+            return "00.0"
         }
     }
+    private var ⓟreviousSampleIsNothing: Bool { 📱.📦latestSamples[.bodyFatPercentage] == nil }
     var body: some View {
         Section {
             Stepper {
@@ -57,6 +59,7 @@ struct 👆BodyFatStepper: View {
                             .font(self.🔠font)
                             .fontWeight(.black)
                             .monospacedDigit()
+                            .animation(.default, value: self.ⓟreviousSampleIsNothing)
                         Text("%")
                             .font(.title2.weight(.black))
                             .frame(maxHeight: 54)
@@ -76,6 +79,5 @@ struct 👆BodyFatStepper: View {
         } header: {
             Text("Body Fat Percentage")
         }
-        .animation(.default, value: 📱.📦latestSamples[.bodyFatPercentage] == nil)
     }
 }
