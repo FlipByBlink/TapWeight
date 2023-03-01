@@ -117,6 +117,22 @@ class 📱AppModel: ObservableObject {
         return ⓓescriptions
     }
     
+    var ⓡesultSummaryDescription: String? {
+        self.📨registeredSamples.reduce("") { ⓓescription, ⓢample in
+            switch ⓢample.quantityType {
+                case .init(.bodyMass):
+                    guard let ⓜassUnit else { return "🐛" }
+                    let ⓥalue = ⓢample.quantity.doubleValue(for: ⓜassUnit)
+                    return ⓓescription + ⓥalue.description + " " + ⓜassUnit.description
+                case .init(.bodyMassIndex):
+                    return ⓓescription +  " / " + ⓢample.quantity.doubleValue(for: .count()).description
+                case .init(.bodyFatPercentage):
+                    let ⓥalue = round(ⓢample.quantity.doubleValue(for: .percent()) * 1000) / 10
+                    return ⓓescription +  " / " + ⓥalue.description + " %"
+                default: return ⓓescription
+            }
+        }
+    }
     
     //MARK: Method
     @MainActor

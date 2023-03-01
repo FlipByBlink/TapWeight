@@ -118,25 +118,9 @@ struct 🗯ResultView: View {
 
 struct 🗯SummaryView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    private var 🪧description: String { //TODO: refactoring
-        return 📱.📨registeredSamples.reduce("") { ⓓescription, ⓢample in
-            switch ⓢample.quantityType {
-                case .init(.bodyMass):
-                    guard let ⓤnit = 📱.📦preferredUnits[.bodyMass] else { return "🐛" }
-                    let ⓥalue = ⓢample.quantity.doubleValue(for: ⓤnit)
-                    return ⓓescription + ⓥalue.description + " " + ⓤnit.description
-                case .init(.bodyMassIndex):
-                    return ⓓescription +  " / " + ⓢample.quantity.doubleValue(for: .count()).description
-                case .init(.bodyFatPercentage):
-                    let ⓥalue = round(ⓢample.quantity.doubleValue(for: .percent())*1000)/10
-                    return ⓓescription +  " / " + ⓥalue.description + " %"
-                default: return ⓓescription
-            }
-        }
-    }
     var body: some View {
         Group {
-            Text(self.🪧description)
+            Text(📱.ⓡesultSummaryDescription ?? "🐛")
                 .strikethrough(📱.🚩canceled)
                 .font(.body.bold())
             if 📱.🚩ableDatePicker {

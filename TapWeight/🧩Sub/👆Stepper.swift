@@ -12,7 +12,7 @@ struct 👆BodyMassStepper: View {
                         .font(self.🔠font)
                         .fontWeight(.black)
                         .monospacedDigit()
-                    Text(📱.📦preferredUnits[.bodyMass]?.description ?? "kg")
+                    Text(📱.ⓜassUnit?.description ?? "kg")
                         .font(.title2.weight(.black))
                         .frame(maxHeight: 36)
                 }
