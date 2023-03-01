@@ -21,7 +21,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    var 📝bmiInputValue: Double? {
+    var ⓑmiInputValue: Double? {
         guard let 📝massInputQuantity else { return nil }
         let ⓚiloMassValue = 📝massInputQuantity.doubleValue(for: .gramUnit(with: .kilo))
         guard let ⓗeightSample = self.📦latestSamples[.height] else { return nil }
@@ -36,9 +36,7 @@ class 📱AppModel: ObservableObject {
     }
     
     @Published var 📝bodyFatInputQuantity: HKQuantity? = nil
-    var ⓑodyFatInputValue: Double? {
-        return self.📝bodyFatInputQuantity?.doubleValue(for: .percent())
-    }
+    var ⓑodyFatInputValue: Double? { self.📝bodyFatInputQuantity?.doubleValue(for: .percent()) }
     var ⓑodyFatInputDescription: String {
         if let ⓑodyFatInputValue {
             return (round(ⓑodyFatInputValue * 1000) / 10).description
@@ -72,10 +70,10 @@ class 📱AppModel: ObservableObject {
                                             start: ⓓate, end: ⓓate))
         }
         if self.🚩ableBMI {
-            if let 📝bmiInputValue {
+            if let ⓑmiInputValue {
                 ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
                                                 quantity: HKQuantity(unit: .count(),
-                                                                     doubleValue: 📝bmiInputValue),
+                                                                     doubleValue: ⓑmiInputValue),
                                                 start: ⓓate, end: ⓓate))
             }
         }
@@ -264,8 +262,8 @@ class 📱AppModel: ObservableObject {
                             }
                         }
                     case .bodyMassIndex:
-                        if let 📝bmiInputValue {
-                            📉difference = round((📝bmiInputValue - 📝lastValue.doubleValue(for: .count())) * 10) / 10
+                        if let ⓑmiInputValue {
+                            📉difference = round((ⓑmiInputValue - 📝lastValue.doubleValue(for: .count())) * 10) / 10
                         } else {
                             continue
                         }

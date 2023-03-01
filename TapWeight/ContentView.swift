@@ -46,7 +46,7 @@ struct 🪧BMIView: View {
                         }
                     }
                 }
-                Text(📱.📝bmiInputValue?.description ?? "nil")
+                Text(📱.ⓑmiInputValue?.description ?? "nil")
                     .font(.title2)
                     .fontWeight(.heavy)
             }
