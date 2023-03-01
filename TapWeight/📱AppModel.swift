@@ -14,8 +14,8 @@ class 📱AppModel: ObservableObject {
         let ⓠuantity = HKQuantity(unit: ⓜassUnit, doubleValue: 📝massInputValue)
         let ⓚiloMassValue = ⓠuantity.doubleValue(for: .gramUnit(with: .kilo))
         guard let ⓗeightSample = self.📦latestSamples[.height] else { return nil }
-        let ⓗeightValue = ⓗeightSample.quantity.doubleValue(for: .meterUnit(with: .centi))
-        let ⓥalue = ⓚiloMassValue / pow((ⓗeightValue / 100), 2)
+        let ⓗeightValue = ⓗeightSample.quantity.doubleValue(for: .meter())
+        let ⓥalue = ⓚiloMassValue / pow(ⓗeightValue, 2)
         return Double(Int(round(ⓥalue * 10))) / 10
     }
     @Published var 📝bodyFatInputValue: Double? = nil
