@@ -9,7 +9,9 @@ struct 📣ADSheet: ViewModifier {
                 📣ADView(self.ⓐpp, second: 7)
             }
             .onAppear {
-                🛒.checkToShowADSheet()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    🛒.checkToShowADSheet()
+                }
             }
     }
 }

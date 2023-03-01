@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		120B2192284B4E1E007CA829 /* 📏BodyMassUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */; };
 		1232578B284C5EA2002E0057 /* 👆Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 👆Stepper.swift */; };
 		124C485F284863BA0085B066 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
 		12579D162835FE8900536547 /* 🗯ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🗯ResultView.swift */; };
-		12630BC12849C63E005F922F /* 🧍HeightMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12630BC02849C63E005F922F /* 🧍HeightMenu.swift */; };
 		12630BC32849CD33005F922F /* 🛠AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12630BC22849CD33005F922F /* 🛠AppMenu.swift */; };
 		126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */; };
 		126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
@@ -28,11 +26,9 @@
 		F535AA7B29AD7BBE00691926 /* TapWeightApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */; };
 		F535AA7C29AD7BBE00691926 /* 📱AppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
 		F535AA7D29AD7BBE00691926 /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
-		F535AA7E29AD7BBE00691926 /* 📏BodyMassUnit.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */; };
 		F535AA7F29AD7BBE00691926 /* 🗯ResultView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🗯ResultView.swift */; };
 		F535AA8029AD7BBE00691926 /* 👆Stepper.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 👆Stepper.swift */; };
 		F535AA8129AD7BBE00691926 /* 🛠AppMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12630BC22849CD33005F922F /* 🛠AppMenu.swift */; };
-		F535AA8229AD7BBE00691926 /* 🧍HeightMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12630BC02849C63E005F922F /* 🧍HeightMenu.swift */; };
 		F535AA8329AD7BBE00691926 /* 🧰MetaData.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535AA7829AD7ABB00691926 /* 🧰MetaData.swift */; };
 		F535AA8429AD7BBE00691926 /* ℹ️AboutApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E2EAA729415F3C0054A208 /* ℹ️AboutApp.swift */; };
 		F535AA8529AD7BBE00691926 /* 📣AD.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E2EAA829415F3C0054A208 /* 📣AD.swift */; };
@@ -55,11 +51,9 @@
 				F535AA7B29AD7BBE00691926 /* TapWeightApp.swift in CopyFiles */,
 				F535AA7C29AD7BBE00691926 /* 📱AppModel.swift in CopyFiles */,
 				F535AA7D29AD7BBE00691926 /* ContentView.swift in CopyFiles */,
-				F535AA7E29AD7BBE00691926 /* 📏BodyMassUnit.swift in CopyFiles */,
 				F535AA7F29AD7BBE00691926 /* 🗯ResultView.swift in CopyFiles */,
 				F535AA8029AD7BBE00691926 /* 👆Stepper.swift in CopyFiles */,
 				F535AA8129AD7BBE00691926 /* 🛠AppMenu.swift in CopyFiles */,
-				F535AA8229AD7BBE00691926 /* 🧍HeightMenu.swift in CopyFiles */,
 				F535AA8329AD7BBE00691926 /* 🧰MetaData.swift in CopyFiles */,
 				F535AA8429AD7BBE00691926 /* ℹ️AboutApp.swift in CopyFiles */,
 				F535AA8529AD7BBE00691926 /* 📣AD.swift in CopyFiles */,
@@ -70,12 +64,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📏BodyMassUnit.swift"; sourceTree = "<group>"; };
 		1232578A284C5EA2002E0057 /* 👆Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "👆Stepper.swift"; sourceTree = "<group>"; };
 		124C485E284863BA0085B066 /* 📱AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱AppModel.swift"; sourceTree = "<group>"; };
 		12579D152835FE8900536547 /* 🗯ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗯ResultView.swift"; sourceTree = "<group>"; };
 		125AFEDA282F2B6E00E3BC4A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		12630BC02849C63E005F922F /* 🧍HeightMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧍HeightMenu.swift"; sourceTree = "<group>"; };
 		12630BC22849CD33005F922F /* 🛠AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠AppMenu.swift"; sourceTree = "<group>"; };
 		126B3EA7282DFEDF009BD28B /* TapWeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapWeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapWeightApp.swift; sourceTree = "<group>"; };
@@ -146,11 +138,9 @@
 		12325789284C5E79002E0057 /* 🧩Sub */ = {
 			isa = PBXGroup;
 			children = (
-				120B2191284B4E1E007CA829 /* 📏BodyMassUnit.swift */,
 				12579D152835FE8900536547 /* 🗯ResultView.swift */,
 				1232578A284C5EA2002E0057 /* 👆Stepper.swift */,
 				12630BC22849CD33005F922F /* 🛠AppMenu.swift */,
-				12630BC02849C63E005F922F /* 🧍HeightMenu.swift */,
 				F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */,
 				F535AA8829AD7EB800691926 /* 📣ADSheet.swift */,
 				F5AC7BE92941982A00490FF0 /* Info.plist */,
@@ -326,7 +316,6 @@
 			files = (
 				126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */,
 				1232578B284C5EA2002E0057 /* 👆Stepper.swift in Sources */,
-				12630BC12849C63E005F922F /* 🧍HeightMenu.swift in Sources */,
 				F5E2EAAB29415F3D0054A208 /* 📣AD.swift in Sources */,
 				124C485F284863BA0085B066 /* 📱AppModel.swift in Sources */,
 				12579D162835FE8900536547 /* 🗯ResultView.swift in Sources */,
@@ -336,7 +325,6 @@
 				126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */,
 				F5E2EAAA29415F3D0054A208 /* ℹ️AboutApp.swift in Sources */,
 				F535AA7929AD7ABB00691926 /* 🧰MetaData.swift in Sources */,
-				120B2192284B4E1E007CA829 /* 📏BodyMassUnit.swift in Sources */,
 				F535AA8929AD7EB800691926 /* 💬RequestUserReview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

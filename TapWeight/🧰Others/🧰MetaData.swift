@@ -32,11 +32,11 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "📱AppModel.swift",
                         "ContentView.swift"]
             case .🧩Sub:
-                return ["📏BodyMassUnit.swift",
-                        "🗯ResultView.swift",
+                return ["🗯ResultView.swift",
                         "👆Stepper.swift",
                         "🛠AppMenu.swift",
-                        "🧍HeightMenu.swift"]
+                        "💬RequestUserReview.swift",
+                        "📣ADSheet.swift"]
             case .🧰Others:
                 return ["🧰MetaData.swift",
                         "ℹ️AboutApp.swift",

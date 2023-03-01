@@ -48,7 +48,7 @@ struct 🛠AppMenu: View {
                 .onChange(of: 📱.🚩ableBMI) {
                     if $0 == true { 📱.🏥requestAuth(.bodyMassIndex) }
                 }
-                🧍HeightMenuLink()
+                🄱MIFormulaView()
             }
             Section {
                 Toggle(isOn: $📱.🚩ableBodyFat) {
@@ -111,5 +111,46 @@ struct ﹀CloseMenuButton: View {
     }
     init(_ 🔙dismiss: DismissAction) {
         self.🔙dismiss = 🔙dismiss
+    }
+}
+
+struct 🄱MIFormulaView: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    var body: some View {
+        ZStack {
+            Color.clear
+            HStack {
+                Text("BMI = ")
+                    .font(.title3)
+                VStack(spacing: 16) {
+                    HStack(spacing: 2) {
+                        Text("Weight")
+                        Text("(kg)")
+                            .font(.subheadline)
+                    }
+                    HStack(spacing: 2) {
+                        Text("Height")
+                            .layoutPriority(1)
+                        Text("(m)")
+                            .font(.subheadline)
+                            .layoutPriority(1)
+                        Text(" × ")
+                            .layoutPriority(1)
+                        Text("Height")
+                            .layoutPriority(1)
+                        Text("(m)")
+                            .font(.subheadline)
+                            .layoutPriority(1)
+                    }
+                }
+                .padding()
+                .overlay {
+                    Rectangle()
+                        .frame(height: 2)
+                }
+            }
+        }
+        .lineLimit(1)
+        .minimumScaleFactor(0.1)
     }
 }
