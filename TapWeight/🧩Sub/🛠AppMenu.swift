@@ -46,10 +46,7 @@ struct 🛠AppMenu: View {
                     Label("Body Mass Index", systemImage: "function")
                 }
                 .onChange(of: 📱.🚩ableBMI) {
-                    if $0 == true {
-                        📱.🏥requestAuth(.bodyMassIndex)
-                        📱.🏥requestAuth(.height)
-                    }
+                    if $0 == true { 📱.🏥requestAuth(.bodyMassIndex) }
                 }
                 self.ⓑmiFormula()
             }
@@ -112,27 +109,26 @@ struct 🛠AppMenu: View {
         ZStack {
             Color.clear
             HStack {
-                Text("BMI = ").font(.title3)
-                VStack(spacing: 16) {
+                Text("BMI = ")
+                VStack(spacing: 12) {
                     HStack(spacing: 2) {
                         Text("Weight")
-                        Text("(kg)")
-                            .font(.subheadline)
+                        Text("(kg)").font(.caption)
                     }
                     HStack(spacing: 2) {
                         Text("Height").layoutPriority(1)
-                        Text("(m)").layoutPriority(1).font(.subheadline)
+                        Text("(m)").layoutPriority(1).font(.caption)
                         Text(" × ").layoutPriority(1)
                         Text("Height").layoutPriority(1)
-                        Text("(m)").layoutPriority(1).font(.subheadline)
+                        Text("(m)").layoutPriority(1).font(.caption)
                     }
                 }
                 .padding()
-                .overlay { Rectangle().frame(height: 2) }
+                .overlay { Rectangle().frame(height: 1.33) }
             }
+            .font(.subheadline)
         }
         .lineLimit(1)
         .minimumScaleFactor(0.1)
-        .foregroundStyle(.secondary)
     }
 }

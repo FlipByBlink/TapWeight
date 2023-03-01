@@ -96,17 +96,20 @@ class 📱AppModel: ObservableObject {
         return true
     }
     
-    private func 🏥checkShouldRequestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) async throws -> Bool {
-        let ⓣype = HKQuantityType(ⓘdentifier)
-        return try await self.🏥healthStore.statusForAuthorizationRequest(toShare: [ⓣype], read: [ⓣype]) == .shouldRequest
-    }
-    
     func 🏥requestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) {
+        let ⓢhareType: Set<HKQuantityType> = [HKQuantityType(ⓘdentifier)]
+        var ⓡeadTypes: Set<HKQuantityType> {
+            if ⓘdentifier == .bodyMassIndex {
+                return [HKQuantityType(.bodyMassIndex), HKQuantityType(.height)]
+            } else {
+                return [HKQuantityType(ⓘdentifier)]
+            }
+        }
         Task {
             do {
-                if try await self.🏥checkShouldRequestAuth(ⓘdentifier) {
-                    let ⓣype = HKQuantityType(ⓘdentifier)
-                    try await self.🏥healthStore.requestAuthorization(toShare: [ⓣype], read: [ⓣype])
+                let ⓢtatus = try await self.🏥healthStore.statusForAuthorizationRequest(toShare: ⓢhareType, read: ⓡeadTypes)
+                if ⓢtatus == .shouldRequest {
+                    try await self.🏥healthStore.requestAuthorization(toShare: ⓢhareType, read: ⓡeadTypes)
                     self.🏥loadLatestSamples()
                     await self.🏥loadUnits()
                 }
@@ -116,16 +119,9 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func 🏥checkAuthOnLaunch() {
-        Task {
-            do {
-                if try await self.🏥checkShouldRequestAuth(.bodyMass) {
-                    self.🏥requestAuth(.bodyMass)
-                }
-            } catch {
-                print("🚨", error.localizedDescription)
-            }
-        }
+    func ⓢetupOnLaunch() {
+        self.🏥requestAuth(.bodyMass)
+        self.🔭observeChanges()
     }
     
     func 🏥loadLatestSamples() {
@@ -186,7 +182,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func 🔭observeChanges() {
+    private func 🔭observeChanges() {
         let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass]
         for ⓘdentifier in ⓘdentifiers {
             let ⓣype = HKQuantityType(ⓘdentifier)
