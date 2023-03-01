@@ -28,6 +28,7 @@ struct 👆BodyMassStepper: View {
             UISelectionFeedbackGenerator().selectionChanged()
             📱.👆changeMassValue(.decrement)
         }
+        .lineLimit(1)
         .padding(8)
         .padding(.vertical, 4)
     }
@@ -62,6 +63,7 @@ struct 👆BodyFatStepper: View {
                 UISelectionFeedbackGenerator().selectionChanged()
                 📱.👆changeBodyFatValue(.decrement)
             }
+            .lineLimit(1)
             .padding(8)
             .padding(.vertical, 4)
         } header: {

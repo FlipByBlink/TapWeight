@@ -15,7 +15,6 @@ struct ContentView: View {
                     .padding(.top, 12)
             }
             .listStyle(.plain)
-            .lineLimit(1)
             .minimumScaleFactor(0.3)
             .navigationTitle("Body Mass")
             .toolbar { 🛠MenuButton() } // ⚙️
@@ -33,31 +32,40 @@ struct ContentView: View {
 struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: -4) {
-                HStack(alignment: .firstTextBaseline, spacing: 4) {
-                    Text("Body Mass Index")
-                        .font(.footnote.bold())
-                    if let ⓗeightUnit = 📱.📦units[.height] {
-                        if let ⓗeightValue = 📱.📦latestSamples[.height]?.quantity.doubleValue(for: ⓗeightUnit) {
-                            Text("(" + ⓗeightValue.description + ⓗeightUnit.description + ")")
-                                .font(.caption2.weight(.semibold))
-                                .frame(maxHeight: 32)
+        if let ⓥalue = 📱.ⓑmiInputValue {
+            HStack {
+                VStack(alignment: .leading, spacing: -4) {
+                    HStack(alignment: .firstTextBaseline, spacing: 4) {
+                        Text("Body Mass Index")
+                            .font(.footnote.bold())
+                        if let ⓗeightUnit = 📱.📦units[.height] {
+                            if let ⓗeightValue = 📱.📦latestSamples[.height]?.quantity.doubleValue(for: ⓗeightUnit) {
+                                Text("(" + ⓗeightValue.formatted() + ⓗeightUnit.description + ")")
+                                    .font(.caption2.weight(.semibold))
+                                    .frame(maxHeight: 32)
+                            }
                         }
                     }
+                    Text(ⓥalue.description)
+                        .font(.title2)
+                        .fontWeight(.heavy)
                 }
-                Text(📱.ⓑmiInputValue?.description ?? "nil")
-                    .font(.title2)
-                    .fontWeight(.heavy)
+                .monospacedDigit()
+                Spacer()
+                📉DifferenceView(.bodyMassIndex)
+                    .padding(.trailing, 12)
             }
-            .monospacedDigit()
-            Spacer()
-            📉DifferenceView(.bodyMassIndex)
-                .padding(.trailing, 12)
+            .padding(.vertical, 4)
+            .padding(.leading, 32)
+            .foregroundStyle(.secondary)
+        } else {
+            GroupBox {
+                Text("Height data is nothing on \"Health\" app. Register height data on \"Health\" app.")
+            } label: {
+                Text("Body Mass Index")
+            }
+            .foregroundStyle(.secondary)
         }
-        .padding(.vertical, 4)
-        .padding(.leading, 32)
-        .foregroundStyle(.secondary)
     }
 }
 
