@@ -32,21 +32,19 @@ struct ContentView: View {
 struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
     var body: some View {
-        if let ⓥalue = 📱.ⓑmiInputValue {
+        if let ⓘnputValue = 📱.ⓑmiInputValue {
             HStack {
                 VStack(alignment: .leading, spacing: -4) {
                     HStack(alignment: .firstTextBaseline, spacing: 4) {
                         Text("Body Mass Index")
                             .font(.footnote.bold())
-                        if let ⓗeightUnit = 📱.📦preferredUnits[.height] {
-                            if let ⓗeightValue = 📱.📦latestSamples[.height]?.quantity.doubleValue(for: ⓗeightUnit) {
-                                Text("(" + ⓗeightValue.formatted() + ⓗeightUnit.description + ")")
-                                    .font(.caption2.weight(.semibold))
-                                    .frame(maxHeight: 32)
-                            }
+                        if let ⓓescription = 📱.📦latestSamples[.height]?.quantity.description {
+                            Text("(\(ⓓescription))")
+                                .font(.caption2.weight(.semibold))
+                                .frame(maxHeight: 32)
                         }
                     }
-                    Text(ⓥalue.description)
+                    Text(ⓘnputValue.description)
                         .font(.title2)
                         .fontWeight(.heavy)
                 }
@@ -160,23 +158,21 @@ struct 📅DatePicker: View {
 struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓣype: HKQuantityTypeIdentifier
-    private var 🪧description: String? { 📱.ⓓifferenceDescriptions[self.ⓣype] }
+    private var ⓓescription: String? { 📱.ⓓifferenceDescriptions[self.ⓣype] }
     private var ⓛastSampleDate: Date? { 📱.📦latestSamples[self.ⓣype]?.startDate }
     var body: some View {
         ZStack {
             Color.clear
             if !📱.🚩ableDatePicker || 📱.ⓓatePickerIsAlmostNow {
-                if let 🪧description {
+                if let ⓓescription, let ⓛastSampleDate {
                     VStack(spacing: 0) {
-                        Text(🪧description)
+                        Text(ⓓescription)
                             .font(.subheadline.bold())
                             .monospacedDigit()
                             .frame(width: 72, height: 24, alignment: .bottomTrailing)
-                        if let ⓛastSampleDate {
-                            Text(ⓛastSampleDate, style: .offset)
-                                .font(.caption.bold())
-                                .frame(width: 72, height: 24, alignment: .topTrailing)
-                        }
+                        Text(ⓛastSampleDate, style: .offset)
+                            .font(.caption.bold())
+                            .frame(width: 72, height: 24, alignment: .topTrailing)
                     }
                     .foregroundStyle(.tertiary)
                     .minimumScaleFactor(0.1)
