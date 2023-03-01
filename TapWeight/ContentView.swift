@@ -31,18 +31,18 @@ struct ContentView: View {
 
 struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
+    private var ⓘnputValue: Double? { 📱.ⓑmiInputValue }
+    private var ⓓescription: String? { 📱.📦latestSamples[.height]?.quantity.description }
     var body: some View {
-        if let ⓘnputValue = 📱.ⓑmiInputValue {
+        if let ⓘnputValue, let ⓓescription {
             HStack {
                 VStack(alignment: .leading, spacing: -4) {
                     HStack(alignment: .firstTextBaseline, spacing: 4) {
                         Text("Body Mass Index")
                             .font(.footnote.bold())
-                        if let ⓓescription = 📱.📦latestSamples[.height]?.quantity.description {
-                            Text("(\(ⓓescription))")
-                                .font(.caption2.weight(.semibold))
-                                .frame(maxHeight: 32)
-                        }
+                        Text("(\(ⓓescription))")
+                            .font(.caption2.weight(.semibold))
+                            .frame(maxHeight: 32)
                     }
                     Text(ⓘnputValue.description)
                         .font(.title2)
