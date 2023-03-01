@@ -152,6 +152,3 @@ struct 🗯SummaryView: View {
         .padding(.horizontal, 42)
     }
 }
-
-//ADMenuSheetを表示したままアプリをバックグラウンドに移行した際に、ResultViewの自動非表示機能がうまく動作しない。
-//そのためADBanner上のADMenuシートを削除。
