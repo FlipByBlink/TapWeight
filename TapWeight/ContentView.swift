@@ -38,7 +38,7 @@ struct 🪧BMIView: View {
                     HStack(alignment: .firstTextBaseline, spacing: 4) {
                         Text("Body Mass Index")
                             .font(.footnote.bold())
-                        if let ⓗeightUnit = 📱.📦units[.height] {
+                        if let ⓗeightUnit = 📱.📦preferredUnits[.height] {
                             if let ⓗeightValue = 📱.📦latestSamples[.height]?.quantity.doubleValue(for: ⓗeightUnit) {
                                 Text("(" + ⓗeightValue.formatted() + ⓗeightUnit.description + ")")
                                     .font(.caption2.weight(.semibold))

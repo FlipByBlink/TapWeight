@@ -122,7 +122,7 @@ struct 🗯SummaryView: View {
         return 📱.📨registeredSamples.reduce("") { ⓓescription, ⓢample in
             switch ⓢample.quantityType {
                 case .init(.bodyMass):
-                    guard let ⓤnit = 📱.📦units[.bodyMass] else { return "🐛" }
+                    guard let ⓤnit = 📱.📦preferredUnits[.bodyMass] else { return "🐛" }
                     let ⓥalue = ⓢample.quantity.doubleValue(for: ⓤnit)
                     return ⓓescription + ⓥalue.description + " " + ⓤnit.description
                 case .init(.bodyMassIndex):

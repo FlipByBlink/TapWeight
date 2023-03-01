@@ -2,13 +2,32 @@ import SwiftUI
 import HealthKit
 
 class 📱AppModel: ObservableObject {
+    //MARK: Stored property
     @AppStorage("Amount50g") var 🚩amount50g: Bool = false
     @AppStorage("AbleBMI") var 🚩ableBMI: Bool = false
     @AppStorage("AbleBodyFat") var 🚩ableBodyFat: Bool = false
     @AppStorage("AbleDatePicker") var 🚩ableDatePicker: Bool = false
     
     @Published var 📝massInputQuantity: HKQuantity? = nil
-    var ⓜassUnit: HKUnit? { self.📦units[.bodyMass] }
+    @Published var 📝bodyFatInputQuantity: HKQuantity? = nil
+    
+    @Published var 📅datePickerValue: Date = .now
+    
+    var 🚩datePickerIsAlmostNow: Bool { self.📅datePickerValue.timeIntervalSinceNow > -300 }
+    
+    @Published var 🚨registerError: Bool = false
+    @Published var 🚩canceled: Bool = false
+    @Published var 🚨cancelError: Bool = false
+    
+    @Published var 📦latestSamples: [HKQuantityTypeIdentifier: HKQuantitySample] = [:]
+    @Published var 📦preferredUnits: [HKQuantityTypeIdentifier: HKUnit] = [:]
+    
+    var 📨registeredSamples: [HKQuantitySample] = []
+    
+    private let 🏥healthStore = HKHealthStore()
+    
+    //MARK: Computed property
+    var ⓜassUnit: HKUnit? { self.📦preferredUnits[.bodyMass] }
     var ⓜassInputValue: Double? {
         guard let ⓜassUnit else { return nil }
         return self.📝massInputQuantity?.doubleValue(for: ⓜassUnit)
@@ -29,13 +48,12 @@ class 📱AppModel: ObservableObject {
         let ⓥalue = ⓚiloMassValue / pow(ⓗeightValue, 2)
         return Double(Int(round(ⓥalue * 10))) / 10
     }
-    var ⓗeightUnit: HKUnit? { self.📦units[.height] }
+    var ⓗeightUnit: HKUnit? { self.📦preferredUnits[.height] }
     var ⓗeightValue: Double? {
         guard let ⓗeightUnit else { return nil }
         return self.📦latestSamples[.height]?.quantity.doubleValue(for: ⓗeightUnit)
     }
     
-    @Published var 📝bodyFatInputQuantity: HKQuantity? = nil
     var ⓑodyFatInputValue: Double? { self.📝bodyFatInputQuantity?.doubleValue(for: .percent()) }
     var ⓑodyFatInputDescription: String {
         if let ⓑodyFatInputValue {
@@ -44,20 +62,8 @@ class 📱AppModel: ObservableObject {
             return "00.0"
         }
     }
-
-    @Published var 📅datePickerValue: Date = .now
-    var 🚩datePickerIsAlmostNow: Bool { self.📅datePickerValue.timeIntervalSinceNow > -300 }
     
-    @Published var 🚨registerError: Bool = false
-    @Published var 🚩canceled: Bool = false
-    @Published var 🚨cancelError: Bool = false
-    
-    private let 🏥healthStore = HKHealthStore()
-    @Published var 📦latestSamples: [HKQuantityTypeIdentifier: HKQuantitySample] = [:]
-    @Published var 📦units: [HKQuantityTypeIdentifier: HKUnit] = [:]
-    
-    var 📨registeredSamples: [HKQuantitySample] = []
-    
+    //MARK: Method
     @MainActor
     func 👆register() async {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
@@ -152,7 +158,7 @@ class 📱AppModel: ObservableObject {
                     if ⓢamples == [] {
                         switch ⓘdentifier {
                             case .bodyMass:
-                                if let ⓤnit = self.📦units[.bodyMass] {
+                                if let ⓤnit = self.📦preferredUnits[.bodyMass] {
                                     switch ⓤnit {
                                         case .gramUnit(with: .kilo):
                                             self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 60.0)
@@ -190,8 +196,8 @@ class 📱AppModel: ObservableObject {
     private func 🏥loadUnits() async {
         for ⓘdentifier: HKQuantityTypeIdentifier in [.bodyMass, .height, .leanBodyMass] {
             if let ⓤnit = try? await self.🏥healthStore.preferredUnits(for: [HKQuantityType(ⓘdentifier)]).first?.value {
-                if self.📦units[ⓘdentifier] != ⓤnit {
-                    self.📦units[ⓘdentifier] = ⓤnit
+                if self.📦preferredUnits[ⓘdentifier] != ⓤnit {
+                    self.📦preferredUnits[ⓘdentifier] = ⓤnit
                     self.📝resetPickerValues()
                 }
             }
@@ -256,7 +262,7 @@ class 📱AppModel: ObservableObject {
             if let 📝lastValue = ⓛastSample?.quantity {
                 switch ⓣype {
                     case .bodyMass:
-                        if let ⓤnit = self.📦units[ⓣype] {
+                        if let ⓤnit = self.📦preferredUnits[ⓣype] {
                             if let ⓜassInputValue {
                                 📉difference = round((ⓜassInputValue - 📝lastValue.doubleValue(for: ⓤnit)) * 100) / 100
                             }
