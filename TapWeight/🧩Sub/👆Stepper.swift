@@ -19,12 +19,12 @@ struct 👆BodyMassStepper: View {
                         .font(self.🔠font)
                         .fontWeight(.black)
                         .monospacedDigit()
-                        .opacity(self.ⓘnputQuantityIsNothing ? 0.2 : 1)
-                        .animation(.default, value: self.ⓘnputQuantityIsNothing)
-                    Text(📱.📦units[.bodyMass]?.description ?? "nil")
+                    Text(📱.📦units[.bodyMass]?.description ?? "kg")
                         .font(.title2.weight(.black))
                         .frame(maxHeight: 36)
                 }
+                .opacity(self.ⓘnputQuantityIsNothing ? 0.2 : 1)
+                .animation(.default, value: self.ⓘnputQuantityIsNothing)
                 Spacer(minLength: 4)
                 📉DifferenceView(.bodyMass)
             }
@@ -60,12 +60,12 @@ struct 👆BodyFatStepper: View {
                             .font(self.🔠font)
                             .fontWeight(.black)
                             .monospacedDigit()
-                            .opacity(self.ⓘnputQuantityIsNothing ? 0.2 : 1)
-                            .animation(.default, value: self.ⓘnputQuantityIsNothing)
                         Text("%")
                             .font(.title2.weight(.black))
                             .frame(maxHeight: 54)
                     }
+                    .opacity(self.ⓘnputQuantityIsNothing ? 0.2 : 1)
+                    .animation(.default, value: self.ⓘnputQuantityIsNothing)
                     Spacer(minLength: 0)
                     📉DifferenceView(.bodyFatPercentage)
                 }
