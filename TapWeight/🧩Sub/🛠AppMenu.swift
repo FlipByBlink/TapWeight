@@ -46,7 +46,10 @@ struct 🛠AppMenu: View {
                     Label("Body Mass Index", systemImage: "function")
                 }
                 .onChange(of: 📱.🚩ableBMI) {
-                    if $0 == true { 📱.🏥requestAuth(.bodyMassIndex) }
+                    if $0 == true {
+                        📱.🏥requestAuth(.bodyMassIndex)
+                        📱.🏥requestAuth(.height)
+                    }
                 }
                 self.ⓑmiFormula()
             }

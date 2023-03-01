@@ -117,6 +117,9 @@ class 📱AppModel: ObservableObject {
                     if try await self.🏥checkShouldRequestAuth(.bodyMassIndex) {
                         ⓣypes.insert(HKQuantityType(.bodyMassIndex))
                     }
+                    if try await self.🏥checkShouldRequestAuth(.height) {
+                        ⓣypes.insert(HKQuantityType(.height))
+                    }
                 }
                 if self.🚩ableBodyFat {
                     if try await self.🏥checkShouldRequestAuth(.bodyFatPercentage) {
