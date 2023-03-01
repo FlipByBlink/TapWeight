@@ -4,7 +4,7 @@ struct 👆BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var 🔠font: Font { 📱.🚩ableDatePicker ? .largeTitle : .system(size: 50) }
     private var 🪧description: String {
-        if let ⓥalue = 📱.📝massInputValue {
+        if let ⓥalue = 📱.ⓜassInputValue {
             return 📱.🚩amount50g ? String(format: "%.2f", ⓥalue) : ⓥalue.description
         } else {
             return 📱.🚩amount50g ? "00.00" : "00.0"
@@ -43,7 +43,7 @@ struct 👆BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var 🔠font: Font { 📱.🚩ableDatePicker ? .largeTitle : .system(size: 50) }
     private var 🪧description: String {
-        if let ⓥalue = 📱.📝bodyFatInputValue {
+        if let ⓥalue = 📱.ⓑodyFatInputValue {
             return (round(ⓥalue * 1000) / 10).description
         } else {
             return "00.0"

@@ -7,18 +7,31 @@ class 📱AppModel: ObservableObject {
     @AppStorage("AbleBodyFat") var 🚩ableBodyFat: Bool = false
     @AppStorage("AbleDatePicker") var 🚩ableDatePicker: Bool = false
     
-    @Published var 📝massInputValue: Double? = nil
+    @Published var 📝massInputQuantity: HKQuantity? = nil
+    var ⓜassUnit: HKUnit? { self.📦units[.bodyMass] }
+    var ⓜassInputValue: Double? {
+        guard let ⓜassUnit else { return nil }
+        return self.📝massInputQuantity?.doubleValue(for: ⓜassUnit)
+    }
+    
     var 📝bmiInputValue: Double? {
-        guard let ⓜassUnit = self.📦units[.bodyMass] else { return nil }
-        guard let 📝massInputValue else { return nil }
-        let ⓠuantity = HKQuantity(unit: ⓜassUnit, doubleValue: 📝massInputValue)
-        let ⓚiloMassValue = ⓠuantity.doubleValue(for: .gramUnit(with: .kilo))
+        guard let 📝massInputQuantity else { return nil }
+        let ⓚiloMassValue = 📝massInputQuantity.doubleValue(for: .gramUnit(with: .kilo))
         guard let ⓗeightSample = self.📦latestSamples[.height] else { return nil }
         let ⓗeightValue = ⓗeightSample.quantity.doubleValue(for: .meter())
         let ⓥalue = ⓚiloMassValue / pow(ⓗeightValue, 2)
         return Double(Int(round(ⓥalue * 10))) / 10
     }
-    @Published var 📝bodyFatInputValue: Double? = nil
+    var ⓗeightUnit: HKUnit? { self.📦units[.height] }
+    var ⓗeightValue: Double? {
+        guard let ⓗeightUnit else { return nil }
+        return self.📦latestSamples[.height]?.quantity.doubleValue(for: ⓗeightUnit)
+    }
+    
+    @Published var 📝bodyFatInputQuantity: HKQuantity? = nil
+    var ⓑodyFatInputValue: Double? {
+        return self.📝bodyFatInputQuantity?.doubleValue(for: .percent())
+    }
     
     @Published var 📅pickerValue: Date = .now
     var 🚩datePickerIsAlmostNow: Bool { self.📅pickerValue.timeIntervalSinceNow > -300 }
@@ -39,12 +52,10 @@ class 📱AppModel: ObservableObject {
         guard self.🏥sharingAuthorized() else { return }
         var ⓢamples: [HKQuantitySample] = []
         let ⓓate: Date = self.🚩ableDatePicker ? self.📅pickerValue : .now
-        if let ⓤnit = self.📦units[.bodyMass] {
-            if let 📝massInputValue {
-                ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
-                                                quantity: HKQuantity(unit: ⓤnit, doubleValue: 📝massInputValue),
-                                                start: ⓓate, end: ⓓate))
-            }
+        if let 📝massInputQuantity {
+            ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
+                                            quantity: 📝massInputQuantity,
+                                            start: ⓓate, end: ⓓate))
         }
         if self.🚩ableBMI {
             if let 📝bmiInputValue {
@@ -55,10 +66,9 @@ class 📱AppModel: ObservableObject {
             }
         }
         if self.🚩ableBodyFat {
-            if let 📝bodyFatInputValue {
+            if let 📝bodyFatInputQuantity {
                 ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
-                                                quantity: HKQuantity(unit: .percent(),
-                                                                     doubleValue: 📝bodyFatInputValue),
+                                                quantity: 📝bodyFatInputQuantity,
                                                 start: ⓓate, end: ⓓate))
             }
         }
@@ -135,14 +145,18 @@ class 📱AppModel: ObservableObject {
                                 case .bodyMass:
                                     if let ⓤnit = self.📦units[.bodyMass] {
                                         switch ⓤnit {
-                                            case .gramUnit(with: .kilo): self.📝massInputValue = 60.0
-                                            case .pound(): self.📝massInputValue = 130
-                                            case .stone(): self.📝massInputValue = 10
-                                            default: break
+                                            case .gramUnit(with: .kilo):
+                                                self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 60.0)
+                                            case .pound():
+                                                self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 130.0)
+                                            case .stone():
+                                                self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 10.0)
+                                            default:
+                                                break
                                         }
                                     }
                                 case .bodyFatPercentage:
-                                    self.📝bodyFatInputValue = 0.2
+                                    self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
                                 default:
                                     break
                             }
@@ -156,10 +170,8 @@ class 📱AppModel: ObservableObject {
     
     @MainActor
     func 📝resetPickerValues() {
-        if let ⓜassUnit = self.📦units[.bodyMass] {
-            self.📝massInputValue = self.📦latestSamples[.bodyMass]?.quantity.doubleValue(for: ⓜassUnit)
-        }
-        self.📝bodyFatInputValue = self.📦latestSamples[.bodyFatPercentage]?.quantity.doubleValue(for: .percent())
+        self.📝massInputQuantity = self.📦latestSamples[.bodyMass]?.quantity
+        self.📝bodyFatInputQuantity = self.📦latestSamples[.bodyFatPercentage]?.quantity
     }
     
     @MainActor
@@ -191,40 +203,44 @@ class 📱AppModel: ObservableObject {
     }
     
     func incrementMassStepper() {
-        if var 📝massInputValue {
+        if let ⓜassUnit, var ⓜassInputValue {
             if self.🚩amount50g {
-                📝massInputValue += 0.05
-                self.📝massInputValue = round(📝massInputValue * 100) / 100
+                ⓜassInputValue += 0.05
+                ⓜassInputValue = round(ⓜassInputValue * 100) / 100
             } else {
-                📝massInputValue += 0.1
-                self.📝massInputValue = round(📝massInputValue * 10) / 10
+                ⓜassInputValue += 0.1
+                ⓜassInputValue = round(ⓜassInputValue * 10) / 10
             }
+            self.📝massInputQuantity = HKQuantity(unit: ⓜassUnit, doubleValue: ⓜassInputValue)
         }
     }
     
     func decrementMassStepper() {
-        if var 📝massInputValue {
+        if let ⓜassUnit, var ⓜassInputValue {
             if self.🚩amount50g {
-                📝massInputValue -= 0.05
-                self.📝massInputValue = round(📝massInputValue * 100) / 100
+                ⓜassInputValue -= 0.05
+                ⓜassInputValue = round(ⓜassInputValue * 100) / 100
             } else {
-                📝massInputValue -= 0.1
-                self.📝massInputValue = round(📝massInputValue * 10) / 10
+                ⓜassInputValue -= 0.1
+                ⓜassInputValue = round(ⓜassInputValue * 10) / 10
             }
+            self.📝massInputQuantity = HKQuantity(unit: ⓜassUnit, doubleValue: ⓜassInputValue)
         }
     }
     
     func incrementBodyFatStepper() {
-        if var 📝bodyFatInputValue {
-            📝bodyFatInputValue += 0.001
-            self.📝bodyFatInputValue = round(📝bodyFatInputValue * 1000) / 1000
+        if var ⓑodyFatInputValue {
+            ⓑodyFatInputValue += 0.001
+            ⓑodyFatInputValue = round(ⓑodyFatInputValue * 1000) / 1000
+            self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: ⓑodyFatInputValue)
         }
     }
     
     func decrementBodyFatStepper() {
-        if var 📝bodyFatInputValue {
-            📝bodyFatInputValue -= 0.001
-            self.📝bodyFatInputValue = round(📝bodyFatInputValue * 1000) / 1000
+        if var ⓑodyFatInputValue {
+            ⓑodyFatInputValue -= 0.001
+            ⓑodyFatInputValue = round(ⓑodyFatInputValue * 1000) / 1000
+            self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: ⓑodyFatInputValue)
         }
     }
     
@@ -237,8 +253,8 @@ class 📱AppModel: ObservableObject {
                 switch ⓣype {
                     case .bodyMass:
                         if let ⓤnit = self.📦units[ⓣype] {
-                            if let 📝massInputValue {
-                                📉difference = round((📝massInputValue - 📝lastValue.doubleValue(for: ⓤnit)) * 100) / 100
+                            if let ⓜassInputValue {
+                                📉difference = round((ⓜassInputValue - 📝lastValue.doubleValue(for: ⓤnit)) * 100) / 100
                             }
                         }
                     case .bodyMassIndex:
@@ -248,8 +264,8 @@ class 📱AppModel: ObservableObject {
                             continue
                         }
                     case .bodyFatPercentage:
-                        if let 📝bodyFatInputValue {
-                            📉difference = round((📝bodyFatInputValue - 📝lastValue.doubleValue(for: .percent())) * 1000) / 10
+                        if let ⓑodyFatInputValue {
+                            📉difference = round((ⓑodyFatInputValue - 📝lastValue.doubleValue(for: .percent())) * 1000) / 10
                         }
                     default:
                         continue
