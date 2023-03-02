@@ -46,7 +46,7 @@ struct 🛠AppMenu: View {
                     Label("Body Mass Index", systemImage: "function")
                 }
                 .onChange(of: 📱.🚩ableBMI) {
-                    if $0 == true { 📱.🏥requestAuth(.bodyMassIndex) }
+                    if $0 == true { 📱.ⓡequestAuth(.bodyMassIndex) }
                 }
                 self.ⓑmiFormula()
             }
@@ -55,7 +55,7 @@ struct 🛠AppMenu: View {
                     Label("Body Fat Percentage", systemImage: "percent")
                 }
                 .onChange(of: 📱.🚩ableBodyFat) {
-                    if $0 == true { 📱.🏥requestAuth(.bodyFatPercentage) }
+                    if $0 == true { 📱.ⓡequestAuth(.bodyFatPercentage) }
                 }
             }
             Section {

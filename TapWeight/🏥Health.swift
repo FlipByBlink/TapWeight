@@ -2,50 +2,56 @@ import Foundation
 import HealthKit
 
 struct 🏥HealthStore {
-    private let api = HKHealthStore()
+    private let ⓐpi = HKHealthStore()
     
     func authStatus(for ⓒategory: 🏥Category) -> HKAuthorizationStatus {
-        self.api.authorizationStatus(for: ⓒategory.type)
+        self.ⓐpi.authorizationStatus(for: ⓒategory.quantityType)
     }
     
-    func statusForAuthorizationRequest(toShare: [🏥Category], read: [🏥Category]) {
+    func statusForAuthorizationRequest(toShare ⓢhareCategories: Set<🏥Category>,
+                                       read ⓡeadCategories: Set<🏥Category>) async throws -> HKAuthorizationRequestStatus {
+        try await self.ⓐpi.statusForAuthorizationRequest(toShare: Set(ⓢhareCategories.map { $0.quantityType }),
+                                                         read: Set(ⓡeadCategories.map { $0.quantityType }))
     }
     
-    func requestAuthorization(toShare: [🏥Category], read: [🏥Category]) async throws {
+    func requestAuthorization(toShare ⓢhareCategories: Set<🏥Category>,
+                              read ⓡeadCategories: Set<🏥Category>) async throws {
+        try await self.ⓐpi.requestAuthorization(toShare: Set(ⓢhareCategories.map { $0.quantityType }),
+                                                read: Set(ⓡeadCategories.map { $0.quantityType }))
     }
     
-    func preferredUnits(for: [🏥Category]) async throws {
+    func preferredUnit(for ⓒategory: 🏥Category) async throws -> HKUnit? {
+        try await self.ⓐpi.preferredUnits(for: [ⓒategory.quantityType]).first?.value
     }
     
-    func execute(_ ⓠuery: HKQuery) {
+    func save(_ ⓢamples: [HKSample]) async throws {
+        try await self.ⓐpi.save(ⓢamples)
     }
     
-    func save(_ ⓢamples: HKSample) async throws {
-    }
-    
-    func delete(_ ⓢamples: HKSample) async throws {
+    func delete(_ ⓢamples: [HKSample]) async throws {
+        try await self.ⓐpi.delete(ⓢamples)
     }
     
     func ⓛoadLatestSamples(_ ⓗandler: @escaping (🏥Category, [HKSample]) -> Void ) {
         for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage] {
             let ⓢortDescriptors = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
-            let ⓠuery = HKSampleQuery(sampleType: ⓒategory.type,
+            let ⓠuery = HKSampleQuery(sampleType: ⓒategory.quantityType,
                                       predicate: nil,
                                       limit: 1,
                                       sortDescriptors: [ⓢortDescriptors]) { _, ⓢamples, _ in
                 ⓗandler(ⓒategory, ⓢamples ?? [])
             }
-            self.api.execute(ⓠuery)
+            self.ⓐpi.execute(ⓠuery)
         }
     }
     
     func ⓞbserveChanges(_ ⓗandler: @escaping (@escaping HKObserverQueryCompletionHandler) -> Void ) {
         for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage] {
-            let ⓠuery = HKObserverQuery(sampleType: ⓒategory.type, predicate: nil) { _, ⓒompletionHandler, ⓔrror in
+            let ⓠuery = HKObserverQuery(sampleType: ⓒategory.quantityType, predicate: nil) { _, ⓒompletionHandler, ⓔrror in
                 if ⓔrror != nil { return }
                 ⓗandler(ⓒompletionHandler)
             }
-            self.api.execute(ⓠuery)
+            self.ⓐpi.execute(ⓠuery)
         }
     }
 }
@@ -68,7 +74,7 @@ enum 🏥Category {
             case .bodyFatPercentage: return "Body Fat Percentage"
         }
     }
-    var type: HKQuantityType {
+    var quantityType: HKQuantityType {
         switch self {
             case .bodyMass: return HKQuantityType(.bodyMass)
             case .bodyMassIndex: return HKQuantityType(.bodyMassIndex)
@@ -94,6 +100,13 @@ enum 🏥MassUnit {
             case .kg: return 60.0
             case .lbs: return 130.0
             case .st: return 10.0
+        }
+    }
+    var hkUnit: HKUnit {
+        switch self {
+            case .kg: return .gramUnit(with: .kilo)
+            case .lbs: return .pound()
+            case .st: return .stone()
         }
     }
 }

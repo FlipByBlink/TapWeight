@@ -21,9 +21,7 @@ class 📱AppModel: ObservableObject {
     @Published var 🚨cancelError: Bool = false
     var 📨registeredSamples: [HKQuantitySample] = []
     
-    private let 🏥healthStore = HKHealthStore()
-    
-    private let 🏥api = 🏥HealthStore()//TODO: 後々🏥healthStoreに改名
+    private let 🏥healthStore = 🏥HealthStore()
     
     //MARK: Computed property
     var ⓜassUnit: HKUnit? { self.📦preferredUnits[.bodyMass] }
@@ -134,8 +132,8 @@ class 📱AppModel: ObservableObject {
     
     //MARK: Method
     func ⓢetupOnLaunch() {
-        self.🏥requestAuth(.bodyMass)
-        self.🏥observeChanges()
+        self.ⓡequestAuth(.bodyMass)
+        self.ⓞbserveChanges()
     }
     
     func 🎚️changeMassValue(_ ⓟattern: 🅂tepperAction) {
@@ -173,10 +171,9 @@ class 📱AppModel: ObservableObject {
                 var ⓒategories: [🏥Category] = [.bodyMass]
                 if self.🚩ableBMI { ⓒategories.append(.bodyMassIndex) }
                 if self.🚩ableBodyFat { ⓒategories.append(.bodyFatPercentage) }
-                for ⓣype in ⓒategories {
-                    let ⓢtate = self.🏥healthStore.authorizationStatus(for: HKQuantityType(ⓣype.identifier))
-                    guard ⓢtate == .sharingAuthorized else {
-                        throw 🚨RegistrationError.failedAuth(ⓣype)
+                for ⓒategory in ⓒategories {
+                    guard self.🏥healthStore.authStatus(for: ⓒategory) == .sharingAuthorized else {
+                        throw 🚨RegistrationError.failedAuth(ⓒategory)
                     }
                 }
                 var ⓢamples: [HKQuantitySample] = []
@@ -246,30 +243,31 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func 🏥requestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) {
-        let ⓢhareType: Set<HKQuantityType> = [HKQuantityType(ⓘdentifier)]
-        var ⓡeadTypes: Set<HKQuantityType> {
-            if ⓘdentifier == .bodyMassIndex {
-                return [HKQuantityType(.bodyMassIndex), HKQuantityType(.height)]
+    func ⓡequestAuth(_ ⓒategory: 🏥Category) {
+        let ⓢhareCategory: Set<🏥Category> = [ⓒategory]
+        var ⓡeadCategories: Set<🏥Category> {
+            if ⓒategory == .bodyMassIndex {
+                return [.bodyMassIndex, .height]
             } else {
-                return [HKQuantityType(ⓘdentifier)]
+                return [ⓒategory]
             }
         }
         Task {
             do {
-                let ⓢtatus = try await self.🏥healthStore.statusForAuthorizationRequest(toShare: ⓢhareType, read: ⓡeadTypes)
+                let ⓢtatus = try await self.🏥healthStore.statusForAuthorizationRequest(toShare: ⓢhareCategory,
+                                                                                        read: ⓡeadCategories)
                 if ⓢtatus == .shouldRequest {
-                    try await self.🏥healthStore.requestAuthorization(toShare: ⓢhareType, read: ⓡeadTypes)
-                    self.🏥loadLatestSamples()
-                    await self.🏥loadPreferredUnits()
+                    try await self.🏥healthStore.requestAuthorization(toShare: ⓢhareCategory, read: ⓡeadCategories)
+                    self.ⓛoadLatestSamples()
+                    await self.ⓛoadPreferredUnits()
                 }
             } catch {
                 print("🚨", error.localizedDescription)
             }
         }
     }
-    private func 🏥loadLatestSamples() {
-        self.🏥api.ⓛoadLatestSamples { ⓒategory, ⓢamples in
+    private func ⓛoadLatestSamples() {
+        self.🏥healthStore.ⓛoadLatestSamples { ⓒategory, ⓢamples in
             Task { @MainActor in
                 self.📦latestSamples[ⓒategory] = ⓢamples.first as? HKQuantitySample
                 self.📝resetInputValues()
@@ -298,9 +296,9 @@ class 📱AppModel: ObservableObject {
         }
     }
     @MainActor
-    private func 🏥loadPreferredUnits() async {
+    private func ⓛoadPreferredUnits() async {
         for ⓒategory: 🏥Category in [.bodyMass, .height] {
-            if let ⓤnit = try? await self.🏥healthStore.preferredUnits(for: [ⓒategory.type]).first?.value {
+            if let ⓤnit = try? await self.🏥healthStore.preferredUnit(for: ⓒategory) {
                 if self.📦preferredUnits[ⓒategory] != ⓤnit {
                     self.📦preferredUnits[ⓒategory] = ⓤnit
                     self.📝resetInputValues()
@@ -308,11 +306,11 @@ class 📱AppModel: ObservableObject {
             }
         }
     }
-    private func 🏥observeChanges() {
-        self.🏥api.ⓞbserveChanges { ⓒompletionHandler in
+    private func ⓞbserveChanges() {
+        self.🏥healthStore.ⓞbserveChanges { ⓒompletionHandler in
             Task { @MainActor in
-                self.🏥loadLatestSamples()
-                await self.🏥loadPreferredUnits()
+                self.ⓛoadLatestSamples()
+                await self.ⓛoadPreferredUnits()
                 ⓒompletionHandler()
             }
         }
@@ -329,10 +327,10 @@ enum 🚨RegistrationError: Error {
     case saveFailure(String)
     var message: String {
         switch self {
-            case .failedAuth(let ⓣype):
-                return "Fail auth for " + String(localized: ⓣype.description)
-            case .noValue(let ⓣype):
-                return "No value: " + String(localized: ⓣype.description)
+            case .failedAuth(let ⓒategory):
+                return "Fail auth for " + String(localized: ⓒategory.description)
+            case .noValue(let ⓒategory):
+                return "No value: " + String(localized: ⓒategory.description)
             case .saveFailure(let ⓓescription):
                 return "Failed to save: \(ⓓescription)"
         }
