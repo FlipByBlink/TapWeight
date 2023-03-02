@@ -93,20 +93,20 @@ enum 🏥Category {
     }
 }
 
-enum 🏥MassUnit {
-    case kg, lbs, st
-    var temporaryValue: Double {
-        switch self {
-            case .kg: return 60.0
-            case .lbs: return 130.0
-            case .st: return 10.0
-        }
-    }
-    var hkUnit: HKUnit {
-        switch self {
-            case .kg: return .gramUnit(with: .kilo)
-            case .lbs: return .pound()
-            case .st: return .stone()
-        }
-    }
-}
+//enum 🏥MassUnit {
+//    case kg, lbs, st
+//    var temporaryValue: Double {
+//        switch self {
+//            case .kg: return 60.0
+//            case .lbs: return 130.0
+//            case .st: return 10.0
+//        }
+//    }
+//    var hkUnit: HKUnit {
+//        switch self {
+//            case .kg: return .gramUnit(with: .kilo)
+//            case .lbs: return .pound()
+//            case .st: return .stone()
+//        }
+//    }
+//}

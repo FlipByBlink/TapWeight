@@ -223,6 +223,7 @@ class 📱AppModel: ObservableObject {
         self.🚩canceled = false
         self.🚨cancelError = false
         self.📨registeredSamples = []
+        self.📅datePickerValue = .now
         self.📝resetInputValues()
     }
     
