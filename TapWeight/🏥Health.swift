@@ -4,20 +4,20 @@ import HealthKit
 struct 🏥HealthStore {
     private let ⓐpi = HKHealthStore()
     
-    func authStatus(for ⓒategory: 🏥Category) -> HKAuthorizationStatus {
+    func authorizationStatus(for ⓒategory: 🏥Category) -> HKAuthorizationStatus {
         self.ⓐpi.authorizationStatus(for: ⓒategory.quantityType)
     }
     
-    func statusForAuthorizationRequest(toShare ⓢhareCategories: Set<🏥Category>,
-                                       read ⓡeadCategories: Set<🏥Category>) async throws -> HKAuthorizationRequestStatus {
-        try await self.ⓐpi.statusForAuthorizationRequest(toShare: Set(ⓢhareCategories.map { $0.quantityType }),
-                                                         read: Set(ⓡeadCategories.map { $0.quantityType }))
+    func statusForAuthorizationRequest(toShare ⓣypesToShare: Set<🏥Category>,
+                                       read ⓣypesToRead: Set<🏥Category>) async throws -> HKAuthorizationRequestStatus {
+        try await self.ⓐpi.statusForAuthorizationRequest(toShare: Set(ⓣypesToShare.map { $0.quantityType }),
+                                                         read: Set(ⓣypesToRead.map { $0.quantityType }))
     }
     
-    func requestAuthorization(toShare ⓢhareCategories: Set<🏥Category>,
-                              read ⓡeadCategories: Set<🏥Category>) async throws {
-        try await self.ⓐpi.requestAuthorization(toShare: Set(ⓢhareCategories.map { $0.quantityType }),
-                                                read: Set(ⓡeadCategories.map { $0.quantityType }))
+    func requestAuthorization(toShare ⓣypesToShare: Set<🏥Category>,
+                              read ⓣypesToRead: Set<🏥Category>) async throws {
+        try await self.ⓐpi.requestAuthorization(toShare: Set(ⓣypesToShare.map { $0.quantityType }),
+                                                read: Set(ⓣypesToRead.map { $0.quantityType }))
     }
     
     func preferredUnit(for ⓒategory: 🏥Category) async throws -> HKUnit? {

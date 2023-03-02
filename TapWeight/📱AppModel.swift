@@ -172,7 +172,7 @@ class 📱AppModel: ObservableObject {
                 if self.🚩ableBMI { ⓒategories.append(.bodyMassIndex) }
                 if self.🚩ableBodyFat { ⓒategories.append(.bodyFatPercentage) }
                 for ⓒategory in ⓒategories {
-                    guard self.🏥healthStore.authStatus(for: ⓒategory) == .sharingAuthorized else {
+                    guard self.🏥healthStore.authorizationStatus(for: ⓒategory) == .sharingAuthorized else {
                         throw 🚨RegistrationError.failedAuth(ⓒategory)
                     }
                 }
