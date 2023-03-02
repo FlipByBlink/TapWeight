@@ -3,9 +3,9 @@ import HealthKit
 
 struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    private var ⓣype: 🏥Category
-    private var ⓓescription: String? { 📱.ⓓifferenceDescriptions[self.ⓣype] }
-    private var ⓛastSampleDate: Date? { 📱.📦latestSamples[self.ⓣype]?.startDate }
+    private var ⓒategory: 🏥Category
+    private var ⓓescription: String? { 📱.ⓓifferenceDescriptions[self.ⓒategory] }
+    private var ⓛastSampleDate: Date? { 📱.📦latestSamples[self.ⓒategory]?.startDate }
     var body: some View {
         ZStack {
             Color.clear
@@ -28,8 +28,7 @@ struct 📉DifferenceView: View {
         .frame(width: 72, height: 48)
         .animation(.default.speed(2), value: 📱.ⓓatePickerIsAlmostNow)
     }
-    init(_ ⓣype: 🏥Category) {
-        self.ⓣype = ⓣype
+    init(_ ⓒategory: 🏥Category) {
+        self.ⓒategory = ⓒategory
     }
 }
-

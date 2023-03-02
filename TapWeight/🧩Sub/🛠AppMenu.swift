@@ -30,41 +30,28 @@ struct 🛠AppMenu: View {
     private func ⓒontent() -> some View {
         List {
             Section {
-                Toggle(isOn: $📱.🚩amount50g) {
-                    Label("100g → 50g", systemImage: "minus.forwardslash.plus")
-                        .padding(.leading)
-                        //.foregroundColor(📱.📏massUnit != .kg ? .secondary : nil)
+                if 📱.ⓜassUnit == .gramUnit(with: .kilo) {
+                    Toggle(isOn: $📱.🚩amount50g) {
+                        Label("100g → 50g", systemImage: "minus.forwardslash.plus")
+                    }
+                    .font(.subheadline)
+                    .accessibilityLabel("50gram")
                 }
-                .font(.subheadline)
-                //.disabled(📱.📏massUnit != .kg)
-                .accessibilityLabel("50gram")
-            } header: {
-                Text("Option")
-            }
-            Section {
-                Toggle(isOn: $📱.🚩ableBMI) {
-                    Label("Body Mass Index", systemImage: "function")
-                }
-                .onChange(of: 📱.🚩ableBMI) {
-                    if $0 == true { 📱.ⓡequestAuth(.bodyMassIndex) }
-                }
-                self.ⓑmiFormula()
-            }
-            Section {
+                self.ⓑmiLink()
                 Toggle(isOn: $📱.🚩ableBodyFat) {
                     Label("Body Fat Percentage", systemImage: "percent")
                 }
                 .onChange(of: 📱.🚩ableBodyFat) {
                     if $0 == true { 📱.ⓡequestAuth(.bodyFatPercentage) }
                 }
-            }
-            Section {
                 Toggle(isOn: $📱.🚩ableDatePicker) {
                     Label("Date picker", systemImage: "calendar.badge.clock")
                 }
                 .onChange(of: 📱.🚩ableDatePicker) { _ in
                     📱.📅datePickerValue = .now
                 }
+            } header: {
+                Text("Option")
             }
             Section {
                 Link (destination: URL(string: "x-apple-health://")!) {
@@ -93,6 +80,56 @@ struct 🛠AppMenu: View {
         .navigationTitle("Menu")
         .toolbar { self.ⓓismissButton() }
     }
+    private func ⓑmiLink() -> some View {
+        NavigationLink {
+            List {
+                Toggle(isOn: $📱.🚩ableBMI) {
+                    Label("Body Mass Index", systemImage: "function")
+                }
+                .onChange(of: 📱.🚩ableBMI) {
+                    if $0 == true { 📱.ⓡequestAuth(.bodyMassIndex) }
+                }
+                self.ⓐboutBMI()
+            }
+            .navigationBarTitleDisplayMode(.inline)
+        } label: {
+            Label("Body Mass Index", systemImage: "function")
+        }
+    }
+    private func ⓐboutBMI() -> some View {
+        Group {
+            Section {
+                ZStack {
+                    Color.clear
+                    HStack {
+                        Text("BMI = ")
+                        VStack(spacing: 12) {
+                            HStack(spacing: 2) {
+                                Text("Weight")
+                                Text("(kg)").font(.subheadline)
+                            }
+                            HStack(spacing: 2) {
+                                Text("Height").layoutPriority(1)
+                                Text("(m)").layoutPriority(1).font(.subheadline)
+                                Text(" × ").layoutPriority(1)
+                                Text("Height").layoutPriority(1)
+                                Text("(m)").layoutPriority(1).font(.subheadline)
+                            }
+                        }
+                        .padding()
+                        .overlay { Rectangle().frame(height: 1.33) }
+                    }
+                }
+                .lineLimit(1)
+                .minimumScaleFactor(0.1)
+            } header: {
+                Text("Formula")
+            }
+            Section {
+                Text("Required height data access in \"Health\" app.")
+            }
+        }
+    }
     private func ⓓismissButton() -> some View {
         Button {
             self.dismiss()
@@ -104,31 +141,5 @@ struct 🛠AppMenu: View {
                 .padding(8)
         }
         .accessibilityLabel("Dismiss")
-    }
-    private func ⓑmiFormula() -> some View {
-        ZStack {
-            Color.clear
-            HStack {
-                Text("BMI = ")
-                VStack(spacing: 12) {
-                    HStack(spacing: 2) {
-                        Text("Weight")
-                        Text("(kg)").font(.caption)
-                    }
-                    HStack(spacing: 2) {
-                        Text("Height").layoutPriority(1)
-                        Text("(m)").layoutPriority(1).font(.caption)
-                        Text(" × ").layoutPriority(1)
-                        Text("Height").layoutPriority(1)
-                        Text("(m)").layoutPriority(1).font(.caption)
-                    }
-                }
-                .padding()
-                .overlay { Rectangle().frame(height: 1.33) }
-            }
-            .font(.subheadline)
-        }
-        .lineLimit(1)
-        .minimumScaleFactor(0.1)
     }
 }
