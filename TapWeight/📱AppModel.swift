@@ -70,9 +70,9 @@ class 📱AppModel: ObservableObject {
             if let 📝lastValue = ⓛastSample?.quantity {
                 switch ⓒategory {
                     case .bodyMass:
-                        if let ⓤnit = self.📦preferredUnits[ⓒategory] {
+                        if let ⓜassUnit {
                             if let ⓜassInputValue {
-                                📉difference = round((ⓜassInputValue - 📝lastValue.doubleValue(for: ⓤnit)) * 100) / 100
+                                📉difference = round((ⓜassInputValue - 📝lastValue.doubleValue(for: ⓜassUnit)) * 100) / 100
                             }
                         }
                     case .bodyMassIndex:
@@ -269,7 +269,7 @@ class 📱AppModel: ObservableObject {
                 if ⓢamples.isEmpty {
                     switch ⓒategory {
                         case .bodyMass:
-                            if let ⓤnit = self.📦preferredUnits[.bodyMass] {
+                            if let ⓤnit = self.ⓜassUnit {
                                 switch ⓤnit {
                                     case .gramUnit(with: .kilo):
                                         self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 60.0)
