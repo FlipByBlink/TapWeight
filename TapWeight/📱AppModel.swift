@@ -12,8 +12,8 @@ class 📱AppModel: ObservableObject {
     @Published var 📝bodyFatInputQuantity: HKQuantity? = nil
     @Published var 📅datePickerValue: Date = .now
     
-    @Published var 📦latestSamples: [🏥HealthStore.Category: HKQuantitySample] = [:]
-    @Published var 📦preferredUnits: [🏥HealthStore.Category: HKUnit] = [:]
+    @Published var 📦latestSamples: [🏥Category: HKQuantitySample] = [:]
+    @Published var 📦preferredUnits: [🏥Category: HKUnit] = [:]
     
     @Published var 🚩showResult: Bool = false
     @Published var 🚨registerationError: 🚨RegistrationError? = nil
@@ -23,7 +23,7 @@ class 📱AppModel: ObservableObject {
     
     private let 🏥healthStore = HKHealthStore()
     
-    private let ⓐpi = 🏥HealthStore()
+    private let 🏥api = 🏥HealthStore()//TODO: 後々🏥healthStoreに改名
     
     //MARK: Computed property
     var ⓜassUnit: HKUnit? { self.📦preferredUnits[.bodyMass] }
@@ -64,9 +64,9 @@ class 📱AppModel: ObservableObject {
     
     var ⓓatePickerIsAlmostNow: Bool { self.📅datePickerValue.timeIntervalSinceNow > -300 }
     
-    var ⓓifferenceDescriptions: [🏥HealthStore.Category: String] {
-        var ⓓescriptions: [🏥HealthStore.Category: String] = [:]
-        for ⓒategory: 🏥HealthStore.Category in [.bodyMass, .bodyMassIndex, .bodyFatPercentage] {
+    var ⓓifferenceDescriptions: [🏥Category: String] {
+        var ⓓescriptions: [🏥Category: String] = [:]
+        for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .bodyFatPercentage] {
             let ⓛastSample = self.📦latestSamples[ⓒategory]
             var 📉difference: Double? = nil
             if let 📝lastValue = ⓛastSample?.quantity {
@@ -170,10 +170,10 @@ class 📱AppModel: ObservableObject {
     func 👆register() { // ☑️
         Task { @MainActor in
             do {
-                var ⓘnputTypes: [🄷ealthType] = [.bodyMass]
-                if self.🚩ableBMI { ⓘnputTypes.append(.bmi) }
-                if self.🚩ableBodyFat { ⓘnputTypes.append(.bodyFat) }
-                for ⓣype in ⓘnputTypes {
+                var ⓒategories: [🏥Category] = [.bodyMass]
+                if self.🚩ableBMI { ⓒategories.append(.bodyMassIndex) }
+                if self.🚩ableBodyFat { ⓒategories.append(.bodyFatPercentage) }
+                for ⓣype in ⓒategories {
                     let ⓢtate = self.🏥healthStore.authorizationStatus(for: HKQuantityType(ⓣype.identifier))
                     guard ⓢtate == .sharingAuthorized else {
                         throw 🚨RegistrationError.failedAuth(ⓣype)
@@ -186,14 +186,14 @@ class 📱AppModel: ObservableObject {
                                                 quantity: 📝massInputQuantity,
                                                 start: ⓓate, end: ⓓate))
                 if self.🚩ableBMI {
-                    guard let ⓑmiInputValue else { throw 🚨RegistrationError.noValue(.bmi) }
+                    guard let ⓑmiInputValue else { throw 🚨RegistrationError.noValue(.bodyMassIndex) }
                     ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
                                                     quantity: HKQuantity(unit: .count(),
                                                                          doubleValue: ⓑmiInputValue),
                                                     start: ⓓate, end: ⓓate))
                 }
                 if self.🚩ableBodyFat {
-                    guard let 📝bodyFatInputQuantity else { throw 🚨RegistrationError.noValue(.bodyFat) }
+                    guard let 📝bodyFatInputQuantity else { throw 🚨RegistrationError.noValue(.bodyFatPercentage) }
                     ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
                                                     quantity: 📝bodyFatInputQuantity,
                                                     start: ⓓate, end: ⓓate))
@@ -269,7 +269,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     private func 🏥loadLatestSamples() {
-        self.ⓐpi.ⓛoadLatestSamples { ⓒategory, ⓢamples in
+        self.🏥api.ⓛoadLatestSamples { ⓒategory, ⓢamples in
             Task { @MainActor in
                 self.📦latestSamples[ⓒategory] = ⓢamples.first as? HKQuantitySample
                 self.📝resetInputValues()
@@ -299,7 +299,7 @@ class 📱AppModel: ObservableObject {
     }
     @MainActor
     private func 🏥loadPreferredUnits() async {
-        for ⓒategory: 🏥HealthStore.Category in [.bodyMass, .height] {
+        for ⓒategory: 🏥Category in [.bodyMass, .height] {
             if let ⓤnit = try? await self.🏥healthStore.preferredUnits(for: [ⓒategory.type]).first?.value {
                 if self.📦preferredUnits[ⓒategory] != ⓤnit {
                     self.📦preferredUnits[ⓒategory] = ⓤnit
@@ -309,7 +309,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     private func 🏥observeChanges() {
-        self.ⓐpi.ⓞbserveChanges { ⓒompletionHandler in
+        self.🏥api.ⓞbserveChanges { ⓒompletionHandler in
             Task { @MainActor in
                 self.🏥loadLatestSamples()
                 await self.🏥loadPreferredUnits()
@@ -319,42 +319,22 @@ class 📱AppModel: ObservableObject {
     }
 }
 
-enum 🄷ealthType {
-    case bodyMass, bmi, height, bodyFat
-    var identifier: HKQuantityTypeIdentifier {
-        switch self {
-            case .bodyMass: return .bodyMass
-            case .bmi: return .bodyMassIndex
-            case .height: return .height
-            case .bodyFat: return .bodyFatPercentage
-        }
-    }
-    var description: String.LocalizationValue {
-        switch self {
-            case .bodyMass: return "Body Mass"
-            case .bmi: return "Body Mass Index"
-            case .height: return "Height"
-            case .bodyFat: return "Body Fat Percentage"
-        }
-    }
-}
-
 enum 🅂tepperAction {
     case increment, decrement
 }
 
 enum 🚨RegistrationError: Error {
-    case failedAuth(🄷ealthType)
+    case failedAuth(🏥Category)
+    case noValue(🏥Category)
     case saveFailure(String)
-    case noValue(🄷ealthType)
     var message: String {
         switch self {
             case .failedAuth(let ⓣype):
                 return "Fail auth for " + String(localized: ⓣype.description)
-            case .saveFailure(let ⓓescription):
-                return "Failed to save: \(ⓓescription)"
             case .noValue(let ⓣype):
                 return "No value: " + String(localized: ⓣype.description)
+            case .saveFailure(let ⓓescription):
+                return "Failed to save: \(ⓓescription)"
         }
     }
 }
