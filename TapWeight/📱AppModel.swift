@@ -244,19 +244,15 @@ class 📱AppModel: ObservableObject {
     }
     
     func ⓡequestAuth(_ ⓒategory: 🏥Category) {
-        var ⓡeadCategories: Set<🏥Category> {
-            if ⓒategory == .bodyMassIndex {
-                return [.bodyMassIndex, .height]
-            } else {
-                return [ⓒategory]
-            }
-        }
         Task {
             do {
+                var ⓡeadCategories: Set<🏥Category> = [ⓒategory]
+                if ⓒategory == .bodyMassIndex { ⓡeadCategories.insert(.height) }
                 let ⓢtatus = try await self.🏥healthStore.statusForAuthorizationRequest(toShare: [ⓒategory],
                                                                                         read: ⓡeadCategories)
                 if ⓢtatus == .shouldRequest {
-                    try await self.🏥healthStore.requestAuthorization(toShare: [ⓒategory], read: ⓡeadCategories)
+                    try await self.🏥healthStore.requestAuthorization(toShare: [ⓒategory],
+                                                                      read: ⓡeadCategories)
                     self.ⓛoadLatestSamples()
                     await self.ⓛoadPreferredUnits()
                 }
