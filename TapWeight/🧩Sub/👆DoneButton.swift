@@ -28,7 +28,7 @@ struct 👆DoneButton: View { // ☑️
         .onChange(of: self.scenePhase) {
             if $0 == .background {
                 self.🚩showResult = false
-                📱.📝resetPickerValues()
+                📱.📝resetInputValues()
             }
         }
     }

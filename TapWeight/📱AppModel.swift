@@ -169,7 +169,7 @@ class 📱AppModel: ObservableObject {
     }
     
     @MainActor
-    func 👆register() async {
+    func 👆register() async { // ☑️
         UINotificationFeedbackGenerator().notificationOccurred(.success)
         guard self.🏥checkSharingAuth() else { return }
         var ⓢamples: [HKQuantitySample] = []
@@ -223,7 +223,7 @@ class 📱AppModel: ObservableObject {
     }
     
     @MainActor
-    func 📝resetPickerValues() {
+    func 📝resetInputValues() {
         if let ⓢample = self.📦latestSamples[.bodyMass] {
             self.📝massInputQuantity = ⓢample.quantity
         }
@@ -279,7 +279,7 @@ class 📱AppModel: ObservableObject {
                 Task { @MainActor in
                     if let ⓢamples {
                         self.📦latestSamples[ⓘdentifier] = ⓢamples.first as? HKQuantitySample
-                        self.📝resetPickerValues()
+                        self.📝resetInputValues()
                     }
                     if ⓢamples == [] {
                         switch ⓘdentifier {
@@ -313,7 +313,7 @@ class 📱AppModel: ObservableObject {
             if let ⓤnit = try? await self.🏥healthStore.preferredUnits(for: [HKQuantityType(ⓘdentifier)]).first?.value {
                 if self.📦preferredUnits[ⓘdentifier] != ⓤnit {
                     self.📦preferredUnits[ⓘdentifier] = ⓤnit
-                    self.📝resetPickerValues()
+                    self.📝resetInputValues()
                 }
             }
         }
