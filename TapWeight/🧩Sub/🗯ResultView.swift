@@ -4,43 +4,25 @@ import HealthKit
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.scenePhase) var scenePhase
-    private var ⓢuccess: Bool { 📱.🚨registerationError == nil }
-    private var ⓕailed: Bool { !self.ⓢuccess }
-    private var ⓔrrorMessage: String { 📱.🚨registerationError?.message ?? "🐛" }
     private var ⓒanceled: Bool { 📱.🚩canceled }
     private var ⓒancelError: Bool { 📱.🚨cancelError }
     var body: some View {
         NavigationView {
             ZStack {
                 Rectangle()
-                    .foregroundColor(self.ⓢuccess ? .pink : .gray)
+                    .foregroundColor(.pink)
                     .ignoresSafeArea()
                 VStack {
                     VStack(spacing: 16) {
-                        Image(systemName: self.ⓢuccess ? "checkmark" : "exclamationmark.triangle")
+                        Image(systemName: "checkmark")
                             .font(.system(size: 96).weight(.semibold))
-                        Text(self.ⓢuccess ? "DONE!" : "ERROR!?")
+                        Text("DONE!")
                             .strikethrough(self.ⓒanceled)
                             .font(.system(size: 96).weight(.black))
-                        if self.ⓢuccess {
-                            Text("Registration for \"Health\" app")
-                                .strikethrough(self.ⓒanceled)
-                                .font(.title3.weight(.semibold))
-                        } else {
-                            Text("Please check permission on \"Health\" app")
-                                .font(.title3.weight(.semibold))
-                            Text(self.ⓔrrorMessage)
-                        }
-                        if self.ⓢuccess { self.🗯SummaryText() }
-                        VStack {
-                            self.💟jumpButton()
-                            if self.ⓕailed {
-                                Image(systemName: "arrow.up")
-                                    .imageScale(.small)
-                                    .font(.title)
-                                    .foregroundStyle(.secondary)
-                            }
-                        }
+                        Text("Registration for \"Health\" app")
+                            .strikethrough(self.ⓒanceled)
+                            .font(.title3.weight(.semibold))
+                        self.🗯SummaryText()
                     }
                     .lineLimit(1)
                     .minimumScaleFactor(0.3)
@@ -69,6 +51,9 @@ struct 🗯ResultView: View {
                     self.🗑cancelButton()
                 }
             }
+            .overlay(alignment: .bottomTrailing) {
+                self.💟jumpButton()
+            }
         }
         .preferredColorScheme(.dark)
         .onChange(of: self.scenePhase) {
@@ -83,11 +68,11 @@ struct 🗯ResultView: View {
                     Image(systemName: "heart")
                         .imageScale(.small)
                 }
-                .foregroundColor(.primary)
-                .padding(24)
-                .font(.system(size: 32))
+                .font(.largeTitle)
         }
+        .foregroundColor(.primary)
         .accessibilityLabel("Open \"Health\" app")
+        .padding(22)
     }
     private func 🗯SummaryText() -> some View {
         Group {
@@ -122,19 +107,17 @@ struct 🗯ResultView: View {
     }
     private func 🗑cancelButton() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
-            if self.ⓢuccess {
-                Button {
-                    📱.🗑cancel()
-                } label: {
-                    Image(systemName: "arrow.uturn.backward.circle.fill")
-                        .symbolRenderingMode(.hierarchical)
-                        .foregroundColor(.primary)
-                        .font(.title)
-                }
-                .disabled(self.ⓒanceled)
-                .opacity(self.ⓒanceled ? 0.5 : 1)
-                .accessibilityLabel("Cancel")
+            Button {
+                📱.🗑cancel()
+            } label: {
+                Image(systemName: "arrow.uturn.backward.circle.fill")
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundColor(.primary)
+                    .font(.title)
             }
+            .disabled(self.ⓒanceled)
+            .opacity(self.ⓒanceled ? 0.5 : 1)
+            .accessibilityLabel("Cancel")
         }
     }
 }
