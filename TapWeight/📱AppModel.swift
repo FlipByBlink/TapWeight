@@ -16,7 +16,7 @@ class 📱AppModel: ObservableObject {
     @Published var 📦preferredUnits: [HKQuantityTypeIdentifier: HKUnit] = [:]
     
     @Published var 🚩showResult: Bool = false
-    @Published var 🚨registerationError: Error? = nil
+    @Published var 🚨registerationError: 🚨RegistrationError? = nil
     @Published var 🚩canceled: Bool = false
     @Published var 🚨cancelError: Bool = false
     var 📨registeredSamples: [HKQuantitySample] = []
@@ -137,9 +137,6 @@ class 📱AppModel: ObservableObject {
         self.🏥observeChanges()
     }
     
-    enum 🅂tepperAction {
-        case increment, decrement
-    }
     func 🎚️changeMassValue(_ ⓟattern: 🅂tepperAction) {
         if let ⓜassUnit, var ⓜassInputValue {
             if self.🚩amount50g {
@@ -169,53 +166,51 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    @MainActor
     func 👆register() { // ☑️
         Task { @MainActor in
             do {
-                var ⓘnputTypes: [HKQuantityTypeIdentifier] = [.bodyMass]
-                if self.🚩ableBMI { ⓘnputTypes.append(.bodyMassIndex) }
-                if self.🚩ableBodyFat { ⓘnputTypes.append(.bodyFatPercentage) }
+                var ⓘnputTypes: [🄷ealthType] = [.bodyMass]
+                if self.🚩ableBMI { ⓘnputTypes.append(.bmi) }
+                if self.🚩ableBodyFat { ⓘnputTypes.append(.bodyFat) }
                 for ⓣype in ⓘnputTypes {
-                    if self.🏥healthStore.authorizationStatus(for: HKQuantityType(ⓣype)) != .sharingAuthorized {
+                    let ⓢtate = self.🏥healthStore.authorizationStatus(for: HKQuantityType(ⓣype.identifier))
+                    guard ⓢtate == .sharingAuthorized else {
                         throw 🚨RegistrationError.failedAuth(ⓣype)
                     }
                 }
                 var ⓢamples: [HKQuantitySample] = []
                 let ⓓate: Date = self.🚩ableDatePicker ? self.📅datePickerValue : .now
-                if let 📝massInputQuantity {
-                    ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
-                                                    quantity: 📝massInputQuantity,
+                guard let 📝massInputQuantity else { throw 🚨RegistrationError.noValue(.bodyMass) }
+                ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
+                                                quantity: 📝massInputQuantity,
+                                                start: ⓓate, end: ⓓate))
+                if self.🚩ableBMI {
+                    guard let ⓑmiInputValue else { throw 🚨RegistrationError.noValue(.bmi) }
+                    ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
+                                                    quantity: HKQuantity(unit: .count(),
+                                                                         doubleValue: ⓑmiInputValue),
                                                     start: ⓓate, end: ⓓate))
                 }
-                if self.🚩ableBMI {
-                    if let ⓑmiInputValue {
-                        ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
-                                                        quantity: HKQuantity(unit: .count(),
-                                                                             doubleValue: ⓑmiInputValue),
-                                                        start: ⓓate, end: ⓓate))
-                    }
-                }
                 if self.🚩ableBodyFat {
-                    if let 📝bodyFatInputQuantity {
-                        ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
-                                                        quantity: 📝bodyFatInputQuantity,
-                                                        start: ⓓate, end: ⓓate))
-                    }
+                    guard let 📝bodyFatInputQuantity else { throw 🚨RegistrationError.noValue(.bodyFat) }
+                    ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
+                                                    quantity: 📝bodyFatInputQuantity,
+                                                    start: ⓓate, end: ⓓate))
                 }
-                try await self.🏥healthStore.save(ⓢamples)
+                do {
+                    try await self.🏥healthStore.save(ⓢamples)
+                } catch {
+                    throw 🚨RegistrationError.saveFailure(error.localizedDescription)
+                }
                 self.📨registeredSamples = ⓢamples
                 UINotificationFeedbackGenerator().notificationOccurred(.success)
             } catch {
-                self.🚨registerationError = error
+                self.🚨registerationError = error as? 🚨RegistrationError
                 print("🚨", error.localizedDescription)
                 UINotificationFeedbackGenerator().notificationOccurred(.error)
             }
             self.🚩showResult = true
         }
-    }
-    enum 🚨RegistrationError: LocalizedError {
-        case failedAuth(_ type: HKQuantityTypeIdentifier)
     }
     @MainActor
     func 🗑cancel() {
@@ -241,7 +236,7 @@ class 📱AppModel: ObservableObject {
     }
     
     @MainActor
-    func 📝resetInputValues() {//FIXME: これもしかして要らないかも
+    func 📝resetInputValues() {
         if let ⓢample = self.📦latestSamples[.bodyMass] {
             self.📝massInputQuantity = ⓢample.quantity
         }
@@ -335,6 +330,46 @@ class 📱AppModel: ObservableObject {
                 }
             }
             self.🏥healthStore.execute(ⓠuery)
+        }
+    }
+}
+
+enum 🄷ealthType {
+    case bodyMass, bmi, height, bodyFat
+    var identifier: HKQuantityTypeIdentifier {
+        switch self {
+            case .bodyMass: return .bodyMass
+            case .bmi: return .bodyMassIndex
+            case .height: return .height
+            case .bodyFat: return .bodyFatPercentage
+        }
+    }
+    var description: String.LocalizationValue {
+        switch self {
+            case .bodyMass: return "Body Mass"
+            case .bmi: return "Body Mass Index"
+            case .height: return "Height"
+            case .bodyFat: return "Body Fat Percentage"
+        }
+    }
+}
+
+enum 🅂tepperAction {
+    case increment, decrement
+}
+
+enum 🚨RegistrationError: Error {
+    case failedAuth(🄷ealthType)
+    case saveFailure(String)
+    case noValue(🄷ealthType)
+    var message: String {
+        switch self {
+            case .failedAuth(let ⓣype):
+                return "Fail auth for " + String(localized: ⓣype.description)
+            case .saveFailure(let ⓓescription):
+                return "Failed to save: \(ⓓescription)"
+            case .noValue(let ⓣype):
+                return "No value: " + String(localized: ⓣype.description)
         }
     }
 }

@@ -3,8 +3,10 @@ import HealthKit
 
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @Environment(\.scenePhase) var scenePhase
     private var ⓢuccess: Bool { 📱.🚨registerationError == nil }
     private var ⓕailed: Bool { !self.ⓢuccess }
+    private var ⓔrrorMessage: String { 📱.🚨registerationError?.message ?? "🐛" }
     private var ⓒanceled: Bool { 📱.🚩canceled }
     private var ⓒancelError: Bool { 📱.🚨cancelError }
     var body: some View {
@@ -27,6 +29,7 @@ struct 🗯ResultView: View {
                         } else {
                             Text("Please check permission on \"Health\" app")
                                 .font(.title3.weight(.semibold))
+                            Text(self.ⓔrrorMessage)
                         }
                         if self.ⓢuccess { self.🗯SummaryText() }
                         VStack {
@@ -68,6 +71,9 @@ struct 🗯ResultView: View {
             }
         }
         .preferredColorScheme(.dark)
+        .onChange(of: self.scenePhase) {
+            if $0 == .background { 📱.ⓡesetAppState() }
+        }
     }
     private func 💟jumpButton() -> some View {
         Link(destination: URL(string: "x-apple-health://")!) {

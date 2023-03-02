@@ -27,8 +27,8 @@ struct ContentView: View {
                 }
             }
         }
-        .onChange(of: self.scenePhase) {
-            if $0 == .background { 📱.📝resetInputValues() }
+        .onChange(of: self.scenePhase) { _ in
+            📱.📝resetInputValues()
         }
     }
 }
