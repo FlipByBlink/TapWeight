@@ -3,33 +3,35 @@ import HealthKit
 
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
+    private var ⓢuccess: Bool { 📱.🚨registerationError == nil }
+    private var ⓕailed: Bool { !self.ⓢuccess }
+    private var ⓒanceled: Bool { 📱.🚩canceled }
+    private var ⓒancelError: Bool { 📱.🚨cancelError }
     var body: some View {
         NavigationView {
             ZStack {
                 Rectangle()
-                    .foregroundColor(📱.🚨registerError ? .gray : .pink)
+                    .foregroundColor(self.ⓢuccess ? .pink : .gray)
                     .ignoresSafeArea()
                 VStack {
                     VStack(spacing: 16) {
-                        Image(systemName: 📱.🚨registerError ? "exclamationmark.triangle" : "checkmark")
+                        Image(systemName: self.ⓢuccess ? "checkmark" : "exclamationmark.triangle")
                             .font(.system(size: 96).weight(.semibold))
-                        Text(📱.🚨registerError ? "ERROR!?" : "DONE!")
-                            .strikethrough(📱.🚩canceled)
+                        Text(self.ⓢuccess ? "DONE!" : "ERROR!?")
+                            .strikethrough(self.ⓒanceled)
                             .font(.system(size: 96).weight(.black))
-                        if 📱.🚨registerError {
-                            Text("Please check permission on \"Health\" app")
+                        if self.ⓢuccess {
+                            Text("Registration for \"Health\" app")
+                                .strikethrough(self.ⓒanceled)
                                 .font(.title3.weight(.semibold))
                         } else {
-                            Text("Registration for \"Health\" app")
-                                .strikethrough(📱.🚩canceled)
+                            Text("Please check permission on \"Health\" app")
                                 .font(.title3.weight(.semibold))
                         }
-                        if 📱.🚨registerError == false {
-                            self.🗯SummaryText()
-                        }
+                        if self.ⓢuccess { self.🗯SummaryText() }
                         VStack {
                             self.💟jumpButton()
-                            if 📱.🚨registerError {
+                            if self.ⓕailed {
                                 Image(systemName: "arrow.up")
                                     .imageScale(.small)
                                     .font(.title)
@@ -42,13 +44,13 @@ struct 🗯ResultView: View {
                     .padding()
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .opacity(📱.🚩canceled ? 0.5 : 1)
+                    .opacity(self.ⓒanceled ? 0.5 : 1)
                     .overlay(alignment: .topTrailing) {
-                        if 📱.🚩canceled {
+                        if self.ⓒanceled {
                             VStack(alignment: .trailing) {
                                 Text("Canceled")
                                     .fontWeight(.semibold)
-                                if 📱.🚨cancelError {
+                                if self.ⓒancelError {
                                     Text("(perhaps error)")
                                 }
                             }
@@ -58,7 +60,7 @@ struct 🗯ResultView: View {
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)
-                .animation(.default, value: 📱.🚩canceled)
+                .animation(.default, value: self.ⓒanceled)
                 .toolbar {
                     self.🅧closeButton()
                     self.🗑cancelButton()
@@ -84,12 +86,12 @@ struct 🗯ResultView: View {
     private func 🗯SummaryText() -> some View {
         Group {
             Text(📱.ⓡesultSummaryDescription ?? "🐛")
-                .strikethrough(📱.🚩canceled)
+                .strikethrough(self.ⓒanceled)
                 .font(.body.bold())
             if 📱.🚩ableDatePicker {
                 if let ⓓate = 📱.📨registeredSamples.first?.startDate as? Date {
                     Text(ⓓate.formatted(date: .abbreviated, time: .shortened))
-                        .strikethrough(📱.🚩canceled)
+                        .strikethrough(self.ⓒanceled)
                         .font(.subheadline.weight(.semibold))
                         .padding(.horizontal)
                 }
@@ -114,7 +116,7 @@ struct 🗯ResultView: View {
     }
     private func 🗑cancelButton() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
-            if 📱.🚨registerError == false {
+            if self.ⓢuccess {
                 Button {
                     📱.🗑cancel()
                 } label: {
@@ -123,8 +125,8 @@ struct 🗯ResultView: View {
                         .foregroundColor(.primary)
                         .font(.title)
                 }
-                .disabled(📱.🚩canceled)
-                .opacity(📱.🚩canceled ? 0.5 : 1)
+                .disabled(self.ⓒanceled)
+                .opacity(self.ⓒanceled ? 0.5 : 1)
                 .accessibilityLabel("Cancel")
             }
         }

@@ -16,8 +16,7 @@ class 📱AppModel: ObservableObject {
     @Published var 📦preferredUnits: [HKQuantityTypeIdentifier: HKUnit] = [:]
     
     @Published var 🚩showResult: Bool = false
-    @Published var 🚨registerError: Bool = false
-    //@Published var 🚨registerationError: 🚨RegistrationError? = nil
+    @Published var 🚨registerationError: Error? = nil
     @Published var 🚩canceled: Bool = false
     @Published var 🚨cancelError: Bool = false
     var 📨registeredSamples: [HKQuantitySample] = []
@@ -208,7 +207,7 @@ class 📱AppModel: ObservableObject {
                 self.📨registeredSamples = ⓢamples
                 UINotificationFeedbackGenerator().notificationOccurred(.success)
             } catch {
-                self.🚨registerError = true
+                self.🚨registerationError = error
                 print("🚨", error.localizedDescription)
                 UINotificationFeedbackGenerator().notificationOccurred(.error)
             }
@@ -234,7 +233,7 @@ class 📱AppModel: ObservableObject {
     @MainActor
     func ⓡesetAppState() {
         self.🚩showResult = false
-        self.🚨registerError = false
+        self.🚨registerationError = nil
         self.🚩canceled = false
         self.🚨cancelError = false
         self.📨registeredSamples = []
