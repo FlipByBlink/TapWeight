@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 👆BodyMassStepper: View {
+struct 🎚️BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var 🔠font: Font { 📱.🚩ableDatePicker ? .largeTitle : .system(size: 50) }
     private var ⓘnputQuantityIsNothing: Bool { 📱.📝massInputQuantity == nil }
@@ -23,10 +23,10 @@ struct 👆BodyMassStepper: View {
             }
         } onIncrement: {
             UISelectionFeedbackGenerator().selectionChanged()
-            📱.👆changeMassValue(.increment)
+            📱.🎚️changeMassValue(.increment)
         } onDecrement: {
             UISelectionFeedbackGenerator().selectionChanged()
-            📱.👆changeMassValue(.decrement)
+            📱.🎚️changeMassValue(.decrement)
         }
         .lineLimit(1)
         .padding(8)
@@ -34,7 +34,7 @@ struct 👆BodyMassStepper: View {
     }
 }
 
-struct 👆BodyFatStepper: View {
+struct 🎚️BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var 🔠font: Font { 📱.🚩ableDatePicker ? .largeTitle : .system(size: 50) }
     private var ⓘnputQuantityIsNothing: Bool { 📱.📝bodyFatInputQuantity == nil }
@@ -58,10 +58,10 @@ struct 👆BodyFatStepper: View {
                 }
             } onIncrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
-                📱.👆changeBodyFatValue(.increment)
+                📱.🎚️changeBodyFatValue(.increment)
             } onDecrement: {
                 UISelectionFeedbackGenerator().selectionChanged()
-                📱.👆changeBodyFatValue(.decrement)
+                📱.🎚️changeBodyFatValue(.decrement)
             }
             .lineLimit(1)
             .padding(8)

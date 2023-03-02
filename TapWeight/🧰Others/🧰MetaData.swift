@@ -32,8 +32,13 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "📱AppModel.swift",
                         "ContentView.swift"]
             case .🧩Sub:
-                return ["🗯ResultView.swift",
-                        "👆Stepper.swift",
+                return ["🎚️Stepper.swift",
+                        "📅DatePicker.swift",
+                        "👆DoneButton.swift",
+                        "🪧BMIView.swift",
+                        "📉DifferenceView.swift",
+                        "💟JumpButton.swift",
+                        "🗯ResultView.swift",
                         "🛠AppMenu.swift",
                         "💬RequestUserReview.swift",
                         "📣ADSheet.swift"]

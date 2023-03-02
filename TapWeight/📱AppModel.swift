@@ -131,6 +131,43 @@ class 📱AppModel: ObservableObject {
     }
     
     //MARK: Method
+    func ⓢetupOnLaunch() {
+        self.🏥requestAuth(.bodyMass)
+        self.🏥observeChanges()
+    }
+    
+    enum 🅂tepperAction {
+        case increment, decrement
+    }
+    func 🎚️changeMassValue(_ ⓟattern: 🅂tepperAction) {
+        if let ⓜassUnit, var ⓜassInputValue {
+            if self.🚩amount50g {
+                switch ⓟattern {
+                    case .increment: ⓜassInputValue += 0.05
+                    case .decrement: ⓜassInputValue -= 0.05
+                }
+                ⓜassInputValue = round(ⓜassInputValue * 100) / 100
+            } else {
+                switch ⓟattern {
+                    case .increment: ⓜassInputValue += 0.1
+                    case .decrement: ⓜassInputValue -= 0.1
+                }
+                ⓜassInputValue = round(ⓜassInputValue * 10) / 10
+            }
+            self.📝massInputQuantity = HKQuantity(unit: ⓜassUnit, doubleValue: ⓜassInputValue)
+        }
+    }
+    func 🎚️changeBodyFatValue(_ ⓟattern: 🅂tepperAction) {
+        if var ⓑodyFatInputValue {
+            switch ⓟattern {
+                case .increment: ⓑodyFatInputValue += 0.001
+                case .decrement: ⓑodyFatInputValue -= 0.001
+            }
+            ⓑodyFatInputValue = round(ⓑodyFatInputValue * 1000) / 1000
+            self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: ⓑodyFatInputValue)
+        }
+    }
+    
     @MainActor
     func 👆register() async {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
@@ -165,6 +202,35 @@ class 📱AppModel: ObservableObject {
             print("🚨", error.localizedDescription)
         }
     }
+    @MainActor
+    func 🗑cancel() {
+        Task {
+            do {
+                self.🚩canceled = true
+                try await self.🏥healthStore.delete(self.📨registeredSamples)
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
+            } catch {
+                self.🚨cancelError = true
+                print("🚨", error.localizedDescription)
+            }
+        }
+    }
+    func ⓡesetResultState() {
+        self.🚨registerError = false
+        self.🚩canceled = false
+        self.🚨cancelError = false
+        self.📨registeredSamples = []
+    }
+    
+    @MainActor
+    func 📝resetPickerValues() {
+        if let ⓢample = self.📦latestSamples[.bodyMass] {
+            self.📝massInputQuantity = ⓢample.quantity
+        }
+        if let ⓢample = self.📦latestSamples[.bodyFatPercentage] {
+            self.📝bodyFatInputQuantity = ⓢample.quantity
+        }
+    }
     
     private func 🏥checkSharingAuth() -> Bool {
         var ⓣypes: [HKQuantityTypeIdentifier] = [.bodyMass]
@@ -180,7 +246,6 @@ class 📱AppModel: ObservableObject {
         }
         return true
     }
-    
     func 🏥requestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) {
         let ⓢhareType: Set<HKQuantityType> = [HKQuantityType(ⓘdentifier)]
         var ⓡeadTypes: Set<HKQuantityType> {
@@ -203,7 +268,6 @@ class 📱AppModel: ObservableObject {
             }
         }
     }
-    
     private func 🏥loadLatestSamples() {
         let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage]
         for ⓘdentifier in ⓘdentifiers {
@@ -243,17 +307,6 @@ class 📱AppModel: ObservableObject {
             self.🏥healthStore.execute(ⓠuery)
         }
     }
-    
-    @MainActor
-    func 📝resetPickerValues() {
-        if let ⓢample = self.📦latestSamples[.bodyMass] {
-            self.📝massInputQuantity = ⓢample.quantity
-        }
-        if let ⓢample = self.📦latestSamples[.bodyFatPercentage] {
-            self.📝bodyFatInputQuantity = ⓢample.quantity
-        }
-    }
-    
     @MainActor
     private func 🏥loadPreferredUnits() async {
         for ⓘdentifier: HKQuantityTypeIdentifier in [.bodyMass, .height] {
@@ -265,8 +318,7 @@ class 📱AppModel: ObservableObject {
             }
         }
     }
-    
-    private func 🔭observeChanges() {
+    private func 🏥observeChanges() {
         let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage]
         for ⓘdentifier in ⓘdentifiers {
             let ⓣype = HKQuantityType(ⓘdentifier)
@@ -280,65 +332,5 @@ class 📱AppModel: ObservableObject {
             }
             self.🏥healthStore.execute(ⓠuery)
         }
-    }
-    
-    enum 🅂tepperAction {
-        case increment, decrement
-    }
-    
-    func 👆changeMassValue(_ ⓟattern: 🅂tepperAction) {
-        if let ⓜassUnit, var ⓜassInputValue {
-            if self.🚩amount50g {
-                switch ⓟattern {
-                    case .increment: ⓜassInputValue += 0.05
-                    case .decrement: ⓜassInputValue -= 0.05
-                }
-                ⓜassInputValue = round(ⓜassInputValue * 100) / 100
-            } else {
-                switch ⓟattern {
-                    case .increment: ⓜassInputValue += 0.1
-                    case .decrement: ⓜassInputValue -= 0.1
-                }
-                ⓜassInputValue = round(ⓜassInputValue * 10) / 10
-            }
-            self.📝massInputQuantity = HKQuantity(unit: ⓜassUnit, doubleValue: ⓜassInputValue)
-        }
-    }
-    
-    func 👆changeBodyFatValue(_ ⓟattern: 🅂tepperAction) {
-        if var ⓑodyFatInputValue {
-            switch ⓟattern {
-                case .increment: ⓑodyFatInputValue += 0.001
-                case .decrement: ⓑodyFatInputValue -= 0.001
-            }
-            ⓑodyFatInputValue = round(ⓑodyFatInputValue * 1000) / 1000
-            self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: ⓑodyFatInputValue)
-        }
-    }
-    
-    @MainActor
-    func 🗑cancel() {
-        Task {
-            do {
-                self.🚩canceled = true
-                try await self.🏥healthStore.delete(self.📨registeredSamples)
-                UINotificationFeedbackGenerator().notificationOccurred(.error)
-            } catch {
-                self.🚨cancelError = true
-                print("🚨", error.localizedDescription)
-            }
-        }
-    }
-    
-    func ⓡesetResultState() {
-        self.🚨registerError = false
-        self.🚩canceled = false
-        self.🚨cancelError = false
-        self.📨registeredSamples = []
-    }
-    
-    func ⓢetupOnLaunch() {
-        self.🏥requestAuth(.bodyMass)
-        self.🔭observeChanges()
     }
 }
