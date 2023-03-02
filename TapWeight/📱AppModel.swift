@@ -64,51 +64,44 @@ class 📱AppModel: ObservableObject {
     
     var ⓓifferenceDescriptions: [🏥Category: String] {
         var ⓓescriptions: [🏥Category: String] = [:]
-        for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .bodyFatPercentage] {
-            let ⓛastSample = self.📦latestSamples[ⓒategory]
+        self.📦latestSamples.forEach { (ⓒategory, ⓢample) in
             var 📉difference: Double? = nil
-            if let 📝lastValue = ⓛastSample?.quantity {
-                switch ⓒategory {
-                    case .bodyMass:
-                        if let ⓜassUnit {
-                            if let ⓜassInputValue {
-                                📉difference = round((ⓜassInputValue - 📝lastValue.doubleValue(for: ⓜassUnit)) * 100) / 100
-                            }
-                        }
-                    case .bodyMassIndex:
-                        if let ⓑmiInputValue {
-                            📉difference = round((ⓑmiInputValue - 📝lastValue.doubleValue(for: .count())) * 10) / 10
+            switch ⓒategory {
+                case .bodyMass:
+                    if let ⓜassInputValue, let ⓜassUnit {
+                        📉difference = round((ⓜassInputValue - ⓢample.quantity.doubleValue(for: ⓜassUnit)) * 100) / 100
+                    }
+                case .bodyMassIndex:
+                    if let ⓑmiInputValue {
+                        📉difference = round((ⓑmiInputValue - ⓢample.quantity.doubleValue(for: .count())) * 10) / 10
+                    }
+                case .bodyFatPercentage:
+                    if let ⓑodyFatInputValue {
+                        📉difference = round((ⓑodyFatInputValue - ⓢample.quantity.doubleValue(for: .percent())) * 1000) / 10
+                    }
+                default:
+                    break
+            }
+            if let 📉difference {
+                switch 📉difference {
+                    case ..<0:
+                        if ⓒategory == .bodyMass && self.🚩amount50g {
+                            ⓓescriptions[.bodyMass] = String(format: "%.2f", 📉difference)
                         } else {
-                            continue
+                            ⓓescriptions[ⓒategory] = 📉difference.description
                         }
-                    case .bodyFatPercentage:
-                        if let ⓑodyFatInputValue {
-                            📉difference = round((ⓑodyFatInputValue - 📝lastValue.doubleValue(for: .percent())) * 1000) / 10
+                    case 0:
+                        if ⓒategory == .bodyMass && self.🚩amount50g {
+                            ⓓescriptions[.bodyMass] = "0.00"
+                        } else {
+                            ⓓescriptions[ⓒategory] = "0.0"
                         }
                     default:
-                        continue
-                }
-                if let 📉difference {
-                    switch 📉difference {
-                        case ..<0:
-                            if ⓒategory == .bodyMass && self.🚩amount50g {
-                                ⓓescriptions[.bodyMass] = String(format: "%.2f", 📉difference)
-                            } else {
-                                ⓓescriptions[ⓒategory] = 📉difference.description
-                            }
-                        case 0:
-                            if ⓒategory == .bodyMass && self.🚩amount50g {
-                                ⓓescriptions[.bodyMass] = "0.00"
-                            } else {
-                                ⓓescriptions[ⓒategory] = "0.0"
-                            }
-                        default:
-                            if ⓒategory == .bodyMass && self.🚩amount50g {
-                                ⓓescriptions[.bodyMass] = "+" + String(format: "%.2f", 📉difference)
-                            } else {
-                                ⓓescriptions[ⓒategory] = "+" + 📉difference.description
-                            }
-                    }
+                        if ⓒategory == .bodyMass && self.🚩amount50g {
+                            ⓓescriptions[.bodyMass] = "+" + String(format: "%.2f", 📉difference)
+                        } else {
+                            ⓓescriptions[ⓒategory] = "+" + 📉difference.description
+                        }
                 }
             }
         }
