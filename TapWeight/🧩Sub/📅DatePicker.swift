@@ -7,19 +7,14 @@ struct 📅DatePicker: View {
         if 📱.🚩ableDatePicker {
             VStack(alignment: .trailing, spacing: 16) {
                 DatePicker(selection: $📱.📅datePickerValue, in: ...Date.now, displayedComponents: .date) {
-                    HStack {
-                        Spacer()
-                        Image(systemName: "calendar")
-                    }
+                    Text("Date")
                 }
+                .datePickerStyle(.graphical)
                 DatePicker(selection: $📱.📅datePickerValue, in: ...Date.now, displayedComponents: .hourAndMinute) {
-                    HStack {
-                        Spacer()
-                        Image(systemName: "clock")
-                    }
+                    Text("HourAndMinute")
                 }
             }
-            .opacity(📱.ⓓatePickerIsAlmostNow ? 0.4 : 1)
+            .labelsHidden()
             .padding(.trailing, 8)
             .listRowSeparator(.hidden)
             .onChange(of: self.scenePhase) {
