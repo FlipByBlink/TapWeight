@@ -3,6 +3,7 @@ import HealthKit
 
 struct ContentView: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @Environment(\.scenePhase) var scenePhase
     var body: some View {
         NavigationView {
             List {
@@ -25,6 +26,9 @@ struct ContentView: View {
                     💟JumpButton()
                 }
             }
+        }
+        .onChange(of: self.scenePhase) {
+            if $0 == .background { 📱.📝resetInputValues() }
         }
     }
 }

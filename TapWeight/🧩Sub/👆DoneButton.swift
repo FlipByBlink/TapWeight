@@ -2,14 +2,9 @@ import SwiftUI
 
 struct 👆DoneButton: View { // ☑️
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.scenePhase) var scenePhase
-    @State private var 🚩showResult: Bool = false
     var body: some View {
         Button {
-            Task {
-                await 📱.👆register()
-                self.🚩showResult = true
-            }
+            📱.👆register()
         } label: {
             Image(systemName: "checkmark.circle.fill")
                 .font(.system(size: 120))
@@ -22,14 +17,8 @@ struct 👆DoneButton: View { // ☑️
         }
         .accessibilityLabel("DONE")
         .padding()
-        .fullScreenCover(isPresented: self.$🚩showResult) {
+        .fullScreenCover(isPresented: $📱.🚩showResult) {
             🗯ResultView()
-        }
-        .onChange(of: self.scenePhase) {
-            if $0 == .background {
-                self.🚩showResult = false
-                📱.📝resetInputValues()
-            }
         }
     }
 }

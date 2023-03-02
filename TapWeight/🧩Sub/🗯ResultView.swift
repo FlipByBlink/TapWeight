@@ -3,7 +3,6 @@ import HealthKit
 
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationView {
             ZStack {
@@ -58,7 +57,6 @@ struct 🗯ResultView: View {
                         }
                     }
                 }
-                .onDisappear { 📱.ⓡesetResultState() }
                 .navigationBarTitleDisplayMode(.inline)
                 .animation(.default, value: 📱.🚩canceled)
                 .toolbar {
@@ -103,7 +101,7 @@ struct 🗯ResultView: View {
     private func 🅧closeButton() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button {
-                self.dismiss()
+                📱.ⓡesetAppState()
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
             } label: {
                 Image(systemName: "xmark.circle.fill")

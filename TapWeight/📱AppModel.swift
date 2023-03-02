@@ -15,7 +15,9 @@ class 📱AppModel: ObservableObject {
     @Published var 📦latestSamples: [HKQuantityTypeIdentifier: HKQuantitySample] = [:]
     @Published var 📦preferredUnits: [HKQuantityTypeIdentifier: HKUnit] = [:]
     
+    @Published var 🚩showResult: Bool = false
     @Published var 🚨registerError: Bool = false
+    //@Published var 🚨registerationError: 🚨RegistrationError? = nil
     @Published var 🚩canceled: Bool = false
     @Published var 🚨cancelError: Bool = false
     var 📨registeredSamples: [HKQuantitySample] = []
@@ -169,38 +171,52 @@ class 📱AppModel: ObservableObject {
     }
     
     @MainActor
-    func 👆register() async { // ☑️
-        UINotificationFeedbackGenerator().notificationOccurred(.success)
-        guard self.🏥checkSharingAuth() else { return }
-        var ⓢamples: [HKQuantitySample] = []
-        let ⓓate: Date = self.🚩ableDatePicker ? self.📅datePickerValue : .now
-        if let 📝massInputQuantity {
-            ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
-                                            quantity: 📝massInputQuantity,
-                                            start: ⓓate, end: ⓓate))
-        }
-        if self.🚩ableBMI {
-            if let ⓑmiInputValue {
-                ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
-                                                quantity: HKQuantity(unit: .count(),
-                                                                     doubleValue: ⓑmiInputValue),
-                                                start: ⓓate, end: ⓓate))
+    func 👆register() { // ☑️
+        Task { @MainActor in
+            do {
+                var ⓘnputTypes: [HKQuantityTypeIdentifier] = [.bodyMass]
+                if self.🚩ableBMI { ⓘnputTypes.append(.bodyMassIndex) }
+                if self.🚩ableBodyFat { ⓘnputTypes.append(.bodyFatPercentage) }
+                for ⓣype in ⓘnputTypes {
+                    if self.🏥healthStore.authorizationStatus(for: HKQuantityType(ⓣype)) != .sharingAuthorized {
+                        throw 🚨RegistrationError.failedAuth(ⓣype)
+                    }
+                }
+                var ⓢamples: [HKQuantitySample] = []
+                let ⓓate: Date = self.🚩ableDatePicker ? self.📅datePickerValue : .now
+                if let 📝massInputQuantity {
+                    ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
+                                                    quantity: 📝massInputQuantity,
+                                                    start: ⓓate, end: ⓓate))
+                }
+                if self.🚩ableBMI {
+                    if let ⓑmiInputValue {
+                        ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
+                                                        quantity: HKQuantity(unit: .count(),
+                                                                             doubleValue: ⓑmiInputValue),
+                                                        start: ⓓate, end: ⓓate))
+                    }
+                }
+                if self.🚩ableBodyFat {
+                    if let 📝bodyFatInputQuantity {
+                        ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
+                                                        quantity: 📝bodyFatInputQuantity,
+                                                        start: ⓓate, end: ⓓate))
+                    }
+                }
+                try await self.🏥healthStore.save(ⓢamples)
+                self.📨registeredSamples = ⓢamples
+                UINotificationFeedbackGenerator().notificationOccurred(.success)
+            } catch {
+                self.🚨registerError = true
+                print("🚨", error.localizedDescription)
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
             }
+            self.🚩showResult = true
         }
-        if self.🚩ableBodyFat {
-            if let 📝bodyFatInputQuantity {
-                ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
-                                                quantity: 📝bodyFatInputQuantity,
-                                                start: ⓓate, end: ⓓate))
-            }
-        }
-        do {
-            try await self.🏥healthStore.save(ⓢamples)
-            self.📨registeredSamples = ⓢamples
-        } catch {
-            self.🚨registerError = true
-            print("🚨", error.localizedDescription)
-        }
+    }
+    enum 🚨RegistrationError: LocalizedError {
+        case failedAuth(_ type: HKQuantityTypeIdentifier)
     }
     @MainActor
     func 🗑cancel() {
@@ -215,15 +231,18 @@ class 📱AppModel: ObservableObject {
             }
         }
     }
-    func ⓡesetResultState() {
+    @MainActor
+    func ⓡesetAppState() {
+        self.🚩showResult = false
         self.🚨registerError = false
         self.🚩canceled = false
         self.🚨cancelError = false
         self.📨registeredSamples = []
+        self.📝resetInputValues()
     }
     
     @MainActor
-    func 📝resetInputValues() {
+    func 📝resetInputValues() {//FIXME: これもしかして要らないかも
         if let ⓢample = self.📦latestSamples[.bodyMass] {
             self.📝massInputQuantity = ⓢample.quantity
         }
@@ -232,20 +251,6 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    private func 🏥checkSharingAuth() -> Bool {
-        var ⓣypes: [HKQuantityTypeIdentifier] = [.bodyMass]
-        if self.🚩ableBMI { ⓣypes.append(.bodyMassIndex) }
-        if self.🚩ableBodyFat { ⓣypes.append(.bodyFatPercentage) }
-        for ⓣype in ⓣypes {
-            if self.🏥healthStore.authorizationStatus(for: HKQuantityType(ⓣype)) == .sharingAuthorized {
-                continue
-            } else {
-                self.🚨registerError = true
-                return false
-            }
-        }
-        return true
-    }
     func 🏥requestAuth(_ ⓘdentifier: HKQuantityTypeIdentifier) {
         let ⓢhareType: Set<HKQuantityType> = [HKQuantityType(ⓘdentifier)]
         var ⓡeadTypes: Set<HKQuantityType> {
