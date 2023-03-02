@@ -20,5 +20,25 @@ struct 👆DoneButton: View { // ☑️
         .fullScreenCover(isPresented: $📱.🚩showResult) {
             🗯ResultView()
         }
+        .modifier(Self.🚨ErrorAlert())
+    }
+    private struct 🚨ErrorAlert: ViewModifier {
+        @EnvironmentObject var 📱: 📱AppModel
+        func body(content: Content) -> some View {
+            content
+                .alert("ERROR!", isPresented: $📱.🚩alertError) {
+                    Link(destination: URL(string: "x-apple-health://")!) {
+                        Label("Open \"Health\" app", systemImage: "app")
+                    }
+                } message: {
+                    Text(📱.🚨registerationError?.message ?? "🐛")
+                    switch 📱.🚨registerationError {
+                        case .failedAuth(_):
+                            Text("Please check permission on \"Health\" app")
+                        default:
+                            Text("🐛")
+                    }
+                }
+        }
     }
 }

@@ -16,6 +16,7 @@ class 📱AppModel: ObservableObject {
     @Published var 📦preferredUnits: [🏥Category: HKUnit] = [:]
     
     @Published var 🚩showResult: Bool = false
+    @Published var 🚩alertError: Bool = false
     @Published var 🚨registerationError: 🚨RegistrationError? = nil
     @Published var 🚩canceled: Bool = false
     @Published var 🚨cancelError: Bool = false
@@ -195,12 +196,13 @@ class 📱AppModel: ObservableObject {
                 }
                 self.📨registeredSamples = ⓢamples
                 UINotificationFeedbackGenerator().notificationOccurred(.success)
+                self.🚩showResult = true
             } catch {
                 self.🚨registerationError = error as? 🚨RegistrationError
                 print("🚨", error.localizedDescription)
                 UINotificationFeedbackGenerator().notificationOccurred(.error)
+                self.🚩alertError = true
             }
-            self.🚩showResult = true
         }
     }
     @MainActor
