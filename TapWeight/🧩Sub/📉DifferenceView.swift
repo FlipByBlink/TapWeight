@@ -3,7 +3,7 @@ import HealthKit
 
 struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    private var ⓣype: HKQuantityTypeIdentifier
+    private var ⓣype: 🏥HealthStore.Category
     private var ⓓescription: String? { 📱.ⓓifferenceDescriptions[self.ⓣype] }
     private var ⓛastSampleDate: Date? { 📱.📦latestSamples[self.ⓣype]?.startDate }
     var body: some View {
@@ -28,7 +28,7 @@ struct 📉DifferenceView: View {
         .frame(width: 72, height: 48)
         .animation(.default.speed(2), value: 📱.ⓓatePickerIsAlmostNow)
     }
-    init(_ ⓣype: HKQuantityTypeIdentifier) {
+    init(_ ⓣype: 🏥HealthStore.Category) {
         self.ⓣype = ⓣype
     }
 }

@@ -12,8 +12,8 @@ class 📱AppModel: ObservableObject {
     @Published var 📝bodyFatInputQuantity: HKQuantity? = nil
     @Published var 📅datePickerValue: Date = .now
     
-    @Published var 📦latestSamples: [HKQuantityTypeIdentifier: HKQuantitySample] = [:]
-    @Published var 📦preferredUnits: [HKQuantityTypeIdentifier: HKUnit] = [:]
+    @Published var 📦latestSamples: [🏥HealthStore.Category: HKQuantitySample] = [:]
+    @Published var 📦preferredUnits: [🏥HealthStore.Category: HKUnit] = [:]
     
     @Published var 🚩showResult: Bool = false
     @Published var 🚨registerationError: 🚨RegistrationError? = nil
@@ -23,6 +23,7 @@ class 📱AppModel: ObservableObject {
     
     private let 🏥healthStore = HKHealthStore()
     
+    private let ⓐpi = 🏥HealthStore()
     
     //MARK: Computed property
     var ⓜassUnit: HKUnit? { self.📦preferredUnits[.bodyMass] }
@@ -63,15 +64,15 @@ class 📱AppModel: ObservableObject {
     
     var ⓓatePickerIsAlmostNow: Bool { self.📅datePickerValue.timeIntervalSinceNow > -300 }
     
-    var ⓓifferenceDescriptions: [HKQuantityTypeIdentifier: String] {
-        var ⓓescriptions: [HKQuantityTypeIdentifier: String] = [:]
-        for ⓣype: HKQuantityTypeIdentifier in [.bodyMass, .bodyMassIndex, .bodyFatPercentage] {
-            let ⓛastSample = self.📦latestSamples[ⓣype]
+    var ⓓifferenceDescriptions: [🏥HealthStore.Category: String] {
+        var ⓓescriptions: [🏥HealthStore.Category: String] = [:]
+        for ⓒategory: 🏥HealthStore.Category in [.bodyMass, .bodyMassIndex, .bodyFatPercentage] {
+            let ⓛastSample = self.📦latestSamples[ⓒategory]
             var 📉difference: Double? = nil
             if let 📝lastValue = ⓛastSample?.quantity {
-                switch ⓣype {
+                switch ⓒategory {
                     case .bodyMass:
-                        if let ⓤnit = self.📦preferredUnits[ⓣype] {
+                        if let ⓤnit = self.📦preferredUnits[ⓒategory] {
                             if let ⓜassInputValue {
                                 📉difference = round((ⓜassInputValue - 📝lastValue.doubleValue(for: ⓤnit)) * 100) / 100
                             }
@@ -92,22 +93,22 @@ class 📱AppModel: ObservableObject {
                 if let 📉difference {
                     switch 📉difference {
                         case ..<0:
-                            if ⓣype == .bodyMass && self.🚩amount50g {
+                            if ⓒategory == .bodyMass && self.🚩amount50g {
                                 ⓓescriptions[.bodyMass] = String(format: "%.2f", 📉difference)
                             } else {
-                                ⓓescriptions[ⓣype] = 📉difference.description
+                                ⓓescriptions[ⓒategory] = 📉difference.description
                             }
                         case 0:
-                            if ⓣype == .bodyMass && self.🚩amount50g {
+                            if ⓒategory == .bodyMass && self.🚩amount50g {
                                 ⓓescriptions[.bodyMass] = "0.00"
                             } else {
-                                ⓓescriptions[ⓣype] = "0.0"
+                                ⓓescriptions[ⓒategory] = "0.0"
                             }
                         default:
-                            if ⓣype == .bodyMass && self.🚩amount50g {
+                            if ⓒategory == .bodyMass && self.🚩amount50g {
                                 ⓓescriptions[.bodyMass] = "+" + String(format: "%.2f", 📉difference)
                             } else {
-                                ⓓescriptions[ⓣype] = "+" + 📉difference.description
+                                ⓓescriptions[ⓒategory] = "+" + 📉difference.description
                             }
                     }
                 }
@@ -268,68 +269,52 @@ class 📱AppModel: ObservableObject {
         }
     }
     private func 🏥loadLatestSamples() {
-        let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage]
-        for ⓘdentifier in ⓘdentifiers {
-            let ⓢortDescriptors = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
-            let ⓠuery = HKSampleQuery(sampleType: HKQuantityType(ⓘdentifier),
-                                      predicate: nil,
-                                      limit: 1,
-                                      sortDescriptors: [ⓢortDescriptors]) { _, ⓢamples, _ in
-                Task { @MainActor in
-                    if let ⓢamples {
-                        self.📦latestSamples[ⓘdentifier] = ⓢamples.first as? HKQuantitySample
-                        self.📝resetInputValues()
-                    }
-                    if ⓢamples == [] {
-                        switch ⓘdentifier {
-                            case .bodyMass:
-                                if let ⓤnit = self.📦preferredUnits[.bodyMass] {
-                                    switch ⓤnit {
-                                        case .gramUnit(with: .kilo):
-                                            self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 60.0)
-                                        case .pound():
-                                            self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 130.0)
-                                        case .stone():
-                                            self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 10.0)
-                                        default:
-                                            break
-                                    }
+        self.ⓐpi.ⓛoadLatestSamples { ⓒategory, ⓢamples in
+            Task { @MainActor in
+                self.📦latestSamples[ⓒategory] = ⓢamples.first as? HKQuantitySample
+                self.📝resetInputValues()
+                if ⓢamples.isEmpty {
+                    switch ⓒategory {
+                        case .bodyMass:
+                            if let ⓤnit = self.📦preferredUnits[.bodyMass] {
+                                switch ⓤnit {
+                                    case .gramUnit(with: .kilo):
+                                        self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 60.0)
+                                    case .pound():
+                                        self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 130.0)
+                                    case .stone():
+                                        self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 10.0)
+                                    default:
+                                        break
                                 }
-                            case .bodyFatPercentage:
-                                self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
-                            default:
-                                break
-                        }
+                            }
+                        case .bodyFatPercentage:
+                            self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
+                        default:
+                            break
                     }
                 }
             }
-            self.🏥healthStore.execute(ⓠuery)
         }
     }
     @MainActor
     private func 🏥loadPreferredUnits() async {
-        for ⓘdentifier: HKQuantityTypeIdentifier in [.bodyMass, .height] {
-            if let ⓤnit = try? await self.🏥healthStore.preferredUnits(for: [HKQuantityType(ⓘdentifier)]).first?.value {
-                if self.📦preferredUnits[ⓘdentifier] != ⓤnit {
-                    self.📦preferredUnits[ⓘdentifier] = ⓤnit
+        for ⓒategory: 🏥HealthStore.Category in [.bodyMass, .height] {
+            if let ⓤnit = try? await self.🏥healthStore.preferredUnits(for: [ⓒategory.type]).first?.value {
+                if self.📦preferredUnits[ⓒategory] != ⓤnit {
+                    self.📦preferredUnits[ⓒategory] = ⓤnit
                     self.📝resetInputValues()
                 }
             }
         }
     }
     private func 🏥observeChanges() {
-        let ⓘdentifiers: [HKQuantityTypeIdentifier] = [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage]
-        for ⓘdentifier in ⓘdentifiers {
-            let ⓣype = HKQuantityType(ⓘdentifier)
-            let ⓠuery = HKObserverQuery(sampleType: ⓣype, predicate: nil) { _, ⓒompletionHandler, ⓔrror in
-                if ⓔrror != nil { return }
-                Task {
-                    self.🏥loadLatestSamples()
-                    await self.🏥loadPreferredUnits()
-                    ⓒompletionHandler()
-                }
+        self.ⓐpi.ⓞbserveChanges { ⓒompletionHandler in
+            Task { @MainActor in
+                self.🏥loadLatestSamples()
+                await self.🏥loadPreferredUnits()
+                ⓒompletionHandler()
             }
-            self.🏥healthStore.execute(ⓠuery)
         }
     }
 }

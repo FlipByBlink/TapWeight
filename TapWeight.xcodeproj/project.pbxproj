@@ -47,6 +47,7 @@
 		F54292E829B01E2700EFF085 /* 💟JumpButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292E229B01D8300EFF085 /* 💟JumpButton.swift */; };
 		F54292E929B01E2700EFF085 /* 💬RequestUserReview.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */; };
 		F54292EA29B01E2700EFF085 /* 📣ADSheet.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535AA8829AD7EB800691926 /* 📣ADSheet.swift */; };
+		F5E1697129B06ACC00EAFF73 /* 🏥HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥HealthStore.swift */; };
 		F5E2EAAA29415F3D0054A208 /* ℹ️AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E2EAA729415F3C0054A208 /* ℹ️AboutApp.swift */; };
 		F5E2EAAB29415F3D0054A208 /* 📣AD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E2EAA829415F3C0054A208 /* 📣AD.swift */; };
 		F5E2EAAC29415F3D0054A208 /* 🛒InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E2EAA929415F3D0054A208 /* 🛒InAppPurchase.swift */; };
@@ -140,6 +141,7 @@
 		F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📉DifferenceView.swift"; sourceTree = "<group>"; };
 		F54292E229B01D8300EFF085 /* 💟JumpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💟JumpButton.swift"; sourceTree = "<group>"; };
 		F5AC7BE92941982A00490FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5E1697029B06ACC00EAFF73 /* 🏥HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏥HealthStore.swift"; sourceTree = "<group>"; };
 		F5E2EAA729415F3C0054A208 /* ℹ️AboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutApp.swift"; sourceTree = "<group>"; };
 		F5E2EAA829415F3C0054A208 /* 📣AD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣AD.swift"; sourceTree = "<group>"; };
 		F5E2EAA929415F3D0054A208 /* 🛒InAppPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒InAppPurchase.swift"; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			children = (
 				126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */,
 				124C485E284863BA0085B066 /* 📱AppModel.swift */,
+				F5E1697029B06ACC00EAFF73 /* 🏥HealthStore.swift */,
 				126B3EAC282DFEDF009BD28B /* ContentView.swift */,
 				12325789284C5E79002E0057 /* 🧩Sub */,
 				1299C395288D51E20086522B /* 🧰Others */,
@@ -350,6 +353,7 @@
 				12579D162835FE8900536547 /* 🗯ResultView.swift in Sources */,
 				F5E2EAAC29415F3D0054A208 /* 🛒InAppPurchase.swift in Sources */,
 				12630BC32849CD33005F922F /* 🛠AppMenu.swift in Sources */,
+				F5E1697129B06ACC00EAFF73 /* 🏥HealthStore.swift in Sources */,
 				F54292DB29B01C0200EFF085 /* 👆DoneButton.swift in Sources */,
 				F535AA8A29AD7EB800691926 /* 📣ADSheet.swift in Sources */,
 				F54292DF29B01CE300EFF085 /* 📅DatePicker.swift in Sources */,
