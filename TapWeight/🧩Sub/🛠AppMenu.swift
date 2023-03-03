@@ -3,31 +3,18 @@ import SwiftUI
 struct 🛠MenuButton: View { // ⚙️
     @State private var 🚩showMenu: Bool = false
     var body: some View {
-        Button {
-            self.🚩showMenu = true
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        } label: {
-            Image(systemName: "gearshape")
-                .foregroundColor(.primary)
-        }
-        .accessibilityLabel("Open menu")
-        .sheet(isPresented: self.$🚩showMenu) {
+        NavigationLink {
             🛠AppMenu()
+        } label: {
+            Label("Open menu", systemImage: "gearshape")
         }
+        .tint(.primary)
     }
 }
 
 struct 🛠AppMenu: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.dismiss) var dismiss
     var body: some View {
-        if #available(iOS 16.0, *) {
-            NavigationStack { self.ⓒontent() }
-        } else {
-            NavigationView { self.ⓒontent() }
-        }
-    }
-    private func ⓒontent() -> some View {
         List {
             Section {
                 if 📱.ⓜassUnit == .gramUnit(with: .kilo) {
@@ -58,7 +45,6 @@ struct 🛠AppMenu: View {
             📣ADMenuLink()
         }
         .navigationTitle("Menu")
-        .toolbar { self.ⓓismissButton() }
     }
     private func ⓑmiLink() -> some View {
         NavigationLink {
@@ -128,17 +114,5 @@ struct 🛠AppMenu: View {
                     .foregroundColor(.accentColor)
             }
         }
-    }
-    private func ⓓismissButton() -> some View {
-        Button {
-            self.dismiss()
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        } label: {
-            Image(systemName: "chevron.down")
-                .foregroundStyle(.secondary)
-                .grayscale(1.0)
-                .padding(8)
-        }
-        .accessibilityLabel("Dismiss")
     }
 }
