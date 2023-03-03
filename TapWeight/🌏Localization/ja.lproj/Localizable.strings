@@ -9,17 +9,28 @@
 
 // ======== Main View ========
 "DONE" = "完了";
+"Date" = "日時";
+"__Body Mass Index:__ Height data is nothing on \"Health\" app. Register height data." = "__BMI:__ 「ヘルスケア」アプリに身長データがありません。身長データを登録してください。";
 
 // ======== Result View ========
 "DONE!" = "完了!";
-"ERROR!?" = "エラー!?";
 "Canceled" = "取り消しました。";
-"(perhaps error)" = "(たぶん失敗しました)";
+
+// ======== Error ========
+"⚠️ Failed registration" = "⚠️ 登録に失敗しました";
+"Authorization error: " = "アクセス権限エラー: ";
+"No input value: " = "入力が無い項目があります: ";=
+"Save error: %@" = "保存エラー: %@";
+"Delete error: %@" = "削除エラー: %@";
+"⚠️ Failed cancellation" = "⚠️ キャンセルに失敗しました";
 
 // ======== Menu View ========
 "Unit" = "単位";
+"100g → 50g" = "入力単位を0.1kgから0.05kgに変更";
 "50gram" = "50グラム";
+"Formula" = "計算式";
 "Height" = "身長";
+"Required height data access in \"Health\" app." = "「ヘルスケア」アプリの身長データが必要です。";
 "Weight" = "体重";
 "Date picker" = "日時変更フォーム";
 

@@ -35,6 +35,7 @@ struct 🪧BMIView: View {
                     .font(.footnote)
                     .foregroundStyle(.tertiary)
                     .padding(.leading, 32)
+                    .frame(maxHeight: 80)
             }
         }
     }

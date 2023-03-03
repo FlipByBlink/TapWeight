@@ -10,12 +10,6 @@ struct 🚨RegistrationErrorAlert: ViewModifier {
                 }
             } message: {
                 Text(📱.🚨registrationError?.message ?? "🐛")
-                switch 📱.🚨registrationError {
-                    case .failedAuth(_):
-                        Text("Please check permission on \"Health\" app")
-                    default:
-                        Text("🐛")
-                }
             }
     }
 }

@@ -17,13 +17,6 @@ struct 🛠AppMenu: View {
     var body: some View {
         List {
             Section {
-                if 📱.ⓜassUnit == .gramUnit(with: .kilo) {
-                    Toggle(isOn: $📱.🚩amount50g) {
-                        Label("100g → 50g", systemImage: "minus.forwardslash.plus")
-                    }
-                    .font(.subheadline)
-                    .accessibilityLabel("50gram")
-                }
                 self.ⓑmiLink()
                 Toggle(isOn: $📱.🚩ableBodyFat) {
                     Label("Body Fat Percentage", systemImage: "percent")
@@ -36,6 +29,13 @@ struct 🛠AppMenu: View {
                 }
                 .onChange(of: 📱.🚩ableDatePicker) { _ in
                     📱.📅datePickerValue = .now
+                }
+                if 📱.ⓜassUnit == .gramUnit(with: .kilo) {
+                    Toggle(isOn: $📱.🚩amount50g) {
+                        Label("100g → 50g", systemImage: "minus.forwardslash.plus")
+                    }
+                    .font(.subheadline)
+                    .accessibilityLabel("50gram")
                 }
             } header: {
                 Text("Option")
