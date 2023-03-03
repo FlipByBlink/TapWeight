@@ -4,6 +4,7 @@ struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputValue: Double? { 📱.ⓑmiInputValue }
     private var ⓓescription: String? { 📱.📦latestSamples[.height]?.quantity.description }
+    private var ⓐbleDatePicker: Bool { 📱.🚩ableDatePicker }
     var body: some View {
         if let ⓘnputValue, let ⓓescription {
             HStack {
@@ -13,27 +14,26 @@ struct 🪧BMIView: View {
                             .font(.footnote.bold())
                         Text("(\(ⓓescription))")
                             .font(.caption2.weight(.semibold))
-                            .frame(maxHeight: 32)
                     }
+                    .frame(maxHeight: 32)
                     Text(ⓘnputValue.description)
-                        .font(.title2)
+                        .font(self.ⓐbleDatePicker ? .body : .title)
                         .fontWeight(.heavy)
+                        .frame(maxHeight: 42)
                 }
                 .monospacedDigit()
                 Spacer()
                 📉DifferenceView(.bodyMassIndex)
                     .padding(.trailing, 12)
             }
-            .padding(.vertical, 4)
+            .padding(.vertical, self.ⓐbleDatePicker ? 0 : 4)
             .padding(.leading, 32)
             .foregroundStyle(.secondary)
         } else {
-            GroupBox {
-                Text("Height data is nothing on \"Health\" app. Register height data on \"Health\" app.")
-            } label: {
-                Text("Body Mass Index")
-            }
-            .foregroundStyle(.secondary)
+            Text("__Body Mass Index:__ Height data is nothing on \"Health\" app. Register height data.")
+                .font(.footnote)
+                .foregroundStyle(.tertiary)
+                .padding(.leading, 32)
         }
     }
 }

@@ -2,14 +2,14 @@ import SwiftUI
 
 struct 🎚️BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
-    private var 🔠font: Font { 📱.🚩ableDatePicker ? .largeTitle : .system(size: 50) }
+    private var ⓐbleDatePicker: Bool { 📱.🚩ableDatePicker }
     private var ⓘnputQuantityIsNothing: Bool { 📱.📝massInputQuantity == nil }
     var body: some View {
         Stepper {
             HStack {
                 HStack(alignment: .firstTextBaseline) {
                     Text(📱.ⓜassInputDescription)
-                        .font(self.🔠font)
+                        .font(self.ⓐbleDatePicker ? .title : .system(size: 50))
                         .fontWeight(.black)
                         .monospacedDigit()
                     Text(📱.ⓜassUnit?.description ?? "kg")
@@ -29,14 +29,14 @@ struct 🎚️BodyMassStepper: View {
             📱.🎚️changeMassValue(.decrement)
         }
         .lineLimit(1)
-        .padding(8)
-        .padding(.vertical, 4)
+        .padding(.horizontal, 8)
+        .padding(.vertical, self.ⓐbleDatePicker ? 2 : 12)
     }
 }
 
 struct 🎚️BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
-    private var 🔠font: Font { 📱.🚩ableDatePicker ? .largeTitle : .system(size: 50) }
+    private var ⓐbleDatePicker: Bool { 📱.🚩ableDatePicker }
     private var ⓘnputQuantityIsNothing: Bool { 📱.📝bodyFatInputQuantity == nil }
     var body: some View {
         Section {
@@ -44,7 +44,7 @@ struct 🎚️BodyFatStepper: View {
                 HStack {
                     HStack(alignment: .firstTextBaseline, spacing: 6) {
                         Text(📱.ⓑodyFatInputDescription)
-                            .font(self.🔠font)
+                            .font(self.ⓐbleDatePicker ? .title : .system(size: 50))
                             .fontWeight(.black)
                             .monospacedDigit()
                         Text("%")
@@ -64,8 +64,8 @@ struct 🎚️BodyFatStepper: View {
                 📱.🎚️changeBodyFatValue(.decrement)
             }
             .lineLimit(1)
-            .padding(8)
-            .padding(.vertical, 4)
+            .padding(.horizontal, 8)
+            .padding(.vertical, self.ⓐbleDatePicker ? 2 : 12)
         } header: {
             Text("Body Fat Percentage")
         }

@@ -11,9 +11,7 @@ struct 👆DoneButton: View { // ☑️
                 .foregroundStyle(.white, .pink)
         }
         .accessibilityLabel("DONE")
-        .fullScreenCover(isPresented: $📱.🚩showResult) {
-            🗯ResultView()
-        }
+        .fullScreenCover(isPresented: $📱.🚩showResult) { 🗯ResultView() }
         .modifier(Self.🚨ErrorAlert())
     }
     private struct 🚨ErrorAlert: ViewModifier {

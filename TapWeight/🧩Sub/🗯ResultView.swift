@@ -93,7 +93,7 @@ struct 🗯ResultView: View {
         }
     }
     private func 🗑cancelButton() -> some ToolbarContent {
-        ToolbarItem(placement: .bottomBar) {
+        ToolbarItem(placement: .status) {
             Button {
                 📱.🗑cancel()
             } label: {

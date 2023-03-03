@@ -6,16 +6,10 @@ struct 📅DatePicker: View {
     var body: some View {
         if 📱.🚩ableDatePicker {
             Section {
-                VStack(alignment: .trailing, spacing: 0) {
-                    DatePicker(selection: $📱.📅datePickerValue, in: ...Date.now, displayedComponents: .date) {
-                        Text("Date")
-                    }
-                    .datePickerStyle(.graphical)
-                    DatePicker(selection: $📱.📅datePickerValue, in: ...Date.now, displayedComponents: .hourAndMinute) {
-                        Text("HourAndMinute")
-                    }
+                DatePicker(selection: $📱.📅datePickerValue, in: ...Date.now) {
+                    EmptyView()
                 }
-                .labelsHidden()
+                .datePickerStyle(.graphical)
                 .onChange(of: self.scenePhase) {
                     if $0 == .background {
                         📱.📅datePickerValue = .now

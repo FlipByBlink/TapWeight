@@ -164,12 +164,12 @@
 		12325789284C5E79002E0057 /* 🧩Sub */ = {
 			isa = PBXGroup;
 			children = (
-				1232578A284C5EA2002E0057 /* 🎚️Stepper.swift */,
-				F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */,
 				F54292DA29B01C0200EFF085 /* 👆DoneButton.swift */,
+				1232578A284C5EA2002E0057 /* 🎚️Stepper.swift */,
 				F54292DC29B01C4700EFF085 /* 🪧BMIView.swift */,
 				F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */,
 				F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */,
+				F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */,
 				12579D152835FE8900536547 /* 🗯ResultView.swift */,
 				12630BC22849CD33005F922F /* 🛠AppMenu.swift */,
 				F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */,
