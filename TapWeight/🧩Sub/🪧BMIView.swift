@@ -9,7 +9,7 @@ struct 🪧BMIView: View {
         if 📱.🚩ableBMI {
             if let ⓘnputValue, let ⓓescription {
                 HStack {
-                    VStack(alignment: .leading, spacing: -4) {
+                    VStack(alignment: .leading, spacing: -2) {
                         HStack(alignment: .firstTextBaseline, spacing: 4) {
                             Text("Body Mass Index")
                                 .font(.footnote.bold())
