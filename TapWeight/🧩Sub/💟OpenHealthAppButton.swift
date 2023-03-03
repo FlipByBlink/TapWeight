@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 💟JumpButton: View {
+struct 💟OpenHealthAppButton: View {
     var body: some View {
         Link(destination: URL(string: "x-apple-health://")!) {
             Label {
@@ -10,7 +10,9 @@ struct 💟JumpButton: View {
                     .imageScale(.large)
                     .overlay {
                         Image(systemName: "heart")
-                            .imageScale(.small)
+                            .resizable()
+                            .font(.body.weight(.semibold))
+                            .scaleEffect(0.5)
                     }
             }
         }

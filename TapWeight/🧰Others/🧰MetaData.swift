@@ -37,7 +37,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "👆DoneButton.swift",
                         "🪧BMIView.swift",
                         "📉DifferenceView.swift",
-                        "💟JumpButton.swift",
+                        "💟OpenHealthAppButton.swift",
                         "🗯ResultView.swift",
                         "🛠AppMenu.swift",
                         "💬RequestUserReview.swift",

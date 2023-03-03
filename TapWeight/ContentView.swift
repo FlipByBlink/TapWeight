@@ -19,7 +19,7 @@ struct ContentView: View {
             .minimumScaleFactor(0.3)
             .navigationTitle("Body Mass")
             .toolbar {
-                self.ⓙumpButton()
+                self.ⓞpenHealthAppButton()
                 🛠MenuButton() // ⚙️
             }
             .safeAreaInset(edge: .bottom) { 👆DoneButton() } // ☑️
@@ -28,8 +28,8 @@ struct ContentView: View {
             📱.📝resetInputValues()
         }
     }
-    private func ⓙumpButton() -> some View {
-        💟JumpButton()
+    private func ⓞpenHealthAppButton() -> some View {
+        💟OpenHealthAppButton()
             .font(.title2)
             .foregroundColor(.primary)
     }

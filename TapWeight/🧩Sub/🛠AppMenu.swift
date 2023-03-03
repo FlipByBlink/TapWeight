@@ -120,7 +120,7 @@ struct 🛠AppMenu: View {
     private func ⓞpenHealthAppButton() -> some View {
         Section {
             HStack {
-                💟JumpButton()
+                💟OpenHealthAppButton()
                 Spacer()
                 Image(systemName: "arrow.up.forward.app")
                     .font(.body.weight(.light))

@@ -36,7 +36,7 @@ struct 🗯ResultView: View {
                 .toolbar {
                     self.🅧closeButton()
                     self.🗑cancelButton()
-                    self.💟jumpButton()
+                    self.💟openHealthAppButton()
                 }
                 .overlay(alignment: .bottom) {
                     if self.ⓒanceled {
@@ -54,9 +54,9 @@ struct 🗯ResultView: View {
             if $0 == .background { 📱.ⓡesetAppState() }
         }
     }
-    private func 💟jumpButton() -> some ToolbarContent {
+    private func 💟openHealthAppButton() -> some ToolbarContent {
         ToolbarItem {
-            💟JumpButton()
+            💟OpenHealthAppButton()
                 .font(.title)
                 .foregroundColor(.primary)
         }

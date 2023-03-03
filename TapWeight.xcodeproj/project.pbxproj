@@ -39,12 +39,12 @@
 		F54292DD29B01C4700EFF085 /* 🪧BMIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54292DC29B01C4700EFF085 /* 🪧BMIView.swift */; };
 		F54292DF29B01CE300EFF085 /* 📅DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */; };
 		F54292E129B01D3B00EFF085 /* 📉DifferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */; };
-		F54292E329B01D8300EFF085 /* 💟JumpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54292E229B01D8300EFF085 /* 💟JumpButton.swift */; };
+		F54292E329B01D8300EFF085 /* 💟OpenHealthAppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */; };
 		F54292E429B01E2700EFF085 /* 📅DatePicker.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */; };
 		F54292E529B01E2700EFF085 /* 👆DoneButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292DA29B01C0200EFF085 /* 👆DoneButton.swift */; };
 		F54292E629B01E2700EFF085 /* 🪧BMIView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292DC29B01C4700EFF085 /* 🪧BMIView.swift */; };
 		F54292E729B01E2700EFF085 /* 📉DifferenceView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */; };
-		F54292E829B01E2700EFF085 /* 💟JumpButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292E229B01D8300EFF085 /* 💟JumpButton.swift */; };
+		F54292E829B01E2700EFF085 /* 💟OpenHealthAppButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */; };
 		F54292E929B01E2700EFF085 /* 💬RequestUserReview.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */; };
 		F54292EA29B01E2700EFF085 /* 📣ADSheet.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535AA8829AD7EB800691926 /* 📣ADSheet.swift */; };
 		F5E1697129B06ACC00EAFF73 /* 🏥Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */; };
@@ -65,7 +65,7 @@
 				F54292E529B01E2700EFF085 /* 👆DoneButton.swift in CopyFiles */,
 				F54292E629B01E2700EFF085 /* 🪧BMIView.swift in CopyFiles */,
 				F54292E729B01E2700EFF085 /* 📉DifferenceView.swift in CopyFiles */,
-				F54292E829B01E2700EFF085 /* 💟JumpButton.swift in CopyFiles */,
+				F54292E829B01E2700EFF085 /* 💟OpenHealthAppButton.swift in CopyFiles */,
 				F54292E929B01E2700EFF085 /* 💬RequestUserReview.swift in CopyFiles */,
 				F54292EA29B01E2700EFF085 /* 📣ADSheet.swift in CopyFiles */,
 				F535AA7B29AD7BBE00691926 /* TapWeightApp.swift in CopyFiles */,
@@ -139,7 +139,7 @@
 		F54292DC29B01C4700EFF085 /* 🪧BMIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧BMIView.swift"; sourceTree = "<group>"; };
 		F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📅DatePicker.swift"; sourceTree = "<group>"; };
 		F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📉DifferenceView.swift"; sourceTree = "<group>"; };
-		F54292E229B01D8300EFF085 /* 💟JumpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💟JumpButton.swift"; sourceTree = "<group>"; };
+		F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💟OpenHealthAppButton.swift"; sourceTree = "<group>"; };
 		F5AC7BE92941982A00490FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏥Health.swift"; sourceTree = "<group>"; };
 		F5E2EAA729415F3C0054A208 /* ℹ️AboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutApp.swift"; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 				F54292DA29B01C0200EFF085 /* 👆DoneButton.swift */,
 				F54292DC29B01C4700EFF085 /* 🪧BMIView.swift */,
 				F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */,
-				F54292E229B01D8300EFF085 /* 💟JumpButton.swift */,
+				F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */,
 				12579D152835FE8900536547 /* 🗯ResultView.swift */,
 				12630BC22849CD33005F922F /* 🛠AppMenu.swift */,
 				F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */,
@@ -362,7 +362,7 @@
 				F535AA7929AD7ABB00691926 /* 🧰MetaData.swift in Sources */,
 				F54292E129B01D3B00EFF085 /* 📉DifferenceView.swift in Sources */,
 				F54292DD29B01C4700EFF085 /* 🪧BMIView.swift in Sources */,
-				F54292E329B01D8300EFF085 /* 💟JumpButton.swift in Sources */,
+				F54292E329B01D8300EFF085 /* 💟OpenHealthAppButton.swift in Sources */,
 				F535AA8929AD7EB800691926 /* 💬RequestUserReview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
