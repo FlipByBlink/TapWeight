@@ -23,10 +23,14 @@ struct ContentView: View {
         .listStyle(.plain)
         .minimumScaleFactor(0.3)
         .navigationTitle("Body Mass")
-        .safeAreaInset(edge: .bottom) { 👆DoneButton.bottom() } // ☑️
+        .safeAreaInset(edge: .bottom) {
+            if !📱.🚩ableDatePicker { 👆DoneButton.bottom() } // ☑️
+        }
         .modifier(🚨RegistrationErrorAlert())
         .toolbar {
-            👆DoneButton.onToolbar() // ☑️
+            ToolbarItem(placement: .navigationBarLeading) {
+                if 📱.🚩ableDatePicker { 👆DoneButton.onToolbar() } // ☑️
+            }
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 💟OpenHealthAppButton.onMainView()
                 🛠MenuButton() // ⚙️
