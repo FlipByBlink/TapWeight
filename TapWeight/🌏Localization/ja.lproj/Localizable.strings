@@ -2,6 +2,7 @@
 "Body Mass" = "体重";
 "Body Mass Index" = "BMI";
 "Body Fat Percentage" = "体脂肪率";
+"Lean Body Mass" = "除脂肪体重";
 
 "Open \"Health\" app" = "「ヘルスケア」アプリを開く";
 "Registration for \"Health\" app" = "「ヘルスケア」アプリに登録しました。";
@@ -11,6 +12,7 @@
 "DONE" = "完了";
 "Date" = "日時";
 "__Body Mass Index:__ Height data is nothing on \"Health\" app. Register height data." = "__BMI:__ 「ヘルスケア」アプリに身長データがありません。身長データを登録してください。";
+"__Lean Body Mass:__ Error" = "__除脂肪体重:__ エラー";
 
 // ======== Result View ========
 "DONE!" = "完了!";
@@ -32,7 +34,7 @@
 "Height" = "身長";
 "Required height data access in \"Health\" app." = "「ヘルスケア」アプリの身長データが必要です。";
 "Weight" = "体重";
-"Date picker" = "日時変更フォーム";
+"Date picker" = "データの登録日時を入力";
 
 "App for iPhone / Apple Watch" = "iPhone/Apple Watch向けアプリ";
 
