@@ -13,4 +13,24 @@ struct 👆DoneButton: View { // ☑️
         .accessibilityLabel("DONE")
         .fullScreenCover(isPresented: $📱.🚩showResult) { 🗯ResultView() }
     }
+    static func bottom() -> some View {
+        Self()
+            .background {
+                Circle()
+                    .foregroundStyle(.background)
+            }
+            .font(.system(size: 120))
+            .padding()
+    }
+    struct toolbar: ToolbarContent {
+        @EnvironmentObject var 📱: 📱AppModel
+        var body: some ToolbarContent {
+            ToolbarItem(placement: .navigationBarLeading) {
+                if 📱.🚩ableDatePicker {
+                    👆DoneButton()
+                        .font(.title2.bold())
+                }
+            }
+        }
+    }
 }
