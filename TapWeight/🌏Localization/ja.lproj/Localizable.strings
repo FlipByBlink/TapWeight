@@ -19,14 +19,14 @@
 // ======== Error ========
 "⚠️ Failed registration" = "⚠️ 登録に失敗しました";
 "Authorization error: " = "アクセス権限エラー: ";
-"No input value: " = "入力が無い項目があります: ";=
+"No input value: " = "入力が無い項目があります: ";
 "Save error: %@" = "保存エラー: %@";
 "Delete error: %@" = "削除エラー: %@";
 "⚠️ Failed cancellation" = "⚠️ キャンセルに失敗しました";
 
 // ======== Menu View ========
 "Unit" = "単位";
-"100g → 50g" = "入力単位を0.1kgから0.05kgに変更";
+"0.1kg → 0.05kg" = "入力単位を0.1kgから0.05kgに変更";
 "50gram" = "50グラム";
 "Formula" = "計算式";
 "Height" = "身長";

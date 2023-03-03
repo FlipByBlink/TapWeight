@@ -14,9 +14,9 @@ let 🔗appStoreProductURL = URL(string: "https://apps.apple.com/app/id162415972
 let 👤privacyPolicy = """
 2022-05-22
                             
-(English)This application don't collect user infomation.
+(English) This application don't collect user infomation.
 
-(Japanese)このアプリ自身において、ユーザーの情報を一切収集しません。
+(Japanese) このアプリ自身において、ユーザーの情報を一切収集しません。
 """
 
 let 🔗webRepositoryURL = URL(string: "https://github.com/FlipByBlink/TapWeight")!

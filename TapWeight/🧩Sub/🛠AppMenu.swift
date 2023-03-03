@@ -32,7 +32,7 @@ struct 🛠AppMenu: View {
                 }
                 if 📱.ⓜassUnit == .gramUnit(with: .kilo) {
                     Toggle(isOn: $📱.🚩amount50g) {
-                        Label("100g → 50g", systemImage: "minus.forwardslash.plus")
+                        Label("0.1kg → 0.05kg", systemImage: "minus.forwardslash.plus")
                     }
                     .font(.subheadline)
                     .accessibilityLabel("50gram")
@@ -107,6 +107,7 @@ struct 🛠AppMenu: View {
                     .badge(ⓗeightSample.startDate.formatted())
                 } else {
                     Text("Required height data access in \"Health\" app.")
+                    💟OpenHealthAppButton.onMenuView()
                 }
             } header: {
                 Text("Height")
