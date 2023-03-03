@@ -109,6 +109,19 @@ class 📱AppModel: ObservableObject {
         }
     }
     
+    private var ⓣemporaryMassQuantity: HKQuantity {
+        if let ⓜassUnit {
+            switch ⓜassUnit {
+                case .gramUnit(with: .kilo): return HKQuantity(unit: ⓜassUnit, doubleValue: 60.0)
+                case .pound(): return HKQuantity(unit: ⓜassUnit, doubleValue: 130.0)
+                case .stone(): return HKQuantity(unit: ⓜassUnit, doubleValue: 10.0)
+                default: return HKQuantity(unit: ⓜassUnit, doubleValue: 0.0)
+            }
+        } else {
+            return HKQuantity(unit: .gramUnit(with: .kilo), doubleValue: 0.0)
+        }
+    }
+    
     //MARK: Method
     func ⓢetupOnLaunch() {
         self.ⓡequestAuth(.bodyMass)
@@ -249,18 +262,7 @@ class 📱AppModel: ObservableObject {
                 if ⓢamples.isEmpty {
                     switch ⓒategory {
                         case .bodyMass:
-                            if let ⓤnit = self.ⓜassUnit {
-                                switch ⓤnit {
-                                    case .gramUnit(with: .kilo):
-                                        self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 60.0)
-                                    case .pound():
-                                        self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 130.0)
-                                    case .stone():
-                                        self.📝massInputQuantity = HKQuantity(unit: ⓤnit, doubleValue: 10.0)
-                                    default:
-                                        break
-                                }
-                            }
+                            self.📝massInputQuantity = self.ⓣemporaryMassQuantity
                         case .bodyFatPercentage:
                             self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
                         default:
