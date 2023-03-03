@@ -18,17 +18,19 @@ struct ContentView: View {
             .listStyle(.plain)
             .minimumScaleFactor(0.3)
             .navigationTitle("Body Mass")
-            .toolbar { 🛠MenuButton() } // ⚙️
-            .safeAreaInset(edge: .bottom) {
-                HStack(alignment: .firstTextBaseline) {
-                    👆DoneButton() // ☑️
-                    Spacer()
-                    💟JumpButton()
-                }
+            .toolbar {
+                self.ⓙumpButton()
+                🛠MenuButton() // ⚙️
             }
+            .safeAreaInset(edge: .bottom) { 👆DoneButton() } // ☑️
         }
         .onChange(of: self.scenePhase) { _ in
             📱.📝resetInputValues()
         }
+    }
+    private func ⓙumpButton() -> some View {
+        💟JumpButton()
+            .font(.title2)
+            .foregroundColor(.primary)
     }
 }

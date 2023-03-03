@@ -119,24 +119,13 @@ struct 🛠AppMenu: View {
     }
     private func ⓞpenHealthAppButton() -> some View {
         Section {
-            Link (destination: URL(string: "x-apple-health://")!) {
-                HStack {
-                    Label {
-                        Text("Open \"Health\" app")
-                    } icon: {
-                        Image(systemName: "app")
-                            .overlay {
-                                Image(systemName: "heart")
-                                    .scaleEffect(0.55)
-                                    .font(.body.bold())
-                            }
-                            .imageScale(.large)
-                    }
-                    Spacer()
-                    Image(systemName: "arrow.up.forward.app")
-                        .imageScale(.small)
-                        .foregroundStyle(.secondary)
-                }
+            HStack {
+                💟JumpButton()
+                Spacer()
+                Image(systemName: "arrow.up.forward.app")
+                    .font(.body.weight(.light))
+                    .imageScale(.small)
+                    .foregroundColor(.accentColor)
             }
         }
     }

@@ -30,29 +30,23 @@ struct 🗯ResultView: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .opacity(self.ⓒanceled ? 0.5 : 1)
-                    .overlay(alignment: .topTrailing) {
-                        if self.ⓒanceled {
-                            VStack(alignment: .trailing) {
-                                Text("Canceled")
-                                    .fontWeight(.semibold)
-                                if self.ⓒancelError {
-                                    Text("(perhaps error)")
-                                }
-                            }
-                            .padding(.trailing)
-                            .padding(.top, 4)
-                        }
-                    }
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .animation(.default, value: self.ⓒanceled)
                 .toolbar {
                     self.🅧closeButton()
                     self.🗑cancelButton()
+                    self.💟jumpButton()
                 }
-            }
-            .overlay(alignment: .bottomTrailing) {
-                self.💟jumpButton()
+                .overlay(alignment: .bottom) {
+                    if self.ⓒanceled {
+                        VStack {
+                            Text("Canceled")
+                                .fontWeight(.semibold)
+                            if self.ⓒancelError { Text("(perhaps error)") }
+                        }
+                    }
+                }
             }
         }
         .preferredColorScheme(.dark)
@@ -60,19 +54,12 @@ struct 🗯ResultView: View {
             if $0 == .background { 📱.ⓡesetAppState() }
         }
     }
-    private func 💟jumpButton() -> some View {
-        Link(destination: URL(string: "x-apple-health://")!) {
-            Image(systemName: "app")
-                .imageScale(.large)
-                .overlay {
-                    Image(systemName: "heart")
-                        .imageScale(.small)
-                }
-                .font(.largeTitle)
+    private func 💟jumpButton() -> some ToolbarContent {
+        ToolbarItem {
+            💟JumpButton()
+                .font(.title)
+                .foregroundColor(.primary)
         }
-        .foregroundColor(.primary)
-        .accessibilityLabel("Open \"Health\" app")
-        .padding(22)
     }
     private func 🗯SummaryText() -> some View {
         Group {
@@ -106,14 +93,14 @@ struct 🗯ResultView: View {
         }
     }
     private func 🗑cancelButton() -> some ToolbarContent {
-        ToolbarItem(placement: .navigationBarTrailing) {
+        ToolbarItem(placement: .bottomBar) {
             Button {
                 📱.🗑cancel()
             } label: {
                 Image(systemName: "arrow.uturn.backward.circle.fill")
                     .symbolRenderingMode(.hierarchical)
                     .foregroundColor(.primary)
-                    .font(.title)
+                    .font(.title2)
             }
             .disabled(self.ⓒanceled)
             .opacity(self.ⓒanceled ? 0.5 : 1)

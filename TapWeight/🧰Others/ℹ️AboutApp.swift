@@ -92,8 +92,8 @@ struct 🔗AppStoreLink: View {
                 Label("Open AppStore page", systemImage: "link")
                 Spacer()
                 Image(systemName: "arrow.up.forward.app")
+                    .font(.body.weight(.light))
                     .imageScale(.small)
-                    .foregroundStyle(.secondary)
             }
         }
     }
