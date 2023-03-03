@@ -53,6 +53,7 @@ struct 🗯ResultView: View {
         .onChange(of: self.scenePhase) {
             if $0 == .background { 📱.ⓡesetAppState() }
         }
+        .modifier(💬RequestUserReview())
     }
     private func 💟openHealthAppButton() -> some ToolbarContent {
         ToolbarItem {
@@ -100,7 +101,7 @@ struct 🗯ResultView: View {
                 Image(systemName: "arrow.uturn.backward.circle.fill")
                     .symbolRenderingMode(.hierarchical)
                     .foregroundColor(.primary)
-                    .font(.title2)
+                    .font(.title)
             }
             .disabled(self.ⓒanceled)
             .opacity(self.ⓒanceled ? 0.5 : 1)
