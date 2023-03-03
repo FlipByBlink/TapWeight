@@ -64,37 +64,34 @@ class 📱AppModel: ObservableObject {
     var ⓓatePickerIsAlmostNow: Bool { self.📅datePickerValue.timeIntervalSinceNow > -300 }
     
     var ⓓifferenceDescriptions: [🏥Category: String] {
-        var ⓓescriptions: [🏥Category: String] = [:]
-        for (ⓒategory, ⓢample) in self.📦latestSamples {
+        self.📦latestSamples.compactMapValues { ⓢample in
             var 📉difference: Double
-            switch ⓒategory {
-                case .bodyMass:
-                    guard let ⓜassInputValue, let ⓜassUnit else { continue }
+            switch ⓢample.sampleType {
+                case HKQuantityType(.bodyMass):
+                    guard let ⓜassInputValue, let ⓜassUnit else { return nil }
                     📉difference = round((ⓜassInputValue - ⓢample.quantity.doubleValue(for: ⓜassUnit)) * 100) / 100
-                case .bodyMassIndex:
-                    guard let ⓑmiInputValue else { continue }
+                    if self.🚩amount50g {
+                        switch 📉difference {
+                            case ..<0: return String(format: "%.2f", 📉difference)
+                            case 0: return "0.00"
+                            default: return "+" + String(format: "%.2f", 📉difference)
+                        }
+                    }
+                case HKQuantityType(.bodyMassIndex):
+                    guard let ⓑmiInputValue else { return nil }
                     📉difference = round((ⓑmiInputValue - ⓢample.quantity.doubleValue(for: .count())) * 10) / 10
-                case .bodyFatPercentage:
-                    guard let ⓑodyFatInputValue else { continue }
+                case HKQuantityType(.bodyFatPercentage):
+                    guard let ⓑodyFatInputValue else { return nil }
                     📉difference = round((ⓑodyFatInputValue - ⓢample.quantity.doubleValue(for: .percent())) * 1000) / 10
                 default:
-                    continue
+                    return nil
             }
-            if ⓒategory == .bodyMass, self.🚩amount50g {
-                switch 📉difference {
-                    case ..<0: ⓓescriptions[.bodyMass] = String(format: "%.2f", 📉difference)
-                    case 0: ⓓescriptions[.bodyMass] = "0.00"
-                    default: ⓓescriptions[.bodyMass] = "+" + String(format: "%.2f", 📉difference)
-                }
-            } else {
-                switch 📉difference {
-                    case ..<0: ⓓescriptions[ⓒategory] = 📉difference.description
-                    case 0: ⓓescriptions[ⓒategory] = "0.0"
-                    default: ⓓescriptions[ⓒategory] = "+" + 📉difference.description
-                }
+            switch 📉difference {
+                case ..<0: return 📉difference.description
+                case 0: return "0.0"
+                default: return "+" + 📉difference.description
             }
         }
-        return ⓓescriptions
     }
     
     var ⓡesultSummaryDescription: String? {
