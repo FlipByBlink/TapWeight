@@ -97,8 +97,14 @@ struct 🛠AppMenu: View {
             }
             Section {
                 if let ⓗeightSample = 📱.📦latestSamples[.height] {
-                    Text(ⓗeightSample.quantity.description)
-                        .badge(ⓗeightSample.startDate.formatted())
+                    HStack {
+                        Text(ⓗeightSample.quantity.description)
+                        if 📱.ⓗeightUnit == .foot() {
+                            Text("(" + ⓗeightSample.quantity.doubleValue(for: .meter()).description + "m)")
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .badge(ⓗeightSample.startDate.formatted())
                 } else {
                     Text("Required height data access in \"Health\" app.")
                 }
