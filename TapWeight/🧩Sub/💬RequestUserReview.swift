@@ -5,6 +5,10 @@ struct 💬RequestUserReview: ViewModifier {
     func body(content: Content) -> some View {
         content
             .modifier(💬PrepareToRequestUserReview(self.$ⓒheckToRequest))
-            .onAppear { self.ⓒheckToRequest = true }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.ⓒheckToRequest = true
+                }
+            }
     }
 }
