@@ -65,37 +65,32 @@ class 📱AppModel: ObservableObject {
     
     var ⓓifferenceDescriptions: [🏥Category: String] {
         var ⓓescriptions: [🏥Category: String] = [:]
-        self.📦latestSamples.forEach { (ⓒategory, ⓢample) in
-            var 📉difference: Double? = nil
+        for (ⓒategory, ⓢample) in self.📦latestSamples {
+            var 📉difference: Double
             switch ⓒategory {
                 case .bodyMass:
-                    if let ⓜassInputValue, let ⓜassUnit {
-                        📉difference = round((ⓜassInputValue - ⓢample.quantity.doubleValue(for: ⓜassUnit)) * 100) / 100
-                    }
+                    guard let ⓜassInputValue, let ⓜassUnit else { continue }
+                    📉difference = round((ⓜassInputValue - ⓢample.quantity.doubleValue(for: ⓜassUnit)) * 100) / 100
                 case .bodyMassIndex:
-                    if let ⓑmiInputValue {
-                        📉difference = round((ⓑmiInputValue - ⓢample.quantity.doubleValue(for: .count())) * 10) / 10
-                    }
+                    guard let ⓑmiInputValue else { continue }
+                    📉difference = round((ⓑmiInputValue - ⓢample.quantity.doubleValue(for: .count())) * 10) / 10
                 case .bodyFatPercentage:
-                    if let ⓑodyFatInputValue {
-                        📉difference = round((ⓑodyFatInputValue - ⓢample.quantity.doubleValue(for: .percent())) * 1000) / 10
-                    }
+                    guard let ⓑodyFatInputValue else { continue }
+                    📉difference = round((ⓑodyFatInputValue - ⓢample.quantity.doubleValue(for: .percent())) * 1000) / 10
                 default:
-                    break
+                    continue
             }
-            if let 📉difference {
-                if ⓒategory == .bodyMass, self.🚩amount50g {
-                    switch 📉difference {
-                        case ..<0: ⓓescriptions[.bodyMass] = String(format: "%.2f", 📉difference)
-                        case 0: ⓓescriptions[.bodyMass] = "0.00"
-                        default: ⓓescriptions[.bodyMass] = "+" + String(format: "%.2f", 📉difference)
-                    }
-                } else {
-                    switch 📉difference {
-                        case ..<0: ⓓescriptions[ⓒategory] = 📉difference.description
-                        case 0: ⓓescriptions[ⓒategory] = "0.0"
-                        default: ⓓescriptions[ⓒategory] = "+" + 📉difference.description
-                    }
+            if ⓒategory == .bodyMass, self.🚩amount50g {
+                switch 📉difference {
+                    case ..<0: ⓓescriptions[.bodyMass] = String(format: "%.2f", 📉difference)
+                    case 0: ⓓescriptions[.bodyMass] = "0.00"
+                    default: ⓓescriptions[.bodyMass] = "+" + String(format: "%.2f", 📉difference)
+                }
+            } else {
+                switch 📉difference {
+                    case ..<0: ⓓescriptions[ⓒategory] = 📉difference.description
+                    case 0: ⓓescriptions[ⓒategory] = "0.0"
+                    default: ⓓescriptions[ⓒategory] = "+" + 📉difference.description
                 }
             }
         }
