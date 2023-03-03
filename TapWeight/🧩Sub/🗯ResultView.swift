@@ -3,7 +3,6 @@ import HealthKit
 
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.scenePhase) var scenePhase
     private var ⓒanceled: Bool { 📱.🚩completedCancellation }
     var body: some View {
         NavigationView {
@@ -11,38 +10,37 @@ struct 🗯ResultView: View {
                 Rectangle()
                     .foregroundColor(.pink)
                     .ignoresSafeArea()
-                VStack {
-                    VStack(spacing: 16) {
-                        Image(systemName: "checkmark")
-                            .font(.system(size: 96).weight(.semibold))
-                        Text("DONE!")
-                            .strikethrough(self.ⓒanceled)
-                            .font(.system(size: 96).weight(.black))
-                        Text("Registration for \"Health\" app")
-                            .strikethrough(self.ⓒanceled)
-                            .font(.title3.weight(.semibold))
-                        self.🗯SummaryText()
-                    }
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.3)
-                    .padding()
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .opacity(self.ⓒanceled ? 0.5 : 1)
+                VStack(spacing: 16) {
+                    Image(systemName: "checkmark")
+                        .font(.system(size: 96).weight(.semibold))
+                    Text("DONE!")
+                        .strikethrough(self.ⓒanceled)
+                        .font(.system(size: 96).weight(.black))
+                    Text("Registration for \"Health\" app")
+                        .strikethrough(self.ⓒanceled)
+                        .font(.title3.weight(.semibold))
+                    self.🗯SummaryText()
                 }
-                .navigationBarTitleDisplayMode(.inline)
-                .animation(.default, value: self.ⓒanceled)
+                .lineLimit(1)
+                .minimumScaleFactor(0.3)
+                .padding()
+                .padding(.bottom, 120)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .opacity(self.ⓒanceled ? 0.5 : 1)
+                .overlay(alignment: .bottom) {
+                    if self.ⓒanceled { Text("Canceled") }
+                }
                 .toolbar {
                     self.🅧closeButton()
                     self.🗑cancelButton()
                     self.💟openHealthAppButton()
                 }
             }
+            .animation(.default, value: self.ⓒanceled)
+            .navigationBarTitleDisplayMode(.inline)
         }
         .preferredColorScheme(.dark)
-        .onChange(of: self.scenePhase) {
-            if $0 == .background { 📱.ⓡesetAppState() }
-        }
         .modifier(🚨CancellationErrorAlert())
         .modifier(💬RequestUserReview())
     }
@@ -73,7 +71,7 @@ struct 🗯ResultView: View {
     private func 🅧closeButton() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button {
-                📱.ⓡesetAppState()
+                📱.ⓒloseResultView()
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
             } label: {
                 Image(systemName: "xmark.circle.fill")

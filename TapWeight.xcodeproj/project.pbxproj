@@ -23,6 +23,8 @@
 		1299C3B9288D77270086522B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1299C3B8288D77270086522B /* Launch Screen.storyboard */; };
 		12BA83CE28606047009E7E3F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12BA83CD28606047009E7E3F /* StoreKit.framework */; };
 		F535719329B1AFB80003FD2C /* 🚨ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
+		F535719429B1B9FF0003FD2C /* 🏥Health.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */; };
+		F535719529B1B9FF0003FD2C /* 🚨ErrorAlert.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
 		F535AA7929AD7ABB00691926 /* 🧰MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535AA7829AD7ABB00691926 /* 🧰MetaData.swift */; };
 		F535AA7B29AD7BBE00691926 /* TapWeightApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */; };
 		F535AA7C29AD7BBE00691926 /* 📱AppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
@@ -62,6 +64,8 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				F535719429B1B9FF0003FD2C /* 🏥Health.swift in CopyFiles */,
+				F535719529B1B9FF0003FD2C /* 🚨ErrorAlert.swift in CopyFiles */,
 				F54292E429B01E2700EFF085 /* 📅DatePicker.swift in CopyFiles */,
 				F54292E529B01E2700EFF085 /* 👆DoneButton.swift in CopyFiles */,
 				F54292E629B01E2700EFF085 /* 🪧BMIView.swift in CopyFiles */,

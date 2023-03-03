@@ -221,7 +221,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     @MainActor
-    func ⓡesetAppState() {
+    func ⓒloseResultView() {
         self.🚩showResult = false
         self.🚨registrationError = nil
         self.🚩completedCancellation = false
