@@ -15,9 +15,9 @@ struct ContentView: View {
         List {
             Section {
                 🎚️BodyMassStepper()
-                if 📱.🚩ableBMI { 🪧BMIView() }
+                🪧BMIView()
             }
-            if 📱.🚩ableBodyFat { 🎚️BodyFatStepper() }
+            🎚️BodyFatStepper()
             📅DatePicker()
         }
         .listStyle(.plain)
@@ -26,7 +26,7 @@ struct ContentView: View {
         .safeAreaInset(edge: .bottom) { 👆DoneButton.bottom() } // ☑️
         .modifier(🚨RegistrationErrorAlert())
         .toolbar {
-            👆DoneButton.onToolbar()
+            👆DoneButton.onToolbar() // ☑️
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 💟OpenHealthAppButton.onMainView()
                 🛠MenuButton() // ⚙️

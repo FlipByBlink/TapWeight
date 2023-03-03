@@ -49,15 +49,19 @@ struct 🛠AppMenu: View {
     private func ⓑmiLink() -> some View {
         NavigationLink {
             List {
-                Toggle(isOn: $📱.🚩ableBMI) {
-                    Label("Body Mass Index", systemImage: "function")
-                }
-                .onChange(of: 📱.🚩ableBMI) {
-                    if $0 == true { 📱.ⓡequestAuth(.bodyMassIndex) }
+                Section {
+                    Toggle(isOn: $📱.🚩ableBMI) {
+                        Label("Body Mass Index", systemImage: "function")
+                    }
+                    .onChange(of: 📱.🚩ableBMI) {
+                        if $0 == true { 📱.ⓡequestAuth(.bodyMassIndex) }
+                    }
+                } header: {
+                    Text("Option")
                 }
                 self.ⓐboutBMI()
             }
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Body Mass Index")
         } label: {
             Label("Body Mass Index", systemImage: "function")
         }
