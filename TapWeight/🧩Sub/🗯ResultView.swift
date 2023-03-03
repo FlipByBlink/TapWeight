@@ -34,7 +34,7 @@ struct 🗯ResultView: View {
                 .toolbar {
                     self.🅧closeButton()
                     self.🗑cancelButton()
-                    self.💟openHealthAppButton()
+                    💟OpenHealthAppButton.onResultView()
                 }
             }
             .animation(.default, value: self.ⓒanceled)
@@ -43,13 +43,6 @@ struct 🗯ResultView: View {
         .preferredColorScheme(.dark)
         .modifier(🚨CancellationErrorAlert())
         .modifier(💬RequestUserReview())
-    }
-    private func 💟openHealthAppButton() -> some ToolbarContent {
-        ToolbarItem {
-            💟OpenHealthAppButton()
-                .font(.title)
-                .foregroundColor(.primary)
-        }
     }
     private func 🗯SummaryText() -> some View {
         Group {

@@ -23,24 +23,17 @@ struct ContentView: View {
         .listStyle(.plain)
         .minimumScaleFactor(0.3)
         .navigationTitle("Body Mass")
-        .safeAreaInset(edge: .bottom) {
-            if !📱.🚩ableDatePicker { 👆DoneButton.bottom() } // ☑️
-        }
+        .safeAreaInset(edge: .bottom) { 👆DoneButton.bottom() } // ☑️
         .modifier(🚨RegistrationErrorAlert())
         .toolbar {
-            👆DoneButton.toolbar()
+            👆DoneButton.onToolbar()
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                self.ⓞpenHealthAppButton()
+                💟OpenHealthAppButton.onMainView()
                 🛠MenuButton() // ⚙️
             }
         }
         .onChange(of: self.scenePhase) { _ in
             📱.📝resetInputValues()
         }
-    }
-    private func ⓞpenHealthAppButton() -> some View {
-        💟OpenHealthAppButton()
-            .font(.title2)
-            .foregroundColor(.primary)
     }
 }

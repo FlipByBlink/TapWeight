@@ -40,7 +40,7 @@ struct 🛠AppMenu: View {
             } header: {
                 Text("Option")
             }
-            self.ⓞpenHealthAppButton()
+            💟OpenHealthAppButton.onMenuView()
             ℹ️AboutAppLink(name: "TapWeight", subtitle: "App for iPhone / Apple Watch")
             📣ADMenuLink()
         }
@@ -100,18 +100,6 @@ struct 🛠AppMenu: View {
                 }
             } header: {
                 Text("Height")
-            }
-        }
-    }
-    private func ⓞpenHealthAppButton() -> some View {
-        Section {
-            HStack {
-                💟OpenHealthAppButton()
-                Spacer()
-                Image(systemName: "arrow.up.forward.app")
-                    .font(.body.weight(.light))
-                    .imageScale(.small)
-                    .foregroundColor(.accentColor)
             }
         }
     }

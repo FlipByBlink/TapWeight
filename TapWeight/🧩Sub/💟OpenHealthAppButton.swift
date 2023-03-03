@@ -17,4 +17,28 @@ struct 💟OpenHealthAppButton: View {
             }
         }
     }
+    static func onMainView() -> some View {
+        Self()
+            .font(.title2)
+            .foregroundColor(.primary)
+    }
+    static func onResultView() -> some ToolbarContent {
+        ToolbarItem {
+            Self()
+                .font(.title)
+                .foregroundColor(.primary)
+        }
+    }
+    static func onMenuView() -> some View {
+        Section {
+            HStack {
+                Self()
+                Spacer()
+                Image(systemName: "arrow.up.forward.app")
+                    .font(.body.weight(.light))
+                    .imageScale(.small)
+                    .foregroundColor(.accentColor)
+            }
+        }
+    }
 }
