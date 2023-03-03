@@ -18,6 +18,7 @@ struct ContentView: View {
                 🪧BMIView()
             }
             🎚️BodyFatStepper()
+            🪧LBMView()
             📅DatePicker()
         }
         .listStyle(.plain)

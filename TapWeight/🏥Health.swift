@@ -33,7 +33,7 @@ struct 🏥HealthStore {
     }
     
     func ⓛoadLatestSamples(_ ⓗandler: @escaping (🏥Category, [HKSample]) -> Void ) {
-        for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage] {
+        for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
             let ⓢortDescriptors = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
             let ⓠuery = HKSampleQuery(sampleType: ⓒategory.quantityType,
                                       predicate: nil,
@@ -46,7 +46,7 @@ struct 🏥HealthStore {
     }
     
     func ⓞbserveChanges(_ ⓗandler: @escaping (@escaping HKObserverQueryCompletionHandler) -> Void ) {
-        for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage] {
+        for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
             let ⓠuery = HKObserverQuery(sampleType: ⓒategory.quantityType, predicate: nil) { _, ⓒompletionHandler, ⓔrror in
                 if ⓔrror != nil { return }
                 ⓗandler(ⓒompletionHandler)

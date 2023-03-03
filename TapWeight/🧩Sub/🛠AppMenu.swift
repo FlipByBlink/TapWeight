@@ -24,6 +24,12 @@ struct 🛠AppMenu: View {
                 .onChange(of: 📱.🚩ableBodyFat) {
                     if $0 == true { 📱.ⓡequestAuth(.bodyFatPercentage) }
                 }
+                Toggle(isOn: $📱.🚩ableLBM) {
+                    Label("Lean Body Mass", systemImage: "person.badge.minus")
+                }
+                .onChange(of: 📱.🚩ableLBM) {
+                    if $0 == true { 📱.ⓡequestAuth(.leanBodyMass) }
+                }
                 Toggle(isOn: $📱.🚩ableDatePicker) {
                     Label("Date picker", systemImage: "calendar.badge.clock")
                 }

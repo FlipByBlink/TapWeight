@@ -6,6 +6,7 @@ class 📱AppModel: ObservableObject {
     @AppStorage("Amount50g") var 🚩amount50g: Bool = false
     @AppStorage("AbleBMI") var 🚩ableBMI: Bool = false
     @AppStorage("AbleBodyFat") var 🚩ableBodyFat: Bool = false
+    @AppStorage("AbleLBM") var 🚩ableLBM: Bool = false
     @AppStorage("AbleDatePicker") var 🚩ableDatePicker: Bool = false
     
     @Published var 📝massInputQuantity: HKQuantity? = nil
@@ -62,13 +63,27 @@ class 📱AppModel: ObservableObject {
         }
     }
     
+    var ⓛbmInputQuantity: HKQuantity? {
+        guard let ⓜassInputValue, let ⓜassUnit, let ⓑodyFatInputValue else { return nil }
+        let ⓕigure = ⓜassInputValue - (ⓜassInputValue * ⓑodyFatInputValue)
+        return HKQuantity(unit: ⓜassUnit,
+                          doubleValue: round(ⓕigure * 10) / 10)
+    }
+    var ⓛbmInputValue: Double? {
+        guard let ⓛbmInputQuantity, let ⓜassUnit else { return nil }
+        return ⓛbmInputQuantity.doubleValue(for: ⓜassUnit)
+    }
+    var ⓛbmInputDescription: String {
+        String(format: "%.1f", ⓛbmInputValue ?? 0.0) + " " + (ⓜassUnit?.description ?? "kg")
+    }
+    
     var ⓓatePickerIsAlmostNow: Bool { self.📅datePickerValue.timeIntervalSinceNow > -300 }
     
     var ⓓifferenceDescriptions: [🏥Category: String] {
         self.📦latestSamples.compactMapValues { ⓢample in
             var 📉difference: Double
-            switch ⓢample.sampleType {
-                case HKQuantityType(.bodyMass):
+            switch 🏥Category(ⓢample.quantityType) {
+                case .bodyMass:
                     guard let ⓜassInputValue, let ⓜassUnit else { return nil }
                     📉difference = round((ⓜassInputValue - ⓢample.quantity.doubleValue(for: ⓜassUnit)) * 100) / 100
                     if self.🚩amount50g {
@@ -78,13 +93,19 @@ class 📱AppModel: ObservableObject {
                             default: return "+" + String(format: "%.2f", 📉difference)
                         }
                     }
-                case HKQuantityType(.bodyMassIndex):
+                case .bodyMassIndex:
                     guard let ⓑmiInputValue else { return nil }
                     📉difference = round((ⓑmiInputValue - ⓢample.quantity.doubleValue(for: .count())) * 10) / 10
-                case HKQuantityType(.bodyFatPercentage):
+                case .height:
+                    return nil
+                case .bodyFatPercentage:
                     guard let ⓑodyFatInputValue else { return nil }
                     📉difference = round((ⓑodyFatInputValue - ⓢample.quantity.doubleValue(for: .percent())) * 1000) / 10
-                default:
+                case .leanBodyMass:
+                    guard let ⓛbmInputValue, let ⓜassUnit else { return nil }
+                    📉difference = round((ⓛbmInputValue - ⓢample.quantity.doubleValue(for: ⓜassUnit)) * 100) / 100
+                case .none:
+                    assertionFailure()
                     return nil
             }
             switch 📉difference {
@@ -97,14 +118,20 @@ class 📱AppModel: ObservableObject {
     
     var ⓡesultSummaryDescription: String? {
         self.📨registeredSamples.reduce("") { ⓓescription, ⓢample in
-            switch ⓢample.quantityType {
-                case .init(.bodyMass):
+            switch 🏥Category(ⓢample.quantityType) {
+                case .bodyMass:
                     return ⓓescription + ⓢample.quantity.description
-                case .init(.bodyMassIndex):
+                case .bodyMassIndex:
                     return ⓓescription +  " / " + ⓢample.quantity.doubleValue(for: .count()).description
-                case .init(.bodyFatPercentage):
+                case .height:
+                    assertionFailure()
+                    return ⓓescription
+                case .bodyFatPercentage:
                     return ⓓescription +  " / " + ⓢample.quantity.description
-                default:
+                case .leanBodyMass:
+                    return ⓓescription +  " / " + ⓢample.quantity.description
+                case .none:
+                    assertionFailure()
                     return ⓓescription
             }
         }
@@ -186,6 +213,12 @@ class 📱AppModel: ObservableObject {
                     guard let 📝bodyFatInputQuantity else { throw 🚨Error.noInputValue(.bodyFatPercentage) }
                     ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
                                                     quantity: 📝bodyFatInputQuantity,
+                                                    start: ⓓate, end: ⓓate))
+                }
+                if self.🚩ableLBM {
+                    guard let ⓛbmInputQuantity else { throw 🚨Error.noInputValue(.leanBodyMass) }
+                    ⓢamples.append(HKQuantitySample(type: HKQuantityType(.leanBodyMass),
+                                                    quantity: ⓛbmInputQuantity,
                                                     start: ⓓate, end: ⓓate))
                 }
                 do {
