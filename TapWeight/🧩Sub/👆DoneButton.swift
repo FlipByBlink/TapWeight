@@ -13,7 +13,7 @@ struct 👆DoneButton: View { // ☑️
         .accessibilityLabel("DONE")
         .fullScreenCover(isPresented: $📱.🚩showResult) { 🗯ResultView() }
     }
-    static func bottom() -> some View {
+    static func onBottom() -> some View {
         👆DoneButton()
             .background {
                 Circle()

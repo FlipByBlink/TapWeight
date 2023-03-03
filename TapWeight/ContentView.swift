@@ -24,7 +24,7 @@ struct ContentView: View {
         .minimumScaleFactor(0.3)
         .navigationTitle("Body Mass")
         .safeAreaInset(edge: .bottom) {
-            if !📱.🚩ableDatePicker { 👆DoneButton.bottom() } // ☑️
+            if !📱.🚩ableDatePicker { 👆DoneButton.onBottom() } // ☑️
         }
         .modifier(🚨RegistrationErrorAlert())
         .toolbar {
