@@ -57,13 +57,14 @@ struct 🏥HealthStore {
 }
 
 enum 🏥Category {
-    case bodyMass, bodyMassIndex, height, bodyFatPercentage
+    case bodyMass, bodyMassIndex, height, bodyFatPercentage, leanBodyMass
     var identifier: HKQuantityTypeIdentifier {
         switch self {
             case .bodyMass: return .bodyMass
             case .bodyMassIndex: return .bodyMassIndex
             case .height: return .height
             case .bodyFatPercentage: return .bodyFatPercentage
+            case .leanBodyMass: return .leanBodyMass
         }
     }
     var description: String.LocalizationValue {
@@ -72,6 +73,7 @@ enum 🏥Category {
             case .bodyMassIndex: return "Body Mass Index"
             case .height: return "Height"
             case .bodyFatPercentage: return "Body Fat Percentage"
+            case .leanBodyMass: return "Lean Body Mass"
         }
     }
     var quantityType: HKQuantityType {
@@ -80,6 +82,7 @@ enum 🏥Category {
             case .bodyMassIndex: return HKQuantityType(.bodyMassIndex)
             case .height: return HKQuantityType(.height)
             case .bodyFatPercentage: return HKQuantityType(.bodyFatPercentage)
+            case .leanBodyMass: return HKQuantityType(.leanBodyMass)
         }
     }
     init?(_ ⓘdentifier: HKQuantityTypeIdentifier) {
@@ -88,7 +91,22 @@ enum 🏥Category {
             case .bodyMassIndex: self = .bodyMassIndex
             case .height: self = .height
             case .bodyFatPercentage: self = .bodyFatPercentage
-            default: return nil
+            case .leanBodyMass: self = .leanBodyMass
+            default:
+                assertionFailure()
+                return nil
+        }
+    }
+    init?(_ ⓣype: HKQuantityType) {
+        switch ⓣype {
+            case HKQuantityType(.bodyMass): self = .bodyMass
+            case HKQuantityType(.bodyMassIndex): self = .bodyMassIndex
+            case HKQuantityType(.height): self = .height
+            case HKQuantityType(.bodyFatPercentage): self = .bodyFatPercentage
+            case HKQuantityType(.leanBodyMass): self = .leanBodyMass
+            default:
+                assertionFailure()
+                return nil
         }
     }
 }
