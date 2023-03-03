@@ -12,24 +12,19 @@ struct 🛠MenuButton: View { // ⚙️
     }
 }
 
-struct 🛠AppMenu: View {
+private struct 🛠AppMenu: View {
     @EnvironmentObject var 📱: 📱AppModel
     var body: some View {
         List {
             Section {
-                self.ⓑmiLink()
+                🛠BMIMenuLink()
                 Toggle(isOn: $📱.🚩ableBodyFat) {
                     Label("Body Fat Percentage", systemImage: "percent")
                 }
                 .onChange(of: 📱.🚩ableBodyFat) {
                     if $0 == true { 📱.ⓡequestAuth(.bodyFatPercentage) }
                 }
-                Toggle(isOn: $📱.🚩ableLBM) {
-                    Label("Lean Body Mass", systemImage: "person.badge.minus")
-                }
-                .onChange(of: 📱.🚩ableLBM) {
-                    if $0 == true { 📱.ⓡequestAuth(.leanBodyMass) }
-                }
+                🛠LBMMenuLink()
                 Toggle(isOn: $📱.🚩ableDatePicker) {
                     Label("Date picker", systemImage: "calendar.badge.clock")
                 }
@@ -52,7 +47,12 @@ struct 🛠AppMenu: View {
         }
         .navigationTitle("Menu")
     }
-    private func ⓑmiLink() -> some View {
+    
+}
+
+private struct 🛠BMIMenuLink: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    var body: some View {
         NavigationLink {
             List {
                 Section {
@@ -118,6 +118,48 @@ struct 🛠AppMenu: View {
             } header: {
                 Text("Height")
             }
+        }
+    }
+}
+
+private struct 🛠LBMMenuLink: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    var body: some View {
+        NavigationLink {
+            List {
+                Section {
+                    Toggle(isOn: $📱.🚩ableLBM) {
+                        Label("Lean Body Mass", systemImage: "person.badge.minus")
+                    }
+                    .onChange(of: 📱.🚩ableLBM) {
+                        if $0 == true { 📱.ⓡequestAuth(.leanBodyMass) }
+                    }
+                } header: {
+                    Text("Option")
+                }
+                Section {
+                    ZStack {
+                        Color.clear
+                        Text("Body Mass")
+                        +
+                        Text(" - (")
+                        +
+                        Text("Body Mass")
+                        +
+                        Text(" × ")
+                        +
+                        Text("Body Fat Percentage")
+                        +
+                        Text(")")
+                    }
+                    .padding(12)
+                } header: {
+                    Text("Formula")
+                }
+            }
+            .navigationTitle("Lean Body Mass")
+        } label: {
+            Label("Lean Body Mass", systemImage: "person.badge.minus")
         }
     }
 }
