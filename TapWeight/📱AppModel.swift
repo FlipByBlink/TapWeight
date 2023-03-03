@@ -84,25 +84,18 @@ class 📱AppModel: ObservableObject {
                     break
             }
             if let 📉difference {
-                switch 📉difference {
-                    case ..<0:
-                        if ⓒategory == .bodyMass, self.🚩amount50g {
-                            ⓓescriptions[.bodyMass] = String(format: "%.2f", 📉difference)
-                        } else {
-                            ⓓescriptions[ⓒategory] = 📉difference.description
-                        }
-                    case 0:
-                        if ⓒategory == .bodyMass, self.🚩amount50g {
-                            ⓓescriptions[.bodyMass] = "0.00"
-                        } else {
-                            ⓓescriptions[ⓒategory] = "0.0"
-                        }
-                    default:
-                        if ⓒategory == .bodyMass, self.🚩amount50g {
-                            ⓓescriptions[.bodyMass] = "+" + String(format: "%.2f", 📉difference)
-                        } else {
-                            ⓓescriptions[ⓒategory] = "+" + 📉difference.description
-                        }
+                if ⓒategory == .bodyMass, self.🚩amount50g {
+                    switch 📉difference {
+                        case ..<0: ⓓescriptions[.bodyMass] = String(format: "%.2f", 📉difference)
+                        case 0: ⓓescriptions[.bodyMass] = "0.00"
+                        default: ⓓescriptions[.bodyMass] = "+" + String(format: "%.2f", 📉difference)
+                    }
+                } else {
+                    switch 📉difference {
+                        case ..<0: ⓓescriptions[ⓒategory] = 📉difference.description
+                        case 0: ⓓescriptions[ⓒategory] = "0.0"
+                        default: ⓓescriptions[ⓒategory] = "+" + 📉difference.description
+                    }
                 }
             }
         }
