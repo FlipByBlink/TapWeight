@@ -4,7 +4,7 @@ import HealthKit
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.scenePhase) var scenePhase
-    private var ⓒanceled: Bool { 📱.🚩canceled }
+    private var ⓒanceled: Bool { 📱.🚩completedCancellation }
     var body: some View {
         NavigationView {
             ZStack {

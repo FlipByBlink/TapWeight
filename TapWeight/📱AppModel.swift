@@ -17,10 +17,10 @@ class 📱AppModel: ObservableObject {
     
     @Published var 🚩showResult: Bool = false
     @Published var 🚩alertRegistrationError: Bool = false
-    @Published var 🚨registrationError: 🚨Error? = nil
-    @Published var 🚩canceled: Bool = false
+    @Published var 🚩completedCancellation: Bool = false
     @Published var 🚩alertCancellationError: Bool = false
-    @Published var 🚨cancellationError: 🚨Error? = nil
+    var 🚨registrationError: 🚨Error? = nil
+    var 🚨cancellationError: 🚨Error? = nil
     var 📨registeredSamples: [HKQuantitySample] = []
     
     private let 🏥healthStore = 🏥HealthStore()
@@ -210,7 +210,7 @@ class 📱AppModel: ObservableObject {
         Task {
             do {
                 try await self.🏥healthStore.delete(self.📨registeredSamples)
-                self.🚩canceled = true
+                self.🚩completedCancellation = true
                 UINotificationFeedbackGenerator().notificationOccurred(.error)
             } catch {
                 Task { @MainActor in
@@ -224,7 +224,7 @@ class 📱AppModel: ObservableObject {
     func ⓡesetAppState() {
         self.🚩showResult = false
         self.🚨registrationError = nil
-        self.🚩canceled = false
+        self.🚩completedCancellation = false
         self.🚨cancellationError = nil
         self.📨registeredSamples = []
         self.📝resetInputValues()
@@ -310,13 +310,13 @@ enum 🚨Error: Error {
     var message: String {
         switch self {
             case .failedAuth(let ⓒategory):
-                return "Fail auth for " + String(localized: ⓒategory.description)
+                return "Authorization error: " + String(localized: ⓒategory.description)
             case .noInputValue(let ⓒategory):
-                return "No value: " + String(localized: ⓒategory.description)
+                return "No input value: " + String(localized: ⓒategory.description)
             case .saveFailure(let ⓓescription):
-                return "Failed to save: \(ⓓescription)"
+                return "Save error: \(ⓓescription)"
             case .deleteFailure(let ⓓescription):
-                return "Failed to delete: \(ⓓescription)"
+                return "Delete error: \(ⓓescription)"
         }
     }
 }
