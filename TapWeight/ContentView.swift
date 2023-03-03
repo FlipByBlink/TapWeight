@@ -24,6 +24,7 @@ struct ContentView: View {
         .minimumScaleFactor(0.3)
         .navigationTitle("Body Mass")
         .safeAreaInset(edge: .bottom) { self.👆doneBottomButton() } // ☑️
+        .modifier(🚨RegistrationErrorAlert())
         .toolbar {
             self.👆doneToolbarButton()
             ToolbarItemGroup(placement: .navigationBarTrailing) {

@@ -16,10 +16,11 @@ class 📱AppModel: ObservableObject {
     @Published var 📦preferredUnits: [🏥Category: HKUnit] = [:]
     
     @Published var 🚩showResult: Bool = false
-    @Published var 🚩alertError: Bool = false
-    @Published var 🚨registerationError: 🚨RegistrationError? = nil
+    @Published var 🚩alertRegistrationError: Bool = false
+    @Published var 🚨registrationError: 🚨Error? = nil
     @Published var 🚩canceled: Bool = false
-    @Published var 🚨cancelError: Bool = false
+    @Published var 🚩alertCancellationError: Bool = false
+    @Published var 🚨cancellationError: 🚨Error? = nil
     var 📨registeredSamples: [HKQuantitySample] = []
     
     private let 🏥healthStore = 🏥HealthStore()
@@ -165,41 +166,42 @@ class 📱AppModel: ObservableObject {
                 if self.🚩ableBodyFat { ⓒategories.append(.bodyFatPercentage) }
                 for ⓒategory in ⓒategories {
                     guard self.🏥healthStore.authorizationStatus(for: ⓒategory) == .sharingAuthorized else {
-                        throw 🚨RegistrationError.failedAuth(ⓒategory)
+                        throw 🚨Error.failedAuth(ⓒategory)
                     }
                 }
                 var ⓢamples: [HKQuantitySample] = []
                 let ⓓate: Date = self.🚩ableDatePicker ? self.📅datePickerValue : .now
-                guard let 📝massInputQuantity else { throw 🚨RegistrationError.noValue(.bodyMass) }
+                guard let 📝massInputQuantity else { throw 🚨Error.noInputValue(.bodyMass) }
                 ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMass),
                                                 quantity: 📝massInputQuantity,
                                                 start: ⓓate, end: ⓓate))
                 if self.🚩ableBMI {
-                    guard let ⓑmiInputValue else { throw 🚨RegistrationError.noValue(.bodyMassIndex) }
+                    guard let ⓑmiInputValue else { throw 🚨Error.noInputValue(.bodyMassIndex) }
                     ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyMassIndex),
                                                     quantity: HKQuantity(unit: .count(),
                                                                          doubleValue: ⓑmiInputValue),
                                                     start: ⓓate, end: ⓓate))
                 }
                 if self.🚩ableBodyFat {
-                    guard let 📝bodyFatInputQuantity else { throw 🚨RegistrationError.noValue(.bodyFatPercentage) }
+                    guard let 📝bodyFatInputQuantity else { throw 🚨Error.noInputValue(.bodyFatPercentage) }
                     ⓢamples.append(HKQuantitySample(type: HKQuantityType(.bodyFatPercentage),
                                                     quantity: 📝bodyFatInputQuantity,
                                                     start: ⓓate, end: ⓓate))
                 }
                 do {
                     try await self.🏥healthStore.save(ⓢamples)
+                    self.📨registeredSamples = ⓢamples
+                    self.🚩showResult = true
+                    UINotificationFeedbackGenerator().notificationOccurred(.success)
                 } catch {
-                    throw 🚨RegistrationError.saveFailure(error.localizedDescription)
+                    throw 🚨Error.saveFailure(error.localizedDescription)
                 }
-                self.📨registeredSamples = ⓢamples
-                UINotificationFeedbackGenerator().notificationOccurred(.success)
-                self.🚩showResult = true
             } catch {
-                self.🚨registerationError = error as? 🚨RegistrationError
-                print("🚨", error.localizedDescription)
-                UINotificationFeedbackGenerator().notificationOccurred(.error)
-                self.🚩alertError = true
+                Task { @MainActor in
+                    self.🚨registrationError = error as? 🚨Error
+                    self.🚩alertRegistrationError = true
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
+                }
             }
         }
     }
@@ -207,21 +209,23 @@ class 📱AppModel: ObservableObject {
     func 🗑cancel() {
         Task {
             do {
-                self.🚩canceled = true
                 try await self.🏥healthStore.delete(self.📨registeredSamples)
+                self.🚩canceled = true
                 UINotificationFeedbackGenerator().notificationOccurred(.error)
             } catch {
-                self.🚨cancelError = true
-                print("🚨", error.localizedDescription)
+                Task { @MainActor in
+                    self.🚨cancellationError = .deleteFailure(error.localizedDescription)
+                    self.🚩alertCancellationError = true
+                }
             }
         }
     }
     @MainActor
     func ⓡesetAppState() {
         self.🚩showResult = false
-        self.🚨registerationError = nil
+        self.🚨registrationError = nil
         self.🚩canceled = false
-        self.🚨cancelError = false
+        self.🚨cancellationError = nil
         self.📨registeredSamples = []
         self.📝resetInputValues()
     }
@@ -298,18 +302,21 @@ enum 🅂tepperAction {
     case increment, decrement
 }
 
-enum 🚨RegistrationError: Error {
+enum 🚨Error: Error {
     case failedAuth(🏥Category)
-    case noValue(🏥Category)
+    case noInputValue(🏥Category)
     case saveFailure(String)
+    case deleteFailure(String)
     var message: String {
         switch self {
             case .failedAuth(let ⓒategory):
                 return "Fail auth for " + String(localized: ⓒategory.description)
-            case .noValue(let ⓒategory):
+            case .noInputValue(let ⓒategory):
                 return "No value: " + String(localized: ⓒategory.description)
             case .saveFailure(let ⓓescription):
                 return "Failed to save: \(ⓓescription)"
+            case .deleteFailure(let ⓓescription):
+                return "Failed to delete: \(ⓓescription)"
         }
     }
 }

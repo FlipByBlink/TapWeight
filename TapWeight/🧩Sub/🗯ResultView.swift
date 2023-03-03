@@ -5,7 +5,6 @@ struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.scenePhase) var scenePhase
     private var ⓒanceled: Bool { 📱.🚩canceled }
-    private var ⓒancelError: Bool { 📱.🚨cancelError }
     var body: some View {
         NavigationView {
             ZStack {
@@ -38,21 +37,13 @@ struct 🗯ResultView: View {
                     self.🗑cancelButton()
                     self.💟openHealthAppButton()
                 }
-                .overlay(alignment: .bottom) {
-                    if self.ⓒanceled {
-                        VStack {
-                            Text("Canceled")
-                                .fontWeight(.semibold)
-                            if self.ⓒancelError { Text("(perhaps error)") }
-                        }
-                    }
-                }
             }
         }
         .preferredColorScheme(.dark)
         .onChange(of: self.scenePhase) {
             if $0 == .background { 📱.ⓡesetAppState() }
         }
+        .modifier(🚨CancellationErrorAlert())
         .modifier(💬RequestUserReview())
     }
     private func 💟openHealthAppButton() -> some ToolbarContent {

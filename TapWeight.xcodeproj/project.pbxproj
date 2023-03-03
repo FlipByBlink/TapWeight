@@ -22,6 +22,7 @@
 		1299C3A4288D674B0086522B /* 🌏VersionDescription.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1299C3A6288D674B0086522B /* 🌏VersionDescription.strings */; };
 		1299C3B9288D77270086522B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1299C3B8288D77270086522B /* Launch Screen.storyboard */; };
 		12BA83CE28606047009E7E3F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12BA83CD28606047009E7E3F /* StoreKit.framework */; };
+		F535719329B1AFB80003FD2C /* 🚨ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
 		F535AA7929AD7ABB00691926 /* 🧰MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535AA7829AD7ABB00691926 /* 🧰MetaData.swift */; };
 		F535AA7B29AD7BBE00691926 /* TapWeightApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAA282DFEDF009BD28B /* TapWeightApp.swift */; };
 		F535AA7C29AD7BBE00691926 /* 📱AppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
@@ -132,6 +133,7 @@
 		12AF80DF288ECA8F0047324A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		12AF80E0288ECA8F0047324A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12BA83CD28606047009E7E3F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚨ErrorAlert.swift"; sourceTree = "<group>"; };
 		F535AA7829AD7ABB00691926 /* 🧰MetaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🧰MetaData.swift"; sourceTree = "<group>"; };
 		F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💬RequestUserReview.swift"; sourceTree = "<group>"; };
 		F535AA8829AD7EB800691926 /* 📣ADSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADSheet.swift"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */,
 				F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */,
 				12579D152835FE8900536547 /* 🗯ResultView.swift */,
+				F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */,
 				12630BC22849CD33005F922F /* 🛠AppMenu.swift */,
 				F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */,
 				F535AA8829AD7EB800691926 /* 📣ADSheet.swift */,
@@ -350,6 +353,7 @@
 				1232578B284C5EA2002E0057 /* 🎚️Stepper.swift in Sources */,
 				F5E2EAAB29415F3D0054A208 /* 📣AD.swift in Sources */,
 				124C485F284863BA0085B066 /* 📱AppModel.swift in Sources */,
+				F535719329B1AFB80003FD2C /* 🚨ErrorAlert.swift in Sources */,
 				12579D162835FE8900536547 /* 🗯ResultView.swift in Sources */,
 				F5E2EAAC29415F3D0054A208 /* 🛒InAppPurchase.swift in Sources */,
 				12630BC32849CD33005F922F /* 🛠AppMenu.swift in Sources */,
