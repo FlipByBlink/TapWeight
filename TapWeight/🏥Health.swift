@@ -1,5 +1,5 @@
-import Foundation
 import HealthKit
+import UserNotifications
 
 struct 🏥HealthStore {
     private let ⓐpi = HKHealthStore()
@@ -30,6 +30,10 @@ struct 🏥HealthStore {
     
     func delete(_ ⓢamples: [HKSample]) async throws {
         try await self.ⓐpi.delete(ⓢamples)
+    }
+    
+    func enableBackgroundDelivery(for ⓒategory: 🏥Category) async throws {
+        try await self.ⓐpi.enableBackgroundDelivery(for: ⓒategory.quantityType, frequency: .immediate)
     }
     
     func ⓛoadLatestSamples(_ ⓗandler: @escaping (🏥Category, [HKSample]) -> Void ) {

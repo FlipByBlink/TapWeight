@@ -8,6 +8,8 @@ class 📱AppModel: ObservableObject {
     @AppStorage("AbleBodyFat") var 🚩ableBodyFat: Bool = false
     @AppStorage("AbleLBM") var 🚩ableLBM: Bool = false
     @AppStorage("AbleDatePicker") var 🚩ableDatePicker: Bool = false
+    @AppStorage("BadgeReminder") var 🚩ableBadgeReminder: Bool = false
+    @AppStorage("BannerReminder") var 🚩ableBannerReminder: Bool = false
     
     @Published var 📝massInputQuantity: HKQuantity? = nil
     @Published var 📝bodyFatInputQuantity: HKQuantity? = nil
@@ -327,6 +329,30 @@ class 📱AppModel: ObservableObject {
                 await self.ⓛoadPreferredUnits()
                 ⓒompletionHandler()
             }
+        }
+    }
+    
+    func 🔔setupNotification() {
+        Task {
+            try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])
+            try await self.🏥healthStore.enableBackgroundDelivery(for: .bodyMass)
+            self.🔔refreshNotification()
+        }
+    }
+    func 🔔refreshNotification() {
+        self.🏥healthStore.ⓞbserveChanges { ⓒompletionHandler in
+            //1. 既にセットされていた通知を削除
+            //2. 通知をセット(バッジ/バナー)
+            //3. completionHandlerを呼ぶ
+            let content = UNMutableNotificationContent()
+            content.title = "TITLE"
+            content.subtitle = "SUBTITLE"
+            content.body = "BODY"
+            content.sound = .default
+            content.badge = 1
+            let request = UNNotificationRequest(identifier: "identifier", content: content, trigger: nil)
+            UNUserNotificationCenter.current().add(request)
+            ⓒompletionHandler()
         }
     }
 }

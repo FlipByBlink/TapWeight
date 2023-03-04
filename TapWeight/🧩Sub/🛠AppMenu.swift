@@ -35,9 +35,9 @@ private struct 🛠AppMenu: View {
                     Toggle(isOn: $📱.🚩amount50g) {
                         Label("0.1kg → 0.05kg", systemImage: "minus.forwardslash.plus")
                     }
-                    .font(.subheadline)
                     .accessibilityLabel("50gram")
                 }
+                🛠ReminderMenuLink()
             } header: {
                 Text("Option")
             }
@@ -160,6 +160,50 @@ private struct 🛠LBMMenuLink: View {
             .navigationTitle("Lean Body Mass")
         } label: {
             Label("Lean Body Mass", systemImage: "person.badge.minus")
+        }
+    }
+}
+
+private struct 🛠ReminderMenuLink: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    @State private var ⓣime: Date = .now
+    @State private var ⓓelayCount: Int = 1
+    var body: some View {
+        NavigationLink {
+            List {
+                Section {
+                    Stepper(value: self.$ⓓelayCount, in: 1...31) {
+                        Label("Delay days", systemImage: "bell.slash")
+                            .badge(self.ⓓelayCount)
+                    }
+                }
+                Section {
+                    Toggle(isOn: $📱.🚩ableBadgeReminder) {
+                        Label("Badge reminder", systemImage: "app.badge")
+                    }
+                    .onChange(of: 📱.🚩ableBadgeReminder) {
+                        if $0 == true { 📱.🔔setupNotification() }
+                    }
+                } header: {
+                    Text("Badge notification")
+                }
+                Section {
+                    Toggle(isOn: $📱.🚩ableBannerReminder) {
+                        Label("Banner reminder", systemImage: "platter.filled.top.and.arrow.up.iphone")
+                    }
+                    .onChange(of: 📱.🚩ableBannerReminder) {
+                        if $0 == true { 📱.🔔setupNotification() }
+                    }
+                    DatePicker(selection: self.$ⓣime, displayedComponents: .hourAndMinute) {
+                        Label("Reminder time", systemImage: "clock.arrow.circlepath")
+                    }
+                } header: {
+                    Text("Banner notification")
+                }
+            }
+            .navigationTitle("Reminder")
+        } label: {
+            Label("Reminder notification", systemImage: "bell")
         }
     }
 }
