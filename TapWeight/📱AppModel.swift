@@ -8,9 +8,8 @@ class 📱AppModel: ObservableObject {
     @AppStorage("AbleBodyFat") var 🚩ableBodyFat: Bool = false
     @AppStorage("AbleLBM") var 🚩ableLBM: Bool = false
     @AppStorage("AbleDatePicker") var 🚩ableDatePicker: Bool = false
-    @AppStorage("BadgeReminder") var 🚩ableBadgeReminder: Bool = false
-    @AppStorage("BannerReminder") var 🚩ableBannerReminder: Bool = false
     @AppStorage("AbleReminder") var 🚩ableReminder: Bool = false
+    @AppStorage("BannerReminder") var 🚩ableBannerReminder: Bool = false
     
     @Published var 📝massInputQuantity: HKQuantity? = nil
     @Published var 📝bodyFatInputQuantity: HKQuantity? = nil
@@ -354,9 +353,9 @@ class 📱AppModel: ObservableObject {
                 UNUserNotificationCenter.current().add(request)
                 if self.🚩ableBannerReminder {
                     let content = UNMutableNotificationContent()
-                    content.title = "REMINDER"
-                    content.subtitle = "SUBTITLE"
-                    content.body = "BODY"
+                    content.title = "Body Mass"
+                    content.subtitle = "Reminder"
+                    content.body = "After ⓓayCount"
                     content.sound = .default
                     let request = UNNotificationRequest(identifier: "banner", content: content, trigger: nil)
                     UNUserNotificationCenter.current().add(request)

@@ -211,9 +211,6 @@ private struct 🛠ReminderMenuLink: View {
                     Toggle(isOn: $📱.🚩ableBannerReminder) {
                         Label("Banner notification", systemImage: "platter.filled.top.and.arrow.up.iphone")
                     }
-                    .onChange(of: 📱.🚩ableBannerReminder) {
-                        if $0 == true { 📱.🔔setupNotification() }
-                    }
                     DatePicker(selection: self.$ⓣime, displayedComponents: .hourAndMinute) {
                         Label("Repeat hour", systemImage: "clock.arrow.circlepath")
                     }
