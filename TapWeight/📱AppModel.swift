@@ -10,6 +10,7 @@ class 📱AppModel: ObservableObject {
     @AppStorage("AbleDatePicker") var 🚩ableDatePicker: Bool = false
     @AppStorage("BadgeReminder") var 🚩ableBadgeReminder: Bool = false
     @AppStorage("BannerReminder") var 🚩ableBannerReminder: Bool = false
+    @AppStorage("AbleReminder") var 🚩ableReminder: Bool = false
     
     @Published var 📝massInputQuantity: HKQuantity? = nil
     @Published var 📝bodyFatInputQuantity: HKQuantity? = nil
@@ -344,14 +345,23 @@ class 📱AppModel: ObservableObject {
             //1. 既にセットされていた通知を削除
             //2. 通知をセット(バッジ/バナー)
             //3. completionHandlerを呼ぶ
-            let content = UNMutableNotificationContent()
-            content.title = "TITLE"
-            content.subtitle = "SUBTITLE"
-            content.body = "BODY"
-            content.sound = .default
-            content.badge = 1
-            let request = UNNotificationRequest(identifier: "identifier", content: content, trigger: nil)
-            UNUserNotificationCenter.current().add(request)
+            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            if self.🚩ableReminder {
+                let content = UNMutableNotificationContent()
+                content.badge = 1
+                let request = UNNotificationRequest(identifier: "badge", content: content, trigger: nil)
+                UNUserNotificationCenter.current().add(request)
+                if self.🚩ableBannerReminder {
+                    let content = UNMutableNotificationContent()
+                    content.title = "REMINDER"
+                    content.subtitle = "SUBTITLE"
+                    content.body = "BODY"
+                    content.sound = .default
+                    let request = UNNotificationRequest(identifier: "banner", content: content, trigger: nil)
+                    UNUserNotificationCenter.current().add(request)
+                }
+            }
             ⓒompletionHandler()
         }
     }

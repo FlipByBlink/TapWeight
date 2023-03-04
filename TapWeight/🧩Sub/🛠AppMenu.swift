@@ -172,34 +172,53 @@ private struct 🛠ReminderMenuLink: View {
         NavigationLink {
             List {
                 Section {
+                    Toggle(isOn: $📱.🚩ableReminder) {
+                        Label("Reminder notification", systemImage: "bell")
+                    }
+                    .onChange(of: 📱.🚩ableReminder) {
+                        if $0 == true { 📱.🔔setupNotification() }
+                    }
+                    HStack {
+                        Spacer()
+                        Image(systemName: "app.badge")
+                        Image(systemName: "platter.filled.top.and.arrow.up.iphone")
+                        Spacer()
+                    }.badge("Placeholder")
+                } header: {
+                    Text("Option")
+                }
+                Section {
                     Stepper(value: self.$ⓓelayCount, in: 1...31) {
                         Label("Delay days", systemImage: "bell.slash")
                             .badge(self.ⓓelayCount)
                     }
-                }
-                Section {
-                    Toggle(isOn: $📱.🚩ableBadgeReminder) {
-                        Label("Badge reminder", systemImage: "app.badge")
-                    }
-                    .onChange(of: 📱.🚩ableBadgeReminder) {
-                        if $0 == true { 📱.🔔setupNotification() }
-                    }
-                } header: {
-                    Text("Badge notification")
+                    .disabled(!📱.🚩ableReminder)
+                    Label("Last sample date", systemImage: "calendar.badge.plus")
+                        .badge(Text(📱.📦latestSamples[.bodyMass]?.startDate ?? .now, style: .date))
+                        .foregroundStyle(.secondary)
+                        .font(.subheadline)
+                    Label("Activation date", systemImage: "calendar.badge.exclamationmark")
+                        .badge (
+                            Text((📱.📦latestSamples[.bodyMass]?.startDate ?? .now).addingTimeInterval(60 * 60 * 24 * Double(self.ⓓelayCount)), style: .date)
+                            +
+                            Text("~")
+                        )
+                        .foregroundStyle(.secondary)
+                        .monospacedDigit()
+                        .font(.subheadline)
                 }
                 Section {
                     Toggle(isOn: $📱.🚩ableBannerReminder) {
-                        Label("Banner reminder", systemImage: "platter.filled.top.and.arrow.up.iphone")
+                        Label("Banner notification", systemImage: "platter.filled.top.and.arrow.up.iphone")
                     }
                     .onChange(of: 📱.🚩ableBannerReminder) {
                         if $0 == true { 📱.🔔setupNotification() }
                     }
                     DatePicker(selection: self.$ⓣime, displayedComponents: .hourAndMinute) {
-                        Label("Reminder time", systemImage: "clock.arrow.circlepath")
+                        Label("Repeat hour", systemImage: "clock.arrow.circlepath")
                     }
-                } header: {
-                    Text("Banner notification")
                 }
+                .disabled(!📱.🚩ableReminder)
             }
             .navigationTitle("Reminder")
         } label: {
