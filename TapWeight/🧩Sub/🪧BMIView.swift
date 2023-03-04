@@ -10,12 +10,12 @@ struct 🪧BMIView: View {
             if let ⓘnputValue, let ⓓescription {
                 HStack {
                     VStack(alignment: .leading, spacing: -2) {
-                        HStack(alignment: .firstTextBaseline, spacing: 4) {
+                        Group {
                             Text("Body Mass Index")
-                                .font(.footnote.bold())
-                            Text("(\(ⓓescription))")
-                                .font(.caption2.weight(.semibold))
+                            +
+                            Text(" (\(ⓓescription))")
                         }
+                        .font(.footnote.bold())
                         .frame(maxHeight: 32)
                         Text(ⓘnputValue.description)
                             .font(self.ⓐbleDatePicker ? .body : .title)

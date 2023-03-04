@@ -2,6 +2,7 @@
 "Body Mass" = "Peso";
 "Body Mass Index" = "Índice de masa corporal";
 "Body Fat Percentage" = "Porcentaje de grasa corporal";
+"Lean Body Mass" = "Masa corporal sin grasa";
 
 "Open \"Health\" app" = "Open \"Salud\" app";
 "Registration for \"Health\" app" = "Registration for \"Salud\" app";

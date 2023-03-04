@@ -2,6 +2,7 @@
 "Body Mass" = "Вес";
 "Body Mass Index" = "Индекс массы тела";
 "Body Fat Percentage" = "Процент жира в организме";
+"Lean Body Mass" = "Безжировая масса тела";
 
 "Open \"Health\" app" = "Open \"Здоровье\" app";
 "Registration for \"Health\" app" = "Registration for \"Здоровье\" app";
