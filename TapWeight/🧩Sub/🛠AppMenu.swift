@@ -195,7 +195,7 @@ private struct 🛠ReminderMenuLink: View {
                         if let ⓜassLatestSampleDate = 📱.ⓜassLatestSampleDate {
                             Group {
                                 Label("Last sample", systemImage: "calendar.badge.plus")
-                                    .badge(ⓜassLatestSampleDate.formatted(.dateTime.day().month()))
+                                    .badge(ⓜassLatestSampleDate.formatted(.dateTime.day().month().hour()))
                                 Label("Activation", systemImage: "calendar.badge.exclamationmark")
                                     .badge (ⓜassLatestSampleDate.addingTimeInterval(60 * 60 * 24 * Double(self.ⓓelayCount)).formatted(.dateTime.day().month()) + "~")
                             }
@@ -226,20 +226,20 @@ private struct 🛠ReminderMenuLink: View {
         @EnvironmentObject var 📱: 📱AppModel
         @State private var ⓓeliveredNotifications: [UNNotification] = []
         @State private var ⓟendingNotificationRequests: [UNNotificationRequest] = []
-        var ⓝotifications: [UNTimeIntervalNotificationTrigger] {
-            self.ⓟendingNotificationRequests.compactMap { $0.trigger as? UNTimeIntervalNotificationTrigger }
-        }
         var body: some View {
             List {
                 Section {
-                    ForEach(self.ⓝotifications, id: \.description) { ⓝotification in
-                        VStack(alignment: .leading) {
-                            Text("__nextTriggerDate:__ \((ⓝotification.nextTriggerDate()?.description ?? "?"))")
-                            Text("__timeInterval:__ \((ⓝotification.timeInterval/(60*60*24)).description)* 60 * 60 * 24")
+                    ForEach(self.ⓟendingNotificationRequests, id: \.identifier) { ⓡequest in
+                        if let ⓣrigger = ⓡequest.trigger as? UNTimeIntervalNotificationTrigger {
+                            VStack(alignment: .leading) {
+                                Text("__badge__: \(ⓡequest.content.badge ?? 0)")
+                                Text("__nextTriggerDate:__ \((ⓣrigger.nextTriggerDate()?.formatted() ?? "?"))")
+                                Text("__timeInterval:__ \((ⓣrigger.timeInterval/(60*60*24)).description) * 60 * 60 * 24")
+                            }
                         }
                     }
                 } header: {
-                    Text("notifications")
+                    Text("pendingNotificationRequests")
                 }
                 Section {
                     ForEach(self.ⓓeliveredNotifications, id: \.description) { ⓝ in
@@ -251,17 +251,6 @@ private struct 🛠ReminderMenuLink: View {
                     }
                 } header: {
                     Text("deliveredNotifications")
-                }
-                Section {
-                    ForEach(self.ⓟendingNotificationRequests, id: \.identifier) { ⓝ in
-                        VStack {
-                            Text(ⓝ.identifier)
-                            Text(ⓝ.trigger?.description ?? "no trigger")
-                            Text(ⓝ.content.badge?.description ?? "no badge")
-                        }
-                    }
-                } header: {
-                    Text("pendingNotificationRequests")
                 }
             }
             .navigationTitle("Detail")

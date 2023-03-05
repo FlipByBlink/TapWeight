@@ -366,28 +366,16 @@ class 📱AppModel: ObservableObject {
                     ⓒontent.body = "After " + ⓓay.description
                     ⓒontent.sound = .default
                 }
-                let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(60 * 60 * 24 * ⓓay),
+                let ⓐlertTime = ⓜassLatestSampleDate.addingTimeInterval(Double(60 * 60 * 24 * ⓓay))
+                let ⓣimeInterval = Date.now.distance(to: ⓐlertTime)
+                print("ⓣimeInterval", ⓣimeInterval.description)
+                guard ⓣimeInterval > 0 else { continue }
+                let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: ⓣimeInterval,
                                                                 repeats: false)
                 let ⓡequest = UNNotificationRequest(identifier: ⓓay.description,
                                                     content: ⓒontent,
                                                     trigger: ⓣrigger)
                 self.🔔notification.add(ⓡequest)
-                //if self.🚩ableBannerReminder {
-                //    let ⓒontent = UNMutableNotificationContent()
-                //    ⓒontent.title = "Body Mass"
-                //    ⓒontent.subtitle = "Reminder"
-                //    ⓒontent.body = "After " + ⓓay.description
-                //    ⓒontent.sound = .default
-                //    let ⓓate: Date = ⓜassLatestSampleDate.addingTimeInterval(Double(60 * 60 * 24 * ⓓay))
-                //    var ⓓateComponent = Calendar.current.dateComponents([.month, .day], from: ⓓate)
-                //    ⓓateComponent.hour = Calendar.current.component(.hour, from: self.🕒ReminderHour)
-                //    ⓓateComponent.minute = Calendar.current.component(.minute, from: self.🕒ReminderHour)
-                //    let ⓣrigger = UNCalendarNotificationTrigger(dateMatching: ⓓateComponent, repeats: false)
-                //    let ⓡequest = UNNotificationRequest(identifier: "banner " + ⓓay.description,
-                //                                        content: ⓒontent,
-                //                                        trigger: ⓣrigger)
-                //    self.🔔notification.add(ⓡequest)
-                //}
             }
         }
     }
