@@ -355,9 +355,10 @@ class 📱AppModel: ObservableObject {
             if self.ⓜassLatestSampleDate?.addingTimeInterval(Double(60*60*24*self.🔢delayReminderDaysCount)).compare(.now) == .orderedAscending {
                 let content = UNMutableNotificationContent()
                 content.badge = 100
+                let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
                 let request = UNNotificationRequest(identifier: "badge now",
                                                     content: content,
-                                                    trigger: nil)
+                                                    trigger: ⓣrigger)
                 UNUserNotificationCenter.current().add(request)
             }
             for ⓓay in self.🔢delayReminderDaysCount...31 {
