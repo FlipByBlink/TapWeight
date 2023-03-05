@@ -351,31 +351,29 @@ class 📱AppModel: ObservableObject {
         print("🖨️", #function)
         guard let ⓜassLatestSampleDate else { return }
         self.🔔notification.ⓡemoveAllNotifications()
-        if self.🚩ableReminder {
-            if ⓜassLatestSampleDate.distance(to: .now) > Double(60 * 60 * 24 * self.🔢delayReminderDaysCount) {
-                let ⓒount = Int(ⓜassLatestSampleDate.distance(to: .now) / (60 * 60 * 24))
-                self.🔔notification.ⓢetBadgeNow(ⓒount)
+        guard self.🚩ableReminder else { return }
+        if ⓜassLatestSampleDate.distance(to: .now) > Double(60 * 60 * 24 * self.🔢delayReminderDaysCount) {
+            let ⓒount = Int(ⓜassLatestSampleDate.distance(to: .now) / (60 * 60 * 24))
+            self.🔔notification.ⓢetBadgeNow(ⓒount)
+        }
+        for ⓓay in self.🔢delayReminderDaysCount...31 {
+            let ⓒontent = UNMutableNotificationContent()
+            ⓒontent.badge = ⓓay as NSNumber
+            if self.🚩ableBannerReminder {
+                ⓒontent.title = "Reminder: " + String(localized: "Body Mass")
+                ⓒontent.body = "Passed \(ⓓay.description) days."
+                ⓒontent.sound = .default
             }
-            for ⓓay in self.🔢delayReminderDaysCount...31 {
-                let ⓒontent = UNMutableNotificationContent()
-                ⓒontent.badge = ⓓay as NSNumber
-                if self.🚩ableBannerReminder {
-                    ⓒontent.title = "Body Mass"
-                    ⓒontent.subtitle = "Reminder"
-                    ⓒontent.body = "After " + ⓓay.description
-                    ⓒontent.sound = .default
-                }
-                let ⓐlertTime = ⓜassLatestSampleDate.addingTimeInterval(Double(60 * 60 * 24 * ⓓay))
-                let ⓣimeInterval = Date.now.distance(to: ⓐlertTime)
-                print("ⓣimeInterval", ⓣimeInterval.description)
-                guard ⓣimeInterval > 0 else { continue }
-                let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: ⓣimeInterval,
-                                                                repeats: false)
-                let ⓡequest = UNNotificationRequest(identifier: ⓓay.description,
-                                                    content: ⓒontent,
-                                                    trigger: ⓣrigger)
-                self.🔔notification.add(ⓡequest)
-            }
+            let ⓐlertTime = ⓜassLatestSampleDate.addingTimeInterval(Double(60 * 60 * 24 * ⓓay))
+            let ⓣimeInterval = Date.now.distance(to: ⓐlertTime)
+            print("ⓣimeInterval", ⓣimeInterval.description)
+            guard ⓣimeInterval > 0 else { continue }
+            let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: ⓣimeInterval,
+                                                            repeats: false)
+            let ⓡequest = UNNotificationRequest(identifier: ⓓay.description,
+                                                content: ⓒontent,
+                                                trigger: ⓣrigger)
+            self.🔔notification.add(ⓡequest)
         }
     }
 }
