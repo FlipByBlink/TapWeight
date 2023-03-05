@@ -1,5 +1,4 @@
 import HealthKit
-import UserNotifications
 
 struct 🏥HealthStore {
     private let ⓐpi = HKHealthStore()
