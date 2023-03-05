@@ -27,4 +27,12 @@ struct 🔔Notification {
     func add(_ ⓡequest: UNNotificationRequest) {
         self.ⓐpi.add(ⓡequest)
     }
+    
+    func deliveredNotifications() async -> [UNNotification] {
+        await self.ⓐpi.deliveredNotifications()
+    }
+    
+    func pendingNotificationRequests() async -> [UNNotificationRequest] {
+        await self.ⓐpi.pendingNotificationRequests()
+    }
 }

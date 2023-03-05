@@ -215,10 +215,49 @@ private struct 🛠ReminderMenuLink: View {
                     }
                 }
                 .disabled(!📱.🚩ableReminder)
+                NavigationLink("Detail") {
+                    Self.🄳etailNotifications()
+                }
             }
             .navigationTitle("Reminder")
         } label: {
             Label("Reminder notification", systemImage: "bell")
+        }
+    }
+    struct 🄳etailNotifications: View {
+        @EnvironmentObject var 📱: 📱AppModel
+        @State private var ⓓeliveredNotifications: [UNNotification] = []
+        @State private var ⓟendingNotificationRequests: [UNNotificationRequest] = []
+        var body: some View {
+            List {
+                Section {
+                    ForEach(self.ⓓeliveredNotifications, id: \.description) { ⓝ in
+                        VStack {
+                            Text(ⓝ.request.identifier)
+                            Text(ⓝ.date.formatted())
+                            Text(ⓝ.request.content.badge?.description ?? "no badge")
+                        }
+                    }
+                } header: {
+                    Text("deliveredNotifications")
+                }
+                Section {
+                    ForEach(self.ⓟendingNotificationRequests, id: \.identifier) { ⓝ in
+                        VStack {
+                            Text(ⓝ.identifier)
+                            Text(ⓝ.trigger?.description ?? "no trigger")
+                            Text(ⓝ.content.badge?.description ?? "no badge")
+                        }
+                    }
+                } header: {
+                    Text("pendingNotificationRequests")
+                }
+            }
+            .navigationTitle("Detail")
+            .task {
+                self.ⓓeliveredNotifications = await 📱.🔔notification.deliveredNotifications()
+                self.ⓟendingNotificationRequests = await 📱.🔔notification.pendingNotificationRequests()
+            }
         }
     }
 }
