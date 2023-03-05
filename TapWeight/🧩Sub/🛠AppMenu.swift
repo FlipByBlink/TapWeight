@@ -192,18 +192,16 @@ private struct 🛠ReminderMenuLink: View {
                             Label("Delay days", systemImage: "bell.slash")
                                 .badge(self.ⓓelayCount)
                         }
-                        Group {
-                            Label("Last sample", systemImage: "calendar.badge.plus")
-                                .badge(Text(📱.ⓜassLatestSampleDate ?? .now, style: .date))
-                            Label("Activation", systemImage: "calendar.badge.exclamationmark")
-                                .badge (
-                                    Text((📱.ⓜassLatestSampleDate ?? .now).addingTimeInterval(60 * 60 * 24 * Double(self.ⓓelayCount)), style: .date)
-                                    +
-                                    Text("~")
-                                )
+                        if let ⓜassLatestSampleDate = 📱.ⓜassLatestSampleDate {
+                            Group {
+                                Label("Last sample", systemImage: "calendar.badge.plus")
+                                    .badge(ⓜassLatestSampleDate.formatted(.dateTime.day().month()))
+                                Label("Activation", systemImage: "calendar.badge.exclamationmark")
+                                    .badge (ⓜassLatestSampleDate.addingTimeInterval(60 * 60 * 24 * Double(self.ⓓelayCount)).formatted(.dateTime.day().month()) + "~")
+                            }
+                            .monospacedDigit()
+                            .padding(.leading, 12)
                         }
-                        .monospacedDigit()
-                        .padding(.leading, 12)
                     }
                     Section {
                         Toggle(isOn: $📱.🚩ableBannerReminder) {
@@ -234,7 +232,7 @@ private struct 🛠ReminderMenuLink: View {
                     ForEach(self.ⓓeliveredNotifications, id: \.description) { ⓝ in
                         VStack {
                             Text(ⓝ.request.identifier)
-                            Text(ⓝ.date.formatted())
+                            Text(ⓝ.date.formatted(date: .numeric, time: .omitted))
                             Text(ⓝ.request.content.badge?.description ?? "no badge")
                         }
                     }

@@ -39,7 +39,7 @@ struct 🔔Notification {
         self.ⓐpi.add(UNNotificationRequest(identifier: "resetBadge", content: ⓒontent, trigger: nil))
     }
     
-    func setBadge(_ ⓒount: Int) {
+    func setBadgeNow(_ ⓒount: Int) {
         let ⓒontent = UNMutableNotificationContent()
         ⓒontent.badge = ⓒount as NSNumber
         let ⓡequest = UNNotificationRequest(identifier: "badge" + ⓒontent.description,

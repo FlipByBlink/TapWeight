@@ -355,7 +355,7 @@ class 📱AppModel: ObservableObject {
         if self.🚩ableReminder {
             if ⓜassLatestSampleDate.distance(to: .now) > Double(60 * 60 * 24 * self.🔢delayReminderDaysCount) {
                 let ⓒount = Int(ⓜassLatestSampleDate.distance(to: .now) / (60 * 60 * 24))
-                self.🔔notification.setBadge(ⓒount)
+                self.🔔notification.setBadgeNow(ⓒount)
             }
             for ⓓay in self.🔢delayReminderDaysCount...31 {
                 let ⓒontent = UNMutableNotificationContent()
