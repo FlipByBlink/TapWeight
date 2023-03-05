@@ -373,10 +373,11 @@ class 📱AppModel: ObservableObject {
                     ⓒontent.body = "After " + ⓓay.description
                     ⓒontent.sound = .default
                     let ⓕormatter = DateComponentsFormatter()
-                    let ⓓate: Date = .now.addingTimeInterval(Double(60 * 60 * 24 * ⓓay))
-                    var ⓓateComponent = ⓕormatter.calendar?.dateComponents([.month, .day], from: ⓓate)
-                    ⓓateComponent?.hour = ⓕormatter.calendar?.dateComponents([.hour], from: self.🕒ReminderHour).hour
-                    let ⓣrigger = UNCalendarNotificationTrigger(dateMatching: ⓓateComponent!, repeats: false)
+                    let ⓓate: Date = ⓜassLatestSampleDate.addingTimeInterval(Double(60 * 60 * 24 * ⓓay))
+                    var ⓓateComponent = Calendar.current.dateComponents([.month, .day], from: ⓓate)
+                    ⓓateComponent.hour = Calendar.current.component(.hour, from: self.🕒ReminderHour)
+                    ⓓateComponent.minute = Calendar.current.component(.minute, from: self.🕒ReminderHour)
+                    let ⓣrigger = UNCalendarNotificationTrigger(dateMatching: ⓓateComponent, repeats: false)
                     let ⓡequest = UNNotificationRequest(identifier: "banner " + ⓓay.description,
                                                         content: ⓒontent,
                                                         trigger: ⓣrigger)
