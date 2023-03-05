@@ -361,7 +361,9 @@ class 📱AppModel: ObservableObject {
             ⓒontent.badge = ⓓay as NSNumber
             if self.🚩ableBannerReminder {
                 ⓒontent.title = "Reminder: " + String(localized: "Body Mass")
-                ⓒontent.body = "Passed \(ⓓay.description) days." //TODO: 日数表示のローカライズ手法要検討
+                let ⓕormatter = DateComponentsFormatter()
+                ⓕormatter.allowedUnits = [.day]
+                ⓒontent.body = "Passed \(ⓕormatter.string(from: Double(60 * 60 * 24 * ⓓay)) ?? "🐛")."
                 ⓒontent.sound = .default
             }
             let ⓐlertTime = ⓜassLatestSampleDate.addingTimeInterval(Double(60 * 60 * 24 * ⓓay))
