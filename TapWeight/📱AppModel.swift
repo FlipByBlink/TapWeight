@@ -351,7 +351,16 @@ class 📱AppModel: ObservableObject {
         print("🖨️", #function)
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        guard let ⓜassLatestSampleDate else { return }
+        let ⓡesetBadge = {
+            let content = UNMutableNotificationContent()
+            content.badge = 0
+            let request = UNNotificationRequest(identifier: "badge now", content: content, trigger: nil)
+            UNUserNotificationCenter.current().add(request)
+        }
+        guard let ⓜassLatestSampleDate else {
+            ⓡesetBadge()
+            return
+        }
         if self.🚩ableReminder {
             if ⓜassLatestSampleDate.addingTimeInterval(Double(60 * 60 * 24 * self.🔢delayReminderDaysCount)) < .now {
                 let ⓒount = Int(ⓜassLatestSampleDate.distance(to: .now) / (60 * 60 * 24))
@@ -361,6 +370,8 @@ class 📱AppModel: ObservableObject {
                                                     content: content,
                                                     trigger: nil)
                 UNUserNotificationCenter.current().add(request)
+            } else {
+                ⓡesetBadge()
             }
             for ⓓay in self.🔢delayReminderDaysCount...31 {
                 let content = UNMutableNotificationContent()
@@ -388,6 +399,8 @@ class 📱AppModel: ObservableObject {
                     UNUserNotificationCenter.current().add(request)
                 }
             }
+        } else {
+            ⓡesetBadge()
         }
     }
 }
