@@ -372,7 +372,6 @@ class 📱AppModel: ObservableObject {
                     ⓒontent.subtitle = "Reminder"
                     ⓒontent.body = "After " + ⓓay.description
                     ⓒontent.sound = .default
-                    let ⓕormatter = DateComponentsFormatter()
                     let ⓓate: Date = ⓜassLatestSampleDate.addingTimeInterval(Double(60 * 60 * 24 * ⓓay))
                     var ⓓateComponent = Calendar.current.dateComponents([.month, .day], from: ⓓate)
                     ⓓateComponent.hour = Calendar.current.component(.hour, from: self.🕒ReminderHour)

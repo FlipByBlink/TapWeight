@@ -19,6 +19,14 @@ struct 🔔Notification {
         try await self.ⓐpi.requestAuthorization(options: ⓞptions)
     }
     
+    func removeAllDeliveredNotifications() {
+        self.ⓐpi.removeAllDeliveredNotifications()
+    }
+    
+    func removeAllPendingNotificationRequests() {
+        self.ⓐpi.removeAllPendingNotificationRequests()
+    }
+    
     func removeAllNotifications() {
         self.ⓐpi.removeAllDeliveredNotifications()
         self.ⓐpi.removeAllPendingNotificationRequests()
