@@ -27,19 +27,19 @@ struct 🔔Notification {
         self.ⓐpi.removeAllPendingNotificationRequests()
     }
     
-    func removeAllNotifications() {
+    func ⓡemoveAllNotifications() {
         self.ⓐpi.removeAllDeliveredNotifications()
         self.ⓐpi.removeAllPendingNotificationRequests()
-        self.clearBadge()
+        self.ⓒlearBadge()
     }
     
-    func clearBadge() {
+    func ⓒlearBadge() {
         let ⓒontent = UNMutableNotificationContent()
         ⓒontent.badge = 0
         self.ⓐpi.add(UNNotificationRequest(identifier: "resetBadge", content: ⓒontent, trigger: nil))
     }
     
-    func setBadgeNow(_ ⓒount: Int) {
+    func ⓢetBadgeNow(_ ⓒount: Int) {
         let ⓒontent = UNMutableNotificationContent()
         ⓒontent.badge = ⓒount as NSNumber
         let ⓡequest = UNNotificationRequest(identifier: "badge" + ⓒontent.description,

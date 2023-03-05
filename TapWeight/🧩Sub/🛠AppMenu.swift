@@ -226,8 +226,14 @@ private struct 🛠ReminderMenuLink: View {
         @EnvironmentObject var 📱: 📱AppModel
         @State private var ⓓeliveredNotifications: [UNNotification] = []
         @State private var ⓟendingNotificationRequests: [UNNotificationRequest] = []
+        var ⓑadgeNotifications: [UNTimeIntervalNotificationTrigger] {
+            self.ⓟendingNotificationRequests.compactMap { $0.trigger as? UNTimeIntervalNotificationTrigger }
+        }
         var body: some View {
             List {
+                ForEach(self.ⓑadgeNotifications, id: \.description) {
+                    Text($0.nextTriggerDate()?.description ?? "?")
+                }
                 Section {
                     ForEach(self.ⓓeliveredNotifications, id: \.description) { ⓝ in
                         VStack {
