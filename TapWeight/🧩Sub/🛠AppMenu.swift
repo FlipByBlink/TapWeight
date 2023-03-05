@@ -177,6 +177,7 @@ private struct 🛠ReminderMenuLink: View {
                     .onChange(of: 📱.🚩ableReminder) {
                         if $0 == true { 📱.🔔setupNotification() }
                     }
+                    Text("このアプリのアイコンに「前回からの日数」をバッジで表示します。")
                     HStack {
                         Spacer()
                         Image(systemName: "app.badge")
@@ -184,7 +185,6 @@ private struct 🛠ReminderMenuLink: View {
                         Spacer()
                     }
                     .badge("Placeholder")
-                    Text("このアプリのアイコンに「前回からの日数」をバッジで表示します。")
                 } header: {
                     Text("Option")
                 }
@@ -197,9 +197,9 @@ private struct 🛠ReminderMenuLink: View {
                         if let ⓜassLatestSampleDate = 📱.ⓜassLatestSampleDate {
                             Group {
                                 Label("Last sample", systemImage: "calendar.badge.plus")
-                                    .badge(ⓜassLatestSampleDate.formatted(.dateTime.day().month().hour()))
+                                    .badge(ⓜassLatestSampleDate.formatted(.dateTime.day().month().hour().minute()))
                                 Label("Activation", systemImage: "calendar.badge.exclamationmark")
-                                    .badge (ⓜassLatestSampleDate.addingTimeInterval(60 * 60 * 24 * Double(self.ⓓelayCount)).formatted(.dateTime.day().month()) + "~")
+                                    .badge (ⓜassLatestSampleDate.addingTimeInterval(60 * 60 * 24 * Double(self.ⓓelayCount)).formatted(.dateTime.day().month().hour().minute()) + "~")
                             }
                             .monospacedDigit()
                             .padding(.leading, 12)
@@ -217,6 +217,9 @@ private struct 🛠ReminderMenuLink: View {
                 }
             }
             .navigationTitle("Reminder")
+            .onChange(of: 📱.🚩ableReminder) { _ in 📱.🔔refreshNotification() }
+            .onChange(of: 📱.🚩ableBannerReminder) { _ in 📱.🔔refreshNotification() }
+            .onChange(of: 📱.🔢delayReminderDaysCount) { _ in 📱.🔔refreshNotification() }
         } label: {
             Label("Reminder notification", systemImage: "bell")
         }

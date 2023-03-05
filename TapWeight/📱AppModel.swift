@@ -361,15 +361,13 @@ class 📱AppModel: ObservableObject {
             ⓒontent.badge = ⓓay as NSNumber
             if self.🚩ableBannerReminder {
                 ⓒontent.title = "Reminder: " + String(localized: "Body Mass")
-                ⓒontent.body = "Passed \(ⓓay.description) days."
+                ⓒontent.body = "Passed \(ⓓay.description) days." //TODO: 日数表示のローカライズ手法要検討
                 ⓒontent.sound = .default
             }
             let ⓐlertTime = ⓜassLatestSampleDate.addingTimeInterval(Double(60 * 60 * 24 * ⓓay))
             let ⓣimeInterval = Date.now.distance(to: ⓐlertTime)
-            print("ⓣimeInterval", ⓣimeInterval.description)
             guard ⓣimeInterval > 0 else { continue }
-            let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: ⓣimeInterval,
-                                                            repeats: false)
+            let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: ⓣimeInterval, repeats: false)
             let ⓡequest = UNNotificationRequest(identifier: ⓓay.description,
                                                 content: ⓒontent,
                                                 trigger: ⓣrigger)
