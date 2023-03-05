@@ -350,14 +350,12 @@ class 📱AppModel: ObservableObject {
         //2. 通知をセット(バッジ/バナー)
         //3. completionHandlerを呼ぶ
         print("🖨️", #function)
-        self.🔔notification.removeAllNotifications()
         guard let ⓜassLatestSampleDate else { return }
+        self.🔔notification.removeAllNotifications()
         if self.🚩ableReminder {
-            if ⓜassLatestSampleDate.addingTimeInterval(Double(60 * 60 * 24 * self.🔢delayReminderDaysCount)) < .now {
+            if ⓜassLatestSampleDate.distance(to: .now) > Double(60 * 60 * 24 * self.🔢delayReminderDaysCount) {
                 let ⓒount = Int(ⓜassLatestSampleDate.distance(to: .now) / (60 * 60 * 24))
                 self.🔔notification.setBadge(ⓒount)
-            } else {
-                self.🔔notification.clearBadge()
             }
             for ⓓay in self.🔢delayReminderDaysCount...31 {
                 let ⓒontent = UNMutableNotificationContent()
