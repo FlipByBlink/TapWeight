@@ -351,20 +351,22 @@ class 📱AppModel: ObservableObject {
         print("🖨️", #function)
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        guard let ⓜassLatestSampleDate else { return }
         if self.🚩ableReminder {
-            if self.ⓜassLatestSampleDate?.addingTimeInterval(Double(60*60*24*self.🔢delayReminderDaysCount)).compare(.now) == .orderedAscending {
+            if ⓜassLatestSampleDate.addingTimeInterval(Double(60 * 60 * 24 * self.🔢delayReminderDaysCount)) < .now {
+                let ⓒount = Int(ⓜassLatestSampleDate.distance(to: .now) / (60 * 60 * 24))
                 let content = UNMutableNotificationContent()
-                content.badge = 100
-                let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                content.badge = ⓒount as NSNumber
                 let request = UNNotificationRequest(identifier: "badge now",
                                                     content: content,
-                                                    trigger: ⓣrigger)
+                                                    trigger: nil)
                 UNUserNotificationCenter.current().add(request)
             }
             for ⓓay in self.🔢delayReminderDaysCount...31 {
                 let content = UNMutableNotificationContent()
                 content.badge = NSNumber(value: ⓓay)
-                let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(60*60*24*ⓓay), repeats: false)
+                let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(60 * 60 * 24 * ⓓay),
+                                                                repeats: false)
                 let request = UNNotificationRequest(identifier: "badge" + ⓓay.description,
                                                     content: content,
                                                     trigger: ⓣrigger)
