@@ -3,6 +3,22 @@ import UserNotifications
 struct 🔔Notification {
     private let ⓐpi = UNUserNotificationCenter.current()
     
+    func add(_ ⓡequest: UNNotificationRequest) {
+        self.ⓐpi.add(ⓡequest)
+    }
+    
+    func deliveredNotifications() async -> [UNNotification] {
+        await self.ⓐpi.deliveredNotifications()
+    }
+    
+    func pendingNotificationRequests() async -> [UNNotificationRequest] {
+        await self.ⓐpi.pendingNotificationRequests()
+    }
+    
+    func requestAuthorization(_ ⓞptions: UNAuthorizationOptions) async throws {
+        try await self.ⓐpi.requestAuthorization(options: ⓞptions)
+    }
+    
     func removeAllNotifications() {
         self.ⓐpi.removeAllDeliveredNotifications()
         self.ⓐpi.removeAllPendingNotificationRequests()
@@ -22,17 +38,5 @@ struct 🔔Notification {
                                             content: ⓒontent,
                                             trigger: nil)
         self.ⓐpi.add(ⓡequest)
-    }
-    
-    func add(_ ⓡequest: UNNotificationRequest) {
-        self.ⓐpi.add(ⓡequest)
-    }
-    
-    func deliveredNotifications() async -> [UNNotification] {
-        await self.ⓐpi.deliveredNotifications()
-    }
-    
-    func pendingNotificationRequests() async -> [UNNotificationRequest] {
-        await self.ⓐpi.pendingNotificationRequests()
     }
 }

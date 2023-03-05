@@ -341,7 +341,7 @@ class 📱AppModel: ObservableObject {
     let 🔔notification = 🔔Notification()
     func 🔔setupNotification() {
         Task {
-            try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])
+            try await self.🔔notification.requestAuthorization([.badge, .alert, .sound])
             try await self.🏥healthStore.enableBackgroundDelivery(for: .bodyMass)
         }
     }
