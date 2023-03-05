@@ -350,52 +350,41 @@ class 📱AppModel: ObservableObject {
         //2. 通知をセット(バッジ/バナー)
         //3. completionHandlerを呼ぶ
         print("🖨️", #function)
-        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        guard let ⓜassLatestSampleDate else {
-            self.🔔notification.clearBadge()
-            return
-        }
+        self.🔔notification.removeAllNotifications()
+        guard let ⓜassLatestSampleDate else { return }
         if self.🚩ableReminder {
             if ⓜassLatestSampleDate.addingTimeInterval(Double(60 * 60 * 24 * self.🔢delayReminderDaysCount)) < .now {
                 let ⓒount = Int(ⓜassLatestSampleDate.distance(to: .now) / (60 * 60 * 24))
-                let content = UNMutableNotificationContent()
-                content.badge = ⓒount as NSNumber
-                let request = UNNotificationRequest(identifier: "badge now",
-                                                    content: content,
-                                                    trigger: nil)
-                UNUserNotificationCenter.current().add(request)
+                self.🔔notification.setBadge(ⓒount)
             } else {
                 self.🔔notification.clearBadge()
             }
             for ⓓay in self.🔢delayReminderDaysCount...31 {
-                let content = UNMutableNotificationContent()
-                content.badge = NSNumber(value: ⓓay)
+                let ⓒontent = UNMutableNotificationContent()
+                ⓒontent.badge = ⓓay as NSNumber
                 let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(60 * 60 * 24 * ⓓay),
                                                                 repeats: false)
-                let request = UNNotificationRequest(identifier: "badge" + ⓓay.description,
-                                                    content: content,
+                let ⓡequest = UNNotificationRequest(identifier: "badge" + ⓓay.description,
+                                                    content: ⓒontent,
                                                     trigger: ⓣrigger)
-                UNUserNotificationCenter.current().add(request)
+                self.🔔notification.add(ⓡequest)
                 if self.🚩ableBannerReminder {
-                    let content = UNMutableNotificationContent()
-                    content.title = "Body Mass"
-                    content.subtitle = "Reminder"
-                    content.body = "After " + ⓓay.description
-                    content.sound = .default
+                    let ⓒontent = UNMutableNotificationContent()
+                    ⓒontent.title = "Body Mass"
+                    ⓒontent.subtitle = "Reminder"
+                    ⓒontent.body = "After " + ⓓay.description
+                    ⓒontent.sound = .default
                     let ⓕormatter = DateComponentsFormatter()
                     let ⓓate: Date = .now.addingTimeInterval(Double(60 * 60 * 24 * ⓓay))
                     var ⓓateComponent = ⓕormatter.calendar?.dateComponents([.month, .day], from: ⓓate)
                     ⓓateComponent?.hour = ⓕormatter.calendar?.dateComponents([.hour], from: self.🕒ReminderHour).hour
                     let ⓣrigger = UNCalendarNotificationTrigger(dateMatching: ⓓateComponent!, repeats: false)
-                    let request = UNNotificationRequest(identifier: "banner " + ⓓay.description,
-                                                        content: content,
+                    let ⓡequest = UNNotificationRequest(identifier: "banner " + ⓓay.description,
+                                                        content: ⓒontent,
                                                         trigger: ⓣrigger)
-                    UNUserNotificationCenter.current().add(request)
+                    self.🔔notification.add(ⓡequest)
                 }
             }
-        } else {
-            self.🔔notification.clearBadge()
         }
     }
 }
