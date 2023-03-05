@@ -338,6 +338,7 @@ class 📱AppModel: ObservableObject {
         }
     }
     
+    let 🔔notification = 🔔Notification()
     func 🔔setupNotification() {
         Task {
             try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])
@@ -351,14 +352,8 @@ class 📱AppModel: ObservableObject {
         print("🖨️", #function)
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        let ⓡesetBadge = {
-            let content = UNMutableNotificationContent()
-            content.badge = 0
-            let request = UNNotificationRequest(identifier: "badge now", content: content, trigger: nil)
-            UNUserNotificationCenter.current().add(request)
-        }
         guard let ⓜassLatestSampleDate else {
-            ⓡesetBadge()
+            self.🔔notification.clearBadge()
             return
         }
         if self.🚩ableReminder {
@@ -371,7 +366,7 @@ class 📱AppModel: ObservableObject {
                                                     trigger: nil)
                 UNUserNotificationCenter.current().add(request)
             } else {
-                ⓡesetBadge()
+                self.🔔notification.clearBadge()
             }
             for ⓓay in self.🔢delayReminderDaysCount...31 {
                 let content = UNMutableNotificationContent()
@@ -400,7 +395,7 @@ class 📱AppModel: ObservableObject {
                 }
             }
         } else {
-            ⓡesetBadge()
+            self.🔔notification.clearBadge()
         }
     }
 }
