@@ -10,6 +10,8 @@ class 📱AppModel: ObservableObject {
     @AppStorage("AbleDatePicker") var 🚩ableDatePicker: Bool = false
     @AppStorage("AbleReminder") var 🚩ableReminder: Bool = false
     @AppStorage("BannerReminder") var 🚩ableBannerReminder: Bool = false
+    @AppStorage("DelayReminder") var 🔢delayReminderDaysCount: Int = 1
+    @Published var 🕒ReminderHour: Date = .now //TODO: 実装
     
     @Published var 📝massInputQuantity: HKQuantity? = nil
     @Published var 📝bodyFatInputQuantity: HKQuantity? = nil
@@ -40,6 +42,9 @@ class 📱AppModel: ObservableObject {
         } else {
             return self.🚩amount50g ? "00.00" : "00.0"
         }
+    }
+    var ⓜassLatestSampleDate: Date? {
+        self.📦latestSamples[.bodyMass]?.startDate
     }
     
     var ⓑmiInputValue: Double? {
@@ -327,6 +332,7 @@ class 📱AppModel: ObservableObject {
             Task { @MainActor in
                 self.ⓛoadLatestSamples()
                 await self.ⓛoadPreferredUnits()
+                self.🔔refreshNotification()
                 ⓒompletionHandler()
             }
         }
@@ -336,32 +342,49 @@ class 📱AppModel: ObservableObject {
         Task {
             try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])
             try await self.🏥healthStore.enableBackgroundDelivery(for: .bodyMass)
-            self.🔔refreshNotification()
         }
     }
     func 🔔refreshNotification() {
-        self.🏥healthStore.ⓞbserveChanges { ⓒompletionHandler in
-            //1. 既にセットされていた通知を削除
-            //2. 通知をセット(バッジ/バナー)
-            //3. completionHandlerを呼ぶ
-            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-            if self.🚩ableReminder {
+        //1. 既にセットされていた通知を削除
+        //2. 通知をセット(バッジ/バナー)
+        //3. completionHandlerを呼ぶ
+        print("🖨️", #function)
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        if self.🚩ableReminder {
+            if self.ⓜassLatestSampleDate?.addingTimeInterval(Double(60*60*24*self.🔢delayReminderDaysCount)).compare(.now) == .orderedAscending {
                 let content = UNMutableNotificationContent()
-                content.badge = 1
-                let request = UNNotificationRequest(identifier: "badge", content: content, trigger: nil)
+                content.badge = 100
+                let request = UNNotificationRequest(identifier: "badge now",
+                                                    content: content,
+                                                    trigger: nil)
+                UNUserNotificationCenter.current().add(request)
+            }
+            for ⓓay in self.🔢delayReminderDaysCount...31 {
+                let content = UNMutableNotificationContent()
+                content.badge = NSNumber(value: ⓓay)
+                let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(60*60*24*ⓓay), repeats: false)
+                let request = UNNotificationRequest(identifier: "badge" + ⓓay.description,
+                                                    content: content,
+                                                    trigger: ⓣrigger)
                 UNUserNotificationCenter.current().add(request)
                 if self.🚩ableBannerReminder {
                     let content = UNMutableNotificationContent()
                     content.title = "Body Mass"
                     content.subtitle = "Reminder"
-                    content.body = "After ⓓayCount"
+                    content.body = "After " + ⓓay.description
                     content.sound = .default
-                    let request = UNNotificationRequest(identifier: "banner", content: content, trigger: nil)
+                    let ⓕormatter = DateComponentsFormatter()
+                    let ⓓate: Date = .now.addingTimeInterval(Double(60 * 60 * 24 * ⓓay))
+                    var ⓓateComponent = ⓕormatter.calendar?.dateComponents([.month, .day], from: ⓓate)
+                    ⓓateComponent?.hour = ⓕormatter.calendar?.dateComponents([.hour], from: self.🕒ReminderHour).hour
+                    let ⓣrigger = UNCalendarNotificationTrigger(dateMatching: ⓓateComponent!, repeats: false)
+                    let request = UNNotificationRequest(identifier: "banner " + ⓓay.description,
+                                                        content: content,
+                                                        trigger: ⓣrigger)
                     UNUserNotificationCenter.current().add(request)
                 }
             }
-            ⓒompletionHandler()
         }
     }
 }

@@ -166,8 +166,7 @@ private struct 🛠LBMMenuLink: View {
 
 private struct 🛠ReminderMenuLink: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @State private var ⓣime: Date = .now
-    @State private var ⓓelayCount: Int = 1
+    private var ⓓelayCount: Int { 📱.🔢delayReminderDaysCount }
     var body: some View {
         NavigationLink {
             List {
@@ -187,32 +186,32 @@ private struct 🛠ReminderMenuLink: View {
                 } header: {
                     Text("Option")
                 }
-                Section {
-                    Stepper(value: self.$ⓓelayCount, in: 1...31) {
-                        Label("Delay days", systemImage: "bell.slash")
-                            .badge(self.ⓓelayCount)
-                    }
-                    .disabled(!📱.🚩ableReminder)
-                    Label("Last sample date", systemImage: "calendar.badge.plus")
-                        .badge(Text(📱.📦latestSamples[.bodyMass]?.startDate ?? .now, style: .date))
-                        .foregroundStyle(.secondary)
-                        .font(.subheadline)
-                    Label("Activation date", systemImage: "calendar.badge.exclamationmark")
-                        .badge (
-                            Text((📱.📦latestSamples[.bodyMass]?.startDate ?? .now).addingTimeInterval(60 * 60 * 24 * Double(self.ⓓelayCount)), style: .date)
-                            +
-                            Text("~")
-                        )
-                        .foregroundStyle(.secondary)
+                Group {
+                    Section {
+                        Stepper(value: $📱.🔢delayReminderDaysCount, in: 1...31) {
+                            Label("Delay days", systemImage: "bell.slash")
+                                .badge(self.ⓓelayCount)
+                        }
+                        Group {
+                            Label("Last sample", systemImage: "calendar.badge.plus")
+                                .badge(Text(📱.ⓜassLatestSampleDate ?? .now, style: .date))
+                            Label("Activation", systemImage: "calendar.badge.exclamationmark")
+                                .badge (
+                                    Text((📱.ⓜassLatestSampleDate ?? .now).addingTimeInterval(60 * 60 * 24 * Double(self.ⓓelayCount)), style: .date)
+                                    +
+                                    Text("~")
+                                )
+                        }
                         .monospacedDigit()
-                        .font(.subheadline)
-                }
-                Section {
-                    Toggle(isOn: $📱.🚩ableBannerReminder) {
-                        Label("Banner notification", systemImage: "platter.filled.top.and.arrow.up.iphone")
+                        .padding(.leading, 12)
                     }
-                    DatePicker(selection: self.$ⓣime, displayedComponents: .hourAndMinute) {
-                        Label("Repeat hour", systemImage: "clock.arrow.circlepath")
+                    Section {
+                        Toggle(isOn: $📱.🚩ableBannerReminder) {
+                            Label("Banner notification", systemImage: "platter.filled.top.and.arrow.up.iphone")
+                        }
+                        DatePicker(selection: $📱.🕒ReminderHour, displayedComponents: .hourAndMinute) {
+                            Label("Repeat hour", systemImage: "clock.arrow.circlepath")
+                        }
                     }
                 }
                 .disabled(!📱.🚩ableReminder)

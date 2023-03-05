@@ -13,6 +13,23 @@ struct ContentView: View {
     }
     private func ⓒontent() -> some View {
         List {
+            Button("REMOVE badge") {
+                let content = UNMutableNotificationContent()
+                content.badge = 1
+                let request = UNNotificationRequest(identifier: "badge now",
+                                                    content: content,
+                                                    trigger: nil)
+                UNUserNotificationCenter.current().add(request)
+//                UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+//                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+                UNUserNotificationCenter.current().getPendingNotificationRequests { a in
+                    print(a.debugDescription)
+                }
+                UNUserNotificationCenter.current().getDeliveredNotifications { a in
+                    print(a.debugDescription)
+                }
+                
+            }
             Section {
                 🎚️BodyMassStepper()
                 🪧BMIView()
