@@ -11,7 +11,6 @@ class 📱AppModel: ObservableObject {
     @AppStorage("AbleReminder") var 🚩ableReminder: Bool = false
     @AppStorage("BannerReminder") var 🚩ableBannerReminder: Bool = false
     @AppStorage("DelayReminder") var 🔢delayReminderDaysCount: Int = 1
-    @Published var 🕒ReminderHour: Date = .now //TODO: 実装
     
     @Published var 📝massInputQuantity: HKQuantity? = nil
     @Published var 📝bodyFatInputQuantity: HKQuantity? = nil

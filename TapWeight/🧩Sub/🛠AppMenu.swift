@@ -182,7 +182,9 @@ private struct 🛠ReminderMenuLink: View {
                         Image(systemName: "app.badge")
                         Image(systemName: "platter.filled.top.and.arrow.up.iphone")
                         Spacer()
-                    }.badge("Placeholder")
+                    }
+                    .badge("Placeholder")
+                    Text("このアプリのアイコンに「前回からの日数」をバッジで表示します。")
                 } header: {
                     Text("Option")
                 }
@@ -207,14 +209,11 @@ private struct 🛠ReminderMenuLink: View {
                         Toggle(isOn: $📱.🚩ableBannerReminder) {
                             Label("Banner notification", systemImage: "platter.filled.top.and.arrow.up.iphone")
                         }
-                        DatePicker(selection: $📱.🕒ReminderHour, displayedComponents: .hourAndMinute) {
-                            Label("Repeat hour", systemImage: "clock.arrow.circlepath")
-                        }
                     }
                 }
                 .disabled(!📱.🚩ableReminder)
                 NavigationLink("Detail") {
-                    Self.🄳etailNotifications()
+                    🄳etailNotifications()
                 }
             }
             .navigationTitle("Reminder")
@@ -222,42 +221,43 @@ private struct 🛠ReminderMenuLink: View {
             Label("Reminder notification", systemImage: "bell")
         }
     }
-    struct 🄳etailNotifications: View {
-        @EnvironmentObject var 📱: 📱AppModel
-        @State private var ⓓeliveredNotifications: [UNNotification] = []
-        @State private var ⓟendingNotificationRequests: [UNNotificationRequest] = []
-        var body: some View {
-            List {
-                Section {
-                    ForEach(self.ⓟendingNotificationRequests, id: \.identifier) { ⓡequest in
-                        if let ⓣrigger = ⓡequest.trigger as? UNTimeIntervalNotificationTrigger {
-                            VStack(alignment: .leading) {
-                                Text("__badge__: \(ⓡequest.content.badge ?? 0)")
-                                Text("__nextTriggerDate:__ \((ⓣrigger.nextTriggerDate()?.formatted() ?? "?"))")
-                                Text("__timeInterval:__ \((ⓣrigger.timeInterval/(60*60*24)).description) * 60 * 60 * 24")
-                            }
+}
+
+struct 🄳etailNotifications: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    @State private var ⓓeliveredNotifications: [UNNotification] = []
+    @State private var ⓟendingNotificationRequests: [UNNotificationRequest] = []
+    var body: some View {
+        List {
+            Section {
+                ForEach(self.ⓟendingNotificationRequests, id: \.identifier) { ⓡequest in
+                    if let ⓣrigger = ⓡequest.trigger as? UNTimeIntervalNotificationTrigger {
+                        VStack(alignment: .leading) {
+                            Text("__badge__: \(ⓡequest.content.badge?.description ?? "?")")
+                            Text("__nextTriggerDate:__ \((ⓣrigger.nextTriggerDate()?.formatted() ?? "?"))")
+                            Text("__timeInterval:__ \((ⓣrigger.timeInterval/(60*60*24)).description) * 60 * 60 * 24")
                         }
                     }
-                } header: {
-                    Text("pendingNotificationRequests")
                 }
-                Section {
-                    ForEach(self.ⓓeliveredNotifications, id: \.description) { ⓝ in
-                        VStack {
-                            Text(ⓝ.request.identifier)
-                            Text(ⓝ.date.formatted(date: .numeric, time: .omitted))
-                            Text(ⓝ.request.content.badge?.description ?? "no badge")
-                        }
+            } header: {
+                Text("pendingNotificationRequests")
+            }
+            Section {
+                ForEach(self.ⓓeliveredNotifications, id: \.description) { ⓝ in
+                    VStack {
+                        Text(ⓝ.request.identifier)
+                        Text(ⓝ.date.formatted(date: .numeric, time: .omitted))
+                        Text(ⓝ.request.content.badge?.description ?? "no badge")
                     }
-                } header: {
-                    Text("deliveredNotifications")
                 }
+            } header: {
+                Text("deliveredNotifications")
             }
-            .navigationTitle("Detail")
-            .task {
-                self.ⓓeliveredNotifications = await 📱.🔔notification.deliveredNotifications()
-                self.ⓟendingNotificationRequests = await 📱.🔔notification.pendingNotificationRequests()
-            }
+        }
+        .navigationTitle("Detail")
+        .task {
+            self.ⓓeliveredNotifications = await 📱.🔔notification.deliveredNotifications()
+            self.ⓟendingNotificationRequests = await 📱.🔔notification.pendingNotificationRequests()
         }
     }
 }
