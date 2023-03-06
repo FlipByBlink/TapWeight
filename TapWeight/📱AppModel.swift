@@ -336,8 +336,6 @@ class 📱AppModel: ObservableObject {
                     await self.ⓛoadPreferredUnits()
                     if ⓒategory == .bodyMass {
                         self.🔔refreshNotification(ⓒompletionHandler)
-                    } else {
-                        ⓒompletionHandler()
                     }
                 }
             }
@@ -363,9 +361,9 @@ class 📱AppModel: ObservableObject {
                 ⓞbserveCompletionHandler?()
                 return
             }
-            if ⓢample.startDate.distance(to: .now) > Double(60 * 60 * 24 * self.🔢periodOfNonDisplay) {
-                let ⓒount = Int(ⓢample.startDate.distance(to: .now) / (60 * 60 * 24))
-                self.🔔notification.ⓢetBadgeNow(ⓒount)
+            let ⓟeriodToNow = Int(ⓢample.startDate.distance(to: .now) / (60 * 60 * 24))
+            if ⓟeriodToNow >= self.🔢periodOfNonDisplay {
+                self.🔔notification.ⓢetBadgeNow(ⓟeriodToNow)
             }
             for ⓓay in self.🔢periodOfNonDisplay...31 {
                 let ⓒontent = UNMutableNotificationContent()
