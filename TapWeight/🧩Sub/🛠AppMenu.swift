@@ -180,7 +180,7 @@ private struct 🛠ReminderMenuLink: View {
                     ZStack {
                         Color.clear
                         Image("BadgeExample")
-                            .cornerRadius(12)
+                            .cornerRadius(8)
                     }
                 } header: {
                     Text("Option")
@@ -236,7 +236,7 @@ private struct 🛠ReminderMenuLink: View {
             ZStack {
                 Color.clear
                 Image("BannerExample")
-                    .cornerRadius(12)
+                    .cornerRadius(8)
             }
         } header: {
             Text("Banner notification")
