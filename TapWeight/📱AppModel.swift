@@ -365,21 +365,21 @@ class 📱AppModel: ObservableObject {
             if ⓟeriodToNow >= self.🔢periodOfNonDisplay {
                 self.🔔notification.ⓢetBadgeNow(ⓟeriodToNow)
             }
-            for ⓓay in self.🔢periodOfNonDisplay...31 {
+            for ⓒount in self.🔢periodOfNonDisplay...50 {
+                let ⓐlertTime = ⓢample.startDate.addingTimeInterval(Double(60 * 60 * 24 * ⓒount))
+                let ⓣimeInterval = Date.now.distance(to: ⓐlertTime)
+                guard ⓣimeInterval > 0 else { continue }
                 let ⓒontent = UNMutableNotificationContent()
-                ⓒontent.badge = ⓓay as NSNumber
+                ⓒontent.badge = ⓒount as NSNumber
                 if self.🚩ableBannerNotification {
                     ⓒontent.title = "Reminder: \(String(localized: "Body Mass"))"
                     let ⓕormatter = DateComponentsFormatter()
                     ⓕormatter.allowedUnits = [.day]
-                    ⓒontent.body = "Passed \(ⓕormatter.string(from: Double(60 * 60 * 24 * ⓓay)) ?? "🐛")."
+                    ⓒontent.body = "Passed \(ⓕormatter.string(from: Double(60 * 60 * 24 * ⓒount)) ?? "🐛")."
                     ⓒontent.sound = .default
                 }
-                let ⓐlertTime = ⓢample.startDate.addingTimeInterval(Double(60 * 60 * 24 * ⓓay))
-                let ⓣimeInterval = Date.now.distance(to: ⓐlertTime)
-                guard ⓣimeInterval > 0 else { continue }
                 let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: ⓣimeInterval, repeats: false)
-                let ⓡequest = UNNotificationRequest(identifier: ⓓay.description,
+                let ⓡequest = UNNotificationRequest(identifier: ⓒount.description,
                                                     content: ⓒontent,
                                                     trigger: ⓣrigger)
                 self.🔔notification.add(ⓡequest)

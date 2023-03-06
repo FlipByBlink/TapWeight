@@ -46,6 +46,8 @@
 "Banner notification" = "バナー通知";
 "With banner notification" = "バナー通知も表示";
 "Reminder" = "リマインダー通知";
+"Notified up to 50 days after your last registration." = "直近のデータ登録日から50日後まで通知します。";
+"Note" = "メモ";
 "Passed %@." = "前回の登録から %@ 経ちました。";
 "Reminder: %@" = "リマインダー: %@";
 

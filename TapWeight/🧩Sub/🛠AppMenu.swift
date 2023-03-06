@@ -190,6 +190,11 @@ private struct 🛠ReminderMenuLink: View {
                     self.ⓑannerNotificationSection()
                 }
                 .disabled(!📱.🚩ableReminder)
+                Section {
+                    Text("Notified up to 50 days after your last registration.")
+                } header: {
+                    Text("Note")
+                }
             }
             .navigationTitle("Reminder")
             .onChange(of: 📱.🚩ableReminder) { _ in 📱.🔔refreshNotification() }
