@@ -1,5 +1,6 @@
 import SwiftUI
 import HealthKit
+import UserNotifications
 
 class 📱AppModel: ObservableObject {
     //MARK: Stored property
@@ -231,7 +232,7 @@ class 📱AppModel: ObservableObject {
                     try await self.🏥healthStore.save(ⓢamples)
                     self.📨registeredSamples = ⓢamples
                     self.🚩showResult = true
-                    UINotificationFeedbackGenerator().notificationOccurred(.success)
+                    💥Feedback.success()
                 } catch {
                     throw 🚨Error.saveFailure(error.localizedDescription)
                 }
@@ -239,7 +240,7 @@ class 📱AppModel: ObservableObject {
                 Task { @MainActor in
                     self.🚨registrationError = error as? 🚨Error
                     self.🚩alertRegistrationError = true
-                    UINotificationFeedbackGenerator().notificationOccurred(.error)
+                    💥Feedback.error()
                 }
             }
         }
@@ -250,7 +251,7 @@ class 📱AppModel: ObservableObject {
             do {
                 try await self.🏥healthStore.delete(self.📨registeredSamples)
                 self.🚩completedCancellation = true
-                UINotificationFeedbackGenerator().notificationOccurred(.error)
+                💥Feedback.error()
             } catch {
                 Task { @MainActor in
                     self.🚨cancellationError = .deleteFailure(error.localizedDescription)
