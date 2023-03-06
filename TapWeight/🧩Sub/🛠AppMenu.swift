@@ -236,9 +236,9 @@ struct 🄳etailNotifications: View {
                 ForEach(self.ⓟendingNotificationRequests, id: \.identifier) { ⓡequest in
                     if let ⓣrigger = ⓡequest.trigger as? UNTimeIntervalNotificationTrigger {
                         VStack(alignment: .leading) {
+                            Text("__identifier__: \(ⓡequest.identifier)")
                             Text("__badge__: \(ⓡequest.content.badge?.description ?? "?")")
                             Text("__nextTriggerDate:__ \((ⓣrigger.nextTriggerDate()?.formatted() ?? "?"))")
-                            Text("__timeInterval:__ \((ⓣrigger.timeInterval/(60*60*24)).description) * 60 * 60 * 24")
                         }
                     }
                 }

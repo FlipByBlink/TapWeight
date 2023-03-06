@@ -352,9 +352,10 @@ class 📱AppModel: ObservableObject {
         }
     }
     func 🔔refreshNotification(_ ⓞbserveCompletionHandler: HKObserverQueryCompletionHandler? = nil) {
-        //1. 既にセットされていた通知を削除
-        //2. 通知をセット(バッジ/バナー)
-        //3. completionHandlerを呼ぶ
+        //1. 最新の体重データを取得
+        //2. 既にセットされていた通知を削除
+        //3. 通知をセット(バッジ/バナー)
+        //4. (ObserverQueryから実行された場合)HKObserverQueryCompletionHandlerを呼ぶ
         self.🏥healthStore.ⓛoadLatestSample(.bodyMass) { ⓢample in
             self.🔔notification.ⓡemoveAllNotifications()
             guard let ⓢample, self.🚩ableReminder else {

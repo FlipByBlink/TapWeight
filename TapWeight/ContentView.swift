@@ -13,9 +13,6 @@ struct ContentView: View {
     }
     private func ⓒontent() -> some View {
         List {
-            NavigationLink("Notification detail") { //TODO: あとで削除
-                🄳etailNotifications()
-            }
             Section {
                 🎚️BodyMassStepper()
                 🪧BMIView()
