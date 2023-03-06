@@ -334,8 +334,11 @@ class 📱AppModel: ObservableObject {
                 Task { @MainActor in
                     self.ⓛoadLatestSamples()
                     await self.ⓛoadPreferredUnits()
-                    self.🔔refreshNotification()
-                    ⓒompletionHandler()
+                    if ⓒategory == .bodyMass {
+                        self.🔔refreshNotification(ⓒompletionHandler)
+                    } else {
+                        ⓒompletionHandler()
+                    }
                 }
             }
         }
@@ -348,36 +351,40 @@ class 📱AppModel: ObservableObject {
             try await self.🏥healthStore.enableBackgroundDelivery(for: .bodyMass)
         }
     }
-    func 🔔refreshNotification() {
+    func 🔔refreshNotification(_ ⓞbserveCompletionHandler: HKObserverQueryCompletionHandler? = nil) {
         //1. 既にセットされていた通知を削除
         //2. 通知をセット(バッジ/バナー)
         //3. completionHandlerを呼ぶ
-        print("🖨️", #function)
-        guard let ⓜassLatestSampleDate else { return }
-        self.🔔notification.ⓡemoveAllNotifications()
-        guard self.🚩ableReminder else { return }
-        if ⓜassLatestSampleDate.distance(to: .now) > Double(60 * 60 * 24 * self.🔢delayReminderDaysCount) {
-            let ⓒount = Int(ⓜassLatestSampleDate.distance(to: .now) / (60 * 60 * 24))
-            self.🔔notification.ⓢetBadgeNow(ⓒount)
-        }
-        for ⓓay in self.🔢delayReminderDaysCount...31 {
-            let ⓒontent = UNMutableNotificationContent()
-            ⓒontent.badge = ⓓay as NSNumber
-            if self.🚩ableBannerReminder {
-                ⓒontent.title = "Reminder: " + String(localized: "Body Mass")
-                let ⓕormatter = DateComponentsFormatter()
-                ⓕormatter.allowedUnits = [.day]
-                ⓒontent.body = "Passed \(ⓕormatter.string(from: Double(60 * 60 * 24 * ⓓay)) ?? "🐛")."
-                ⓒontent.sound = .default
+        self.🏥healthStore.ⓛoadLatestSample(.bodyMass) { ⓢample in
+            self.🔔notification.ⓡemoveAllNotifications()
+            guard let ⓢample, self.🚩ableReminder else {
+                ⓞbserveCompletionHandler?()
+                return
             }
-            let ⓐlertTime = ⓜassLatestSampleDate.addingTimeInterval(Double(60 * 60 * 24 * ⓓay))
-            let ⓣimeInterval = Date.now.distance(to: ⓐlertTime)
-            guard ⓣimeInterval > 0 else { continue }
-            let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: ⓣimeInterval, repeats: false)
-            let ⓡequest = UNNotificationRequest(identifier: ⓓay.description,
-                                                content: ⓒontent,
-                                                trigger: ⓣrigger)
-            self.🔔notification.add(ⓡequest)
+            if ⓢample.startDate.distance(to: .now) > Double(60 * 60 * 24 * self.🔢delayReminderDaysCount) {
+                let ⓒount = Int(ⓢample.startDate.distance(to: .now) / (60 * 60 * 24))
+                self.🔔notification.ⓢetBadgeNow(ⓒount)
+            }
+            for ⓓay in self.🔢delayReminderDaysCount...31 {
+                let ⓒontent = UNMutableNotificationContent()
+                ⓒontent.badge = ⓓay as NSNumber
+                if self.🚩ableBannerReminder {
+                    ⓒontent.title = "Reminder: " + String(localized: "Body Mass")
+                    let ⓕormatter = DateComponentsFormatter()
+                    ⓕormatter.allowedUnits = [.day]
+                    ⓒontent.body = "Passed \(ⓕormatter.string(from: Double(60 * 60 * 24 * ⓓay)) ?? "🐛")."
+                    ⓒontent.sound = .default
+                }
+                let ⓐlertTime = ⓢample.startDate.addingTimeInterval(Double(60 * 60 * 24 * ⓓay))
+                let ⓣimeInterval = Date.now.distance(to: ⓐlertTime)
+                guard ⓣimeInterval > 0 else { continue }
+                let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: ⓣimeInterval, repeats: false)
+                let ⓡequest = UNNotificationRequest(identifier: ⓓay.description,
+                                                    content: ⓒontent,
+                                                    trigger: ⓣrigger)
+                self.🔔notification.add(ⓡequest)
+            }
+            ⓞbserveCompletionHandler?()
         }
     }
 }
