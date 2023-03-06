@@ -31,7 +31,7 @@ class 📱AppModel: ObservableObject {
     
     //MARK: Computed property
     var ⓜassUnit: HKUnit? { self.📦preferredUnits[.bodyMass] }
-    var ⓜassInputValue: Double? {
+    private var ⓜassInputValue: Double? {
         guard let ⓜassUnit else { return nil }
         return self.📝massInputQuantity?.doubleValue(for: ⓜassUnit)
     }
@@ -55,12 +55,12 @@ class 📱AppModel: ObservableObject {
         return Double(Int(round(ⓥalue * 10))) / 10
     }
     var ⓗeightUnit: HKUnit? { self.📦preferredUnits[.height] }
-    var ⓗeightValue: Double? {
+    private var ⓗeightValue: Double? {
         guard let ⓗeightUnit else { return nil }
         return self.📦latestSamples[.height]?.quantity.doubleValue(for: ⓗeightUnit)
     }
     
-    var ⓑodyFatInputValue: Double? { self.📝bodyFatInputQuantity?.doubleValue(for: .percent()) }
+    private var ⓑodyFatInputValue: Double? { self.📝bodyFatInputQuantity?.doubleValue(for: .percent()) }
     var ⓑodyFatInputDescription: String {
         if let ⓑodyFatInputValue {
             return (round(ⓑodyFatInputValue * 1000) / 10).description
@@ -69,13 +69,13 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    var ⓛbmInputQuantity: HKQuantity? {
+    private var ⓛbmInputQuantity: HKQuantity? {
         guard let ⓜassInputValue, let ⓜassUnit, let ⓑodyFatInputValue else { return nil }
         let ⓕigure = ⓜassInputValue - (ⓜassInputValue * ⓑodyFatInputValue)
         return HKQuantity(unit: ⓜassUnit,
                           doubleValue: round(ⓕigure * 10) / 10)
     }
-    var ⓛbmInputValue: Double? {
+    private var ⓛbmInputValue: Double? {
         guard let ⓛbmInputQuantity, let ⓜassUnit else { return nil }
         return ⓛbmInputQuantity.doubleValue(for: ⓜassUnit)
     }
@@ -344,11 +344,12 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    let 🔔notification = 🔔Notification()
+    private let 🔔notification = 🔔Notification()
     func 🔔setupNotification() {
         Task {
             try await self.🔔notification.requestAuthorization([.badge, .alert, .sound])
             try await self.🏥healthStore.enableBackgroundDelivery(for: .bodyMass)
+            self.🔔refreshNotification()
         }
     }
     func 🔔refreshNotification(_ ⓞbserveCompletionHandler: HKObserverQueryCompletionHandler? = nil) {
