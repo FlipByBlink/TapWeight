@@ -22,7 +22,7 @@ private struct 🛠AppMenu: View {
                     Label("Body Fat Percentage", systemImage: "percent")
                 }
                 .onChange(of: 📱.🚩ableBodyFat) {
-                    if $0 == true { 📱.ⓡequestAuth(.bodyFatPercentage) }
+                    if $0 == true { 📱.ⓡequestAuth([.bodyFatPercentage]) }
                 }
                 🛠LBMMenuLink()
                 Toggle(isOn: $📱.🚩ableDatePicker) {
@@ -60,7 +60,7 @@ private struct 🛠BMIMenuLink: View {
                         Label("Body Mass Index", systemImage: "function")
                     }
                     .onChange(of: 📱.🚩ableBMI) {
-                        if $0 == true { 📱.ⓡequestAuth(.bodyMassIndex) }
+                        if $0 == true { 📱.ⓡequestAuth([.bodyMassIndex]) }
                     }
                 } header: {
                     Text("Option")
@@ -132,7 +132,7 @@ private struct 🛠LBMMenuLink: View {
                         Label("Lean Body Mass", systemImage: "person.badge.minus")
                     }
                     .onChange(of: 📱.🚩ableLBM) {
-                        if $0 == true { 📱.ⓡequestAuth(.leanBodyMass) }
+                        if $0 == true { 📱.ⓡequestAuth([.leanBodyMass]) }
                     }
                 } header: {
                     Text("Option")
