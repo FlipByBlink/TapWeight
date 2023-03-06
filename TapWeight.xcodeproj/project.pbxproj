@@ -64,6 +64,8 @@
 		F5BBB56929B6113A00424A66 /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56829B6113A00424A66 /* 💥Feedback.swift */; };
 		F5BBB56A29B6113A00424A66 /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56829B6113A00424A66 /* 💥Feedback.swift */; };
 		F5BBB56B29B6121C00424A66 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
+		F5BBB56D29B6B14C00424A66 /* ⌚️SyncDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */; };
+		F5BBB56E29B6B14C00424A66 /* ⌚️SyncDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */; };
 		F5D8400929B1DDED0046E91B /* 🪧LBMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */; };
 		F5D8401629B45CF40046E91B /* 🔔Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8401529B45CF40046E91B /* 🔔Notification.swift */; };
 		F5E1697129B06ACC00EAFF73 /* 🏥Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */; };
@@ -195,6 +197,7 @@
 		F5BBB55B29B60F5900424A66 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F5BBB56429B60F9500424A66 /* TW Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TW Watch App.entitlements"; sourceTree = "<group>"; };
 		F5BBB56829B6113A00424A66 /* 💥Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💥Feedback.swift"; sourceTree = "<group>"; };
+		F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "⌚️SyncDelegate.swift"; sourceTree = "<group>"; };
 		F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧LBMView.swift"; sourceTree = "<group>"; };
 		F5D8401529B45CF40046E91B /* 🔔Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🔔Notification.swift"; sourceTree = "<group>"; };
 		F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏥Health.swift"; sourceTree = "<group>"; };
@@ -328,6 +331,7 @@
 				124C485E284863BA0085B066 /* 📱AppModel.swift */,
 				F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */,
 				F5D8401529B45CF40046E91B /* 🔔Notification.swift */,
+				F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */,
 				F5BBB56829B6113A00424A66 /* 💥Feedback.swift */,
 			);
 			path = "♻️Shared";
@@ -476,6 +480,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5BBB56D29B6B14C00424A66 /* ⌚️SyncDelegate.swift in Sources */,
 				126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */,
 				1232578B284C5EA2002E0057 /* 🎚️Stepper.swift in Sources */,
 				F514464B29B579DF00B1CB13 /* 🄰ppDelegate.swift in Sources */,
@@ -510,6 +515,7 @@
 				F5BBB55729B60F5700424A66 /* ContentView.swift in Sources */,
 				F5BBB55529B60F5700424A66 /* TWApp.swift in Sources */,
 				F5BBB56B29B6121C00424A66 /* 📱AppModel.swift in Sources */,
+				F5BBB56E29B6B14C00424A66 /* ⌚️SyncDelegate.swift in Sources */,
 				F5BBB56A29B6113A00424A66 /* 💥Feedback.swift in Sources */,
 				F5BBB56729B6112400424A66 /* 🔔Notification.swift in Sources */,
 			);
