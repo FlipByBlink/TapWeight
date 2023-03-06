@@ -218,18 +218,22 @@ private struct 🛠ReminderMenuLink: View {
                 .monospacedDigit()
                 .foregroundStyle(.primary)
             }
+        } header: {
+            Text("Period of display")
         }
     }
     private func ⓑannerNotificationSection() -> some View {
         Section {
             Toggle(isOn: $📱.🚩ableBannerNotification) {
-                Label("Banner notification", systemImage: "platter.filled.top.and.arrow.up.iphone")
+                Label("With banner notification", systemImage: "platter.filled.top.and.arrow.up.iphone")
             }
             ZStack {
                 Color.clear
                 Image("BannerExample")
                     .cornerRadius(12)
             }
+        } header: {
+            Text("Banner notification")
         }
     }
 }
