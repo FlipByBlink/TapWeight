@@ -298,18 +298,20 @@ class 📱AppModel: ObservableObject {
         }
     }
     private func ⓛoadLatestSamples() {
-        self.🏥healthStore.ⓛoadLatestSamples { ⓒategory, ⓢamples in
-            Task { @MainActor in
-                self.📦latestSamples[ⓒategory] = ⓢamples.first as? HKQuantitySample
-                self.📝resetInputValues()
-                if ⓢamples.isEmpty {
-                    switch ⓒategory {
-                        case .bodyMass:
-                            self.📝massInputQuantity = self.ⓣemporaryMassQuantity
-                        case .bodyFatPercentage:
-                            self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
-                        default:
-                            break
+        for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
+            self.🏥healthStore.ⓛoadLatestSample(ⓒategory) { ⓢample in
+                Task { @MainActor in
+                    self.📦latestSamples[ⓒategory] = ⓢample
+                    self.📝resetInputValues()
+                    if ⓢample == nil {
+                        switch ⓒategory {
+                            case .bodyMass:
+                                self.📝massInputQuantity = self.ⓣemporaryMassQuantity
+                            case .bodyFatPercentage:
+                                self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
+                            default:
+                                break
+                        }
                     }
                 }
             }
@@ -327,12 +329,14 @@ class 📱AppModel: ObservableObject {
         }
     }
     private func ⓞbserveChanges() {
-        self.🏥healthStore.ⓞbserveChanges { ⓒompletionHandler in
-            Task { @MainActor in
-                self.ⓛoadLatestSamples()
-                await self.ⓛoadPreferredUnits()
-                self.🔔refreshNotification()
-                ⓒompletionHandler()
+        for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
+            self.🏥healthStore.ⓞbserveChange(ⓒategory) { ⓒompletionHandler in
+                Task { @MainActor in
+                    self.ⓛoadLatestSamples()
+                    await self.ⓛoadPreferredUnits()
+                    self.🔔refreshNotification()
+                    ⓒompletionHandler()
+                }
             }
         }
     }

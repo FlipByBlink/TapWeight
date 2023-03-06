@@ -35,27 +35,23 @@ struct 🏥HealthStore {
         try await self.ⓐpi.enableBackgroundDelivery(for: ⓒategory.quantityType, frequency: .immediate)
     }
     
-    func ⓛoadLatestSamples(_ ⓗandler: @escaping (🏥Category, [HKSample]) -> Void ) {
-        for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
-            let ⓢortDescriptors = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
-            let ⓠuery = HKSampleQuery(sampleType: ⓒategory.quantityType,
-                                      predicate: nil,
-                                      limit: 1,
-                                      sortDescriptors: [ⓢortDescriptors]) { _, ⓢamples, _ in
-                ⓗandler(ⓒategory, ⓢamples ?? [])
-            }
-            self.ⓐpi.execute(ⓠuery)
+    func ⓛoadLatestSample(_ ⓒategory: 🏥Category, _ ⓗandler: @escaping (HKQuantitySample?) -> Void ) {
+        let ⓢortDescriptors = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        let ⓠuery = HKSampleQuery(sampleType: ⓒategory.quantityType,
+                                  predicate: nil,
+                                  limit: 1,
+                                  sortDescriptors: [ⓢortDescriptors]) { _, ⓢamples, _ in
+            ⓗandler(ⓢamples?.first as? HKQuantitySample)
         }
+        self.ⓐpi.execute(ⓠuery)
     }
     
-    func ⓞbserveChanges(_ ⓗandler: @escaping (@escaping HKObserverQueryCompletionHandler) -> Void ) {
-        for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
-            let ⓠuery = HKObserverQuery(sampleType: ⓒategory.quantityType, predicate: nil) { _, ⓒompletionHandler, ⓔrror in
-                if ⓔrror != nil { return }
-                ⓗandler(ⓒompletionHandler)
-            }
-            self.ⓐpi.execute(ⓠuery)
+    func ⓞbserveChange(_ ⓒategory: 🏥Category, _ ⓗandler: @escaping (@escaping HKObserverQueryCompletionHandler) -> Void ) {
+        let ⓠuery = HKObserverQuery(sampleType: ⓒategory.quantityType, predicate: nil) { _, ⓒompletionHandler, ⓔrror in
+            if ⓔrror != nil { return }
+            ⓗandler(ⓒompletionHandler)
         }
+        self.ⓐpi.execute(ⓠuery)
     }
 }
 
