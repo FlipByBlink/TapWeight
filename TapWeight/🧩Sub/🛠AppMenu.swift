@@ -187,27 +187,8 @@ private struct 🛠ReminderMenuLink: View {
                     Text("Option")
                 }
                 Group {
-                    Section {
-                        Stepper(value: $📱.🔢periodOfNonDisplay, in: 1...31) {
-                            Label("Period of non-display", systemImage: "bell.slash")
-                                .badge(self.ⓟeriodOfNonDisplay)
-                        }
-                        if let ⓜassLatestSampleDate = 📱.ⓜassLatestSampleDate {
-                            Group {
-                                Label("Last sample's date", systemImage: "calendar.badge.plus")
-                                    .badge(ⓜassLatestSampleDate.formatted(.dateTime.day().month().hour().minute()))
-                                Label("Time of display", systemImage: "calendar.badge.exclamationmark")
-                                    .badge(ⓜassLatestSampleDate.addingTimeInterval(60 * 60 * 24 * Double(self.ⓟeriodOfNonDisplay)).formatted(.dateTime.day().month().hour().minute()) + "~")
-                            }
-                            .monospacedDigit()
-                            .padding(.leading, 12)
-                        }
-                    }
-                    Section {
-                        Toggle(isOn: $📱.🚩ableBannerNotification) {
-                            Label("Banner notification", systemImage: "platter.filled.top.and.arrow.up.iphone")
-                        }
-                    }
+                    self.ⓟeriodOfNonDisplaySection()
+                    self.ⓑannerNotificationSection()
                 }
                 .disabled(!📱.🚩ableReminder)
             }
@@ -217,6 +198,38 @@ private struct 🛠ReminderMenuLink: View {
             .onChange(of: 📱.🔢periodOfNonDisplay) { _ in 📱.🔔refreshNotification() }
         } label: {
             Label("Reminder notification", systemImage: "bell")
+        }
+    }
+    private func ⓟeriodOfNonDisplaySection() -> some View {
+        Section {
+            Stepper(value: $📱.🔢periodOfNonDisplay, in: 1...31) {
+                Label("Period of non-display", systemImage: "bell.slash")
+                    .badge(self.ⓟeriodOfNonDisplay)
+            }
+            if let ⓛatestSampleDate = 📱.ⓜassLatestSampleDate {
+                Group {
+                    let ⓕormat: Date.FormatStyle = .dateTime.day().month().hour().minute()
+                    Text("Last sample's date")
+                        .badge(ⓛatestSampleDate.formatted(ⓕormat))
+                    let ⓣimeOfDisplay = ⓛatestSampleDate.addingTimeInterval(60 * 60 * 24 * Double(self.ⓟeriodOfNonDisplay))
+                    Text("Time of display")
+                        .badge(ⓣimeOfDisplay.formatted(ⓕormat) + "~")
+                }
+                .monospacedDigit()
+                .foregroundStyle(.primary)
+            }
+        }
+    }
+    private func ⓑannerNotificationSection() -> some View {
+        Section {
+            Toggle(isOn: $📱.🚩ableBannerNotification) {
+                Label("Banner notification", systemImage: "platter.filled.top.and.arrow.up.iphone")
+            }
+            ZStack {
+                Color.clear
+                Image("BannerExample")
+                    .cornerRadius(12)
+            }
         }
     }
 }
