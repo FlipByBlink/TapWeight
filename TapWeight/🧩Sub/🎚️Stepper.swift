@@ -3,7 +3,7 @@ import SwiftUI
 struct 🎚️BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓐbleDatePicker: Bool { 📱.🚩ableDatePicker }
-    private var ⓘnputQuantityIsNothing: Bool { 📱.📝massInputQuantity == nil }
+    private var ⓘnputIsValid: Bool { 📱.ⓜassInputIsValid }
     var body: some View {
         Stepper {
             HStack {
@@ -16,8 +16,8 @@ struct 🎚️BodyMassStepper: View {
                         .font(.title2.weight(.black))
                         .frame(maxHeight: 36)
                 }
-                .opacity(self.ⓘnputQuantityIsNothing ? 0.2 : 1)
-                .animation(.default, value: self.ⓘnputQuantityIsNothing)
+                .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                .animation(.default, value: self.ⓘnputIsValid)
                 Spacer(minLength: 4)
                 📉DifferenceView(.bodyMass)
             }
@@ -35,7 +35,7 @@ struct 🎚️BodyMassStepper: View {
 struct 🎚️BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓐbleDatePicker: Bool { 📱.🚩ableDatePicker }
-    private var ⓘnputQuantityIsNothing: Bool { 📱.📝bodyFatInputQuantity == nil }
+    private var ⓘnputIsValid: Bool { 📱.ⓑodyFatInputIsValid }
     var body: some View {
         if 📱.🚩ableBodyFat {
             Section {
@@ -50,8 +50,8 @@ struct 🎚️BodyFatStepper: View {
                                 .font(.title2.weight(.black))
                                 .frame(maxHeight: 54)
                         }
-                        .opacity(self.ⓘnputQuantityIsNothing ? 0.2 : 1)
-                        .animation(.default, value: self.ⓘnputQuantityIsNothing)
+                        .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                        .animation(.default, value: self.ⓘnputIsValid)
                         Spacer(minLength: 0)
                         📉DifferenceView(.bodyFatPercentage)
                     }

@@ -46,6 +46,9 @@ class 📱AppModel: ObservableObject {
     var ⓜassLatestSampleDate: Date? {
         self.📦latestSamples[.bodyMass]?.startDate
     }
+    var ⓜassInputIsValid: Bool {
+        self.📝massInputQuantity != nil
+    }
     
     var ⓑmiInputValue: Double? {
         guard let 📝massInputQuantity else { return nil }
@@ -60,6 +63,9 @@ class 📱AppModel: ObservableObject {
         guard let ⓗeightUnit else { return nil }
         return self.📦latestSamples[.height]?.quantity.doubleValue(for: ⓗeightUnit)
     }
+    var ⓗeightQuantityDescription: String? {
+        self.📦latestSamples[.height]?.quantity.description
+    }
     
     private var ⓑodyFatInputValue: Double? { self.📝bodyFatInputQuantity?.doubleValue(for: .percent()) }
     var ⓑodyFatInputDescription: String {
@@ -68,6 +74,9 @@ class 📱AppModel: ObservableObject {
         } else {
             return "00.0"
         }
+    }
+    var ⓑodyFatInputIsValid: Bool {
+        self.📝bodyFatInputQuantity != nil
     }
     
     private var ⓛbmInputQuantity: HKQuantity? {
