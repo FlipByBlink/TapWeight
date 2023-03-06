@@ -7,24 +7,8 @@ struct 🔔Notification {
         self.ⓐpi.add(ⓡequest)
     }
     
-    func deliveredNotifications() async -> [UNNotification] {
-        await self.ⓐpi.deliveredNotifications()
-    }
-    
-    func pendingNotificationRequests() async -> [UNNotificationRequest] {
-        await self.ⓐpi.pendingNotificationRequests()
-    }
-    
     func requestAuthorization(_ ⓞptions: UNAuthorizationOptions) async throws {
         try await self.ⓐpi.requestAuthorization(options: ⓞptions)
-    }
-    
-    func removeAllDeliveredNotifications() {
-        self.ⓐpi.removeAllDeliveredNotifications()
-    }
-    
-    func removeAllPendingNotificationRequests() {
-        self.ⓐpi.removeAllPendingNotificationRequests()
     }
     
     func ⓡemoveAllNotifications() {
@@ -33,7 +17,7 @@ struct 🔔Notification {
         self.ⓒlearBadge()
     }
     
-    func ⓒlearBadge() {
+    private func ⓒlearBadge() {
         let ⓒontent = UNMutableNotificationContent()
         ⓒontent.badge = 0
         self.ⓐpi.add(UNNotificationRequest(identifier: "resetBadge", content: ⓒontent, trigger: nil))
