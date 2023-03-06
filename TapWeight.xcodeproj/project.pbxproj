@@ -190,6 +190,7 @@
 				F514464A29B579DF00B1CB13 /* 🄰ppDelegate.swift */,
 				F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */,
 				F535AA8829AD7EB800691926 /* 📣ADSheet.swift */,
+				1299C395288D51E20086522B /* 🧰Others */,
 				F5AC7BE92941982A00490FF0 /* Info.plist */,
 				126B3EB8282E001E009BD28B /* TapWeight.entitlements */,
 				126B3EB0282DFEE0009BD28B /* Preview Content */,
@@ -223,7 +224,6 @@
 				F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */,
 				126B3EAC282DFEDF009BD28B /* ContentView.swift */,
 				12325789284C5E79002E0057 /* 🧩Sub */,
-				1299C395288D51E20086522B /* 🧰Others */,
 				129CBE13284CAD2D00C73F4D /* 🌏Localization */,
 				126B3EAE282DFEE0009BD28B /* Assets.xcassets */,
 			);
