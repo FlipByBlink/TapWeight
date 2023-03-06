@@ -44,7 +44,7 @@
 "Last sample's date" = "前回のデータ登録日時";
 "Time of display" = "通知が表示される期間";
 "Banner notification" = "バナー通知";
-"With banner notification" = "バナー通知も表示";
+"With daily banner notification" = "バナー通知も1日1回表示";
 "Reminder" = "リマインダー通知";
 "Notified up to 50 days after your last registration." = "直近のデータ登録日から50日後まで通知します。";
 "Note" = "メモ";

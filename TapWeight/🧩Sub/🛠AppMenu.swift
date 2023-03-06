@@ -236,7 +236,7 @@ private struct 🛠ReminderMenuLink: View {
     private func ⓑannerNotificationSection() -> some View {
         Section {
             Toggle(isOn: $📱.🚩ableBannerNotification) {
-                Label("With banner notification", systemImage: "platter.filled.top.and.arrow.up.iphone")
+                Label("With daily banner notification", systemImage: "platter.filled.top.and.arrow.up.iphone")
             }
             ZStack {
                 Color.clear
