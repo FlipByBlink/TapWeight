@@ -1,6 +1,5 @@
 import SwiftUI
 import HealthKit
-import UserNotifications
 
 class 📱AppModel: ObservableObject {
     //MARK: Stored property
@@ -346,14 +345,17 @@ class 📱AppModel: ObservableObject {
                 Task { @MainActor in
                     self.ⓛoadLatestSamples()
                     await self.ⓛoadPreferredUnits()
+#if os(iOS)
                     if ⓒategory == .bodyMass {
                         self.🔔refreshNotification(ⓒompletionHandler)
                     }
+#endif
                 }
             }
         }
     }
     
+#if os(iOS) //MARK: Notification iOS only
     private let 🔔notification = 🔔Notification()
     func 🔔setupNotification() {
         Task {
@@ -399,6 +401,7 @@ class 📱AppModel: ObservableObject {
             ⓞbserveCompletionHandler?()
         }
     }
+#endif
 }
 
 enum 🅂tepperAction {
