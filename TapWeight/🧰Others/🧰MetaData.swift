@@ -42,6 +42,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "🗯ResultView.swift",
                         "🚨ErrorAlert.swift",
                         "🛠AppMenu.swift",
+                        "🄰ppDelegate.swift",
                         "💬RequestUserReview.swift",
                         "📣ADSheet.swift"]
             case .🧰Others:

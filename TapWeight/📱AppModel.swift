@@ -9,8 +9,8 @@ class 📱AppModel: ObservableObject {
     @AppStorage("AbleLBM") var 🚩ableLBM: Bool = false
     @AppStorage("AbleDatePicker") var 🚩ableDatePicker: Bool = false
     @AppStorage("AbleReminder") var 🚩ableReminder: Bool = false
-    @AppStorage("BannerReminder") var 🚩ableBannerReminder: Bool = false
-    @AppStorage("DelayReminder") var 🔢delayReminderDaysCount: Int = 1
+    @AppStorage("BannerNotification") var 🚩ableBannerNotification: Bool = false
+    @AppStorage("PeriodOfNonDisplay") var 🔢periodOfNonDisplay: Int = 1
     
     @Published var 📝massInputQuantity: HKQuantity? = nil
     @Published var 📝bodyFatInputQuantity: HKQuantity? = nil
@@ -362,15 +362,15 @@ class 📱AppModel: ObservableObject {
                 ⓞbserveCompletionHandler?()
                 return
             }
-            if ⓢample.startDate.distance(to: .now) > Double(60 * 60 * 24 * self.🔢delayReminderDaysCount) {
+            if ⓢample.startDate.distance(to: .now) > Double(60 * 60 * 24 * self.🔢periodOfNonDisplay) {
                 let ⓒount = Int(ⓢample.startDate.distance(to: .now) / (60 * 60 * 24))
                 self.🔔notification.ⓢetBadgeNow(ⓒount)
             }
-            for ⓓay in self.🔢delayReminderDaysCount...31 {
+            for ⓓay in self.🔢periodOfNonDisplay...31 {
                 let ⓒontent = UNMutableNotificationContent()
                 ⓒontent.badge = ⓓay as NSNumber
-                if self.🚩ableBannerReminder {
-                    ⓒontent.title = "Reminder: " + String(localized: "Body Mass")
+                if self.🚩ableBannerNotification {
+                    ⓒontent.title = "Reminder: \(String(localized: "Body Mass"))"
                     let ⓕormatter = DateComponentsFormatter()
                     ⓕormatter.allowedUnits = [.day]
                     ⓒontent.body = "Passed \(ⓕormatter.string(from: Double(60 * 60 * 24 * ⓓay)) ?? "🐛")."

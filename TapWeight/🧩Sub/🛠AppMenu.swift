@@ -166,7 +166,7 @@ private struct 🛠LBMMenuLink: View {
 
 private struct 🛠ReminderMenuLink: View {
     @EnvironmentObject var 📱: 📱AppModel
-    private var ⓓelayCount: Int { 📱.🔢delayReminderDaysCount }
+    private var ⓟeriodOfNonDisplay: Int { 📱.🔢periodOfNonDisplay }
     var body: some View {
         NavigationLink {
             List {
@@ -177,90 +177,46 @@ private struct 🛠ReminderMenuLink: View {
                     .onChange(of: 📱.🚩ableReminder) {
                         if $0 == true { 📱.🔔setupNotification() }
                     }
-                    Text("このアプリのアイコンに「前回からの日数」をバッジで表示します。")
-                    HStack {
-                        Spacer()
-                        Image(systemName: "app.badge")
-                        Image(systemName: "platter.filled.top.and.arrow.up.iphone")
-                        Spacer()
+                    Text("\"Number of days passed since last registration\" is displayed as a badge on this app icon.")
+                    ZStack {
+                        Color.clear
+                        Image("BadgeExample")
+                            .cornerRadius(12)
                     }
-                    .badge("Placeholder")
                 } header: {
                     Text("Option")
                 }
                 Group {
                     Section {
-                        Stepper(value: $📱.🔢delayReminderDaysCount, in: 1...31) {
-                            Label("Delay days", systemImage: "bell.slash")
-                                .badge(self.ⓓelayCount)
+                        Stepper(value: $📱.🔢periodOfNonDisplay, in: 1...31) {
+                            Label("Period of non-display", systemImage: "bell.slash")
+                                .badge(self.ⓟeriodOfNonDisplay)
                         }
                         if let ⓜassLatestSampleDate = 📱.ⓜassLatestSampleDate {
                             Group {
-                                Label("Last sample", systemImage: "calendar.badge.plus")
+                                Label("Last sample's date", systemImage: "calendar.badge.plus")
                                     .badge(ⓜassLatestSampleDate.formatted(.dateTime.day().month().hour().minute()))
-                                Label("Activation", systemImage: "calendar.badge.exclamationmark")
-                                    .badge (ⓜassLatestSampleDate.addingTimeInterval(60 * 60 * 24 * Double(self.ⓓelayCount)).formatted(.dateTime.day().month().hour().minute()) + "~")
+                                Label("Time of display", systemImage: "calendar.badge.exclamationmark")
+                                    .badge(ⓜassLatestSampleDate.addingTimeInterval(60 * 60 * 24 * Double(self.ⓟeriodOfNonDisplay)).formatted(.dateTime.day().month().hour().minute()) + "~")
                             }
                             .monospacedDigit()
                             .padding(.leading, 12)
                         }
                     }
                     Section {
-                        Toggle(isOn: $📱.🚩ableBannerReminder) {
+                        Toggle(isOn: $📱.🚩ableBannerNotification) {
                             Label("Banner notification", systemImage: "platter.filled.top.and.arrow.up.iphone")
                         }
                     }
                 }
                 .disabled(!📱.🚩ableReminder)
-                NavigationLink("Detail") {
-                    🄳etailNotifications()
-                }
             }
             .navigationTitle("Reminder")
             .onChange(of: 📱.🚩ableReminder) { _ in 📱.🔔refreshNotification() }
-            .onChange(of: 📱.🚩ableBannerReminder) { _ in 📱.🔔refreshNotification() }
-            .onChange(of: 📱.🔢delayReminderDaysCount) { _ in 📱.🔔refreshNotification() }
+            .onChange(of: 📱.🚩ableBannerNotification) { _ in 📱.🔔refreshNotification() }
+            .onChange(of: 📱.🔢periodOfNonDisplay) { _ in 📱.🔔refreshNotification() }
         } label: {
             Label("Reminder notification", systemImage: "bell")
-        }
-    }
-}
-
-struct 🄳etailNotifications: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    @State private var ⓓeliveredNotifications: [UNNotification] = []
-    @State private var ⓟendingNotificationRequests: [UNNotificationRequest] = []
-    var body: some View {
-        List {
-            Section {
-                ForEach(self.ⓟendingNotificationRequests, id: \.identifier) { ⓡequest in
-                    if let ⓣrigger = ⓡequest.trigger as? UNTimeIntervalNotificationTrigger {
-                        VStack(alignment: .leading) {
-                            Text("__identifier__: \(ⓡequest.identifier)")
-                            Text("__badge__: \(ⓡequest.content.badge?.description ?? "?")")
-                            Text("__nextTriggerDate:__ \((ⓣrigger.nextTriggerDate()?.formatted() ?? "?"))")
-                        }
-                    }
-                }
-            } header: {
-                Text("pendingNotificationRequests")
-            }
-            Section {
-                ForEach(self.ⓓeliveredNotifications, id: \.description) { ⓝ in
-                    VStack {
-                        Text(ⓝ.request.identifier)
-                        Text(ⓝ.date.formatted(date: .numeric, time: .omitted))
-                        Text(ⓝ.request.content.badge?.description ?? "no badge")
-                    }
-                }
-            } header: {
-                Text("deliveredNotifications")
-            }
-        }
-        .navigationTitle("Detail")
-        .task {
-            self.ⓓeliveredNotifications = await 📱.🔔notification.deliveredNotifications()
-            self.ⓟendingNotificationRequests = await 📱.🔔notification.pendingNotificationRequests()
         }
     }
 }
