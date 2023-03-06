@@ -22,10 +22,8 @@ struct 🎚️BodyMassStepper: View {
                 📉DifferenceView(.bodyMass)
             }
         } onIncrement: {
-            UISelectionFeedbackGenerator().selectionChanged()
             📱.🎚️changeMassValue(.increment)
         } onDecrement: {
-            UISelectionFeedbackGenerator().selectionChanged()
             📱.🎚️changeMassValue(.decrement)
         }
         .lineLimit(1)
@@ -58,10 +56,8 @@ struct 🎚️BodyFatStepper: View {
                         📉DifferenceView(.bodyFatPercentage)
                     }
                 } onIncrement: {
-                    UISelectionFeedbackGenerator().selectionChanged()
                     📱.🎚️changeBodyFatValue(.increment)
                 } onDecrement: {
-                    UISelectionFeedbackGenerator().selectionChanged()
                     📱.🎚️changeBodyFatValue(.decrement)
                 }
                 .lineLimit(1)

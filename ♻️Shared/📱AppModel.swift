@@ -179,6 +179,7 @@ class 📱AppModel: ObservableObject {
                 ⓜassInputValue = round(ⓜassInputValue * 10) / 10
             }
             self.📝massInputQuantity = HKQuantity(unit: ⓜassUnit, doubleValue: ⓜassInputValue)
+            💥Feedback.light()
         }
     }
     func 🎚️changeBodyFatValue(_ ⓟattern: 🅂tepperAction) {
@@ -189,6 +190,7 @@ class 📱AppModel: ObservableObject {
             }
             ⓑodyFatInputValue = round(ⓑodyFatInputValue * 1000) / 1000
             self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: ⓑodyFatInputValue)
+            💥Feedback.light()
         }
     }
     
