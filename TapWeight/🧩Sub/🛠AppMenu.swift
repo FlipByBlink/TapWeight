@@ -166,7 +166,6 @@ private struct 🛠LBMMenuLink: View {
 
 private struct 🛠ReminderMenuLink: View {
     @EnvironmentObject var 📱: 📱AppModel
-    private var ⓟeriodOfNonDisplay: Int { 📱.🔢periodOfNonDisplay }
     var body: some View {
         NavigationLink {
             List {
@@ -187,7 +186,7 @@ private struct 🛠ReminderMenuLink: View {
                     Text("Option")
                 }
                 Group {
-                    self.ⓟeriodOfNonDisplaySection()
+                    Self.🄿eriodOfNonDisplaySection()
                     self.ⓑannerNotificationSection()
                 }
                 .disabled(!📱.🚩ableReminder)
@@ -200,26 +199,33 @@ private struct 🛠ReminderMenuLink: View {
             Label("Reminder notification", systemImage: "bell")
         }
     }
-    private func ⓟeriodOfNonDisplaySection() -> some View {
-        Section {
-            Stepper(value: $📱.🔢periodOfNonDisplay, in: 1...31) {
-                Label("Period of non-display", systemImage: "bell.slash")
-                    .badge(self.ⓟeriodOfNonDisplay)
-            }
-            if let ⓛatestSampleDate = 📱.ⓜassLatestSampleDate {
-                Group {
-                    let ⓕormat: Date.FormatStyle = .dateTime.day().month().hour().minute()
-                    Text("Last sample's date")
-                        .badge(ⓛatestSampleDate.formatted(ⓕormat))
-                    let ⓣimeOfDisplay = ⓛatestSampleDate.addingTimeInterval(60 * 60 * 24 * Double(self.ⓟeriodOfNonDisplay))
-                    Text("Time of display")
-                        .badge(ⓣimeOfDisplay.formatted(ⓕormat) + "~")
+    private struct 🄿eriodOfNonDisplaySection: View {
+        @EnvironmentObject var 📱: 📱AppModel
+        private var ⓟeriodOfNonDisplay: Int { 📱.🔢periodOfNonDisplay }
+        private var ⓛatestSampleDate: Date? { 📱.ⓜassLatestSampleDate }
+        private let ⓓateFormat: Date.FormatStyle = .dateTime.day().month().hour().minute()
+        private var ⓣimeOfDisplay: Date? {
+            ⓛatestSampleDate?.addingTimeInterval(60 * 60 * 24 * Double(self.ⓟeriodOfNonDisplay))
+        }
+        var body: some View {
+            Section {
+                Stepper(value: $📱.🔢periodOfNonDisplay, in: 1...31) {
+                    Label("Period of non-display", systemImage: "bell.slash")
+                        .badge(self.ⓟeriodOfNonDisplay)
                 }
-                .monospacedDigit()
-                .foregroundStyle(.primary)
+                if let ⓛatestSampleDate, let ⓣimeOfDisplay {
+                    Group {
+                        Text("Last sample's date")
+                            .badge(ⓛatestSampleDate.formatted(self.ⓓateFormat))
+                        Text("Time of display")
+                            .badge(ⓣimeOfDisplay.formatted(self.ⓓateFormat) + "~")
+                    }
+                    .monospacedDigit()
+                    .foregroundStyle(.primary)
+                }
+            } header: {
+                Text("Period of display")
             }
-        } header: {
-            Text("Period of display")
         }
     }
     private func ⓑannerNotificationSection() -> some View {
