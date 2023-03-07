@@ -22,30 +22,32 @@ struct 🎚️BodyMassStepper: View {
     private var ⓓifference: 🄳ifference? { 📱.ⓓifference[.bodyMass] }
     var body: some View {
         Section {
-            Stepper {
-                Text(📱.ⓜassInputDescription + self.ⓤnitDescription)
-                    .monospacedDigit()
-                    .minimumScaleFactor(0.1)
-                    .opacity(self.ⓘnputIsValid ? 1 : 0.2)
-                    .animation(.default, value: self.ⓘnputIsValid)
-            } onIncrement: {
-                📱.🎚️changeMassValue(.increment)
-            } onDecrement: {
-                📱.🎚️changeMassValue(.decrement)
+            VStack {
+                Stepper {
+                    Text(📱.ⓜassInputDescription + self.ⓤnitDescription)
+                        .font(.system(size: 20, weight: .bold, design: .rounded))
+                        .monospacedDigit()
+                        .minimumScaleFactor(0.5)
+                        .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                        .animation(.default, value: self.ⓘnputIsValid)
+                } onIncrement: {
+                    📱.🎚️changeMassValue(.increment)
+                } onDecrement: {
+                    📱.🎚️changeMassValue(.decrement)
+                }
+                if let ⓓifference {
+                    LabeledContent(ⓓifference.valueDescription) {
+                        Text(ⓓifference.lastSampleDate, style: .offset)
+                    }
+                    .padding(.horizontal)
+                    .font(.caption2.monospaced())
+                    .foregroundStyle(.secondary)
+                }
             }
             .lineLimit(1)
         } header: {
             Text("Body Mass")
                 .bold()
-        } footer: {
-            Group {
-                if let ⓓifference {
-                    Text(ⓓifference.valueDescription + ",")
-                    +
-                    Text(ⓓifference.lastSampleDate, style: .offset)
-                }
-            }
-            .monospaced()
         }
     }
 }
@@ -53,24 +55,36 @@ struct 🎚️BodyMassStepper: View {
 struct 🎚️BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputIsValid: Bool { 📱.ⓑodyFatInputIsValid }
+    private var ⓓifference: 🄳ifference? { 📱.ⓓifference[.bodyFatPercentage] }
     var body: some View {
 //        if 📱.🚩ableBodyFat {
             Section {
-                Stepper {
-                    Text(📱.ⓑodyFatInputDescription + "%")
-                        .monospacedDigit()
-                        .opacity(self.ⓘnputIsValid ? 1 : 0.2)
-                        .minimumScaleFactor(0.1)
-                    //📉DifferenceView(.bodyFatPercentage)
-                } onIncrement: {
-                    📱.🎚️changeBodyFatValue(.increment)
-                } onDecrement: {
-                    📱.🎚️changeBodyFatValue(.decrement)
+                VStack {
+                    Stepper {
+                        Text(📱.ⓑodyFatInputDescription + "%")
+                            .font(.system(size: 20, weight: .bold, design: .rounded))
+                            .monospacedDigit()
+                            .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                            .minimumScaleFactor(0.1)
+                    } onIncrement: {
+                        📱.🎚️changeBodyFatValue(.increment)
+                    } onDecrement: {
+                        📱.🎚️changeBodyFatValue(.decrement)
+                    }
+                    .lineLimit(1)
+                    .animation(.default, value: self.ⓘnputIsValid)
+                    if let ⓓifference {
+                        LabeledContent(ⓓifference.valueDescription) {
+                            Text(ⓓifference.lastSampleDate, style: .offset)
+                        }
+                        .padding(.horizontal)
+                        .font(.caption2.monospaced())
+                        .foregroundStyle(.secondary)
+                    }
                 }
-                .lineLimit(1)
-                .animation(.default, value: self.ⓘnputIsValid)
             } header: {
                 Text("Body Fat Percentage")
+                    .bold()
             }
 //        }
     }
@@ -85,26 +99,27 @@ struct 🪧BMIView: View {
 //        if 📱.🚩ableBMI {
             if let ⓘnputValue, let ⓗeightQuantityDescription {
                 Section {
-                    HStack(alignment: .firstTextBaseline) {
-                        Text(ⓘnputValue.description)
-                            .monospacedDigit()
-                            .fontWeight(.heavy)
-                        Text("(\(ⓗeightQuantityDescription))")
-                            .font(.footnote)
+                    VStack {
+                        HStack(alignment: .firstTextBaseline) {
+                            Text(ⓘnputValue.description)
+                                .monospacedDigit()
+                                .fontWeight(.heavy)
+                            Text("(\(ⓗeightQuantityDescription))")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                        if let ⓓifference {
+                            LabeledContent(ⓓifference.valueDescription) {
+                                Text(ⓓifference.lastSampleDate, style: .offset)
+                            }
+                            .padding(.horizontal)
+                            .font(.caption2.monospaced())
+                            .foregroundStyle(.secondary)
+                        }
                     }
-                    .foregroundStyle(.secondary)
                 } header: {
                     Text("Body Mass Index")
                         .bold()
-                } footer: {
-                    Group {
-                        if let ⓓifference {
-                            Text(ⓓifference.valueDescription + ",")
-                            +
-                            Text(ⓓifference.lastSampleDate, style: .offset)
-                        }
-                    }
-                    .monospaced()
                 }
             } else {
                 Text("__Body Mass Index:__ Height data is nothing on \"Health\" app. Register height data.")
@@ -118,18 +133,28 @@ struct 🪧BMIView: View {
 struct 🪧LBMView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputDescription: String? { 📱.ⓛbmInputDescription }
+    private var ⓓifference: 🄳ifference? { 📱.ⓓifference[.leanBodyMass] }
     var body: some View {
 //        if 📱.🚩ableLBM {
             if let ⓘnputDescription {
-                HStack {
-                    VStack(alignment: .leading, spacing: -2) {
-                        Text("Lean Body Mass")
+                Section {
+                    VStack {
                         Text(ⓘnputDescription)
                             .fontWeight(.heavy)
+                            .monospacedDigit()
+                        if let ⓓifference {
+                            LabeledContent(ⓓifference.valueDescription) {
+                                Text(ⓓifference.lastSampleDate, style: .offset)
+                            }
+                            .padding(.horizontal)
+                            .font(.caption2.monospaced())
+                            .foregroundStyle(.secondary)
+                        }
                     }
-                    .monospacedDigit()
+                } header: {
+                    Text("Lean Body Mass")
+                        .bold()
                 }
-                .foregroundStyle(.secondary)
             } else {
                 Text("__Lean Body Mass:__ Error")
             }
