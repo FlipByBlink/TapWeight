@@ -22,22 +22,26 @@ struct 🎚️BodyMassStepper: View {
     private var ⓤnitDescription: String { 📱.ⓜassUnit?.description ?? "kg" }
     var body: some View {
         Section {
-            VStack {
-                Stepper {
-                    Text(📱.ⓜassInputDescription + self.ⓤnitDescription)
-                        .font(.system(size: 20, weight: .bold, design: .rounded))
-                        .monospacedDigit()
-                        .minimumScaleFactor(0.5)
-                        .opacity(self.ⓘnputIsValid ? 1 : 0.2)
-                        .animation(.default, value: self.ⓘnputIsValid)
-                } onIncrement: {
-                    📱.🎚️changeMassValue(.increment)
-                } onDecrement: {
-                    📱.🎚️changeMassValue(.decrement)
+            if self.ⓘnputIsValid {
+                VStack {
+                    Stepper {
+                        Text(📱.ⓜassInputDescription + self.ⓤnitDescription)
+                            .font(.system(size: 20, weight: .bold, design: .rounded))
+                            .monospacedDigit()
+                            .minimumScaleFactor(0.5)
+                            .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                            .animation(.default, value: self.ⓘnputIsValid)
+                    } onIncrement: {
+                        📱.🎚️changeMassValue(.increment)
+                    } onDecrement: {
+                        📱.🎚️changeMassValue(.decrement)
+                    }
+                    📉DifferenceView(.bodyMass)
                 }
-                📉DifferenceView(.bodyMass)
+                .lineLimit(1)
+            } else {
+                Text("Error")
             }
-            .lineLimit(1)
         } header: {
             Text("Body Mass")
                 .bold()
@@ -51,21 +55,25 @@ struct 🎚️BodyFatStepper: View {
     var body: some View {
 //        if 📱.🚩ableBodyFat {
             Section {
-                VStack {
-                    Stepper {
-                        Text(📱.ⓑodyFatInputDescription + "%")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .monospacedDigit()
-                            .opacity(self.ⓘnputIsValid ? 1 : 0.2)
-                            .minimumScaleFactor(0.1)
-                    } onIncrement: {
-                        📱.🎚️changeBodyFatValue(.increment)
-                    } onDecrement: {
-                        📱.🎚️changeBodyFatValue(.decrement)
+                if self.ⓘnputIsValid {
+                    VStack {
+                        Stepper {
+                            Text(📱.ⓑodyFatInputDescription + "%")
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                                .monospacedDigit()
+                                .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                                .minimumScaleFactor(0.1)
+                        } onIncrement: {
+                            📱.🎚️changeBodyFatValue(.increment)
+                        } onDecrement: {
+                            📱.🎚️changeBodyFatValue(.decrement)
+                        }
+                        .lineLimit(1)
+                        .animation(.default, value: self.ⓘnputIsValid)
+                        📉DifferenceView(.bodyFatPercentage)
                     }
-                    .lineLimit(1)
-                    .animation(.default, value: self.ⓘnputIsValid)
-                    📉DifferenceView(.bodyFatPercentage)
+                } else {
+                    Text("Error")
                 }
             } header: {
                 Text("Body Fat Percentage")
@@ -81,29 +89,29 @@ struct 🪧BMIView: View {
     private var ⓗeightQuantityDescription: String? { 📱.ⓗeightQuantityDescription }
     var body: some View {
 //        if 📱.🚩ableBMI {
+        Section {
             if let ⓘnputValue, let ⓗeightQuantityDescription {
-                Section {
-                    VStack {
-                        HStack(alignment: .firstTextBaseline) {
-                            Text(ⓘnputValue.description)
-                                .font(.system(size: 16, weight: .bold, design: .rounded))
-                                .monospacedDigit()
-                            Text("(\(ⓗeightQuantityDescription))")
-                                .font(.system(size: 12, weight: .bold, design: .rounded))
-                                .foregroundStyle(.secondary)
-                        }
-                        📉DifferenceView(.bodyMassIndex)
+                VStack {
+                    HStack(alignment: .firstTextBaseline) {
+                        Text(ⓘnputValue.description)
+                            .font(.system(size: 16, weight: .bold, design: .rounded))
+                            .monospacedDigit()
+                        Text("(\(ⓗeightQuantityDescription))")
+                            .font(.system(size: 12, weight: .bold, design: .rounded))
+                            .foregroundStyle(.secondary)
                     }
-                } header: {
-                    Text("Body Mass Index")
-                        .bold()
+                    📉DifferenceView(.bodyMassIndex)
                 }
             } else {
-                Text("__Body Mass Index:__ Height data is nothing on \"Health\" app. Register height data.")
+                Text("Height data is nothing on \"Health\" app. Register height data.")
                     .font(.footnote)
                     .foregroundStyle(.tertiary)
             }
-//        }
+        } header: {
+            Text("Body Mass Index")
+                .bold()
+        }
+        //        }
     }
 }
 
@@ -112,21 +120,21 @@ struct 🪧LBMView: View {
     private var ⓘnputDescription: String? { 📱.ⓛbmInputDescription }
     var body: some View {
 //        if 📱.🚩ableLBM {
+        Section {
             if let ⓘnputDescription {
-                Section {
-                    VStack {
-                        Text(ⓘnputDescription)
-                            .font(.system(size: 16, weight: .bold, design: .rounded))
-                            .monospacedDigit()
-                        📉DifferenceView(.leanBodyMass)
-                    }
-                } header: {
-                    Text("Lean Body Mass")
-                        .bold()
+                VStack {
+                    Text(ⓘnputDescription)
+                        .font(.system(size: 16, weight: .bold, design: .rounded))
+                        .monospacedDigit()
+                    📉DifferenceView(.leanBodyMass)
                 }
             } else {
-                Text("__Lean Body Mass:__ Error")
+                Text("Error")
             }
+        } header: {
+            Text("Lean Body Mass")
+                .bold()
+        }
 //        }
     }
 }

@@ -67,6 +67,8 @@
 		F5BBB56D29B6B14C00424A66 /* ⌚️SyncDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */; };
 		F5BBB56E29B6B14C00424A66 /* ⌚️SyncDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */; };
 		F5BBB57129B6F60100424A66 /* 🧩SubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56F29B6F60100424A66 /* 🧩SubView.swift */; };
+		F5D19D4529B7698B0069A81E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3EC1282E0F45009BD28B /* Localizable.strings */; };
+		F5D19D4629B769900069A81E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3ED0282E15E5009BD28B /* InfoPlist.strings */; };
 		F5D8400929B1DDED0046E91B /* 🪧LBMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */; };
 		F5D8401629B45CF40046E91B /* 🔔Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8401529B45CF40046E91B /* 🔔Notification.swift */; };
 		F5E1697129B06ACC00EAFF73 /* 🏥Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */; };
@@ -472,6 +474,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5BBB55C29B60F5900424A66 /* Preview Assets.xcassets in Resources */,
+				F5D19D4629B769900069A81E /* InfoPlist.strings in Resources */,
+				F5D19D4529B7698B0069A81E /* Localizable.strings in Resources */,
 				F5BBB55929B60F5900424A66 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
