@@ -105,50 +105,81 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    private var ⓥalueDifferenceDescription: [🏥Category: String] {
-        self.📦latestSamples.compactMapValues { ⓢample in
-            var 📉difference: Double
-            switch 🏥Category(ⓢample.quantityType) {
-                case .bodyMass:
-                    guard let ⓜassInputValue, let ⓜassUnit else { return nil }
-                    📉difference = round((ⓜassInputValue - ⓢample.quantity.doubleValue(for: ⓜassUnit)) * 100) / 100
-                    if self.🚩amount50g {
-                        switch 📉difference {
-                            case ..<0: return String(format: "%.2f", 📉difference)
-                            case 0: return "0.00"
-                            default: return "+" + String(format: "%.2f", 📉difference)
-                        }
-                    }
-                case .bodyMassIndex:
-                    guard let ⓑmiInputValue else { return nil }
-                    📉difference = round((ⓑmiInputValue - ⓢample.quantity.doubleValue(for: .count())) * 10) / 10
-                case .height:
-                    return nil
-                case .bodyFatPercentage:
-                    guard let ⓑodyFatInputValue else { return nil }
-                    📉difference = round((ⓑodyFatInputValue - ⓢample.quantity.doubleValue(for: .percent())) * 1000) / 10
-                case .leanBodyMass:
-                    guard let ⓛbmInputValue, let ⓜassUnit else { return nil }
-                    📉difference = round((ⓛbmInputValue - ⓢample.quantity.doubleValue(for: ⓜassUnit)) * 100) / 100
-                case .none:
-                    assertionFailure()
-                    return nil
-            }
-            switch 📉difference {
-                case ..<0: return 📉difference.description
-                case 0: return "0.0"
-                default: return "+" + 📉difference.description
-            }
-        }
-    }
+//    private var ⓥalueDifferenceDescription: [🏥Category: String] {
+//        self.📦latestSamples.compactMapValues { ⓢample in
+//            var 📉difference: Double
+//            switch 🏥Category(ⓢample.quantityType) {
+//                case .bodyMass:
+//                    guard let ⓜassInputValue, let ⓜassUnit else { return nil }
+//                    📉difference = round((ⓜassInputValue - ⓢample.quantity.doubleValue(for: ⓜassUnit)) * 100) / 100
+//                    if self.🚩amount50g {
+//                        switch 📉difference {
+//                            case ..<0: return String(format: "%.2f", 📉difference)
+//                            case 0: return "0.00"
+//                            default: return "+" + String(format: "%.2f", 📉difference)
+//                        }
+//                    }
+//                case .bodyMassIndex:
+//                    guard let ⓑmiInputValue else { return nil }
+//                    📉difference = round((ⓑmiInputValue - ⓢample.quantity.doubleValue(for: .count())) * 10) / 10
+//                case .height:
+//                    return nil
+//                case .bodyFatPercentage:
+//                    guard let ⓑodyFatInputValue else { return nil }
+//                    📉difference = round((ⓑodyFatInputValue - ⓢample.quantity.doubleValue(for: .percent())) * 1000) / 10
+//                case .leanBodyMass:
+//                    guard let ⓛbmInputValue, let ⓜassUnit else { return nil }
+//                    📉difference = round((ⓛbmInputValue - ⓢample.quantity.doubleValue(for: ⓜassUnit)) * 100) / 100
+//                case .none:
+//                    assertionFailure()
+//                    return nil
+//            }
+//            switch 📉difference {
+//                case ..<0: return 📉difference.description
+//                case 0: return "0.0"
+//                default: return "+" + 📉difference.description
+//            }
+//        }
+//    }
     var ⓓifference: [🏥Category: 🄳ifference] {
-        🏥Category.allCases.reduce([:]) { ⓟartialResult, ⓒategory in
-            var ⓝextResult = ⓟartialResult
-            if let ⓓescription = self.ⓥalueDifferenceDescription[ⓒategory],
-               let ⓓate = self.ⓛatestSampleDate[ⓒategory] {
-                ⓝextResult[ⓒategory] = 🄳ifference(description: ⓓescription, date: ⓓate)
-            }
-            return ⓟartialResult
+        self.📦latestSamples.compactMapValues { ⓢample in
+            guard let ⓒategory = 🏥Category(ⓢample.quantityType) else { return nil }
+            let ⓓifferenceValue: Double? = {
+                switch ⓒategory {
+                    case .bodyMass:
+                        guard let ⓜassInputValue, let ⓜassUnit else { return nil }
+                        return round((ⓜassInputValue - ⓢample.quantity.doubleValue(for: ⓜassUnit)) * 100) / 100
+                    case .bodyMassIndex:
+                        guard let ⓑmiInputValue else { return nil }
+                        return round((ⓑmiInputValue - ⓢample.quantity.doubleValue(for: .count())) * 10) / 10
+                    case .height:
+                        return nil
+                    case .bodyFatPercentage:
+                        guard let ⓑodyFatInputValue else { return nil }
+                        return round((ⓑodyFatInputValue - ⓢample.quantity.doubleValue(for: .percent())) * 1000) / 10
+                    case .leanBodyMass:
+                        guard let ⓛbmInputValue, let ⓜassUnit else { return nil }
+                        return round((ⓛbmInputValue - ⓢample.quantity.doubleValue(for: ⓜassUnit)) * 100) / 100
+                }
+            }()
+            guard let ⓓifferenceValue else { return nil }
+            let ⓓescription: String = {
+                if ⓒategory == .bodyMass, self.🚩amount50g {
+                    switch ⓓifferenceValue {
+                        case ..<0: return String(format: "%.2f", ⓓifferenceValue)
+                        case 0: return "0.00"
+                        default: return "+" + String(format: "%.2f", ⓓifferenceValue)
+                    }
+                } else {
+                    switch ⓓifferenceValue {
+                        case ..<0: return ⓓifferenceValue.description
+                        case 0: return "0.0"
+                        default: return "+" + ⓓifferenceValue.description
+                    }
+                }
+            }()
+            guard let ⓓate = self.ⓛatestSampleDate[ⓒategory] else { return nil }
+            return 🄳ifference(description: ⓓescription, date: ⓓate)
         }
     }
     
