@@ -105,42 +105,6 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-//    private var ⓥalueDifferenceDescription: [🏥Category: String] {
-//        self.📦latestSamples.compactMapValues { ⓢample in
-//            var 📉difference: Double
-//            switch 🏥Category(ⓢample.quantityType) {
-//                case .bodyMass:
-//                    guard let ⓜassInputValue, let ⓜassUnit else { return nil }
-//                    📉difference = round((ⓜassInputValue - ⓢample.quantity.doubleValue(for: ⓜassUnit)) * 100) / 100
-//                    if self.🚩amount50g {
-//                        switch 📉difference {
-//                            case ..<0: return String(format: "%.2f", 📉difference)
-//                            case 0: return "0.00"
-//                            default: return "+" + String(format: "%.2f", 📉difference)
-//                        }
-//                    }
-//                case .bodyMassIndex:
-//                    guard let ⓑmiInputValue else { return nil }
-//                    📉difference = round((ⓑmiInputValue - ⓢample.quantity.doubleValue(for: .count())) * 10) / 10
-//                case .height:
-//                    return nil
-//                case .bodyFatPercentage:
-//                    guard let ⓑodyFatInputValue else { return nil }
-//                    📉difference = round((ⓑodyFatInputValue - ⓢample.quantity.doubleValue(for: .percent())) * 1000) / 10
-//                case .leanBodyMass:
-//                    guard let ⓛbmInputValue, let ⓜassUnit else { return nil }
-//                    📉difference = round((ⓛbmInputValue - ⓢample.quantity.doubleValue(for: ⓜassUnit)) * 100) / 100
-//                case .none:
-//                    assertionFailure()
-//                    return nil
-//            }
-//            switch 📉difference {
-//                case ..<0: return 📉difference.description
-//                case 0: return "0.0"
-//                default: return "+" + 📉difference.description
-//            }
-//        }
-//    }
     var ⓓifference: [🏥Category: 🄳ifference] {
         self.📦latestSamples.compactMapValues { ⓢample in
             guard let ⓒategory = 🏥Category(ⓢample.quantityType) else { return nil }
@@ -179,7 +143,7 @@ class 📱AppModel: ObservableObject {
                 }
             }()
             guard let ⓓate = self.ⓛatestSampleDate[ⓒategory] else { return nil }
-            return 🄳ifference(description: ⓓescription, date: ⓓate)
+            return 🄳ifference(valueDescription: ⓓescription, lastSampleDate: ⓓate)
         }
     }
     
@@ -461,8 +425,8 @@ enum 🅂tepperAction {
 }
 
 struct 🄳ifference {
-    var description: String
-    var date: Date
+    var valueDescription: String
+    var lastSampleDate: Date
 }
 
 enum 🚨Error: Error {

@@ -38,9 +38,9 @@ struct 🎚️BodyMassStepper: View {
             Text("Body Mass")
         } footer: {
             if let ⓓifference {
-                Text(ⓓifference.description)
+                Text(ⓓifference.valueDescription)
                 +
-                Text(ⓓifference.date, style: .offset)
+                Text(ⓓifference.lastSampleDate, style: .offset)
             }
         }
     }
@@ -87,9 +87,9 @@ struct 🪧BMIView: View {
                     Text("Body Mass Index")
                 } footer: {
                     if let ⓓifference {
-                        Text(ⓓifference.description)
+                        Text(ⓓifference.valueDescription)
                         +
-                        Text(ⓓifference.date, style: .offset)
+                        Text(ⓓifference.lastSampleDate, style: .offset)
                     }
                 }
             } else {
