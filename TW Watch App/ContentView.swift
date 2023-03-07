@@ -5,13 +5,17 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                Text(📱.ⓜassInputDescription)
-                Text(📱.ⓑmiInputValue?.description ?? "?")
-                Text(📱.ⓑodyFatInputDescription)
+                🎚️BodyMassStepper()
+                🪧BMIView()
+                🎚️BodyFatStepper()
+                🪧LBMView()
+                👆DoneButton()
             }
             .navigationTitle("Body Mass")
             .navigationBarTitleDisplayMode(.inline)
+            .modifier(🚨RegistrationErrorAlert())
         }
+        .headerProminence(.increased)
     }
 }
 
