@@ -42,9 +42,6 @@ class 📱AppModel: ObservableObject {
             return self.🚩amount50g ? "00.00" : "00.0"
         }
     }
-    var ⓜassLatestSampleDate: Date? {
-        self.📦latestSamples[.bodyMass]?.startDate
-    }
     var ⓜassInputIsValid: Bool {
         self.📝massInputQuantity != nil
     }
@@ -94,7 +91,7 @@ class 📱AppModel: ObservableObject {
     
     var ⓓatePickerIsAlmostNow: Bool { self.📅datePickerValue.timeIntervalSinceNow > -300 }
     
-    var ⓓifferenceDescriptions: [🏥Category: String] {
+    var ⓓifferencesDescription: [🏥Category: String] {
         self.📦latestSamples.compactMapValues { ⓢample in
             var 📉difference: Double
             switch 🏥Category(ⓢample.quantityType) {
@@ -127,6 +124,20 @@ class 📱AppModel: ObservableObject {
                 case ..<0: return 📉difference.description
                 case 0: return "0.0"
                 default: return "+" + 📉difference.description
+            }
+        }
+    }
+    
+    var ⓛatestSamplesDate: [🏥Category: Date] {
+        self.📦latestSamples.compactMapValues { ⓢample in
+            switch 🏥Category(ⓢample.quantityType) {
+                case .bodyMass, .bodyMassIndex, .bodyFatPercentage, .leanBodyMass:
+                    return ⓢample.startDate
+                case .height:
+                    return nil
+                default:
+                    assertionFailure()
+                    return nil
             }
         }
     }

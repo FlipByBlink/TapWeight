@@ -19,8 +19,8 @@ struct 🎚️BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputIsValid: Bool { 📱.ⓜassInputIsValid }
     private var ⓤnitDescription: String { 📱.ⓜassUnit?.description ?? "kg" }
-    private var ⓓifferenceDescription: String? { 📱.ⓓifferenceDescriptions[.bodyMass] }
-    private var ⓛastSampleDate: Date? { 📱.ⓜassLatestSampleDate }
+    private var ⓓifferenceDescription: String? { 📱.ⓓifferencesDescription[.bodyMass] }
+    private var ⓛastSampleDate: Date? { 📱.ⓛatestSamplesDate[.bodyMass] }
     var body: some View {
         Section {
             Stepper {
@@ -77,8 +77,8 @@ struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputValue: Double? { 📱.ⓑmiInputValue }
     private var ⓗeightQuantityDescription: String? { 📱.ⓗeightQuantityDescription }
-    private var ⓓifferenceDescription: String? { 📱.ⓓifferenceDescriptions[.bodyMassIndex] }
-    private var ⓛastSampleDate: Date? { 📱.📦latestSamples[.bodyMassIndex]?.startDate }
+    private var ⓓifferenceDescription: String? { 📱.ⓓifferencesDescription[.bodyMassIndex] }
+    private var ⓛastSampleDate: Date? { 📱.ⓛatestSamplesDate[.bodyMassIndex] }
     var body: some View {
 //        if 📱.🚩ableBMI {
             if let ⓘnputValue, let ⓗeightQuantityDescription {
