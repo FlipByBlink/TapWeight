@@ -6,11 +6,12 @@ struct 👆DoneButton: View { // ☑️
         Button {
             📱.👆register()
         } label: {
-            Label("Register", systemImage: "checkmark.circle.fill")
-                .symbolRenderingMode(.palette)
-                .foregroundStyle(.white, .pink)
+            Label("Register", systemImage: "checkmark")
         }
-        .accessibilityLabel("DONE")
+        .listItemTint(.pink)
+        .foregroundStyle(.white)
+        .fontWeight(.semibold)
+        .accessibilityLabel("Register")
         .fullScreenCover(isPresented: $📱.🚩showResult) { 🗯ResultView() }
     }
 }
@@ -19,7 +20,6 @@ struct 🎚️BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputIsValid: Bool { 📱.ⓜassInputIsValid }
     private var ⓤnitDescription: String { 📱.ⓜassUnit?.description ?? "kg" }
-    private var ⓓifference: 🄳ifference? { 📱.ⓓifference[.bodyMass] }
     var body: some View {
         Section {
             VStack {
@@ -35,14 +35,7 @@ struct 🎚️BodyMassStepper: View {
                 } onDecrement: {
                     📱.🎚️changeMassValue(.decrement)
                 }
-                if let ⓓifference {
-                    LabeledContent(ⓓifference.valueDescription) {
-                        Text(ⓓifference.lastSampleDate, style: .offset)
-                    }
-                    .padding(.horizontal)
-                    .font(.caption2.monospaced())
-                    .foregroundStyle(.secondary)
-                }
+                📉DifferenceView(.bodyMass)
             }
             .lineLimit(1)
         } header: {
@@ -55,7 +48,6 @@ struct 🎚️BodyMassStepper: View {
 struct 🎚️BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputIsValid: Bool { 📱.ⓑodyFatInputIsValid }
-    private var ⓓifference: 🄳ifference? { 📱.ⓓifference[.bodyFatPercentage] }
     var body: some View {
 //        if 📱.🚩ableBodyFat {
             Section {
@@ -73,14 +65,7 @@ struct 🎚️BodyFatStepper: View {
                     }
                     .lineLimit(1)
                     .animation(.default, value: self.ⓘnputIsValid)
-                    if let ⓓifference {
-                        LabeledContent(ⓓifference.valueDescription) {
-                            Text(ⓓifference.lastSampleDate, style: .offset)
-                        }
-                        .padding(.horizontal)
-                        .font(.caption2.monospaced())
-                        .foregroundStyle(.secondary)
-                    }
+                    📉DifferenceView(.bodyFatPercentage)
                 }
             } header: {
                 Text("Body Fat Percentage")
@@ -94,7 +79,6 @@ struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputValue: Double? { 📱.ⓑmiInputValue }
     private var ⓗeightQuantityDescription: String? { 📱.ⓗeightQuantityDescription }
-    private var ⓓifference: 🄳ifference? { 📱.ⓓifference[.bodyMass] }
     var body: some View {
 //        if 📱.🚩ableBMI {
             if let ⓘnputValue, let ⓗeightQuantityDescription {
@@ -102,20 +86,13 @@ struct 🪧BMIView: View {
                     VStack {
                         HStack(alignment: .firstTextBaseline) {
                             Text(ⓘnputValue.description)
+                                .font(.system(size: 16, weight: .bold, design: .rounded))
                                 .monospacedDigit()
-                                .fontWeight(.heavy)
                             Text("(\(ⓗeightQuantityDescription))")
-                                .font(.footnote)
+                                .font(.system(size: 12, weight: .bold, design: .rounded))
                                 .foregroundStyle(.secondary)
                         }
-                        if let ⓓifference {
-                            LabeledContent(ⓓifference.valueDescription) {
-                                Text(ⓓifference.lastSampleDate, style: .offset)
-                            }
-                            .padding(.horizontal)
-                            .font(.caption2.monospaced())
-                            .foregroundStyle(.secondary)
-                        }
+                        📉DifferenceView(.bodyMassIndex)
                     }
                 } header: {
                     Text("Body Mass Index")
@@ -133,23 +110,15 @@ struct 🪧BMIView: View {
 struct 🪧LBMView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputDescription: String? { 📱.ⓛbmInputDescription }
-    private var ⓓifference: 🄳ifference? { 📱.ⓓifference[.leanBodyMass] }
     var body: some View {
 //        if 📱.🚩ableLBM {
             if let ⓘnputDescription {
                 Section {
                     VStack {
                         Text(ⓘnputDescription)
-                            .fontWeight(.heavy)
+                            .font(.system(size: 16, weight: .bold, design: .rounded))
                             .monospacedDigit()
-                        if let ⓓifference {
-                            LabeledContent(ⓓifference.valueDescription) {
-                                Text(ⓓifference.lastSampleDate, style: .offset)
-                            }
-                            .padding(.horizontal)
-                            .font(.caption2.monospaced())
-                            .foregroundStyle(.secondary)
-                        }
+                        📉DifferenceView(.leanBodyMass)
                     }
                 } header: {
                     Text("Lean Body Mass")
@@ -162,77 +131,22 @@ struct 🪧LBMView: View {
     }
 }
 
-struct 🗯ResultView: View {
+struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    private var ⓒanceled: Bool { 📱.🚩completedCancellation }
+    private var ⓒategory: 🏥Category
+    private var ⓓifference: 🄳ifference? { 📱.ⓓifference[self.ⓒategory] }
     var body: some View {
-        NavigationView {
-            ZStack {
-                Rectangle()
-                    .foregroundColor(.pink)
-                    .ignoresSafeArea()
-                VStack(spacing: 16) {
-                    Image(systemName: "checkmark")
-                        .font(.system(size: 96).weight(.semibold))
-                    Text("DONE!")
-                        .strikethrough(self.ⓒanceled)
-                        .font(.system(size: 96).weight(.black))
-                    Text("Registration for \"Health\" app")
-                        .strikethrough(self.ⓒanceled)
-                        .font(.title3.weight(.semibold))
-                    self.🗯SummaryText()
-                }
-                .lineLimit(1)
-                .minimumScaleFactor(0.3)
-                .padding()
-                .padding(.bottom, 120)
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .opacity(self.ⓒanceled ? 0.5 : 1)
-                .overlay(alignment: .bottom) {
-                    if self.ⓒanceled { Text("Canceled") }
-                }
-                .toolbar {
-                    self.🗑cancelButton()
-                }
+        if let ⓓifference {
+            LabeledContent(ⓓifference.valueDescription) {
+                Text(ⓓifference.lastSampleDate, style: .offset)
             }
-            .animation(.default, value: self.ⓒanceled)
-            .navigationBarTitleDisplayMode(.inline)
+            .padding(.horizontal)
+            .font(.caption2.monospaced())
+            .foregroundStyle(.secondary)
         }
-        .preferredColorScheme(.dark)
-        .modifier(🚨CancellationErrorAlert())
     }
-    private func 🗯SummaryText() -> some View {
-        Group {
-            Text(📱.ⓡesultSummaryDescription ?? "🐛")
-                .strikethrough(self.ⓒanceled)
-                .font(.body.bold())
-            if 📱.🚩ableDatePicker {
-                if let ⓓate = 📱.📨registeredSamples.first?.startDate as? Date {
-                    Text(ⓓate.formatted(date: .abbreviated, time: .shortened))
-                        .strikethrough(self.ⓒanceled)
-                        .font(.subheadline.weight(.semibold))
-                        .padding(.horizontal)
-                }
-            }
-        }
-        .opacity(0.75)
-        .padding(.horizontal, 42)
-    }
-    private func 🗑cancelButton() -> some ToolbarContent {
-        ToolbarItem {
-            Button {
-                📱.🗑cancel()
-            } label: {
-                Image(systemName: "arrow.uturn.backward.circle.fill")
-                    .symbolRenderingMode(.hierarchical)
-                    .foregroundColor(.primary)
-                    .font(.title)
-            }
-            .disabled(self.ⓒanceled)
-            .opacity(self.ⓒanceled ? 0.5 : 1)
-            .accessibilityLabel("Cancel")
-        }
+    init(_ ⓒategory: 🏥Category) {
+        self.ⓒategory = ⓒategory
     }
 }
 
@@ -259,5 +173,58 @@ struct 🚨CancellationErrorAlert: ViewModifier {
             } message: {
                 Text(📱.🚨cancellationError?.message ?? "🐛")
             }
+    }
+}
+
+struct 🗯ResultView: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    @State private var ⓢhowUndoAlert: Bool = false
+    private var ⓒanceled: Bool { 📱.🚩completedCancellation }
+    var body: some View {
+        VStack {
+            Spacer()
+            Image(systemName: "checkmark")
+                .font(.largeTitle.bold())
+            Text("DONE!")
+                .font(.title.bold())
+            Spacer()
+            Text(📱.ⓡesultSummaryDescription ?? "🐛")
+                .strikethrough(self.ⓒanceled)
+                .font(.body.bold())
+            if 📱.🚩ableDatePicker {
+                if let ⓓate = 📱.📨registeredSamples.first?.startDate as? Date {
+                    Text(ⓓate.formatted(date: .abbreviated, time: .shortened))
+                        .strikethrough(self.ⓒanceled)
+                        .font(.subheadline.weight(.semibold))
+                        .padding(.horizontal)
+                }
+            }
+            Spacer()
+        }
+        .opacity(self.ⓒanceled ? 0.25 : 1)
+        .overlay(alignment: .bottom) {
+            if self.ⓒanceled  {
+                VStack {
+                    Text("Canceled")
+                        .fontWeight(.semibold)
+                    if 📱.🚩alertCancellationError {
+                        Text("(perhaps error)")
+                    }
+                }
+            }
+        }
+        .onTapGesture {
+            if !self.ⓒanceled  {
+                self.ⓢhowUndoAlert = true
+            }
+        }
+        .confirmationDialog("Undo?", isPresented: self.$ⓢhowUndoAlert) {
+            Button("Yes, undo") {
+                📱.🗑cancel()
+            }
+        }
+        .modifier(🚨CancellationErrorAlert())
+        .toolbar(.hidden, for: .automatic)
+        //Digital Crown 押し込みでsheetを閉じれる
     }
 }
