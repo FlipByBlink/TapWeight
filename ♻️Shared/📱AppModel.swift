@@ -91,7 +91,21 @@ class 📱AppModel: ObservableObject {
     
     var ⓓatePickerIsAlmostNow: Bool { self.📅datePickerValue.timeIntervalSinceNow > -300 }
     
-    var ⓓifferencesDescription: [🏥Category: String] {
+    var ⓛatestSampleDate: [🏥Category: Date] {
+        self.📦latestSamples.compactMapValues { ⓢample in
+            switch 🏥Category(ⓢample.quantityType) {
+                case .bodyMass, .bodyMassIndex, .bodyFatPercentage, .leanBodyMass:
+                    return ⓢample.startDate
+                case .height:
+                    return nil
+                default:
+                    assertionFailure()
+                    return nil
+            }
+        }
+    }
+    
+    private var ⓥalueDifferenceDescription: [🏥Category: String] {
         self.📦latestSamples.compactMapValues { ⓢample in
             var 📉difference: Double
             switch 🏥Category(ⓢample.quantityType) {
@@ -127,18 +141,14 @@ class 📱AppModel: ObservableObject {
             }
         }
     }
-    
-    var ⓛatestSamplesDate: [🏥Category: Date] {
-        self.📦latestSamples.compactMapValues { ⓢample in
-            switch 🏥Category(ⓢample.quantityType) {
-                case .bodyMass, .bodyMassIndex, .bodyFatPercentage, .leanBodyMass:
-                    return ⓢample.startDate
-                case .height:
-                    return nil
-                default:
-                    assertionFailure()
-                    return nil
+    var ⓓifference: [🏥Category: 🄳ifference] {
+        🏥Category.allCases.reduce([:]) { ⓟartialResult, ⓒategory in
+            var ⓝextResult = ⓟartialResult
+            if let ⓓescription = self.ⓥalueDifferenceDescription[ⓒategory],
+               let ⓓate = self.ⓛatestSampleDate[ⓒategory] {
+                ⓝextResult[ⓒategory] = 🄳ifference(description: ⓓescription, date: ⓓate)
             }
+            return ⓟartialResult
         }
     }
     
@@ -417,6 +427,11 @@ class 📱AppModel: ObservableObject {
 
 enum 🅂tepperAction {
     case increment, decrement
+}
+
+struct 🄳ifference {
+    var description: String
+    var date: Date
 }
 
 enum 🚨Error: Error {

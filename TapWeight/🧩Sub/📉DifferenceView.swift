@@ -4,20 +4,19 @@ import HealthKit
 struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓒategory: 🏥Category
-    private var ⓓescription: String? { 📱.ⓓifferencesDescription[self.ⓒategory] }
-    private var ⓛastSampleDate: Date? { 📱.ⓛatestSamplesDate[self.ⓒategory] }
+    private var ⓓifference: 🄳ifference? { 📱.ⓓifference[self.ⓒategory] }
     private var ⓕrameHeight: Double { 📱.🚩ableDatePicker ? 36 : 42 }
     var body: some View {
         ZStack {
             Color.clear
             if !📱.🚩ableDatePicker || 📱.ⓓatePickerIsAlmostNow {
-                if let ⓓescription, let ⓛastSampleDate {
+                if let ⓓifference {
                     VStack(spacing: 0) {
-                        Text(ⓓescription)
+                        Text(ⓓifference.description)
                             .font(.subheadline.bold())
                             .monospacedDigit()
                             .frame(width: 72, height: self.ⓕrameHeight / 2, alignment: .bottomTrailing)
-                        Text(ⓛastSampleDate, style: .offset)
+                        Text(ⓓifference.date, style: .offset)
                             .font(.caption.bold())
                             .frame(width: 72, height: self.ⓕrameHeight / 2, alignment: .topTrailing)
                     }

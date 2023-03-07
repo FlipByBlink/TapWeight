@@ -207,7 +207,7 @@ private struct 🛠ReminderMenuLink: View {
     private struct 🄿eriodOfNonDisplaySection: View {
         @EnvironmentObject var 📱: 📱AppModel
         private var ⓟeriodOfNonDisplay: Int { 📱.🔢periodOfNonDisplay }
-        private var ⓛatestSampleDate: Date? { 📱.ⓛatestSamplesDate[.bodyMass] }
+        private var ⓛatestSampleDate: Date? { 📱.ⓛatestSampleDate[.bodyMass] }
         private let ⓓateFormat: Date.FormatStyle = .dateTime.day().month().hour().minute()
         private var ⓣimeOfDisplay: Date? {
             ⓛatestSampleDate?.addingTimeInterval(60 * 60 * 24 * Double(self.ⓟeriodOfNonDisplay))

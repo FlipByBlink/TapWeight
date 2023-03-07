@@ -19,8 +19,7 @@ struct 🎚️BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputIsValid: Bool { 📱.ⓜassInputIsValid }
     private var ⓤnitDescription: String { 📱.ⓜassUnit?.description ?? "kg" }
-    private var ⓓifferenceDescription: String? { 📱.ⓓifferencesDescription[.bodyMass] }
-    private var ⓛastSampleDate: Date? { 📱.ⓛatestSamplesDate[.bodyMass] }
+    private var ⓓifference: 🄳ifference? { 📱.ⓓifference[.bodyMass] }
     var body: some View {
         Section {
             Stepper {
@@ -38,10 +37,10 @@ struct 🎚️BodyMassStepper: View {
         } header: {
             Text("Body Mass")
         } footer: {
-            if let ⓓifferenceDescription, let ⓛastSampleDate {
-                Text(ⓓifferenceDescription)
+            if let ⓓifference {
+                Text(ⓓifference.description)
                 +
-                Text(ⓛastSampleDate, style: .offset)
+                Text(ⓓifference.date, style: .offset)
             }
         }
     }
@@ -77,8 +76,7 @@ struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputValue: Double? { 📱.ⓑmiInputValue }
     private var ⓗeightQuantityDescription: String? { 📱.ⓗeightQuantityDescription }
-    private var ⓓifferenceDescription: String? { 📱.ⓓifferencesDescription[.bodyMassIndex] }
-    private var ⓛastSampleDate: Date? { 📱.ⓛatestSamplesDate[.bodyMassIndex] }
+    private var ⓓifference: 🄳ifference? { 📱.ⓓifference[.bodyMass] }
     var body: some View {
 //        if 📱.🚩ableBMI {
             if let ⓘnputValue, let ⓗeightQuantityDescription {
@@ -88,10 +86,10 @@ struct 🪧BMIView: View {
                 } header: {
                     Text("Body Mass Index")
                 } footer: {
-                    if let ⓓifferenceDescription, let ⓛastSampleDate {
-                        Text(ⓓifferenceDescription + "  ")
+                    if let ⓓifference {
+                        Text(ⓓifference.description)
                         +
-                        Text(ⓛastSampleDate, style: .offset)
+                        Text(ⓓifference.date, style: .offset)
                     }
                 }
             } else {

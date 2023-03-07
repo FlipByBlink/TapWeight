@@ -55,7 +55,7 @@ struct 🏥HealthStore {
     }
 }
 
-enum 🏥Category {
+enum 🏥Category: CaseIterable {
     case bodyMass, bodyMassIndex, height, bodyFatPercentage, leanBodyMass
     var identifier: HKQuantityTypeIdentifier {
         switch self {
