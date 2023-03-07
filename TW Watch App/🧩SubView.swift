@@ -36,12 +36,16 @@ struct 🎚️BodyMassStepper: View {
             .lineLimit(1)
         } header: {
             Text("Body Mass")
+                .bold()
         } footer: {
-            if let ⓓifference {
-                Text(ⓓifference.valueDescription)
-                +
-                Text(ⓓifference.lastSampleDate, style: .offset)
+            Group {
+                if let ⓓifference {
+                    Text(ⓓifference.valueDescription + ",")
+                    +
+                    Text(ⓓifference.lastSampleDate, style: .offset)
+                }
             }
+            .monospaced()
         }
     }
 }
@@ -81,16 +85,26 @@ struct 🪧BMIView: View {
 //        if 📱.🚩ableBMI {
             if let ⓘnputValue, let ⓗeightQuantityDescription {
                 Section {
-                    LabeledContent(ⓘnputValue.description, value: ⓗeightQuantityDescription)
-                        .monospacedDigit()
+                    HStack(alignment: .firstTextBaseline) {
+                        Text(ⓘnputValue.description)
+                            .monospacedDigit()
+                            .fontWeight(.heavy)
+                        Text("(\(ⓗeightQuantityDescription))")
+                            .font(.footnote)
+                    }
+                    .foregroundStyle(.secondary)
                 } header: {
                     Text("Body Mass Index")
+                        .bold()
                 } footer: {
-                    if let ⓓifference {
-                        Text(ⓓifference.valueDescription)
-                        +
-                        Text(ⓓifference.lastSampleDate, style: .offset)
+                    Group {
+                        if let ⓓifference {
+                            Text(ⓓifference.valueDescription + ",")
+                            +
+                            Text(ⓓifference.lastSampleDate, style: .offset)
+                        }
                     }
+                    .monospaced()
                 }
             } else {
                 Text("__Body Mass Index:__ Height data is nothing on \"Health\" app. Register height data.")

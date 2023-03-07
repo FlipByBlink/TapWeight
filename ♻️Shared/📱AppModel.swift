@@ -137,7 +137,7 @@ class 📱AppModel: ObservableObject {
                 } else {
                     switch ⓓifferenceValue {
                         case ..<0: return ⓓifferenceValue.description
-                        case 0: return "0.0"
+                        case 0: return " 0.0"
                         default: return "+" + ⓓifferenceValue.description
                     }
                 }

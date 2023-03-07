@@ -11,11 +11,8 @@ struct ContentView: View {
                 🪧LBMView()
                 👆DoneButton()
             }
-            .navigationTitle("Body Mass")
-            .navigationBarTitleDisplayMode(.inline)
             .modifier(🚨RegistrationErrorAlert())
         }
-        .headerProminence(.increased)
     }
 }
 
