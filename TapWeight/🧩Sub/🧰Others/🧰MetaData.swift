@@ -59,7 +59,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "WatchApp/ContentView.swift",
                         "WatchApp/🧩SubView.swift"]
             case .WatchComplication:
-                return ["WatchComplication/TWWidget.swift"]
+                return ["WatchComplication/TW_Watch_Widget.swift"]
         }
     }
 }

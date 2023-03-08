@@ -70,9 +70,11 @@
 		F5D19D4629B769900069A81E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3ED0282E15E5009BD28B /* InfoPlist.strings */; };
 		F5D19D4729B83D180069A81E /* ⌚️SyncDelegate.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */; };
 		F5D19D4829B83D180069A81E /* 💥Feedback.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56829B6113A00424A66 /* 💥Feedback.swift */; };
-		F5D19D4A29B83D430069A81E /* TWApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB55429B60F5700424A66 /* TWApp.swift */; };
-		F5D19D4B29B83D430069A81E /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB55629B60F5700424A66 /* ContentView.swift */; };
-		F5D19D4C29B83D430069A81E /* 🧩SubView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56F29B6F60100424A66 /* 🧩SubView.swift */; };
+		F5D19D7F29B840020069A81E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D19D7E29B840020069A81E /* WidgetKit.framework */; };
+		F5D19D8129B840020069A81E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D19D8029B840020069A81E /* SwiftUI.framework */; };
+		F5D19D8429B840020069A81E /* TW_Watch_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D19D8329B840020069A81E /* TW_Watch_Widget.swift */; };
+		F5D19D8629B840050069A81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5D19D8529B840050069A81E /* Assets.xcassets */; };
+		F5D19D8A29B840050069A81E /* TW Watch WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F5D19D7D29B840020069A81E /* TW Watch WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F5D8400929B1DDED0046E91B /* 🪧LBMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */; };
 		F5D8401629B45CF40046E91B /* 🔔Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8401529B45CF40046E91B /* 🔔Notification.swift */; };
 		F5E1697129B06ACC00EAFF73 /* 🏥Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */; };
@@ -89,6 +91,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F5BBB55129B60F5700424A66;
 			remoteInfo = "TW Watch App";
+		};
+		F5D19D8829B840050069A81E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 126B3E9F282DFEDF009BD28B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5D19D7C29B840020069A81E;
+			remoteInfo = "TW Watch WidgetExtension";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -143,9 +152,26 @@
 			dstPath = "📁SourceCode/WatchApp";
 			dstSubfolderSpec = 7;
 			files = (
-				F5D19D4A29B83D430069A81E /* TWApp.swift in CopyFiles */,
-				F5D19D4B29B83D430069A81E /* ContentView.swift in CopyFiles */,
-				F5D19D4C29B83D430069A81E /* 🧩SubView.swift in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5D19D8B29B840050069A81E /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F5D19D8A29B840050069A81E /* TW Watch WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5D19D8F29B841210069A81E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "📁SourceCode/WatchComplication";
+			dstSubfolderSpec = 7;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +246,12 @@
 		F5BBB56829B6113A00424A66 /* 💥Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💥Feedback.swift"; sourceTree = "<group>"; };
 		F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "⌚️SyncDelegate.swift"; sourceTree = "<group>"; };
 		F5BBB56F29B6F60100424A66 /* 🧩SubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧩SubView.swift"; sourceTree = "<group>"; };
+		F5D19D7D29B840020069A81E /* TW Watch WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TW Watch WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5D19D7E29B840020069A81E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		F5D19D8029B840020069A81E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		F5D19D8329B840020069A81E /* TW_Watch_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TW_Watch_Widget.swift; sourceTree = "<group>"; };
+		F5D19D8529B840050069A81E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F5D19D8729B840050069A81E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧LBMView.swift"; sourceTree = "<group>"; };
 		F5D8401529B45CF40046E91B /* 🔔Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🔔Notification.swift"; sourceTree = "<group>"; };
 		F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏥Health.swift"; sourceTree = "<group>"; };
@@ -243,6 +275,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5D19D7A29B840020069A81E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5D19D8129B840020069A81E /* SwiftUI.framework in Frameworks */,
+				F5D19D7F29B840020069A81E /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +322,7 @@
 				F5BBB54D29B60F3E00424A66 /* ♻️Shared */,
 				126B3EA9282DFEDF009BD28B /* TapWeight */,
 				F5BBB55329B60F5700424A66 /* TW Watch App */,
+				F5D19D8229B840020069A81E /* TW Watch Widget */,
 				126B3EA8282DFEDF009BD28B /* Products */,
 				126B3EB9282E001E009BD28B /* Frameworks */,
 			);
@@ -291,6 +333,7 @@
 			children = (
 				126B3EA7282DFEDF009BD28B /* TapWeight.app */,
 				F5BBB55229B60F5700424A66 /* TapWeight.app */,
+				F5D19D7D29B840020069A81E /* TW Watch WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -320,6 +363,8 @@
 			children = (
 				12BA83CD28606047009E7E3F /* StoreKit.framework */,
 				126B3EBA282E001E009BD28B /* HealthKit.framework */,
+				F5D19D7E29B840020069A81E /* WidgetKit.framework */,
+				F5D19D8029B840020069A81E /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -380,6 +425,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		F5D19D8229B840020069A81E /* TW Watch Widget */ = {
+			isa = PBXGroup;
+			children = (
+				F5D19D8329B840020069A81E /* TW_Watch_Widget.swift */,
+				F5D19D8529B840050069A81E /* Assets.xcassets */,
+				F5D19D8729B840050069A81E /* Info.plist */,
+			);
+			path = "TW Watch Widget";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -393,6 +448,7 @@
 				F535AA7A29AD7BA600691926 /* CopyFiles */,
 				F5BBB56329B60F7900424A66 /* Embed Watch Content */,
 				F5D19D4929B83D200069A81E /* CopyFiles */,
+				F5D19D8F29B841210069A81E /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -411,15 +467,34 @@
 				F5BBB54E29B60F5700424A66 /* Sources */,
 				F5BBB54F29B60F5700424A66 /* Frameworks */,
 				F5BBB55029B60F5700424A66 /* Resources */,
+				F5D19D8B29B840050069A81E /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F5D19D8929B840050069A81E /* PBXTargetDependency */,
 			);
 			name = "TW Watch App";
 			productName = "TW Watch App";
 			productReference = F5BBB55229B60F5700424A66 /* TapWeight.app */;
 			productType = "com.apple.product-type.application";
+		};
+		F5D19D7C29B840020069A81E /* TW Watch WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5D19D8E29B840050069A81E /* Build configuration list for PBXNativeTarget "TW Watch WidgetExtension" */;
+			buildPhases = (
+				F5D19D7929B840020069A81E /* Sources */,
+				F5D19D7A29B840020069A81E /* Frameworks */,
+				F5D19D7B29B840020069A81E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TW Watch WidgetExtension";
+			productName = "TW Watch WidgetExtension";
+			productReference = F5D19D7D29B840020069A81E /* TW Watch WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -435,6 +510,9 @@
 						CreatedOnToolsVersion = 13.3;
 					};
 					F5BBB55129B60F5700424A66 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					F5D19D7C29B840020069A81E = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
@@ -468,6 +546,7 @@
 			targets = (
 				126B3EA6282DFEDF009BD28B /* TapWeight */,
 				F5BBB55129B60F5700424A66 /* TW Watch App */,
+				F5D19D7C29B840020069A81E /* TW Watch WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -496,6 +575,14 @@
 				F5D19D4629B769900069A81E /* InfoPlist.strings in Resources */,
 				F5D19D4529B7698B0069A81E /* Localizable.strings in Resources */,
 				F5BBB55929B60F5900424A66 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5D19D7B29B840020069A81E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5D19D8629B840050069A81E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +634,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F5D19D7929B840020069A81E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5D19D8429B840020069A81E /* TW_Watch_Widget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -554,6 +649,11 @@
 			isa = PBXTargetDependency;
 			target = F5BBB55129B60F5700424A66 /* TW Watch App */;
 			targetProxy = F5BBB56129B60F7900424A66 /* PBXContainerItemProxy */;
+		};
+		F5D19D8929B840050069A81E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F5D19D7C29B840020069A81E /* TW Watch WidgetExtension */;
+			targetProxy = F5D19D8829B840050069A81E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -814,6 +914,7 @@
 		F5BBB55E29B60F5900424A66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -847,6 +948,7 @@
 		F5BBB55F29B60F5900424A66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -877,6 +979,68 @@
 			};
 			name = Release;
 		};
+		F5D19D8C29B840050069A81E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6696GEY228;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TW Watch Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "TW Watch Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.aaaakkkkssssttttnnnn.TapWeight.watchkitapp.TW-Watch-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		F5D19D8D29B840050069A81E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6696GEY228;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TW Watch Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "TW Watch Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.aaaakkkkssssttttnnnn.TapWeight.watchkitapp.TW-Watch-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -903,6 +1067,15 @@
 			buildConfigurations = (
 				F5BBB55E29B60F5900424A66 /* Debug */,
 				F5BBB55F29B60F5900424A66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5D19D8E29B840050069A81E /* Build configuration list for PBXNativeTarget "TW Watch WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5D19D8C29B840050069A81E /* Debug */,
+				F5D19D8D29B840050069A81E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
