@@ -101,24 +101,27 @@ private struct 🛠BMIMenuLink: View {
             } header: {
                 Text("Formula")
             }
-            Section {
-                if let ⓗeightSample = 📱.📦latestSamples[.height] {
-                    HStack {
-                        Text(ⓗeightSample.quantity.description)
-                        if 📱.ⓗeightUnit == .foot() {
-                            Text("(" + ⓗeightSample.quantity.doubleValue(for: .meter()).description + "m)")
-                                .foregroundStyle(.secondary)
+            if 📱.🚩ableBMI {
+                Section {
+                    if let ⓗeightSample = 📱.📦latestSamples[.height] {
+                        HStack {
+                            Text(ⓗeightSample.quantity.description)
+                            if 📱.ⓗeightUnit == .foot() {
+                                Text("(" + ⓗeightSample.quantity.doubleValue(for: .meter()).description + "m)")
+                                    .foregroundStyle(.secondary)
+                            }
                         }
+                        .badge(ⓗeightSample.startDate.formatted())
+                    } else {
+                        Text("Required height data access in \"Health\" app.")
+                        💟OpenHealthAppButton.onMenuView()
                     }
-                    .badge(ⓗeightSample.startDate.formatted())
-                } else {
-                    Text("Required height data access in \"Health\" app.")
-                    💟OpenHealthAppButton.onMenuView()
+                } header: {
+                    Text("Height")
                 }
-            } header: {
-                Text("Height")
             }
         }
+        .animation(.default, value: 📱.🚩ableBMI)
     }
 }
 

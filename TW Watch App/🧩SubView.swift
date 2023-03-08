@@ -163,9 +163,7 @@ struct 🚨RegistrationErrorAlert: ViewModifier {
     func body(content: Content) -> some View {
         content
             .alert("⚠️ Failed registration", isPresented: $📱.🚩alertRegistrationError) {
-                Link(destination: URL(string: "x-apple-health://")!) {
-                    Label("Open \"Health\" app", systemImage: "app")
-                }
+                EmptyView()
             } message: {
                 Text(📱.🚨registrationError?.message ?? "🐛")
             }
