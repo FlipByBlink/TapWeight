@@ -9,7 +9,7 @@ class 🅂yncDelegate: NSObject, WCSessionDelegate, ObservableObject {
     
     //MARK: Required(watchOS, iOS)
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        print(#function)
+        print(#function, ": Nothing to do.")
     }
     
     func ⓢync() {
@@ -38,7 +38,7 @@ extension 🅂yncDelegate: UIApplicationDelegate {
 extension 🅂yncDelegate {
     //MARK: Required
     func sessionDidBecomeInactive(_ session: WCSession) {
-        print("\(#function): activationState = \(session.activationState.rawValue)")
+        print("\(#function): activationState = \(session.activationState.rawValue). Nothing to do.")
     }
     
     //MARK: Required

@@ -89,6 +89,7 @@
 		F5E2EAAB29415F3D0054A208 /* 📣AD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E2EAA829415F3C0054A208 /* 📣AD.swift */; };
 		F5E2EAAC29415F3D0054A208 /* 🛒InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E2EAA929415F3D0054A208 /* 🛒InAppPurchase.swift */; };
 		F5F6901629416A8200765505 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = F5F6901529416A8200765505 /* Configuration.storekit */; };
+		F5FE433D29B94BFD00A40749 /* ⌚️SyncOptions.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F520859829B84D3E0001092D /* ⌚️SyncOptions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				F5FE433D29B94BFD00A40749 /* ⌚️SyncOptions.swift in CopyFiles */,
 				F5D19D4729B83D180069A81E /* ⌚️SyncDelegate.swift in CopyFiles */,
 				F5D19D4829B83D180069A81E /* 💥Feedback.swift in CopyFiles */,
 				F5BBB54A29B5F48C00424A66 /* 🪧LBMView.swift in CopyFiles */,
