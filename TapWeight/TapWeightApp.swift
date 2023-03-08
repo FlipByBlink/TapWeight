@@ -11,6 +11,7 @@ struct TapWeightApp: App {
         WindowGroup {
             ContentView()
                 .task { 📱.ⓢetupOnLaunch() }
+                .modifier(🅂yncOptions())
                 .modifier(📣ADSheet())
                 .environmentObject(📱)
                 .environmentObject(🛒)

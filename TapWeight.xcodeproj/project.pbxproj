@@ -23,6 +23,7 @@
 		1299C3B9288D77270086522B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1299C3B8288D77270086522B /* Launch Screen.storyboard */; };
 		12BA83CE28606047009E7E3F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12BA83CD28606047009E7E3F /* StoreKit.framework */; };
 		F514464B29B579DF00B1CB13 /* 🄰ppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F514464A29B579DF00B1CB13 /* 🄰ppDelegate.swift */; };
+		F520859929B84D3E0001092D /* ⌚️SyncOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F520859829B84D3E0001092D /* ⌚️SyncOptions.swift */; };
 		F535719329B1AFB80003FD2C /* 🚨ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
 		F535719429B1B9FF0003FD2C /* 🏥Health.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */; };
 		F535719529B1B9FF0003FD2C /* 🚨ErrorAlert.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
@@ -237,6 +238,7 @@
 		12AF80E0288ECA8F0047324A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12BA83CD28606047009E7E3F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F514464A29B579DF00B1CB13 /* 🄰ppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🄰ppDelegate.swift"; sourceTree = "<group>"; };
+		F520859829B84D3E0001092D /* ⌚️SyncOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "⌚️SyncOptions.swift"; sourceTree = "<group>"; };
 		F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚨ErrorAlert.swift"; sourceTree = "<group>"; };
 		F535AA7829AD7ABB00691926 /* 🧰MetaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🧰MetaData.swift"; sourceTree = "<group>"; };
 		F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💬RequestUserReview.swift"; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */,
 				12630BC22849CD33005F922F /* 🛠AppMenu.swift */,
 				F5D8401529B45CF40046E91B /* 🔔Notification.swift */,
+				F520859829B84D3E0001092D /* ⌚️SyncOptions.swift */,
 				F514464A29B579DF00B1CB13 /* 🄰ppDelegate.swift */,
 				F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */,
 				F535AA8829AD7EB800691926 /* 📣ADSheet.swift */,
@@ -619,6 +622,7 @@
 				F54292DB29B01C0200EFF085 /* 👆DoneButton.swift in Sources */,
 				F5D8400929B1DDED0046E91B /* 🪧LBMView.swift in Sources */,
 				F535AA8A29AD7EB800691926 /* 📣ADSheet.swift in Sources */,
+				F520859929B84D3E0001092D /* ⌚️SyncOptions.swift in Sources */,
 				F54292DF29B01CE300EFF085 /* 📅DatePicker.swift in Sources */,
 				126B3EAB282DFEDF009BD28B /* TapWeightApp.swift in Sources */,
 				F5E2EAAA29415F3D0054A208 /* ℹ️AboutApp.swift in Sources */,
@@ -932,7 +936,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "TW Watch App/TW Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"TW Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
@@ -945,7 +949,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.TapWeight.watchkitapp;
 				PRODUCT_NAME = TapWeight;
 				SDKROOT = watchos;
@@ -966,7 +970,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "TW Watch App/TW Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"TW Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
@@ -979,7 +983,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.TapWeight.watchkitapp;
 				PRODUCT_NAME = TapWeight;
 				SDKROOT = watchos;
@@ -998,7 +1002,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6696GEY228;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TW Watch Widget/Info.plist";
@@ -1010,7 +1014,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.aaaakkkkssssttttnnnn.TapWeight.watchkitapp.TW-Watch-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1029,7 +1033,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6696GEY228;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TW Watch Widget/Info.plist";
@@ -1041,7 +1045,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.aaaakkkkssssttttnnnn.TapWeight.watchkitapp.TW-Watch-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;

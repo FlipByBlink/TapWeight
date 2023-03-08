@@ -53,7 +53,7 @@ struct 🎚️BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputIsValid: Bool { 📱.ⓑodyFatInputIsValid }
     var body: some View {
-//        if 📱.🚩ableBodyFat {
+        if 📱.🚩ableBodyFat {
             Section {
                 if self.ⓘnputIsValid {
                     VStack {
@@ -79,7 +79,7 @@ struct 🎚️BodyFatStepper: View {
                 Text("Body Fat Percentage")
                     .bold()
             }
-//        }
+        }
     }
 }
 
@@ -88,30 +88,30 @@ struct 🪧BMIView: View {
     private var ⓘnputValue: Double? { 📱.ⓑmiInputValue }
     private var ⓗeightQuantityDescription: String? { 📱.ⓗeightQuantityDescription }
     var body: some View {
-//        if 📱.🚩ableBMI {
-        Section {
-            if let ⓘnputValue, let ⓗeightQuantityDescription {
-                VStack {
-                    HStack(alignment: .firstTextBaseline) {
-                        Text(ⓘnputValue.description)
-                            .font(.system(size: 16, weight: .bold, design: .rounded))
-                            .monospacedDigit()
-                        Text("(\(ⓗeightQuantityDescription))")
-                            .font(.system(size: 12, weight: .bold, design: .rounded))
-                            .foregroundStyle(.secondary)
+        if 📱.🚩ableBMI {
+            Section {
+                if let ⓘnputValue, let ⓗeightQuantityDescription {
+                    VStack {
+                        HStack(alignment: .firstTextBaseline) {
+                            Text(ⓘnputValue.description)
+                                .font(.system(size: 16, weight: .bold, design: .rounded))
+                                .monospacedDigit()
+                            Text("(\(ⓗeightQuantityDescription))")
+                                .font(.system(size: 12, weight: .bold, design: .rounded))
+                                .foregroundStyle(.secondary)
+                        }
+                        📉DifferenceView(.bodyMassIndex)
                     }
-                    📉DifferenceView(.bodyMassIndex)
+                } else {
+                    Text("Height data is nothing on \"Health\" app. Register height data.")
+                        .font(.footnote)
+                        .foregroundStyle(.tertiary)
                 }
-            } else {
-                Text("Height data is nothing on \"Health\" app. Register height data.")
-                    .font(.footnote)
-                    .foregroundStyle(.tertiary)
+            } header: {
+                Text("Body Mass Index")
+                    .bold()
             }
-        } header: {
-            Text("Body Mass Index")
-                .bold()
         }
-        //        }
     }
 }
 
@@ -119,23 +119,23 @@ struct 🪧LBMView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputDescription: String? { 📱.ⓛbmInputDescription }
     var body: some View {
-//        if 📱.🚩ableLBM {
-        Section {
-            if let ⓘnputDescription {
-                VStack {
-                    Text(ⓘnputDescription)
-                        .font(.system(size: 16, weight: .bold, design: .rounded))
-                        .monospacedDigit()
-                    📉DifferenceView(.leanBodyMass)
+        if 📱.🚩ableLBM {
+            Section {
+                if let ⓘnputDescription {
+                    VStack {
+                        Text(ⓘnputDescription)
+                            .font(.system(size: 16, weight: .bold, design: .rounded))
+                            .monospacedDigit()
+                        📉DifferenceView(.leanBodyMass)
+                    }
+                } else {
+                    Text("Error")
                 }
-            } else {
-                Text("Error")
+            } header: {
+                Text("Lean Body Mass")
+                    .bold()
             }
-        } header: {
-            Text("Lean Body Mass")
-                .bold()
         }
-//        }
     }
 }
 
