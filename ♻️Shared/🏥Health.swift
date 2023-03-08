@@ -40,15 +40,30 @@ struct 🏥HealthStore {
         let ⓠuery = HKSampleQuery(sampleType: ⓒategory.quantityType,
                                   predicate: nil,
                                   limit: 1,
-                                  sortDescriptors: [ⓢortDescriptors]) { _, ⓢamples, _ in
-            ⓗandler(ⓢamples?.first as? HKQuantitySample)
+                                  sortDescriptors: [ⓢortDescriptors]) { _, ⓢamples, ⓔrror in
+            if let ⓔrror {
+                print("🚨", #function, ⓔrror.localizedDescription)
+                return
+            }
+            guard let ⓢamples else {
+                assertionFailure()
+                return
+            }
+            if let ⓢample = ⓢamples.first as? HKQuantitySample {
+                ⓗandler(ⓢample)
+            } else {
+                ⓗandler(nil)
+            }
         }
         self.ⓐpi.execute(ⓠuery)
     }
     
     func ⓞbserveChange(_ ⓒategory: 🏥Category, _ ⓗandler: @escaping (@escaping HKObserverQueryCompletionHandler) -> Void ) {
         let ⓠuery = HKObserverQuery(sampleType: ⓒategory.quantityType, predicate: nil) { _, ⓒompletionHandler, ⓔrror in
-            guard ⓔrror == nil else { return }
+            if let ⓔrror {
+                print("🚨", #function, ⓔrror.localizedDescription)
+                return
+            }
             ⓗandler(ⓒompletionHandler)
         }
         self.ⓐpi.execute(ⓠuery)
