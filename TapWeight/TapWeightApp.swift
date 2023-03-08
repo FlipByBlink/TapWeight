@@ -5,7 +5,7 @@ struct TapWeightApp: App {
     @StateObject private var 📱 = 📱AppModel()
     @StateObject private var 🛒 = 🛒StoreModel(id: "tapweight.adfree")
     @UIApplicationDelegateAdaptor(🄰ppDelegate.self) var ⓐppDelegate
-    @UIApplicationDelegateAdaptor(🅂yncDelegate.self) var ⓢceneDelegate
+    @UIApplicationDelegateAdaptor(🅂yncDelegate.self) var ⓢyncDelegate
     
     var body: some Scene {
         WindowGroup {
