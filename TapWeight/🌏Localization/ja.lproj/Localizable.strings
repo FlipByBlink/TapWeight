@@ -51,6 +51,13 @@
 "Passed %@." = "前回の登録から %@ 経ちました。";
 "Reminder: %@" = "リマインダー: %@";
 
+// ======== Apple Watch ========
+"Register" = "登録";
+"(perhaps error)" = "(たぶん失敗しました)";
+"Undo?" = "取り消しますか？";
+"Yes, undo" = "はい、取り消します";
+"Shortcut" = "ショートカット";
+
 "App for iPhone / Apple Watch" = "iPhone/Apple Watch向けアプリ";
 
 // =======================================================
