@@ -79,6 +79,8 @@
 		F5D19D9229B841C60069A81E /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB55629B60F5700424A66 /* ContentView.swift */; };
 		F5D19D9329B841C60069A81E /* 🧩SubView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56F29B6F60100424A66 /* 🧩SubView.swift */; };
 		F5D19D9429B841DA0069A81E /* TW_Watch_Widget.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D19D8329B840020069A81E /* TW_Watch_Widget.swift */; };
+		F5D19D9529B843C80069A81E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3EC1282E0F45009BD28B /* Localizable.strings */; };
+		F5D19D9629B843CC0069A81E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3ED0282E15E5009BD28B /* InfoPlist.strings */; };
 		F5D8400929B1DDED0046E91B /* 🪧LBMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */; };
 		F5D8401629B45CF40046E91B /* 🔔Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8401529B45CF40046E91B /* 🔔Notification.swift */; };
 		F5E1697129B06ACC00EAFF73 /* 🏥Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */; };
@@ -591,6 +593,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5D19D8629B840050069A81E /* Assets.xcassets in Resources */,
+				F5D19D9629B843CC0069A81E /* InfoPlist.strings in Resources */,
+				F5D19D9529B843C80069A81E /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -998,7 +1002,7 @@
 				DEVELOPMENT_TEAM = 6696GEY228;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TW Watch Widget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "TW Watch Widget";
+				INFOPLIST_KEY_CFBundleDisplayName = TapWeight;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1029,7 +1033,7 @@
 				DEVELOPMENT_TEAM = 6696GEY228;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TW Watch Widget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "TW Watch Widget";
+				INFOPLIST_KEY_CFBundleDisplayName = TapWeight;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
