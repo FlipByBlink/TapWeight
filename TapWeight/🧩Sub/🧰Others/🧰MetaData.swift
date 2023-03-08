@@ -23,16 +23,19 @@ let 🔗webRepositoryURL = URL(string: "https://github.com/FlipByBlink/TapWeight
 let 🔗webRepositoryURL_Mirror = URL(string: "https://gitlab.com/FlipByBlink/TapWeight_Mirror")!
 
 enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
-    case main, 🧩Sub, 🧰Others
+    case main, Shared, Sub, Others, WatchApp, WatchComplication
     var id: Self { self }
     var fileNames: [String] {
         switch self {
             case .main:
                 return ["TapWeightApp.swift",
-                        "📱AppModel.swift",
-                        "🏥Health.swift",
                         "ContentView.swift"]
-            case .🧩Sub:
+            case .Shared:
+                return ["📱AppModel.swift",
+                        "🏥Health.swift",
+                        "⌚️SyncDelegate.swift",
+                        "💥Feedback.swift"]
+            case .Sub:
                 return ["👆DoneButton.swift",
                         "🎚️Stepper.swift",
                         "🪧BMIView.swift",
@@ -46,11 +49,17 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "🄰ppDelegate.swift",
                         "💬RequestUserReview.swift",
                         "📣ADSheet.swift"]
-            case .🧰Others:
+            case .Others:
                 return ["🧰MetaData.swift",
                         "ℹ️AboutApp.swift",
                         "📣AD.swift",
                         "🛒InAppPurchase.swift"]
+            case .WatchApp:
+                return ["WatchApp/TWApp.swift",
+                        "WatchApp/ContentView.swift",
+                        "WatchApp/🧩SubView.swift"]
+            case .WatchComplication:
+                return ["WatchComplication/TWWidget.swift"]
         }
     }
 }
