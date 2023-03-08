@@ -9,8 +9,8 @@ struct 📣ADSheet: ViewModifier {
             .sheet(isPresented: $🛒.🚩showADSheet) {
                 📣ADView(self.ⓐpp, second: 7)
             }
-            .onChange(of: self.scenePhase) {
-                if $0 == .active {
+            .onAppear {
+                if self.scenePhase == .active {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         🛒.checkToShowADSheet()
                     }
