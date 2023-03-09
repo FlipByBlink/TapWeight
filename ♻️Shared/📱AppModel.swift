@@ -372,10 +372,10 @@ class 📱AppModel: ObservableObject {
     }
     
 #if os(iOS) //MARK: Notification iOS only
-    private let 🔔notification = 🔔Notification()
+    let 🔔notification = 🔔Notification()
     func 🔔setupNotification() {
         Task {
-            try await self.🔔notification.requestAuthorization([.badge, .alert, .sound])
+            try await self.🔔notification.api.requestAuthorization(options: [.badge, .alert, .sound])
             try await self.🏥healthStore.enableBackgroundDelivery(for: .bodyMass)
             self.🔔refreshNotification()
         }
@@ -386,14 +386,14 @@ class 📱AppModel: ObservableObject {
         //3. 通知をセット(バッジ/バナー)
         //4. (ObserverQueryから実行された場合)HKObserverQueryCompletionHandlerを呼ぶ
         self.🏥healthStore.ⓛoadLatestSample(.bodyMass) { ⓢample in
-            self.🔔notification.ⓡemoveAllNotifications()
+            self.🔔notification.removeAllNotifications()
             guard let ⓢample, self.🚩ableReminder else {
                 ⓞbserveCompletionHandler?()
                 return
             }
             let ⓟeriodToNow = Int(ⓢample.startDate.distance(to: .now) / (60 * 60 * 24))
             if ⓟeriodToNow >= self.🔢periodOfNonDisplay {
-                self.🔔notification.ⓢetBadgeNow(ⓟeriodToNow)
+                self.🔔notification.setBadgeNow(ⓟeriodToNow)
             }
             for ⓒount in self.🔢periodOfNonDisplay...50 {
                 let ⓐlertTime = ⓢample.startDate.addingTimeInterval(Double(60 * 60 * 24 * ⓒount))
@@ -412,7 +412,7 @@ class 📱AppModel: ObservableObject {
                 let ⓡequest = UNNotificationRequest(identifier: ⓒount.description,
                                                     content: ⓒontent,
                                                     trigger: ⓣrigger)
-                self.🔔notification.add(ⓡequest)
+                self.🔔notification.api.add(ⓡequest)
             }
             ⓞbserveCompletionHandler?()
         }

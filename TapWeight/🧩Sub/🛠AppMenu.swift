@@ -169,6 +169,7 @@ private struct 🛠LBMMenuLink: View {
 
 private struct 🛠ReminderMenuLink: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @State private var 🚩alertSettingDelied: Bool = false
     var body: some View {
         NavigationLink {
             List {
@@ -203,6 +204,8 @@ private struct 🛠ReminderMenuLink: View {
             .onChange(of: 📱.🚩ableReminder) { _ in 📱.🔔refreshNotification() }
             .onChange(of: 📱.🚩ableBannerNotification) { _ in 📱.🔔refreshNotification() }
             .onChange(of: 📱.🔢periodOfNonDisplay) { _ in 📱.🔔refreshNotification() }
+            .alert("⚠️ Auth denied", isPresented: self.$🚩alertSettingDelied) { EmptyView() }
+            .task { self.🚩alertSettingDelied = await 📱.🔔notification.checkAuthDenied() }
         } label: {
             Label("Reminder notification", systemImage: "bell")
         }
