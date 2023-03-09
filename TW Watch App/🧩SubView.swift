@@ -36,6 +36,7 @@ struct 🎚️BodyMassStepper: View {
                     } onDecrement: {
                         📱.🎚️changeMassValue(.decrement)
                     }
+                    .focusable(false)
                     📉DifferenceView(.bodyMass)
                 }
                 .lineLimit(1)
@@ -68,6 +69,7 @@ struct 🎚️BodyFatStepper: View {
                         } onDecrement: {
                             📱.🎚️changeBodyFatValue(.decrement)
                         }
+                        .focusable(false)
                         .lineLimit(1)
                         .animation(.default, value: self.ⓘnputIsValid)
                         📉DifferenceView(.bodyFatPercentage)
