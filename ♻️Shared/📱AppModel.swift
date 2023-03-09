@@ -417,6 +417,11 @@ class 📱AppModel: ObservableObject {
             ⓞbserveCompletionHandler?()
         }
     }
+    func checkAlertAboutAuthDenied() async -> Bool {
+        guard self.🚩ableReminder else { return false }
+        let ⓢetting = await self.🔔notification.api.notificationSettings()
+        return ⓢetting.authorizationStatus == .denied
+    }
 #endif
 }
 

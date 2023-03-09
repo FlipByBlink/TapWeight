@@ -201,13 +201,21 @@ private struct 🛠ReminderMenuLink: View {
                 }
             }
             .navigationTitle("Reminder")
-            .onChange(of: 📱.🚩ableReminder) { _ in 📱.🔔refreshNotification() }
+            .onChange(of: 📱.🚩ableReminder) { _ in
+                self.ⓒheckAlertAboutAuthDenied()
+                📱.🔔refreshNotification()
+            }
             .onChange(of: 📱.🚩ableBannerNotification) { _ in 📱.🔔refreshNotification() }
             .onChange(of: 📱.🔢periodOfNonDisplay) { _ in 📱.🔔refreshNotification() }
-            .alert("⚠️ Auth denied", isPresented: self.$🚩alertSettingDelied) { EmptyView() }
-            .task { self.🚩alertSettingDelied = await 📱.🔔notification.checkAuthDenied() }
+            .alert("⚠️ Notification auth denied", isPresented: self.$🚩alertSettingDelied) { EmptyView() }
+            .task { self.ⓒheckAlertAboutAuthDenied() }
         } label: {
             Label("Reminder notification", systemImage: "bell")
+        }
+    }
+    private func ⓒheckAlertAboutAuthDenied() {
+        Task { @MainActor in
+            self.🚩alertSettingDelied = await 📱.checkAlertAboutAuthDenied()
         }
     }
     private struct 🄿eriodOfNonDisplaySection: View {

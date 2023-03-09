@@ -23,8 +23,4 @@ struct 🔔Notification {
                                             trigger: nil)
         self.api.add(ⓡequest)
     }
-    
-    func checkAuthDenied() async -> Bool {
-        await self.api.notificationSettings().authorizationStatus == .denied
-    }
 }
