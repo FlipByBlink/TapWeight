@@ -1,7 +1,7 @@
 import SwiftUI
 import WatchConnectivity
 
-class 🄰ppDelegate: NSObject, UIApplicationDelegate {
+extension 📱AppModel: UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -16,14 +16,14 @@ class 🄰ppDelegate: NSObject, UIApplicationDelegate {
     }
 }
 
-extension 🄰ppDelegate: UNUserNotificationCenterDelegate {    
+extension 📱AppModel: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
         [.banner, .list, .badge, .sound]
     }
 }
 
-extension 🄰ppDelegate: WCSessionDelegate {
+extension 📱AppModel: WCSessionDelegate {
     //MARK: Required
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         // Nothing to do.
@@ -37,3 +37,14 @@ extension 🄰ppDelegate: WCSessionDelegate {
         session.activate()
     }
 }
+
+extension 📱AppModel {
+    var ⓒontext: 🄲ontext {
+        🄲ontext(amount50g: self.🚩amount50g,
+                 ableBMI: self.🚩ableBMI,
+                 ableBodyFat: self.🚩ableBodyFat,
+                 ableLBM: self.🚩ableLBM)
+    }
+}
+
+

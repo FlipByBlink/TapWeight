@@ -1,7 +1,7 @@
 import SwiftUI
 import HealthKit
 
-class 📱AppModel: ObservableObject {
+class 📱AppModel: NSObject, ObservableObject {
     //MARK: Stored property
     @AppStorage("Amount50g") var 🚩amount50g: Bool = false
     @AppStorage("AbleBMI") var 🚩ableBMI: Bool = false
