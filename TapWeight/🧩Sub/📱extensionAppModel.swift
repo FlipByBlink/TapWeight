@@ -5,7 +5,7 @@ extension 📱AppModel: UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        UNUserNotificationCenter.current().delegate = self
+        self.🔔notification.api.delegate = self
         
         if WCSession.isSupported() {
             WCSession.default.delegate = self
@@ -26,7 +26,7 @@ extension 📱AppModel: UNUserNotificationCenterDelegate {
 extension 📱AppModel: WCSessionDelegate {
     //MARK: Required
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        // Nothing to do.
+        self.ⓒontext.sync()
     }
     //MARK: Required
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -43,7 +43,10 @@ extension 📱AppModel {
         🄲ontext(amount50g: self.🚩amount50g,
                  ableBMI: self.🚩ableBMI,
                  ableBodyFat: self.🚩ableBodyFat,
-                 ableLBM: self.🚩ableLBM)
+                 ableLBM: self.🚩ableLBM,
+                 massKilogramValue: self.📦latestSamples[.bodyMass]?.quantity.doubleValue(for: .gramUnit(with: .kilo)),
+                 heightMeterValue: self.📦latestSamples[.height]?.quantity.doubleValue(for: .meter()),
+                 bodyFatValue: self.📦latestSamples[.bodyFatPercentage]?.quantity.doubleValue(for: .count()))
     }
 }
 
