@@ -33,7 +33,6 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
             case .Shared:
                 return ["📱AppModel.swift",
                         "🏥Health.swift",
-                        "⌚️SyncDelegate.swift",
                         "💥Feedback.swift"]
             case .Sub:
                 return ["👆DoneButton.swift",
@@ -58,7 +57,8 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
             case .WatchApp:
                 return ["WatchApp/TWApp.swift",
                         "WatchApp/ContentView.swift",
-                        "WatchApp/🧩SubView.swift"]
+                        "WatchApp/🧩SubView.swift",
+                        "WatchApp/🄰ppDelegate.swift"]
             case .WatchComplication:
                 return ["WatchComplication/TW_Watch_Widget.swift"]
         }

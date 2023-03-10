@@ -52,6 +52,7 @@
 		F54292E829B01E2700EFF085 /* 💟OpenHealthAppButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */; };
 		F54292E929B01E2700EFF085 /* 💬RequestUserReview.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */; };
 		F54292EA29B01E2700EFF085 /* 📣ADSheet.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535AA8829AD7EB800691926 /* 📣ADSheet.swift */; };
+		F5AE313829BAB8A70027A952 /* 🄰ppDelegate.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* 🄰ppDelegate.swift */; };
 		F5BBB54A29B5F48C00424A66 /* 🪧LBMView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */; };
 		F5BBB54B29B5F48C00424A66 /* 🔔Notification.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D8401529B45CF40046E91B /* 🔔Notification.swift */; };
 		F5BBB54C29B5F48C00424A66 /* 🄰ppDelegate.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F514464A29B579DF00B1CB13 /* 🄰ppDelegate.swift */; };
@@ -64,11 +65,10 @@
 		F5BBB56929B6113A00424A66 /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56829B6113A00424A66 /* 💥Feedback.swift */; };
 		F5BBB56A29B6113A00424A66 /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56829B6113A00424A66 /* 💥Feedback.swift */; };
 		F5BBB56B29B6121C00424A66 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
-		F5BBB56E29B6B14C00424A66 /* ⌚️SyncDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */; };
+		F5BBB56E29B6B14C00424A66 /* 🄰ppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* 🄰ppDelegate.swift */; };
 		F5BBB57129B6F60100424A66 /* 🧩SubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56F29B6F60100424A66 /* 🧩SubView.swift */; };
 		F5D19D4529B7698B0069A81E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3EC1282E0F45009BD28B /* Localizable.strings */; };
 		F5D19D4629B769900069A81E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3ED0282E15E5009BD28B /* InfoPlist.strings */; };
-		F5D19D4729B83D180069A81E /* ⌚️SyncDelegate.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */; };
 		F5D19D4829B83D180069A81E /* 💥Feedback.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56829B6113A00424A66 /* 💥Feedback.swift */; };
 		F5D19D7F29B840020069A81E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D19D7E29B840020069A81E /* WidgetKit.framework */; };
 		F5D19D8129B840020069A81E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D19D8029B840020069A81E /* SwiftUI.framework */; };
@@ -116,7 +116,6 @@
 			dstSubfolderSpec = 7;
 			files = (
 				F5FE433D29B94BFD00A40749 /* ⌚️SyncOptions.swift in CopyFiles */,
-				F5D19D4729B83D180069A81E /* ⌚️SyncDelegate.swift in CopyFiles */,
 				F5D19D4829B83D180069A81E /* 💥Feedback.swift in CopyFiles */,
 				F5BBB54A29B5F48C00424A66 /* 🪧LBMView.swift in CopyFiles */,
 				F5BBB54B29B5F48C00424A66 /* 🔔Notification.swift in CopyFiles */,
@@ -160,6 +159,7 @@
 			dstPath = "📁SourceCode/WatchApp";
 			dstSubfolderSpec = 7;
 			files = (
+				F5AE313829BAB8A70027A952 /* 🄰ppDelegate.swift in CopyFiles */,
 				F5D19D9129B841C60069A81E /* TWApp.swift in CopyFiles */,
 				F5D19D9229B841C60069A81E /* ContentView.swift in CopyFiles */,
 				F5D19D9329B841C60069A81E /* 🧩SubView.swift in CopyFiles */,
@@ -257,7 +257,7 @@
 		F5BBB55B29B60F5900424A66 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F5BBB56429B60F9500424A66 /* TW Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TW Watch App.entitlements"; sourceTree = "<group>"; };
 		F5BBB56829B6113A00424A66 /* 💥Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💥Feedback.swift"; sourceTree = "<group>"; };
-		F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "⌚️SyncDelegate.swift"; sourceTree = "<group>"; };
+		F5BBB56C29B6B14C00424A66 /* 🄰ppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🄰ppDelegate.swift"; sourceTree = "<group>"; };
 		F5BBB56F29B6F60100424A66 /* 🧩SubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧩SubView.swift"; sourceTree = "<group>"; };
 		F5D19D7D29B840020069A81E /* TW Watch WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TW Watch WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D19D7E29B840020069A81E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -423,7 +423,7 @@
 				F5BBB55429B60F5700424A66 /* TWApp.swift */,
 				F5BBB55629B60F5700424A66 /* ContentView.swift */,
 				F5BBB56F29B6F60100424A66 /* 🧩SubView.swift */,
-				F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */,
+				F5BBB56C29B6B14C00424A66 /* 🄰ppDelegate.swift */,
 				F5BBB55829B60F5900424A66 /* Assets.xcassets */,
 				F5BBB56429B60F9500424A66 /* TW Watch App.entitlements */,
 				F5BBB55A29B60F5900424A66 /* Preview Content */,
@@ -644,7 +644,7 @@
 				F5BBB55729B60F5700424A66 /* ContentView.swift in Sources */,
 				F5BBB55529B60F5700424A66 /* TWApp.swift in Sources */,
 				F5BBB56B29B6121C00424A66 /* 📱AppModel.swift in Sources */,
-				F5BBB56E29B6B14C00424A66 /* ⌚️SyncDelegate.swift in Sources */,
+				F5BBB56E29B6B14C00424A66 /* 🄰ppDelegate.swift in Sources */,
 				F5BBB57129B6F60100424A66 /* 🧩SubView.swift in Sources */,
 				F5BBB56A29B6113A00424A66 /* 💥Feedback.swift in Sources */,
 			);

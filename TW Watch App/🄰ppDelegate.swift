@@ -1,19 +1,19 @@
 import SwiftUI
 import WatchConnectivity
 
-class 🅂yncDelegate: NSObject, WCSessionDelegate, ObservableObject {
+class 🄰ppDelegate: NSObject, WCSessionDelegate, ObservableObject {
     @AppStorage("Amount50g") var 🚩amount50g: Bool = false
     @AppStorage("AbleBMI") var 🚩ableBMI: Bool = false
     @AppStorage("AbleBodyFat") var 🚩ableBodyFat: Bool = false
     @AppStorage("AbleLBM") var 🚩ableLBM: Bool = false
     
-    //MARK: Required(watchOS, iOS)
+    //MARK: Required
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         // Nothing to do.
     }
 }
 
-extension 🅂yncDelegate: WKApplicationDelegate {
+extension 🄰ppDelegate: WKApplicationDelegate {
     func applicationDidBecomeActive() {
         if WCSession.isSupported() {
             WCSession.default.delegate = self
@@ -22,7 +22,7 @@ extension 🅂yncDelegate: WKApplicationDelegate {
     }
 }
 
-extension 🅂yncDelegate {
+extension 🄰ppDelegate {
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         print("🖨️", #function, applicationContext.description)
         Task { @MainActor in
