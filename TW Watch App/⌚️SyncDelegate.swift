@@ -9,46 +9,10 @@ class 🅂yncDelegate: NSObject, WCSessionDelegate, ObservableObject {
     
     //MARK: Required(watchOS, iOS)
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        print(#function, ": Nothing to do.")
-    }
-    
-    func ⓢync() {
-        do {
-            try WCSession.default.updateApplicationContext(["Amount50g": self.🚩amount50g,
-                                                            "AbleBMI": self.🚩ableBMI,
-                                                            "AbleBodyFat": self.🚩ableBodyFat,
-                                                            "AbleLBM": self.🚩ableLBM,])
-        } catch {
-            print("🚨", error.localizedDescription)
-        }
+        // Nothing to do.
     }
 }
 
-#if os(iOS)
-extension 🅂yncDelegate: UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        if WCSession.isSupported() {
-            WCSession.default.delegate = self
-            WCSession.default.activate()
-        }
-        return true
-    }
-}
-
-extension 🅂yncDelegate {
-    //MARK: Required
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        print("\(#function): activationState = \(session.activationState.rawValue). Nothing to do.")
-    }
-    
-    //MARK: Required
-    func sessionDidDeactivate(_ session: WCSession) {
-        session.activate()
-    }
-}
-#endif
-
-#if os(watchOS)
 extension 🅂yncDelegate: WKApplicationDelegate {
     func applicationDidBecomeActive() {
         if WCSession.isSupported() {
@@ -77,4 +41,3 @@ extension 🅂yncDelegate {
         }
     }
 }
-#endif

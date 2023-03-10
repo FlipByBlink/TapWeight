@@ -64,7 +64,6 @@
 		F5BBB56929B6113A00424A66 /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56829B6113A00424A66 /* 💥Feedback.swift */; };
 		F5BBB56A29B6113A00424A66 /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56829B6113A00424A66 /* 💥Feedback.swift */; };
 		F5BBB56B29B6121C00424A66 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
-		F5BBB56D29B6B14C00424A66 /* ⌚️SyncDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */; };
 		F5BBB56E29B6B14C00424A66 /* ⌚️SyncDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */; };
 		F5BBB57129B6F60100424A66 /* 🧩SubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56F29B6F60100424A66 /* 🧩SubView.swift */; };
 		F5D19D4529B7698B0069A81E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3EC1282E0F45009BD28B /* Localizable.strings */; };
@@ -413,7 +412,6 @@
 			children = (
 				124C485E284863BA0085B066 /* 📱AppModel.swift */,
 				F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */,
-				F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */,
 				F5BBB56829B6113A00424A66 /* 💥Feedback.swift */,
 			);
 			path = "♻️Shared";
@@ -425,6 +423,7 @@
 				F5BBB55429B60F5700424A66 /* TWApp.swift */,
 				F5BBB55629B60F5700424A66 /* ContentView.swift */,
 				F5BBB56F29B6F60100424A66 /* 🧩SubView.swift */,
+				F5BBB56C29B6B14C00424A66 /* ⌚️SyncDelegate.swift */,
 				F5BBB55829B60F5900424A66 /* Assets.xcassets */,
 				F5BBB56429B60F9500424A66 /* TW Watch App.entitlements */,
 				F5BBB55A29B60F5900424A66 /* Preview Content */,
@@ -610,7 +609,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5BBB56D29B6B14C00424A66 /* ⌚️SyncDelegate.swift in Sources */,
 				126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */,
 				1232578B284C5EA2002E0057 /* 🎚️Stepper.swift in Sources */,
 				F514464B29B579DF00B1CB13 /* 🄰ppDelegate.swift in Sources */,
