@@ -2,23 +2,34 @@ import SwiftUI
 
 struct 🚨CheckCondition: ViewModifier {
     @EnvironmentObject var 📱: 📱AppModel
-    private var ⓒondition: Bool {
-        📱.📦latestSamples[.bodyMass] != nil
-        &&
-        (📱.🚩ableBMI ? (📱.📦latestSamples[.bodyMassIndex] != nil) : true)
-        &&
-        (📱.🚩ableBodyFat ? (📱.📦latestSamples[.bodyFatPercentage] != nil) : true)
-        &&
-        (📱.🚩ableLBM ? (📱.📦latestSamples[.leanBodyMass] != nil) : true)
+    private var ⓘnvalidCategories: [🏥Category] {
+        var ⓒategories: [🏥Category] = []
+        if 📱.📦latestSamples[.bodyMass] != nil {
+            ⓒategories += [.bodyMass]
+        }
+        if 📱.🚩ableBMI && 📱.📦latestSamples[.bodyMassIndex] != nil {
+            ⓒategories += [.bodyMassIndex]
+        }
+        if 📱.🚩ableBodyFat && 📱.📦latestSamples[.bodyFatPercentage] != nil {
+            ⓒategories += [.bodyFatPercentage]
+        }
+        if 📱.🚩ableLBM && 📱.📦latestSamples[.leanBodyMass] != nil {
+            ⓒategories += [.leanBodyMass]
+        }
+        return ⓒategories
     }
+    private var ⓘnputValid: Bool { self.ⓘnvalidCategories.isEmpty }
     func body(content: Content) -> some View {
-        if self.ⓒondition {
+        if self.ⓘnputValid {
             content
         } else {
-            VStack {
+            ScrollView {
                 Text("Open iPhone app.")
                     .font(.headline)
                 Text("直近のデータが見つかりませんでした。まず、iPhone上でデータを登録してください。")
+                ForEach(self.ⓘnvalidCategories, id: \.identifier) { ⓒategory in
+                    Text("・" + String(localized: ⓒategory.description))
+                }
             }
         }
     }
