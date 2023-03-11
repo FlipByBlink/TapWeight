@@ -1,4 +1,5 @@
 import SwiftUI
+import HealthKit
 import WatchConnectivity
 
 extension 📱AppModel: UIApplicationDelegate {
@@ -22,6 +23,49 @@ extension 📱AppModel: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
         [.banner, .list, .badge, .sound]
+    }
+}
+
+extension 📱AppModel {
+    func 🔔setupNotification() {
+        Task {
+            try await self.🔔notification.api.requestAuthorization(options: [.badge, .alert, .sound])
+            try await self.🏥healthStore.enableBackgroundDelivery(for: .bodyMass)
+            await self.🔔refreshNotification()
+        }
+    }
+    func 🔔refreshNotification() async {
+        let ⓢample = await self.🏥healthStore.ⓛoadLatestSample(.bodyMass)
+        self.🔔notification.removeAllNotifications()
+        guard let ⓢample, self.🚩ableReminder else { return }
+        let ⓟeriodToNow = Int(ⓢample.startDate.distance(to: .now) / (60 * 60 * 24))
+        if ⓟeriodToNow >= self.🔢periodOfNonDisplay {
+            self.🔔notification.setBadgeNow(ⓟeriodToNow)
+        }
+        for ⓒount in self.🔢periodOfNonDisplay...50 {
+            let ⓐlertTime = ⓢample.startDate.addingTimeInterval(Double(60 * 60 * 24 * ⓒount))
+            let ⓣimeInterval = Date.now.distance(to: ⓐlertTime)
+            guard ⓣimeInterval > 0 else { continue }
+            let ⓒontent = UNMutableNotificationContent()
+            ⓒontent.badge = ⓒount as NSNumber
+            if self.🚩ableBannerNotification {
+                ⓒontent.title = "Reminder: \(String(localized: "Body Mass"))"
+                let ⓕormatter = DateComponentsFormatter()
+                ⓕormatter.allowedUnits = [.day]
+                ⓒontent.body = "Passed \(ⓕormatter.string(from: Double(60 * 60 * 24 * ⓒount)) ?? "🐛")."
+                ⓒontent.sound = .default
+            }
+            let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: ⓣimeInterval, repeats: false)
+            let ⓡequest = UNNotificationRequest(identifier: ⓒount.description,
+                                                content: ⓒontent,
+                                                trigger: ⓣrigger)
+            try? await self.🔔notification.api.add(ⓡequest)
+        }
+    }
+    func checkAlertAboutAuthDenied() async -> Bool {
+        guard self.🚩ableReminder else { return false }
+        let ⓢetting = await self.🔔notification.api.notificationSettings()
+        return ⓢetting.authorizationStatus == .denied
     }
 }
 
@@ -49,4 +93,17 @@ extension 📱AppModel {
     }
 }
 
-
+extension 📱AppModel {
+    var ⓣemporaryMassQuantity: HKQuantity {
+        if let ⓜassUnit {
+            switch ⓜassUnit {
+                case .gramUnit(with: .kilo): return HKQuantity(unit: ⓜassUnit, doubleValue: 60.0)
+                case .pound(): return HKQuantity(unit: ⓜassUnit, doubleValue: 130.0)
+                case .stone(): return HKQuantity(unit: ⓜassUnit, doubleValue: 10.0)
+                default: return HKQuantity(unit: ⓜassUnit, doubleValue: 0.0)
+            }
+        } else {
+            return HKQuantity(unit: .gramUnit(with: .kilo), doubleValue: 0.0)
+        }
+    }
+}
