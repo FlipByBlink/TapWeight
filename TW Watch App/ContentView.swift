@@ -18,11 +18,3 @@ struct ContentView: View {
         }
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static let ⓜodel = 📱AppModel()
-    static var previews: some View {
-        ContentView()
-            .environmentObject(self.ⓜodel)
-    }
-}

@@ -36,3 +36,28 @@ extension 📱AppModel: WCSessionDelegate {
         }
     }
 }
+
+extension 📱AppModel {
+    func ⓡequestAuths() {
+        var ⓡequestCategories: Set<🏥Category> = []
+        if self.🏥healthStore.authorizationStatus(for: .bodyMass) == .notDetermined {
+            ⓡequestCategories.insert(.bodyMass)
+        }
+        if self.🚩ableBMI {
+            if self.🏥healthStore.authorizationStatus(for: .bodyMassIndex) == .notDetermined {
+                ⓡequestCategories.insert(.bodyMassIndex)
+            }
+        }
+        if self.🚩ableBodyFat {
+            if self.🏥healthStore.authorizationStatus(for: .bodyFatPercentage) == .notDetermined {
+                ⓡequestCategories.insert(.bodyFatPercentage)
+            }
+        }
+        if self.🚩ableLBM {
+            if self.🏥healthStore.authorizationStatus(for: .leanBodyMass) == .notDetermined {
+                ⓡequestCategories.insert(.leanBodyMass)
+            }
+        }
+        self.ⓡequestAuth(ⓡequestCategories)
+    }
+}

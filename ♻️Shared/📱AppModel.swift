@@ -170,10 +170,6 @@ class 📱AppModel: NSObject, ObservableObject {
     }
     
     //MARK: Method
-    func ⓢetupOnLaunch() {
-        self.ⓡequestAuth([.bodyMass])
-    }
-    
     func 🎚️changeMassValue(_ ⓟattern: 🅂tepperAction) {
         if let ⓜassUnit, var ⓜassInputValue {
             if self.🚩amount50g {
@@ -319,12 +315,9 @@ class 📱AppModel: NSObject, ObservableObject {
 #if os(iOS)
             if ⓢample == nil {
                 switch ⓒategory {
-                    case .bodyMass:
-                        self.📝massInputQuantity = self.ⓣemporaryMassQuantity
-                    case .bodyFatPercentage:
-                        self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
-                    default:
-                        break
+                    case .bodyMass: self.📝massInputQuantity = self.ⓣemporaryMassQuantity
+                    case .bodyFatPercentage: self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
+                    default: break
                 }
             }
 #endif

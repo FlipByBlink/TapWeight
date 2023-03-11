@@ -13,6 +13,8 @@ extension 📱AppModel: UIApplicationDelegate {
             WCSession.default.activate()
         }
         
+        self.ⓡequestAuth([.bodyMass])
+        
         self.ⓞbserveChanges()
         
         return true

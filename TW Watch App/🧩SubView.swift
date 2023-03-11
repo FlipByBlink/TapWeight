@@ -43,6 +43,17 @@ struct 🚨CheckCondition: ViewModifier {
     }
 }
 
+struct 🄰uthManager: ViewModifier {
+    @EnvironmentObject var 📱: 📱AppModel
+    @Environment(\.scenePhase) var scenePhase
+    func body(content: Content) -> some View {
+        content
+            .onChange(of: self.scenePhase) {
+                if $0 == .active { 📱.ⓡequestAuths() }
+            }
+    }
+}
+
 struct 👆DoneButton: View { // ☑️
     @EnvironmentObject var 📱: 📱AppModel
     var body: some View {
