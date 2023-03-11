@@ -10,18 +10,12 @@ struct 🚨CheckCondition: ViewModifier {
             ⓡesult += [.bodyMass]
         }
         if 📱.🚩ableBMI {
-            if 📱.📦latestSamples[.bodyMassIndex] == nil {
-                ⓡesult += [.bodyMassIndex]
-            }
             if 📱.📦latestSamples[.height] == nil {
                 ⓡesult += [.height]
             }
         }
         if 📱.🚩ableBodyFat && (📱.📦latestSamples[.bodyFatPercentage] == nil) {
             ⓡesult += [.bodyFatPercentage]
-        }
-        if 📱.🚩ableLBM && (📱.📦latestSamples[.leanBodyMass] == nil) {
-            ⓡesult += [.leanBodyMass]
         }
         return ⓡesult
     }
@@ -36,7 +30,7 @@ struct 🚨CheckCondition: ViewModifier {
                         .font(.headline)
                     Text("直近のデータが見つかりませんでした。まず、iPhone上でデータを登録してください。")
                     ForEach(self.ⓘnvalidCategories, id: \.identifier) { ⓒategory in
-                        Text("・" + String(localized: ⓒategory.description))
+                        Text("・" + ⓒategory.localizedString)
                     }
                 }
                 .foregroundStyle(.secondary)

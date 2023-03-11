@@ -373,10 +373,10 @@ enum 🚨Error: Error {
         switch self {
             case .failedAuth(let ⓒategory):
                 let ⓜessage = String(localized: "Authorization error: ")
-                return ⓜessage + String(localized: ⓒategory.description)
+                return ⓜessage + ⓒategory.localizedString
             case .noInputValue(let ⓒategory):
                 let ⓜessage = String(localized: "No input value: ")
-                return ⓜessage + String(localized: ⓒategory.description)
+                return ⓜessage + ⓒategory.localizedString
             case .saveFailure(let ⓓescription):
                 return "Save error: \(ⓓescription)"
             case .deleteFailure(let ⓓescription):

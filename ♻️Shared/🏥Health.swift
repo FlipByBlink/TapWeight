@@ -1,4 +1,5 @@
 import HealthKit
+import SwiftUI
 
 struct 🏥HealthStore {
     private let ⓐpi = HKHealthStore()
@@ -81,7 +82,7 @@ enum 🏥Category {
             case .leanBodyMass: return .leanBodyMass
         }
     }
-    var description: String.LocalizationValue {
+    var localizationValue: String.LocalizationValue {
         switch self {
             case .bodyMass: return "Body Mass"
             case .bodyMassIndex: return "Body Mass Index"
@@ -89,6 +90,9 @@ enum 🏥Category {
             case .bodyFatPercentage: return "Body Fat Percentage"
             case .leanBodyMass: return "Lean Body Mass"
         }
+    }
+    var localizedString: String {
+        String(localized: self.localizationValue)
     }
     var quantityType: HKQuantityType {
         switch self {

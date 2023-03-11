@@ -127,6 +127,19 @@ private struct 🛠BMIMenuLink: View {
 
 private struct 🛠LBMMenuLink: View {
     @EnvironmentObject var 📱: 📱AppModel
+    private var ⓕomulaDescription: String {
+        String(localized: "Body Mass")
+        +
+        " - ("
+        +
+        String(localized: "Body Mass")
+        +
+        " × "
+        +
+        String(localized: "Body Fat Percentage")
+        +
+        ")"
+    }
     var body: some View {
         NavigationLink {
             List {
@@ -143,19 +156,10 @@ private struct 🛠LBMMenuLink: View {
                 Section {
                     ZStack {
                         Color.clear
-                        Text("Body Mass")
-                        +
-                        Text(" - (")
-                        +
-                        Text("Body Mass")
-                        +
-                        Text(" × ")
-                        +
-                        Text("Body Fat Percentage")
-                        +
-                        Text(")")
+                        Text(self.ⓕomulaDescription)
+                            .multilineTextAlignment(.trailing)
                     }
-                    .padding(12)
+                    .padding(8)
                 } header: {
                     Text("Formula")
                 }
