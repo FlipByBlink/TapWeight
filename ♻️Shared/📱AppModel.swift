@@ -1,6 +1,7 @@
 import SwiftUI
 import HealthKit
 
+@MainActor
 class 📱AppModel: NSObject, ObservableObject {
     //MARK: Stored property
     @AppStorage("Amount50g") var 🚩amount50g: Bool = false
@@ -271,7 +272,6 @@ class 📱AppModel: NSObject, ObservableObject {
             }
         }
     }
-    @MainActor
     func 🗑cancel() {
         Task {
             do {
@@ -286,12 +286,10 @@ class 📱AppModel: NSObject, ObservableObject {
             }
         }
     }
-    @MainActor
     func ⓒloseResultView() {
         self.🚩showResult = false
         self.ⓒlearStates()
     }
-    @MainActor
     func ⓒlearStates() {
         self.🚨registrationError = nil
         self.🚩completedCancellation = false
@@ -300,7 +298,6 @@ class 📱AppModel: NSObject, ObservableObject {
         self.📝resetInputValues()
     }
     
-    @MainActor
     func 📝resetInputValues() {
         if let ⓢample = self.📦latestSamples[.bodyMass] {
             self.📝massInputQuantity = ⓢample.quantity
@@ -320,7 +317,7 @@ class 📱AppModel: NSObject, ObservableObject {
                 if ⓢtatus == .shouldRequest {
                     try await self.🏥healthStore.requestAuthorization(toShare: ⓒategories,
                                                                       read: ⓡeadCategories)
-                    self.ⓛoadLatestSamples()
+                    await self.ⓛoadLatestSamples()
                     await self.ⓛoadPreferredUnits()
                 }
             } catch {
@@ -328,28 +325,25 @@ class 📱AppModel: NSObject, ObservableObject {
             }
         }
     }
-    private func ⓛoadLatestSamples() {
-        Task { @MainActor in
-            for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
-                let ⓢample = await self.🏥healthStore.ⓛoadLatestSample(ⓒategory)
-                self.📦latestSamples[ⓒategory] = ⓢample
-                self.📝resetInputValues()
+    private func ⓛoadLatestSamples() async {
+        for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
+            let ⓢample = await self.🏥healthStore.ⓛoadLatestSample(ⓒategory)
+            self.📦latestSamples[ⓒategory] = ⓢample
+            self.📝resetInputValues()
 #if os(iOS)
-                if ⓢample == nil {
-                    switch ⓒategory {
-                        case .bodyMass:
-                            self.📝massInputQuantity = self.ⓣemporaryMassQuantity
-                        case .bodyFatPercentage:
-                            self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
-                        default:
-                            break
-                    }
+            if ⓢample == nil {
+                switch ⓒategory {
+                    case .bodyMass:
+                        self.📝massInputQuantity = self.ⓣemporaryMassQuantity
+                    case .bodyFatPercentage:
+                        self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
+                    default:
+                        break
                 }
-#endif
             }
+#endif
         }
     }
-    @MainActor
     private func ⓛoadPreferredUnits() async {
         for ⓒategory: 🏥Category in [.bodyMass, .height] {
             if let ⓤnit = try? await self.🏥healthStore.preferredUnit(for: ⓒategory) {
@@ -364,12 +358,10 @@ class 📱AppModel: NSObject, ObservableObject {
         for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
             self.🏥healthStore.ⓞbserveChange(ⓒategory) { ⓒompletionHandler in
                 Task { @MainActor in
-                    self.ⓛoadLatestSamples()
+                    await self.ⓛoadLatestSamples()
                     await self.ⓛoadPreferredUnits()
 #if os(iOS)
-                    if ⓒategory == .bodyMass {
-                        self.🔔refreshNotification(ⓒompletionHandler)
-                    }
+                    if ⓒategory == .bodyMass { self.🔔refreshNotification(ⓒompletionHandler) }
 #endif
                 }
             }
