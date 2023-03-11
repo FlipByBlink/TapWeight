@@ -307,7 +307,7 @@ class 📱AppModel: NSObject, ObservableObject {
             }
         }
     }
-    private func ⓛoadLatestSamples() async {
+    func ⓛoadLatestSamples() async {
         for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
             let ⓢample = await self.🏥healthStore.ⓛoadLatestSample(ⓒategory)
             self.📦latestSamples[ⓒategory] = ⓢample
