@@ -29,7 +29,10 @@ struct 🗯ResultView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .opacity(self.ⓒanceled ? 0.5 : 1)
                 .overlay(alignment: .bottom) {
-                    if self.ⓒanceled { Text("Canceled") }
+                    if self.ⓒanceled {
+                        Text("Canceled")
+                            .font(.headline)
+                    }
                 }
                 .toolbar {
                     self.🅧closeButton()

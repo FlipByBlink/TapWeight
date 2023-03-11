@@ -39,6 +39,7 @@ struct 🚨CheckCondition: ViewModifier {
                         Text("・" + String(localized: ⓒategory.description))
                     }
                 }
+                .foregroundStyle(.secondary)
             }
         }
         .animation(.default, value: self.ⓘnputValid)

@@ -9,14 +9,14 @@ struct 🎚️BodyMassStepper: View {
             HStack {
                 HStack(alignment: .firstTextBaseline) {
                     Text(📱.ⓜassInputDescription)
-                        .font(self.ⓐbleDatePicker ? .title : .system(size: 50))
+                        .font(self.ⓐbleDatePicker ? .title : .system(size: 46))
                         .fontWeight(.black)
                         .monospacedDigit()
                     Text(📱.ⓜassUnit?.description ?? "kg")
                         .font(.title2.weight(.black))
                         .frame(maxHeight: 36)
                 }
-                .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                .opacity(self.ⓘnputIsValid ? 1 : 0.1)
                 .animation(.default, value: self.ⓘnputIsValid)
                 Spacer(minLength: 4)
                 📉DifferenceView(.bodyMass)
@@ -28,7 +28,7 @@ struct 🎚️BodyMassStepper: View {
         }
         .lineLimit(1)
         .padding(.horizontal, 8)
-        .padding(.vertical, self.ⓐbleDatePicker ? 2 : 12)
+        .padding(.vertical, self.ⓐbleDatePicker ? 2 : 8)
     }
 }
 
@@ -43,14 +43,14 @@ struct 🎚️BodyFatStepper: View {
                     HStack {
                         HStack(alignment: .firstTextBaseline, spacing: 6) {
                             Text(📱.ⓑodyFatInputDescription)
-                                .font(self.ⓐbleDatePicker ? .title : .system(size: 50))
+                                .font(self.ⓐbleDatePicker ? .title : .system(size: 46))
                                 .fontWeight(.black)
                                 .monospacedDigit()
                             Text("%")
                                 .font(.title2.weight(.black))
                                 .frame(maxHeight: 54)
                         }
-                        .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                        .opacity(self.ⓘnputIsValid ? 1 : 0.1)
                         .animation(.default, value: self.ⓘnputIsValid)
                         Spacer(minLength: 0)
                         📉DifferenceView(.bodyFatPercentage)
@@ -62,7 +62,7 @@ struct 🎚️BodyFatStepper: View {
                 }
                 .lineLimit(1)
                 .padding(.horizontal, 8)
-                .padding(.vertical, self.ⓐbleDatePicker ? 2 : 12)
+                .padding(.vertical, self.ⓐbleDatePicker ? 2 : 8)
             } header: {
                 Text("Body Fat Percentage")
             }
