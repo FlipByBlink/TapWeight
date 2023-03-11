@@ -2,7 +2,8 @@ import SwiftUI
 
 struct 🚨CheckCondition: ViewModifier {
     @EnvironmentObject var 📱: 📱AppModel
-    @State private var 🚩notFinishedFirstQuary: Bool = true
+    @State private var 🚩finishedFirstQuary: Bool = false
+    private var ⓝotFinishedFirstQuary: Bool { !self.🚩finishedFirstQuary }
     private var ⓘnvalidCategories: [🏥Category] {
         var ⓡesult: [🏥Category] = []
         if 📱.📦latestSamples[.bodyMass] == nil {
@@ -27,7 +28,7 @@ struct 🚨CheckCondition: ViewModifier {
     private var ⓘnputValid: Bool { self.ⓘnvalidCategories.isEmpty }
     func body(content: Content) -> some View {
         Group {
-            if self.ⓘnputValid || self.🚩notFinishedFirstQuary {
+            if self.ⓘnputValid || self.ⓝotFinishedFirstQuary {
                 content
             } else {
                 ScrollView {
@@ -43,7 +44,7 @@ struct 🚨CheckCondition: ViewModifier {
         .animation(.default, value: self.ⓘnputValid)
         .task {
             await 📱.ⓛoadLatestSamples()
-            self.🚩notFinishedFirstQuary = false
+            self.🚩finishedFirstQuary = true
         }
     }
 }

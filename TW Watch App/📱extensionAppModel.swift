@@ -58,6 +58,8 @@ extension 📱AppModel {
                 ⓡequestCategories.insert(.leanBodyMass)
             }
         }
-        self.ⓡequestAuth(ⓡequestCategories)
+        if !ⓡequestCategories.isEmpty {
+            self.ⓡequestAuth(ⓡequestCategories)
+        }
     }
 }
