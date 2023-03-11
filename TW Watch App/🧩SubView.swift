@@ -3,20 +3,25 @@ import SwiftUI
 struct 🚨CheckCondition: ViewModifier {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnvalidCategories: [🏥Category] {
-        var ⓒategories: [🏥Category] = []
-        if 📱.📦latestSamples[.bodyMass] != nil {
-            ⓒategories += [.bodyMass]
+        var ⓡesult: [🏥Category] = []
+        if 📱.📦latestSamples[.bodyMass] == nil {
+            ⓡesult += [.bodyMass]
         }
-        if 📱.🚩ableBMI && 📱.📦latestSamples[.bodyMassIndex] != nil {
-            ⓒategories += [.bodyMassIndex]
+        if 📱.🚩ableBMI {
+            if 📱.📦latestSamples[.bodyMassIndex] == nil {
+                ⓡesult += [.bodyMassIndex]
+            }
+            if 📱.📦latestSamples[.height] == nil {
+                ⓡesult += [.height]
+            }
         }
-        if 📱.🚩ableBodyFat && 📱.📦latestSamples[.bodyFatPercentage] != nil {
-            ⓒategories += [.bodyFatPercentage]
+        if 📱.🚩ableBodyFat && (📱.📦latestSamples[.bodyFatPercentage] == nil) {
+            ⓡesult += [.bodyFatPercentage]
         }
-        if 📱.🚩ableLBM && 📱.📦latestSamples[.leanBodyMass] != nil {
-            ⓒategories += [.leanBodyMass]
+        if 📱.🚩ableLBM && (📱.📦latestSamples[.leanBodyMass] == nil) {
+            ⓡesult += [.leanBodyMass]
         }
-        return ⓒategories
+        return ⓡesult
     }
     private var ⓘnputValid: Bool { self.ⓘnvalidCategories.isEmpty }
     func body(content: Content) -> some View {
