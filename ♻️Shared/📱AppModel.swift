@@ -185,7 +185,6 @@ class 📱AppModel: NSObject, ObservableObject {
     //MARK: Method
     func ⓢetupOnLaunch() {
         self.ⓡequestAuth([.bodyMass])
-        self.ⓞbserveChanges()
     }
     
     func 🎚️changeMassValue(_ ⓟattern: 🅂tepperAction) {
@@ -354,14 +353,17 @@ class 📱AppModel: NSObject, ObservableObject {
             }
         }
     }
-    private func ⓞbserveChanges() {
+    func ⓞbserveChanges() {
         for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
-            self.🏥healthStore.ⓞbserveChange(ⓒategory) { ⓒompletionHandler in
+            self.🏥healthStore.ⓞbserveChange(ⓒategory) { ⓑackgroundObserverCompletionHandler in
                 Task { @MainActor in
                     await self.ⓛoadLatestSamples()
                     await self.ⓛoadPreferredUnits()
 #if os(iOS)
-                    if ⓒategory == .bodyMass { self.🔔refreshNotification(ⓒompletionHandler) }
+                    if ⓒategory == .bodyMass {
+                        await self.🔔refreshNotification()
+                        ⓑackgroundObserverCompletionHandler()
+                    }
 #endif
                 }
             }
@@ -374,45 +376,35 @@ class 📱AppModel: NSObject, ObservableObject {
         Task {
             try await self.🔔notification.api.requestAuthorization(options: [.badge, .alert, .sound])
             try await self.🏥healthStore.enableBackgroundDelivery(for: .bodyMass)
-            self.🔔refreshNotification()
+            await self.🔔refreshNotification()
         }
     }
-    func 🔔refreshNotification(_ ⓞbserveCompletionHandler: HKObserverQueryCompletionHandler? = nil) {
-        //1. 最新の体重データを取得
-        //2. 既にセットされていた通知を削除
-        //3. 通知をセット(バッジ/バナー)
-        //4. (ObserverQueryから実行された場合)HKObserverQueryCompletionHandlerを呼ぶ
-        Task { @MainActor in
-            let ⓢample = await self.🏥healthStore.ⓛoadLatestSample(.bodyMass)
-            self.🔔notification.removeAllNotifications()
-            guard let ⓢample, self.🚩ableReminder else {
-                ⓞbserveCompletionHandler?()
-                return
+    func 🔔refreshNotification() async {
+        let ⓢample = await self.🏥healthStore.ⓛoadLatestSample(.bodyMass)
+        self.🔔notification.removeAllNotifications()
+        guard let ⓢample, self.🚩ableReminder else { return }
+        let ⓟeriodToNow = Int(ⓢample.startDate.distance(to: .now) / (60 * 60 * 24))
+        if ⓟeriodToNow >= self.🔢periodOfNonDisplay {
+            self.🔔notification.setBadgeNow(ⓟeriodToNow)
+        }
+        for ⓒount in self.🔢periodOfNonDisplay...50 {
+            let ⓐlertTime = ⓢample.startDate.addingTimeInterval(Double(60 * 60 * 24 * ⓒount))
+            let ⓣimeInterval = Date.now.distance(to: ⓐlertTime)
+            guard ⓣimeInterval > 0 else { continue }
+            let ⓒontent = UNMutableNotificationContent()
+            ⓒontent.badge = ⓒount as NSNumber
+            if self.🚩ableBannerNotification {
+                ⓒontent.title = "Reminder: \(String(localized: "Body Mass"))"
+                let ⓕormatter = DateComponentsFormatter()
+                ⓕormatter.allowedUnits = [.day]
+                ⓒontent.body = "Passed \(ⓕormatter.string(from: Double(60 * 60 * 24 * ⓒount)) ?? "🐛")."
+                ⓒontent.sound = .default
             }
-            let ⓟeriodToNow = Int(ⓢample.startDate.distance(to: .now) / (60 * 60 * 24))
-            if ⓟeriodToNow >= self.🔢periodOfNonDisplay {
-                self.🔔notification.setBadgeNow(ⓟeriodToNow)
-            }
-            for ⓒount in self.🔢periodOfNonDisplay...50 {
-                let ⓐlertTime = ⓢample.startDate.addingTimeInterval(Double(60 * 60 * 24 * ⓒount))
-                let ⓣimeInterval = Date.now.distance(to: ⓐlertTime)
-                guard ⓣimeInterval > 0 else { continue }
-                let ⓒontent = UNMutableNotificationContent()
-                ⓒontent.badge = ⓒount as NSNumber
-                if self.🚩ableBannerNotification {
-                    ⓒontent.title = "Reminder: \(String(localized: "Body Mass"))"
-                    let ⓕormatter = DateComponentsFormatter()
-                    ⓕormatter.allowedUnits = [.day]
-                    ⓒontent.body = "Passed \(ⓕormatter.string(from: Double(60 * 60 * 24 * ⓒount)) ?? "🐛")."
-                    ⓒontent.sound = .default
-                }
-                let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: ⓣimeInterval, repeats: false)
-                let ⓡequest = UNNotificationRequest(identifier: ⓒount.description,
-                                                    content: ⓒontent,
-                                                    trigger: ⓣrigger)
-                try? await self.🔔notification.api.add(ⓡequest)
-            }
-            ⓞbserveCompletionHandler?()
+            let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: ⓣimeInterval, repeats: false)
+            let ⓡequest = UNNotificationRequest(identifier: ⓒount.description,
+                                                content: ⓒontent,
+                                                trigger: ⓣrigger)
+            try? await self.🔔notification.api.add(ⓡequest)
         }
     }
     func checkAlertAboutAuthDenied() async -> Bool {

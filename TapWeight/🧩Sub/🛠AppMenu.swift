@@ -203,10 +203,10 @@ private struct 🛠ReminderMenuLink: View {
             .navigationTitle("Reminder")
             .onChange(of: 📱.🚩ableReminder) { _ in
                 self.ⓒheckAlertAboutAuthDenied()
-                📱.🔔refreshNotification()
+                Task { await 📱.🔔refreshNotification() }
             }
-            .onChange(of: 📱.🚩ableBannerNotification) { _ in 📱.🔔refreshNotification() }
-            .onChange(of: 📱.🔢periodOfNonDisplay) { _ in 📱.🔔refreshNotification() }
+            .onChange(of: 📱.🚩ableBannerNotification) { _ in Task { await 📱.🔔refreshNotification() } }
+            .onChange(of: 📱.🔢periodOfNonDisplay) { _ in Task { await 📱.🔔refreshNotification() } }
             .alert("⚠️ Notification auth denied", isPresented: self.$🚩alertSettingDelied) { EmptyView() }
             .task { self.ⓒheckAlertAboutAuthDenied() }
         } label: {

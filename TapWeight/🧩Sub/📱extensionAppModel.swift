@@ -12,6 +12,8 @@ extension 📱AppModel: UIApplicationDelegate {
             WCSession.default.activate()
         }
         
+        self.ⓞbserveChanges()
+        
         return true
     }
 }

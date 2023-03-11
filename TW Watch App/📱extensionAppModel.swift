@@ -7,6 +7,8 @@ extension 📱AppModel: WKApplicationDelegate {
             WCSession.default.delegate = self
             WCSession.default.activate()
         }
+        
+        self.ⓞbserveChanges()
     }
 }
 
