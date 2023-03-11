@@ -1,5 +1,29 @@
 import SwiftUI
 
+struct 🚨CheckCondition: ViewModifier {
+    @EnvironmentObject var 📱: 📱AppModel
+    private var ⓒondition: Bool {
+        📱.📦latestSamples[.bodyMass] != nil
+        &&
+        (📱.🚩ableBMI ? (📱.📦latestSamples[.bodyMassIndex] != nil) : true)
+        &&
+        (📱.🚩ableBodyFat ? (📱.📦latestSamples[.bodyFatPercentage] != nil) : true)
+        &&
+        (📱.🚩ableLBM ? (📱.📦latestSamples[.leanBodyMass] != nil) : true)
+    }
+    func body(content: Content) -> some View {
+        if self.ⓒondition {
+            content
+        } else {
+            VStack {
+                Text("Open iPhone app.")
+                    .font(.headline)
+                Text("直近のデータが見つかりませんでした。まず、iPhone上でデータを登録してください。")
+            }
+        }
+    }
+}
+
 struct 👆DoneButton: View { // ☑️
     @EnvironmentObject var 📱: 📱AppModel
     var body: some View {

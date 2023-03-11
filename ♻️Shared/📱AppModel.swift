@@ -330,6 +330,7 @@ class 📱AppModel: NSObject, ObservableObject {
                 Task { @MainActor in
                     self.📦latestSamples[ⓒategory] = ⓢample
                     self.📝resetInputValues()
+#if os(iOS)
                     if ⓢample == nil {
                         switch ⓒategory {
                             case .bodyMass:
@@ -340,6 +341,7 @@ class 📱AppModel: NSObject, ObservableObject {
                                 break
                         }
                     }
+#endif
                 }
             }
         }

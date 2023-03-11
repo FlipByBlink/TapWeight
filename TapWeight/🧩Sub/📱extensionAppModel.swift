@@ -43,10 +43,7 @@ extension 📱AppModel {
         🄲ontext(amount50g: self.🚩amount50g,
                  ableBMI: self.🚩ableBMI,
                  ableBodyFat: self.🚩ableBodyFat,
-                 ableLBM: self.🚩ableLBM,
-                 massKilogramValue: self.📦latestSamples[.bodyMass]?.quantity.doubleValue(for: .gramUnit(with: .kilo)),
-                 heightMeterValue: self.📦latestSamples[.height]?.quantity.doubleValue(for: .meter()),
-                 bodyFatValue: self.📦latestSamples[.bodyFatPercentage]?.quantity.doubleValue(for: .count()))
+                 ableLBM: self.🚩ableLBM)
     }
 }
 
