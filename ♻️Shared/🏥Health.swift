@@ -35,27 +35,27 @@ struct 🏥HealthStore {
         try await self.ⓐpi.enableBackgroundDelivery(for: ⓒategory.quantityType, frequency: .immediate)
     }
     
-    func ⓛoadLatestSample(_ ⓒategory: 🏥Category, _ ⓗandler: @escaping (HKQuantitySample?) -> Void ) {
-        let ⓢortDescriptors = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
-        let ⓠuery = HKSampleQuery(sampleType: ⓒategory.quantityType,
-                                  predicate: nil,
-                                  limit: 1,
-                                  sortDescriptors: [ⓢortDescriptors]) { _, ⓢamples, ⓔrror in
-            if let ⓔrror {
-                print("🚨", #function, ⓔrror.localizedDescription)
-                return
+    func ⓛoadLatestSample(_ ⓒategory: 🏥Category) async -> HKQuantitySample? {
+        await withCheckedContinuation { ⓒontinuation in
+            let ⓢortDescriptors = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+            let ⓠuery = HKSampleQuery(sampleType: ⓒategory.quantityType,
+                                      predicate: nil,
+                                      limit: 1,
+                                      sortDescriptors: [ⓢortDescriptors]) { _, ⓢamples, ⓔrror in
+                if let ⓔrror {
+                    print("🚨", #function, ⓔrror.localizedDescription)
+                    ⓒontinuation.resume(returning: nil)
+                } else {
+                    if let ⓢamples {
+                        ⓒontinuation.resume(returning: ⓢamples.first as? HKQuantitySample)
+                    } else {
+                        assertionFailure()
+                        ⓒontinuation.resume(returning: nil)
+                    }
+                }
             }
-            guard let ⓢamples else {
-                assertionFailure()
-                return
-            }
-            if let ⓢample = ⓢamples.first as? HKQuantitySample {
-                ⓗandler(ⓢample)
-            } else {
-                ⓗandler(nil)
-            }
+            self.ⓐpi.execute(ⓠuery)
         }
-        self.ⓐpi.execute(ⓠuery)
     }
     
     func ⓞbserveChange(_ ⓒategory: 🏥Category, _ ⓗandler: @escaping (@escaping HKObserverQueryCompletionHandler) -> Void ) {

@@ -329,24 +329,23 @@ class 📱AppModel: NSObject, ObservableObject {
         }
     }
     private func ⓛoadLatestSamples() {
-        for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
-            self.🏥healthStore.ⓛoadLatestSample(ⓒategory) { ⓢample in
-                Task { @MainActor in
-                    self.📦latestSamples[ⓒategory] = ⓢample
-                    self.📝resetInputValues()
+        Task { @MainActor in
+            for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
+                let ⓢample = await self.🏥healthStore.ⓛoadLatestSample(ⓒategory)
+                self.📦latestSamples[ⓒategory] = ⓢample
+                self.📝resetInputValues()
 #if os(iOS)
-                    if ⓢample == nil {
-                        switch ⓒategory {
-                            case .bodyMass:
-                                self.📝massInputQuantity = self.ⓣemporaryMassQuantity
-                            case .bodyFatPercentage:
-                                self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
-                            default:
-                                break
-                        }
+                if ⓢample == nil {
+                    switch ⓒategory {
+                        case .bodyMass:
+                            self.📝massInputQuantity = self.ⓣemporaryMassQuantity
+                        case .bodyFatPercentage:
+                            self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
+                        default:
+                            break
                     }
-#endif
                 }
+#endif
             }
         }
     }
@@ -391,7 +390,8 @@ class 📱AppModel: NSObject, ObservableObject {
         //2. 既にセットされていた通知を削除
         //3. 通知をセット(バッジ/バナー)
         //4. (ObserverQueryから実行された場合)HKObserverQueryCompletionHandlerを呼ぶ
-        self.🏥healthStore.ⓛoadLatestSample(.bodyMass) { ⓢample in
+        Task { @MainActor in
+            let ⓢample = await self.🏥healthStore.ⓛoadLatestSample(.bodyMass)
             self.🔔notification.removeAllNotifications()
             guard let ⓢample, self.🚩ableReminder else {
                 ⓞbserveCompletionHandler?()
@@ -418,7 +418,7 @@ class 📱AppModel: NSObject, ObservableObject {
                 let ⓡequest = UNNotificationRequest(identifier: ⓒount.description,
                                                     content: ⓒontent,
                                                     trigger: ⓣrigger)
-                self.🔔notification.api.add(ⓡequest)
+                try? await self.🔔notification.api.add(ⓡequest)
             }
             ⓞbserveCompletionHandler?()
         }
