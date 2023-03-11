@@ -12,6 +12,9 @@ struct ContentView: View {
                 👆DoneButton()
             }
             .modifier(🚨RegistrationErrorAlert())
+            .onChange(of: 📱.🚩showResult) {
+                if $0 == false { 📱.ⓒlearStates() }
+            }
         }
     }
 }

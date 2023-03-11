@@ -289,6 +289,10 @@ class 📱AppModel: NSObject, ObservableObject {
     @MainActor
     func ⓒloseResultView() {
         self.🚩showResult = false
+        self.ⓒlearStates()
+    }
+    @MainActor
+    func ⓒlearStates() {
         self.🚨registrationError = nil
         self.🚩completedCancellation = false
         self.🚨cancellationError = nil

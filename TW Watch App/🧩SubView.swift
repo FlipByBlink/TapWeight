@@ -25,18 +25,21 @@ struct 🚨CheckCondition: ViewModifier {
     }
     private var ⓘnputValid: Bool { self.ⓘnvalidCategories.isEmpty }
     func body(content: Content) -> some View {
-        if self.ⓘnputValid {
-            content
-        } else {
-            ScrollView {
-                Text("Open iPhone app.")
-                    .font(.headline)
-                Text("直近のデータが見つかりませんでした。まず、iPhone上でデータを登録してください。")
-                ForEach(self.ⓘnvalidCategories, id: \.identifier) { ⓒategory in
-                    Text("・" + String(localized: ⓒategory.description))
+        Group {
+            if self.ⓘnputValid {
+                content
+            } else {
+                ScrollView {
+                    Text("Open iPhone app.")
+                        .font(.headline)
+                    Text("直近のデータが見つかりませんでした。まず、iPhone上でデータを登録してください。")
+                    ForEach(self.ⓘnvalidCategories, id: \.identifier) { ⓒategory in
+                        Text("・" + String(localized: ⓒategory.description))
+                    }
                 }
             }
         }
+        .animation(.default, value: self.ⓘnputValid)
     }
 }
 
