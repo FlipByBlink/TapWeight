@@ -73,16 +73,19 @@ struct 👆DoneButton: View { // ☑️
 
 struct 🎚️BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
     private var ⓘnputIsValid: Bool { 📱.ⓜassInputIsValid }
     private var ⓤnitDescription: String { 📱.ⓜassUnit?.description ?? "kg" }
+    private var ⓜultilineLayout: Bool { self.dynamicTypeSize > .xLarge }
     var body: some View {
         Section {
             VStack {
                 Stepper {
-                    Text(📱.ⓜassInputDescription + self.ⓤnitDescription)
+                    Text(📱.ⓜassInputDescription + (self.ⓜultilineLayout ? "\n" : "") + self.ⓤnitDescription)
                         .font(.system(size: 20, weight: .bold, design: .rounded))
                         .monospacedDigit()
                         .minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
                         .opacity(self.ⓘnputIsValid ? 1 : 0.2)
                         .animation(.default, value: self.ⓘnputIsValid)
                 } onIncrement: {
@@ -94,7 +97,7 @@ struct 🎚️BodyMassStepper: View {
                 .focusable(false)
                 📉DifferenceView(.bodyMass)
             }
-            .lineLimit(1)
+            .lineLimit(self.ⓜultilineLayout ? 2 : 1)
         } header: {
             Text("Body Mass")
                 .bold()
@@ -104,17 +107,20 @@ struct 🎚️BodyMassStepper: View {
 
 struct 🎚️BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
     private var ⓘnputIsValid: Bool { 📱.ⓑodyFatInputIsValid }
+    private var ⓜultilineLayout: Bool { self.dynamicTypeSize > .xLarge }
     var body: some View {
         if 📱.🚩ableBodyFat {
             Section {
                 VStack {
                     Stepper {
-                        Text(📱.ⓑodyFatInputDescription + "%")
+                        Text(📱.ⓑodyFatInputDescription + (self.ⓜultilineLayout ? "\n" : "") + "%")
                             .font(.system(size: 20, weight: .bold, design: .rounded))
                             .monospacedDigit()
                             .opacity(self.ⓘnputIsValid ? 1 : 0.2)
-                            .minimumScaleFactor(0.1)
+                            .minimumScaleFactor(0.5)
+                            .multilineTextAlignment(.center)
                     } onIncrement: {
                         📱.🎚️changeBodyFatValue(.increment)
                     } onDecrement: {
@@ -122,7 +128,7 @@ struct 🎚️BodyFatStepper: View {
                     }
                     .disabled(!self.ⓘnputIsValid)
                     .focusable(false)
-                    .lineLimit(1)
+                    .lineLimit(self.ⓜultilineLayout ? 2 : 1)
                     .animation(.default, value: self.ⓘnputIsValid)
                     📉DifferenceView(.bodyFatPercentage)
                 }
@@ -198,6 +204,8 @@ struct 📉DifferenceView: View {
             .padding(.horizontal)
             .font(.caption2.monospaced())
             .foregroundStyle(.secondary)
+            .minimumScaleFactor(0.1)
+            .lineLimit(1)
         }
     }
     init(_ ⓒategory: 🏥Category) {
@@ -247,6 +255,7 @@ struct 🗯ResultView: View {
                 .font(.body.bold())
                 .lineLimit(2)
                 .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.1)
             if 📱.🚩ableDatePicker {
                 if let ⓓate = 📱.📨registeredSamples.first?.startDate as? Date {
                     Text(ⓓate.formatted(date: .abbreviated, time: .shortened))
