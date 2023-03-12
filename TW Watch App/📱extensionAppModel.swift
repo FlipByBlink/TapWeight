@@ -13,9 +13,9 @@ extension 📱AppModel: WKApplicationDelegate {
 }
 
 extension 📱AppModel: WCSessionDelegate {
-    //MARK: Required
+    //Required
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        // Nothing to do.
+        //Nothing to do.
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {

@@ -2,38 +2,30 @@ import HealthKit
 import SwiftUI
 
 struct 🏥HealthStore {
-    private let ⓐpi = HKHealthStore()
+    let api = HKHealthStore()
     
     func authorizationStatus(for ⓒategory: 🏥Category) -> HKAuthorizationStatus {
-        self.ⓐpi.authorizationStatus(for: ⓒategory.quantityType)
+        self.api.authorizationStatus(for: ⓒategory.quantityType)
     }
     
     func statusForAuthorizationRequest(toShare ⓣypesToShare: Set<🏥Category>,
                                        read ⓣypesToRead: Set<🏥Category>) async throws -> HKAuthorizationRequestStatus {
-        try await self.ⓐpi.statusForAuthorizationRequest(toShare: Set(ⓣypesToShare.map { $0.quantityType }),
+        try await self.api.statusForAuthorizationRequest(toShare: Set(ⓣypesToShare.map { $0.quantityType }),
                                                          read: Set(ⓣypesToRead.map { $0.quantityType }))
     }
     
     func requestAuthorization(toShare ⓣypesToShare: Set<🏥Category>,
                               read ⓣypesToRead: Set<🏥Category>) async throws {
-        try await self.ⓐpi.requestAuthorization(toShare: Set(ⓣypesToShare.map { $0.quantityType }),
+        try await self.api.requestAuthorization(toShare: Set(ⓣypesToShare.map { $0.quantityType }),
                                                 read: Set(ⓣypesToRead.map { $0.quantityType }))
     }
     
     func preferredUnit(for ⓒategory: 🏥Category) async throws -> HKUnit? {
-        try await self.ⓐpi.preferredUnits(for: [ⓒategory.quantityType]).first?.value
-    }
-    
-    func save(_ ⓢamples: [HKSample]) async throws {
-        try await self.ⓐpi.save(ⓢamples)
-    }
-    
-    func delete(_ ⓢamples: [HKSample]) async throws {
-        try await self.ⓐpi.delete(ⓢamples)
+        try await self.api.preferredUnits(for: [ⓒategory.quantityType]).first?.value
     }
     
     func enableBackgroundDelivery(for ⓒategory: 🏥Category) async throws {
-        try await self.ⓐpi.enableBackgroundDelivery(for: ⓒategory.quantityType, frequency: .immediate)
+        try await self.api.enableBackgroundDelivery(for: ⓒategory.quantityType, frequency: .immediate)
     }
     
     func ⓛoadLatestSample(_ ⓒategory: 🏥Category) async -> HKQuantitySample? {
@@ -54,7 +46,7 @@ struct 🏥HealthStore {
                     ⓒontinuation.resume(returning: nil)
                 }
             }
-            self.ⓐpi.execute(ⓠuery)
+            self.api.execute(ⓠuery)
         }
     }
     
@@ -63,7 +55,7 @@ struct 🏥HealthStore {
             guard ⓔrror == nil else { return }
             ⓗandler(ⓒompletionHandler)
         }
-        self.ⓐpi.execute(ⓠuery)
+        self.api.execute(ⓠuery)
     }
 }
 

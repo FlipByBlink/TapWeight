@@ -38,11 +38,11 @@ extension 📱AppModel {
     }
     func 🔔refreshNotification() async {
         let ⓢample = await self.🏥healthStore.ⓛoadLatestSample(.bodyMass)
-        self.🔔notification.removeAllNotifications()
+        self.🔔notification.ⓡemoveAllNotifications()
         guard let ⓢample, self.🚩ableReminder else { return }
         let ⓟeriodToNow = Int(ⓢample.startDate.distance(to: .now) / (60 * 60 * 24))
         if ⓟeriodToNow >= self.🔢periodOfNonDisplay {
-            self.🔔notification.setBadgeNow(ⓟeriodToNow)
+            self.🔔notification.ⓢetBadgeNow(ⓟeriodToNow)
         }
         for ⓒount in self.🔢periodOfNonDisplay...50 {
             let ⓐlertTime = ⓢample.startDate.addingTimeInterval(Double(60 * 60 * 24 * ⓒount))
@@ -72,15 +72,15 @@ extension 📱AppModel {
 }
 
 extension 📱AppModel: WCSessionDelegate {
-    //MARK: Required
+    //Required
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         self.ⓒontext.sync()
     }
-    //MARK: Required
+    //Required
     func sessionDidBecomeInactive(_ session: WCSession) {
-        // Nothing to do.
+        //Nothing to do.
     }
-    //MARK: Required
+    //Required
     func sessionDidDeactivate(_ session: WCSession) {
         session.activate()
     }

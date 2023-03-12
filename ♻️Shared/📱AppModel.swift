@@ -232,7 +232,7 @@ class 📱AppModel: NSObject, ObservableObject {
                                                     start: ⓓate, end: ⓓate))
                 }
                 do {
-                    try await self.🏥healthStore.save(ⓢamples)
+                    try await self.🏥healthStore.api.save(ⓢamples)
                     self.📨registeredSamples = ⓢamples
                     self.🚩showResult = true
                     💥Feedback.success()
@@ -251,7 +251,7 @@ class 📱AppModel: NSObject, ObservableObject {
     func 🗑cancel() {
         Task {
             do {
-                try await self.🏥healthStore.delete(self.📨registeredSamples)
+                try await self.🏥healthStore.api.delete(self.📨registeredSamples)
                 self.🚩completedCancellation = true
                 💥Feedback.error()
             } catch {
