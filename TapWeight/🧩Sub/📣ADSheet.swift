@@ -7,7 +7,7 @@ struct 📣ADSheet: ViewModifier {
     func body(content: Content) -> some View {
         content
             .sheet(isPresented: $🛒.🚩showADSheet) {
-                📣ADView(self.ⓐpp, second: 7)
+                📣ADView(self.ⓐpp, second: 10)
             }
             .onAppear {
                 if self.scenePhase == .active {

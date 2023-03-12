@@ -52,9 +52,9 @@ extension 📱AppModel {
             ⓒontent.badge = ⓒount as NSNumber
             if self.🚩ableBannerNotification {
                 ⓒontent.title = "Reminder: \(String(localized: "Body Mass"))"
-                let ⓕormatter = DateComponentsFormatter()
-                ⓕormatter.allowedUnits = [.day]
-                ⓒontent.body = "Passed \(ⓕormatter.string(from: Double(60 * 60 * 24 * ⓒount)) ?? "🐛")."
+                let ⓟeriodDescription = DateComponentsFormatter.localizedString(from: DateComponents(day: ⓒount),
+                                                                                unitsStyle: .full)
+                ⓒontent.body = "Passed \(ⓟeriodDescription ?? ⓒount.description)."
                 ⓒontent.sound = .default
             }
             let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: ⓣimeInterval, repeats: false)

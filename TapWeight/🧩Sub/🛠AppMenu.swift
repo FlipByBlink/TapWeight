@@ -67,15 +67,16 @@ private struct 🛠BMIMenuLink: View {
                 } header: {
                     Text("Option")
                 }
-                self.ⓐboutBMI()
+                self.ⓕomulaSection()
+                self.ⓗeightSection()
+                self.ⓦeightSection()
             }
             .navigationTitle("Body Mass Index")
         } label: {
             Label("Body Mass Index", systemImage: "function")
         }
     }
-    private func ⓐboutBMI() -> some View {
-        Group {
+    private func ⓕomulaSection() -> some View {
             Section {
                 ZStack {
                     Color.clear
@@ -103,24 +104,29 @@ private struct 🛠BMIMenuLink: View {
             } header: {
                 Text("Formula")
             }
-            Section {
-                if let ⓗeightSample = 📱.📦latestSamples[.height] {
-                    HStack(alignment: .firstTextBaseline) {
-                        Text(ⓗeightSample.quantity.description)
-                        if 📱.ⓗeightUnit != .meter() {
-                            Text("(" + ⓗeightSample.quantity.doubleValue(for: .meter()).description + "m)")
-                                .foregroundStyle(.secondary)
-                                .font(.caption)
-                        }
+        }
+    private func ⓗeightSection() -> some View {
+        Section {
+            if let ⓗeightSample = 📱.📦latestSamples[.height] {
+                HStack(alignment: .firstTextBaseline) {
+                    Text(ⓗeightSample.quantity.description)
+                    if 📱.ⓗeightUnit != .meter() {
+                        Text("(" + ⓗeightSample.quantity.doubleValue(for: .meter()).description + "m)")
+                            .foregroundStyle(.secondary)
+                            .font(.caption)
                     }
-                    .badge(Text(ⓗeightSample.startDate, style: .date))
-                } else {
-                    Text("Required height data access in \"Health\" app.")
-                    💟OpenHealthAppButton.onMenuView()
                 }
-            } header: {
-                Text("Height")
+                .badge(Text(ⓗeightSample.startDate, style: .date))
+            } else {
+                Text("Required height data access in \"Health\" app.")
+                💟OpenHealthAppButton.onMenuView()
             }
+        } header: {
+            Text("Height")
+        }
+    }
+    private func ⓦeightSection() -> some View {
+        Group {
             if 📱.ⓜassUnit != .gramUnit(with: .kilo) {
                 if let ⓜassSample = 📱.📦latestSamples[.bodyMass] {
                     Section {
