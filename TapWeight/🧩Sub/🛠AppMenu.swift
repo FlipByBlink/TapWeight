@@ -111,7 +111,7 @@ private struct 🛠BMIMenuLink: View {
                 HStack(alignment: .firstTextBaseline) {
                     Text(ⓗeightSample.quantity.description)
                     if 📱.ⓗeightUnit != .meter() {
-                        Text("(" + ⓗeightSample.quantity.doubleValue(for: .meter()).description + "m)")
+                        Text("(" + ⓗeightSample.quantity.doubleValue(for: .meter()).formatted() + "m)")
                             .foregroundStyle(.secondary)
                             .font(.caption)
                     }
@@ -132,7 +132,7 @@ private struct 🛠BMIMenuLink: View {
                     Section {
                         HStack(alignment: .firstTextBaseline) {
                             Text(ⓜassSample.quantity.description)
-                            Text("(" + ⓜassSample.quantity.doubleValue(for: .gramUnit(with: .kilo)).description + "kg)")
+                            Text("(" + ⓜassSample.quantity.doubleValue(for: .gramUnit(with: .kilo)).formatted() + "kg)")
                                 .foregroundStyle(.secondary)
                                 .font(.caption)
                         }

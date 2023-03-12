@@ -152,7 +152,7 @@ class 📱AppModel: NSObject, ObservableObject {
         let ⓜassSample = self.📨registeredSamples.first(where: { 🏥Category($0.quantityType) == .bodyMass })
         var ⓥalue = ⓜassSample?.quantity.description ?? "🐛"
         if let ⓑmiSample = self.📨registeredSamples.first(where: { 🏥Category($0.quantityType) == .bodyMassIndex }) {
-            ⓥalue = [ⓥalue, (ⓑmiSample.quantity.doubleValue(for: .count()).description)].formatted(.list(type: .and))
+            ⓥalue = [ⓥalue, (ⓑmiSample.quantity.doubleValue(for: .count()).formatted())].formatted(.list(type: .and))
         }
         if let ⓑodyFatSample = self.📨registeredSamples.first(where: { 🏥Category($0.quantityType) == .bodyFatPercentage }) {
             ⓥalue += "\n" + ⓑodyFatSample.quantity.description
