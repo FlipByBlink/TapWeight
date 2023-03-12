@@ -366,9 +366,9 @@ enum 🚨Error: Error {
                 let ⓜessage = String(localized: "No input value: ")
                 return ⓜessage + ⓒategory.localizedString
             case .saveFailure(let ⓓescription):
-                return "Save error: \(ⓓescription)"
+                return String(localized: "Save error: \(ⓓescription)")
             case .deleteFailure(let ⓓescription):
-                return "Delete error: \(ⓓescription)"
+                return String(localized: "Delete error: \(ⓓescription)")
         }
     }
 }
