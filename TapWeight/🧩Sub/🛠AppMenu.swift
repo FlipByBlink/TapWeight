@@ -7,6 +7,7 @@ struct 🛠MenuButton: View { // ⚙️
             🛠AppMenu()
         } label: {
             Label("Open menu", systemImage: "gearshape")
+                .font(.body.weight(.medium))
         }
         .tint(.primary)
     }
@@ -224,8 +225,7 @@ private struct 🛠ReminderMenuLink: View {
                 Image("BadgeExample")
                     .cornerRadius(8)
                 Text(DateComponentsFormatter.localizedString(from: DateComponents(day: 7), unitsStyle: .full) ?? "+7")
-                    .foregroundStyle(.secondary)
-                    .font(.footnote.weight(.medium))
+                    .font(.footnote)
             }
         }
     }

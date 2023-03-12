@@ -43,16 +43,15 @@ struct 🏥HealthStore {
                                       predicate: nil,
                                       limit: 1,
                                       sortDescriptors: [ⓢortDescriptors]) { _, ⓢamples, ⓔrror in
-                if let ⓔrror {
-                    print("🚨", #function, ⓔrror.localizedDescription)
-                    ⓒontinuation.resume(returning: nil)
-                } else {
+                if ⓔrror == nil {
                     if let ⓢamples {
                         ⓒontinuation.resume(returning: ⓢamples.first as? HKQuantitySample)
                     } else {
                         assertionFailure()
                         ⓒontinuation.resume(returning: nil)
                     }
+                } else {
+                    ⓒontinuation.resume(returning: nil)
                 }
             }
             self.ⓐpi.execute(ⓠuery)
