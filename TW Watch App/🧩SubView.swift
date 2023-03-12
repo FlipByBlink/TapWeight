@@ -27,7 +27,7 @@ struct 🚨CheckCondition: ViewModifier {
                 content
             }
         }
-        //.animation(.default, value: self.🚩finishedFirstQuary && self.ⓘnputInvalid)
+        .animation(.default, value: self.🚩finishedFirstQuary && self.ⓘnputInvalid)
         .task {
             await 📱.ⓛoadLatestSamples()
             self.🚩finishedFirstQuary = true

@@ -9,7 +9,6 @@ struct 👆DoneButton: View { // ☑️
             Image(systemName: "checkmark.circle.fill")
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(.white, .pink)
-                .shadow(radius: 4)
         }
         .accessibilityLabel("DONE")
         .fullScreenCover(isPresented: $📱.🚩showResult) { 🗯ResultView() }
@@ -17,6 +16,7 @@ struct 👆DoneButton: View { // ☑️
     static func onBottom() -> some View {
         👆DoneButton()
             .font(.system(size: 120))
+            .shadow(radius: 3)
             .padding()
     }
     static func onToolbar() -> some View {
