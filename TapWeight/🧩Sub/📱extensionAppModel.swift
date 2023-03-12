@@ -96,7 +96,16 @@ extension 📱AppModel {
 }
 
 extension 📱AppModel {
-    var ⓣemporaryMassQuantity: HKQuantity {
+    func ⓢetTemporaryQuantity(_ ⓒategory: 🏥Category, condition ⓒondition: Bool) {
+        if ⓒondition {
+            switch ⓒategory {
+                case .bodyMass: self.📝massInputQuantity = self.ⓣemporaryMassQuantity
+                case .bodyFatPercentage: self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
+                default: break
+            }
+        }
+    }
+    private var ⓣemporaryMassQuantity: HKQuantity {
         if let ⓜassUnit {
             switch ⓜassUnit {
                 case .gramUnit(with: .kilo): return HKQuantity(unit: ⓜassUnit, doubleValue: 60.0)

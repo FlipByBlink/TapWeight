@@ -311,13 +311,7 @@ class 📱AppModel: NSObject, ObservableObject {
             self.📦latestSamples[ⓒategory] = ⓢample
             self.📝resetInputValues()
 #if os(iOS)
-            if ⓢample == nil {
-                switch ⓒategory {
-                    case .bodyMass: self.📝massInputQuantity = self.ⓣemporaryMassQuantity
-                    case .bodyFatPercentage: self.📝bodyFatInputQuantity = HKQuantity(unit: .percent(), doubleValue: 0.2)
-                    default: break
-                }
-            }
+            self.ⓢetTemporaryQuantity(ⓒategory, condition: ⓢample == nil)
 #endif
         }
     }
