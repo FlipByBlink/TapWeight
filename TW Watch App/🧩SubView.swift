@@ -26,9 +26,9 @@ struct 🚨CheckCondition: ViewModifier {
                 content
             } else {
                 ScrollView {
-                    Text("Open iPhone app.")
+                    Text("Error")
                         .font(.headline)
-                    Text("直近のデータが見つかりませんでした。まず、iPhone上でデータを登録してください。")
+                    Text("Did not find the recent data. Please register your data on the iPhone first. Or check authentication on Apple Watch.")
                     ForEach(self.ⓘnvalidCategories, id: \.identifier) { ⓒategory in
                         Text("・" + ⓒategory.localizedString)
                     }

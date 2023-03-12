@@ -57,6 +57,7 @@
 "Undo?" = "取り消しますか？";
 "Yes, undo" = "はい、取り消します";
 "Shortcut" = "ショートカット";
+"Did not find the recent data. Please register your data on the iPhone first. Or check authentication on Apple Watch." = "直近のデータが見つかりませんでした。まず、iPhone上でデータを登録してください。もしくはApple Watch上の権限を見直してください。";
 
 "App for iPhone / Apple Watch" = "iPhone/Apple Watch向けアプリ";
 
