@@ -1,26 +1,26 @@
 import UserNotifications
 
 struct 🔔Notification {
-    let api = UNUserNotificationCenter.current()
+    static let api = UNUserNotificationCenter.current()
     
-    func ⓡemoveAllNotifications() {
-        self.api.removeAllDeliveredNotifications()
-        self.api.removeAllPendingNotificationRequests()
-        self.ⓒlearBadge()
+    static func ⓡemoveAllNotifications() {
+        Self.api.removeAllDeliveredNotifications()
+        Self.api.removeAllPendingNotificationRequests()
+        Self.ⓒlearBadge()
     }
     
-    private func ⓒlearBadge() {
+    static private func ⓒlearBadge() {
         let ⓒontent = UNMutableNotificationContent()
         ⓒontent.badge = 0
-        self.api.add(UNNotificationRequest(identifier: "resetBadge", content: ⓒontent, trigger: nil))
+        Self.api.add(UNNotificationRequest(identifier: "resetBadge", content: ⓒontent, trigger: nil))
     }
     
-    func ⓢetBadgeNow(_ ⓒount: Int) {
+    static func ⓢetBadgeNow(_ ⓒount: Int) {
         let ⓒontent = UNMutableNotificationContent()
         ⓒontent.badge = ⓒount as NSNumber
         let ⓡequest = UNNotificationRequest(identifier: "badge" + ⓒontent.description,
                                             content: ⓒontent,
                                             trigger: nil)
-        self.api.add(ⓡequest)
+        Self.api.add(ⓡequest)
     }
 }

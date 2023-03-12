@@ -341,10 +341,6 @@ class 📱AppModel: NSObject, ObservableObject {
             }
         }
     }
-    
-#if os(iOS) //MARK: Notification iOS only
-    let 🔔notification = 🔔Notification()
-#endif
 }
 
 enum 🅂tepperAction {
