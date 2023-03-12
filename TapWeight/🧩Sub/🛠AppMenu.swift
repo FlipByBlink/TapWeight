@@ -103,27 +103,40 @@ private struct 🛠BMIMenuLink: View {
             } header: {
                 Text("Formula")
             }
-            if 📱.🚩ableBMI {
-                Section {
-                    if let ⓗeightSample = 📱.📦latestSamples[.height] {
-                        HStack {
-                            Text(ⓗeightSample.quantity.description)
-                            if 📱.ⓗeightUnit == .foot() {
-                                Text("(" + ⓗeightSample.quantity.doubleValue(for: .meter()).description + "m)")
-                                    .foregroundStyle(.secondary)
-                            }
+            Section {
+                if let ⓗeightSample = 📱.📦latestSamples[.height] {
+                    HStack(alignment: .firstTextBaseline) {
+                        Text(ⓗeightSample.quantity.description)
+                        if 📱.ⓗeightUnit != .meter() {
+                            Text("(" + ⓗeightSample.quantity.doubleValue(for: .meter()).description + "m)")
+                                .foregroundStyle(.secondary)
+                                .font(.caption)
                         }
-                        .badge(ⓗeightSample.startDate.formatted())
-                    } else {
-                        Text("Required height data access in \"Health\" app.")
-                        💟OpenHealthAppButton.onMenuView()
                     }
-                } header: {
-                    Text("Height")
+                    .badge(Text(ⓗeightSample.startDate, style: .date))
+                } else {
+                    Text("Required height data access in \"Health\" app.")
+                    💟OpenHealthAppButton.onMenuView()
+                }
+            } header: {
+                Text("Height")
+            }
+            if 📱.ⓜassUnit != .gramUnit(with: .kilo) {
+                if let ⓜassSample = 📱.📦latestSamples[.bodyMass] {
+                    Section {
+                        HStack(alignment: .firstTextBaseline) {
+                            Text(ⓜassSample.quantity.description)
+                            Text("(" + ⓜassSample.quantity.doubleValue(for: .gramUnit(with: .kilo)).description + "kg)")
+                                .foregroundStyle(.secondary)
+                                .font(.caption)
+                        }
+                        .badge(Text(ⓜassSample.startDate, style: .date))
+                    } header: {
+                        Text("Weight")
+                    }
                 }
             }
         }
-        .animation(.default, value: 📱.🚩ableBMI)
     }
 }
 
