@@ -11,7 +11,7 @@
 // ======== Main View ========
 "DONE" = "完了";
 "Date" = "日時";
-"__Body Mass Index:__ Height data is nothing on \"Health\" app. Register height data." = "__BMI:__ 「ヘルスケア」アプリに身長データがありません。身長データを登録してください。";
+"__Body Mass Index:__ Height data is nothing on \"Health\" app. Register height data. Or check authentication." = "__BMI:__ 「ヘルスケア」アプリに身長データがありません。データを登録するか、権限を見直してください。";
 "__Lean Body Mass:__ Error" = "__除脂肪体重:__ エラー";
 
 // ======== Result View ========

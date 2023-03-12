@@ -61,10 +61,7 @@ struct 🏥HealthStore {
     
     func ⓞbserveChange(_ ⓒategory: 🏥Category, _ ⓗandler: @escaping (@escaping HKObserverQueryCompletionHandler) -> Void ) {
         let ⓠuery = HKObserverQuery(sampleType: ⓒategory.quantityType, predicate: nil) { _, ⓒompletionHandler, ⓔrror in
-            if let ⓔrror {
-                print("🚨", #function, ⓔrror.localizedDescription)
-                return
-            }
+            guard ⓔrror == nil else { return }
             ⓗandler(ⓒompletionHandler)
         }
         self.ⓐpi.execute(ⓠuery)

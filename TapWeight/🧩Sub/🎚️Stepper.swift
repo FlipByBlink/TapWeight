@@ -16,7 +16,7 @@ struct 🎚️BodyMassStepper: View {
                         .font(.title2.weight(.black))
                         .frame(maxHeight: 36)
                 }
-                .opacity(self.ⓘnputIsValid ? 1 : 0.1)
+                .opacity(self.ⓘnputIsValid ? 1 : 0)
                 .animation(.default, value: self.ⓘnputIsValid)
                 Spacer(minLength: 4)
                 📉DifferenceView(.bodyMass)
@@ -50,7 +50,7 @@ struct 🎚️BodyFatStepper: View {
                                 .font(.title2.weight(.black))
                                 .frame(maxHeight: 54)
                         }
-                        .opacity(self.ⓘnputIsValid ? 1 : 0.1)
+                        .opacity(self.ⓘnputIsValid ? 1 : 0)
                         .animation(.default, value: self.ⓘnputIsValid)
                         Spacer(minLength: 0)
                         📉DifferenceView(.bodyFatPercentage)

@@ -32,7 +32,7 @@ struct 🪧BMIView: View {
                 .foregroundStyle(.secondary)
                 .task { 📱.ⓡequestAuth([.bodyMassIndex]) } // For previous version user.
             } else {
-                Text("__Body Mass Index:__ Height data is nothing on \"Health\" app. Register height data.")
+                Text("__Body Mass Index:__ Height data is nothing on \"Health\" app. Register height data. Or check authentication.")
                     .font(.footnote)
                     .foregroundStyle(.tertiary)
                     .padding(.leading, 32)
