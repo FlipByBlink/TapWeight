@@ -9,13 +9,32 @@
       "scale" : "2x"
     },
     {
-      "filename" : "Simulator Screen Shot - iPhone 14 - 2023-03-06 at 13.31.04（中）.heic",
+      "filename" : "BannerExample en.heic",
       "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "locale" : "ja",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "locale" : "ja",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "BannerExample ja.heic",
+      "idiom" : "universal",
+      "locale" : "ja",
       "scale" : "3x"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
   }
 }

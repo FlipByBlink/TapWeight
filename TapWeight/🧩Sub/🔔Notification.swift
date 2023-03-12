@@ -23,4 +23,13 @@ struct 🔔Notification {
                                             trigger: nil)
         Self.api.add(ⓡequest)
     }
+    
+    static var bannerTitle: String {
+        String(localized: "Reminder: \(String(localized: "Body Mass"))")
+    }
+    static func bannerBody(_ ⓒount: Int) -> String {
+        let ⓟeriodDescription = DateComponentsFormatter.localizedString(from: DateComponents(day: ⓒount),
+                                                                        unitsStyle: .full)
+        return String(localized: "Passed \(ⓟeriodDescription ?? ⓒount.description).")
+    }
 }

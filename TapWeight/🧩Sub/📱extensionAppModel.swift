@@ -51,10 +51,8 @@ extension 📱AppModel {
             let ⓒontent = UNMutableNotificationContent()
             ⓒontent.badge = ⓒount as NSNumber
             if self.🚩ableBannerNotification {
-                ⓒontent.title = "Reminder: \(String(localized: "Body Mass"))"
-                let ⓟeriodDescription = DateComponentsFormatter.localizedString(from: DateComponents(day: ⓒount),
-                                                                                unitsStyle: .full)
-                ⓒontent.body = "Passed \(ⓟeriodDescription ?? ⓒount.description)."
+                ⓒontent.title = 🔔Notification.bannerTitle
+                ⓒontent.body = 🔔Notification.bannerBody(ⓒount)
                 ⓒontent.sound = .default
             }
             let ⓣrigger = UNTimeIntervalNotificationTrigger(timeInterval: ⓣimeInterval, repeats: false)
