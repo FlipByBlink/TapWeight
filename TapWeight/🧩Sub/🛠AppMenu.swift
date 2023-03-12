@@ -82,6 +82,7 @@ private struct 🛠BMIMenuLink: View {
                     Color.clear
                     HStack {
                         Text("BMI = ")
+                            .frame(maxWidth: 60)
                         VStack(spacing: 12) {
                             HStack(spacing: 2) {
                                 Text("Weight")

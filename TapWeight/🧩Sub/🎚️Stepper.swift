@@ -65,6 +65,8 @@ struct 🎚️BodyFatStepper: View {
                 .padding(.vertical, self.ⓐbleDatePicker ? 2 : 8)
             } header: {
                 Text("Body Fat Percentage")
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
             }
         }
     }
