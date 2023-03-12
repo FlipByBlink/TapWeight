@@ -3,7 +3,6 @@ import SwiftUI
 struct 🚨CheckCondition: ViewModifier {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var 🚩finishedFirstQuary: Bool = false
-    private var ⓝotFinishedFirstQuary: Bool { !self.🚩finishedFirstQuary }
     private var ⓘnvalidCategories: [🏥Category] {
         var ⓡesult: [🏥Category] = []
         if 📱.📦latestSamples[.bodyMass] == nil {
@@ -19,28 +18,31 @@ struct 🚨CheckCondition: ViewModifier {
         }
         return ⓡesult
     }
-    private var ⓘnputValid: Bool { self.ⓘnvalidCategories.isEmpty }
+    private var ⓘnputInvalid: Bool { !self.ⓘnvalidCategories.isEmpty }
     func body(content: Content) -> some View {
         Group {
-            if self.ⓘnputValid || self.ⓝotFinishedFirstQuary {
-                content
+            if self.🚩finishedFirstQuary && self.ⓘnputInvalid {
+                self.ⓔrrorView()
             } else {
-                ScrollView {
-                    Text("Error")
-                        .font(.headline)
-                    Text("Did not find the recent data. Please register your data on the iPhone first. Or check authentication on Apple Watch.")
-                    ForEach(self.ⓘnvalidCategories, id: \.identifier) { ⓒategory in
-                        Text("・" + ⓒategory.localizedString)
-                    }
-                }
-                .foregroundStyle(.secondary)
+                content
             }
         }
-        .animation(.default, value: self.ⓘnputValid)
+        //.animation(.default, value: self.🚩finishedFirstQuary && self.ⓘnputInvalid)
         .task {
             await 📱.ⓛoadLatestSamples()
             self.🚩finishedFirstQuary = true
         }
+    }
+    private func ⓔrrorView() -> some View {
+        ScrollView {
+            Text("Error")
+                .font(.headline)
+            Text("Did not find the recent data. Please register your data on the iPhone first. Or check authentication on Apple Watch.")
+            ForEach(self.ⓘnvalidCategories, id: \.identifier) { ⓒategory in
+                Text("・" + ⓒategory.localizedString)
+            }
+        }
+        .foregroundStyle(.secondary)
     }
 }
 
