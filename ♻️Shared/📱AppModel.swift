@@ -283,6 +283,10 @@ class 📱AppModel: NSObject, ObservableObject {
         }
     }
     
+    func 📅resetDatePickerValue() {
+        self.📅datePickerValue = .now
+    }
+    
     func ⓡequestAuth(_ ⓒategories: Set<🏥Category>) {
         Task {
             do {

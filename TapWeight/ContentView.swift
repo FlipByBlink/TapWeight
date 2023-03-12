@@ -37,8 +37,11 @@ struct ContentView: View {
                 🛠MenuButton() // ⚙️
             }
         }
-        .onChange(of: self.scenePhase) { _ in
-            📱.📝resetInputValues()
+        .onChange(of: self.scenePhase) {
+            if $0 == .active {
+                📱.📝resetInputValues()
+                📱.📅resetDatePickerValue()
+            }
         }
     }
 }
