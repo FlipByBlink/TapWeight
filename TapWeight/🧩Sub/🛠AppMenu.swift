@@ -23,6 +23,7 @@ private struct 🛠AppMenu: View {
                 }
                 .onChange(of: 📱.🚩ableBodyFat) {
                     if $0 == true { 📱.ⓡequestAuth([.bodyFatPercentage]) }
+                    if $0 == false { 📱.🚩ableLBM = false }
                 }
                 🛠LBMMenuLink()
                 Toggle(isOn: $📱.🚩ableDatePicker) {
@@ -148,7 +149,10 @@ private struct 🛠LBMMenuLink: View {
                         Label("Lean Body Mass", systemImage: "person.badge.minus")
                     }
                     .onChange(of: 📱.🚩ableLBM) {
-                        if $0 == true { 📱.ⓡequestAuth([.leanBodyMass]) }
+                        if $0 == true {
+                            📱.ⓡequestAuth([.leanBodyMass])
+                            📱.🚩ableBodyFat = true
+                        }
                     }
                 } header: {
                     Text("Option")
@@ -185,11 +189,7 @@ private struct 🛠ReminderMenuLink: View {
                         if $0 == true { 📱.🔔setupNotification() }
                     }
                     Text("\"Number of days passed since last registration\" is displayed as a badge on this app icon.")
-                    ZStack {
-                        Color.clear
-                        Image("BadgeExample")
-                            .cornerRadius(8)
-                    }
+                    self.ⓔxampleNotificationBadge()
                 } header: {
                     Text("Option")
                 }
@@ -215,6 +215,18 @@ private struct 🛠ReminderMenuLink: View {
             .task { self.ⓒheckAlertAboutAuthDenied() }
         } label: {
             Label("Reminder notification", systemImage: "bell")
+        }
+    }
+    private func ⓔxampleNotificationBadge() -> some View {
+        ZStack {
+            Color.clear
+            VStack {
+                Image("BadgeExample")
+                    .cornerRadius(8)
+                Text(DateComponentsFormatter.localizedString(from: DateComponents(day: 7), unitsStyle: .full) ?? "+7")
+                    .foregroundStyle(.secondary)
+                    .font(.footnote.weight(.medium))
+            }
         }
     }
     private func ⓒheckAlertAboutAuthDenied() {

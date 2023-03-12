@@ -77,27 +77,24 @@ struct 🎚️BodyMassStepper: View {
     private var ⓤnitDescription: String { 📱.ⓜassUnit?.description ?? "kg" }
     var body: some View {
         Section {
-            if self.ⓘnputIsValid {
-                VStack {
-                    Stepper {
-                        Text(📱.ⓜassInputDescription + self.ⓤnitDescription)
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .monospacedDigit()
-                            .minimumScaleFactor(0.5)
-                            .opacity(self.ⓘnputIsValid ? 1 : 0.2)
-                            .animation(.default, value: self.ⓘnputIsValid)
-                    } onIncrement: {
-                        📱.🎚️changeMassValue(.increment)
-                    } onDecrement: {
-                        📱.🎚️changeMassValue(.decrement)
-                    }
-                    .focusable(false)
-                    📉DifferenceView(.bodyMass)
+            VStack {
+                Stepper {
+                    Text(📱.ⓜassInputDescription + self.ⓤnitDescription)
+                        .font(.system(size: 20, weight: .bold, design: .rounded))
+                        .monospacedDigit()
+                        .minimumScaleFactor(0.5)
+                        .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                        .animation(.default, value: self.ⓘnputIsValid)
+                } onIncrement: {
+                    📱.🎚️changeMassValue(.increment)
+                } onDecrement: {
+                    📱.🎚️changeMassValue(.decrement)
                 }
-                .lineLimit(1)
-            } else {
-                Text("Error")
+                .disabled(!self.ⓘnputIsValid)
+                .focusable(false)
+                📉DifferenceView(.bodyMass)
             }
+            .lineLimit(1)
         } header: {
             Text("Body Mass")
                 .bold()
@@ -111,26 +108,23 @@ struct 🎚️BodyFatStepper: View {
     var body: some View {
         if 📱.🚩ableBodyFat {
             Section {
-                if self.ⓘnputIsValid {
-                    VStack {
-                        Stepper {
-                            Text(📱.ⓑodyFatInputDescription + "%")
-                                .font(.system(size: 20, weight: .bold, design: .rounded))
-                                .monospacedDigit()
-                                .opacity(self.ⓘnputIsValid ? 1 : 0.2)
-                                .minimumScaleFactor(0.1)
-                        } onIncrement: {
-                            📱.🎚️changeBodyFatValue(.increment)
-                        } onDecrement: {
-                            📱.🎚️changeBodyFatValue(.decrement)
-                        }
-                        .focusable(false)
-                        .lineLimit(1)
-                        .animation(.default, value: self.ⓘnputIsValid)
-                        📉DifferenceView(.bodyFatPercentage)
+                VStack {
+                    Stepper {
+                        Text(📱.ⓑodyFatInputDescription + "%")
+                            .font(.system(size: 20, weight: .bold, design: .rounded))
+                            .monospacedDigit()
+                            .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                            .minimumScaleFactor(0.1)
+                    } onIncrement: {
+                        📱.🎚️changeBodyFatValue(.increment)
+                    } onDecrement: {
+                        📱.🎚️changeBodyFatValue(.decrement)
                     }
-                } else {
-                    Text("Error")
+                    .disabled(!self.ⓘnputIsValid)
+                    .focusable(false)
+                    .lineLimit(1)
+                    .animation(.default, value: self.ⓘnputIsValid)
+                    📉DifferenceView(.bodyFatPercentage)
                 }
             } header: {
                 Text("Body Fat Percentage")
@@ -178,15 +172,11 @@ struct 🪧LBMView: View {
     var body: some View {
         if 📱.🚩ableLBM {
             Section {
-                if let ⓘnputDescription {
-                    VStack {
-                        Text(ⓘnputDescription)
-                            .font(.system(size: 16, weight: .bold, design: .rounded))
-                            .monospacedDigit()
-                        📉DifferenceView(.leanBodyMass)
-                    }
-                } else {
-                    Text("Error")
+                VStack {
+                    Text(ⓘnputDescription ?? "Error")
+                        .font(.system(size: 16, weight: .bold, design: .rounded))
+                        .monospacedDigit()
+                    📉DifferenceView(.leanBodyMass)
                 }
             } header: {
                 Text("Lean Body Mass")
