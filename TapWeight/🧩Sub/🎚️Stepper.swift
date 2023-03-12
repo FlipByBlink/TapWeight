@@ -13,12 +13,12 @@ struct 🎚️BodyMassStepper: View {
                         .fontWeight(.black)
                         .monospacedDigit()
                     Text(📱.ⓜassUnit?.description ?? "kg")
-                        .font(.title2.weight(.black))
+                        .font(.title.weight(.black))
                         .frame(maxHeight: 36)
                 }
                 .opacity(self.ⓘnputIsValid ? 1 : 0)
                 .animation(.default, value: self.ⓘnputIsValid)
-                Spacer(minLength: 4)
+                Spacer(minLength: 0)
                 📉DifferenceView(.bodyMass)
             }
         } onIncrement: {
@@ -47,8 +47,8 @@ struct 🎚️BodyFatStepper: View {
                                 .fontWeight(.black)
                                 .monospacedDigit()
                             Text("%")
-                                .font(.title2.weight(.black))
-                                .frame(maxHeight: 54)
+                                .font(.title.weight(.black))
+                                .frame(maxHeight: 36)
                         }
                         .opacity(self.ⓘnputIsValid ? 1 : 0)
                         .animation(.default, value: self.ⓘnputIsValid)
