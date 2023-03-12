@@ -249,11 +249,14 @@ struct 🗯ResultView: View {
             Image(systemName: "checkmark")
                 .font(.largeTitle.bold())
             Text("DONE!")
+                .strikethrough(self.ⓒanceled)
                 .font(.title.bold())
             Spacer()
-            Text(📱.ⓡesultSummaryDescription ?? "🐛")
+            Text(📱.ⓡesultSummaryDescription)
                 .strikethrough(self.ⓒanceled)
                 .font(.body.bold())
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
             if 📱.🚩ableDatePicker {
                 if let ⓓate = 📱.📨registeredSamples.first?.startDate as? Date {
                     Text(ⓓate.formatted(date: .abbreviated, time: .shortened))

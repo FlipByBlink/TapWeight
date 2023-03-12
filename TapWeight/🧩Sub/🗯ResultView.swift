@@ -16,12 +16,14 @@ struct 🗯ResultView: View {
                     Text("DONE!")
                         .strikethrough(self.ⓒanceled)
                         .font(.system(size: 96).weight(.black))
+                        .lineLimit(1)
                     Text("Registration for \"Health\" app")
                         .strikethrough(self.ⓒanceled)
                         .font(.title3.weight(.semibold))
+                        .lineLimit(1)
                     self.🗯SummaryText()
+                        .lineLimit(2)
                 }
-                .lineLimit(1)
                 .minimumScaleFactor(0.3)
                 .padding()
                 .padding(.bottom, 120)
@@ -49,9 +51,10 @@ struct 🗯ResultView: View {
     }
     private func 🗯SummaryText() -> some View {
         Group {
-            Text(📱.ⓡesultSummaryDescription ?? "🐛")
+            Text(📱.ⓡesultSummaryDescription)
                 .strikethrough(self.ⓒanceled)
                 .font(.body.bold())
+                .multilineTextAlignment(.center)
             if 📱.🚩ableDatePicker {
                 if let ⓓate = 📱.📨registeredSamples.first?.startDate as? Date {
                     Text(ⓓate.formatted(date: .abbreviated, time: .shortened))

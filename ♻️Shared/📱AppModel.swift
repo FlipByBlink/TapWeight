@@ -148,25 +148,24 @@ class 📱AppModel: NSObject, ObservableObject {
         }
     }
     
-    var ⓡesultSummaryDescription: String? {
-        self.📨registeredSamples.reduce("") { ⓓescription, ⓢample in
-            switch 🏥Category(ⓢample.quantityType) {
-                case .bodyMass:
-                    return ⓓescription + ⓢample.quantity.description
-                case .bodyMassIndex:
-                    return ⓓescription +  " / " + ⓢample.quantity.doubleValue(for: .count()).description
-                case .height:
-                    assertionFailure()
-                    return ⓓescription
-                case .bodyFatPercentage:
-                    return ⓓescription +  " / " + ⓢample.quantity.description
-                case .leanBodyMass:
-                    return ⓓescription +  " / " + ⓢample.quantity.description
-                case .none:
-                    assertionFailure()
-                    return ⓓescription
+    var ⓡesultSummaryDescription: String {
+        var ⓓescription = ""
+        let ⓡegisteredSamples = self.📨registeredSamples.reduce(into: [:]) { $0[🏥Category($1.quantityType)] = $1 }
+        if let ⓜassSample = ⓡegisteredSamples[.bodyMass] {
+            var ⓛabels = [ⓜassSample.quantity.description]
+            if let ⓑmiSample = ⓡegisteredSamples[.bodyMassIndex] {
+                ⓛabels.append(ⓑmiSample.quantity.doubleValue(for: .count()).description)
             }
+            ⓓescription += ⓛabels.formatted(.list(type: .and))
         }
+        if let ⓑodyFatSample = ⓡegisteredSamples[.bodyFatPercentage] {
+            var ⓛabels = [ⓑodyFatSample.quantity.description]
+            if let ⓛbmSample = ⓡegisteredSamples[.leanBodyMass] {
+                ⓛabels.append(ⓛbmSample.quantity.description)
+            }
+            ⓓescription += "\n" + ⓛabels.formatted(.list(type: .and))
+        }
+        return ⓓescription
     }
     
     //MARK: Method
