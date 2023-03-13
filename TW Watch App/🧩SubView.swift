@@ -8,10 +8,8 @@ struct 🚨CheckCondition: ViewModifier {
         if 📱.📦latestSamples[.bodyMass] == nil {
             ⓡesult += [.bodyMass]
         }
-        if 📱.🚩ableBMI {
-            if 📱.📦latestSamples[.height] == nil {
-                ⓡesult += [.height]
-            }
+        if 📱.🚩ableBMI && (📱.📦latestSamples[.height] == nil) {
+            ⓡesult += [.height]
         }
         if 📱.🚩ableBodyFat && (📱.📦latestSamples[.bodyFatPercentage] == nil) {
             ⓡesult += [.bodyFatPercentage]
@@ -27,7 +25,6 @@ struct 🚨CheckCondition: ViewModifier {
                 content
             }
         }
-        .animation(.default, value: self.🚩finishedFirstQuary && self.ⓘnputInvalid)
         .task {
             await 📱.ⓛoadLatestSamples()
             self.🚩finishedFirstQuary = true

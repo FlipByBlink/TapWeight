@@ -18,6 +18,7 @@ struct 👆DoneButton: View { // ☑️
                                 .foregroundColor(.pink)
                         }
                         .shadow(radius: 2.5)
+                        .padding()
                 case .toolbar:
                     Image(systemName: "checkmark.circle.fill")
                         .symbolRenderingMode(.palette)
@@ -25,7 +26,6 @@ struct 👆DoneButton: View { // ☑️
                         .font(.title2.bold())
             }
         }
-        .padding()
         .accessibilityLabel("DONE")
         .fullScreenCover(isPresented: $📱.🚩showResult) { 🗯ResultView() }
     }
