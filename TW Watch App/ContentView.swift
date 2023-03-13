@@ -15,6 +15,7 @@ struct ContentView: View {
             .onChange(of: 📱.🚩showResult) {
                 if $0 == false { 📱.ⓒlearStates() }
             }
+            .animation(.default, value: [📱.🚩amount50g, 📱.🚩ableBMI, 📱.🚩ableBodyFat, 📱.🚩ableLBM])
         }
     }
 }
