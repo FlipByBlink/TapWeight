@@ -25,12 +25,12 @@ struct ContentView: View {
         .minimumScaleFactor(0.3)
         .navigationTitle("Body Mass")
         .safeAreaInset(edge: .bottom) {
-            if !📱.🚩ableDatePicker { 👆DoneButton.onBottom() } // ☑️
+            if !📱.🚩ableDatePicker { 👆DoneButton(.bottom) } // ☑️
         }
         .modifier(🚨RegistrationErrorAlert())
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                if 📱.🚩ableDatePicker { 👆DoneButton.onToolbar() } // ☑️
+                if 📱.🚩ableDatePicker { 👆DoneButton(.toolbar) } // ☑️
             }
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 💟OpenHealthAppButton.onMainView()

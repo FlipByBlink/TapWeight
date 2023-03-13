@@ -2,25 +2,37 @@ import SwiftUI
 
 struct 👆DoneButton: View { // ☑️
     @EnvironmentObject var 📱: 📱AppModel
+    private let ⓟosition: 🄿osition
     var body: some View {
         Button {
             📱.👆register()
         } label: {
-            Image(systemName: "checkmark.circle.fill")
-                .symbolRenderingMode(.palette)
-                .foregroundStyle(.white, .pink)
+            switch self.ⓟosition {
+                case .bottom:
+                    Image(systemName: "checkmark")
+                        .font(.system(size: 56, weight: .heavy))
+                        .foregroundColor(.white)
+                        .padding(22)
+                        .background {
+                            Circle()
+                                .foregroundColor(.pink)
+                        }
+                        .shadow(radius: 2.5)
+                case .toolbar:
+                    Image(systemName: "checkmark.circle.fill")
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(.white, .pink)
+                        .font(.title2.bold())
+            }
         }
+        .padding()
         .accessibilityLabel("DONE")
         .fullScreenCover(isPresented: $📱.🚩showResult) { 🗯ResultView() }
     }
-    static func onBottom() -> some View {
-        👆DoneButton()
-            .font(.system(size: 120))
-            .shadow(radius: 3)
-            .padding()
+    init(_ ⓟosition: 🄿osition) {
+        self.ⓟosition = ⓟosition
     }
-    static func onToolbar() -> some View {
-        👆DoneButton()
-            .font(.title2.bold())
+    enum 🄿osition {
+        case bottom, toolbar
     }
 }

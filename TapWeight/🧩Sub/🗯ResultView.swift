@@ -91,6 +91,7 @@ struct 🗯ResultView: View {
                     .foregroundColor(.primary)
                     .font(.title)
             }
+            .offset(y: -12)
             .disabled(self.ⓒanceled)
             .opacity(self.ⓒanceled ? 0.5 : 1)
             .accessibilityLabel("Cancel")
