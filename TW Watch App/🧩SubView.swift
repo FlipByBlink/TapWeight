@@ -65,7 +65,6 @@ struct 👆DoneButton: View { // ☑️
         .listItemTint(.pink)
         .foregroundStyle(.white)
         .fontWeight(.semibold)
-        .accessibilityLabel("Register")
         .fullScreenCover(isPresented: $📱.🚩showResult) { 🗯ResultView() }
     }
 }

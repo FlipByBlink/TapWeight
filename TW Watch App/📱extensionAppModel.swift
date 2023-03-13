@@ -19,7 +19,6 @@ extension 📱AppModel: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        print("🖨️", #function, applicationContext.description)
         Task { @MainActor in
             if let ⓓata = applicationContext["ⓒontext"] as? Data {
                 if let ⓒontext = 🄲ontext.receive(ⓓata) {
