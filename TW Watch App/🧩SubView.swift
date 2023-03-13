@@ -146,13 +146,14 @@ struct 🪧BMIView: View {
                     HStack {
                         VStack(alignment: .leading, spacing: 0) {
                             Text(ⓘnputValue.description)
-                                .font(.system(.body, design: .rounded, weight: .heavy))
+                                .font(.system(.subheadline, design: .rounded, weight: .bold))
                                 .monospacedDigit()
                             Text("(\(ⓗeightQuantityDescription))")
-                                .font(.system(.caption2, design: .rounded, weight: .heavy))
+                                .font(.system(.caption2, design: .rounded, weight: .bold))
                                 .foregroundStyle(.secondary)
                         }
                         .lineLimit(1)
+                        Spacer()
                         📉DifferenceView(.bodyMassIndex, alignment: .trailing)
                     }
                 } else {
@@ -178,8 +179,9 @@ struct 🪧LBMView: View {
             Section {
                 HStack {
                     Text(ⓘnputDescription ?? "Error")
-                        .font(.system(.body, design: .rounded, weight: .heavy))
+                        .font(.system(.subheadline, design: .rounded, weight: .bold))
                         .monospacedDigit()
+                    Spacer()
                     📉DifferenceView(.leanBodyMass, alignment: .trailing)
                 }
             } header: {
@@ -207,7 +209,7 @@ struct 📉DifferenceView: View {
             .foregroundStyle(.secondary)
             .minimumScaleFactor(0.1)
             .lineLimit(1)
-            .dynamicTypeSize(..<DynamicTypeSize.medium)
+            .dynamicTypeSize(..<DynamicTypeSize.small)
         }
     }
     init(_ ⓒategory: 🏥Category, alignment ⓐlignment: HorizontalAlignment = .center) {
