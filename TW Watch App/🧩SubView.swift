@@ -77,12 +77,16 @@ struct 🎚️BodyMassStepper: View {
     var body: some View {
         Section {
             VStack {
-                Text(📱.ⓜassInputDescription + self.ⓤnitDescription)
-                    .font(.system(.title3, design: .rounded, weight: .heavy))
-                    .monospacedDigit()
-                    .minimumScaleFactor(0.5)
-                    .opacity(self.ⓘnputIsValid ? 1 : 0.2)
-                    .lineLimit(1)
+                HStack(alignment: .firstTextBaseline, spacing: 2) {
+                    Text(📱.ⓜassInputDescription)
+                        .font(.system(.title2, design: .rounded, weight: .heavy))
+                    Text(self.ⓤnitDescription)
+                        .font(.system(.title3, design: .rounded, weight: .heavy))
+                }
+                .monospacedDigit()
+                .minimumScaleFactor(0.5)
+                .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                .lineLimit(1)
                 Stepper {
                     📉DifferenceView(.bodyMass)
                 } onIncrement: {
@@ -109,12 +113,16 @@ struct 🎚️BodyFatStepper: View {
         if 📱.🚩ableBodyFat {
             Section {
                 VStack {
-                    Text(📱.ⓑodyFatInputDescription + "%")
-                        .font(.system(.title3, design: .rounded, weight: .heavy))
-                        .monospacedDigit()
-                        .minimumScaleFactor(0.5)
-                        .opacity(self.ⓘnputIsValid ? 1 : 0.2)
-                        .lineLimit(1)
+                    HStack(alignment: .firstTextBaseline, spacing: 2) {
+                        Text(📱.ⓑodyFatInputDescription)
+                            .font(.system(.title2, design: .rounded, weight: .heavy))
+                        Text("%")
+                            .font(.system(.title3, design: .rounded, weight: .heavy))
+                    }
+                    .monospacedDigit()
+                    .minimumScaleFactor(0.5)
+                    .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                    .lineLimit(1)
                     Stepper {
                         📉DifferenceView(.bodyFatPercentage)
                     } onIncrement: {
