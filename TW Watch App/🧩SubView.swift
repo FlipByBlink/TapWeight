@@ -91,7 +91,7 @@ struct 🎚️BodyMassStepper: View {
                     📱.🎚️changeMassValue(.decrement)
                 }
                 .disabled(!self.ⓘnputIsValid)
-                .focusable(false)
+                //.focusable(false) WIP
             }
         } header: {
             Text("Body Mass")
@@ -123,7 +123,7 @@ struct 🎚️BodyFatStepper: View {
                         📱.🎚️changeBodyFatValue(.decrement)
                     }
                     .disabled(!self.ⓘnputIsValid)
-                    .focusable(false)
+                    //.focusable(false) WIP
                 }
             } header: {
                 Text("Body Fat Percentage")
