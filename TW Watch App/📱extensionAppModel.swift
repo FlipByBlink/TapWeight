@@ -2,7 +2,7 @@ import SwiftUI
 import WatchConnectivity
 
 extension 📱AppModel: WKApplicationDelegate {
-    func applicationDidBecomeActive() {
+    func applicationDidFinishLaunching() {
         if WCSession.isSupported() {
             WCSession.default.delegate = self
             WCSession.default.activate()
