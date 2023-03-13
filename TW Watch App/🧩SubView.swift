@@ -72,20 +72,19 @@ struct 👆DoneButton: View { // ☑️
 
 struct 🎚️BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.dynamicTypeSize) var dynamicTypeSize
     private var ⓘnputIsValid: Bool { 📱.ⓜassInputIsValid }
     private var ⓤnitDescription: String { 📱.ⓜassUnit?.description ?? "kg" }
-    private var ⓜultilineLayout: Bool { self.dynamicTypeSize > .xLarge }
     var body: some View {
         Section {
             VStack {
+                Text(📱.ⓜassInputDescription + self.ⓤnitDescription)
+                    .font(.system(.title3, design: .rounded, weight: .heavy))
+                    .monospacedDigit()
+                    .minimumScaleFactor(0.5)
+                    .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                    .lineLimit(1)
                 Stepper {
-                    Text(📱.ⓜassInputDescription + (self.ⓜultilineLayout ? "\n" : "") + self.ⓤnitDescription)
-                        .font(.system(size: 20, weight: .bold, design: .rounded))
-                        .monospacedDigit()
-                        .minimumScaleFactor(0.5)
-                        .multilineTextAlignment(.center)
-                        .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                    📉DifferenceView(.bodyMass)
                 } onIncrement: {
                     📱.🎚️changeMassValue(.increment)
                 } onDecrement: {
@@ -93,9 +92,7 @@ struct 🎚️BodyMassStepper: View {
                 }
                 .disabled(!self.ⓘnputIsValid)
                 .focusable(false)
-                📉DifferenceView(.bodyMass)
             }
-            .lineLimit(self.ⓜultilineLayout ? 2 : 1)
         } header: {
             Text("Body Mass")
                 .bold()
@@ -107,20 +104,19 @@ struct 🎚️BodyMassStepper: View {
 
 struct 🎚️BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.dynamicTypeSize) var dynamicTypeSize
     private var ⓘnputIsValid: Bool { 📱.ⓑodyFatInputIsValid }
-    private var ⓜultilineLayout: Bool { self.dynamicTypeSize > .xLarge }
     var body: some View {
         if 📱.🚩ableBodyFat {
             Section {
                 VStack {
+                    Text(📱.ⓑodyFatInputDescription + "%")
+                        .font(.system(.title3, design: .rounded, weight: .heavy))
+                        .monospacedDigit()
+                        .minimumScaleFactor(0.5)
+                        .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+                        .lineLimit(1)
                     Stepper {
-                        Text(📱.ⓑodyFatInputDescription + (self.ⓜultilineLayout ? "\n" : "") + "%")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .monospacedDigit()
-                            .opacity(self.ⓘnputIsValid ? 1 : 0.2)
-                            .minimumScaleFactor(0.5)
-                            .multilineTextAlignment(.center)
+                        📉DifferenceView(.bodyFatPercentage)
                     } onIncrement: {
                         📱.🎚️changeBodyFatValue(.increment)
                     } onDecrement: {
@@ -128,8 +124,6 @@ struct 🎚️BodyFatStepper: View {
                     }
                     .disabled(!self.ⓘnputIsValid)
                     .focusable(false)
-                    .lineLimit(self.ⓜultilineLayout ? 2 : 1)
-                    📉DifferenceView(.bodyFatPercentage)
                 }
             } header: {
                 Text("Body Fat Percentage")
@@ -149,16 +143,17 @@ struct 🪧BMIView: View {
         if 📱.🚩ableBMI {
             Section {
                 if let ⓘnputValue, let ⓗeightQuantityDescription {
-                    VStack {
-                        HStack(alignment: .firstTextBaseline) {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 0) {
                             Text(ⓘnputValue.description)
-                                .font(.system(size: 16, weight: .bold, design: .rounded))
+                                .font(.system(.body, design: .rounded, weight: .heavy))
                                 .monospacedDigit()
                             Text("(\(ⓗeightQuantityDescription))")
-                                .font(.system(size: 12, weight: .bold, design: .rounded))
+                                .font(.system(.caption2, design: .rounded, weight: .heavy))
                                 .foregroundStyle(.secondary)
                         }
-                        📉DifferenceView(.bodyMassIndex)
+                        .lineLimit(1)
+                        📉DifferenceView(.bodyMassIndex, alignment: .trailing)
                     }
                 } else {
                     Text("Height data is nothing on \"Health\" app. Register height data.")
@@ -181,11 +176,11 @@ struct 🪧LBMView: View {
     var body: some View {
         if 📱.🚩ableLBM {
             Section {
-                VStack {
+                HStack {
                     Text(ⓘnputDescription ?? "Error")
-                        .font(.system(size: 16, weight: .bold, design: .rounded))
+                        .font(.system(.body, design: .rounded, weight: .heavy))
                         .monospacedDigit()
-                    📉DifferenceView(.leanBodyMass)
+                    📉DifferenceView(.leanBodyMass, alignment: .trailing)
                 }
             } header: {
                 Text("Lean Body Mass")
@@ -199,22 +194,25 @@ struct 🪧LBMView: View {
 
 struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel
+    private var ⓐlignment: HorizontalAlignment
     private var ⓒategory: 🏥Category
     private var ⓓifference: 🄳ifference? { 📱.ⓓifference[self.ⓒategory] }
     var body: some View {
         if let ⓓifference {
-            LabeledContent(ⓓifference.valueDescription) {
+            VStack(alignment: self.ⓐlignment, spacing: 0) {
+                Text(ⓓifference.valueDescription)
                 Text(ⓓifference.lastSampleDate, style: .offset)
             }
-            .padding(.horizontal)
             .font(.caption2.monospaced())
             .foregroundStyle(.secondary)
             .minimumScaleFactor(0.1)
             .lineLimit(1)
+            .dynamicTypeSize(..<DynamicTypeSize.medium)
         }
     }
-    init(_ ⓒategory: 🏥Category) {
+    init(_ ⓒategory: 🏥Category, alignment ⓐlignment: HorizontalAlignment = .center) {
         self.ⓒategory = ⓒategory
+        self.ⓐlignment = ⓐlignment
     }
 }
 
