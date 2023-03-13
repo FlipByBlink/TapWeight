@@ -153,6 +153,7 @@ struct 🪧BMIView: View {
                                 .foregroundStyle(.secondary)
                         }
                         .lineLimit(1)
+                        .minimumScaleFactor(0.5)
                         Spacer()
                         📉DifferenceView(.bodyMassIndex, alignment: .trailing)
                     }
@@ -181,6 +182,7 @@ struct 🪧LBMView: View {
                     Text(ⓘnputDescription ?? "Error")
                         .font(.system(.subheadline, design: .rounded, weight: .bold))
                         .monospacedDigit()
+                        .minimumScaleFactor(0.5)
                     Spacer()
                     📉DifferenceView(.leanBodyMass, alignment: .trailing)
                 }

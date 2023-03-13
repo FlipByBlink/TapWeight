@@ -266,7 +266,8 @@ private struct 🛠ReminderMenuLink: View {
             Section {
                 Stepper(value: $📱.🔢periodOfNonDisplay, in: 1...31) {
                     Label("Period of non-display", systemImage: "bell.slash")
-                        .badge(self.ⓟeriodOfNonDisplay)
+                        .badge(DateComponentsFormatter.localizedString(from: .init(day: self.ⓟeriodOfNonDisplay),
+                                                                       unitsStyle: .abbreviated))
                 }
                 if let ⓛatestSampleDate, let ⓣimeOfDisplay {
                     Group {
