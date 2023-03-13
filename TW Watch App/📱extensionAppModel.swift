@@ -23,10 +23,12 @@ extension 📱AppModel: WCSessionDelegate {
         Task { @MainActor in
             if let ⓓata = applicationContext["ⓒontext"] as? Data {
                 if let ⓒontext = 🄲ontext.receive(ⓓata) {
-                    self.🚩ableBMI = ⓒontext.ableBMI
-                    self.🚩ableBodyFat = ⓒontext.ableBodyFat
-                    self.🚩ableLBM = ⓒontext.ableLBM
-                    self.🚩amount50g = ⓒontext.amount50g
+                    withAnimation {
+                        self.🚩ableBMI = ⓒontext.ableBMI
+                        self.🚩ableBodyFat = ⓒontext.ableBodyFat
+                        self.🚩ableLBM = ⓒontext.ableLBM
+                        self.🚩amount50g = ⓒontext.amount50g
+                    }
                 } else {
                     assertionFailure()
                 }
