@@ -132,7 +132,7 @@ class 📱AppModel: NSObject, ObservableObject {
                 if ⓒategory == .bodyMass, self.🚩amount50g {
                     switch ⓓifferenceValue {
                         case ..<0: return String(format: "%.2f", ⓓifferenceValue)
-                        case 0: return "0.00"
+                        case 0: return " 0.00"
                         default: return "+" + String(format: "%.2f", ⓓifferenceValue)
                     }
                 } else {
