@@ -4,22 +4,22 @@ struct 🚨CheckCondition: ViewModifier {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var 🚩finishedFirstQuary: Bool = false
     private var ⓘnvalidCategories: [🏥Category] {
-        var ⓡesult: [🏥Category] = []
+        var ⓥalue: [🏥Category] = []
         if 📱.📦latestSamples[.bodyMass] == nil {
-            ⓡesult += [.bodyMass]
+            ⓥalue += [.bodyMass]
         }
         if 📱.🚩ableBMI && (📱.📦latestSamples[.height] == nil) {
-            ⓡesult += [.height]
+            ⓥalue += [.height]
         }
         if 📱.🚩ableBodyFat && (📱.📦latestSamples[.bodyFatPercentage] == nil) {
-            ⓡesult += [.bodyFatPercentage]
+            ⓥalue += [.bodyFatPercentage]
         }
-        return ⓡesult
+        return ⓥalue
     }
-    private var ⓘnputInvalid: Bool { !self.ⓘnvalidCategories.isEmpty }
+    private var ⓘnputIsInvalid: Bool { !self.ⓘnvalidCategories.isEmpty }
     func body(content: Content) -> some View {
         Group {
-            if self.🚩finishedFirstQuary && self.ⓘnputInvalid {
+            if self.🚩finishedFirstQuary && self.ⓘnputIsInvalid {
                 self.ⓔrrorView()
             } else {
                 content
