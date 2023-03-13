@@ -86,7 +86,6 @@ struct 🎚️BodyMassStepper: View {
                         .minimumScaleFactor(0.5)
                         .multilineTextAlignment(.center)
                         .opacity(self.ⓘnputIsValid ? 1 : 0.2)
-                        .animation(.default, value: self.ⓘnputIsValid)
                 } onIncrement: {
                     📱.🎚️changeMassValue(.increment)
                 } onDecrement: {
@@ -101,6 +100,8 @@ struct 🎚️BodyMassStepper: View {
             Text("Body Mass")
                 .bold()
         }
+        .animation(.default, value: self.ⓘnputIsValid)
+        .animation(.default, value: 📱.ⓓifference[.bodyMass] == nil)
     }
 }
 
@@ -128,13 +129,14 @@ struct 🎚️BodyFatStepper: View {
                     .disabled(!self.ⓘnputIsValid)
                     .focusable(false)
                     .lineLimit(self.ⓜultilineLayout ? 2 : 1)
-                    .animation(.default, value: self.ⓘnputIsValid)
                     📉DifferenceView(.bodyFatPercentage)
                 }
             } header: {
                 Text("Body Fat Percentage")
                     .bold()
             }
+            .animation(.default, value: self.ⓘnputIsValid)
+            .animation(.default, value: 📱.ⓓifference[.bodyFatPercentage] == nil)
         }
     }
 }
@@ -167,6 +169,8 @@ struct 🪧BMIView: View {
                 Text("Body Mass Index")
                     .bold()
             }
+            .animation(.default, value: self.ⓘnputValue == nil)
+            .animation(.default, value: 📱.ⓓifference[.bodyMassIndex] == nil)
         }
     }
 }
@@ -187,6 +191,8 @@ struct 🪧LBMView: View {
                 Text("Lean Body Mass")
                     .bold()
             }
+            .animation(.default, value: self.ⓘnputDescription == nil)
+            .animation(.default, value: 📱.ⓓifference[.leanBodyMass] == nil)
         }
     }
 }
