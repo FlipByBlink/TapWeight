@@ -308,8 +308,10 @@ class 📱AppModel: NSObject, ObservableObject {
     func ⓛoadLatestSamples() async {
         for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
             let ⓢample = await self.🏥healthStore.ⓛoadLatestSample(ⓒategory)
-            self.📦latestSamples[ⓒategory] = ⓢample
-            self.📝resetInputValues()
+            if ⓢample != self.📦latestSamples[ⓒategory] {
+                self.📦latestSamples[ⓒategory] = ⓢample
+                self.📝resetInputValues()
+            }
 #if os(iOS)
             self.ⓢetTemporaryQuantity(ⓒategory, condition: ⓢample == nil)
 #endif
