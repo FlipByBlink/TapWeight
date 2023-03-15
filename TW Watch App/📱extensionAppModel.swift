@@ -19,17 +19,21 @@ extension 📱AppModel: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        self.ⓗandleContextDictionary(applicationContext)
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        self.ⓗandleContextDictionary(message)
+    }
+    
+    private func ⓗandleContextDictionary(_ ⓓictionary: [String : Any]) {
         Task { @MainActor in
-            if let ⓓata = applicationContext["ⓒontext"] as? Data {
-                if let ⓒontext = 🄲ontext.receive(ⓓata) {
-                    withAnimation {
-                        self.🚩ableBMI = ⓒontext.ableBMI
-                        self.🚩ableBodyFat = ⓒontext.ableBodyFat
-                        self.🚩ableLBM = ⓒontext.ableLBM
-                        self.🚩amount50g = ⓒontext.amount50g
-                    }
-                } else {
-                    assertionFailure()
+            if let ⓒontext = 🄲ontext.receive(ⓓictionary) {
+                withAnimation {
+                    self.🚩ableBMI = ⓒontext.ableBMI
+                    self.🚩ableBodyFat = ⓒontext.ableBodyFat
+                    self.🚩ableLBM = ⓒontext.ableLBM
+                    self.🚩amount50g = ⓒontext.amount50g
                 }
             } else {
                 assertionFailure()

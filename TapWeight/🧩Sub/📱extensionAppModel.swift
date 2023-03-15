@@ -72,7 +72,7 @@ extension 📱AppModel {
 extension 📱AppModel: WCSessionDelegate {
     //Required
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        self.ⓒontext.sync()
+        self.ⓒontext.send()
     }
     //Required
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -81,6 +81,10 @@ extension 📱AppModel: WCSessionDelegate {
     //Required
     func sessionDidDeactivate(_ session: WCSession) {
         session.activate()
+    }
+    //Optional
+    func sessionReachabilityDidChange(_ session: WCSession) {
+        self.ⓒontext.send()
     }
 }
 
