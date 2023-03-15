@@ -252,6 +252,7 @@
 		F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📅DatePicker.swift"; sourceTree = "<group>"; };
 		F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📉DifferenceView.swift"; sourceTree = "<group>"; };
 		F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💟OpenHealthAppButton.swift"; sourceTree = "<group>"; };
+		F569C3DE29C1E16000947F6E /* note.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = note.md; sourceTree = "<group>"; };
 		F5AC7BE92941982A00490FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5BBB55229B60F5700424A66 /* TapWeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapWeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5BBB55429B60F5700424A66 /* TWApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWApp.swift; sourceTree = "<group>"; };
@@ -365,6 +366,7 @@
 				12325789284C5E79002E0057 /* 🧩Sub */,
 				129CBE13284CAD2D00C73F4D /* 🌏Localization */,
 				126B3EAE282DFEE0009BD28B /* Assets.xcassets */,
+				F569C3DE29C1E16000947F6E /* note.md */,
 			);
 			path = TapWeight;
 			sourceTree = "<group>";
