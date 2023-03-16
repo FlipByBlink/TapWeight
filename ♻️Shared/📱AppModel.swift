@@ -275,12 +275,17 @@ class 📱AppModel: NSObject, ObservableObject {
     }
     
     func 📝resetInputValues() {
+#if os(iOS)
         if let ⓢample = self.📦latestSamples[.bodyMass] {
             self.📝massInputQuantity = ⓢample.quantity
         }
         if let ⓢample = self.📦latestSamples[.bodyFatPercentage] {
             self.📝bodyFatInputQuantity = ⓢample.quantity
         }
+#endif
+#if os(watchOS)
+        self.ⓛoadContext()
+#endif
     }
     
     func 📅resetDatePickerValue() {
@@ -306,16 +311,16 @@ class 📱AppModel: NSObject, ObservableObject {
         }
     }
     func ⓛoadLatestSamples() async {
+#if os(iOS)
         for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
             let ⓢample = await self.🏥healthStore.ⓛoadLatestSample(ⓒategory)
             if ⓢample != self.📦latestSamples[ⓒategory] {
                 self.📦latestSamples[ⓒategory] = ⓢample
                 self.📝resetInputValues()
             }
-#if os(iOS)
             self.ⓢetTemporaryQuantity(ⓒategory, condition: ⓢample == nil)
-#endif
         }
+#endif
     }
     private func ⓛoadPreferredUnits() async {
         for ⓒategory: 🏥Category in [.bodyMass, .height] {

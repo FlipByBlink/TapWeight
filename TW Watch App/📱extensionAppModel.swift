@@ -1,44 +1,47 @@
 import SwiftUI
-import WatchConnectivity
+//import WatchConnectivity
 
 extension 📱AppModel: WKApplicationDelegate {
     func applicationDidFinishLaunching() {
-        if WCSession.isSupported() {
-            WCSession.default.delegate = self
-            WCSession.default.activate()
-        }
+        //if WCSession.isSupported() {
+        //    WCSession.default.delegate = self
+        //    WCSession.default.activate()
+        //}
         
         self.ⓞbserveChanges()
+        
+        self.ⓛoadContext()
+        self.ⓐddObserver()
     }
 }
 
-extension 📱AppModel: WCSessionDelegate {
-    //Required
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        //Nothing to do.
-    }
-    
-    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        self.ⓗandleContextDictionary(applicationContext)
-    }
-    
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        self.ⓗandleContextDictionary(message)
-    }
-    
-    private func ⓗandleContextDictionary(_ ⓓictionary: [String : Any]) {
-        Task { @MainActor in
-            if let ⓒontext = 🄲ontext.receive(ⓓictionary) {
-                withAnimation {
-                    self.🚩ableBMI = ⓒontext.ableBMI
-                    self.🚩ableBodyFat = ⓒontext.ableBodyFat
-                    self.🚩ableLBM = ⓒontext.ableLBM
-                    self.🚩amount50g = ⓒontext.amount50g
-                }
-            } else {
-                assertionFailure()
+extension 📱AppModel {
+    func ⓛoadContext() {
+        if let ⓒontext = 🄲ontext.load() {
+            withAnimation {
+                self.🚩ableBMI = ⓒontext.ableBMI
+                self.🚩ableBodyFat = ⓒontext.ableBodyFat
+                self.🚩ableLBM = ⓒontext.ableLBM
+                self.🚩amount50g = ⓒontext.amount50g
+                self.📝massInputQuantity = ⓒontext.massQuantity
+                self.📦latestSamples[.height] = ⓒontext.heightSample
+                self.📝bodyFatInputQuantity = ⓒontext.bodyFatQuantity
             }
+        } else {
+            print("🖨️ iCloudKVS is nothing.")
         }
+    }
+    
+    func ⓐddObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(ⓤbiquitousKeyValueStoreDidChange(_:)),
+                                               name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+                                               object: NSUbiquitousKeyValueStore.default)
+    }
+    
+    @objc
+    func ⓤbiquitousKeyValueStoreDidChange(_ notification: Notification) {
+        self.ⓛoadContext()
     }
 }
 
@@ -68,6 +71,36 @@ extension 📱AppModel {
         }
     }
 }
+
+//extension 📱AppModel: WCSessionDelegate {
+//    //Required
+//    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+//        //Nothing to do.
+//    }
+//
+//    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+//        self.ⓗandleContextDictionary(applicationContext)
+//    }
+//
+//    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+//        self.ⓗandleContextDictionary(message)
+//    }
+//
+//    private func ⓗandleContextDictionary(_ ⓓictionary: [String : Any]) {
+//        Task { @MainActor in
+//            if let ⓒontext = 🄲ontext.receive(ⓓictionary) {
+//                withAnimation {
+//                    self.🚩ableBMI = ⓒontext.ableBMI
+//                    self.🚩ableBodyFat = ⓒontext.ableBodyFat
+//                    self.🚩ableLBM = ⓒontext.ableLBM
+//                    self.🚩amount50g = ⓒontext.amount50g
+//                }
+//            } else {
+//                assertionFailure()
+//            }
+//        }
+//    }
+//}
 
 //MARK: Purpose of debugging
 extension 📱AppModel {

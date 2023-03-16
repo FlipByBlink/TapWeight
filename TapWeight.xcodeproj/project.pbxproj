@@ -81,10 +81,10 @@
 		F5D19D9629B843CC0069A81E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3ED0282E15E5009BD28B /* InfoPlist.strings */; };
 		F5D8400929B1DDED0046E91B /* 🪧LBMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */; };
 		F5D8401629B45CF40046E91B /* 🔔Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8401529B45CF40046E91B /* 🔔Notification.swift */; };
-		F5DA2D1F29BAF076005DD72B /* ⌚️WatchConnectivity.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E11EBC29BAE847004F73B2 /* ⌚️WatchConnectivity.swift */; };
+		F5DA2D1F29BAF076005DD72B /* ⌚️WatchSync.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E11EBC29BAE847004F73B2 /* ⌚️WatchSync.swift */; };
 		F5DA2D2029BAF076005DD72B /* 📱extensionAppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E11EBF29BAE8A2004F73B2 /* 📱extensionAppModel.swift */; };
-		F5E11EBD29BAE847004F73B2 /* ⌚️WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E11EBC29BAE847004F73B2 /* ⌚️WatchConnectivity.swift */; };
-		F5E11EBE29BAE847004F73B2 /* ⌚️WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E11EBC29BAE847004F73B2 /* ⌚️WatchConnectivity.swift */; };
+		F5E11EBD29BAE847004F73B2 /* ⌚️WatchSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E11EBC29BAE847004F73B2 /* ⌚️WatchSync.swift */; };
+		F5E11EBE29BAE847004F73B2 /* ⌚️WatchSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E11EBC29BAE847004F73B2 /* ⌚️WatchSync.swift */; };
 		F5E11EC029BAE8A2004F73B2 /* 📱extensionAppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E11EBF29BAE8A2004F73B2 /* 📱extensionAppModel.swift */; };
 		F5E1697129B06ACC00EAFF73 /* 🏥Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */; };
 		F5E2EAAA29415F3D0054A208 /* ℹ️AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E2EAA729415F3C0054A208 /* ℹ️AboutApp.swift */; };
@@ -118,7 +118,7 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
-				F5DA2D1F29BAF076005DD72B /* ⌚️WatchConnectivity.swift in CopyFiles */,
+				F5DA2D1F29BAF076005DD72B /* ⌚️WatchSync.swift in CopyFiles */,
 				F5DA2D2029BAF076005DD72B /* 📱extensionAppModel.swift in CopyFiles */,
 				F5FE433D29B94BFD00A40749 /* ⌚️SyncOptions.swift in CopyFiles */,
 				F5D19D4829B83D180069A81E /* 💥Feedback.swift in CopyFiles */,
@@ -271,7 +271,7 @@
 		F5D19D8729B840050069A81E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧LBMView.swift"; sourceTree = "<group>"; };
 		F5D8401529B45CF40046E91B /* 🔔Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🔔Notification.swift"; sourceTree = "<group>"; };
-		F5E11EBC29BAE847004F73B2 /* ⌚️WatchConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "⌚️WatchConnectivity.swift"; sourceTree = "<group>"; };
+		F5E11EBC29BAE847004F73B2 /* ⌚️WatchSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "⌚️WatchSync.swift"; sourceTree = "<group>"; };
 		F5E11EBF29BAE8A2004F73B2 /* 📱extensionAppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱extensionAppModel.swift"; sourceTree = "<group>"; };
 		F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏥Health.swift"; sourceTree = "<group>"; };
 		F5E2EAA729415F3C0054A208 /* ℹ️AboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutApp.swift"; sourceTree = "<group>"; };
@@ -420,7 +420,7 @@
 				124C485E284863BA0085B066 /* 📱AppModel.swift */,
 				F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */,
 				F5BBB56829B6113A00424A66 /* 💥Feedback.swift */,
-				F5E11EBC29BAE847004F73B2 /* ⌚️WatchConnectivity.swift */,
+				F5E11EBC29BAE847004F73B2 /* ⌚️WatchSync.swift */,
 			);
 			path = "♻️Shared";
 			sourceTree = "<group>";
@@ -627,7 +627,7 @@
 				F5E2EAAC29415F3D0054A208 /* 🛒InAppPurchase.swift in Sources */,
 				12630BC32849CD33005F922F /* 🛠AppMenu.swift in Sources */,
 				F5E1697129B06ACC00EAFF73 /* 🏥Health.swift in Sources */,
-				F5E11EBD29BAE847004F73B2 /* ⌚️WatchConnectivity.swift in Sources */,
+				F5E11EBD29BAE847004F73B2 /* ⌚️WatchSync.swift in Sources */,
 				F54292DB29B01C0200EFF085 /* 👆DoneButton.swift in Sources */,
 				F5D8400929B1DDED0046E91B /* 🪧LBMView.swift in Sources */,
 				F535AA8A29AD7EB800691926 /* 📣ADSheet.swift in Sources */,
@@ -649,7 +649,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5E11EBE29BAE847004F73B2 /* ⌚️WatchConnectivity.swift in Sources */,
+				F5E11EBE29BAE847004F73B2 /* ⌚️WatchSync.swift in Sources */,
 				F5BBB56629B6108000424A66 /* 🏥Health.swift in Sources */,
 				F5BBB55729B60F5700424A66 /* ContentView.swift in Sources */,
 				F5BBB55529B60F5700424A66 /* TWApp.swift in Sources */,

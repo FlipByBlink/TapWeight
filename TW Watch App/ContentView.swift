@@ -12,12 +12,14 @@ struct ContentView: View {
                     Text("Body Mass")
                         .bold()
                 }
-                Section {
-                    🎚️BodyFatStepper()
-                    🪧LBMView()
-                } header: {
-                    Text("Body Fat Percentage")
-                        .bold()
+                if 📱.🚩ableBodyFat {
+                    Section {
+                        🎚️BodyFatStepper()
+                        🪧LBMView()
+                    } header: {
+                        Text("Body Fat Percentage")
+                            .bold()
+                    }
                 }
                 👆DoneButton()
             }

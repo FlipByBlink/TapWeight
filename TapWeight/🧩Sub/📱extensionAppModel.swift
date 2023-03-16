@@ -1,6 +1,6 @@
 import SwiftUI
 import HealthKit
-import WatchConnectivity
+//import WatchConnectivity
 
 extension 📱AppModel: UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -8,14 +8,16 @@ extension 📱AppModel: UIApplicationDelegate {
         
         🔔Notification.api.delegate = self
         
-        if WCSession.isSupported() {
-            WCSession.default.delegate = self
-            WCSession.default.activate()
-        }
+        //if WCSession.isSupported() {
+        //    WCSession.default.delegate = self
+        //    WCSession.default.activate()
+        //}
         
         self.ⓡequestAuth([.bodyMass])
         
         self.ⓞbserveChanges()
+        
+        self.ⓒontext.save()
         
         return true
     }
@@ -69,31 +71,15 @@ extension 📱AppModel {
     }
 }
 
-extension 📱AppModel: WCSessionDelegate {
-    //Required
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        self.ⓒontext.send()
-    }
-    //Required
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        //Nothing to do.
-    }
-    //Required
-    func sessionDidDeactivate(_ session: WCSession) {
-        session.activate()
-    }
-    //Optional
-    func sessionReachabilityDidChange(_ session: WCSession) {
-        self.ⓒontext.send()
-    }
-}
-
 extension 📱AppModel {
     var ⓒontext: 🄲ontext {
         🄲ontext(amount50g: self.🚩amount50g,
                  ableBMI: self.🚩ableBMI,
                  ableBodyFat: self.🚩ableBodyFat,
-                 ableLBM: self.🚩ableLBM)
+                 ableLBM: self.🚩ableLBM,
+                 massKilogramValue: self.📦latestSamples[.bodyMass]?.quantity.doubleValue(for: .gramUnit(with: .kilo)),
+                 heightMeterValue: self.📦latestSamples[.height]?.quantity.doubleValue(for: .meter()),
+                 bodyFatCountValue: self.📦latestSamples[.bodyFatPercentage]?.quantity.doubleValue(for: .count()))
     }
 }
 
@@ -120,3 +106,22 @@ extension 📱AppModel {
         }
     }
 }
+
+//extension 📱AppModel: WCSessionDelegate {
+//    //Required
+//    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+//        self.ⓒontext.send()
+//    }
+//    //Required
+//    func sessionDidBecomeInactive(_ session: WCSession) {
+//        //Nothing to do.
+//    }
+//    //Required
+//    func sessionDidDeactivate(_ session: WCSession) {
+//        session.activate()
+//    }
+//    //Optional
+//    func sessionReachabilityDidChange(_ session: WCSession) {
+//        self.ⓒontext.send()
+//    }
+//}
