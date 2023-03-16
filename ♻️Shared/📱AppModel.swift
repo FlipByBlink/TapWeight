@@ -166,7 +166,7 @@ class 📱AppModel: NSObject, ObservableObject {
     //MARK: Method
     func 🎚️changeMassValue(_ ⓟattern: 🅂tepperAction) {
         if let ⓜassUnit, var ⓜassInputValue {
-            if self.🚩amount50g {
+            if ⓜassUnit == HKUnit.gramUnit(with: .kilo), self.🚩amount50g {
                 switch ⓟattern {
                     case .increment: ⓜassInputValue += 0.05
                     case .decrement: ⓜassInputValue -= 0.05
@@ -249,7 +249,7 @@ class 📱AppModel: NSObject, ObservableObject {
         }
     }
     func 🗑cancel() {
-        Task {
+        Task { @MainActor in
             do {
                 try await self.🏥healthStore.api.delete(self.📨registeredSamples)
                 self.🚩completedCancellation = true
@@ -288,7 +288,7 @@ class 📱AppModel: NSObject, ObservableObject {
     }
     
     func ⓡequestAuth(_ ⓒategories: Set<🏥Category>) {
-        Task {
+        Task { @MainActor in
             do {
                 var ⓡeadCategories: Set<🏥Category> = ⓒategories
                 if ⓒategories.contains(.bodyMassIndex) { ⓡeadCategories.insert(.height) }
@@ -339,6 +339,7 @@ class 📱AppModel: NSObject, ObservableObject {
                 Task { @MainActor in
                     await self.ⓛoadLatestSamples()
                     await self.ⓛoadPreferredUnits()
+                    self.ⓒontext.set()
                     if ⓒategory == .bodyMass {
                         await self.🔔refreshNotification()
                         ⓑackgroundObserverCompletionHandler()

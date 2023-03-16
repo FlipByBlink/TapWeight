@@ -40,7 +40,10 @@ extension 📱AppModel {
     
     @objc
     private func ⓤbiquitousKeyValueStoreDidChange(_ notification: Notification) {
-        self.ⓘmportContext()
+        //Publishing changes from background threads is not allowed
+        Task { @MainActor in
+            self.ⓘmportContext()
+        }
     }
 }
 
