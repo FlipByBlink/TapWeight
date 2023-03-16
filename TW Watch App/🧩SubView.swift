@@ -4,15 +4,15 @@ struct 🚨CheckCondition: ViewModifier {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var 🚩finishedFirstQuary: Bool = false
     private var ⓘnvalidCategories: [🏥Category] {
+        guard let ⓒontext = 🄲ontext.load() else { return [] }
         var ⓥalue: [🏥Category] = []
-        let ⓒontext = 🄲ontext.load()
-        if ⓒontext?.massKilogramValue == nil {
+        if ⓒontext.latestSamples[.bodyMass] == nil {
             ⓥalue += [.bodyMass]
         }
-        if 📱.🚩ableBMI && (ⓒontext?.heightMeterValue == nil) {
+        if ⓒontext.ableBMI && (ⓒontext.latestSamples[.height] == nil) {
             ⓥalue += [.height]
         }
-        if 📱.🚩ableBodyFat && (ⓒontext?.bodyFatCountValue == nil) {
+        if ⓒontext.ableBodyFat && (ⓒontext.latestSamples[.bodyFatPercentage] == nil) {
             ⓥalue += [.bodyFatPercentage]
         }
         return ⓥalue

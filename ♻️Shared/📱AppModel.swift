@@ -275,16 +275,12 @@ class 📱AppModel: NSObject, ObservableObject {
     }
     
     func 📝resetInputValues() {
-#if os(iOS)
         if let ⓢample = self.📦latestSamples[.bodyMass] {
             self.📝massInputQuantity = ⓢample.quantity
         }
         if let ⓢample = self.📦latestSamples[.bodyFatPercentage] {
             self.📝bodyFatInputQuantity = ⓢample.quantity
         }
-#elseif os(watchOS)
-        self.ⓘmportContext()
-#endif
     }
     
     func 📅resetDatePickerValue() {
@@ -309,6 +305,16 @@ class 📱AppModel: NSObject, ObservableObject {
             }
         }
     }
+    private func ⓛoadPreferredUnits() async {
+        for ⓒategory: 🏥Category in [.bodyMass, .height] {
+            if let ⓤnit = try? await self.🏥healthStore.preferredUnit(for: ⓒategory) {
+                if self.📦preferredUnits[ⓒategory] != ⓤnit {
+                    self.📦preferredUnits[ⓒategory] = ⓤnit
+                    self.📝resetInputValues()
+                }
+            }
+        }
+    }
     func ⓛoadLatestSamples() async {
 #if os(iOS)
         for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
@@ -320,18 +326,11 @@ class 📱AppModel: NSObject, ObservableObject {
             self.ⓢetTemporaryQuantity(ⓒategory, condition: ⓢample == nil)
         }
 #elseif os(watchOS)
-        self.ⓘmportContext()
-#endif
-    }
-    private func ⓛoadPreferredUnits() async {
-        for ⓒategory: 🏥Category in [.bodyMass, .height] {
-            if let ⓤnit = try? await self.🏥healthStore.preferredUnit(for: ⓒategory) {
-                if self.📦preferredUnits[ⓒategory] != ⓤnit {
-                    self.📦preferredUnits[ⓒategory] = ⓤnit
-                    self.📝resetInputValues()
-                }
-            }
+        if let ⓡeceivedContext {
+            self.📦latestSamples = ⓡeceivedContext.latestHKQuantitySamples
+            self.📝resetInputValues()
         }
+#endif
     }
     func ⓞbserveHealthKitChanges() {
 #if os(iOS)

@@ -6,35 +6,45 @@ struct 🄲ontext: Codable, Equatable {
     var ableBMI: Bool
     var ableBodyFat: Bool
     var ableLBM: Bool
-    var massKilogramValue: Double?
-    var heightMeterValue: Double?
-    var bodyFatCountValue: Double?
+    var latestSamples: [🏥Category: 🅂ample] = [:]
     
-    var asData: Data { try! JSONEncoder().encode(self) }
+    struct 🅂ample: Codable, Equatable {
+        var category: 🏥Category
+        var doubleValue: Double
+        var date: Date
+        var asHKQuantitySample: HKQuantitySample {
+            HKQuantitySample(type: self.category.quantityType,
+                             quantity: HKQuantity(unit: self.category.defaultUnit,
+                                                  doubleValue: self.doubleValue),
+                             start: self.date, end: self.date)
+        }
+    }
+    
+    init(_ ⓐmount50g: Bool, _ ⓐbleBMI: Bool, _ ⓐbleBodyFat: Bool, _ ⓐbleLBM: Bool, _ ⓛatestSamples: [🏥Category: HKQuantitySample]) {
+        self.amount50g = ⓐmount50g
+        self.ableBMI = ⓐbleBMI
+        self.ableBodyFat = ⓐbleBodyFat
+        self.ableLBM = ⓐbleLBM
+        ⓛatestSamples.forEach { (ⓚey, ⓥalue) in
+            self.latestSamples[ⓚey] = 🅂ample(category: ⓚey,
+                                              doubleValue: ⓥalue.quantity.doubleValue(for: ⓚey.defaultUnit),
+                                              date: ⓥalue.startDate)
+        }
+    }
+    
+    var latestHKQuantitySamples: [🏥Category: HKQuantitySample] {
+        self.latestSamples.mapValues { $0.asHKQuantitySample }
+    }
     
     func set() {
-        NSUbiquitousKeyValueStore.default.set(self.asData, forKey: "ⓒontext")
+        NSUbiquitousKeyValueStore.default.set(try! JSONEncoder().encode(self),
+                                              forKey: "ⓒontext")
     }
     
     static func load() -> Self? {
         guard let ⓞbject = NSUbiquitousKeyValueStore.default.object(forKey: "ⓒontext") else { return nil }
         guard let ⓓata = ⓞbject as? Data else { return nil }
         return try? JSONDecoder().decode(Self.self, from: ⓓata)
-    }
-    
-    var massQuantity: HKQuantity? {
-        guard let ⓜassKilogramValue = self.massKilogramValue else { return nil }
-        return HKQuantity(unit: .gramUnit(with: .kilo), doubleValue: ⓜassKilogramValue)
-    }
-    var heightSample: HKQuantitySample? {
-        guard let ⓗeightMetarValue = self.heightMeterValue else { return nil }
-        return HKQuantitySample(type: HKQuantityType(.height),
-                                quantity: HKQuantity(unit: .meter(), doubleValue: ⓗeightMetarValue),
-                                start: .now, end: .now)
-    }
-    var bodyFatQuantity: HKQuantity? {
-        guard let ⓑodyFatCountValue = self.bodyFatCountValue else { return nil }
-        return HKQuantity(unit: .count(), doubleValue: ⓑodyFatCountValue)
     }
     
     //func send() {

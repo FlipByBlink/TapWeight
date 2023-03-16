@@ -59,7 +59,7 @@ struct 🏥HealthStore {
     }
 }
 
-enum 🏥Category {
+enum 🏥Category: Codable {
     case bodyMass, bodyMassIndex, height, bodyFatPercentage, leanBodyMass
     var identifier: HKQuantityTypeIdentifier {
         switch self {
@@ -89,6 +89,15 @@ enum 🏥Category {
             case .height: return HKQuantityType(.height)
             case .bodyFatPercentage: return HKQuantityType(.bodyFatPercentage)
             case .leanBodyMass: return HKQuantityType(.leanBodyMass)
+        }
+    }
+    var defaultUnit: HKUnit {
+        switch self {
+            case .bodyMass: return .gramUnit(with: .kilo)
+            case .bodyMassIndex: return .count()
+            case .height: return .meter()
+            case .bodyFatPercentage: return .count()
+            case .leanBodyMass: return .gramUnit(with: .kilo)
         }
     }
     init?(_ ⓘdentifier: HKQuantityTypeIdentifier) {

@@ -14,16 +14,17 @@ extension 📱AppModel: WKApplicationDelegate {
 }
 
 extension 📱AppModel {
+    var ⓡeceivedContext: 🄲ontext? { 🄲ontext.load() }
+    
     func ⓘmportContext() {
-        if let ⓒontext = 🄲ontext.load() {
+        if let ⓡeceivedContext {
             withAnimation {
-                self.🚩ableBMI = ⓒontext.ableBMI
-                self.🚩ableBodyFat = ⓒontext.ableBodyFat
-                self.🚩ableLBM = ⓒontext.ableLBM
-                self.🚩amount50g = ⓒontext.amount50g
-                self.📝massInputQuantity = ⓒontext.massQuantity
-                self.📦latestSamples[.height] = ⓒontext.heightSample
-                self.📝bodyFatInputQuantity = ⓒontext.bodyFatQuantity
+                self.🚩ableBMI = ⓡeceivedContext.ableBMI
+                self.🚩ableBodyFat = ⓡeceivedContext.ableBodyFat
+                self.🚩ableLBM = ⓡeceivedContext.ableLBM
+                self.🚩amount50g = ⓡeceivedContext.amount50g
+                self.📦latestSamples = ⓡeceivedContext.latestHKQuantitySamples
+                self.📝resetInputValues()
             }
         } else {
             print("🖨️ iCloudKVS is nothing.")
