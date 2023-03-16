@@ -76,7 +76,7 @@
 		F5D19D9129B841C60069A81E /* TWApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB55429B60F5700424A66 /* TWApp.swift */; };
 		F5D19D9229B841C60069A81E /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB55629B60F5700424A66 /* ContentView.swift */; };
 		F5D19D9329B841C60069A81E /* 🧩SubView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56F29B6F60100424A66 /* 🧩SubView.swift */; };
-		F5D19D9429B841DA0069A81E /* TW_Watch_Widget.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D19D8329B840020069A81E /* TW_Watch_Widget.swift */; };
+		F5D19D9429B841DA0069A81E /* TW_Watch_Widget.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5D19D8329B840020069A81E /* TW_Watch_Widget.swift */; };
 		F5D19D9529B843C80069A81E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3EC1282E0F45009BD28B /* Localizable.strings */; };
 		F5D19D9629B843CC0069A81E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3ED0282E15E5009BD28B /* InfoPlist.strings */; };
 		F5D8400929B1DDED0046E91B /* 🪧LBMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */; };
@@ -181,14 +181,15 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F5D19D8F29B841210069A81E /* CopyFiles */ = {
+		F5D19D8F29B841210069A81E /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "📁SourceCode/WatchComplication";
 			dstSubfolderSpec = 7;
 			files = (
-				F5D19D9429B841DA0069A81E /* TW_Watch_Widget.swift in CopyFiles */,
+				F5D19D9429B841DA0069A81E /* TW_Watch_Widget.swift in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -470,7 +471,7 @@
 				F535AA7A29AD7BA600691926 /* CopyFiles */,
 				F5BBB56329B60F7900424A66 /* Embed Watch Content */,
 				F5D19D4929B83D200069A81E /* CopyFiles */,
-				F5D19D8F29B841210069A81E /* CopyFiles */,
+				F5D19D8F29B841210069A81E /* Copy Files */,
 			);
 			buildRules = (
 			);

@@ -1,6 +1,6 @@
 import Foundation
 
-let 📜versionInfos = 📜VersionInfo.history(("1.4", "2023-03-12"),
+let 📜versionInfos = 📜VersionInfo.history(("1.4", "2023-03-16"),
                                            ("1.3.2", "2022-12-08"),
                                            ("1.3.1", "2022-09-21"),
                                            ("1.3", "2022-09-05"),
@@ -34,7 +34,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                 return ["📱AppModel.swift",
                         "🏥Health.swift",
                         "💥Feedback.swift",
-                        "⌚️WatchConnectivity.swift"]
+                        "⌚️WatchSync.swift"]
             case .Sub:
                 return ["👆DoneButton.swift",
                         "🎚️Stepper.swift",
