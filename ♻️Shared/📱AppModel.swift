@@ -282,8 +282,7 @@ class 📱AppModel: NSObject, ObservableObject {
         if let ⓢample = self.📦latestSamples[.bodyFatPercentage] {
             self.📝bodyFatInputQuantity = ⓢample.quantity
         }
-#endif
-#if os(watchOS)
+#elseif os(watchOS)
         self.ⓛoadContext()
 #endif
     }
@@ -333,20 +332,28 @@ class 📱AppModel: NSObject, ObservableObject {
         }
     }
     func ⓞbserveChanges() {
+#if os(iOS)
         for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
             self.🏥healthStore.ⓞbserveChange(ⓒategory) { ⓑackgroundObserverCompletionHandler in
                 Task { @MainActor in
                     await self.ⓛoadLatestSamples()
                     await self.ⓛoadPreferredUnits()
-#if os(iOS)
                     if ⓒategory == .bodyMass {
                         await self.🔔refreshNotification()
                         ⓑackgroundObserverCompletionHandler()
                     }
-#endif
                 }
             }
         }
+#elseif os(watchOS)
+        for ⓒategory: 🏥Category in [.bodyMass, .height] {
+            self.🏥healthStore.ⓞbserveChange(ⓒategory) { _ in
+                Task { @MainActor in
+                    await self.ⓛoadPreferredUnits()
+                }
+            }
+        }
+#endif
     }
 }
 

@@ -32,7 +32,7 @@ extension 📱AppModel {
         }
     }
     
-    func ⓐddObserver() {
+    private func ⓐddObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(ⓤbiquitousKeyValueStoreDidChange(_:)),
                                                name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
@@ -40,7 +40,7 @@ extension 📱AppModel {
     }
     
     @objc
-    func ⓤbiquitousKeyValueStoreDidChange(_ notification: Notification) {
+    private func ⓤbiquitousKeyValueStoreDidChange(_ notification: Notification) {
         self.ⓛoadContext()
     }
 }

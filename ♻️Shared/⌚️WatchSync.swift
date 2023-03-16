@@ -6,14 +6,11 @@ struct 🄲ontext: Codable, Equatable {
     var ableBMI: Bool
     var ableBodyFat: Bool
     var ableLBM: Bool
-    
     var massKilogramValue: Double?
     var heightMeterValue: Double?
     var bodyFatCountValue: Double?
     
-    var asData: Data {
-        try! JSONEncoder().encode(self)
-    }
+    var asData: Data { try! JSONEncoder().encode(self) }
     
     func save() {
         NSUbiquitousKeyValueStore.default.set(self.asData, forKey: "ⓒontext")
