@@ -2,28 +2,11 @@ import SwiftUI
 
 struct 🚨CheckCondition: ViewModifier {
     @EnvironmentObject var 📱: 📱AppModel
-    private var ⓘnvalidCategories: [🏥Category] {
-        guard let ⓒontext = 🄲ontext.load() else { return [] }
-        var ⓥalue: [🏥Category] = []
-        if ⓒontext.latestSamples[.bodyMass] == nil {
-            ⓥalue += [.bodyMass]
-        }
-        if ⓒontext.ableBMI && (ⓒontext.latestSamples[.height] == nil) {
-            ⓥalue += [.height]
-        }
-        if ⓒontext.ableBodyFat && (ⓒontext.latestSamples[.bodyFatPercentage] == nil) {
-            ⓥalue += [.bodyFatPercentage]
-        }
-        return ⓥalue
-    }
-    private var ⓘnputIsInvalid: Bool { !self.ⓘnvalidCategories.isEmpty }
     func body(content: Content) -> some View {
-        Group {
-            if self.ⓘnputIsInvalid {
-                self.ⓔrrorView()
-            } else {
-                content
-            }
+        if 📱.ⓡeceivedContext?.isValid == true {
+            content
+        } else {
+            self.ⓔrrorView()
         }
     }
     private func ⓔrrorView() -> some View {
@@ -31,7 +14,7 @@ struct 🚨CheckCondition: ViewModifier {
             Text("Error")
                 .font(.headline)
             Text("Did not find the recent data. Please register your data on the iPhone first. Or check authentication on Apple Watch.")
-            ForEach(self.ⓘnvalidCategories, id: \.identifier) { ⓒategory in
+            ForEach(📱.ⓡeceivedContext?.invalidSampleCategories ?? [], id: \.identifier) { ⓒategory in
                 Text("・" + ⓒategory.localizedString)
             }
         }

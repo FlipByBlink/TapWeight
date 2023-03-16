@@ -14,7 +14,7 @@ extension 📱AppModel: WKApplicationDelegate {
 }
 
 extension 📱AppModel {
-    var ⓡeceivedContext: 🄲ontext? { 🄲ontext.load() }
+    var ⓡeceivedContext: 🄲ontext? { 🄲ontext.iCloudKVS }
     func ⓘmportContext() {
         if let ⓡeceivedContext {
             withAnimation {

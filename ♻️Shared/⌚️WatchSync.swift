@@ -41,30 +41,47 @@ struct 🄲ontext: Codable, Equatable {
                                               forKey: "ⓒontext")
     }
     
-    static func load() -> Self? {
+#if os(watchOS)
+    static var iCloudKVS: Self? {
         guard let ⓞbject = NSUbiquitousKeyValueStore.default.object(forKey: "ⓒontext") else { return nil }
         guard let ⓓata = ⓞbject as? Data else { return nil }
         return try? JSONDecoder().decode(Self.self, from: ⓓata)
     }
+#endif
     
-    //func send() {
+    var invalidSampleCategories: [🏥Category] {
+        var ⓥalue: [🏥Category] = []
+        if self.latestSamples[.bodyMass] == nil {
+            ⓥalue += [.bodyMass]
+        }
+        if self.ableBMI && (self.latestSamples[.height] == nil) {
+            ⓥalue += [.height]
+        }
+        if self.ableBodyFat && (self.latestSamples[.bodyFatPercentage] == nil) {
+            ⓥalue += [.bodyFatPercentage]
+        }
+        return ⓥalue
+    }
+    
+    var isValid: Bool {
+        self.invalidSampleCategories.isEmpty
+    }
+    
+    //func sendMessage() {
     //    do {
-    //        let ⓓictionary = ["ⓒontext": try JSONEncoder().encode(self)]
     //        if WCSession.default.isReachable {
-    //            WCSession.default.sendMessage(ⓓictionary, replyHandler: nil)
-    //        } else {
-    //            try WCSession.default.updateApplicationContext(ⓓictionary)
+    //            WCSession.default.sendMessage(["ⓒontext": try JSONEncoder().encode(self)],
+    //                                          replyHandler: nil)
     //        }
     //    } catch {
     //        print("🚨", #function, error.localizedDescription)
     //    }
     //}
     //
-    //static func receive(_ ⓓictionary: [String : Any]) -> Self? {
+    //static func decode(_ ⓓictionary: [String : Any]) -> Self? {
     //    if let ⓓata = ⓓictionary["ⓒontext"] as? Data {
     //        do {
     //            return try JSONDecoder().decode(Self.self, from: ⓓata)
-    //
     //        } catch {
     //            print("🚨", #function, error.localizedDescription)
     //        }
