@@ -68,3 +68,11 @@ extension 📱AppModel {
         }
     }
 }
+
+//MARK: Purpose of debugging
+extension 📱AppModel {
+    var 🏥earliestPermittedSampleDate: String {
+        #function + self.🏥healthStore.api.earliestPermittedSampleDate().formatted()
+        //Almost 1 week ago on Apple Watch
+    }
+}
