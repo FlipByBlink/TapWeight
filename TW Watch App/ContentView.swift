@@ -5,10 +5,20 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                🎚️BodyMassStepper()
-                🪧BMIView()
-                🎚️BodyFatStepper()
-                🪧LBMView()
+                Section {
+                    🎚️BodyMassStepper()
+                    🪧BMIView()
+                } header: {
+                    Text("Body Mass")
+                        .bold()
+                }
+                Section {
+                    🎚️BodyFatStepper()
+                    🪧LBMView()
+                } header: {
+                    Text("Body Fat Percentage")
+                        .bold()
+                }
                 👆DoneButton()
             }
             .modifier(🚨RegistrationErrorAlert())
