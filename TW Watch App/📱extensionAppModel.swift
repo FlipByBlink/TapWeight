@@ -7,16 +7,14 @@ extension 📱AppModel: WKApplicationDelegate {
         //    WCSession.default.delegate = self
         //    WCSession.default.activate()
         //}
-        
-        self.ⓞbserveChanges()
-        
-        self.ⓛoadContext()
-        self.ⓐddObserver()
+        self.ⓞbserveHealthKitChanges()
+        self.ⓘmportContext()
+        self.ⓐddICloudObserver()
     }
 }
 
 extension 📱AppModel {
-    func ⓛoadContext() {
+    func ⓘmportContext() {
         if let ⓒontext = 🄲ontext.load() {
             withAnimation {
                 self.🚩ableBMI = ⓒontext.ableBMI
@@ -32,7 +30,7 @@ extension 📱AppModel {
         }
     }
     
-    private func ⓐddObserver() {
+    private func ⓐddICloudObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(ⓤbiquitousKeyValueStoreDidChange(_:)),
                                                name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
@@ -41,7 +39,7 @@ extension 📱AppModel {
     
     @objc
     private func ⓤbiquitousKeyValueStoreDidChange(_ notification: Notification) {
-        self.ⓛoadContext()
+        self.ⓘmportContext()
     }
 }
 

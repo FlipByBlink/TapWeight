@@ -12,17 +12,14 @@ struct 🄲ontext: Codable, Equatable {
     
     var asData: Data { try! JSONEncoder().encode(self) }
     
-    func save() {
+    func set() {
         NSUbiquitousKeyValueStore.default.set(self.asData, forKey: "ⓒontext")
     }
     
     static func load() -> Self? {
-        if let ⓞbject = NSUbiquitousKeyValueStore.default.object(forKey: "ⓒontext") {
-            if let ⓓata = ⓞbject as? Data {
-                return try? JSONDecoder().decode(Self.self, from: ⓓata)
-            }
-        }
-        return nil
+        guard let ⓞbject = NSUbiquitousKeyValueStore.default.object(forKey: "ⓒontext") else { return nil }
+        guard let ⓓata = ⓞbject as? Data else { return nil }
+        return try? JSONDecoder().decode(Self.self, from: ⓓata)
     }
     
     var massQuantity: HKQuantity? {

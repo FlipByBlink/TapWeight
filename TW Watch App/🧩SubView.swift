@@ -5,13 +5,14 @@ struct 🚨CheckCondition: ViewModifier {
     @State private var 🚩finishedFirstQuary: Bool = false
     private var ⓘnvalidCategories: [🏥Category] {
         var ⓥalue: [🏥Category] = []
-        if 📱.📦latestSamples[.bodyMass] == nil {
+        let ⓒontext = 🄲ontext.load()
+        if ⓒontext?.massKilogramValue == nil {
             ⓥalue += [.bodyMass]
         }
-        if 📱.🚩ableBMI && (📱.📦latestSamples[.height] == nil) {
+        if 📱.🚩ableBMI && (ⓒontext?.heightMeterValue == nil) {
             ⓥalue += [.height]
         }
-        if 📱.🚩ableBodyFat && (📱.📦latestSamples[.bodyFatPercentage] == nil) {
+        if 📱.🚩ableBodyFat && (ⓒontext?.bodyFatCountValue == nil) {
             ⓥalue += [.bodyFatPercentage]
         }
         return ⓥalue

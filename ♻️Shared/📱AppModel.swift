@@ -283,7 +283,7 @@ class 📱AppModel: NSObject, ObservableObject {
             self.📝bodyFatInputQuantity = ⓢample.quantity
         }
 #elseif os(watchOS)
-        self.ⓛoadContext()
+        self.ⓘmportContext()
 #endif
     }
     
@@ -319,6 +319,8 @@ class 📱AppModel: NSObject, ObservableObject {
             }
             self.ⓢetTemporaryQuantity(ⓒategory, condition: ⓢample == nil)
         }
+#elseif os(watchOS)
+        self.ⓘmportContext()
 #endif
     }
     private func ⓛoadPreferredUnits() async {
@@ -331,7 +333,7 @@ class 📱AppModel: NSObject, ObservableObject {
             }
         }
     }
-    func ⓞbserveChanges() {
+    func ⓞbserveHealthKitChanges() {
 #if os(iOS)
         for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
             self.🏥healthStore.ⓞbserveChange(ⓒategory) { ⓑackgroundObserverCompletionHandler in

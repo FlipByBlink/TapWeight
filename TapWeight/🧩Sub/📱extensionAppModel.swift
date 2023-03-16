@@ -15,9 +15,9 @@ extension 📱AppModel: UIApplicationDelegate {
         
         self.ⓡequestAuth([.bodyMass])
         
-        self.ⓞbserveChanges()
+        self.ⓞbserveHealthKitChanges()
         
-        self.ⓒontext.save()
+        self.ⓒontext.set()
         
         return true
     }
