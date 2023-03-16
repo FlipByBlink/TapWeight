@@ -3,19 +3,18 @@ import SwiftUI
 
 extension 📱AppModel: WKApplicationDelegate {
     func applicationDidFinishLaunching() {
+        self.ⓞbserveHealthKitChanges()
+        self.ⓘmportContext()
+        self.ⓐddICloudObserver()
         //if WCSession.isSupported() {
         //    WCSession.default.delegate = self
         //    WCSession.default.activate()
         //}
-        self.ⓞbserveHealthKitChanges()
-        self.ⓘmportContext()
-        self.ⓐddICloudObserver()
     }
 }
 
 extension 📱AppModel {
     var ⓡeceivedContext: 🄲ontext? { 🄲ontext.load() }
-    
     func ⓘmportContext() {
         if let ⓡeceivedContext {
             withAnimation {
@@ -30,14 +29,12 @@ extension 📱AppModel {
             print("🖨️ iCloudKVS is nothing.")
         }
     }
-    
     private func ⓐddICloudObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(ⓤbiquitousKeyValueStoreDidChange(_:)),
                                                name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
                                                object: NSUbiquitousKeyValueStore.default)
     }
-    
     @objc
     private func ⓤbiquitousKeyValueStoreDidChange(_ notification: Notification) {
         //Publishing changes from background threads is not allowed

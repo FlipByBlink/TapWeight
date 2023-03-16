@@ -2,7 +2,6 @@ import SwiftUI
 
 struct 🚨CheckCondition: ViewModifier {
     @EnvironmentObject var 📱: 📱AppModel
-    @State private var 🚩finishedFirstQuary: Bool = false
     private var ⓘnvalidCategories: [🏥Category] {
         guard let ⓒontext = 🄲ontext.load() else { return [] }
         var ⓥalue: [🏥Category] = []
@@ -20,15 +19,11 @@ struct 🚨CheckCondition: ViewModifier {
     private var ⓘnputIsInvalid: Bool { !self.ⓘnvalidCategories.isEmpty }
     func body(content: Content) -> some View {
         Group {
-            if self.🚩finishedFirstQuary && self.ⓘnputIsInvalid {
+            if self.ⓘnputIsInvalid {
                 self.ⓔrrorView()
             } else {
                 content
             }
-        }
-        .task {
-            await 📱.ⓛoadLatestSamples()
-            self.🚩finishedFirstQuary = true
         }
     }
     private func ⓔrrorView() -> some View {
