@@ -8,9 +8,6 @@ struct ContentView: View {
                 Section {
                     🎚️BodyMassStepper()
                     🪧BMIView()
-                } header: {
-                    Text("Body Mass")
-                        .bold()
                 }
                 if 📱.🚩ableBodyFat {
                     Section {
@@ -23,6 +20,8 @@ struct ContentView: View {
                 }
                 👆DoneButton()
             }
+            .navigationTitle("Body Mass")
+            .navigationBarTitleDisplayMode(.inline)
             .modifier(🚨RegistrationErrorAlert())
             .onChange(of: 📱.🚩showResult) {
                 if $0 == false { 📱.ⓒlearStates() }

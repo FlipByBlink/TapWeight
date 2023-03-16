@@ -37,8 +37,12 @@ class 📱AppModel: NSObject, ObservableObject {
         return self.📝massInputQuantity?.doubleValue(for: ⓜassUnit)
     }
     var ⓜassInputDescription: String {
-        if let ⓜassInputValue {
-            return self.🚩amount50g ? String(format: "%.2f", ⓜassInputValue) : ⓜassInputValue.description
+        if let ⓜassUnit, let ⓜassInputValue {
+            if ⓜassUnit == .gramUnit(with: .kilo), self.🚩amount50g {
+                return String(format: "%.2f", ⓜassInputValue)
+            } else {
+                return ⓜassInputValue.description
+            }
         } else {
             return self.🚩amount50g ? "00.00" : "00.0"
         }
