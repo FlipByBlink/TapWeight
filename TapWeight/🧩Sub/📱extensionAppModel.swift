@@ -34,7 +34,6 @@ extension 📱AppModel {
     func 🔔setupNotification() {
         Task {
             try await 🔔Notification.api.requestAuthorization(options: [.badge, .alert, .sound])
-            try await self.🏥healthStore.enableBackgroundDelivery(for: .bodyMass)
             await self.🔔refreshNotification()
         }
     }

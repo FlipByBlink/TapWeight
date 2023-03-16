@@ -338,15 +338,25 @@ class 📱AppModel: NSObject, ObservableObject {
     }
     func ⓞbserveHealthKitChanges() {
 #if os(iOS)
+        Task {
+            try? await self.🏥healthStore.enableBackgroundDelivery(for: .bodyMass)
+            try? await self.🏥healthStore.enableBackgroundDelivery(for: .height)
+            try? await self.🏥healthStore.enableBackgroundDelivery(for: .bodyFatPercentage)
+        }
         for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
             self.🏥healthStore.ⓞbserveChange(ⓒategory) { ⓑackgroundObserverCompletionHandler in
                 Task { @MainActor in
                     await self.ⓛoadLatestSamples()
                     await self.ⓛoadPreferredUnits()
-                    self.ⓒontext.set()
                     if ⓒategory == .bodyMass {
                         await self.🔔refreshNotification()
-                        ⓑackgroundObserverCompletionHandler()
+                    }
+                    switch ⓒategory {
+                        case .bodyMass, .height, .bodyFatPercentage:
+                            self.ⓒontext.set()
+                            ⓑackgroundObserverCompletionHandler()
+                        default:
+                            break
                     }
                 }
             }
