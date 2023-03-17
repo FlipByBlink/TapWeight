@@ -3,11 +3,30 @@ import WatchConnectivity
 
 extension 📱AppModel {
     func ⓢetup() {
-        self.ⓞbserveHealthKitChanges() // Observe bodymass-unit and height-unit only
-        self.ⓐddICloudObserver()
+        self.ⓞbserveHealthKitChanges() //Observe bodymass-unit and height-unit only
         if WCSession.isSupported() {
             WCSession.default.delegate = self
             WCSession.default.activate()
+        }
+    }
+}
+
+extension 📱AppModel: WCSessionDelegate {
+    //Required
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        Task { @MainActor in
+            self.ⓐpplyStoredContext()
+            self.ⓐddICloudObserver()
+        }
+    }
+    //Optional
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        Task { @MainActor in
+            if let ⓒontext = 🄲ontext.decode(applicationContext) {
+                self.ⓐpplyContext(ⓒontext)
+            } else {
+                assertionFailure()
+            }
         }
     }
 }
@@ -72,25 +91,6 @@ extension 📱AppModel {
         }
         if !ⓡequestCategories.isEmpty {
             self.ⓡequestAuth(ⓡequestCategories)
-        }
-    }
-}
-
-extension 📱AppModel: WCSessionDelegate {
-    //Required
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        Task { @MainActor in
-            self.ⓐpplyStoredContext()
-        }
-    }
-    //Optional
-    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        Task { @MainActor in
-            if let ⓒontext = 🄲ontext.decode(applicationContext) {
-                self.ⓐpplyContext(ⓒontext)
-            } else {
-                assertionFailure()
-            }
         }
     }
 }
