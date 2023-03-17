@@ -20,14 +20,10 @@ struct ContentView: View {
                             .bold()
                     }
                 }
-                👆DoneButton()
+                👆RegisterButton()
             }
             .navigationTitle("Body Mass")
             .navigationBarTitleDisplayMode(.inline)
-            .modifier(🚨RegistrationErrorAlert())
-            .onChange(of: 📱.🚩showResult) {
-                if $0 == false { 📱.ⓒlearStates() }
-            }
         }
         .task {
             try? await Task.sleep(for: .seconds(1.5))

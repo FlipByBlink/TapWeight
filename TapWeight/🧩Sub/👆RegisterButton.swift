@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 👆DoneButton: View { // ☑️
+struct 👆RegisterButton: View { // ☑️
     @EnvironmentObject var 📱: 📱AppModel
     private let ⓟosition: 🄿osition
     var body: some View {
@@ -26,7 +26,7 @@ struct 👆DoneButton: View { // ☑️
                         .font(.title2.bold())
             }
         }
-        .accessibilityLabel("DONE")
+        .accessibilityLabel("Register")
         .fullScreenCover(isPresented: $📱.🚩showResult) { 🗯ResultView() }
     }
     init(_ ⓟosition: 🄿osition) {

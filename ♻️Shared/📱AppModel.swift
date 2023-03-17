@@ -30,7 +30,7 @@ class 📱AppModel: NSObject, ObservableObject {
     
     let 🏥healthStore = 🏥HealthStore()
     
-    //MARK: Computed property
+    //MARK: - Computed property
     var ⓜassUnit: HKUnit? { self.📦preferredUnits[.bodyMass] }
     private var ⓜassInputValue: Double? {
         guard let ⓜassUnit else { return nil }
@@ -167,7 +167,7 @@ class 📱AppModel: NSObject, ObservableObject {
         return ⓥalue
     }
     
-    //MARK: Method
+    //MARK: - Method
     func 🎚️changeMassValue(_ ⓟattern: 🅂tepperAction) {
         if let ⓜassUnit, var ⓜassInputValue {
             if ⓜassUnit == HKUnit.gramUnit(with: .kilo), self.🚩amount50g {

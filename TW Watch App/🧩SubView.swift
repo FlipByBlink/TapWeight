@@ -179,7 +179,7 @@ struct 🪧LBMView: View {
     }
 }
 
-struct 👆DoneButton: View { // ☑️
+struct 👆RegisterButton: View { // ☑️
     @EnvironmentObject var 📱: 📱AppModel
     var body: some View {
         Button {
@@ -190,7 +190,11 @@ struct 👆DoneButton: View { // ☑️
         .listItemTint(.pink)
         .foregroundStyle(.white)
         .fontWeight(.semibold)
+        .modifier(🚨RegistrationErrorAlert())
         .fullScreenCover(isPresented: $📱.🚩showResult) { 🗯ResultView() }
+        .onChange(of: 📱.🚩showResult) {
+            if $0 == false { 📱.ⓒlearStates() }
+        }
     }
 }
 
@@ -271,7 +275,7 @@ struct 🗯ResultView: View {
         }
         .modifier(🚨CancellationErrorAlert())
         .toolbar(.hidden, for: .automatic)
-        //Digital Crown 押し込みでsheetを閉じれる
+        //Dismiss by pushing DigitalCrown
     }
 }
 

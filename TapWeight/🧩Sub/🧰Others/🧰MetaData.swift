@@ -37,7 +37,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "⌚️WatchSync.swift"]
             case .Sub:
                 return ["📱extensionAppModel.swift",
-                        "👆DoneButton.swift",
+                        "👆RegisterButton.swift",
                         "🎚️Stepper.swift",
                         "🪧BMIView.swift",
                         "🪧LBMView.swift",

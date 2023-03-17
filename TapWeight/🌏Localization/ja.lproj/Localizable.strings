@@ -35,6 +35,7 @@
 "Height" = "身長";
 "Required height data access in \"Health\" app." = "「ヘルスケア」アプリの身長データが必要です。";
 "Weight" = "体重";
+"⚠️ Required: " = "⚠️ 必要: ";
 "Date picker" = "データの登録日時を入力";
 
 // ======== Notification ========

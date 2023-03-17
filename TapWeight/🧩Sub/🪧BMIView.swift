@@ -30,7 +30,7 @@ struct 🪧BMIView: View {
                 .padding(.vertical, self.ⓐbleDatePicker ? 0 : 4)
                 .padding(.leading, 32)
                 .foregroundStyle(.secondary)
-                .task { 📱.ⓡequestAuth([.bodyMassIndex]) } // For previous version user.
+                .task { 📱.ⓡequestAuth([.bodyMassIndex]) } //For previous version user.
             } else {
                 Text("__Body Mass Index:__ Height data is nothing on \"Health\" app. Register height data. Or check authentication.")
                     .font(.footnote)

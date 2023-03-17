@@ -179,6 +179,12 @@ private struct 🛠LBMMenuLink: View {
                     }
                 } header: {
                     Text("Option")
+                } footer: {
+                    if !📱.🚩ableBodyFat {
+                        Text("⚠️ Required: ")
+                        +
+                        Text("Body Fat Percentage")
+                    }
                 }
                 Section {
                     ZStack {

@@ -1,2 +1,0 @@
-# Apple Watch 上の HealthKitAPI の制約について
-WatchOSAppでも体重やBMI、身長等データは取得できるが直近の1週間分程度のデータしか取得できないようだ。そのためiOSAppと同じ実装は不可。

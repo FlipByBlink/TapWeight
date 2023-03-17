@@ -38,13 +38,13 @@
 		F535AA8629AD7BBE00691926 /* 🛒InAppPurchase.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E2EAA929415F3D0054A208 /* 🛒InAppPurchase.swift */; };
 		F535AA8929AD7EB800691926 /* 💬RequestUserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */; };
 		F535AA8A29AD7EB800691926 /* 📣ADSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535AA8829AD7EB800691926 /* 📣ADSheet.swift */; };
-		F54292DB29B01C0200EFF085 /* 👆DoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54292DA29B01C0200EFF085 /* 👆DoneButton.swift */; };
+		F54292DB29B01C0200EFF085 /* 👆RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54292DA29B01C0200EFF085 /* 👆RegisterButton.swift */; };
 		F54292DD29B01C4700EFF085 /* 🪧BMIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54292DC29B01C4700EFF085 /* 🪧BMIView.swift */; };
 		F54292DF29B01CE300EFF085 /* 📅DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */; };
 		F54292E129B01D3B00EFF085 /* 📉DifferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */; };
 		F54292E329B01D8300EFF085 /* 💟OpenHealthAppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */; };
 		F54292E429B01E2700EFF085 /* 📅DatePicker.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */; };
-		F54292E529B01E2700EFF085 /* 👆DoneButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292DA29B01C0200EFF085 /* 👆DoneButton.swift */; };
+		F54292E529B01E2700EFF085 /* 👆RegisterButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292DA29B01C0200EFF085 /* 👆RegisterButton.swift */; };
 		F54292E629B01E2700EFF085 /* 🪧BMIView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292DC29B01C4700EFF085 /* 🪧BMIView.swift */; };
 		F54292E729B01E2700EFF085 /* 📉DifferenceView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */; };
 		F54292E829B01E2700EFF085 /* 💟OpenHealthAppButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */; };
@@ -124,7 +124,7 @@
 				F535719429B1B9FF0003FD2C /* 🏥Health.swift in CopyFiles */,
 				F535719529B1B9FF0003FD2C /* 🚨ErrorAlert.swift in CopyFiles */,
 				F54292E429B01E2700EFF085 /* 📅DatePicker.swift in CopyFiles */,
-				F54292E529B01E2700EFF085 /* 👆DoneButton.swift in CopyFiles */,
+				F54292E529B01E2700EFF085 /* 👆RegisterButton.swift in CopyFiles */,
 				F54292E629B01E2700EFF085 /* 🪧BMIView.swift in CopyFiles */,
 				F54292E729B01E2700EFF085 /* 📉DifferenceView.swift in CopyFiles */,
 				F54292E829B01E2700EFF085 /* 💟OpenHealthAppButton.swift in CopyFiles */,
@@ -244,12 +244,11 @@
 		F535AA7829AD7ABB00691926 /* 🧰MetaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🧰MetaData.swift"; sourceTree = "<group>"; };
 		F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💬RequestUserReview.swift"; sourceTree = "<group>"; };
 		F535AA8829AD7EB800691926 /* 📣ADSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADSheet.swift"; sourceTree = "<group>"; };
-		F54292DA29B01C0200EFF085 /* 👆DoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "👆DoneButton.swift"; sourceTree = "<group>"; };
+		F54292DA29B01C0200EFF085 /* 👆RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "👆RegisterButton.swift"; sourceTree = "<group>"; };
 		F54292DC29B01C4700EFF085 /* 🪧BMIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧BMIView.swift"; sourceTree = "<group>"; };
 		F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📅DatePicker.swift"; sourceTree = "<group>"; };
 		F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📉DifferenceView.swift"; sourceTree = "<group>"; };
 		F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💟OpenHealthAppButton.swift"; sourceTree = "<group>"; };
-		F569C3DE29C1E16000947F6E /* note.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = note.md; sourceTree = "<group>"; };
 		F5AC7BE92941982A00490FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5BBB55229B60F5700424A66 /* TapWeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapWeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5BBB55429B60F5700424A66 /* TWApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWApp.swift; sourceTree = "<group>"; };
@@ -310,7 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				F5E11EBF29BAE8A2004F73B2 /* 📱extensionAppModel.swift */,
-				F54292DA29B01C0200EFF085 /* 👆DoneButton.swift */,
+				F54292DA29B01C0200EFF085 /* 👆RegisterButton.swift */,
 				1232578A284C5EA2002E0057 /* 🎚️Stepper.swift */,
 				F54292DC29B01C4700EFF085 /* 🪧BMIView.swift */,
 				F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */,
@@ -362,7 +361,6 @@
 				12325789284C5E79002E0057 /* 🧩Sub */,
 				129CBE13284CAD2D00C73F4D /* 🌏Localization */,
 				126B3EAE282DFEE0009BD28B /* Assets.xcassets */,
-				F569C3DE29C1E16000947F6E /* note.md */,
 			);
 			path = TapWeight;
 			sourceTree = "<group>";
@@ -624,7 +622,7 @@
 				12630BC32849CD33005F922F /* 🛠AppMenu.swift in Sources */,
 				F5E1697129B06ACC00EAFF73 /* 🏥Health.swift in Sources */,
 				F5E11EBD29BAE847004F73B2 /* ⌚️WatchSync.swift in Sources */,
-				F54292DB29B01C0200EFF085 /* 👆DoneButton.swift in Sources */,
+				F54292DB29B01C0200EFF085 /* 👆RegisterButton.swift in Sources */,
 				F5D8400929B1DDED0046E91B /* 🪧LBMView.swift in Sources */,
 				F535AA8A29AD7EB800691926 /* 📣ADSheet.swift in Sources */,
 				F54292DF29B01CE300EFF085 /* 📅DatePicker.swift in Sources */,
