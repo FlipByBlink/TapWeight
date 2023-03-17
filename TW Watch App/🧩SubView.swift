@@ -38,11 +38,11 @@ struct 🚨ErrorMessage: View {
 
 struct 🄰uthManager: ViewModifier {
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.scenePhase) var scenePhase
     func body(content: Content) -> some View {
         content
-            .onChange(of: self.scenePhase) {
-                if $0 == .active { 📱.ⓡequestAuths() }
+            .onAppear { 📱.ⓡequestAuths() }
+            .onChange(of: [📱.🚩amount50g, 📱.🚩ableBMI, 📱.🚩ableBodyFat, 📱.🚩ableLBM]) { _ in
+                📱.ⓡequestAuths()
             }
     }
 }

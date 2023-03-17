@@ -291,24 +291,6 @@ class 📱AppModel: NSObject, ObservableObject {
         self.📅datePickerValue = .now
     }
     
-    func ⓡequestAuth(_ ⓒategories: Set<🏥Category>) {
-        Task { @MainActor in
-            do {
-                var ⓡeadCategories: Set<🏥Category> = ⓒategories
-                if ⓒategories.contains(.bodyMassIndex) { ⓡeadCategories.insert(.height) }
-                let ⓢtatus = try await self.🏥healthStore.statusForAuthorizationRequest(toShare: ⓒategories,
-                                                                                        read: ⓡeadCategories)
-                if ⓢtatus == .shouldRequest {
-                    try await self.🏥healthStore.requestAuthorization(toShare: ⓒategories,
-                                                                      read: ⓡeadCategories)
-                    await self.ⓛoadLatestSamples()
-                    await self.ⓛoadPreferredUnits()
-                }
-            } catch {
-                print("🚨", error.localizedDescription)
-            }
-        }
-    }
     private func ⓛoadPreferredUnits() async {
         for ⓒategory: 🏥Category in [.bodyMass, .height] {
             if let ⓤnit = try? await self.🏥healthStore.preferredUnit(for: ⓒategory) {
@@ -316,6 +298,27 @@ class 📱AppModel: NSObject, ObservableObject {
                     self.📦preferredUnits[ⓒategory] = ⓤnit
                     self.📝resetInputValues()
                 }
+            }
+        }
+    }
+    func ⓡequestAuth(_ ⓢhareCategories: Set<🏥Category>) {
+        Task { @MainActor in
+            do {
+                var ⓡeadCategories: Set<🏥Category> = []
+#if os(iOS)
+                ⓡeadCategories = ⓢhareCategories
+#endif
+                if ⓢhareCategories.contains(.bodyMassIndex) { ⓡeadCategories.insert(.height) }
+                let ⓢtatus = try await self.🏥healthStore.statusForAuthorizationRequest(toShare: ⓢhareCategories,
+                                                                                        read: ⓡeadCategories)
+                if ⓢtatus == .shouldRequest {
+                    try await self.🏥healthStore.requestAuthorization(toShare: ⓢhareCategories,
+                                                                      read: ⓡeadCategories)
+                    await self.ⓛoadLatestSamples()
+                    await self.ⓛoadPreferredUnits()
+                }
+            } catch {
+                print("🚨", error.localizedDescription)
             }
         }
     }
