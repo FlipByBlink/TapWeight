@@ -238,20 +238,20 @@ struct 🗯ResultView: View {
                 .font(.body.bold())
                 .lineLimit(2)
                 .multilineTextAlignment(.center)
-                .minimumScaleFactor(0.1)
             Spacer()
         }
-        .padding()
+        .minimumScaleFactor(0.1)
+        .padding(.horizontal)
         .strikethrough(self.ⓒanceled)
         .opacity(self.ⓒanceled ? 0.25 : 1)
         .overlay(alignment: .bottom) {
-            if self.ⓒanceled  {
+            if self.ⓒanceled {
                 Text("Canceled")
                     .fontWeight(.semibold)
             }
         }
         .onTapGesture {
-            if !self.ⓒanceled  { self.ⓢhowUndoAlert = true }
+            if !self.ⓒanceled { self.ⓢhowUndoAlert = true }
         }
         .confirmationDialog("Undo?", isPresented: self.$ⓢhowUndoAlert) {
             Button("Yes, undo") { 📱.🗑cancel() }
