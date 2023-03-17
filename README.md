@@ -9,49 +9,51 @@ iPhone App TapWeight for "Health"
 
 Description
 ------------
-This application is designed to register weight data to the Apple "Health" application pre-installed on iPhone in the fastest possible way (as manual).
+This application is designed to register weight data to the Apple \"Health\" application pre-installed on iPhone in the fastest possible way (as manual).
 
 
-People frequently measure their weight and body fat percentage daily using a scale. Many iPhone users register their weight and body fat percentage data on "Health" app. The best solution is to use a smart scale that works with "Health" app and automatically stores measurements, but they are expensive and inaccessible. Manual data registration is possible in "Health" app, but "Health" app is not designed for daily manual data registration. Therefore, manually entering data that occur continuously daily, such as weight measurements, is a very time-consuming and stressful experience. This app was developed to solve such problems.
+Target / Use-case
 
-
-This app cannot read, view, or manage past data in "Health" app. This app is intended only to register data to the "Health" app. Please check the registered data on the "Health" app.
-
-【Target/Use-case】
-
-- No "smart" scale.
+- No \"smart\" scale.
 
 - Frequently measure my weight (and body fat percentage) using a scale almost every day.
 
-- Intend to register the data into "Health" app every time, after measuring by a scale.
+- Intend to register the data into \"Health\" app every time, after measuring by a scale.
 
-【OPTION】
 
-- Unit: kg, lbs, st
+Option
 
-- 100g/50g amount option.
+- With Body Mass Index automatically.
 
-- With body mass index automatically.
+- With Body Fat Percentage.
 
-- With body fat percentage.
+- With Lean Body Mass automatically.
 
-- Function to change the registration date and time
+- 100g / 50g amount option.
+
+- Apple Watch support.
+
+- Reminder notification.
+
+- Function to change the registration date and time.
 
 - Option to hide AD banner. (In-App-Purchase)
 
-【OTHERS】
+- Unit: kg, lbs, st
 
-- Launch "Health" app by one tap.
+
+Others
+
+- Launch \"Health\" app by one tap.
 
 - Cancel feature just after registration.
 
-- Local history for the purpose of "operation check" / "temporary backup".
 
-- Check source code in app.
+Concept
 
-- All feature is free.
+People frequently measure their weight and body fat percentage daily using a scale. Many iPhone users register their weight and body fat percentage data on \"Health\" app. The best solution is to use a smart scale that works with \"Health\" app and automatically stores measurements, but they are expensive and inaccessible. Manual data registration is possible in \"Health\" app, but \"Health\" app is not designed for daily manual data registration. Therefore, manually entering data that occur continuously daily, such as weight measurements, is a very time-consuming and stressful experience. This app was developed to solve such problems.
 
-- AD banner of apps by TapWeight developer.
+This app cannot read, view, or manage past data in \"Health\" app. This app is intended only to register data to the \"Health\" app. Please check the registered data on the \"Health\" app.
 
 
 Source code link
