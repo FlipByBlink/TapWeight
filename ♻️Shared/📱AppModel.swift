@@ -159,7 +159,7 @@ class 📱AppModel: NSObject, ObservableObject {
             ⓥalue = [ⓥalue, (ⓑmiSample.quantity.doubleValue(for: .count()).formatted())].formatted(.list(type: .and))
         }
         if let ⓑodyFatSample = self.📨registeredSamples.first(where: { 🏥Category($0.quantityType) == .bodyFatPercentage }) {
-            ⓥalue += "\n" + ⓑodyFatSample.quantity.description
+            ⓥalue += "\n" + ⓑodyFatSample.quantity.doubleValue(for: .percent()).formatted(.percent)
         }
         if let ⓛbmSample = self.📨registeredSamples.first(where: { 🏥Category($0.quantityType) == .leanBodyMass }) {
             ⓥalue = [ⓥalue, ⓛbmSample.quantity.description].formatted(.list(type: .and))
@@ -335,11 +335,7 @@ class 📱AppModel: NSObject, ObservableObject {
     }
     func ⓞbserveHealthKitChanges() {
 #if os(iOS)
-        Task {
-            try? await self.🏥healthStore.enableBackgroundDelivery(for: .bodyMass)
-            try? await self.🏥healthStore.enableBackgroundDelivery(for: .height)
-            try? await self.🏥healthStore.enableBackgroundDelivery(for: .bodyFatPercentage)
-        }
+        self.🏥healthStore.enableBackgroundDelivery(for: [.bodyMass, .height, .bodyFatPercentage])
         for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
             self.🏥healthStore.ⓞbserveChange(ⓒategory) { ⓑackgroundObserverCompletionHandler in
                 Task { @MainActor in

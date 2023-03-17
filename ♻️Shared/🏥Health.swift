@@ -24,8 +24,12 @@ struct 🏥HealthStore {
         try await self.api.preferredUnits(for: [ⓒategory.quantityType]).first?.value
     }
     
-    func enableBackgroundDelivery(for ⓒategory: 🏥Category) async throws {
-        try await self.api.enableBackgroundDelivery(for: ⓒategory.quantityType, frequency: .immediate)
+    func enableBackgroundDelivery(for ⓒategories: [🏥Category]) {
+        Task {
+            for ⓒategory in ⓒategories {
+                try? await self.api.enableBackgroundDelivery(for: ⓒategory.quantityType, frequency: .immediate)
+            }
+        }
     }
     
     func ⓛoadLatestSample(_ ⓒategory: 🏥Category) async -> HKQuantitySample? {
