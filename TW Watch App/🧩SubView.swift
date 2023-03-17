@@ -24,8 +24,8 @@ struct 🚨ErrorMessage: View {
                 Text("Please launch iPhone app to sync. If registered data is nothing, register your data to \"Health\". Or check authentication on Apple Watch.")
                     .font(.caption2)
                 VStack(alignment: .leading) {
-                    ForEach(self.ⓘnvalidSampleCategories, id: \.identifier) { ⓒategory in
-                        Text("・" + ⓒategory.localizedString)
+                    ForEach(self.ⓘnvalidSampleCategories, id: \.identifier) {
+                        Text("・" + $0.localizedString)
                     }
                 }
                 .font(.caption2.weight(.semibold))
@@ -232,51 +232,34 @@ struct 🗯ResultView: View {
             Image(systemName: "checkmark")
                 .font(.largeTitle.bold())
             Text("DONE!")
-                .strikethrough(self.ⓒanceled)
                 .font(.title.bold())
             Spacer()
             Text(📱.ⓡesultSummaryDescription)
-                .strikethrough(self.ⓒanceled)
                 .font(.body.bold())
                 .lineLimit(2)
                 .multilineTextAlignment(.center)
                 .minimumScaleFactor(0.1)
-            if 📱.🚩ableDatePicker {
-                if let ⓓate = 📱.📨registeredSamples.first?.startDate as? Date {
-                    Text(ⓓate.formatted(date: .abbreviated, time: .shortened))
-                        .strikethrough(self.ⓒanceled)
-                        .font(.subheadline.weight(.semibold))
-                        .padding(.horizontal)
-                }
-            }
             Spacer()
         }
+        .padding()
+        .strikethrough(self.ⓒanceled)
         .opacity(self.ⓒanceled ? 0.25 : 1)
         .overlay(alignment: .bottom) {
             if self.ⓒanceled  {
-                VStack {
-                    Text("Canceled")
-                        .fontWeight(.semibold)
-                    if 📱.🚩alertCancellationError {
-                        Text("(perhaps error)")
-                    }
-                }
+                Text("Canceled")
+                    .fontWeight(.semibold)
             }
         }
         .onTapGesture {
-            if !self.ⓒanceled  {
-                self.ⓢhowUndoAlert = true
-            }
+            if !self.ⓒanceled  { self.ⓢhowUndoAlert = true }
         }
         .confirmationDialog("Undo?", isPresented: self.$ⓢhowUndoAlert) {
-            Button("Yes, undo") {
-                📱.🗑cancel()
-            }
+            Button("Yes, undo") { 📱.🗑cancel() }
         }
         .modifier(🚨CancellationErrorAlert())
         .toolbar(.hidden, for: .automatic)
-        //Dismiss by pushing DigitalCrown
     }
+    //Dismiss by pushing DigitalCrown
 }
 
 #if DEBUG
