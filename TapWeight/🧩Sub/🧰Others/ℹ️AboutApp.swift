@@ -44,7 +44,7 @@ struct ℹ️AboutAppLink: View {
     }
 }
 
-struct ℹ️AboutAppMenu: View {
+private struct ℹ️AboutAppMenu: View {
     var body: some View {
         List {
             📰AppStoreDescriptionSection()
@@ -58,7 +58,7 @@ struct ℹ️AboutAppMenu: View {
     }
 }
 
-struct 📰AppStoreDescriptionSection: View {
+private struct 📰AppStoreDescriptionSection: View {
     var body: some View {
         Section {
             NavigationLink {
@@ -67,7 +67,6 @@ struct 📰AppStoreDescriptionSection: View {
                         .padding()
                 }
                 .navigationBarTitle("Description")
-                .navigationBarTitleDisplayMode(.inline)
                 .textSelection(.enabled)
             } label: {
                 Text("AppStoreDescription", tableName: "🌏AppStoreDescription")
@@ -82,8 +81,8 @@ struct 📰AppStoreDescriptionSection: View {
     }
 }
 
-struct 🔗AppStoreLink: View {
-    @Environment(\.openURL) var openURL: OpenURLAction
+private struct 🔗AppStoreLink: View {
+    @Environment(\.openURL) var openURL
     var body: some View {
         Button {
             self.openURL(🔗appStoreProductURL)
@@ -99,8 +98,8 @@ struct 🔗AppStoreLink: View {
     }
 }
 
-struct 🏬AppStoreSection: View {
-    @Environment(\.openURL) var openURL: OpenURLAction
+private struct 🏬AppStoreSection: View {
+    @Environment(\.openURL) var openURL
     var body: some View {
         Section {
             🔗AppStoreLink()
@@ -122,7 +121,7 @@ struct 🏬AppStoreSection: View {
     }
 }
 
-struct 👤PrivacyPolicySection: View {
+private struct 👤PrivacyPolicySection: View {
     var body: some View {
         Section {
             NavigationLink {
@@ -146,7 +145,7 @@ struct 📜VersionInfo: Identifiable {
     }
 }
 
-struct 📜VersionHistoryLink: View {
+private struct 📜VersionHistoryLink: View {
     var body: some View {
         Section {
             NavigationLink {
@@ -179,7 +178,7 @@ struct 📜VersionHistoryLink: View {
     }
 }
 
-struct 📓SourceCodeLink: View {
+private struct 📓SourceCodeLink: View {
     var body: some View {
         NavigationLink {
             self.ⓢourceCodeMenu()
@@ -189,8 +188,8 @@ struct 📓SourceCodeLink: View {
     }
     private func ⓢourceCodeMenu() -> some View {
         List {
-            ForEach(📁SourceCodeCategory.allCases) { ⓒategory in
-                Self.📓CodeSection(ⓒategory)
+            ForEach(📁SourceCodeCategory.allCases) {
+                Self.📓CodeSection($0)
             }
             self.📑bundleMainInfoDictionary()
             self.🔗repositoryLinks()
@@ -228,7 +227,6 @@ struct 📓SourceCodeLink: View {
                 }
             }
             .navigationBarTitle(LocalizedStringKey(ⓣitle))
-            .navigationBarTitleDisplayMode(.inline)
             .font(.caption.monospaced())
             .textSelection(.enabled)
         }
@@ -241,7 +239,6 @@ struct 📓SourceCodeLink: View {
                         .padding()
                 }
                 .navigationBarTitle("Bundle.main.infoDictionary")
-                .navigationBarTitleDisplayMode(.inline)
                 .textSelection(.enabled)
             }
         }
@@ -281,7 +278,7 @@ struct 📓SourceCodeLink: View {
     }
 }
 
-struct 🧑‍💻AboutDeveloperPublisherLink: View {
+private struct 🧑‍💻AboutDeveloperPublisherLink: View {
     var body: some View {
         NavigationLink {
             self.ⓐboutDeveloperPublisherMenu()
