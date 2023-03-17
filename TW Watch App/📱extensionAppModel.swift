@@ -1,32 +1,35 @@
 import SwiftUI
-//import WatchConnectivity
+import WatchConnectivity
 
 extension 📱AppModel: WKApplicationDelegate {
     func applicationDidFinishLaunching() {
         self.ⓞbserveHealthKitChanges()
-        self.ⓘmportContext()
         self.ⓐddICloudObserver()
-        //if WCSession.isSupported() {
-        //    WCSession.default.delegate = self
-        //    WCSession.default.activate()
-        //}
+        if WCSession.isSupported() {
+            WCSession.default.delegate = self
+            WCSession.default.activate()
+        }
+        self.ⓐpplyStoredContext()
     }
 }
 
 extension 📱AppModel {
-    var ⓡeceivedContext: 🄲ontext? { 🄲ontext.iCloudKVS }
-    func ⓘmportContext() {
-        if let ⓡeceivedContext {
-            withAnimation {
-                self.🚩ableBMI = ⓡeceivedContext.ableBMI
-                self.🚩ableBodyFat = ⓡeceivedContext.ableBodyFat
-                self.🚩ableLBM = ⓡeceivedContext.ableLBM
-                self.🚩amount50g = ⓡeceivedContext.amount50g
-                self.📦latestSamples = ⓡeceivedContext.latestHKQuantitySamples
-                self.📝resetInputValues()
-            }
+    var ⓢtoredContext: 🄲ontext? { .iCloudKVS ?? .wcApplicationContext }
+    func ⓐpplyStoredContext() {
+        if let ⓢtoredContext {
+            self.ⓐpplyContext(ⓢtoredContext)
         } else {
-            print("🖨️ iCloudKVS is nothing.")
+            print("🖨️ StoredContext is nothing.")
+        }
+    }
+    func ⓐpplyContext(_ ⓒontext: 🄲ontext) {
+        withAnimation {
+            self.🚩ableBMI = ⓒontext.ableBMI
+            self.🚩ableBodyFat = ⓒontext.ableBodyFat
+            self.🚩ableLBM = ⓒontext.ableLBM
+            self.🚩amount50g = ⓒontext.amount50g
+            self.📦latestSamples = ⓒontext.latestHKQuantitySamples
+            self.📝resetInputValues()
         }
     }
     private func ⓐddICloudObserver() {
@@ -39,7 +42,7 @@ extension 📱AppModel {
     private func ⓤbiquitousKeyValueStoreDidChange(_ notification: Notification) {
         //Publishing changes from background threads is not allowed
         Task { @MainActor in
-            self.ⓘmportContext()
+            self.ⓐpplyStoredContext()
         }
     }
 }
@@ -71,35 +74,23 @@ extension 📱AppModel {
     }
 }
 
-//extension 📱AppModel: WCSessionDelegate {
-//    //Required
-//    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-//        //Nothing to do.
-//    }
-//
-//    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-//        self.ⓗandleContextDictionary(applicationContext)
-//    }
-//
-//    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-//        self.ⓗandleContextDictionary(message)
-//    }
-//
-//    private func ⓗandleContextDictionary(_ ⓓictionary: [String : Any]) {
-//        Task { @MainActor in
-//            if let ⓒontext = 🄲ontext.receive(ⓓictionary) {
-//                withAnimation {
-//                    self.🚩ableBMI = ⓒontext.ableBMI
-//                    self.🚩ableBodyFat = ⓒontext.ableBodyFat
-//                    self.🚩ableLBM = ⓒontext.ableLBM
-//                    self.🚩amount50g = ⓒontext.amount50g
-//                }
-//            } else {
-//                assertionFailure()
-//            }
-//        }
-//    }
-//}
+extension 📱AppModel: WCSessionDelegate {
+    //Required
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        Task { @MainActor in
+            self.ⓐpplyStoredContext()
+        }
+    }
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        Task { @MainActor in
+            if let ⓒontext = 🄲ontext.decode(applicationContext) {
+                self.ⓐpplyContext(ⓒontext)
+            } else {
+                assertionFailure()
+            }
+        }
+    }
+}
 
 //MARK: Purpose of debugging
 extension 📱AppModel {

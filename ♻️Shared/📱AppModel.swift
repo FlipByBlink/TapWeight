@@ -330,10 +330,7 @@ class 📱AppModel: NSObject, ObservableObject {
             self.ⓢetTemporaryQuantity(ⓒategory, condition: ⓢample == nil)
         }
 #elseif os(watchOS)
-        if let ⓡeceivedContext {
-            self.📦latestSamples = ⓡeceivedContext.latestHKQuantitySamples
-            self.📝resetInputValues()
-        }
+        self.ⓐpplyStoredContext()
 #endif
     }
     func ⓞbserveHealthKitChanges() {
@@ -353,7 +350,7 @@ class 📱AppModel: NSObject, ObservableObject {
                     }
                     switch ⓒategory {
                         case .bodyMass, .height, .bodyFatPercentage:
-                            self.ⓒontext.set()
+                            self.ⓒontext.sendToWatchApp()
                             ⓑackgroundObserverCompletionHandler()
                         default:
                             break

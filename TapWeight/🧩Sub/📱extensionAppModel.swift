@@ -1,6 +1,6 @@
 import SwiftUI
 import HealthKit
-//import WatchConnectivity
+import WatchConnectivity
 
 extension 📱AppModel: UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -8,11 +8,11 @@ extension 📱AppModel: UIApplicationDelegate {
         🔔Notification.api.delegate = self
         self.ⓡequestAuth([.bodyMass])
         self.ⓞbserveHealthKitChanges()
-        self.ⓒontext.set()
-        //if WCSession.isSupported() {
-        //    WCSession.default.delegate = self
-        //    WCSession.default.activate()
-        //}
+        if WCSession.isSupported() {
+            WCSession.default.delegate = self
+            WCSession.default.activate()
+        }
+        self.ⓒontext.sendToWatchApp()
         return true
     }
 }
@@ -98,21 +98,21 @@ extension 📱AppModel {
     }
 }
 
-//extension 📱AppModel: WCSessionDelegate {
-//    //Required
-//    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-//        self.ⓒontext.send()
-//    }
-//    //Required
-//    func sessionDidBecomeInactive(_ session: WCSession) {
-//        //Nothing to do.
-//    }
-//    //Required
-//    func sessionDidDeactivate(_ session: WCSession) {
-//        session.activate()
-//    }
-//    //Optional
-//    func sessionReachabilityDidChange(_ session: WCSession) {
-//        self.ⓒontext.send()
-//    }
-//}
+extension 📱AppModel: WCSessionDelegate {
+    //Required
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        self.ⓒontext.sendToWatchApp()
+    }
+    //Required
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        //Nothing to do.
+    }
+    //Required
+    func sessionDidDeactivate(_ session: WCSession) {
+        session.activate()
+    }
+    //Optional
+    func sessionReachabilityDidChange(_ session: WCSession) {
+        self.ⓒontext.sendToWatchApp()
+    }
+}

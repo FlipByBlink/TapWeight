@@ -1,5 +1,5 @@
-//import WatchConnectivity
 import HealthKit
+import WatchConnectivity
 
 struct 🄲ontext: Codable, Equatable {
     var amount50g: Bool
@@ -36,56 +36,44 @@ struct 🄲ontext: Codable, Equatable {
         self.latestSamples.mapValues { $0.asHKQuantitySample }
     }
     
-    func set() {
+#if os(iOS)
+    func sendToWatchApp() {
+        self.setICloudKVS()
+        self.updateWCContext()
+    }
+    private func setICloudKVS() {
         NSUbiquitousKeyValueStore.default.set(try! JSONEncoder().encode(self),
                                               forKey: "ⓒontext")
     }
-    
-#if os(watchOS)
+    private func updateWCContext() {
+        do {
+            if WCSession.default.activationState == .activated {
+                if WCSession.default.isWatchAppInstalled {
+                    try WCSession.default.updateApplicationContext(["ⓒontext": try JSONEncoder().encode(self)])
+                }
+            }
+        } catch {
+            print("🚨", #function, error.localizedDescription)
+        }
+    }
+#elseif os(watchOS)
     static var iCloudKVS: Self? {
         guard let ⓞbject = NSUbiquitousKeyValueStore.default.object(forKey: "ⓒontext") else { return nil }
         guard let ⓓata = ⓞbject as? Data else { return nil }
         return try? JSONDecoder().decode(Self.self, from: ⓓata)
     }
+    static var wcApplicationContext: Self? {
+        Self.decode(WCSession.default.applicationContext)
+    }
+    static func decode(_ ⓓictionary: [String : Any]) -> Self? {
+        if let ⓓata = ⓓictionary["ⓒontext"] as? Data {
+            do {
+                return try JSONDecoder().decode(Self.self, from: ⓓata)
+            } catch {
+                print("🚨", #function, error.localizedDescription)
+            }
+        }
+        return nil
+    }
 #endif
-    
-    var invalidSampleCategories: [🏥Category] {
-        var ⓥalue: [🏥Category] = []
-        if self.latestSamples[.bodyMass] == nil {
-            ⓥalue += [.bodyMass]
-        }
-        if self.ableBMI && (self.latestSamples[.height] == nil) {
-            ⓥalue += [.height]
-        }
-        if self.ableBodyFat && (self.latestSamples[.bodyFatPercentage] == nil) {
-            ⓥalue += [.bodyFatPercentage]
-        }
-        return ⓥalue
-    }
-    
-    var isValid: Bool {
-        self.invalidSampleCategories.isEmpty
-    }
-    
-    //func sendMessage() {
-    //    do {
-    //        if WCSession.default.isReachable {
-    //            WCSession.default.sendMessage(["ⓒontext": try JSONEncoder().encode(self)],
-    //                                          replyHandler: nil)
-    //        }
-    //    } catch {
-    //        print("🚨", #function, error.localizedDescription)
-    //    }
-    //}
-    //
-    //static func decode(_ ⓓictionary: [String : Any]) -> Self? {
-    //    if let ⓓata = ⓓictionary["ⓒontext"] as? Data {
-    //        do {
-    //            return try JSONDecoder().decode(Self.self, from: ⓓata)
-    //        } catch {
-    //            print("🚨", #function, error.localizedDescription)
-    //        }
-    //    }
-    //    return nil
-    //}
 }
