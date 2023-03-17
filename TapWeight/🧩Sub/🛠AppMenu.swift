@@ -246,7 +246,7 @@ private struct 🛠ReminderMenuLink: View {
             VStack {
                 Image("BadgeExample")
                     .cornerRadius(8)
-                HStack {
+                HStack(spacing: 4) {
                     Text("Example:")
                     Text(DateComponentsFormatter.localizedString(from: DateComponents(day: 7), unitsStyle: .full) ?? "+7")
                 }

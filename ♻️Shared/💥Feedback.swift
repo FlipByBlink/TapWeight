@@ -14,8 +14,7 @@ struct 💥Feedback {
     static func error() {
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
-#endif
-#if os(watchOS)
+#elseif os(watchOS)
     static func light() {
         WKInterfaceDevice.current().play(.click)
     }

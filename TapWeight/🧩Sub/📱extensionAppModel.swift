@@ -112,6 +112,10 @@ extension 📱AppModel: WCSessionDelegate {
         session.activate()
     }
     //Optional
+    func sessionWatchStateDidChange(_ session: WCSession) {
+        self.ⓒontext.sendToWatchApp()
+    }
+    //Optional
     func sessionReachabilityDidChange(_ session: WCSession) {
         self.ⓒontext.sendToWatchApp()
     }

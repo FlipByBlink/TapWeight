@@ -160,11 +160,11 @@ struct 🪧BMIView: View {
                 if let ⓘnputValue, let ⓗeightQuantityDescription {
                     HStack {
                         Text(ⓘnputValue.description)
-                            .font(.system(.subheadline, design: .rounded, weight: .bold))
+                            .font(.subheadline.bold())
                             .monospacedDigit()
                         Spacer()
                         Text("(\(ⓗeightQuantityDescription))")
-                            .font(.system(.caption2, design: .rounded, weight: .bold))
+                            .font(.caption2.bold())
                             .foregroundStyle(.tertiary)
                     }
                     .lineLimit(1)
@@ -190,7 +190,7 @@ struct 🪧LBMView: View {
                 Text("Lean Body Mass")
                     .font(.caption2.weight(.semibold))
                 Text(ⓘnputDescription ?? "Error")
-                    .font(.system(.subheadline, design: .rounded, weight: .bold))
+                    .font(.subheadline.bold())
                     .monospacedDigit()
                     .minimumScaleFactor(0.5)
             }

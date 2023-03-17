@@ -81,6 +81,7 @@ extension 📱AppModel: WCSessionDelegate {
             self.ⓐpplyStoredContext()
         }
     }
+    //Optional
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         Task { @MainActor in
             if let ⓒontext = 🄲ontext.decode(applicationContext) {
