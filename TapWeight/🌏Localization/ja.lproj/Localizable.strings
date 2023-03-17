@@ -19,6 +19,7 @@
 "Canceled" = "取り消しました。";
 
 // ======== Error ========
+"⚠️ Error" = "⚠️ エラー";
 "⚠️ Failed registration" = "⚠️ 登録に失敗しました";
 "Authorization error: " = "アクセス権限エラー: ";
 "No input value: " = "入力が無い項目があります: ";

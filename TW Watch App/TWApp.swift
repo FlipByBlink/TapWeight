@@ -6,7 +6,6 @@ struct TW_Watch_App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modifier(🚨CheckCondition())
                 .modifier(🄰uthManager())
                 .environment(\.layoutDirection, .leftToRight)
         }

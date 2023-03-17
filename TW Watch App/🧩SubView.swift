@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 🚨CheckCondition: ViewModifier {
+struct 🚨ErrorMessage: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnvalidSampleCategories: [🏥Category] {
         var ⓥalue: [🏥Category] = []
@@ -15,24 +15,24 @@ struct 🚨CheckCondition: ViewModifier {
         }
         return ⓥalue
     }
-    private var ⓐppIsValid: Bool { self.ⓘnvalidSampleCategories.isEmpty }
-    func body(content: Content) -> some View {
-        if self.ⓐppIsValid {
-            content
-        } else {
-            self.ⓔrrorView()
-        }
-    }
-    private func ⓔrrorView() -> some View {
-        ScrollView {
-            Text("Error")
-                .font(.headline)
-            Text("Did not find the recent data. Please register your data on the iPhone first. Or check authentication on Apple Watch.")
-            ForEach(self.ⓘnvalidSampleCategories, id: \.identifier) { ⓒategory in
-                Text("・" + ⓒategory.localizedString)
+    private var ⓐppIsInvalid: Bool { !self.ⓘnvalidSampleCategories.isEmpty }
+    var body: some View {
+        if self.ⓐppIsInvalid {
+            VStack(spacing: 4) {
+                Text("⚠️ Error")
+                    .font(.headline)
+                Text("Did not find the recent data. Please register your data on the iPhone first. Or check authentication on Apple Watch.")
+                    .font(.caption2)
+                VStack(alignment: .leading) {
+                    ForEach(self.ⓘnvalidSampleCategories, id: \.identifier) { ⓒategory in
+                        Text("・" + ⓒategory.localizedString)
+                    }
+                }
+                .font(.caption2.weight(.semibold))
             }
+            .foregroundStyle(.secondary)
+            .padding(.vertical, 8)
         }
-        .foregroundStyle(.secondary)
     }
 }
 

@@ -2,9 +2,11 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @State private var 🚩hideErrorMessage: Bool = true
     var body: some View {
         NavigationStack {
             List {
+                if !self.🚩hideErrorMessage { 🚨ErrorMessage() }
                 Section {
                     🎚️BodyMassStepper()
                     🪧BMIView()
@@ -26,6 +28,10 @@ struct ContentView: View {
             .onChange(of: 📱.🚩showResult) {
                 if $0 == false { 📱.ⓒlearStates() }
             }
+        }
+        .task {
+            try? await Task.sleep(for: .seconds(1.5))
+            withAnimation { self.🚩hideErrorMessage = false }
         }
     }
 }
