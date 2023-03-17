@@ -342,8 +342,8 @@ class 📱AppModel: NSObject, ObservableObject {
         for ⓒategory: 🏥Category in [.bodyMass, .bodyMassIndex, .height, .bodyFatPercentage, .leanBodyMass] {
             self.🏥healthStore.ⓞbserveChange(ⓒategory) { ⓑackgroundObserverCompletionHandler in
                 Task { @MainActor in
-                    await self.ⓛoadLatestSamples()
                     await self.ⓛoadPreferredUnits()
+                    await self.ⓛoadLatestSamples()
                     if ⓒategory == .bodyMass {
                         await self.🔔refreshNotification()
                     }

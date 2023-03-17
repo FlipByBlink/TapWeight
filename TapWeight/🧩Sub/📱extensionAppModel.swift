@@ -84,16 +84,19 @@ extension 📱AppModel {
             }
         }
     }
-    private var ⓣemporaryMassQuantity: HKQuantity {
+    private var ⓣemporaryMassQuantity: HKQuantity? {
         if let ⓜassUnit {
             switch ⓜassUnit {
                 case .gramUnit(with: .kilo): return HKQuantity(unit: ⓜassUnit, doubleValue: 60.0)
                 case .pound(): return HKQuantity(unit: ⓜassUnit, doubleValue: 130.0)
                 case .stone(): return HKQuantity(unit: ⓜassUnit, doubleValue: 10.0)
-                default: return HKQuantity(unit: ⓜassUnit, doubleValue: 0.0)
+                default:
+                    assertionFailure()
+                    return nil
             }
         } else {
-            return HKQuantity(unit: .gramUnit(with: .kilo), doubleValue: 0.0)
+            assertionFailure()
+            return nil
         }
     }
 }
