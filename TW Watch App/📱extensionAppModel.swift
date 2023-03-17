@@ -1,15 +1,14 @@
 import SwiftUI
 import WatchConnectivity
 
-extension 📱AppModel: WKApplicationDelegate {
-    func applicationDidFinishLaunching() {
-        self.ⓞbserveHealthKitChanges()
+extension 📱AppModel {
+    func ⓢetup() {
+        self.ⓞbserveHealthKitChanges() // Observe bodymass-unit and height-unit only
         self.ⓐddICloudObserver()
         if WCSession.isSupported() {
             WCSession.default.delegate = self
             WCSession.default.activate()
         }
-        self.ⓐpplyStoredContext()
     }
 }
 
@@ -33,6 +32,7 @@ extension 📱AppModel {
         }
     }
     private func ⓐddICloudObserver() {
+        //NotificationCenter call selector-function just after adding-observer too.
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(ⓤbiquitousKeyValueStoreDidChange(_:)),
                                                name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
@@ -40,9 +40,11 @@ extension 📱AppModel {
     }
     @objc
     private func ⓤbiquitousKeyValueStoreDidChange(_ notification: Notification) {
-        //Publishing changes from background threads is not allowed
+        //Publishing changes from background threads is not allowed.
         Task { @MainActor in
-            self.ⓐpplyStoredContext()
+            if WCSession.default.activationState != .activated {
+                self.ⓐpplyStoredContext()
+            }
         }
     }
 }
