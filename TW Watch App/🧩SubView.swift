@@ -47,21 +47,6 @@ struct 🄰uthManager: ViewModifier {
     }
 }
 
-struct 👆DoneButton: View { // ☑️
-    @EnvironmentObject var 📱: 📱AppModel
-    var body: some View {
-        Button {
-            📱.👆register()
-        } label: {
-            Label("Register", systemImage: "checkmark")
-        }
-        .listItemTint(.pink)
-        .foregroundStyle(.white)
-        .fontWeight(.semibold)
-        .fullScreenCover(isPresented: $📱.🚩showResult) { 🗯ResultView() }
-    }
-}
-
 struct 🎚️BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputIsValid: Bool { 📱.ⓜassInputIsValid }
@@ -109,42 +94,40 @@ struct 🎚️BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputIsValid: Bool { 📱.ⓑodyFatInputIsValid }
     var body: some View {
-        if 📱.🚩ableBodyFat {
-            HStack {
-                Button {
-                    📱.🎚️changeBodyFatValue(.decrement)
-                } label: {
-                    Image(systemName: "minus.circle.fill")
-                        .symbolRenderingMode(.hierarchical)
-                        .font(.title2)
-                        .imageScale(.small)
-                }
-                .buttonStyle(.plain)
-                Spacer()
-                HStack(alignment: .firstTextBaseline, spacing: 2) {
-                    Text(📱.ⓑodyFatInputDescription)
-                        .font(.system(.title2, design: .rounded, weight: .heavy))
-                    Text("%")
-                        .font(.system(.title3, design: .rounded, weight: .heavy))
-                }
-                Spacer()
-                Button {
-                    📱.🎚️changeBodyFatValue(.increment)
-                } label: {
-                    Image(systemName: "plus.circle.fill")
-                        .symbolRenderingMode(.hierarchical)
-                        .font(.title2)
-                        .imageScale(.small)
-                }
-                .buttonStyle(.plain)
+        HStack {
+            Button {
+                📱.🎚️changeBodyFatValue(.decrement)
+            } label: {
+                Image(systemName: "minus.circle.fill")
+                    .symbolRenderingMode(.hierarchical)
+                    .font(.title2)
+                    .imageScale(.small)
             }
-            .monospacedDigit()
-            .minimumScaleFactor(0.5)
-            .lineLimit(1)
-            .opacity(self.ⓘnputIsValid ? 1 : 0.2)
-            .disabled(!self.ⓘnputIsValid)
-            .animation(.default, value: self.ⓘnputIsValid)
+            .buttonStyle(.plain)
+            Spacer()
+            HStack(alignment: .firstTextBaseline, spacing: 2) {
+                Text(📱.ⓑodyFatInputDescription)
+                    .font(.system(.title2, design: .rounded, weight: .heavy))
+                Text("%")
+                    .font(.system(.title3, design: .rounded, weight: .heavy))
+            }
+            Spacer()
+            Button {
+                📱.🎚️changeBodyFatValue(.increment)
+            } label: {
+                Image(systemName: "plus.circle.fill")
+                    .symbolRenderingMode(.hierarchical)
+                    .font(.title2)
+                    .imageScale(.small)
+            }
+            .buttonStyle(.plain)
         }
+        .monospacedDigit()
+        .minimumScaleFactor(0.5)
+        .lineLimit(1)
+        .opacity(self.ⓘnputIsValid ? 1 : 0.2)
+        .disabled(!self.ⓘnputIsValid)
+        .animation(.default, value: self.ⓘnputIsValid)
     }
 }
 
@@ -153,31 +136,29 @@ struct 🪧BMIView: View {
     private var ⓘnputValue: Double? { 📱.ⓑmiInputValue }
     private var ⓗeightQuantityDescription: String? { 📱.ⓗeightQuantityDescription }
     var body: some View {
-        if 📱.🚩ableBMI {
-            VStack(alignment: .leading) {
-                Text("Body Mass Index")
-                    .font(.caption2.weight(.semibold))
-                if let ⓘnputValue, let ⓗeightQuantityDescription {
-                    HStack {
-                        Text(ⓘnputValue.description)
-                            .font(.subheadline.bold())
-                            .monospacedDigit()
-                        Spacer()
-                        Text("(\(ⓗeightQuantityDescription))")
-                            .font(.caption2.bold())
-                            .foregroundStyle(.tertiary)
-                    }
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-                } else {
-                    Text("Height data is nothing on \"Health\" app. Register height data.")
-                        .font(.footnote)
+        VStack(alignment: .leading) {
+            Text("Body Mass Index")
+                .font(.caption2.weight(.semibold))
+            if let ⓘnputValue, let ⓗeightQuantityDescription {
+                HStack {
+                    Text(ⓘnputValue.description)
+                        .font(.subheadline.bold())
+                        .monospacedDigit()
+                    Spacer()
+                    Text("(\(ⓗeightQuantityDescription))")
+                        .font(.caption2.bold())
                         .foregroundStyle(.tertiary)
                 }
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+            } else {
+                Text("Height data is nothing on \"Health\" app. Register height data.")
+                    .font(.footnote)
+                    .foregroundStyle(.tertiary)
             }
-            .foregroundStyle(.secondary)
-            .animation(.default, value: self.ⓘnputValue == nil)
         }
+        .foregroundStyle(.secondary)
+        .animation(.default, value: self.ⓘnputValue == nil)
     }
 }
 
@@ -185,18 +166,31 @@ struct 🪧LBMView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputDescription: String? { 📱.ⓛbmInputDescription }
     var body: some View {
-        if 📱.🚩ableLBM {
-            VStack(alignment: .leading) {
-                Text("Lean Body Mass")
-                    .font(.caption2.weight(.semibold))
-                Text(ⓘnputDescription ?? "Error")
-                    .font(.subheadline.bold())
-                    .monospacedDigit()
-                    .minimumScaleFactor(0.5)
-            }
-            .foregroundStyle(.secondary)
-            .animation(.default, value: self.ⓘnputDescription == nil)
+        VStack(alignment: .leading) {
+            Text("Lean Body Mass")
+                .font(.caption2.weight(.semibold))
+            Text(ⓘnputDescription ?? "Error")
+                .font(.subheadline.bold())
+                .monospacedDigit()
+                .minimumScaleFactor(0.5)
         }
+        .foregroundStyle(.secondary)
+        .animation(.default, value: self.ⓘnputDescription == nil)
+    }
+}
+
+struct 👆DoneButton: View { // ☑️
+    @EnvironmentObject var 📱: 📱AppModel
+    var body: some View {
+        Button {
+            📱.👆register()
+        } label: {
+            Label("Register", systemImage: "checkmark")
+        }
+        .listItemTint(.pink)
+        .foregroundStyle(.white)
+        .fontWeight(.semibold)
+        .fullScreenCover(isPresented: $📱.🚩showResult) { 🗯ResultView() }
     }
 }
 

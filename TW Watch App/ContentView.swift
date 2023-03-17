@@ -9,12 +9,12 @@ struct ContentView: View {
                 if !self.🚩hideErrorMessage { 🚨ErrorMessage() }
                 Section {
                     🎚️BodyMassStepper()
-                    🪧BMIView()
+                    if 📱.🚩ableBMI { 🪧BMIView() }
                 }
                 if 📱.🚩ableBodyFat {
                     Section {
                         🎚️BodyFatStepper()
-                        🪧LBMView()
+                        if 📱.🚩ableLBM { 🪧LBMView() }
                     } header: {
                         Text("Body Fat Percentage")
                             .bold()
