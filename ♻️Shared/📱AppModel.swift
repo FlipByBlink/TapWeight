@@ -314,8 +314,8 @@ class 📱AppModel: NSObject, ObservableObject {
                 if ⓢtatus == .shouldRequest {
                     try await self.🏥healthStore.requestAuthorization(toShare: ⓢhareCategories,
                                                                       read: ⓡeadCategories)
-                    await self.ⓛoadLatestSamples()
                     await self.ⓛoadPreferredUnits()
+                    await self.ⓛoadLatestSamples()
                 }
             } catch {
                 print("🚨", error.localizedDescription)
