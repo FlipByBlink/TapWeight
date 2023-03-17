@@ -36,7 +36,8 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "💥Feedback.swift",
                         "⌚️WatchSync.swift"]
             case .Sub:
-                return ["👆DoneButton.swift",
+                return ["📱extensionAppModel.swift",
+                        "👆DoneButton.swift",
                         "🎚️Stepper.swift",
                         "🪧BMIView.swift",
                         "🪧LBMView.swift",
@@ -47,8 +48,6 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "🚨ErrorAlert.swift",
                         "🛠AppMenu.swift",
                         "🔔Notification.swift",
-                        "⌚️SyncOptions.swift",
-                        "📱extensionAppModel.swift",
                         "💬RequestUserReview.swift",
                         "📣ADSheet.swift"]
             case .Others:
@@ -59,8 +58,8 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
             case .WatchApp:
                 return ["WatchApp/TWApp.swift",
                         "WatchApp/ContentView.swift",
-                        "WatchApp/🧩SubView.swift",
-                        "WatchApp/📱extensionAppModel.swift"]
+                        "WatchApp/📱extensionAppModel.swift",
+                        "WatchApp/🧩SubView.swift"]
             case .WatchComplication:
                 return ["WatchComplication/TW_Watch_Widget.swift"]
         }

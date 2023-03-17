@@ -43,6 +43,7 @@ private struct 🛠AppMenu: View {
             } header: {
                 Text("Option")
             }
+            .onChange(of: 📱.ⓒontext) { $0.sendToWatchApp() }
             💟OpenHealthAppButton.onMenuView()
             ℹ️AboutAppLink(name: "TapWeight", subtitle: "App for iPhone / Apple Watch")
             📣ADMenuLink()
