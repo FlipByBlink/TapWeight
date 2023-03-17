@@ -21,7 +21,7 @@ struct 🚨ErrorMessage: View {
             VStack(spacing: 4) {
                 Text("⚠️ Error")
                     .font(.headline)
-                Text("Did not find the recent data. Please register your data on the iPhone first. Or check authentication on Apple Watch.")
+                Text("Please launch iPhone app to sync. If registered data is nothing, register your data to \"Health\". Or check authentication on Apple Watch.")
                     .font(.caption2)
                 VStack(alignment: .leading) {
                     ForEach(self.ⓘnvalidSampleCategories, id: \.identifier) { ⓒategory in

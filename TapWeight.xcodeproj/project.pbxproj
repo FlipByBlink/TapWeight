@@ -946,7 +946,7 @@
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Import latest log.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Import prefer unit.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Save your data to \"Health\" app.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = net.aaaakkkkssssttttnnnn.TapWeight;
@@ -980,7 +980,7 @@
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Import latest log.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Import prefer unit.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Save your data to \"Health\" app.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = net.aaaakkkkssssttttnnnn.TapWeight;
