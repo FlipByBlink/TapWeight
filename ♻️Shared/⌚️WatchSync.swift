@@ -38,8 +38,8 @@ struct 🄲ontext: Codable, Equatable {
     
 #if os(iOS)
     func sendToWatchApp() {
-        self.setICloudKVS()
         self.updateWCContext()
+        self.setICloudKVS()
     }
     private func setICloudKVS() {
         NSUbiquitousKeyValueStore.default.set(try! JSONEncoder().encode(self),

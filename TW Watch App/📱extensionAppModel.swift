@@ -14,7 +14,7 @@ extension 📱AppModel: WKApplicationDelegate {
 }
 
 extension 📱AppModel {
-    var ⓢtoredContext: 🄲ontext? { .iCloudKVS ?? .wcApplicationContext }
+    var ⓢtoredContext: 🄲ontext? { .wcApplicationContext ?? .iCloudKVS }
     func ⓐpplyStoredContext() {
         if let ⓢtoredContext {
             self.ⓐpplyContext(ⓢtoredContext)
