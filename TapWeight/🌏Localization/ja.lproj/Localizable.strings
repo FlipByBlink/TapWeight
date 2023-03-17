@@ -41,6 +41,7 @@
 "\"Number of days passed since last registration\" is displayed as a badge on this app icon." = "このアプリのアイコンに「直近の体重データからの日数」をバッジで表示します。";
 "Period of non-display" = "通知を非表示にする日数";
 "Period of display" = "表示期間";
+"Example:" = "例:";
 "Last sample's date" = "前回のデータ登録日時";
 "Time of display" = "通知が表示される期間";
 "Banner notification" = "バナー通知";

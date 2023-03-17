@@ -170,6 +170,7 @@ private struct 🛠LBMMenuLink: View {
                     Toggle(isOn: $📱.🚩ableLBM) {
                         Label("Lean Body Mass", systemImage: "person.badge.minus")
                     }
+                    .disabled(!📱.🚩ableBodyFat)
                     .onChange(of: 📱.🚩ableLBM) {
                         if $0 == true {
                             📱.ⓡequestAuth([.leanBodyMass])
@@ -245,8 +246,11 @@ private struct 🛠ReminderMenuLink: View {
             VStack {
                 Image("BadgeExample")
                     .cornerRadius(8)
-                Text(DateComponentsFormatter.localizedString(from: DateComponents(day: 7), unitsStyle: .full) ?? "+7")
-                    .font(.footnote)
+                HStack {
+                    Text("Example:")
+                    Text(DateComponentsFormatter.localizedString(from: DateComponents(day: 7), unitsStyle: .full) ?? "+7")
+                }
+                .font(.footnote)
             }
         }
     }
