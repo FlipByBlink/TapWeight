@@ -21,11 +21,13 @@ struct 🎚️BodyMassStepper: View {
                 Spacer(minLength: 0)
                 📉DifferenceView(.bodyMass)
             }
+            .accessibilityLabel("")
         } onIncrement: {
             📱.🎚️changeMassValue(.increment)
         } onDecrement: {
             📱.🎚️changeMassValue(.decrement)
         }
+        .accessibilityLabel("Body Mass")
         .lineLimit(1)
         .padding(.horizontal, 8)
         .padding(.vertical, self.ⓐbleDatePicker ? 2 : 8)
@@ -55,11 +57,13 @@ struct 🎚️BodyFatStepper: View {
                         Spacer(minLength: 0)
                         📉DifferenceView(.bodyFatPercentage)
                     }
+                    .accessibilityLabel("")
                 } onIncrement: {
                     📱.🎚️changeBodyFatValue(.increment)
                 } onDecrement: {
                     📱.🎚️changeBodyFatValue(.decrement)
                 }
+                .accessibilityLabel("Body Fat Percentage")
                 .lineLimit(1)
                 .padding(.horizontal, 8)
                 .padding(.vertical, self.ⓐbleDatePicker ? 2 : 8)
