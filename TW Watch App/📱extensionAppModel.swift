@@ -3,7 +3,7 @@ import WatchConnectivity
 
 extension 📱AppModel {
     func ⓢetup() {
-        self.ⓞbserveHealthKitChanges() //Observe bodymass-unit and height-unit only
+        self.ⓞbserveHealthKitChanges() //Observe bodyMass-unit and height-unit only.
         if WCSession.isSupported() {
             WCSession.default.delegate = self
             WCSession.default.activate()

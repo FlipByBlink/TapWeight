@@ -66,7 +66,7 @@ private struct 🛠BMIMenuLink: View {
                 }
                 self.ⓕomulaSection()
                 self.ⓗeightSection()
-                self.ⓦeightSection()
+                self.ⓑodyMassSection()
             }
             .navigationTitle("Body Mass Index")
         } label: {
@@ -82,7 +82,7 @@ private struct 🛠BMIMenuLink: View {
                             .frame(maxWidth: 60)
                         VStack(spacing: 12) {
                             HStack(spacing: 2) {
-                                Text("Weight")
+                                Text("Body Mass")
                                 Text("(kg)").font(.subheadline)
                             }
                             HStack(spacing: 2) {
@@ -123,7 +123,7 @@ private struct 🛠BMIMenuLink: View {
             Text("Height")
         }
     }
-    private func ⓦeightSection() -> some View {
+    private func ⓑodyMassSection() -> some View {
         Group {
             if 📱.ⓜassUnit != .gramUnit(with: .kilo) {
                 if let ⓜassSample = 📱.📦latestSamples[.bodyMass] {
@@ -136,7 +136,7 @@ private struct 🛠BMIMenuLink: View {
                         }
                         .badge(Text(ⓜassSample.startDate, style: .date))
                     } header: {
-                        Text("Weight")
+                        Text("Body Mass")
                     }
                 }
             }

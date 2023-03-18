@@ -45,7 +45,7 @@ class 📱AppModel: NSObject, ObservableObject {
         return self.📝massInputQuantity?.doubleValue(for: ⓜassUnit)
     }
     var ⓜassInputDescription: String {
-        if let ⓜassUnit, let ⓜassInputValue {
+        if let ⓜassInputValue {
             if ⓜassUnit == .gramUnit(with: .kilo), self.🚩amount50g {
                 return String(format: "%.2f", ⓜassInputValue)
             } else {
@@ -55,17 +55,14 @@ class 📱AppModel: NSObject, ObservableObject {
             return self.🚩amount50g ? "00.00" : "00.0"
         }
     }
-    var ⓜassInputIsValid: Bool {
-        self.📝massInputQuantity != nil
-    }
     
     var ⓑmiInputValue: Double? {
         guard let 📝massInputQuantity else { return nil }
         let ⓚiloMassValue = 📝massInputQuantity.doubleValue(for: .gramUnit(with: .kilo))
         guard let ⓗeightSample = self.📦latestSamples[.height] else { return nil }
         let ⓗeightValue = ⓗeightSample.quantity.doubleValue(for: .meter())
-        let ⓥalue = ⓚiloMassValue / pow(ⓗeightValue, 2)
-        return Double(Int(round(ⓥalue * 10))) / 10
+        let ⓢum = ⓚiloMassValue / pow(ⓗeightValue, 2)
+        return Double(Int(round(ⓢum * 10))) / 10
     }
     var ⓗeightUnit: HKUnit? { self.📦preferredUnits[.height] }
     private var ⓗeightValue: Double? {
@@ -84,15 +81,11 @@ class 📱AppModel: NSObject, ObservableObject {
             return "00.0"
         }
     }
-    var ⓑodyFatInputIsValid: Bool {
-        self.📝bodyFatInputQuantity != nil
-    }
     
     private var ⓛbmInputQuantity: HKQuantity? {
         guard let ⓜassInputValue, let ⓜassUnit, let ⓑodyFatInputValue else { return nil }
-        let ⓕigure = ⓜassInputValue - (ⓜassInputValue * ⓑodyFatInputValue)
-        return HKQuantity(unit: ⓜassUnit,
-                          doubleValue: round(ⓕigure * 10) / 10)
+        let ⓢum = ⓜassInputValue - (ⓜassInputValue * ⓑodyFatInputValue)
+        return HKQuantity(unit: ⓜassUnit, doubleValue: round(ⓢum * 10) / 10)
     }
     private var ⓛbmInputValue: Double? {
         guard let ⓛbmInputQuantity, let ⓜassUnit else { return nil }
@@ -180,7 +173,7 @@ class 📱AppModel: NSObject, ObservableObject {
     //MARK: - Method
     func 🎚️changeMassValue(_ ⓟattern: 🅂tepperAction) {
         if let ⓜassUnit, var ⓜassInputValue {
-            if ⓜassUnit == HKUnit.gramUnit(with: .kilo), self.🚩amount50g {
+            if ⓜassUnit == .gramUnit(with: .kilo), self.🚩amount50g {
                 switch ⓟattern {
                     case .increment: ⓜassInputValue += 0.05
                     case .decrement: ⓜassInputValue -= 0.05

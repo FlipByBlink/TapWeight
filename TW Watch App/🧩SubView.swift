@@ -49,8 +49,8 @@ struct 🔐AuthManager: ViewModifier {
 
 struct 🎚️BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
-    private var ⓘnputIsValid: Bool { 📱.ⓜassInputIsValid }
-    private var ⓤnitDescription: String { 📱.ⓜassUnit?.description ?? "kg" }
+    private var ⓘnputIsInvalid: Bool { 📱.📝massInputQuantity == nil }
+    private var ⓤnitDescription: String { 📱.ⓜassUnitDescription ?? "kg" }
     var body: some View {
         HStack {
             Button {
@@ -66,6 +66,8 @@ struct 🎚️BodyMassStepper: View {
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 Text(📱.ⓜassInputDescription)
                     .font(.system(.title2, design: .rounded, weight: .heavy))
+                    .opacity(self.ⓘnputIsInvalid ? 0.5 : 1)
+                    .animation(.default.speed(2), value: self.ⓘnputIsInvalid)
                 Text(self.ⓤnitDescription)
                     .font(.system(.title3, design: .rounded, weight: .heavy))
                     .dynamicTypeSize(..<DynamicTypeSize.medium)
@@ -84,15 +86,12 @@ struct 🎚️BodyMassStepper: View {
         .monospacedDigit()
         .minimumScaleFactor(0.5)
         .lineLimit(1)
-        .opacity(self.ⓘnputIsValid ? 1 : 0.2)
-        .disabled(!self.ⓘnputIsValid)
-        .animation(.default, value: self.ⓘnputIsValid)
     }
 }
 
 struct 🎚️BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
-    private var ⓘnputIsValid: Bool { 📱.ⓑodyFatInputIsValid }
+    private var ⓘnputIsInvalid: Bool { 📱.📝bodyFatInputQuantity == nil }
     var body: some View {
         HStack {
             Button {
@@ -108,6 +107,8 @@ struct 🎚️BodyFatStepper: View {
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 Text(📱.ⓑodyFatInputDescription)
                     .font(.system(.title2, design: .rounded, weight: .heavy))
+                    .opacity(self.ⓘnputIsInvalid ? 0.5 : 1)
+                    .animation(.default.speed(2), value: self.ⓘnputIsInvalid)
                 Text("%")
                     .font(.system(.title3, design: .rounded, weight: .heavy))
             }
@@ -125,9 +126,6 @@ struct 🎚️BodyFatStepper: View {
         .monospacedDigit()
         .minimumScaleFactor(0.5)
         .lineLimit(1)
-        .opacity(self.ⓘnputIsValid ? 1 : 0.2)
-        .disabled(!self.ⓘnputIsValid)
-        .animation(.default, value: self.ⓘnputIsValid)
     }
 }
 

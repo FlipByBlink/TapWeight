@@ -3,7 +3,7 @@ import SwiftUI
 struct 🎚️BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓐbleDatePicker: Bool { 📱.🚩ableDatePicker }
-    private var ⓘnputIsValid: Bool { 📱.ⓜassInputIsValid }
+    private var ⓘnputIsInvalid: Bool { 📱.📝massInputQuantity == nil }
     var body: some View {
         Stepper {
             HStack {
@@ -12,12 +12,12 @@ struct 🎚️BodyMassStepper: View {
                         .font(self.ⓐbleDatePicker ? .title : .system(size: 46))
                         .fontWeight(.black)
                         .monospacedDigit()
+                        .opacity(self.ⓘnputIsInvalid ? 0.5 : 1)
+                        .animation(.default.speed(2), value: self.ⓘnputIsInvalid)
                     Text(📱.ⓜassUnitDescription ?? "kg")
                         .font(.title.weight(.black))
                         .frame(maxHeight: 36)
                 }
-                .opacity(self.ⓘnputIsValid ? 1 : 0)
-                .animation(.default, value: self.ⓘnputIsValid)
                 Spacer(minLength: 0)
                 📉DifferenceView(.bodyMass)
             }
@@ -37,7 +37,7 @@ struct 🎚️BodyMassStepper: View {
 struct 🎚️BodyFatStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓐbleDatePicker: Bool { 📱.🚩ableDatePicker }
-    private var ⓘnputIsValid: Bool { 📱.ⓑodyFatInputIsValid }
+    private var ⓘnputIsInvalid: Bool { 📱.📝bodyFatInputQuantity == nil }
     var body: some View {
         if 📱.🚩ableBodyFat {
             Section {
@@ -48,12 +48,12 @@ struct 🎚️BodyFatStepper: View {
                                 .font(self.ⓐbleDatePicker ? .title : .system(size: 46))
                                 .fontWeight(.black)
                                 .monospacedDigit()
+                                .opacity(self.ⓘnputIsInvalid ? 0.5 : 1)
+                                .animation(.default.speed(2), value: self.ⓘnputIsInvalid)
                             Text("%")
                                 .font(.title.weight(.black))
                                 .frame(maxHeight: 36)
                         }
-                        .opacity(self.ⓘnputIsValid ? 1 : 0)
-                        .animation(.default, value: self.ⓘnputIsValid)
                         Spacer(minLength: 0)
                         📉DifferenceView(.bodyFatPercentage)
                     }
