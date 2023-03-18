@@ -18,7 +18,7 @@ struct 🎚️BodyMassStepper: View {
                         .font(.title.weight(.black))
                         .frame(maxHeight: 36)
                 }
-                Spacer(minLength: 0)
+                Spacer(minLength: 4)
                 📉DifferenceView(.bodyMass)
             }
             .accessibilityLabel("")

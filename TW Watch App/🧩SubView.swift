@@ -132,18 +132,20 @@ struct 🎚️BodyFatStepper: View {
 struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputValue: Double? { 📱.ⓑmiInputValue }
-    private var ⓗeightQuantityDescription: String? { 📱.ⓗeightQuantityDescription }
+    private var ⓠuantityDescription: String? { 📱.ⓗeightQuantityDescription }
     var body: some View {
         VStack(alignment: .leading) {
             Text("Body Mass Index")
                 .font(.caption2.weight(.semibold))
-            if let ⓘnputValue, let ⓗeightQuantityDescription {
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+            if let ⓘnputValue, let ⓠuantityDescription {
                 HStack {
                     Text(ⓘnputValue.description)
                         .font(.subheadline.bold())
                         .monospacedDigit()
                     Spacer()
-                    Text("(\(ⓗeightQuantityDescription))")
+                    Text("(\(ⓠuantityDescription))")
                         .font(.caption2.bold())
                         .foregroundStyle(.tertiary)
                 }
@@ -168,10 +170,10 @@ struct 🪧LBMView: View {
             Text("Lean Body Mass")
                 .font(.caption2.weight(.semibold))
             Text(ⓘnputDescription ?? "Error")
-                .font(.subheadline.bold())
-                .monospacedDigit()
-                .minimumScaleFactor(0.5)
+                .font(.subheadline.bold().monospacedDigit())
         }
+        .lineLimit(1)
+        .minimumScaleFactor(0.5)
         .foregroundStyle(.secondary)
         .animation(.default, value: self.ⓘnputDescription == nil)
     }
