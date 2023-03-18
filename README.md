@@ -1,5 +1,5 @@
-iPhone App TapWeight for "Health"
-===================================
+TapWeight: iPhone/Apple Watch app for "Health"
+==============================================
 
 <img src="TapWeight/Assets.xcassets/RoundedIcon.imageset/icon.png" width="64">
 
@@ -9,16 +9,16 @@ iPhone App TapWeight for "Health"
 
 Description
 ------------
-This application is designed to register weight data to the Apple \"Health\" application pre-installed on iPhone in the fastest possible way (as manual).
+This application is designed to register weight data to the Apple "Health" application pre-installed on iPhone in the fastest possible way (as manual).
 
 
 Target / Use-case
 
-- No \"smart\" scale.
+- No "smart" scale.
 
 - Frequently measure my weight (and body fat percentage) using a scale almost every day.
 
-- Intend to register the data into \"Health\" app every time, after measuring by a scale.
+- Intend to register the data into "Health" app every time, after measuring by a scale.
 
 
 Option
@@ -44,16 +44,16 @@ Option
 
 Others
 
-- Launch \"Health\" app by one tap.
+- Launch "Health" app by one tap.
 
 - Cancel feature just after registration.
 
 
 Concept
 
-People frequently measure their weight and body fat percentage daily using a scale. Many iPhone users register their weight and body fat percentage data on \"Health\" app. The best solution is to use a smart scale that works with \"Health\" app and automatically stores measurements, but they are expensive and inaccessible. Manual data registration is possible in \"Health\" app, but \"Health\" app is not designed for daily manual data registration. Therefore, manually entering data that occur continuously daily, such as weight measurements, is a very time-consuming and stressful experience. This app was developed to solve such problems.
+People frequently measure their weight and body fat percentage daily using a scale. Many iPhone users register their weight and body fat percentage data on "Health" app. The best solution is to use a smart scale that works with "Health" app and automatically stores measurements, but they are expensive and inaccessible. Manual data registration is possible in "Health" app, but "Health" app is not designed for daily manual data registration. Therefore, manually entering data that occur continuously daily, such as weight measurements, is a very time-consuming and stressful experience. This app was developed to solve such problems.
 
-This app cannot read, view, or manage past data in \"Health\" app. This app is intended only to register data to the \"Health\" app. Please check the registered data on the \"Health\" app.
+This app cannot read, view, or manage past data in "Health" app. This app is intended only to register data to the "Health" app. Please check the registered data on the "Health" app.
 
 
 Source code link
