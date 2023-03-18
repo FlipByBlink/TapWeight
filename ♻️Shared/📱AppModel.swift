@@ -69,8 +69,10 @@ class 📱AppModel: NSObject, ObservableObject {
         guard let ⓗeightUnit else { return nil }
         return self.📦latestSamples[.height]?.quantity.doubleValue(for: ⓗeightUnit)
     }
-    var ⓗeightQuantityDescription: String? {
-        self.📦latestSamples[.height]?.quantity.description
+    var ⓗeightDescription: String? {
+        guard let ⓗeightValue, let ⓗeightUnit else { return nil }
+        return ⓗeightValue.formatted() + ⓗeightUnit.description
+        //self.📦latestSamples[.height]?.quantity.description ← buggy on watchApp.
     }
     
     private var ⓑodyFatInputValue: Double? { self.📝bodyFatInputQuantity?.doubleValue(for: .percent()) }

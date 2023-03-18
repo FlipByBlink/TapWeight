@@ -3,11 +3,11 @@ import SwiftUI
 struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓘnputValue: Double? { 📱.ⓑmiInputValue }
-    private var ⓗeightQuantityDescription: String? { 📱.ⓗeightQuantityDescription }
+    private var ⓗeightDescription: String? { 📱.ⓗeightDescription }
     private var ⓐbleDatePicker: Bool { 📱.🚩ableDatePicker }
     var body: some View {
         if 📱.🚩ableBMI {
-            if let ⓘnputValue, let ⓗeightQuantityDescription {
+            if let ⓘnputValue, let ⓗeightDescription {
                 HStack {
                     VStack(alignment: .leading, spacing: -2) {
                         Text("Body Mass Index")
@@ -17,7 +17,7 @@ struct 🪧BMIView: View {
                             Text(ⓘnputValue.description)
                                 .fontWeight(.heavy)
                                 .font(self.ⓐbleDatePicker ? .body : .title)
-                            Text(" (\(ⓗeightQuantityDescription))")
+                            Text(" (\(ⓗeightDescription))")
                                 .font(.footnote.weight(.heavy))
                                 .foregroundStyle(.tertiary)
                         }
