@@ -100,7 +100,7 @@ enum 🏥Category: Codable {
             case .bodyMass: return .gramUnit(with: .kilo)
             case .bodyMassIndex: return .count()
             case .height: return .meter()
-            case .bodyFatPercentage: return .count()
+            case .bodyFatPercentage: return .percent()
             case .leanBodyMass: return .gramUnit(with: .kilo)
         }
     }
@@ -111,9 +111,7 @@ enum 🏥Category: Codable {
             case .height: self = .height
             case .bodyFatPercentage: self = .bodyFatPercentage
             case .leanBodyMass: self = .leanBodyMass
-            default:
-                assertionFailure()
-                return nil
+            default: assertionFailure(); return nil
         }
     }
     init?(_ ⓣype: HKQuantityType) {
@@ -123,9 +121,7 @@ enum 🏥Category: Codable {
             case HKQuantityType(.height): self = .height
             case HKQuantityType(.bodyFatPercentage): self = .bodyFatPercentage
             case HKQuantityType(.leanBodyMass): self = .leanBodyMass
-            default:
-                assertionFailure()
-                return nil
+            default: assertionFailure(); return nil
         }
     }
 }

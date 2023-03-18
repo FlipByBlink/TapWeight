@@ -88,9 +88,7 @@ extension 📱AppModel {
             case .some(.gramUnit(with: .kilo)): return HKQuantity(unit: .gramUnit(with: .kilo), doubleValue: 60.0)
             case .some(.pound()): return HKQuantity(unit: .pound(), doubleValue: 130.0)
             case .some(.stone()): return HKQuantity(unit: .stone(), doubleValue: 10.0)
-            default:
-                assertionFailure()
-                return nil
+            default: assertionFailure(); return nil
         }
     }
 }
