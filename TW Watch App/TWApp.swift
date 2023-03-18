@@ -7,7 +7,7 @@ struct TW_Watch_App: App {
         WindowGroup {
             ContentView()
                 .onAppear { 📱.ⓢetup() }
-                .modifier(🄰uthManager())
+                .modifier(🔐AuthManager())
                 .environment(\.layoutDirection, .leftToRight)
                 .environmentObject(📱)
         }

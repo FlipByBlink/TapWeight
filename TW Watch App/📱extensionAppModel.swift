@@ -70,27 +70,16 @@ extension 📱AppModel {
 
 extension 📱AppModel {
     func ⓡequestAuths() {
-        var ⓡequestCategories: Set<🏥Category> = []
-        if self.🏥healthStore.authorizationStatus(for: .bodyMass) == .notDetermined {
-            ⓡequestCategories.insert(.bodyMass)
-        }
+        var ⓢhareSuggestions: Set<🏥Category> = [.bodyMass]
+        var ⓡeadSuggestions: Set<🏥Category> = [.bodyMass]
         if self.🚩ableBMI {
-            if self.🏥healthStore.authorizationStatus(for: .bodyMassIndex) == .notDetermined {
-                ⓡequestCategories.insert(.bodyMassIndex)
-            }
+            ⓢhareSuggestions.insert(.bodyMassIndex)
+            ⓡeadSuggestions.insert(.height)
         }
-        if self.🚩ableBodyFat {
-            if self.🏥healthStore.authorizationStatus(for: .bodyFatPercentage) == .notDetermined {
-                ⓡequestCategories.insert(.bodyFatPercentage)
-            }
-        }
-        if self.🚩ableLBM {
-            if self.🏥healthStore.authorizationStatus(for: .leanBodyMass) == .notDetermined {
-                ⓡequestCategories.insert(.leanBodyMass)
-            }
-        }
-        if !ⓡequestCategories.isEmpty {
-            self.ⓡequestAuth(ⓡequestCategories)
+        if self.🚩ableBodyFat { ⓢhareSuggestions.insert(.bodyFatPercentage) }
+        if self.🚩ableLBM { ⓢhareSuggestions.insert(.leanBodyMass) }
+        if !ⓢhareSuggestions.isEmpty || !ⓡeadSuggestions.isEmpty {
+            self.ⓢuggestAuthRequest(toShare: ⓢhareSuggestions, read: ⓡeadSuggestions)
         }
     }
 }

@@ -50,6 +50,8 @@
 		F54292E829B01E2700EFF085 /* 💟OpenHealthAppButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */; };
 		F54292E929B01E2700EFF085 /* 💬RequestUserReview.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */; };
 		F54292EA29B01E2700EFF085 /* 📣ADSheet.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535AA8829AD7EB800691926 /* 📣ADSheet.swift */; };
+		F5A8E1CD29C545B100DE7E42 /* 🔐AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A8E1CC29C545B100DE7E42 /* 🔐AuthManager.swift */; };
+		F5A8E1CE29C5464A00DE7E42 /* 🔐AuthManager.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5A8E1CC29C545B100DE7E42 /* 🔐AuthManager.swift */; };
 		F5AE313829BAB8A70027A952 /* 📱extensionAppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* 📱extensionAppModel.swift */; };
 		F5BBB54A29B5F48C00424A66 /* 🪧LBMView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */; };
 		F5BBB54B29B5F48C00424A66 /* 🔔Notification.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D8401529B45CF40046E91B /* 🔔Notification.swift */; };
@@ -116,6 +118,7 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				F5A8E1CE29C5464A00DE7E42 /* 🔐AuthManager.swift in CopyFiles */,
 				F5DA2D1F29BAF076005DD72B /* ⌚️WatchSync.swift in CopyFiles */,
 				F5DA2D2029BAF076005DD72B /* 📱extensionAppModel.swift in CopyFiles */,
 				F5D19D4829B83D180069A81E /* 💥Feedback.swift in CopyFiles */,
@@ -249,6 +252,7 @@
 		F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📅DatePicker.swift"; sourceTree = "<group>"; };
 		F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📉DifferenceView.swift"; sourceTree = "<group>"; };
 		F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💟OpenHealthAppButton.swift"; sourceTree = "<group>"; };
+		F5A8E1CC29C545B100DE7E42 /* 🔐AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🔐AuthManager.swift"; sourceTree = "<group>"; };
 		F5AC7BE92941982A00490FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5BBB55229B60F5700424A66 /* TapWeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapWeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5BBB55429B60F5700424A66 /* TWApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWApp.swift; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 				12579D152835FE8900536547 /* 🗯ResultView.swift */,
 				F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */,
 				12630BC22849CD33005F922F /* 🛠AppMenu.swift */,
+				F5A8E1CC29C545B100DE7E42 /* 🔐AuthManager.swift */,
 				F5D8401529B45CF40046E91B /* 🔔Notification.swift */,
 				F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */,
 				F535AA8829AD7EB800691926 /* 📣ADSheet.swift */,
@@ -635,6 +640,7 @@
 				F5BBB56929B6113A00424A66 /* 💥Feedback.swift in Sources */,
 				F54292E329B01D8300EFF085 /* 💟OpenHealthAppButton.swift in Sources */,
 				F535AA8929AD7EB800691926 /* 💬RequestUserReview.swift in Sources */,
+				F5A8E1CD29C545B100DE7E42 /* 🔐AuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

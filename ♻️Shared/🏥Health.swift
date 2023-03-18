@@ -8,12 +8,6 @@ struct 🏥HealthStore {
         self.api.authorizationStatus(for: ⓒategory.quantityType)
     }
     
-    func statusForAuthorizationRequest(toShare ⓣypesToShare: Set<🏥Category>,
-                                       read ⓣypesToRead: Set<🏥Category>) async throws -> HKAuthorizationRequestStatus {
-        try await self.api.statusForAuthorizationRequest(toShare: Set(ⓣypesToShare.map { $0.quantityType }),
-                                                         read: Set(ⓣypesToRead.map { $0.quantityType }))
-    }
-    
     func requestAuthorization(toShare ⓣypesToShare: Set<🏥Category>,
                               read ⓣypesToRead: Set<🏥Category>) async throws {
         try await self.api.requestAuthorization(toShare: Set(ⓣypesToShare.map { $0.quantityType }),
@@ -61,6 +55,12 @@ struct 🏥HealthStore {
         }
         self.api.execute(ⓠuery)
     }
+    
+    //func statusForAuthorizationRequest(toShare ⓣypesToShare: Set<🏥Category>,
+    //                                   read ⓣypesToRead: Set<🏥Category>) async throws -> HKAuthorizationRequestStatus {
+    //    try await self.api.statusForAuthorizationRequest(toShare: Set(ⓣypesToShare.map { $0.quantityType }),
+    //                                                     read: Set(ⓣypesToRead.map { $0.quantityType }))
+    //}
 }
 
 enum 🏥Category: Codable {

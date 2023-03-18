@@ -7,6 +7,7 @@ struct TapWeightApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modifier(🔐AuthManager())
                 .modifier(📣ADSheet())
                 .environmentObject(🛒)
         }

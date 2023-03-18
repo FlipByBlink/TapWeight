@@ -301,24 +301,19 @@ class 📱AppModel: NSObject, ObservableObject {
             }
         }
     }
-    func ⓡequestAuth(_ ⓢhareCategories: Set<🏥Category>) {
-        Task { @MainActor in
-            do {
-                var ⓡeadCategories: Set<🏥Category> = []
-#if os(iOS)
-                ⓡeadCategories = ⓢhareCategories
-#endif
-                if ⓢhareCategories.contains(.bodyMassIndex) { ⓡeadCategories.insert(.height) }
-                let ⓢtatus = try await self.🏥healthStore.statusForAuthorizationRequest(toShare: ⓢhareCategories,
-                                                                                        read: ⓡeadCategories)
-                if ⓢtatus == .shouldRequest {
+    func ⓢuggestAuthRequest(toShare ⓢhareSuggestions: Set<🏥Category>, read ⓡeadSuggestions: Set<🏥Category>) {
+        let ⓢhareCategories = ⓢhareSuggestions.filter { self.🏥healthStore.authorizationStatus(for: $0) == .notDetermined }
+        let ⓡeadCategories = ⓡeadSuggestions.filter { self.🏥healthStore.authorizationStatus(for: $0) == .notDetermined }
+        if !ⓢhareCategories.isEmpty || !ⓡeadCategories.isEmpty {
+            Task { @MainActor in
+                do {
                     try await self.🏥healthStore.requestAuthorization(toShare: ⓢhareCategories,
                                                                       read: ⓡeadCategories)
                     await self.ⓛoadPreferredUnits()
                     await self.ⓛoadLatestSamples()
+                } catch {
+                    print("🚨", error.localizedDescription)
                 }
-            } catch {
-                print("🚨", error.localizedDescription)
             }
         }
     }

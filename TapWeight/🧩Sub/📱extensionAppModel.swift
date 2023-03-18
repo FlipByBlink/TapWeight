@@ -6,7 +6,6 @@ extension 📱AppModel: UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         🔔Notification.api.delegate = self
-        self.ⓡequestAuth([.bodyMass])
         self.ⓞbserveHealthKitChanges()
         if WCSession.isSupported() {
             WCSession.default.delegate = self

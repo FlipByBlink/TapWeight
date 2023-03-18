@@ -23,7 +23,6 @@ private struct 🛠AppMenu: View {
                     Label("Body Fat Percentage", systemImage: "percent")
                 }
                 .onChange(of: 📱.🚩ableBodyFat) {
-                    if $0 == true { 📱.ⓡequestAuth([.bodyFatPercentage]) }
                     if $0 == false { 📱.🚩ableLBM = false }
                 }
                 🛠LBMMenuLink()
@@ -61,9 +60,6 @@ private struct 🛠BMIMenuLink: View {
                 Section {
                     Toggle(isOn: $📱.🚩ableBMI) {
                         Label("Body Mass Index", systemImage: "function")
-                    }
-                    .onChange(of: 📱.🚩ableBMI) {
-                        if $0 == true { 📱.ⓡequestAuth([.bodyMassIndex]) }
                     }
                 } header: {
                     Text("Option")
@@ -172,10 +168,7 @@ private struct 🛠LBMMenuLink: View {
                     }
                     .disabled(!📱.🚩ableBodyFat)
                     .onChange(of: 📱.🚩ableLBM) {
-                        if $0 == true {
-                            📱.ⓡequestAuth([.leanBodyMass])
-                            📱.🚩ableBodyFat = true
-                        }
+                        if $0 == true { 📱.🚩ableBodyFat = true }
                     }
                 } header: {
                     Text("Option")
