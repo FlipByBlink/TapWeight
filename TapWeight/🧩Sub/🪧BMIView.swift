@@ -10,17 +10,18 @@ struct 🪧BMIView: View {
             if let ⓘnputValue, let ⓗeightQuantityDescription {
                 HStack {
                     VStack(alignment: .leading, spacing: -2) {
-                        Group {
-                            Text("Body Mass Index")
-                            +
+                        Text("Body Mass Index")
+                            .font(.footnote.bold())
+                            .frame(maxHeight: 32)
+                        HStack(alignment: .lastTextBaseline, spacing: 4) {
+                            Text(ⓘnputValue.description)
+                                .fontWeight(.heavy)
+                                .font(self.ⓐbleDatePicker ? .body : .title)
                             Text(" (\(ⓗeightQuantityDescription))")
+                                .font(.footnote.weight(.heavy))
+                                .foregroundStyle(.tertiary)
                         }
-                        .font(.footnote.bold())
-                        .frame(maxHeight: 32)
-                        Text(ⓘnputValue.description)
-                            .font(self.ⓐbleDatePicker ? .body : .title)
-                            .fontWeight(.heavy)
-                            .frame(maxHeight: 42)
+                        .frame(maxHeight: 42)
                     }
                     .monospacedDigit()
                     Spacer()
@@ -30,7 +31,7 @@ struct 🪧BMIView: View {
                 .padding(.vertical, self.ⓐbleDatePicker ? 0 : 4)
                 .padding(.leading, 32)
                 .foregroundStyle(.secondary)
-                .task { 📱.ⓡequestAuth([.bodyMassIndex]) } //For previous version user.
+                .task { 📱.ⓡequestAuth([.bodyMassIndex]) } //For previous version user.//FIXME: ここ怪しい
             } else {
                 Text("__Body Mass Index:__ Height data is nothing on \"Health\" app. Register height data. Or check authentication.")
                     .font(.footnote)
