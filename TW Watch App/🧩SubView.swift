@@ -49,8 +49,11 @@ struct 🔐AuthManager: ViewModifier {
 
 struct 🎚️BodyMassStepper: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
     private var ⓘnputIsInvalid: Bool { 📱.📝massInputQuantity == nil }
-    private var ⓤnitDescription: String { 📱.ⓜassUnitDescription ?? "kg" }
+    private var ⓐccessibilityLayout: Bool {
+        📱.🚩amount50g || (self.dynamicTypeSize > .xLarge)
+    }
     var body: some View {
         HStack {
             Button {
@@ -63,14 +66,16 @@ struct 🎚️BodyMassStepper: View {
             }
             .buttonStyle(.plain)
             Spacer()
-            HStack(alignment: .firstTextBaseline, spacing: 2) {
-                Text(📱.ⓜassInputDescription)
-                    .font(.system(.title2, design: .rounded, weight: .heavy))
-                    .opacity(self.ⓘnputIsInvalid ? 0.5 : 1)
-                    .animation(.default.speed(2), value: self.ⓘnputIsInvalid)
-                Text(self.ⓤnitDescription)
-                    .font(.system(.title3, design: .rounded, weight: .heavy))
-                    .dynamicTypeSize(..<DynamicTypeSize.medium)
+            if self.ⓐccessibilityLayout {
+                VStack(spacing: 0) {
+                    self.ⓘnputValueLabel()
+                    self.ⓤnitLabel()
+                }
+            } else {
+                HStack(alignment: .firstTextBaseline, spacing: 2) {
+                    self.ⓘnputValueLabel()
+                    self.ⓤnitLabel()
+                }
             }
             Spacer()
             Button {
@@ -86,6 +91,17 @@ struct 🎚️BodyMassStepper: View {
         .monospacedDigit()
         .minimumScaleFactor(0.5)
         .lineLimit(1)
+    }
+    private func ⓘnputValueLabel() -> some View {
+        Text(📱.ⓜassInputDescription)
+            .font(.system(.title2, design: .rounded, weight: .heavy))
+            .opacity(self.ⓘnputIsInvalid ? 0.5 : 1)
+            .animation(.default.speed(2), value: self.ⓘnputIsInvalid)
+    }
+    private func ⓤnitLabel() -> some View {
+        Text(📱.ⓜassUnitDescription ?? "kg")
+            .font(.system(.title3, design: .rounded, weight: .heavy))
+            .dynamicTypeSize(..<DynamicTypeSize.xLarge)
     }
 }
 
