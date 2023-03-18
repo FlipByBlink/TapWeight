@@ -109,7 +109,7 @@ private struct 🛠BMIMenuLink: View {
                 HStack(alignment: .firstTextBaseline) {
                     Text(ⓗeightSample.quantity.description)
                     if 📱.ⓗeightUnit != .meter() {
-                        Text("(" + ⓗeightSample.quantity.doubleValue(for: .meter()).formatted() + "m)")
+                        Text("(" + String(format: "%.2f", ⓗeightSample.quantity.doubleValue(for: .meter())) + "m)")
                             .foregroundStyle(.secondary)
                             .font(.caption)
                     }

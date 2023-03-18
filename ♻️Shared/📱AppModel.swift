@@ -49,10 +49,10 @@ class 📱AppModel: NSObject, ObservableObject {
             if ⓜassUnit == .gramUnit(with: .kilo), self.🚩amount50g {
                 return String(format: "%.2f", ⓜassInputValue)
             } else {
-                return ⓜassInputValue.description
+                return ⓜassInputValue.formatted()
             }
         } else {
-            return self.🚩amount50g ? "00.00" : "00.0"
+            return self.🚩amount50g ? "00.00" : "00.0" //Placeholder
         }
     }
     
@@ -60,8 +60,8 @@ class 📱AppModel: NSObject, ObservableObject {
         guard let 📝massInputQuantity else { return nil }
         let ⓚiloMassValue = 📝massInputQuantity.doubleValue(for: .gramUnit(with: .kilo))
         guard let ⓗeightSample = self.📦latestSamples[.height] else { return nil }
-        let ⓗeightValue = ⓗeightSample.quantity.doubleValue(for: .meter())
-        let ⓢum = ⓚiloMassValue / pow(ⓗeightValue, 2)
+        let ⓗeightMeterValue = ⓗeightSample.quantity.doubleValue(for: .meter())
+        let ⓢum = ⓚiloMassValue / pow(ⓗeightMeterValue, 2)
         return Double(Int(round(ⓢum * 10))) / 10
     }
     var ⓗeightUnit: HKUnit? { self.📦preferredUnits[.height] }
