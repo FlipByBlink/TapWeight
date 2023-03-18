@@ -109,7 +109,7 @@ private struct 🛠BMIMenuLink: View {
                 HStack(alignment: .firstTextBaseline) {
                     Text(ⓗeightSample.quantity.description)
                     if 📱.ⓗeightUnit != .meter() {
-                        Text("(" + String(format: "%.2f", ⓗeightSample.quantity.doubleValue(for: .meter())) + "m)")
+                        Text("(\(String(format: "%.2f", ⓗeightSample.quantity.doubleValue(for: .meter())))m)")
                             .foregroundStyle(.secondary)
                             .font(.caption)
                     }
@@ -126,15 +126,15 @@ private struct 🛠BMIMenuLink: View {
     private func ⓑodyMassSection() -> some View {
         Group {
             if 📱.ⓜassUnit != .gramUnit(with: .kilo) {
-                if let ⓜassSample = 📱.📦latestSamples[.bodyMass] {
+                if let ⓢample = 📱.📦latestSamples[.bodyMass] {
                     Section {
                         HStack(alignment: .firstTextBaseline) {
-                            Text(ⓜassSample.quantity.description)
-                            Text("(" + ⓜassSample.quantity.doubleValue(for: .gramUnit(with: .kilo)).formatted() + "kg)")
+                            Text(ⓢample.quantity.description)
+                            Text("(\(String(format: "%.2f", ⓢample.quantity.doubleValue(for: .gramUnit(with: .kilo))))kg)")
                                 .foregroundStyle(.secondary)
                                 .font(.caption)
                         }
-                        .badge(Text(ⓜassSample.startDate, style: .date))
+                        .badge(Text(ⓢample.startDate, style: .date))
                     } header: {
                         Text("Body Mass")
                     }
