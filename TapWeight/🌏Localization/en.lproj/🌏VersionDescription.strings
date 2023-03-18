@@ -4,8 +4,8 @@ ADD reminder notification
 CHANGE date picker design
 CHANGE AD design
 REMOVE local history
-OTHER: App fetch bodymass unit from \"Health\"
-OTHER: Various bugfixes and improvements";
+OTHER App fetch bodymass unit from \"Health\"
+OTHER Various bugfixes and improvements";
 
 "1.3.2" = "small bug fix";
 
