@@ -1,8 +1,8 @@
 
 "Body Mass" = "体重";
-"Body Mass Index" = "BMI";
+"Body Mass Index" = "ボディマス指数(BMI)";
 "Body Fat Percentage" = "体脂肪率";
-"Lean Body Mass" = "除脂肪体重";
+"Lean Body Mass" = "除脂肪体重(LBM)";
 
 "Open \"Health\" app" = "「ヘルスケア」アプリを開く";
 "Registration for \"Health\" app" = "「ヘルスケア」アプリに登録しました。";
