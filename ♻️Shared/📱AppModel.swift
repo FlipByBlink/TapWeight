@@ -32,6 +32,14 @@ class 📱AppModel: NSObject, ObservableObject {
     
     //MARK: - Computed property
     var ⓜassUnit: HKUnit? { self.📦preferredUnits[.bodyMass] }
+    var ⓜassUnitDescription: String? {
+        switch self.ⓜassUnit {
+            case .some(.gramUnit(with: .kilo)): return "kg"
+            case .some(.pound()): return "lbs"
+            case .some(.stone()): return "st"
+            default: return nil
+        }
+    }
     private var ⓜassInputValue: Double? {
         guard let ⓜassUnit else { return nil }
         return self.📝massInputQuantity?.doubleValue(for: ⓜassUnit)
@@ -91,7 +99,7 @@ class 📱AppModel: NSObject, ObservableObject {
         return ⓛbmInputQuantity.doubleValue(for: ⓜassUnit)
     }
     var ⓛbmInputDescription: String {
-        String(format: "%.1f", ⓛbmInputValue ?? 0.0) + " " + (ⓜassUnit?.description ?? "kg")
+        String(format: "%.1f", ⓛbmInputValue ?? 0.0) + " " + (self.ⓜassUnitDescription ?? "kg")
     }
     
     var ⓓatePickerIsAlmostNow: Bool { self.📅datePickerValue.timeIntervalSinceNow > -300 }
@@ -154,7 +162,8 @@ class 📱AppModel: NSObject, ObservableObject {
     
     var ⓡesultSummaryDescription: String {
         let ⓜassSample = self.📨registeredSamples.first(where: { 🏥Category($0.quantityType) == .bodyMass })
-        var ⓥalue = ⓜassSample?.quantity.description ?? "🐛"
+        guard let ⓜassSample, let ⓜassUnit, let ⓜassUnitDescription else { return "🐛" }
+        var ⓥalue = ⓜassSample.quantity.doubleValue(for: ⓜassUnit).formatted() + ⓜassUnitDescription
         if let ⓑmiSample = self.📨registeredSamples.first(where: { 🏥Category($0.quantityType) == .bodyMassIndex }) {
             ⓥalue = [ⓥalue, (ⓑmiSample.quantity.doubleValue(for: .count()).formatted())].formatted(.list(type: .and))
         }
@@ -162,7 +171,8 @@ class 📱AppModel: NSObject, ObservableObject {
             ⓥalue += "\n" + ⓑodyFatSample.quantity.doubleValue(for: .percent()).formatted(.percent)
         }
         if let ⓛbmSample = self.📨registeredSamples.first(where: { 🏥Category($0.quantityType) == .leanBodyMass }) {
-            ⓥalue = [ⓥalue, ⓛbmSample.quantity.description].formatted(.list(type: .and))
+            let ⓛbmDescription = ⓛbmSample.quantity.doubleValue(for: ⓜassUnit).formatted() + ⓜassUnitDescription
+            ⓥalue = [ⓥalue, ⓛbmDescription].formatted(.list(type: .and))
         }
         return ⓥalue
     }
