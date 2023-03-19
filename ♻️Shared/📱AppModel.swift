@@ -49,7 +49,7 @@ class 📱AppModel: NSObject, ObservableObject {
             if ⓜassUnit == .gramUnit(with: .kilo), self.🚩amount50g {
                 return String(format: "%.2f", ⓜassInputValue)
             } else {
-                return ⓜassInputValue.formatted()
+                return ⓜassInputValue.description
             }
         } else {
             return self.🚩amount50g ? "00.00" : "00.0" //Placeholder
