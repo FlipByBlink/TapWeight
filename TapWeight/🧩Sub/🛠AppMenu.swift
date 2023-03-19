@@ -247,7 +247,7 @@ private struct 🛠ReminderMenuLink: View {
                     .cornerRadius(8)
                 HStack(spacing: 4) {
                     Text("Example:")
-                    Text(DateComponentsFormatter.localizedString(from: DateComponents(day: 7), unitsStyle: .full) ?? "+7")
+                    Text(RelativeDateTimeFormatter().localizedString(from: DateComponents(day: -7)))
                 }
                 .font(.footnote)
             }
