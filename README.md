@@ -1,4 +1,4 @@
-TapWeight: iPhone/Apple Watch app for "Health"
+TapWeight for "Health" - iPhone, Apple Watch
 ==============================================
 
 <img src="TapWeight/Assets.xcassets/RoundedIcon.imageset/icon.png" width="64">
@@ -6,6 +6,9 @@ TapWeight: iPhone/Apple Watch app for "Health"
 <a href="https://apps.apple.com/app/id1624159721" target="blank">
     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg">
 </a>
+
+<img src="TapWeight/Assets.xcassets/ConceptImage.imageset/ConceptImage.png" width="600">
+
 
 Description
 ------------
