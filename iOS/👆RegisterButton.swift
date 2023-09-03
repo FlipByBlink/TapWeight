@@ -2,7 +2,7 @@ import SwiftUI
 
 struct 👆RegisterButton: View { // ☑️
     @EnvironmentObject var 📱: 📱AppModel
-    private let ⓟosition: 🄿osition
+    private let ⓟosition: Self.Position
     var body: some View {
         Button {
             📱.👆register()
@@ -29,10 +29,10 @@ struct 👆RegisterButton: View { // ☑️
         .accessibilityLabel("Register")
         .fullScreenCover(isPresented: $📱.🚩showResult) { 🗯ResultView() }
     }
-    init(_ ⓟosition: 🄿osition) {
+    init(_ ⓟosition: Self.Position) {
         self.ⓟosition = ⓟosition
     }
-    enum 🄿osition {
+    enum Position {
         case bottom, toolbar
     }
 }

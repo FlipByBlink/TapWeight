@@ -49,6 +49,9 @@ struct 🗯ResultView: View {
         .modifier(🚨CancellationErrorAlert())
         .modifier(💬RequestUserReview())
     }
+}
+
+private extension 🗯ResultView {
     private func 🗯SummaryText() -> some View {
         Group {
             Text(📱.ⓡesultSummaryDescription)

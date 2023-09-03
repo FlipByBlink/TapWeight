@@ -4,7 +4,7 @@ import HealthKit
 struct 📉DifferenceView: View {
     @EnvironmentObject var 📱: 📱AppModel
     private var ⓒategory: 🏥Category
-    private var ⓓifference: 🄳ifference? { 📱.ⓓifference[self.ⓒategory] }
+    private var ⓓifference: 📉Difference? { 📱.ⓓifference[self.ⓒategory] }
     private var ⓕrameHeight: Double { 📱.🚩ableDatePicker ? 36 : 42 }
     var body: some View {
         ZStack {

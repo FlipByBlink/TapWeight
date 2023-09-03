@@ -1,6 +1,6 @@
 import UserNotifications
 
-struct 🔔Notification {
+enum 🔔Notification {
     static let api = UNUserNotificationCenter.current()
     
     static func ⓡemoveAllNotifications() {

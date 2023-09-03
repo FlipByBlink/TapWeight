@@ -13,10 +13,11 @@ struct 🄲ontext: Codable, Equatable {
         var doubleValue: Double
         var date: Date
         var asHKQuantitySample: HKQuantitySample {
-            HKQuantitySample(type: self.category.quantityType,
-                             quantity: HKQuantity(unit: self.category.defaultUnit,
-                                                  doubleValue: self.doubleValue),
-                             start: self.date, end: self.date)
+            .init(type: self.category.quantityType,
+                  quantity: HKQuantity(unit: self.category.defaultUnit,
+                                       doubleValue: self.doubleValue),
+                  start: self.date,
+                  end: self.date)
         }
     }
     

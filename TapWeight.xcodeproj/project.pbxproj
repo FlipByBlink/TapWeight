@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1232578B284C5EA2002E0057 /* 🎚️Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 🎚️Stepper.swift */; };
+		1232578B284C5EA2002E0057 /* 🎚️BodyMassStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 🎚️BodyMassStepper.swift */; };
 		124C485F284863BA0085B066 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
 		12579D162835FE8900536547 /* 🗯ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🗯ResultView.swift */; };
 		12630BC32849CD33005F922F /* 🛠AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12630BC22849CD33005F922F /* 🛠AppMenu.swift */; };
@@ -21,6 +21,22 @@
 		1299C3A4288D674B0086522B /* 🌏VersionDescription.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1299C3A6288D674B0086522B /* 🌏VersionDescription.strings */; };
 		1299C3B9288D77270086522B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1299C3B8288D77270086522B /* Launch Screen.storyboard */; };
 		12BA83CE28606047009E7E3F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12BA83CD28606047009E7E3F /* StoreKit.framework */; };
+		F50961F22AA4B1A8005B5CAB /* 🚨ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50961F12AA4B1A8005B5CAB /* 🚨ErrorMessage.swift */; };
+		F50961F42AA4B1CE005B5CAB /* 🔐AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50961F32AA4B1CE005B5CAB /* 🔐AuthManager.swift */; };
+		F50961F62AA4B206005B5CAB /* 🗯ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50961F52AA4B206005B5CAB /* 🗯ResultView.swift */; };
+		F50961F92AA4B26E005B5CAB /* 🏥CheckEarliestPermittedSampleDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50961F82AA4B26E005B5CAB /* 🏥CheckEarliestPermittedSampleDateView.swift */; };
+		F50961FB2AA4B290005B5CAB /* 🚨ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50961FA2AA4B290005B5CAB /* 🚨ErrorAlert.swift */; };
+		F50961FD2AA4B340005B5CAB /* 🚨Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50961FC2AA4B340005B5CAB /* 🚨Error.swift */; };
+		F50961FE2AA4B340005B5CAB /* 🚨Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50961FC2AA4B340005B5CAB /* 🚨Error.swift */; };
+		F50962002AA4B3F9005B5CAB /* 📉Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50961FF2AA4B3F8005B5CAB /* 📉Difference.swift */; };
+		F50962012AA4B3F9005B5CAB /* 📉Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50961FF2AA4B3F8005B5CAB /* 📉Difference.swift */; };
+		F50962032AA4B44A005B5CAB /* 🎚️StepperAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962022AA4B44A005B5CAB /* 🎚️StepperAction.swift */; };
+		F50962042AA4B44A005B5CAB /* 🎚️StepperAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962022AA4B44A005B5CAB /* 🎚️StepperAction.swift */; };
+		F50962062AA4B5BA005B5CAB /* 🎚️BodyMassStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962052AA4B5BA005B5CAB /* 🎚️BodyMassStepper.swift */; };
+		F50962082AA4B5DE005B5CAB /* 🎚️BodyFatStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962072AA4B5DE005B5CAB /* 🎚️BodyFatStepper.swift */; };
+		F509620A2AA4B5F7005B5CAB /* 🪧BMIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962092AA4B5F7005B5CAB /* 🪧BMIView.swift */; };
+		F509620C2AA4B60E005B5CAB /* 🪧LBMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509620B2AA4B60E005B5CAB /* 🪧LBMView.swift */; };
+		F509620E2AA4B67A005B5CAB /* 🎚️BodyFatStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509620D2AA4B67A005B5CAB /* 🎚️BodyFatStepper.swift */; };
 		F535719329B1AFB80003FD2C /* 🚨ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
 		F535719429B1B9FF0003FD2C /* 🏥Health.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */; };
 		F535719529B1B9FF0003FD2C /* 🚨ErrorAlert.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
@@ -29,7 +45,7 @@
 		F535AA7C29AD7BBE00691926 /* 📱AppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
 		F535AA7D29AD7BBE00691926 /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAC282DFEDF009BD28B /* ContentView.swift */; };
 		F535AA7F29AD7BBE00691926 /* 🗯ResultView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12579D152835FE8900536547 /* 🗯ResultView.swift */; };
-		F535AA8029AD7BBE00691926 /* 🎚️Stepper.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 🎚️Stepper.swift */; };
+		F535AA8029AD7BBE00691926 /* 🎚️BodyMassStepper.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1232578A284C5EA2002E0057 /* 🎚️BodyMassStepper.swift */; };
 		F535AA8129AD7BBE00691926 /* 🛠AppMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12630BC22849CD33005F922F /* 🛠AppMenu.swift */; };
 		F535AA8329AD7BBE00691926 /* 🧰MetaData.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535AA7829AD7ABB00691926 /* 🧰MetaData.swift */; };
 		F535AA8429AD7BBE00691926 /* ℹ️AboutApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E2EAA729415F3C0054A208 /* ℹ️AboutApp.swift */; };
@@ -63,7 +79,7 @@
 		F5BBB56A29B6113A00424A66 /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56829B6113A00424A66 /* 💥Feedback.swift */; };
 		F5BBB56B29B6121C00424A66 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
 		F5BBB56E29B6B14C00424A66 /* 📱AppModel(extension).swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* 📱AppModel(extension).swift */; };
-		F5BBB57129B6F60100424A66 /* 🧩SubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56F29B6F60100424A66 /* 🧩SubView.swift */; };
+		F5BBB57129B6F60100424A66 /* 👆RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56F29B6F60100424A66 /* 👆RegisterButton.swift */; };
 		F5D19D4529B7698B0069A81E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3EC1282E0F45009BD28B /* Localizable.strings */; };
 		F5D19D4629B769900069A81E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3ED0282E15E5009BD28B /* InfoPlist.strings */; };
 		F5D19D4829B83D180069A81E /* 💥Feedback.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56829B6113A00424A66 /* 💥Feedback.swift */; };
@@ -74,7 +90,7 @@
 		F5D19D8A29B840050069A81E /* Widget for watchOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F5D19D7D29B840020069A81E /* Widget for watchOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F5D19D9129B841C60069A81E /* App.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB55429B60F5700424A66 /* App.swift */; };
 		F5D19D9229B841C60069A81E /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB55629B60F5700424A66 /* ContentView.swift */; };
-		F5D19D9329B841C60069A81E /* 🧩SubView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56F29B6F60100424A66 /* 🧩SubView.swift */; };
+		F5D19D9329B841C60069A81E /* 👆RegisterButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56F29B6F60100424A66 /* 👆RegisterButton.swift */; };
 		F5D19D9429B841DA0069A81E /* Widget.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5D19D8329B840020069A81E /* Widget.swift */; };
 		F5D19D9529B843C80069A81E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3EC1282E0F45009BD28B /* Localizable.strings */; };
 		F5D19D9629B843CC0069A81E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3ED0282E15E5009BD28B /* InfoPlist.strings */; };
@@ -135,7 +151,7 @@
 				F535AA7C29AD7BBE00691926 /* 📱AppModel.swift in CopyFiles */,
 				F535AA7D29AD7BBE00691926 /* ContentView.swift in CopyFiles */,
 				F535AA7F29AD7BBE00691926 /* 🗯ResultView.swift in CopyFiles */,
-				F535AA8029AD7BBE00691926 /* 🎚️Stepper.swift in CopyFiles */,
+				F535AA8029AD7BBE00691926 /* 🎚️BodyMassStepper.swift in CopyFiles */,
 				F535AA8129AD7BBE00691926 /* 🛠AppMenu.swift in CopyFiles */,
 				F535AA8329AD7BBE00691926 /* 🧰MetaData.swift in CopyFiles */,
 				F535AA8429AD7BBE00691926 /* ℹ️AboutApp.swift in CopyFiles */,
@@ -164,7 +180,7 @@
 				F5AE313829BAB8A70027A952 /* 📱AppModel(extension).swift in CopyFiles */,
 				F5D19D9129B841C60069A81E /* App.swift in CopyFiles */,
 				F5D19D9229B841C60069A81E /* ContentView.swift in CopyFiles */,
-				F5D19D9329B841C60069A81E /* 🧩SubView.swift in CopyFiles */,
+				F5D19D9329B841C60069A81E /* 👆RegisterButton.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,7 +209,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1232578A284C5EA2002E0057 /* 🎚️Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🎚️Stepper.swift"; sourceTree = "<group>"; };
+		1232578A284C5EA2002E0057 /* 🎚️BodyMassStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🎚️BodyMassStepper.swift"; sourceTree = "<group>"; };
 		124C485E284863BA0085B066 /* 📱AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱AppModel.swift"; sourceTree = "<group>"; };
 		12579D152835FE8900536547 /* 🗯ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗯ResultView.swift"; sourceTree = "<group>"; };
 		125AFEDA282F2B6E00E3BC4A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -240,6 +256,19 @@
 		12AF80DF288ECA8F0047324A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		12AF80E0288ECA8F0047324A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12BA83CD28606047009E7E3F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F50961F12AA4B1A8005B5CAB /* 🚨ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚨ErrorMessage.swift"; sourceTree = "<group>"; };
+		F50961F32AA4B1CE005B5CAB /* 🔐AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🔐AuthManager.swift"; sourceTree = "<group>"; };
+		F50961F52AA4B206005B5CAB /* 🗯ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗯ResultView.swift"; sourceTree = "<group>"; };
+		F50961F82AA4B26E005B5CAB /* 🏥CheckEarliestPermittedSampleDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏥CheckEarliestPermittedSampleDateView.swift"; sourceTree = "<group>"; };
+		F50961FA2AA4B290005B5CAB /* 🚨ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚨ErrorAlert.swift"; sourceTree = "<group>"; };
+		F50961FC2AA4B340005B5CAB /* 🚨Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚨Error.swift"; sourceTree = "<group>"; };
+		F50961FF2AA4B3F8005B5CAB /* 📉Difference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📉Difference.swift"; sourceTree = "<group>"; };
+		F50962022AA4B44A005B5CAB /* 🎚️StepperAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🎚️StepperAction.swift"; sourceTree = "<group>"; };
+		F50962052AA4B5BA005B5CAB /* 🎚️BodyMassStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🎚️BodyMassStepper.swift"; sourceTree = "<group>"; };
+		F50962072AA4B5DE005B5CAB /* 🎚️BodyFatStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🎚️BodyFatStepper.swift"; sourceTree = "<group>"; };
+		F50962092AA4B5F7005B5CAB /* 🪧BMIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧BMIView.swift"; sourceTree = "<group>"; };
+		F509620B2AA4B60E005B5CAB /* 🪧LBMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧LBMView.swift"; sourceTree = "<group>"; };
+		F509620D2AA4B67A005B5CAB /* 🎚️BodyFatStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🎚️BodyFatStepper.swift"; sourceTree = "<group>"; };
 		F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚨ErrorAlert.swift"; sourceTree = "<group>"; };
 		F535AA7829AD7ABB00691926 /* 🧰MetaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🧰MetaData.swift"; sourceTree = "<group>"; };
 		F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💬RequestUserReview.swift"; sourceTree = "<group>"; };
@@ -258,7 +287,7 @@
 		F5BBB56429B60F9500424A66 /* watchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watchOS.entitlements; sourceTree = "<group>"; };
 		F5BBB56829B6113A00424A66 /* 💥Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💥Feedback.swift"; sourceTree = "<group>"; };
 		F5BBB56C29B6B14C00424A66 /* 📱AppModel(extension).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📱AppModel(extension).swift"; sourceTree = "<group>"; };
-		F5BBB56F29B6F60100424A66 /* 🧩SubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧩SubView.swift"; sourceTree = "<group>"; };
+		F5BBB56F29B6F60100424A66 /* 👆RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "👆RegisterButton.swift"; sourceTree = "<group>"; };
 		F5D19D7D29B840020069A81E /* Widget for watchOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widget for watchOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D19D7E29B840020069A81E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F5D19D8029B840020069A81E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -308,17 +337,11 @@
 		12325789284C5E79002E0057 /* 🗄️Rest */ = {
 			isa = PBXGroup;
 			children = (
-				F5E11EBF29BAE8A2004F73B2 /* 📱AppModel(extension).swift */,
-				F54292DA29B01C0200EFF085 /* 👆RegisterButton.swift */,
-				1232578A284C5EA2002E0057 /* 🎚️Stepper.swift */,
-				F54292DC29B01C4700EFF085 /* 🪧BMIView.swift */,
-				F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */,
-				F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */,
-				F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */,
 				F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */,
-				12579D152835FE8900536547 /* 🗯ResultView.swift */,
-				F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */,
+				F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */,
 				12630BC22849CD33005F922F /* 🛠AppMenu.swift */,
+				F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */,
+				F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */,
 				F5A8E1CC29C545B100DE7E42 /* 🔐AuthManager.swift */,
 				F5D8401529B45CF40046E91B /* 🔔Notification.swift */,
 				F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */,
@@ -356,6 +379,13 @@
 			children = (
 				126B3EAA282DFEDF009BD28B /* App.swift */,
 				126B3EAC282DFEDF009BD28B /* ContentView.swift */,
+				F5E11EBF29BAE8A2004F73B2 /* 📱AppModel(extension).swift */,
+				1232578A284C5EA2002E0057 /* 🎚️BodyMassStepper.swift */,
+				F54292DC29B01C4700EFF085 /* 🪧BMIView.swift */,
+				F509620D2AA4B67A005B5CAB /* 🎚️BodyFatStepper.swift */,
+				F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */,
+				F54292DA29B01C0200EFF085 /* 👆RegisterButton.swift */,
+				12579D152835FE8900536547 /* 🗯ResultView.swift */,
 				12325789284C5E79002E0057 /* 🗄️Rest */,
 				F50961EE2AA4A52F005B5CAB /* 🧰SupportingFiles */,
 			);
@@ -417,11 +447,33 @@
 			path = "🧰SupportingFiles";
 			sourceTree = "<group>";
 		};
+		F50961F02AA4B196005B5CAB /* 🗄️Rest */ = {
+			isa = PBXGroup;
+			children = (
+				F50961F12AA4B1A8005B5CAB /* 🚨ErrorMessage.swift */,
+				F50961FA2AA4B290005B5CAB /* 🚨ErrorAlert.swift */,
+				F50961F32AA4B1CE005B5CAB /* 🔐AuthManager.swift */,
+				F50961F72AA4B254005B5CAB /* 🚧Debug */,
+			);
+			path = "🗄️Rest";
+			sourceTree = "<group>";
+		};
+		F50961F72AA4B254005B5CAB /* 🚧Debug */ = {
+			isa = PBXGroup;
+			children = (
+				F50961F82AA4B26E005B5CAB /* 🏥CheckEarliestPermittedSampleDateView.swift */,
+			);
+			path = "🚧Debug";
+			sourceTree = "<group>";
+		};
 		F5BBB54D29B60F3E00424A66 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				124C485E284863BA0085B066 /* 📱AppModel.swift */,
 				F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */,
+				F50961FF2AA4B3F8005B5CAB /* 📉Difference.swift */,
+				F50962022AA4B44A005B5CAB /* 🎚️StepperAction.swift */,
+				F50961FC2AA4B340005B5CAB /* 🚨Error.swift */,
 				F5BBB56829B6113A00424A66 /* 💥Feedback.swift */,
 				F5E11EBC29BAE847004F73B2 /* ⌚️WatchSync.swift */,
 			);
@@ -434,7 +486,13 @@
 				F5BBB55429B60F5700424A66 /* App.swift */,
 				F5BBB55629B60F5700424A66 /* ContentView.swift */,
 				F5BBB56C29B6B14C00424A66 /* 📱AppModel(extension).swift */,
-				F5BBB56F29B6F60100424A66 /* 🧩SubView.swift */,
+				F50962052AA4B5BA005B5CAB /* 🎚️BodyMassStepper.swift */,
+				F50962092AA4B5F7005B5CAB /* 🪧BMIView.swift */,
+				F50962072AA4B5DE005B5CAB /* 🎚️BodyFatStepper.swift */,
+				F509620B2AA4B60E005B5CAB /* 🪧LBMView.swift */,
+				F5BBB56F29B6F60100424A66 /* 👆RegisterButton.swift */,
+				F50961F52AA4B206005B5CAB /* 🗯ResultView.swift */,
+				F50961F02AA4B196005B5CAB /* 🗄️Rest */,
 				F50961EF2AA4A58B005B5CAB /* 🧰SupportingFiles */,
 			);
 			path = watchOS;
@@ -609,11 +667,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */,
-				1232578B284C5EA2002E0057 /* 🎚️Stepper.swift in Sources */,
+				1232578B284C5EA2002E0057 /* 🎚️BodyMassStepper.swift in Sources */,
 				F5E2EAAB29415F3D0054A208 /* 📣AD.swift in Sources */,
+				F50961FD2AA4B340005B5CAB /* 🚨Error.swift in Sources */,
 				124C485F284863BA0085B066 /* 📱AppModel.swift in Sources */,
 				F535719329B1AFB80003FD2C /* 🚨ErrorAlert.swift in Sources */,
+				F509620E2AA4B67A005B5CAB /* 🎚️BodyFatStepper.swift in Sources */,
 				12579D162835FE8900536547 /* 🗯ResultView.swift in Sources */,
+				F50962032AA4B44A005B5CAB /* 🎚️StepperAction.swift in Sources */,
 				F5E11EC029BAE8A2004F73B2 /* 📱AppModel(extension).swift in Sources */,
 				F5E2EAAC29415F3D0054A208 /* 🛒InAppPurchase.swift in Sources */,
 				12630BC32849CD33005F922F /* 🛠AppMenu.swift in Sources */,
@@ -632,6 +693,7 @@
 				F5BBB56929B6113A00424A66 /* 💥Feedback.swift in Sources */,
 				F54292E329B01D8300EFF085 /* 💟OpenHealthAppButton.swift in Sources */,
 				F535AA8929AD7EB800691926 /* 💬RequestUserReview.swift in Sources */,
+				F50962002AA4B3F9005B5CAB /* 📉Difference.swift in Sources */,
 				F5A8E1CD29C545B100DE7E42 /* 🔐AuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,14 +702,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F50961FB2AA4B290005B5CAB /* 🚨ErrorAlert.swift in Sources */,
+				F50961F92AA4B26E005B5CAB /* 🏥CheckEarliestPermittedSampleDateView.swift in Sources */,
 				F5E11EBE29BAE847004F73B2 /* ⌚️WatchSync.swift in Sources */,
+				F509620A2AA4B5F7005B5CAB /* 🪧BMIView.swift in Sources */,
 				F5BBB56629B6108000424A66 /* 🏥Health.swift in Sources */,
 				F5BBB55729B60F5700424A66 /* ContentView.swift in Sources */,
+				F50961F22AA4B1A8005B5CAB /* 🚨ErrorMessage.swift in Sources */,
+				F50961F42AA4B1CE005B5CAB /* 🔐AuthManager.swift in Sources */,
+				F50962042AA4B44A005B5CAB /* 🎚️StepperAction.swift in Sources */,
+				F509620C2AA4B60E005B5CAB /* 🪧LBMView.swift in Sources */,
 				F5BBB55529B60F5700424A66 /* App.swift in Sources */,
+				F50962062AA4B5BA005B5CAB /* 🎚️BodyMassStepper.swift in Sources */,
 				F5BBB56B29B6121C00424A66 /* 📱AppModel.swift in Sources */,
+				F50961F62AA4B206005B5CAB /* 🗯ResultView.swift in Sources */,
 				F5BBB56E29B6B14C00424A66 /* 📱AppModel(extension).swift in Sources */,
-				F5BBB57129B6F60100424A66 /* 🧩SubView.swift in Sources */,
+				F5BBB57129B6F60100424A66 /* 👆RegisterButton.swift in Sources */,
 				F5BBB56A29B6113A00424A66 /* 💥Feedback.swift in Sources */,
+				F50962082AA4B5DE005B5CAB /* 🎚️BodyFatStepper.swift in Sources */,
+				F50962012AA4B3F9005B5CAB /* 📉Difference.swift in Sources */,
+				F50961FE2AA4B340005B5CAB /* 🚨Error.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

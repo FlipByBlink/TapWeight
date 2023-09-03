@@ -113,7 +113,7 @@ class 📱AppModel: NSObject, ObservableObject {
         }
     }
     
-    var ⓓifference: [🏥Category: 🄳ifference] {
+    var ⓓifference: [🏥Category: 📉Difference] {
         self.📦latestSamples.compactMapValues { ⓢample in
             guard let ⓒategory = 🏥Category(ⓢample.quantityType) else { return nil }
             let ⓓifferenceValue: Double? = {
@@ -151,7 +151,7 @@ class 📱AppModel: NSObject, ObservableObject {
                 }
             }()
             guard let ⓓate = self.ⓛatestSampleDate[ⓒategory] else { return nil }
-            return 🄳ifference(valueDescription: ⓓescription, lastSampleDate: ⓓate)
+            return 📉Difference(valueDescription: ⓓescription, lastSampleDate: ⓓate)
         }
     }
     
@@ -173,7 +173,7 @@ class 📱AppModel: NSObject, ObservableObject {
     }
     
     //MARK: - Method
-    func 🎚️changeMassValue(_ ⓟattern: 🅂tepperAction) {
+    func 🎚️changeMassValue(_ ⓟattern: 🎚️StepperAction) {
         if let ⓜassUnit, var ⓜassInputValue {
             if ⓜassUnit == .gramUnit(with: .kilo), self.🚩amount50g {
                 switch ⓟattern {
@@ -192,7 +192,7 @@ class 📱AppModel: NSObject, ObservableObject {
             💥Feedback.light()
         }
     }
-    func 🎚️changeBodyFatValue(_ ⓟattern: 🅂tepperAction) {
+    func 🎚️changeBodyFatValue(_ ⓟattern: 🎚️StepperAction) {
         if var ⓑodyFatInputValue {
             switch ⓟattern {
                 case .increment: ⓑodyFatInputValue += 0.001
@@ -366,35 +366,5 @@ class 📱AppModel: NSObject, ObservableObject {
             }
         }
 #endif
-    }
-}
-
-enum 🅂tepperAction {
-    case increment, decrement
-}
-
-struct 🄳ifference {
-    var valueDescription: String
-    var lastSampleDate: Date
-}
-
-enum 🚨Error: Error {
-    case failedAuth(🏥Category)
-    case noInputValue(🏥Category)
-    case saveFailure(String)
-    case deleteFailure(String)
-    var message: String {
-        switch self {
-            case .failedAuth(let ⓒategory):
-                let ⓜessage = String(localized: "Authorization error: ")
-                return ⓜessage + ⓒategory.localizedString
-            case .noInputValue(let ⓒategory):
-                let ⓜessage = String(localized: "No input value: ")
-                return ⓜessage + ⓒategory.localizedString
-            case .saveFailure(let ⓓescription):
-                return String(localized: "Save error: \(ⓓescription)")
-            case .deleteFailure(let ⓓescription):
-                return String(localized: "Delete error: \(ⓓescription)")
-        }
     }
 }
