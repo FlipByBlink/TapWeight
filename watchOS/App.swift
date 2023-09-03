@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct TW_Watch_App: App {
+struct watchOSApp: App {
     @StateObject private var 📱 = 📱AppModel()
     var body: some Scene {
         WindowGroup {

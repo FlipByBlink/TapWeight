@@ -67,20 +67,20 @@ enum 🏥Category: Codable {
     case bodyMass, bodyMassIndex, height, bodyFatPercentage, leanBodyMass
     var identifier: HKQuantityTypeIdentifier {
         switch self {
-            case .bodyMass: return .bodyMass
-            case .bodyMassIndex: return .bodyMassIndex
-            case .height: return .height
-            case .bodyFatPercentage: return .bodyFatPercentage
-            case .leanBodyMass: return .leanBodyMass
+            case .bodyMass: .bodyMass
+            case .bodyMassIndex: .bodyMassIndex
+            case .height: .height
+            case .bodyFatPercentage: .bodyFatPercentage
+            case .leanBodyMass: .leanBodyMass
         }
     }
     var localizationValue: String.LocalizationValue {
         switch self {
-            case .bodyMass: return "Body Mass"
-            case .bodyMassIndex: return "Body Mass Index"
-            case .height: return "Height"
-            case .bodyFatPercentage: return "Body Fat Percentage"
-            case .leanBodyMass: return "Lean Body Mass"
+            case .bodyMass: "Body Mass"
+            case .bodyMassIndex: "Body Mass Index"
+            case .height: "Height"
+            case .bodyFatPercentage: "Body Fat Percentage"
+            case .leanBodyMass: "Lean Body Mass"
         }
     }
     var localizedString: String {
@@ -88,20 +88,20 @@ enum 🏥Category: Codable {
     }
     var quantityType: HKQuantityType {
         switch self {
-            case .bodyMass: return HKQuantityType(.bodyMass)
-            case .bodyMassIndex: return HKQuantityType(.bodyMassIndex)
-            case .height: return HKQuantityType(.height)
-            case .bodyFatPercentage: return HKQuantityType(.bodyFatPercentage)
-            case .leanBodyMass: return HKQuantityType(.leanBodyMass)
+            case .bodyMass: .init(.bodyMass)
+            case .bodyMassIndex: .init(.bodyMassIndex)
+            case .height: .init(.height)
+            case .bodyFatPercentage: .init(.bodyFatPercentage)
+            case .leanBodyMass: .init(.leanBodyMass)
         }
     }
     var defaultUnit: HKUnit {
         switch self {
-            case .bodyMass: return .gramUnit(with: .kilo)
-            case .bodyMassIndex: return .count()
-            case .height: return .meter()
-            case .bodyFatPercentage: return .percent()
-            case .leanBodyMass: return .gramUnit(with: .kilo)
+            case .bodyMass: .gramUnit(with: .kilo)
+            case .bodyMassIndex: .count()
+            case .height: .meter()
+            case .bodyFatPercentage: .percent()
+            case .leanBodyMass: .gramUnit(with: .kilo)
         }
     }
     init?(_ ⓘdentifier: HKQuantityTypeIdentifier) {

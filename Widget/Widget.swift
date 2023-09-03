@@ -1,25 +1,21 @@
 import WidgetKit
 import SwiftUI
 
-struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: .now)
-    }
-    
+private struct Provider: TimelineProvider {
+    func placeholder(in context: Context) -> SimpleEntry { .init() }
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        completion(SimpleEntry(date: .now))
+        completion(.init())
     }
-    
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        completion(Timeline(entries: [SimpleEntry(date: .now)], policy: .never))
+        completion(Timeline(entries: [.init()], policy: .never))
     }
 }
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
+private struct SimpleEntry: TimelineEntry {
+    let date: Date = .now
 }
 
-struct TW_Watch_WidgetEntryView : View {
+private struct EntryView : View {
     @Environment(\.widgetFamily) var widgetFamily
     var body: some View {
         switch widgetFamily {
@@ -28,8 +24,8 @@ struct TW_Watch_WidgetEntryView : View {
                     AccessoryWidgetBackground()
                     Image(systemName: "scalemass")
                         .font(.largeTitle.weight(.medium))
+                        .widgetAccentable()
                 }
-                .widgetAccentable()
             case .accessoryInline:
                 Label("Body Mass", systemImage: "scalemass")
                     .widgetAccentable()
@@ -40,23 +36,14 @@ struct TW_Watch_WidgetEntryView : View {
 }
 
 @main
-struct TW_Watch_Widget: Widget {
-    let kind: String = "TW_Watch_Widget"
-
+struct TapWeightWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { _ in
-            TW_Watch_WidgetEntryView()
+        StaticConfiguration(kind: "TW_Watch_Widget", provider: Provider()) { _ in
+            EntryView()
         }
         .configurationDisplayName("Shortcut")
         .supportedFamilies([.accessoryCircular,
                             .accessoryCorner,
                             .accessoryInline])
-    }
-}
-
-struct TW_Watch_Widget_Previews: PreviewProvider {
-    static var previews: some View {
-        TW_Watch_WidgetEntryView()
-            .previewContext(WidgetPreviewContext(family: .accessoryCorner))
     }
 }

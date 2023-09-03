@@ -1,5 +1,5 @@
-TapWeight for "Health" - iPhone, Apple Watch
-==============================================
+TapWeight for "Health" - iPhone, iPad, Apple Watch
+==================================================
 
 <img src="TapWeight/Assets.xcassets/RoundedIcon.imageset/icon.png" width="64">
 

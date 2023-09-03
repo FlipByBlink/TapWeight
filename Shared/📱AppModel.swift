@@ -34,10 +34,10 @@ class 📱AppModel: NSObject, ObservableObject {
     var ⓜassUnit: HKUnit? { self.📦preferredUnits[.bodyMass] }
     var ⓜassUnitDescription: String? {
         switch self.ⓜassUnit {
-            case .some(.gramUnit(with: .kilo)): return "kg"
-            case .some(.pound()): return "lbs"
-            case .some(.stone()): return "st"
-            default: return nil
+            case .some(.gramUnit(with: .kilo)): "kg"
+            case .some(.pound()): "lbs"
+            case .some(.stone()): "st"
+            default: nil
         }
     }
     private var ⓜassInputValue: Double? {
@@ -47,12 +47,12 @@ class 📱AppModel: NSObject, ObservableObject {
     var ⓜassInputDescription: String {
         if let ⓜassInputValue {
             if ⓜassUnit == .gramUnit(with: .kilo), self.🚩amount50g {
-                return String(format: "%.2f", ⓜassInputValue)
+                String(format: "%.2f", ⓜassInputValue)
             } else {
-                return ⓜassInputValue.description
+                ⓜassInputValue.description
             }
         } else {
-            return self.🚩amount50g ? "00.00" : "00.0" //Placeholder
+            self.🚩amount50g ? "00.00" : "00.0" //Placeholder
         }
     }
     
@@ -78,9 +78,9 @@ class 📱AppModel: NSObject, ObservableObject {
     private var ⓑodyFatInputValue: Double? { self.📝bodyFatInputQuantity?.doubleValue(for: .percent()) }
     var ⓑodyFatInputDescription: String {
         if let ⓑodyFatInputValue {
-            return (round(ⓑodyFatInputValue * 1000) / 10).description
+            (round(ⓑodyFatInputValue * 1000) / 10).description
         } else {
-            return "00.0"
+            "00.0"
         }
     }
     
@@ -138,15 +138,15 @@ class 📱AppModel: NSObject, ObservableObject {
             let ⓓescription: String = {
                 if ⓒategory == .bodyMass, self.🚩amount50g {
                     switch ⓓifferenceValue {
-                        case ..<0: return String(format: "%.2f", ⓓifferenceValue)
-                        case 0: return " 0.00"
-                        default: return "+" + String(format: "%.2f", ⓓifferenceValue)
+                        case ..<0: String(format: "%.2f", ⓓifferenceValue)
+                        case 0: " 0.00"
+                        default: "+" + String(format: "%.2f", ⓓifferenceValue)
                     }
                 } else {
                     switch ⓓifferenceValue {
-                        case ..<0: return ⓓifferenceValue.description
-                        case 0: return " 0.0"
-                        default: return "+" + ⓓifferenceValue.description
+                        case ..<0: ⓓifferenceValue.description
+                        case 0: " 0.0"
+                        default: "+" + ⓓifferenceValue.description
                     }
                 }
             }()
