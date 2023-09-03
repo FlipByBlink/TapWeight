@@ -1,0 +1,142 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "1.0" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Initial release"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最初のリリース"
+          }
+        }
+      }
+    },
+    "1.1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Add \"Cancel\" feature just after registration.\n- Add 100g/50g amount opiton of stepper.\n- Improve several small UI design.\n- Change local history format to CSV style.\n- Add Version History to App Document.\n- Add 3 keywords(Body Mass/Body Mass Index/Body Fat Percentage) localization for Simplified_Chinese, Traditional_Chinese, Spanish, Portuguese, Russian, Indonesian, French, Arabic, German, Korean."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- 取り消し機能の追加\n- 体重の入力単位を100gから50gへ変更するオプションの追加\n- 様々な細かなUIの改善\n- ローカル履歴の形式をCSVスタイルに変更\n- App Documentにバージョン履歴項目を追加\n- 主要3単語(体重/BMI/体脂肪率)のローカライズを追加。中国語簡体字/繁体字/スペイン語/ポルトガル語/ロシア語/インドネシア語/フランス語/アラビア語/ドイツ語/韓国語。"
+          }
+        }
+      }
+    },
+    "1.1.1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Add \"Hide AD banner\" option. (in-app-purchase)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- 広告バナー非表示オプション(アプリ内課金)を追加"
+          }
+        }
+      }
+    },
+    "1.2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add \"Function to edit date\"\nShow last date\nBug fix \"BMI local history\"\nChange significant digits of BMI\nChange frequency in AD (\"1 in 3\" → \"after 5, every\")\nAdd localization \"Ukrainian\"\nVarious bugfixes and improvements"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登録日時を変更できる機能を追加\n起動時に前回の登録日時を表示する機能を追加\nバグ修正「BMIに関するローカル履歴」\nBMIの有効桁数を小数2桁から小数1桁に変更\nアプリ内広告バナーの表示頻度を「3回起動毎に起動直後1回」から「起動6回以降は起動直後毎回」に変更\nローカライズ追加「ウクライナ語」\nいくつかの小さめの改善やバグ修正"
+          }
+        }
+      }
+    },
+    "1.3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "・Add \"Dismiss\" button on result screen\n・Add a display of difference of last entry from \"Health\" app\n・Improve \"Local history\"\n・Import mass unit from \"Health\" app on the first launch\n・Add \"Health\"-word localization\n・Various bugfixes and improvements\n・Refactoring"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "・入力完了画面に「閉じるボタン」を追加\n・「ヘルスケア」アプリから直近のデータを読み込み、差分を補足表示する機能の追加\n・「ローカル履歴」を改善\n・最初に起動した際に「ヘルスケア」アプリから体重向け単位を取得する機能の追加\n・単語「ヘルスケア」のローカライズを全言語に追加\n・いくつかの小さめの改善やバグ修正\n・リファクタリング"
+          }
+        }
+      }
+    },
+    "1.3.1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "small bug fix.\nBuild on latest development environment(iOS16)."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "軽微なバグ修正。\n最新開発環境(iOS16)でビルドしました。"
+          }
+        }
+      }
+    },
+    "1.3.2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "small bug fix"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "軽微なバグ修正"
+          }
+        }
+      }
+    },
+    "1.4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ADD Apple Watch support\nADD Lean Body Mass support\nADD reminder notification\nCHANGE date picker design\nCHANGE AD design\nREMOVE local history\nOTHER App fetch bodymass unit from \"Health\"\nOTHER Various bugfixes and improvements"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch に対応しました。\n除脂肪体重(Lean Body Mass)に対応しました。\nリマインダー通知に対応しました。\n日付選択UIのデザインを変更しました。\n広告のデザインを変更しました。\nローカル履歴機能を削除しました。\n体重や身長の単位設定を「ヘルスケア」アプリから取得する様にしました。\nいくつかの小さめの改善やバグ修正を行いました。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

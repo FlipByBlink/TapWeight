@@ -5,7 +5,7 @@ enum 🗒️StaticInfo {
     static let appSubTitle: LocalizedStringKey = "App for iPhone / iPad / Apple Watch"
     
     static let appStoreProductURL = URL(string: "https://apps.apple.com/app/id1624159721")!
-    static var appStoreUserReviewURL: URL { URL(string: "\(Self.appStoreProductURL)?action=write-review")! }
+    static var appStoreUserReviewURL: URL { .init(string: "\(Self.appStoreProductURL)?action=write-review")! }
     
     static var contactAddress: String { "sear_pandora_0x@icloud.com" }
     
@@ -23,7 +23,8 @@ enum 🗒️StaticInfo {
 
 #if os(iOS)
 extension 🗒️StaticInfo {
-    static let versionInfos: [(version: String, date: String)] = [("1.4", "2023-03-19"),
+    static let versionInfos: [(version: String, date: String)] = [("1.5", "2023-09-01"),
+                                                                  ("1.4", "2023-03-19"),
                                                                   ("1.3.2", "2022-12-08"),
                                                                   ("1.3.1", "2022-09-21"),
                                                                   ("1.3", "2022-09-05"),
