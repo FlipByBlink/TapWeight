@@ -21,6 +21,7 @@ struct ContentView: View {
                     }
                 }
                 👆RegisterButton()
+                🛠MenuButton()
             }
             .navigationTitle("Body Mass")
             .navigationBarTitleDisplayMode(.inline)

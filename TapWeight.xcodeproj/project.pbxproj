@@ -53,6 +53,7 @@
 		F509622F2AA4BEB0005B5CAB /* 🌐VersionHistory.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F509622E2AA4BEB0005B5CAB /* 🌐VersionHistory.xcstrings */; };
 		F50962312AA54860005B5CAB /* 🏥Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962302AA54860005B5CAB /* 🏥Category.swift */; };
 		F50962322AA54860005B5CAB /* 🏥Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962302AA54860005B5CAB /* 🏥Category.swift */; };
+		F50962372AA5519E005B5CAB /* 🛠Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962362AA5519E005B5CAB /* 🛠Menu.swift */; };
 		F535719329B1AFB80003FD2C /* 🚨ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
 		F535719429B1B9FF0003FD2C /* 🏥HealthStore.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥HealthStore.swift */; };
 		F535719529B1B9FF0003FD2C /* 🚨ErrorAlert.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
@@ -288,6 +289,7 @@
 		F509622C2AA4BEB0005B5CAB /* 🌐AppStoreDescription.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐AppStoreDescription.xcstrings"; sourceTree = "<group>"; };
 		F509622E2AA4BEB0005B5CAB /* 🌐VersionHistory.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐VersionHistory.xcstrings"; sourceTree = "<group>"; };
 		F50962302AA54860005B5CAB /* 🏥Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏥Category.swift"; sourceTree = "<group>"; };
+		F50962362AA5519E005B5CAB /* 🛠Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menu.swift"; sourceTree = "<group>"; };
 		F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚨ErrorAlert.swift"; sourceTree = "<group>"; };
 		F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💬RequestUserReview.swift"; sourceTree = "<group>"; };
 		F535AA8829AD7EB800691926 /* 📣ADSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADSheet.swift"; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 				F509620B2AA4B60E005B5CAB /* 🪧LBMView.swift */,
 				F5BBB56F29B6F60100424A66 /* 👆RegisterButton.swift */,
 				F50961F52AA4B206005B5CAB /* 🗯ResultView.swift */,
+				F50962362AA5519E005B5CAB /* 🛠Menu.swift */,
 				F50961F02AA4B196005B5CAB /* 🗄️Rest */,
 				F50961EF2AA4A58B005B5CAB /* 🧰SupportingFiles */,
 			);
@@ -748,6 +751,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F50961FB2AA4B290005B5CAB /* 🚨ErrorAlert.swift in Sources */,
+				F50962372AA5519E005B5CAB /* 🛠Menu.swift in Sources */,
 				F50961F92AA4B26E005B5CAB /* 🏥CheckEarliestPermittedSampleDateView.swift in Sources */,
 				F5E11EBE29BAE847004F73B2 /* ⌚️WatchSync.swift in Sources */,
 				F509621B2AA4BAC4005B5CAB /* 🗒️StaticInfo.swift in Sources */,
