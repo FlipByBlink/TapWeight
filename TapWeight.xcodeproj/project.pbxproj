@@ -37,6 +37,9 @@
 		F509620A2AA4B5F7005B5CAB /* 🪧BMIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962092AA4B5F7005B5CAB /* 🪧BMIView.swift */; };
 		F509620C2AA4B60E005B5CAB /* 🪧LBMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509620B2AA4B60E005B5CAB /* 🪧LBMView.swift */; };
 		F509620E2AA4B67A005B5CAB /* 🎚️BodyFatStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509620D2AA4B67A005B5CAB /* 🎚️BodyFatStepper.swift */; };
+		F50962102AA4B806005B5CAB /* 🛠BMIMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509620F2AA4B806005B5CAB /* 🛠BMIMenu.swift */; };
+		F50962122AA4B88F005B5CAB /* 🛠LBMMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962112AA4B88F005B5CAB /* 🛠LBMMenu.swift */; };
+		F50962142AA4B90F005B5CAB /* 🛠ReminderMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962132AA4B90F005B5CAB /* 🛠ReminderMenu.swift */; };
 		F535719329B1AFB80003FD2C /* 🚨ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
 		F535719429B1B9FF0003FD2C /* 🏥Health.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */; };
 		F535719529B1B9FF0003FD2C /* 🚨ErrorAlert.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
@@ -269,6 +272,9 @@
 		F50962092AA4B5F7005B5CAB /* 🪧BMIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧BMIView.swift"; sourceTree = "<group>"; };
 		F509620B2AA4B60E005B5CAB /* 🪧LBMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧LBMView.swift"; sourceTree = "<group>"; };
 		F509620D2AA4B67A005B5CAB /* 🎚️BodyFatStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🎚️BodyFatStepper.swift"; sourceTree = "<group>"; };
+		F509620F2AA4B806005B5CAB /* 🛠BMIMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠BMIMenu.swift"; sourceTree = "<group>"; };
+		F50962112AA4B88F005B5CAB /* 🛠LBMMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠LBMMenu.swift"; sourceTree = "<group>"; };
+		F50962132AA4B90F005B5CAB /* 🛠ReminderMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠ReminderMenu.swift"; sourceTree = "<group>"; };
 		F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚨ErrorAlert.swift"; sourceTree = "<group>"; };
 		F535AA7829AD7ABB00691926 /* 🧰MetaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🧰MetaData.swift"; sourceTree = "<group>"; };
 		F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💬RequestUserReview.swift"; sourceTree = "<group>"; };
@@ -340,6 +346,9 @@
 				F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */,
 				F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */,
 				12630BC22849CD33005F922F /* 🛠AppMenu.swift */,
+				F509620F2AA4B806005B5CAB /* 🛠BMIMenu.swift */,
+				F50962112AA4B88F005B5CAB /* 🛠LBMMenu.swift */,
+				F50962132AA4B90F005B5CAB /* 🛠ReminderMenu.swift */,
 				F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */,
 				F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */,
 				F5A8E1CC29C545B100DE7E42 /* 🔐AuthManager.swift */,
@@ -672,6 +681,7 @@
 				F50961FD2AA4B340005B5CAB /* 🚨Error.swift in Sources */,
 				124C485F284863BA0085B066 /* 📱AppModel.swift in Sources */,
 				F535719329B1AFB80003FD2C /* 🚨ErrorAlert.swift in Sources */,
+				F50962102AA4B806005B5CAB /* 🛠BMIMenu.swift in Sources */,
 				F509620E2AA4B67A005B5CAB /* 🎚️BodyFatStepper.swift in Sources */,
 				12579D162835FE8900536547 /* 🗯ResultView.swift in Sources */,
 				F50962032AA4B44A005B5CAB /* 🎚️StepperAction.swift in Sources */,
@@ -686,7 +696,9 @@
 				F54292DF29B01CE300EFF085 /* 📅DatePicker.swift in Sources */,
 				126B3EAB282DFEDF009BD28B /* App.swift in Sources */,
 				F5E2EAAA29415F3D0054A208 /* ℹ️AboutApp.swift in Sources */,
+				F50962122AA4B88F005B5CAB /* 🛠LBMMenu.swift in Sources */,
 				F535AA7929AD7ABB00691926 /* 🧰MetaData.swift in Sources */,
+				F50962142AA4B90F005B5CAB /* 🛠ReminderMenu.swift in Sources */,
 				F54292E129B01D3B00EFF085 /* 📉DifferenceView.swift in Sources */,
 				F5D8401629B45CF40046E91B /* 🔔Notification.swift in Sources */,
 				F54292DD29B01C4700EFF085 /* 🪧BMIView.swift in Sources */,

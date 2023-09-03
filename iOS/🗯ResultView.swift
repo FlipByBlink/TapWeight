@@ -21,7 +21,7 @@ struct 🗯ResultView: View {
                         .strikethrough(self.ⓒanceled)
                         .font(.title3.weight(.semibold))
                         .lineLimit(1)
-                    self.🗯SummaryText()
+                    self.summaryText()
                         .lineLimit(2)
                 }
                 .minimumScaleFactor(0.3)
@@ -37,8 +37,8 @@ struct 🗯ResultView: View {
                     }
                 }
                 .toolbar {
-                    self.🅧closeButton()
-                    self.🗑cancelButton()
+                    self.closeButton()
+                    self.cancelButton()
                     💟OpenHealthAppButton.onResultView()
                 }
             }
@@ -52,7 +52,7 @@ struct 🗯ResultView: View {
 }
 
 private extension 🗯ResultView {
-    private func 🗯SummaryText() -> some View {
+    private func summaryText() -> some View {
         Group {
             Text(📱.ⓡesultSummaryDescription)
                 .strikethrough(self.ⓒanceled)
@@ -70,7 +70,7 @@ private extension 🗯ResultView {
         .opacity(0.75)
         .padding(.horizontal, 42)
     }
-    private func 🅧closeButton() -> some ToolbarContent {
+    private func closeButton() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button {
                 📱.ⓒloseResultView()
@@ -84,7 +84,7 @@ private extension 🗯ResultView {
             .accessibilityLabel("Dismiss")
         }
     }
-    private func 🗑cancelButton() -> some ToolbarContent {
+    private func cancelButton() -> some ToolbarContent {
         ToolbarItem(placement: .status) {
             Button {
                 📱.🗑cancel()
