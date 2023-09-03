@@ -1,13 +1,14 @@
 import SwiftUI
 
 struct 💬RequestUserReview: ViewModifier {
-    @State private var ⓒheckToRequest: Bool = false
+    @Environment(\.requestReview) var requestReview
+    @AppStorage("launchCount") private var launchCount: Int = 0
     func body(content: Content) -> some View {
         content
-            .modifier(💬PrepareToRequestUserReview(self.$ⓒheckToRequest))
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.ⓒheckToRequest = true
+            .task {
+                self.launchCount += 1
+                if [10, 30, 50, 70, 90].contains(self.launchCount) {
+                    self.requestReview()
                 }
             }
     }

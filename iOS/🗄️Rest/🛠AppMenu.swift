@@ -56,8 +56,18 @@ private struct 🛠AppMenu: View {
             }
             .onChange(of: 📱.ⓒontext) { $0.sendToWatchApp() }
             💟OpenHealthAppButton.onMenuView()
-            ℹ️AboutAppLink(name: "TapWeight", subtitle: "App for iPhone / Apple Watch")
-            📣ADMenuLink()
+            Section {
+                ℹ️IconAndName()
+                ℹ️AppStoreLink()
+                NavigationLink {
+                    List { ℹ️AboutAppContent() }
+                        .navigationTitle(String(localized: "About App", table: "🌐AboutApp"))
+                } label: {
+                    Label(String(localized: "About App", table: "🌐AboutApp"),
+                          systemImage: "doc")
+                }
+            }
+            🛒InAppPurchaseMenuLink()
         }
         .navigationTitle("Menu")
     }
