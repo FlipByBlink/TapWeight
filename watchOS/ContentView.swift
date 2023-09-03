@@ -25,6 +25,8 @@ struct ContentView: View {
             .navigationTitle("Body Mass")
             .navigationBarTitleDisplayMode(.inline)
         }
+        .modifier(🔐AuthManager())
+        .environment(\.layoutDirection, .leftToRight)
         .task {
             try? await Task.sleep(for: .seconds(1.5))
             withAnimation { self.🚩hideErrorMessage = false }

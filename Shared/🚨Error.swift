@@ -6,15 +6,13 @@ enum 🚨Error: Error {
     var message: String {
         switch self {
             case .failedAuth(let ⓒategory):
-                let ⓜessage = String(localized: "Authorization error: ")
-                return ⓜessage + ⓒategory.localizedString
+                String(localized: "Authorization error: ") + ⓒategory.localizedString
             case .noInputValue(let ⓒategory):
-                let ⓜessage = String(localized: "No input value: ")
-                return ⓜessage + ⓒategory.localizedString
+                String(localized: "No input value: ") + ⓒategory.localizedString
             case .saveFailure(let ⓓescription):
-                return String(localized: "Save error: \(ⓓescription)")
+                String(localized: "Save error: \(ⓓescription)")
             case .deleteFailure(let ⓓescription):
-                return String(localized: "Delete error: \(ⓓescription)")
+                String(localized: "Delete error: \(ⓓescription)")
         }
     }
 }

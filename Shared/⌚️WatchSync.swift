@@ -6,8 +6,21 @@ struct 🄲ontext: Codable, Equatable {
     var ableBMI: Bool
     var ableBodyFat: Bool
     var ableLBM: Bool
-    var latestSamples: [🏥Category: 🅂ample] = [:]
-    
+    var latestSamples: [🏥Category: Self.🅂ample] = [:]
+    init(_ ⓐmount50g: Bool, _ ⓐbleBMI: Bool, _ ⓐbleBodyFat: Bool, _ ⓐbleLBM: Bool, _ ⓛatestSamples: [🏥Category: HKQuantitySample]) {
+        self.amount50g = ⓐmount50g
+        self.ableBMI = ⓐbleBMI
+        self.ableBodyFat = ⓐbleBodyFat
+        self.ableLBM = ⓐbleLBM
+        ⓛatestSamples.forEach { (ⓚey, ⓥalue) in
+            self.latestSamples[ⓚey] = .init(category: ⓚey,
+                                            doubleValue: ⓥalue.quantity.doubleValue(for: ⓚey.defaultUnit),
+                                            date: ⓥalue.startDate)
+        }
+    }
+}
+
+extension 🄲ontext {
     struct 🅂ample: Codable, Equatable {
         var category: 🏥Category
         var doubleValue: Double
@@ -18,18 +31,6 @@ struct 🄲ontext: Codable, Equatable {
                                        doubleValue: self.doubleValue),
                   start: self.date,
                   end: self.date)
-        }
-    }
-    
-    init(_ ⓐmount50g: Bool, _ ⓐbleBMI: Bool, _ ⓐbleBodyFat: Bool, _ ⓐbleLBM: Bool, _ ⓛatestSamples: [🏥Category: HKQuantitySample]) {
-        self.amount50g = ⓐmount50g
-        self.ableBMI = ⓐbleBMI
-        self.ableBodyFat = ⓐbleBodyFat
-        self.ableLBM = ⓐbleLBM
-        ⓛatestSamples.forEach { (ⓚey, ⓥalue) in
-            self.latestSamples[ⓚey] = 🅂ample(category: ⓚey,
-                                              doubleValue: ⓥalue.quantity.doubleValue(for: ⓚey.defaultUnit),
-                                              date: ⓥalue.startDate)
         }
     }
     

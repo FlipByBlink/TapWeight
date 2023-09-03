@@ -3,7 +3,6 @@ import HealthKit
 
 @MainActor
 class 📱AppModel: NSObject, ObservableObject {
-    //MARK: Stored property
     @AppStorage("Amount50g") var 🚩amount50g: Bool = false
     @AppStorage("AbleBMI") var 🚩ableBMI: Bool = false
     @AppStorage("AbleBodyFat") var 🚩ableBodyFat: Bool = false
@@ -29,7 +28,9 @@ class 📱AppModel: NSObject, ObservableObject {
     var 📨registeredSamples: [HKQuantitySample] = []
     
     let 🏥healthStore = 🏥HealthStore()
-    
+}
+
+extension 📱AppModel {
     //MARK: - Computed property
     var ⓜassUnit: HKUnit? { self.📦preferredUnits[.bodyMass] }
     var ⓜassUnitDescription: String? {

@@ -51,8 +51,10 @@
 		F509622B2AA4BDEC005B5CAB /* ℹ️AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509622A2AA4BDEC005B5CAB /* ℹ️AboutApp.swift */; };
 		F509622D2AA4BEB0005B5CAB /* 🌐AppStoreDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F509622C2AA4BEB0005B5CAB /* 🌐AppStoreDescription.xcstrings */; };
 		F509622F2AA4BEB0005B5CAB /* 🌐VersionHistory.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F509622E2AA4BEB0005B5CAB /* 🌐VersionHistory.xcstrings */; };
+		F50962312AA54860005B5CAB /* 🏥Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962302AA54860005B5CAB /* 🏥Category.swift */; };
+		F50962322AA54860005B5CAB /* 🏥Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962302AA54860005B5CAB /* 🏥Category.swift */; };
 		F535719329B1AFB80003FD2C /* 🚨ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
-		F535719429B1B9FF0003FD2C /* 🏥Health.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */; };
+		F535719429B1B9FF0003FD2C /* 🏥HealthStore.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥HealthStore.swift */; };
 		F535719529B1B9FF0003FD2C /* 🚨ErrorAlert.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
 		F535AA7B29AD7BBE00691926 /* App.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126B3EAA282DFEDF009BD28B /* App.swift */; };
 		F535AA7C29AD7BBE00691926 /* 📱AppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
@@ -84,7 +86,7 @@
 		F5BBB55729B60F5700424A66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB55629B60F5700424A66 /* ContentView.swift */; };
 		F5BBB55929B60F5900424A66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5BBB55829B60F5900424A66 /* Assets.xcassets */; };
 		F5BBB56029B60F7900424A66 /* TapWeight.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F5BBB55229B60F5700424A66 /* TapWeight.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F5BBB56629B6108000424A66 /* 🏥Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */; };
+		F5BBB56629B6108000424A66 /* 🏥HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥HealthStore.swift */; };
 		F5BBB56929B6113A00424A66 /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56829B6113A00424A66 /* 💥Feedback.swift */; };
 		F5BBB56A29B6113A00424A66 /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB56829B6113A00424A66 /* 💥Feedback.swift */; };
 		F5BBB56B29B6121C00424A66 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
@@ -111,7 +113,7 @@
 		F5E11EBD29BAE847004F73B2 /* ⌚️WatchSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E11EBC29BAE847004F73B2 /* ⌚️WatchSync.swift */; };
 		F5E11EBE29BAE847004F73B2 /* ⌚️WatchSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E11EBC29BAE847004F73B2 /* ⌚️WatchSync.swift */; };
 		F5E11EC029BAE8A2004F73B2 /* 📱AppModel(extension).swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E11EBF29BAE8A2004F73B2 /* 📱AppModel(extension).swift */; };
-		F5E1697129B06ACC00EAFF73 /* 🏥Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */; };
+		F5E1697129B06ACC00EAFF73 /* 🏥HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥HealthStore.swift */; };
 		F5E2EAAA29415F3D0054A208 /* ℹ️AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E2EAA729415F3C0054A208 /* ℹ️AboutApp.swift */; };
 		F5F6901629416A8200765505 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = F5F6901529416A8200765505 /* Configuration.storekit */; };
 /* End PBXBuildFile section */
@@ -146,7 +148,7 @@
 				F5D19D4829B83D180069A81E /* 💥Feedback.swift in CopyFiles */,
 				F5BBB54A29B5F48C00424A66 /* 🪧LBMView.swift in CopyFiles */,
 				F5BBB54B29B5F48C00424A66 /* 🔔Notification.swift in CopyFiles */,
-				F535719429B1B9FF0003FD2C /* 🏥Health.swift in CopyFiles */,
+				F535719429B1B9FF0003FD2C /* 🏥HealthStore.swift in CopyFiles */,
 				F535719529B1B9FF0003FD2C /* 🚨ErrorAlert.swift in CopyFiles */,
 				F54292E429B01E2700EFF085 /* 📅DatePicker.swift in CopyFiles */,
 				F54292E529B01E2700EFF085 /* 👆RegisterButton.swift in CopyFiles */,
@@ -285,6 +287,7 @@
 		F509622A2AA4BDEC005B5CAB /* ℹ️AboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutApp.swift"; sourceTree = "<group>"; };
 		F509622C2AA4BEB0005B5CAB /* 🌐AppStoreDescription.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐AppStoreDescription.xcstrings"; sourceTree = "<group>"; };
 		F509622E2AA4BEB0005B5CAB /* 🌐VersionHistory.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐VersionHistory.xcstrings"; sourceTree = "<group>"; };
+		F50962302AA54860005B5CAB /* 🏥Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏥Category.swift"; sourceTree = "<group>"; };
 		F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚨ErrorAlert.swift"; sourceTree = "<group>"; };
 		F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💬RequestUserReview.swift"; sourceTree = "<group>"; };
 		F535AA8829AD7EB800691926 /* 📣ADSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADSheet.swift"; sourceTree = "<group>"; };
@@ -313,7 +316,7 @@
 		F5D8401529B45CF40046E91B /* 🔔Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🔔Notification.swift"; sourceTree = "<group>"; };
 		F5E11EBC29BAE847004F73B2 /* ⌚️WatchSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "⌚️WatchSync.swift"; sourceTree = "<group>"; };
 		F5E11EBF29BAE8A2004F73B2 /* 📱AppModel(extension).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱AppModel(extension).swift"; sourceTree = "<group>"; };
-		F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏥Health.swift"; sourceTree = "<group>"; };
+		F5E1697029B06ACC00EAFF73 /* 🏥HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏥HealthStore.swift"; sourceTree = "<group>"; };
 		F5E2EAA729415F3C0054A208 /* ℹ️AboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutApp.swift"; sourceTree = "<group>"; };
 		F5F6901529416A8200765505 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -500,7 +503,8 @@
 			isa = PBXGroup;
 			children = (
 				124C485E284863BA0085B066 /* 📱AppModel.swift */,
-				F5E1697029B06ACC00EAFF73 /* 🏥Health.swift */,
+				F5E1697029B06ACC00EAFF73 /* 🏥HealthStore.swift */,
+				F50962302AA54860005B5CAB /* 🏥Category.swift */,
 				F50961FF2AA4B3F8005B5CAB /* 📉Difference.swift */,
 				F50962022AA4B44A005B5CAB /* 🎚️StepperAction.swift */,
 				F50961FC2AA4B340005B5CAB /* 🚨Error.swift */,
@@ -715,7 +719,7 @@
 				F5E11EC029BAE8A2004F73B2 /* 📱AppModel(extension).swift in Sources */,
 				12630BC32849CD33005F922F /* 🛠AppMenu.swift in Sources */,
 				F509621E2AA4BAF3005B5CAB /* 📣ADModel.swift in Sources */,
-				F5E1697129B06ACC00EAFF73 /* 🏥Health.swift in Sources */,
+				F5E1697129B06ACC00EAFF73 /* 🏥HealthStore.swift in Sources */,
 				F5E11EBD29BAE847004F73B2 /* ⌚️WatchSync.swift in Sources */,
 				F54292DB29B01C0200EFF085 /* 👆RegisterButton.swift in Sources */,
 				F5D8400929B1DDED0046E91B /* 🪧LBMView.swift in Sources */,
@@ -735,6 +739,7 @@
 				F50962002AA4B3F9005B5CAB /* 📉Difference.swift in Sources */,
 				F5A8E1CD29C545B100DE7E42 /* 🔐AuthManager.swift in Sources */,
 				F50962232AA4BBC7005B5CAB /* 🛒InAppPurchaseView.swift in Sources */,
+				F50962312AA54860005B5CAB /* 🏥Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,10 +752,11 @@
 				F5E11EBE29BAE847004F73B2 /* ⌚️WatchSync.swift in Sources */,
 				F509621B2AA4BAC4005B5CAB /* 🗒️StaticInfo.swift in Sources */,
 				F509620A2AA4B5F7005B5CAB /* 🪧BMIView.swift in Sources */,
-				F5BBB56629B6108000424A66 /* 🏥Health.swift in Sources */,
+				F5BBB56629B6108000424A66 /* 🏥HealthStore.swift in Sources */,
 				F5BBB55729B60F5700424A66 /* ContentView.swift in Sources */,
 				F50961F22AA4B1A8005B5CAB /* 🚨ErrorMessage.swift in Sources */,
 				F50961F42AA4B1CE005B5CAB /* 🔐AuthManager.swift in Sources */,
+				F50962322AA54860005B5CAB /* 🏥Category.swift in Sources */,
 				F50962042AA4B44A005B5CAB /* 🎚️StepperAction.swift in Sources */,
 				F509620C2AA4B60E005B5CAB /* 🪧LBMView.swift in Sources */,
 				F5BBB55529B60F5700424A66 /* App.swift in Sources */,

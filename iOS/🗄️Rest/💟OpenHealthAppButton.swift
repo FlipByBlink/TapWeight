@@ -1,20 +1,6 @@
 import SwiftUI
 
 enum 💟OpenHealthAppButton {
-    static var url: URL { .init(string: "x-apple-health://")! }
-    static var title: LocalizedStringKey {
-        #"Open "Health" app"#
-    }
-    static func image() -> some View {
-        ZStack {
-            Image(systemName: "app")
-                .imageScale(.large)
-                .fontWeight(.light)
-            Image(systemName: "heart")
-                .fontWeight(.medium)
-                .imageScale(.small)
-        }
-    }
     static func onMainView() -> some View {
         Link(destination: Self.url) {
             self.image()
@@ -50,6 +36,23 @@ enum 💟OpenHealthAppButton {
                     .imageScale(.small)
                     .foregroundColor(.accentColor)
             }
+        }
+    }
+}
+
+private extension 💟OpenHealthAppButton {
+    private static var url: URL { .init(string: "x-apple-health://")! }
+    private static var title: LocalizedStringKey {
+        #"Open "Health" app"#
+    }
+    private static func image() -> some View {
+        ZStack {
+            Image(systemName: "app")
+                .imageScale(.large)
+                .fontWeight(.light)
+            Image(systemName: "heart")
+                .fontWeight(.medium)
+                .imageScale(.small)
         }
     }
 }

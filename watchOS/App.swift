@@ -7,8 +7,6 @@ struct watchOSApp: App {
         WindowGroup {
             ContentView()
                 .onAppear { 📱.ⓢetup() }
-                .modifier(🔐AuthManager())
-                .environment(\.layoutDirection, .leftToRight)
                 .environmentObject(📱)
         }
     }

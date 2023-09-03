@@ -21,7 +21,6 @@ struct ContentView: View {
             .safeAreaInset(edge: .bottom) {
                 if !📱.🚩ableDatePicker { 👆RegisterButton(.bottom) } // ☑️
             }
-            .modifier(🚨RegistrationErrorAlert())
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     if 📱.🚩ableDatePicker { 👆RegisterButton(.toolbar) } // ☑️
@@ -31,12 +30,15 @@ struct ContentView: View {
                     🛠MenuButton() // ⚙️
                 }
             }
-            .onChange(of: self.scenePhase) {
-                if $0 == .active {
-                    📱.📝resetInputValues()
-                    📱.📅resetDatePickerValue()
-                }
+        }
+        .onChange(of: self.scenePhase) {
+            if $0 == .active {
+                📱.📝resetInputValues()
+                📱.📅resetDatePickerValue()
             }
         }
+        .modifier(🚨RegistrationErrorAlert())
+        .modifier(🔐AuthManager())
+        .modifier(📣ADSheet())
     }
 }

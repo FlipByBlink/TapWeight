@@ -5,9 +5,6 @@ struct 🔐AuthManager: ViewModifier {
     func body(content: Content) -> some View {
         content
             .onAppear { 📱.ⓢuggestAuthRequest(toShare: [.bodyMass], read: [.bodyMass]) }
-            .onAppear {
-                if 📱.🚩ableBMI { 📱.ⓢuggestAuthRequest(toShare: [], read: [.height]) } //For previous version user.
-            }
             .onChange(of: 📱.🚩ableBMI) {
                 if $0 == true { 📱.ⓢuggestAuthRequest(toShare: [.bodyMassIndex], read: [.bodyMassIndex, .height]) }
             }
