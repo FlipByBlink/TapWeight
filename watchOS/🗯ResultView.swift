@@ -35,7 +35,17 @@ struct 🗯ResultView: View {
             Button("Yes, undo") { 📱.🗑cancel() }
         }
         .modifier(🚨CancellationErrorAlert())
-        .toolbar(.hidden, for: .automatic)
+        .toolbar(self.showToolbar, for: .automatic)
     }
-    //Dismiss by pushing DigitalCrown
+    //watchOS9: Dismiss by pushing DigitalCrown
+}
+
+private extension 🗯ResultView {
+    private var showToolbar: Visibility {
+        if #available(watchOS 10.0, *) {
+            .visible
+        } else {
+            .hidden
+        }
+    }
 }
