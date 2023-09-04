@@ -11,7 +11,7 @@ struct 🛠BMIMenu: View {
             } header: {
                 Text("Option")
             }
-            self.ⓕomulaSection()
+            Self.FomulaSection()
             self.ⓗeightSection()
             self.ⓑodyMassSection()
         }
@@ -20,34 +20,37 @@ struct 🛠BMIMenu: View {
 }
 
 private extension 🛠BMIMenu {
-    private func ⓕomulaSection() -> some View {
-        Section {
-            ZStack {
-                Color.clear
-                HStack {
-                    Text(verbatim: "BMI = ")
-                        .frame(maxWidth: 60)
-                    VStack(spacing: 12) {
-                        HStack(spacing: 2) {
-                            Text("Body Mass")
-                            Text(verbatim: "(kg)").font(.subheadline)
+    private struct FomulaSection: View {
+        @ScaledMetric private var bmiEqualWidth: CGFloat = 60
+        var body: some View {
+            Section {
+                ZStack {
+                    Color.clear
+                    HStack {
+                        Text(verbatim: "BMI = ")
+                            .frame(maxWidth: self.bmiEqualWidth)
+                        VStack(spacing: 12) {
+                            HStack(spacing: 2) {
+                                Text("Body Mass")
+                                Text(verbatim: "(kg)").font(.subheadline)
+                            }
+                            HStack(spacing: 2) {
+                                Text("Height").layoutPriority(1)
+                                Text(verbatim: "(m)").layoutPriority(1).font(.subheadline)
+                                Text(verbatim: " × ").layoutPriority(1)
+                                Text("Height").layoutPriority(1)
+                                Text(verbatim: "(m)").layoutPriority(1).font(.subheadline)
+                            }
                         }
-                        HStack(spacing: 2) {
-                            Text("Height").layoutPriority(1)
-                            Text(verbatim: "(m)").layoutPriority(1).font(.subheadline)
-                            Text(verbatim: " × ").layoutPriority(1)
-                            Text("Height").layoutPriority(1)
-                            Text(verbatim: "(m)").layoutPriority(1).font(.subheadline)
-                        }
+                        .padding()
+                        .overlay { Rectangle().frame(height: 1.33) }
                     }
-                    .padding()
-                    .overlay { Rectangle().frame(height: 1.33) }
                 }
+                .lineLimit(1)
+                .minimumScaleFactor(0.1)
+            } header: {
+                Text("Formula")
             }
-            .lineLimit(1)
-            .minimumScaleFactor(0.1)
-        } header: {
-            Text("Formula")
         }
     }
     private func ⓗeightSection() -> some View {
