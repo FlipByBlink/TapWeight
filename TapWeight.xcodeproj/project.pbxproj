@@ -48,7 +48,7 @@
 		F50962272AA4BBF5005B5CAB /* 🌐AD&InAppPurchase.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F50962242AA4BBF5005B5CAB /* 🌐AD&InAppPurchase.xcstrings */; };
 		F50962282AA4BBF5005B5CAB /* 🌐ADAppName.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F50962252AA4BBF5005B5CAB /* 🌐ADAppName.xcstrings */; };
 		F50962292AA4BBF5005B5CAB /* 🌐ADAppDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F50962262AA4BBF5005B5CAB /* 🌐ADAppDescription.xcstrings */; };
-		F509622B2AA4BDEC005B5CAB /* ℹ️AboutAppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509622A2AA4BDEC005B5CAB /* ℹ️AboutAppMenu.swift */; };
+		F509622B2AA4BDEC005B5CAB /* ℹ️AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509622A2AA4BDEC005B5CAB /* ℹ️AboutApp.swift */; };
 		F509622D2AA4BEB0005B5CAB /* 🌐AppStoreDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F509622C2AA4BEB0005B5CAB /* 🌐AppStoreDescription.xcstrings */; };
 		F509622F2AA4BEB0005B5CAB /* 🌐VersionHistory.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F509622E2AA4BEB0005B5CAB /* 🌐VersionHistory.xcstrings */; };
 		F50962312AA54860005B5CAB /* 🏥Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962302AA54860005B5CAB /* 🏥Category.swift */; };
@@ -76,7 +76,7 @@
 		F509624E2AA56E56005B5CAB /* 🚨ErrorAlert.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50961FA2AA4B290005B5CAB /* 🚨ErrorAlert.swift */; };
 		F509624F2AA56E56005B5CAB /* 🔐AuthManager.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50961F32AA4B1CE005B5CAB /* 🔐AuthManager.swift */; };
 		F50962502AA56E56005B5CAB /* ℹ️AboutAppButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962382AA56CF2005B5CAB /* ℹ️AboutAppButton.swift */; };
-		F50962512AA56E56005B5CAB /* ℹ️AboutAppMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F509622A2AA4BDEC005B5CAB /* ℹ️AboutAppMenu.swift */; };
+		F50962512AA56E56005B5CAB /* ℹ️AboutApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F509622A2AA4BDEC005B5CAB /* ℹ️AboutApp.swift */; };
 		F50962522AA56E56005B5CAB /* 🏥CheckEarliestPermittedSampleDateView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50961F82AA4B26E005B5CAB /* 🏥CheckEarliestPermittedSampleDateView.swift */; };
 		F50962532AA56E56005B5CAB /* Widget.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D19D8329B840020069A81E /* Widget.swift */; };
 		F50962542AA56E77005B5CAB /* 🏥Category.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962302AA54860005B5CAB /* 🏥Category.swift */; };
@@ -199,7 +199,7 @@
 				F509624E2AA56E56005B5CAB /* 🚨ErrorAlert.swift in CopyFiles */,
 				F509624F2AA56E56005B5CAB /* 🔐AuthManager.swift in CopyFiles */,
 				F50962502AA56E56005B5CAB /* ℹ️AboutAppButton.swift in CopyFiles */,
-				F50962512AA56E56005B5CAB /* ℹ️AboutAppMenu.swift in CopyFiles */,
+				F50962512AA56E56005B5CAB /* ℹ️AboutApp.swift in CopyFiles */,
 				F50962522AA56E56005B5CAB /* 🏥CheckEarliestPermittedSampleDateView.swift in CopyFiles */,
 				F50962532AA56E56005B5CAB /* Widget.swift in CopyFiles */,
 			);
@@ -343,7 +343,7 @@
 		F50962242AA4BBF5005B5CAB /* 🌐AD&InAppPurchase.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐AD&InAppPurchase.xcstrings"; sourceTree = "<group>"; };
 		F50962252AA4BBF5005B5CAB /* 🌐ADAppName.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐ADAppName.xcstrings"; sourceTree = "<group>"; };
 		F50962262AA4BBF5005B5CAB /* 🌐ADAppDescription.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐ADAppDescription.xcstrings"; sourceTree = "<group>"; };
-		F509622A2AA4BDEC005B5CAB /* ℹ️AboutAppMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutAppMenu.swift"; sourceTree = "<group>"; };
+		F509622A2AA4BDEC005B5CAB /* ℹ️AboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutApp.swift"; sourceTree = "<group>"; };
 		F509622C2AA4BEB0005B5CAB /* 🌐AppStoreDescription.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐AppStoreDescription.xcstrings"; sourceTree = "<group>"; };
 		F509622E2AA4BEB0005B5CAB /* 🌐VersionHistory.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐VersionHistory.xcstrings"; sourceTree = "<group>"; };
 		F50962302AA54860005B5CAB /* 🏥Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏥Category.swift"; sourceTree = "<group>"; };
@@ -529,7 +529,7 @@
 				F50961FA2AA4B290005B5CAB /* 🚨ErrorAlert.swift */,
 				F50961F32AA4B1CE005B5CAB /* 🔐AuthManager.swift */,
 				F50962382AA56CF2005B5CAB /* ℹ️AboutAppButton.swift */,
-				F509622A2AA4BDEC005B5CAB /* ℹ️AboutAppMenu.swift */,
+				F509622A2AA4BDEC005B5CAB /* ℹ️AboutApp.swift */,
 				F50961F72AA4B254005B5CAB /* 🚧Debug */,
 			);
 			path = "🗄️Rest";
@@ -830,7 +830,7 @@
 				F50962082AA4B5DE005B5CAB /* 🎚️BodyFatStepper.swift in Sources */,
 				F50962012AA4B3F9005B5CAB /* 📉Difference.swift in Sources */,
 				F50961FE2AA4B340005B5CAB /* 🚨Error.swift in Sources */,
-				F509622B2AA4BDEC005B5CAB /* ℹ️AboutAppMenu.swift in Sources */,
+				F509622B2AA4BDEC005B5CAB /* ℹ️AboutApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

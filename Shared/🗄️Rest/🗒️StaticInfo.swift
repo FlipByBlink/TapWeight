@@ -34,31 +34,46 @@ extension 🗒️StaticInfo {
                                                                   ("1.0", "2022-05-23")] //降順。先頭の方が新しい
     
     enum SourceCodeCategory: String, CaseIterable, Identifiable {
-        case main, Rest
+        case main, Rest, Widget
         var id: Self { self }
         var fileNames: [String] {
             switch self {
                 case .main: ["App.swift",
-                             "📱AppModel.swift",
                              "ContentView.swift",
-                             "🏥Health.swift"]
-                case .Rest: ["📱extensionAppModel.swift",
-                             "💥Feedback.swift",
-                             "⌚️WatchSync.swift",
+                             "📱AppModel.swift",
+                             "📱AppModel(extension).swift",
+                             "🏥HealthStore.swift",
+                             "🏥Category.swift"]
+                case .Rest: ["🎚️StepperAction.swift",
+                             "🎚️BodyFatStepper.swift",
+                             "🎚️BodyMassStepper.swift",
                              "👆RegisterButton.swift",
-                             "🎚️Stepper.swift",
+                             "🗯ResultView.swift",
                              "🪧BMIView.swift",
                              "🪧LBMView.swift",
+                             "📉Difference.swift",
                              "📉DifferenceView.swift",
-                             "💟OpenHealthAppButton.swift",
                              "📅DatePicker.swift",
-                             "🗯ResultView.swift",
-                             "🚨ErrorAlert.swift",
                              "🛠AppMenu.swift",
+                             "🛠BMIMenu.swift",
+                             "🛠LBMMenu.swift",
+                             "🛠ReminderMenu.swift",
+                             "⌚️WatchSync.swift",
+                             "💥Feedback.swift",
                              "🔐AuthManager.swift",
-                             "🔔Notification.swift",
+                             "🚨Error.swift",
+                             "🚨ErrorAlert.swift",
+                             "💟OpenHealthAppButton.swift",
                              "💬RequestUserReview.swift",
-                             "📣ADSheet.swift"]
+                             "📣ADComponents.swift",
+                             "📣ADModel.swift",
+                             "📣ADSheet.swift",
+                             "🔔Notification.swift",
+                             "🛒InAppPurchaseModel.swift",
+                             "🛒InAppPurchaseView.swift",
+                             "ℹ️AboutApp.swift",
+                             "🗒️StaticInfo.swift"]
+                case .Widget: ["Widget.swift"]
             }
         }
     }
@@ -67,16 +82,35 @@ extension 🗒️StaticInfo {
 #elseif os(watchOS)
 extension 🗒️StaticInfo {
     enum SourceCodeCategory: String, CaseIterable, Identifiable {
-        case main, Rest
+        case main, Rest, Widget
         var id: Self { self }
         var fileNames: [String] {
             switch self {
                 case .main: ["App.swift",
                              "ContentView.swift",
                              "📱AppModel.swift",
-                             "📱AppModel(Extension).swift"]
-                case .Rest: ["🗒️StaticInfo.swift",
-                             "ℹ️AboutApp.swift"]
+                             "📱AppModel(extension).swift",
+                             "🏥HealthStore.swift",
+                             "🏥Category.swift"]
+                case .Rest: ["🎚️StepperAction.swift",
+                             "🎚️BodyFatStepper.swift",
+                             "🎚️BodyMassStepper.swift",
+                             "👆RegisterButton.swift",
+                             "🗯ResultView.swift",
+                             "🪧BMIView.swift",
+                             "🪧LBMView.swift",
+                             "⌚️WatchSync.swift",
+                             "💥Feedback.swift",
+                             "🔐AuthManager.swift",
+                             "🚨Error.swift",
+                             "🚨ErrorAlert.swift",
+                             "🚨ErrorMessage.swift",
+                             "ℹ️AboutAppButton.swift",
+                             "ℹ️AboutApp.swift",
+                             "📉Difference.swift",
+                             "🏥CheckEarliestPermittedSampleDateView.swift",
+                             "🗒️StaticInfo.swift"]
+                case .Widget: ["Widget.swift"]
             }
         }
     }
