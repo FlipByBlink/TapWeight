@@ -12,7 +12,7 @@ TapWeight for "Health" - iPhone, iPad, Apple Watch
 
 Description
 ------------
-This application is designed to register weight data to the Apple "Health" application pre-installed on iPhone in the fastest possible way (as manual).
+This application is designed to register weight data to the Apple "Health" application pre-installed on iPhone / iPad in the fastest possible way (as manual).
 
 
 Target / Use-case
@@ -34,8 +34,6 @@ Option
 
 - 100g / 50g amount option.
 
-- Apple Watch support.
-
 - Reminder notification.
 
 - Function to change the registration date and time.
@@ -50,6 +48,10 @@ Others
 - Launch "Health" app by one tap.
 
 - Cancel feature just after registration.
+
+- Apple Watch support.
+
+- Support iPad. (iPadOS 17+)
 
 
 Concept
