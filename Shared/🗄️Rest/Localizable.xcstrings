@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
     "__Body Mass Index:__ Height data is nothing on \"Health\" app. Register height data. Or check authentication." : {
       "localizations" : {
         "ja" : {

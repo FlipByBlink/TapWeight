@@ -23,7 +23,6 @@ struct 🎚️BodyFatStepper: View {
                         Spacer(minLength: 0)
                         📉DifferenceView(.bodyFatPercentage)
                     }
-                    .accessibilityLabel("")
                 } onIncrement: {
                     📱.🎚️changeBodyFatValue(.increment)
                 } onDecrement: {

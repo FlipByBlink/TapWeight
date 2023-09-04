@@ -21,7 +21,6 @@ struct 🎚️BodyMassStepper: View {
                 Spacer(minLength: 4)
                 📉DifferenceView(.bodyMass)
             }
-            .accessibilityLabel("")
         } onIncrement: {
             📱.🎚️changeMassValue(.increment)
         } onDecrement: {
