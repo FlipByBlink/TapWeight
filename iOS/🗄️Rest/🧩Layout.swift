@@ -18,8 +18,7 @@ struct 🧩LayoutHandle: ViewModifier {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     func body(content: Content) -> some View {
-        content
-            .environment(\.ⓛayout, self.activeLayout)
+        content.environment(\.ⓛayout, self.activeLayout)
     }
     private var activeLayout: 🧩Layout {
         switch self.horizontalSizeClass {

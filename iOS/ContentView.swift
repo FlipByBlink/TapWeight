@@ -8,9 +8,6 @@ struct ContentView: View {
         NavigationStack {
             📋InputFields()
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        if 📱.🚩ableDatePicker { 👆RegisterButton(.toolbar) } // ☑️
-                    }
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         💟OpenHealthAppButton.onMainView()
                         🛠MenuButton() // ⚙️
