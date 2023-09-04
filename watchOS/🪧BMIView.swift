@@ -2,7 +2,7 @@ import SwiftUI
 
 struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    private var ⓘnputValue: Double? { 📱.ⓑmiInputValue }
+    private var ⓘnputDescription: String? { 📱.ⓑmiInputDescription }
     private var ⓗeightDescription: String? { 📱.ⓗeightDescription }
     var body: some View {
         VStack(alignment: .leading) {
@@ -10,9 +10,9 @@ struct 🪧BMIView: View {
                 .font(.caption2.weight(.semibold))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-            if let ⓘnputValue, let ⓗeightDescription {
+            if let ⓘnputDescription, let ⓗeightDescription {
                 HStack {
-                    Text(ⓘnputValue.description)
+                    Text(ⓘnputDescription)
                         .font(.subheadline.bold())
                         .monospacedDigit()
                     Spacer()
@@ -29,6 +29,6 @@ struct 🪧BMIView: View {
             }
         }
         .foregroundStyle(.secondary)
-        .animation(.default, value: self.ⓘnputValue == nil)
+        .animation(.default, value: self.ⓘnputDescription == nil)
     }
 }

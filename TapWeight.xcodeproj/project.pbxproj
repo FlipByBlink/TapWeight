@@ -120,6 +120,10 @@
 		F535AA8429AD7BBE00691926 /* ℹ️AboutApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E2EAA729415F3C0054A208 /* ℹ️AboutApp.swift */; };
 		F535AA8929AD7EB800691926 /* 💬RequestUserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */; };
 		F535AA8A29AD7EB800691926 /* 📣ADSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535AA8829AD7EB800691926 /* 📣ADSheet.swift */; };
+		F5414EE82AA5ABC3002B6603 /* 🔢NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5414EE72AA5ABC3002B6603 /* 🔢NumberFormatter.swift */; };
+		F5414EE92AA5ABC3002B6603 /* 🔢NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5414EE72AA5ABC3002B6603 /* 🔢NumberFormatter.swift */; };
+		F5414EEA2AA5B145002B6603 /* 🔢NumberFormatter.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5414EE72AA5ABC3002B6603 /* 🔢NumberFormatter.swift */; };
+		F5414EEB2AA5B14B002B6603 /* 🔢NumberFormatter.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5414EE72AA5ABC3002B6603 /* 🔢NumberFormatter.swift */; };
 		F54292DB29B01C0200EFF085 /* 👆RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54292DA29B01C0200EFF085 /* 👆RegisterButton.swift */; };
 		F54292DD29B01C4700EFF085 /* 🪧BMIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54292DC29B01C4700EFF085 /* 🪧BMIView.swift */; };
 		F54292DF29B01CE300EFF085 /* 📅DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */; };
@@ -197,6 +201,7 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				F5414EEB2AA5B14B002B6603 /* 🔢NumberFormatter.swift in CopyFiles */,
 				F509623B2AA56E56005B5CAB /* 📱AppModel.swift in CopyFiles */,
 				F509623C2AA56E56005B5CAB /* 🏥HealthStore.swift in CopyFiles */,
 				F509623D2AA56E56005B5CAB /* 🏥Category.swift in CopyFiles */,
@@ -242,6 +247,7 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				F5414EEA2AA5B145002B6603 /* 🔢NumberFormatter.swift in CopyFiles */,
 				F509628B2AA5A08A005B5CAB /* 📋InputFields.swift in CopyFiles */,
 				F509628C2AA5A08A005B5CAB /* 🧩Layout.swift in CopyFiles */,
 				F509628D2AA5A08A005B5CAB /* 🗑️ResetOnForeground.swift in CopyFiles */,
@@ -378,6 +384,7 @@
 		F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚨ErrorAlert.swift"; sourceTree = "<group>"; };
 		F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💬RequestUserReview.swift"; sourceTree = "<group>"; };
 		F535AA8829AD7EB800691926 /* 📣ADSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADSheet.swift"; sourceTree = "<group>"; };
+		F5414EE72AA5ABC3002B6603 /* 🔢NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🔢NumberFormatter.swift"; sourceTree = "<group>"; };
 		F54292DA29B01C0200EFF085 /* 👆RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "👆RegisterButton.swift"; sourceTree = "<group>"; };
 		F54292DC29B01C4700EFF085 /* 🪧BMIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧BMIView.swift"; sourceTree = "<group>"; };
 		F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📅DatePicker.swift"; sourceTree = "<group>"; };
@@ -586,6 +593,7 @@
 			isa = PBXGroup;
 			children = (
 				F5BBB56829B6113A00424A66 /* 💥Feedback.swift */,
+				F5414EE72AA5ABC3002B6603 /* 🔢NumberFormatter.swift */,
 				F50962192AA4BAC4005B5CAB /* 🗒️StaticInfo.swift */,
 			);
 			path = "🗄️Rest";
@@ -877,6 +885,7 @@
 				F509628A2AA59F89005B5CAB /* 🗑️ResetOnForeground.swift in Sources */,
 				F5D8400929B1DDED0046E91B /* 🪧LBMView.swift in Sources */,
 				F535AA8A29AD7EB800691926 /* 📣ADSheet.swift in Sources */,
+				F5414EE82AA5ABC3002B6603 /* 🔢NumberFormatter.swift in Sources */,
 				F54292DF29B01CE300EFF085 /* 📅DatePicker.swift in Sources */,
 				126B3EAB282DFEDF009BD28B /* App.swift in Sources */,
 				F5E2EAAA29415F3D0054A208 /* ℹ️AboutApp.swift in Sources */,
@@ -931,6 +940,7 @@
 				F5BBB57129B6F60100424A66 /* 👆RegisterButton.swift in Sources */,
 				F5BBB56A29B6113A00424A66 /* 💥Feedback.swift in Sources */,
 				F50962082AA4B5DE005B5CAB /* 🎚️BodyFatStepper.swift in Sources */,
+				F5414EE92AA5ABC3002B6603 /* 🔢NumberFormatter.swift in Sources */,
 				F50962012AA4B3F9005B5CAB /* 📉Difference.swift in Sources */,
 				F50961FE2AA4B340005B5CAB /* 🚨Error.swift in Sources */,
 				F509622B2AA4BDEC005B5CAB /* ℹ️AboutApp.swift in Sources */,

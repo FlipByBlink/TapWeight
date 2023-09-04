@@ -3,18 +3,18 @@ import SwiftUI
 struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.ⓛayout) var ⓛayout
-    private var ⓘnputValue: Double? { 📱.ⓑmiInputValue }
+    private var ⓘnputDescription: String? { 📱.ⓑmiInputDescription }
     private var ⓗeightDescription: String? { 📱.ⓗeightDescription }
     var body: some View {
         if 📱.🚩ableBMI {
-            if let ⓘnputValue, let ⓗeightDescription {
+            if let ⓘnputDescription, let ⓗeightDescription {
                 HStack {
                     VStack(alignment: .leading, spacing: -2) {
                         Text("Body Mass Index")
                             .font(.footnote.bold())
                             .frame(maxHeight: 32)
                         HStack(alignment: .lastTextBaseline, spacing: 4) {
-                            Text(ⓘnputValue.description)
+                            Text(ⓘnputDescription)
                                 .fontWeight(.heavy)
                                 .font(self.ⓛayout == .compact ? .body : .title)
                             Text(verbatim: " (\(ⓗeightDescription))")

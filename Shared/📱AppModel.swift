@@ -48,9 +48,9 @@ extension 📱AppModel {
     var ⓜassInputDescription: String {
         if let ⓜassInputValue {
             if ⓜassUnit == .gramUnit(with: .kilo), self.🚩amount50g {
-                String(format: "%.2f", ⓜassInputValue)
+                🔢NumberFormatter.string(ⓜassInputValue, minimumDigits: 2)
             } else {
-                ⓜassInputValue.description
+                🔢NumberFormatter.string(ⓜassInputValue)
             }
         } else {
             self.🚩amount50g ? "00.00" : "00.0" //Placeholder
@@ -64,6 +64,10 @@ extension 📱AppModel {
         let ⓗeightMeterValue = ⓗeightSample.quantity.doubleValue(for: .meter())
         let ⓢum = ⓚiloMassValue / pow(ⓗeightMeterValue, 2)
         return Double(Int(round(ⓢum * 10))) / 10
+    }
+    var ⓑmiInputDescription: String? {
+        guard let ⓑmiInputValue else { return nil }
+        return 🔢NumberFormatter.string(ⓑmiInputValue)
     }
     var ⓗeightUnit: HKUnit? { self.📦preferredUnits[.height] }
     private var ⓗeightValue: Double? {
@@ -79,7 +83,7 @@ extension 📱AppModel {
     private var ⓑodyFatInputValue: Double? { self.📝bodyFatInputQuantity?.doubleValue(for: .percent()) }
     var ⓑodyFatInputDescription: String {
         if let ⓑodyFatInputValue {
-            (round(ⓑodyFatInputValue * 1000) / 10).description
+            🔢NumberFormatter.string(round(ⓑodyFatInputValue * 1000) / 10)
         } else {
             "00.0"
         }
@@ -95,7 +99,7 @@ extension 📱AppModel {
         return ⓛbmInputQuantity.doubleValue(for: ⓜassUnit)
     }
     var ⓛbmInputDescription: String {
-        String(format: "%.1f", ⓛbmInputValue ?? 0.0) + " " + (self.ⓜassUnitDescription ?? "kg")
+        🔢NumberFormatter.string(ⓛbmInputValue ?? 0.0) + " " + (self.ⓜassUnitDescription ?? "kg")
     }
     
     var ⓓatePickerIsAlmostNow: Bool { self.📅datePickerValue.timeIntervalSinceNow > -300 }
@@ -139,15 +143,15 @@ extension 📱AppModel {
             let ⓓescription: String = {
                 if ⓒategory == .bodyMass, self.🚩amount50g {
                     switch ⓓifferenceValue {
-                        case ..<0: String(format: "%.2f", ⓓifferenceValue)
-                        case 0: " 0.00"
-                        default: "+" + String(format: "%.2f", ⓓifferenceValue)
+                        case ..<0: 🔢NumberFormatter.string(ⓓifferenceValue, minimumDigits: 2)
+                        case 0: " " + 🔢NumberFormatter.string(0.0, minimumDigits: 2)
+                        default: "+" + 🔢NumberFormatter.string(ⓓifferenceValue, minimumDigits: 2)
                     }
                 } else {
                     switch ⓓifferenceValue {
-                        case ..<0: ⓓifferenceValue.description
-                        case 0: " 0.0"
-                        default: "+" + ⓓifferenceValue.description
+                        case ..<0: 🔢NumberFormatter.string(ⓓifferenceValue)
+                        case 0: " " + 🔢NumberFormatter.string(0.0)
+                        default: "+" + 🔢NumberFormatter.string(ⓓifferenceValue)
                     }
                 }
             }()
