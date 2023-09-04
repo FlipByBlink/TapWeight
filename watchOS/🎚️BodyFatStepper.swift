@@ -20,7 +20,7 @@ struct 🎚️BodyFatStepper: View {
                     .font(.system(.title2, design: .rounded, weight: .heavy))
                     .opacity(self.ⓘnputIsInvalid ? 0.5 : 1)
                     .animation(.default.speed(2), value: self.ⓘnputIsInvalid)
-                Text("%")
+                Text(verbatim: "%")
                     .font(.system(.title3, design: .rounded, weight: .heavy))
             }
             Spacer()

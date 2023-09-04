@@ -30,7 +30,7 @@ private struct EntryView : View {
                 Label("Body Mass", systemImage: "scalemass")
                     .widgetAccentable()
             default:
-                Text("🐛")
+                Text(verbatim: "🐛")
         }
     }
 }

@@ -17,7 +17,7 @@ struct 🪧BMIView: View {
                             Text(ⓘnputValue.description)
                                 .fontWeight(.heavy)
                                 .font(self.ⓐbleDatePicker ? .body : .title)
-                            Text(" (\(ⓗeightDescription))")
+                            Text(verbatim: " (\(ⓗeightDescription))")
                                 .font(.footnote.weight(.heavy))
                                 .foregroundStyle(.tertiary)
                         }

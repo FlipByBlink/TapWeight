@@ -16,7 +16,7 @@ struct 🪧BMIView: View {
                         .font(.subheadline.bold())
                         .monospacedDigit()
                     Spacer()
-                    Text("(\(ⓗeightDescription))")
+                    Text(verbatim: "(\(ⓗeightDescription))")
                         .font(.caption2.bold())
                         .foregroundStyle(.tertiary)
                 }

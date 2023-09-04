@@ -25,19 +25,19 @@ private extension 🛠BMIMenu {
             ZStack {
                 Color.clear
                 HStack {
-                    Text("BMI = ")
+                    Text(verbatim: "BMI = ")
                         .frame(maxWidth: 60)
                     VStack(spacing: 12) {
                         HStack(spacing: 2) {
                             Text("Body Mass")
-                            Text("(kg)").font(.subheadline)
+                            Text(verbatim: "(kg)").font(.subheadline)
                         }
                         HStack(spacing: 2) {
                             Text("Height").layoutPriority(1)
-                            Text("(m)").layoutPriority(1).font(.subheadline)
-                            Text(" × ").layoutPriority(1)
+                            Text(verbatim: "(m)").layoutPriority(1).font(.subheadline)
+                            Text(verbatim: " × ").layoutPriority(1)
                             Text("Height").layoutPriority(1)
-                            Text("(m)").layoutPriority(1).font(.subheadline)
+                            Text(verbatim: "(m)").layoutPriority(1).font(.subheadline)
                         }
                     }
                     .padding()
@@ -56,7 +56,7 @@ private extension 🛠BMIMenu {
                 HStack(alignment: .firstTextBaseline) {
                     Text(ⓗeightSample.quantity.description)
                     if 📱.ⓗeightUnit != .meter() {
-                        Text("(\(String(format: "%.2f", ⓗeightSample.quantity.doubleValue(for: .meter())))m)")
+                        Text(verbatim: "(\(String(format: "%.2f", ⓗeightSample.quantity.doubleValue(for: .meter())))m)")
                             .foregroundStyle(.secondary)
                             .font(.caption)
                     }
@@ -77,7 +77,7 @@ private extension 🛠BMIMenu {
                     Section {
                         HStack(alignment: .firstTextBaseline) {
                             Text(ⓢample.quantity.description)
-                            Text("(\(String(format: "%.2f", ⓢample.quantity.doubleValue(for: .gramUnit(with: .kilo))))kg)")
+                            Text(verbatim: "(\(String(format: "%.2f", ⓢample.quantity.doubleValue(for: .gramUnit(with: .kilo))))kg)")
                                 .foregroundStyle(.secondary)
                                 .font(.caption)
                         }

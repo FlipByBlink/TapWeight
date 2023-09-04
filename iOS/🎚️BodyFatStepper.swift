@@ -16,7 +16,7 @@ struct 🎚️BodyFatStepper: View {
                                 .monospacedDigit()
                                 .opacity(self.ⓘnputIsInvalid ? 0.3 : 1)
                                 .animation(.default.speed(2), value: self.ⓘnputIsInvalid)
-                            Text("%")
+                            Text(verbatim: "%")
                                 .font(.title.weight(.black))
                                 .frame(maxHeight: 36)
                         }
