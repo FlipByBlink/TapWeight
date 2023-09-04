@@ -288,6 +288,28 @@
         }
       }
     },
+    "Released Apple TV app version of \"PlainShogiBoard\"." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「Plain将棋盤」のApple TV向けアプリをリリース。"
+          }
+        }
+      }
+    },
+    "Released Apple Watch app version of \"TapTemperature\"." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「TapTemperature」のApple Watch向けアプリをリリース。"
+          }
+        }
+      }
+    },
     "Released body temperature registration app \"TapTemperature\" ver 1.0." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -350,6 +372,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "iOS16のリリースに合わせて「ロックノート」と「暗記ウィジェット」をリリース。"
+          }
+        }
+      }
+    },
+    "Released Mac app version of \"MemorizeWidget\"." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「暗記ウィジェット」のMac向けアプリをリリース。"
           }
         }
       }
