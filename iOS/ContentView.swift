@@ -30,6 +30,7 @@ struct ContentView: View {
                     🛠MenuButton() // ⚙️
                 }
             }
+            .frame(maxWidth: 600)
         }
         .onChange(of: self.scenePhase) {
             if $0 == .active {
