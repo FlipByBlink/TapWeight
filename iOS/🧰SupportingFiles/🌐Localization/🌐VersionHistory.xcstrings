@@ -136,6 +136,23 @@
           }
         }
       }
+    },
+    "1.5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ADD iPad support(iPadOS 17+)\nADD shortcut widget for iOS\nUnsupport iOS 15.x\nSeveral small fix/improve"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPadに対応しました(iPadOS 17以降)\niOS向けにショートカット用のウィジェットを実装しました\niOS 15.xをサポート対象外にしました\n細かな修正/改善"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
