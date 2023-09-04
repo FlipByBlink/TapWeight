@@ -52,11 +52,11 @@ private extension 🛠BMIMenu {
     }
     private func ⓗeightSection() -> some View {
         Section {
-            if let ⓗeightSample = 📱.📦latestSamples[.height] {
+            if let ⓗeightSample = 📱.📦latestSamples[.height], let ⓗeightUnit = 📱.ⓗeightUnit {
                 HStack(alignment: .firstTextBaseline) {
-                    Text(ⓗeightSample.quantity.description)
-                    if 📱.ⓗeightUnit != .meter() {
-                        Text(verbatim: "(\(String(format: "%.2f", ⓗeightSample.quantity.doubleValue(for: .meter())))m)")
+                    Text(ⓗeightSample.quantity.doubleValue(for: ⓗeightUnit).formatted() + ⓗeightUnit.unitString)
+                    if ⓗeightUnit != .meter() {
+                        Text(verbatim: "(\(🔢NumberFormatter.string(ⓗeightSample.quantity.doubleValue(for: .meter())))m)")
                             .foregroundStyle(.secondary)
                             .font(.caption)
                     }

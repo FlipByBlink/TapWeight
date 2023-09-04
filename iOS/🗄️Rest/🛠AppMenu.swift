@@ -45,7 +45,7 @@ private struct 🛠AppMenu: View {
                     }
                     if 📱.ⓜassUnit == .gramUnit(with: .kilo) {
                         Toggle(isOn: $📱.🚩amount50g) {
-                            Label("0.1kg → 0.05kg", systemImage: "minus.forwardslash.plus")
+                            Label("0.1kg → 0.05kg", systemImage: "minus.forwardslash.plus") //TODO: 調整
                         }
                         .accessibilityLabel("50gram")
                     }
