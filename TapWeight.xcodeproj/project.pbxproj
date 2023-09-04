@@ -48,12 +48,51 @@
 		F50962272AA4BBF5005B5CAB /* 🌐AD&InAppPurchase.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F50962242AA4BBF5005B5CAB /* 🌐AD&InAppPurchase.xcstrings */; };
 		F50962282AA4BBF5005B5CAB /* 🌐ADAppName.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F50962252AA4BBF5005B5CAB /* 🌐ADAppName.xcstrings */; };
 		F50962292AA4BBF5005B5CAB /* 🌐ADAppDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F50962262AA4BBF5005B5CAB /* 🌐ADAppDescription.xcstrings */; };
-		F509622B2AA4BDEC005B5CAB /* ℹ️AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509622A2AA4BDEC005B5CAB /* ℹ️AboutApp.swift */; };
+		F509622B2AA4BDEC005B5CAB /* ℹ️AboutAppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509622A2AA4BDEC005B5CAB /* ℹ️AboutAppMenu.swift */; };
 		F509622D2AA4BEB0005B5CAB /* 🌐AppStoreDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F509622C2AA4BEB0005B5CAB /* 🌐AppStoreDescription.xcstrings */; };
 		F509622F2AA4BEB0005B5CAB /* 🌐VersionHistory.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F509622E2AA4BEB0005B5CAB /* 🌐VersionHistory.xcstrings */; };
 		F50962312AA54860005B5CAB /* 🏥Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962302AA54860005B5CAB /* 🏥Category.swift */; };
 		F50962322AA54860005B5CAB /* 🏥Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962302AA54860005B5CAB /* 🏥Category.swift */; };
-		F50962372AA5519E005B5CAB /* 🛠Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962362AA5519E005B5CAB /* 🛠Menu.swift */; };
+		F50962392AA56CF2005B5CAB /* ℹ️AboutAppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962382AA56CF2005B5CAB /* ℹ️AboutAppButton.swift */; };
+		F509623B2AA56E56005B5CAB /* 📱AppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124C485E284863BA0085B066 /* 📱AppModel.swift */; };
+		F509623C2AA56E56005B5CAB /* 🏥HealthStore.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥HealthStore.swift */; };
+		F509623D2AA56E56005B5CAB /* 🏥Category.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962302AA54860005B5CAB /* 🏥Category.swift */; };
+		F509623E2AA56E56005B5CAB /* 📉Difference.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50961FF2AA4B3F8005B5CAB /* 📉Difference.swift */; };
+		F509623F2AA56E56005B5CAB /* 🎚️StepperAction.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962022AA4B44A005B5CAB /* 🎚️StepperAction.swift */; };
+		F50962402AA56E56005B5CAB /* 🚨Error.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50961FC2AA4B340005B5CAB /* 🚨Error.swift */; };
+		F50962412AA56E56005B5CAB /* ⌚️WatchSync.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E11EBC29BAE847004F73B2 /* ⌚️WatchSync.swift */; };
+		F50962422AA56E56005B5CAB /* 💥Feedback.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56829B6113A00424A66 /* 💥Feedback.swift */; };
+		F50962432AA56E56005B5CAB /* 🗒️StaticInfo.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962192AA4BAC4005B5CAB /* 🗒️StaticInfo.swift */; };
+		F50962442AA56E56005B5CAB /* App.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB55429B60F5700424A66 /* App.swift */; };
+		F50962452AA56E56005B5CAB /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB55629B60F5700424A66 /* ContentView.swift */; };
+		F50962462AA56E56005B5CAB /* 📱AppModel(extension).swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* 📱AppModel(extension).swift */; };
+		F50962472AA56E56005B5CAB /* 🎚️BodyMassStepper.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962052AA4B5BA005B5CAB /* 🎚️BodyMassStepper.swift */; };
+		F50962482AA56E56005B5CAB /* 🪧BMIView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962092AA4B5F7005B5CAB /* 🪧BMIView.swift */; };
+		F50962492AA56E56005B5CAB /* 🎚️BodyFatStepper.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962072AA4B5DE005B5CAB /* 🎚️BodyFatStepper.swift */; };
+		F509624A2AA56E56005B5CAB /* 🪧LBMView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F509620B2AA4B60E005B5CAB /* 🪧LBMView.swift */; };
+		F509624B2AA56E56005B5CAB /* 👆RegisterButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56F29B6F60100424A66 /* 👆RegisterButton.swift */; };
+		F509624C2AA56E56005B5CAB /* 🗯ResultView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50961F52AA4B206005B5CAB /* 🗯ResultView.swift */; };
+		F509624D2AA56E56005B5CAB /* 🚨ErrorMessage.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50961F12AA4B1A8005B5CAB /* 🚨ErrorMessage.swift */; };
+		F509624E2AA56E56005B5CAB /* 🚨ErrorAlert.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50961FA2AA4B290005B5CAB /* 🚨ErrorAlert.swift */; };
+		F509624F2AA56E56005B5CAB /* 🔐AuthManager.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50961F32AA4B1CE005B5CAB /* 🔐AuthManager.swift */; };
+		F50962502AA56E56005B5CAB /* ℹ️AboutAppButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962382AA56CF2005B5CAB /* ℹ️AboutAppButton.swift */; };
+		F50962512AA56E56005B5CAB /* ℹ️AboutAppMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F509622A2AA4BDEC005B5CAB /* ℹ️AboutAppMenu.swift */; };
+		F50962522AA56E56005B5CAB /* 🏥CheckEarliestPermittedSampleDateView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50961F82AA4B26E005B5CAB /* 🏥CheckEarliestPermittedSampleDateView.swift */; };
+		F50962532AA56E56005B5CAB /* Widget.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D19D8329B840020069A81E /* Widget.swift */; };
+		F50962542AA56E77005B5CAB /* 🏥Category.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962302AA54860005B5CAB /* 🏥Category.swift */; };
+		F50962552AA56E77005B5CAB /* 📉Difference.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50961FF2AA4B3F8005B5CAB /* 📉Difference.swift */; };
+		F50962562AA56E77005B5CAB /* 🎚️StepperAction.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962022AA4B44A005B5CAB /* 🎚️StepperAction.swift */; };
+		F50962572AA56E77005B5CAB /* 🚨Error.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50961FC2AA4B340005B5CAB /* 🚨Error.swift */; };
+		F50962582AA56E77005B5CAB /* 🗒️StaticInfo.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962192AA4BAC4005B5CAB /* 🗒️StaticInfo.swift */; };
+		F50962592AA56E77005B5CAB /* 🎚️BodyFatStepper.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F509620D2AA4B67A005B5CAB /* 🎚️BodyFatStepper.swift */; };
+		F509625A2AA56E77005B5CAB /* 🛠BMIMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F509620F2AA4B806005B5CAB /* 🛠BMIMenu.swift */; };
+		F509625B2AA56E77005B5CAB /* 🛠LBMMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962112AA4B88F005B5CAB /* 🛠LBMMenu.swift */; };
+		F509625C2AA56E77005B5CAB /* 🛠ReminderMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962132AA4B90F005B5CAB /* 🛠ReminderMenu.swift */; };
+		F509625D2AA56E77005B5CAB /* 📣ADComponents.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962202AA4BB69005B5CAB /* 📣ADComponents.swift */; };
+		F509625E2AA56E77005B5CAB /* 📣ADModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F509621C2AA4BAF3005B5CAB /* 📣ADModel.swift */; };
+		F509625F2AA56E77005B5CAB /* 🛒InAppPurchaseModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F509621D2AA4BAF3005B5CAB /* 🛒InAppPurchaseModel.swift */; };
+		F50962602AA56E77005B5CAB /* 🛒InAppPurchaseView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962222AA4BBC7005B5CAB /* 🛒InAppPurchaseView.swift */; };
+		F50962612AA56E77005B5CAB /* Widget.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D19D8329B840020069A81E /* Widget.swift */; };
 		F535719329B1AFB80003FD2C /* 🚨ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
 		F535719429B1B9FF0003FD2C /* 🏥HealthStore.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥HealthStore.swift */; };
 		F535719529B1B9FF0003FD2C /* 🚨ErrorAlert.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
@@ -80,7 +119,6 @@
 		F54292EA29B01E2700EFF085 /* 📣ADSheet.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535AA8829AD7EB800691926 /* 📣ADSheet.swift */; };
 		F5A8E1CD29C545B100DE7E42 /* 🔐AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A8E1CC29C545B100DE7E42 /* 🔐AuthManager.swift */; };
 		F5A8E1CE29C5464A00DE7E42 /* 🔐AuthManager.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5A8E1CC29C545B100DE7E42 /* 🔐AuthManager.swift */; };
-		F5AE313829BAB8A70027A952 /* 📱AppModel(extension).swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56C29B6B14C00424A66 /* 📱AppModel(extension).swift */; };
 		F5BBB54A29B5F48C00424A66 /* 🪧LBMView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */; };
 		F5BBB54B29B5F48C00424A66 /* 🔔Notification.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D8401529B45CF40046E91B /* 🔔Notification.swift */; };
 		F5BBB55529B60F5700424A66 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB55429B60F5700424A66 /* App.swift */; };
@@ -101,10 +139,6 @@
 		F5D19D8429B840020069A81E /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D19D8329B840020069A81E /* Widget.swift */; };
 		F5D19D8629B840050069A81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5D19D8529B840050069A81E /* Assets.xcassets */; };
 		F5D19D8A29B840050069A81E /* Widget for watchOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F5D19D7D29B840020069A81E /* Widget for watchOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F5D19D9129B841C60069A81E /* App.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB55429B60F5700424A66 /* App.swift */; };
-		F5D19D9229B841C60069A81E /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB55629B60F5700424A66 /* ContentView.swift */; };
-		F5D19D9329B841C60069A81E /* 👆RegisterButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBB56F29B6F60100424A66 /* 👆RegisterButton.swift */; };
-		F5D19D9429B841DA0069A81E /* Widget.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5D19D8329B840020069A81E /* Widget.swift */; };
 		F5D19D9529B843C80069A81E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3EC1282E0F45009BD28B /* Localizable.strings */; };
 		F5D19D9629B843CC0069A81E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3ED0282E15E5009BD28B /* InfoPlist.strings */; };
 		F5D8400929B1DDED0046E91B /* 🪧LBMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8400829B1DDED0046E91B /* 🪧LBMView.swift */; };
@@ -137,12 +171,60 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		F509623A2AA56E37005B5CAB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "📁SourceCode";
+			dstSubfolderSpec = 7;
+			files = (
+				F509623B2AA56E56005B5CAB /* 📱AppModel.swift in CopyFiles */,
+				F509623C2AA56E56005B5CAB /* 🏥HealthStore.swift in CopyFiles */,
+				F509623D2AA56E56005B5CAB /* 🏥Category.swift in CopyFiles */,
+				F509623E2AA56E56005B5CAB /* 📉Difference.swift in CopyFiles */,
+				F509623F2AA56E56005B5CAB /* 🎚️StepperAction.swift in CopyFiles */,
+				F50962402AA56E56005B5CAB /* 🚨Error.swift in CopyFiles */,
+				F50962412AA56E56005B5CAB /* ⌚️WatchSync.swift in CopyFiles */,
+				F50962422AA56E56005B5CAB /* 💥Feedback.swift in CopyFiles */,
+				F50962432AA56E56005B5CAB /* 🗒️StaticInfo.swift in CopyFiles */,
+				F50962442AA56E56005B5CAB /* App.swift in CopyFiles */,
+				F50962452AA56E56005B5CAB /* ContentView.swift in CopyFiles */,
+				F50962462AA56E56005B5CAB /* 📱AppModel(extension).swift in CopyFiles */,
+				F50962472AA56E56005B5CAB /* 🎚️BodyMassStepper.swift in CopyFiles */,
+				F50962482AA56E56005B5CAB /* 🪧BMIView.swift in CopyFiles */,
+				F50962492AA56E56005B5CAB /* 🎚️BodyFatStepper.swift in CopyFiles */,
+				F509624A2AA56E56005B5CAB /* 🪧LBMView.swift in CopyFiles */,
+				F509624B2AA56E56005B5CAB /* 👆RegisterButton.swift in CopyFiles */,
+				F509624C2AA56E56005B5CAB /* 🗯ResultView.swift in CopyFiles */,
+				F509624D2AA56E56005B5CAB /* 🚨ErrorMessage.swift in CopyFiles */,
+				F509624E2AA56E56005B5CAB /* 🚨ErrorAlert.swift in CopyFiles */,
+				F509624F2AA56E56005B5CAB /* 🔐AuthManager.swift in CopyFiles */,
+				F50962502AA56E56005B5CAB /* ℹ️AboutAppButton.swift in CopyFiles */,
+				F50962512AA56E56005B5CAB /* ℹ️AboutAppMenu.swift in CopyFiles */,
+				F50962522AA56E56005B5CAB /* 🏥CheckEarliestPermittedSampleDateView.swift in CopyFiles */,
+				F50962532AA56E56005B5CAB /* Widget.swift in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F535AA7A29AD7BA600691926 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				F50962542AA56E77005B5CAB /* 🏥Category.swift in CopyFiles */,
+				F50962552AA56E77005B5CAB /* 📉Difference.swift in CopyFiles */,
+				F50962562AA56E77005B5CAB /* 🎚️StepperAction.swift in CopyFiles */,
+				F50962572AA56E77005B5CAB /* 🚨Error.swift in CopyFiles */,
+				F50962582AA56E77005B5CAB /* 🗒️StaticInfo.swift in CopyFiles */,
+				F50962592AA56E77005B5CAB /* 🎚️BodyFatStepper.swift in CopyFiles */,
+				F509625A2AA56E77005B5CAB /* 🛠BMIMenu.swift in CopyFiles */,
+				F509625B2AA56E77005B5CAB /* 🛠LBMMenu.swift in CopyFiles */,
+				F509625C2AA56E77005B5CAB /* 🛠ReminderMenu.swift in CopyFiles */,
+				F509625D2AA56E77005B5CAB /* 📣ADComponents.swift in CopyFiles */,
+				F509625E2AA56E77005B5CAB /* 📣ADModel.swift in CopyFiles */,
+				F509625F2AA56E77005B5CAB /* 🛒InAppPurchaseModel.swift in CopyFiles */,
+				F50962602AA56E77005B5CAB /* 🛒InAppPurchaseView.swift in CopyFiles */,
+				F50962612AA56E77005B5CAB /* Widget.swift in CopyFiles */,
 				F5A8E1CE29C5464A00DE7E42 /* 🔐AuthManager.swift in CopyFiles */,
 				F5DA2D1F29BAF076005DD72B /* ⌚️WatchSync.swift in CopyFiles */,
 				F5DA2D2029BAF076005DD72B /* 📱AppModel(extension).swift in CopyFiles */,
@@ -179,19 +261,6 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F5D19D4929B83D200069A81E /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "📁SourceCode/WatchApp";
-			dstSubfolderSpec = 7;
-			files = (
-				F5AE313829BAB8A70027A952 /* 📱AppModel(extension).swift in CopyFiles */,
-				F5D19D9129B841C60069A81E /* App.swift in CopyFiles */,
-				F5D19D9229B841C60069A81E /* ContentView.swift in CopyFiles */,
-				F5D19D9329B841C60069A81E /* 👆RegisterButton.swift in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F5D19D8B29B840050069A81E /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -201,17 +270,6 @@
 				F5D19D8A29B840050069A81E /* Widget for watchOS.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F5D19D8F29B841210069A81E /* Copy Files */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "📁SourceCode/WatchComplication";
-			dstSubfolderSpec = 7;
-			files = (
-				F5D19D9429B841DA0069A81E /* Widget.swift in Copy Files */,
-			);
-			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -285,11 +343,11 @@
 		F50962242AA4BBF5005B5CAB /* 🌐AD&InAppPurchase.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐AD&InAppPurchase.xcstrings"; sourceTree = "<group>"; };
 		F50962252AA4BBF5005B5CAB /* 🌐ADAppName.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐ADAppName.xcstrings"; sourceTree = "<group>"; };
 		F50962262AA4BBF5005B5CAB /* 🌐ADAppDescription.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐ADAppDescription.xcstrings"; sourceTree = "<group>"; };
-		F509622A2AA4BDEC005B5CAB /* ℹ️AboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutApp.swift"; sourceTree = "<group>"; };
+		F509622A2AA4BDEC005B5CAB /* ℹ️AboutAppMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutAppMenu.swift"; sourceTree = "<group>"; };
 		F509622C2AA4BEB0005B5CAB /* 🌐AppStoreDescription.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐AppStoreDescription.xcstrings"; sourceTree = "<group>"; };
 		F509622E2AA4BEB0005B5CAB /* 🌐VersionHistory.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐VersionHistory.xcstrings"; sourceTree = "<group>"; };
 		F50962302AA54860005B5CAB /* 🏥Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏥Category.swift"; sourceTree = "<group>"; };
-		F50962362AA5519E005B5CAB /* 🛠Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menu.swift"; sourceTree = "<group>"; };
+		F50962382AA56CF2005B5CAB /* ℹ️AboutAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutAppButton.swift"; sourceTree = "<group>"; };
 		F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚨ErrorAlert.swift"; sourceTree = "<group>"; };
 		F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💬RequestUserReview.swift"; sourceTree = "<group>"; };
 		F535AA8829AD7EB800691926 /* 📣ADSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADSheet.swift"; sourceTree = "<group>"; };
@@ -470,7 +528,8 @@
 				F50961F12AA4B1A8005B5CAB /* 🚨ErrorMessage.swift */,
 				F50961FA2AA4B290005B5CAB /* 🚨ErrorAlert.swift */,
 				F50961F32AA4B1CE005B5CAB /* 🔐AuthManager.swift */,
-				F509622A2AA4BDEC005B5CAB /* ℹ️AboutApp.swift */,
+				F50962382AA56CF2005B5CAB /* ℹ️AboutAppButton.swift */,
+				F509622A2AA4BDEC005B5CAB /* ℹ️AboutAppMenu.swift */,
 				F50961F72AA4B254005B5CAB /* 🚧Debug */,
 			);
 			path = "🗄️Rest";
@@ -529,7 +588,6 @@
 				F509620B2AA4B60E005B5CAB /* 🪧LBMView.swift */,
 				F5BBB56F29B6F60100424A66 /* 👆RegisterButton.swift */,
 				F50961F52AA4B206005B5CAB /* 🗯ResultView.swift */,
-				F50962362AA5519E005B5CAB /* 🛠Menu.swift */,
 				F50961F02AA4B196005B5CAB /* 🗄️Rest */,
 				F50961EF2AA4A58B005B5CAB /* 🧰SupportingFiles */,
 			);
@@ -558,8 +616,6 @@
 				126B3EA5282DFEDF009BD28B /* Resources */,
 				F535AA7A29AD7BA600691926 /* CopyFiles */,
 				F5BBB56329B60F7900424A66 /* Embed Watch Content */,
-				F5D19D4929B83D200069A81E /* CopyFiles */,
-				F5D19D8F29B841210069A81E /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -579,6 +635,7 @@
 				F5BBB54F29B60F5700424A66 /* Frameworks */,
 				F5BBB55029B60F5700424A66 /* Resources */,
 				F5D19D8B29B840050069A81E /* Embed Foundation Extensions */,
+				F509623A2AA56E37005B5CAB /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -751,7 +808,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F50961FB2AA4B290005B5CAB /* 🚨ErrorAlert.swift in Sources */,
-				F50962372AA5519E005B5CAB /* 🛠Menu.swift in Sources */,
+				F50962392AA56CF2005B5CAB /* ℹ️AboutAppButton.swift in Sources */,
 				F50961F92AA4B26E005B5CAB /* 🏥CheckEarliestPermittedSampleDateView.swift in Sources */,
 				F5E11EBE29BAE847004F73B2 /* ⌚️WatchSync.swift in Sources */,
 				F509621B2AA4BAC4005B5CAB /* 🗒️StaticInfo.swift in Sources */,
@@ -773,7 +830,7 @@
 				F50962082AA4B5DE005B5CAB /* 🎚️BodyFatStepper.swift in Sources */,
 				F50962012AA4B3F9005B5CAB /* 📉Difference.swift in Sources */,
 				F50961FE2AA4B340005B5CAB /* 🚨Error.swift in Sources */,
-				F509622B2AA4BDEC005B5CAB /* ℹ️AboutApp.swift in Sources */,
+				F509622B2AA4BDEC005B5CAB /* ℹ️AboutAppMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1062,7 +1119,7 @@
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Save your data to \"Health\" app.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = net.aaaakkkkssssttttnnnn.TapWeight;
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1097,7 +1154,7 @@
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Save your data to \"Health\" app.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = net.aaaakkkkssssttttnnnn.TapWeight;
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
