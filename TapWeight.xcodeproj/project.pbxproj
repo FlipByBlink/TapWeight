@@ -107,6 +107,7 @@
 		F509628B2AA5A08A005B5CAB /* 📋InputFields.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962852AA5952A005B5CAB /* 📋InputFields.swift */; };
 		F509628C2AA5A08A005B5CAB /* 🧩Layout.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962832AA58ECB005B5CAB /* 🧩Layout.swift */; };
 		F509628D2AA5A08A005B5CAB /* 🗑️ResetOnForeground.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F50962892AA59F88005B5CAB /* 🗑️ResetOnForeground.swift */; };
+		F509628E2AA5A176005B5CAB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3ED0282E15E5009BD28B /* InfoPlist.strings */; };
 		F535719329B1AFB80003FD2C /* 🚨ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
 		F535719429B1B9FF0003FD2C /* 🏥HealthStore.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥HealthStore.swift */; };
 		F535719529B1B9FF0003FD2C /* 🚨ErrorAlert.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
@@ -529,7 +530,6 @@
 		129CBE13284CAD2D00C73F4D /* 🌐Localization */ = {
 			isa = PBXGroup;
 			children = (
-				126B3ED0282E15E5009BD28B /* InfoPlist.strings */,
 				F509622C2AA4BEB0005B5CAB /* 🌐AppStoreDescription.xcstrings */,
 				F509622E2AA4BEB0005B5CAB /* 🌐VersionHistory.xcstrings */,
 				F50962242AA4BBF5005B5CAB /* 🌐AD&InAppPurchase.xcstrings */,
@@ -595,6 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				F50962662AA58129005B5CAB /* Localizable.xcstrings */,
+				126B3ED0282E15E5009BD28B /* InfoPlist.strings */,
 				F50962172AA4BAB6005B5CAB /* 🌐AboutApp.xcstrings */,
 			);
 			path = "🌐Localization";
@@ -824,6 +825,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F50962772AA588AD005B5CAB /* Assets.xcassets in Resources */,
+				F509628E2AA5A176005B5CAB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
