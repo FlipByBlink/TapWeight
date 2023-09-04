@@ -2,9 +2,9 @@ import SwiftUI
 
 struct 🪧BMIView: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @Environment(\.ⓛayout) var ⓛayout
     private var ⓘnputValue: Double? { 📱.ⓑmiInputValue }
     private var ⓗeightDescription: String? { 📱.ⓗeightDescription }
-    private var ⓐbleDatePicker: Bool { 📱.🚩ableDatePicker }
     var body: some View {
         if 📱.🚩ableBMI {
             if let ⓘnputValue, let ⓗeightDescription {
@@ -16,7 +16,7 @@ struct 🪧BMIView: View {
                         HStack(alignment: .lastTextBaseline, spacing: 4) {
                             Text(ⓘnputValue.description)
                                 .fontWeight(.heavy)
-                                .font(self.ⓐbleDatePicker ? .body : .title)
+                                .font(self.ⓛayout == .compact ? .body : .title)
                             Text(verbatim: " (\(ⓗeightDescription))")
                                 .font(.footnote.weight(.heavy))
                                 .foregroundStyle(.tertiary)
@@ -28,7 +28,7 @@ struct 🪧BMIView: View {
                     📉DifferenceView(.bodyMassIndex)
                         .padding(.trailing, 12)
                 }
-                .padding(.vertical, self.ⓐbleDatePicker ? 0 : 4)
+                .padding(.vertical, self.ⓛayout == .compact ? 0 : 4)
                 .padding(.leading, 32)
                 .foregroundStyle(.secondary)
             } else {

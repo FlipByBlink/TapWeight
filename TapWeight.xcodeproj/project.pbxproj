@@ -100,6 +100,8 @@
 		F50962772AA588AD005B5CAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50962762AA588AD005B5CAB /* Assets.xcassets */; };
 		F509627B2AA588AD005B5CAB /* Widget for iOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F509626E2AA588AB005B5CAB /* Widget for iOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F50962822AA589B4005B5CAB /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D19D8329B840020069A81E /* Widget.swift */; };
+		F50962842AA58ECB005B5CAB /* 🧩Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962832AA58ECB005B5CAB /* 🧩Layout.swift */; };
+		F50962862AA5952A005B5CAB /* 📋InputFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50962852AA5952A005B5CAB /* 📋InputFields.swift */; };
 		F535719329B1AFB80003FD2C /* 🚨ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
 		F535719429B1B9FF0003FD2C /* 🏥HealthStore.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥HealthStore.swift */; };
 		F535719529B1B9FF0003FD2C /* 🚨ErrorAlert.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
@@ -360,6 +362,8 @@
 		F509626E2AA588AB005B5CAB /* Widget for iOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widget for iOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50962762AA588AD005B5CAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F50962782AA588AD005B5CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F50962832AA58ECB005B5CAB /* 🧩Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧩Layout.swift"; sourceTree = "<group>"; };
+		F50962852AA5952A005B5CAB /* 📋InputFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📋InputFields.swift"; sourceTree = "<group>"; };
 		F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚨ErrorAlert.swift"; sourceTree = "<group>"; };
 		F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💬RequestUserReview.swift"; sourceTree = "<group>"; };
 		F535AA8829AD7EB800691926 /* 📣ADSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADSheet.swift"; sourceTree = "<group>"; };
@@ -440,6 +444,7 @@
 				F509620F2AA4B806005B5CAB /* 🛠BMIMenu.swift */,
 				F50962112AA4B88F005B5CAB /* 🛠LBMMenu.swift */,
 				F50962132AA4B90F005B5CAB /* 🛠ReminderMenu.swift */,
+				F50962832AA58ECB005B5CAB /* 🧩Layout.swift */,
 				F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */,
 				F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */,
 				F5A8E1CC29C545B100DE7E42 /* 🔐AuthManager.swift */,
@@ -485,6 +490,7 @@
 				126B3EAA282DFEDF009BD28B /* App.swift */,
 				126B3EAC282DFEDF009BD28B /* ContentView.swift */,
 				F5E11EBF29BAE8A2004F73B2 /* 📱AppModel(extension).swift */,
+				F50962852AA5952A005B5CAB /* 📋InputFields.swift */,
 				1232578A284C5EA2002E0057 /* 🎚️BodyMassStepper.swift */,
 				F54292DC29B01C4700EFF085 /* 🪧BMIView.swift */,
 				F509620D2AA4B67A005B5CAB /* 🎚️BodyFatStepper.swift */,
@@ -838,6 +844,7 @@
 			files = (
 				126B3EAD282DFEDF009BD28B /* ContentView.swift in Sources */,
 				F509621F2AA4BAF3005B5CAB /* 🛒InAppPurchaseModel.swift in Sources */,
+				F50962842AA58ECB005B5CAB /* 🧩Layout.swift in Sources */,
 				1232578B284C5EA2002E0057 /* 🎚️BodyMassStepper.swift in Sources */,
 				F50961FD2AA4B340005B5CAB /* 🚨Error.swift in Sources */,
 				124C485F284863BA0085B066 /* 📱AppModel.swift in Sources */,
@@ -858,6 +865,7 @@
 				F54292DF29B01CE300EFF085 /* 📅DatePicker.swift in Sources */,
 				126B3EAB282DFEDF009BD28B /* App.swift in Sources */,
 				F5E2EAAA29415F3D0054A208 /* ℹ️AboutApp.swift in Sources */,
+				F50962862AA5952A005B5CAB /* 📋InputFields.swift in Sources */,
 				F50962122AA4B88F005B5CAB /* 🛠LBMMenu.swift in Sources */,
 				F50962212AA4BB69005B5CAB /* 📣ADComponents.swift in Sources */,
 				F50962142AA4B90F005B5CAB /* 🛠ReminderMenu.swift in Sources */,

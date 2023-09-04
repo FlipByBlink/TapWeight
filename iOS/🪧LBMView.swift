@@ -3,8 +3,8 @@ import HealthKit
 
 struct 🪧LBMView: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @Environment(\.ⓛayout) var ⓛayout
     private var ⓘnputDescription: String? { 📱.ⓛbmInputDescription }
-    private var ⓐbleDatePicker: Bool { 📱.🚩ableDatePicker }
     var body: some View {
         if 📱.🚩ableLBM {
             if let ⓘnputDescription {
@@ -14,7 +14,7 @@ struct 🪧LBMView: View {
                             .font(.footnote.bold())
                             .frame(maxHeight: 32)
                         Text(ⓘnputDescription)
-                            .font(self.ⓐbleDatePicker ? .body : .title)
+                            .font(self.ⓛayout == .compact ? .body : .title)
                             .fontWeight(.heavy)
                             .frame(maxHeight: 42)
                     }
@@ -23,7 +23,7 @@ struct 🪧LBMView: View {
                     📉DifferenceView(.leanBodyMass)
                         .padding(.trailing, 12)
                 }
-                .padding(.vertical, self.ⓐbleDatePicker ? 0 : 4)
+                .padding(.vertical, self.ⓛayout == .compact ? 0 : 4)
                 .padding(.leading, 32)
                 .foregroundStyle(.secondary)
             } else {

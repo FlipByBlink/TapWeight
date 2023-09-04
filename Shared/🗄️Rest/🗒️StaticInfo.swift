@@ -44,7 +44,8 @@ extension 🗒️StaticInfo {
                              "📱AppModel(extension).swift",
                              "🏥HealthStore.swift",
                              "🏥Category.swift"]
-                case .Rest: ["🎚️StepperAction.swift",
+                case .Rest: ["📋InputFields.swift", 
+                             "🎚️StepperAction.swift",
                              "🎚️BodyFatStepper.swift",
                              "🎚️BodyMassStepper.swift",
                              "👆RegisterButton.swift",
