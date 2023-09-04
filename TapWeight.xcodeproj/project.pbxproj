@@ -95,6 +95,11 @@
 		F50962672AA58129005B5CAB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F50962662AA58129005B5CAB /* Localizable.xcstrings */; };
 		F50962682AA58129005B5CAB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F50962662AA58129005B5CAB /* Localizable.xcstrings */; };
 		F50962692AA58129005B5CAB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F50962662AA58129005B5CAB /* Localizable.xcstrings */; };
+		F509626F2AA588AB005B5CAB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D19D7E29B840020069A81E /* WidgetKit.framework */; };
+		F50962702AA588AB005B5CAB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D19D8029B840020069A81E /* SwiftUI.framework */; };
+		F50962772AA588AD005B5CAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50962762AA588AD005B5CAB /* Assets.xcassets */; };
+		F509627B2AA588AD005B5CAB /* Widget for iOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F509626E2AA588AB005B5CAB /* Widget for iOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F50962822AA589B4005B5CAB /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D19D8329B840020069A81E /* Widget.swift */; };
 		F535719329B1AFB80003FD2C /* 🚨ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
 		F535719429B1B9FF0003FD2C /* 🏥HealthStore.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E1697029B06ACC00EAFF73 /* 🏥HealthStore.swift */; };
 		F535719529B1B9FF0003FD2C /* 🚨ErrorAlert.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */; };
@@ -154,6 +159,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F50962792AA588AD005B5CAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 126B3E9F282DFEDF009BD28B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F509626D2AA588AB005B5CAB;
+			remoteInfo = WidgetForIOSExtension;
+		};
 		F5BBB56129B60F7900424A66 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 126B3E9F282DFEDF009BD28B /* Project object */;
@@ -203,6 +215,17 @@
 				F50962522AA56E56005B5CAB /* 🏥CheckEarliestPermittedSampleDateView.swift in CopyFiles */,
 				F50962532AA56E56005B5CAB /* Widget.swift in CopyFiles */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F509627F2AA588AE005B5CAB /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F509627B2AA588AD005B5CAB /* Widget for iOS.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F535AA7A29AD7BA600691926 /* CopyFiles */ = {
@@ -334,6 +357,9 @@
 		F50962302AA54860005B5CAB /* 🏥Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🏥Category.swift"; sourceTree = "<group>"; };
 		F50962382AA56CF2005B5CAB /* ℹ️AboutAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutAppButton.swift"; sourceTree = "<group>"; };
 		F50962662AA58129005B5CAB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = "../🗄️Rest/Localizable.xcstrings"; sourceTree = "<group>"; };
+		F509626E2AA588AB005B5CAB /* Widget for iOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widget for iOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F50962762AA588AD005B5CAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F50962782AA588AD005B5CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F535719229B1AFB70003FD2C /* 🚨ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚨ErrorAlert.swift"; sourceTree = "<group>"; };
 		F535AA8729AD7EB800691926 /* 💬RequestUserReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "💬RequestUserReview.swift"; sourceTree = "<group>"; };
 		F535AA8829AD7EB800691926 /* 📣ADSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADSheet.swift"; sourceTree = "<group>"; };
@@ -374,6 +400,15 @@
 			files = (
 				126B3EBB282E001E009BD28B /* HealthKit.framework in Frameworks */,
 				12BA83CE28606047009E7E3F /* StoreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F509626B2AA588AB005B5CAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F50962702AA588AB005B5CAB /* SwiftUI.framework in Frameworks */,
+				F509626F2AA588AB005B5CAB /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +474,7 @@
 				126B3EA7282DFEDF009BD28B /* iOS.app */,
 				F5BBB55229B60F5700424A66 /* TapWeight.app */,
 				F5D19D7D29B840020069A81E /* Widget for watchOS.appex */,
+				F509626E2AA588AB005B5CAB /* Widget for iOS.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -546,6 +582,24 @@
 			path = "🌐Localization";
 			sourceTree = "<group>";
 		};
+		F50962802AA588C8005B5CAB /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				F5D19D8529B840050069A81E /* Assets.xcassets */,
+				F5D19D8729B840050069A81E /* Info.plist */,
+			);
+			path = watchOS;
+			sourceTree = "<group>";
+		};
+		F50962812AA588CF005B5CAB /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				F50962762AA588AD005B5CAB /* Assets.xcassets */,
+				F50962782AA588AD005B5CAB /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		F5BBB54D29B60F3E00424A66 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -584,8 +638,8 @@
 			isa = PBXGroup;
 			children = (
 				F5D19D8329B840020069A81E /* Widget.swift */,
-				F5D19D8529B840050069A81E /* Assets.xcassets */,
-				F5D19D8729B840050069A81E /* Info.plist */,
+				F50962812AA588CF005B5CAB /* iOS */,
+				F50962802AA588C8005B5CAB /* watchOS */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -602,16 +656,35 @@
 				126B3EA5282DFEDF009BD28B /* Resources */,
 				F535AA7A29AD7BA600691926 /* CopyFiles */,
 				F5BBB56329B60F7900424A66 /* Embed Watch Content */,
+				F509627F2AA588AE005B5CAB /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				F5BBB56229B60F7900424A66 /* PBXTargetDependency */,
+				F509627A2AA588AD005B5CAB /* PBXTargetDependency */,
 			);
 			name = iOS;
 			productName = TapWeight;
 			productReference = 126B3EA7282DFEDF009BD28B /* iOS.app */;
 			productType = "com.apple.product-type.application";
+		};
+		F509626D2AA588AB005B5CAB /* Widget for iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F509627C2AA588AE005B5CAB /* Build configuration list for PBXNativeTarget "Widget for iOS" */;
+			buildPhases = (
+				F509626A2AA588AB005B5CAB /* Sources */,
+				F509626B2AA588AB005B5CAB /* Frameworks */,
+				F509626C2AA588AB005B5CAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Widget for iOS";
+			productName = WidgetForIOSExtension;
+			productReference = F509626E2AA588AB005B5CAB /* Widget for iOS.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		F5BBB55129B60F5700424A66 /* watchOS */ = {
 			isa = PBXNativeTarget;
@@ -657,11 +730,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					126B3EA6282DFEDF009BD28B = {
 						CreatedOnToolsVersion = 13.3;
+					};
+					F509626D2AA588AB005B5CAB = {
+						CreatedOnToolsVersion = 15.0;
 					};
 					F5BBB55129B60F5700424A66 = {
 						CreatedOnToolsVersion = 14.2;
@@ -700,6 +776,7 @@
 			targets = (
 				126B3EA6282DFEDF009BD28B /* iOS */,
 				F5BBB55129B60F5700424A66 /* watchOS */,
+				F509626D2AA588AB005B5CAB /* Widget for iOS */,
 				F5D19D7C29B840020069A81E /* Widget for watchOS */,
 			);
 		};
@@ -721,6 +798,14 @@
 				126B3EAF282DFEE0009BD28B /* Assets.xcassets in Resources */,
 				F509622F2AA4BEB0005B5CAB /* 🌐VersionHistory.xcstrings in Resources */,
 				F50962182AA4BAB6005B5CAB /* 🌐AboutApp.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F509626C2AA588AB005B5CAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F50962772AA588AD005B5CAB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,6 +874,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F509626A2AA588AB005B5CAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F50962822AA589B4005B5CAB /* Widget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F5BBB54E29B60F5700424A66 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -831,6 +924,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F509627A2AA588AD005B5CAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F509626D2AA588AB005B5CAB /* Widget for iOS */;
+			targetProxy = F50962792AA588AD005B5CAB /* PBXContainerItemProxy */;
+		};
 		F5BBB56229B60F7900424A66 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F5BBB55129B60F5700424A66 /* watchOS */;
@@ -994,6 +1092,7 @@
 		126B3EB6282DFEE0009BD28B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "iOS/🧰SupportingFiles/iOS.entitlements";
@@ -1031,6 +1130,7 @@
 		126B3EB7282DFEE0009BD28B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "iOS/🧰SupportingFiles/iOS.entitlements";
@@ -1055,6 +1155,77 @@
 				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.TapWeight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F509627D2AA588AE005B5CAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 6696GEY228;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widget/iOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TapWeight;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.TapWeight.WidgetForIOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F509627E2AA588AE005B5CAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 6696GEY228;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widget/iOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TapWeight;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.TapWeight.WidgetForIOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1145,7 +1316,7 @@
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 6696GEY228;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Widget/Info.plist;
+				INFOPLIST_FILE = Widget/watchOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TapWeight;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1176,7 +1347,7 @@
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 6696GEY228;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Widget/Info.plist;
+				INFOPLIST_FILE = Widget/watchOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TapWeight;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1214,6 +1385,15 @@
 			buildConfigurations = (
 				126B3EB6282DFEE0009BD28B /* Debug */,
 				126B3EB7282DFEE0009BD28B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F509627C2AA588AE005B5CAB /* Build configuration list for PBXNativeTarget "Widget for iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F509627D2AA588AE005B5CAB /* Debug */,
+				F509627E2AA588AE005B5CAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

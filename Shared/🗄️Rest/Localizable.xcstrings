@@ -1748,6 +1748,16 @@
         }
       }
     },
+    "Shortcut to add a data." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データを簡単に追加するためのショートカットです。"
+          }
+        }
+      }
+    },
     "Simplest Shogi board App. Supported SharePlay." : {
       "extractionState" : "manual",
       "localizations" : {
