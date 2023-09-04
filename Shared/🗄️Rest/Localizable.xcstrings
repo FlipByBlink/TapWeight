@@ -53,6 +53,22 @@
         }
       }
     },
+    "%@kg → %@kg" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@kg → %2$@kg"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
     "⚠️ Error" : {
       "comment" : "======== Error ========",
       "localizations" : {
@@ -100,16 +116,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "⚠️ 必要: "
-          }
-        }
-      }
-    },
-    "0.1kg → 0.05kg" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "入力単位を0.1kgから0.05kgに変更"
           }
         }
       }

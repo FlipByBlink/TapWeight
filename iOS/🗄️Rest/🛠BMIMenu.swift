@@ -56,7 +56,7 @@ private extension 🛠BMIMenu {
                 HStack(alignment: .firstTextBaseline) {
                     Text(ⓗeightSample.quantity.doubleValue(for: ⓗeightUnit).formatted() + ⓗeightUnit.unitString)
                     if ⓗeightUnit != .meter() {
-                        Text(verbatim: "(\(🔢NumberFormatter.string(ⓗeightSample.quantity.doubleValue(for: .meter())))m)")
+                        Text(verbatim: "(\(ⓗeightSample.quantity.doubleValue(for: .meter()).formatted())m)")
                             .foregroundStyle(.secondary)
                             .font(.caption)
                     }
