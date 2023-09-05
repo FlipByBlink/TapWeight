@@ -15,7 +15,7 @@ struct 📅DatePicker: View {
                 case .sideBySide:
                     self.picker()
                         .padding()
-                        .frame(maxWidth: 500)
+                        .frame(maxWidth: 420)
             }
         }
     }
