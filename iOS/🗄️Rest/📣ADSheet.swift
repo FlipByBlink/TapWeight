@@ -7,7 +7,7 @@ struct 📣ADSheet: ViewModifier {
     func body(content: Content) -> some View {
         content
             .sheet(isPresented: self.$showSheet) {
-                📣ADView(self.app, second: 5)
+                📣ADView(self.app, second: 10)
             }
             .onAppear {
                 if 🛒.checkToShowADSheet() { self.showSheet = true }
