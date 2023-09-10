@@ -3,6 +3,8 @@ TapWeight for "Health" - iPhone, iPad, Apple Watch
 
 <img src="iOS/🧰SupportingFiles/Assets.xcassets/RoundedIcon.imageset/icon.png" width="64">
 
+<img src="iOS/🧰SupportingFiles/Assets.xcassets/AD/apple_health_badge.imageset/apple_health_badge.svg">
+
 <a href="https://apps.apple.com/app/id1624159721" target="blank">
     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg">
 </a>
