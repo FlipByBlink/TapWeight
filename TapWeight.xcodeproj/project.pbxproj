@@ -391,6 +391,10 @@
 		F54292DE29B01CE300EFF085 /* 📅DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📅DatePicker.swift"; sourceTree = "<group>"; };
 		F54292E029B01D3B00EFF085 /* 📉DifferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📉DifferenceView.swift"; sourceTree = "<group>"; };
 		F54292E229B01D8300EFF085 /* 💟OpenHealthAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💟OpenHealthAppButton.swift"; sourceTree = "<group>"; };
+		F567AE4C2AAD53BB00A404F8 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		F567AE4D2AAD53BB00A404F8 /* apple_health_badge.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = apple_health_badge.svg; sourceTree = "<group>"; };
+		F567AE4E2AAD53BB00A404F8 /* screenshot1200w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot1200w.png; sourceTree = "<group>"; };
+		F567AE4F2AAD53BB00A404F8 /* appstore_badge.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore_badge.svg; sourceTree = "<group>"; };
 		F5A8E1CC29C545B100DE7E42 /* 🔐AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🔐AuthManager.swift"; sourceTree = "<group>"; };
 		F5AC7BE92941982A00490FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5BBB55229B60F5700424A66 /* TapWeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapWeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -596,6 +600,7 @@
 				F5BBB56829B6113A00424A66 /* 💥Feedback.swift */,
 				F5414EE72AA5ABC3002B6603 /* 🔢NumberFormatter.swift */,
 				F50962192AA4BAC4005B5CAB /* 🗒️StaticInfo.swift */,
+				F567AE4B2AAD53B100A404F8 /* ForREADME */,
 			);
 			path = "🗄️Rest";
 			sourceTree = "<group>";
@@ -626,6 +631,17 @@
 				F50962782AA588AD005B5CAB /* Info.plist */,
 			);
 			path = iOS;
+			sourceTree = "<group>";
+		};
+		F567AE4B2AAD53B100A404F8 /* ForREADME */ = {
+			isa = PBXGroup;
+			children = (
+				F567AE4C2AAD53BB00A404F8 /* icon.png */,
+				F567AE4F2AAD53BB00A404F8 /* appstore_badge.svg */,
+				F567AE4D2AAD53BB00A404F8 /* apple_health_badge.svg */,
+				F567AE4E2AAD53BB00A404F8 /* screenshot1200w.png */,
+			);
+			path = ForREADME;
 			sourceTree = "<group>";
 		};
 		F5BBB54D29B60F3E00424A66 /* Shared */ = {
