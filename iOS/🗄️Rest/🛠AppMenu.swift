@@ -64,6 +64,8 @@ private struct 🛠AppMenu: View {
                 🛒InAppPurchaseMenuLink()
             }
             .navigationTitle("Menu")
+            .navigationBarTitleDisplayMode(.inline)
+            //MARK: ↑ WorkaroundIOS17Bug(navigationTitleMode/navigationLinkPotision)
             .toolbar { self.dismissButton() }
         }
     }

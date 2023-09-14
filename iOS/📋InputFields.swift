@@ -18,7 +18,7 @@ struct 📋InputFields: View {
             .listStyle(.plain)
             .minimumScaleFactor(0.3)
             .navigationTitle("Body Mass")
-            .navigationBarTitleDisplayMode(self.ⓛayout == .compact ? .inline : .large)
+            .navigationBarTitleDisplayMode(self.titleDisplayMode)
             .frame(maxWidth: 600)
             if self.ⓛayout == .sideBySide {
                 Spacer()
@@ -33,6 +33,16 @@ struct 📋InputFields: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 if self.ⓛayout == .compact { 👆RegisterButton(.toolbar) } // ☑️
             }
+        }
+    }
+}
+
+private extension 📋InputFields {
+    private var titleDisplayMode: NavigationBarItem.TitleDisplayMode {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            .large
+        } else {
+            self.ⓛayout == .compact ? .inline : .large
         }
     }
 }
