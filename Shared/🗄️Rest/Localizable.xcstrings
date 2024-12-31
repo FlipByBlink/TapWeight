@@ -1288,6 +1288,16 @@
         }
       }
     },
+    "Period" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "期間"
+          }
+        }
+      }
+    },
     "Period of display" : {
       "localizations" : {
         "ja" : {

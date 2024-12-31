@@ -18,7 +18,6 @@ struct 👆RegisterButton: View { // ☑️
                                 .foregroundColor(.pink)
                         }
                         .shadow(radius: 2.5)
-                        .padding()
                 case .toolbar:
                     Image(systemName: "checkmark.circle.fill")
                         .symbolRenderingMode(.palette)
@@ -27,6 +26,7 @@ struct 👆RegisterButton: View { // ☑️
             }
         }
         .accessibilityLabel("Register")
+        .padding(self.ⓟosition == .bottom ? 16 : 0)
         .fullScreenCover(isPresented: $📱.🚩showResult) { 🗯ResultView() }
     }
     init(_ ⓟosition: Self.Position) {

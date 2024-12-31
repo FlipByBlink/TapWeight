@@ -70,10 +70,15 @@ private extension 🛠ReminderMenu {
         }
         var body: some View {
             Section {
-                Stepper(value: $📱.🔢periodOfNonDisplay, in: 1...31) {
+                LabeledContent {
+                    HStack {
+                        Text(DateComponentsFormatter.localizedString(from: .init(day: self.ⓟeriodOfNonDisplay),
+                                                                     unitsStyle: .abbreviated) ?? "🐛")
+                        Stepper("Period", value: $📱.🔢periodOfNonDisplay, in: 1...31)
+                            .labelsHidden()
+                    }
+                } label: {
                     Label("Period of non-display", systemImage: "bell.slash")
-                        .badge(DateComponentsFormatter.localizedString(from: .init(day: self.ⓟeriodOfNonDisplay),
-                                                                       unitsStyle: .abbreviated))
                 }
                 if let ⓛatestSampleDate, let ⓣimeOfDisplay {
                     Group {
