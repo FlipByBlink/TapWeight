@@ -306,7 +306,7 @@ private struct 🧑‍💻AboutDeveloperPublisherLink: View {
                 } footer: {
                     Text("Taken on 2021-11", tableName: "🌐AboutApp")
                 }
-                Self.jobHuntSection()
+//                Self.jobHuntSection()
             }
             .navigationTitle(Text("Developer / Publisher", tableName: "🌐AboutApp"))
         } label: {

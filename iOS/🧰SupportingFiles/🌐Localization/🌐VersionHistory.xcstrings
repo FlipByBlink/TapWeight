@@ -153,6 +153,23 @@
           }
         }
       }
+    },
+    "1.5.1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Fixed an issue where the screen flickered after tapping the checkmark button.\n- Support dark app icon. (iOS 18)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "・チェックマークボタンをタップした後に画面が乱れる不具合を修正しました。\n・ダークなアプリアイコンに対応しました。(iOS 18)"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
