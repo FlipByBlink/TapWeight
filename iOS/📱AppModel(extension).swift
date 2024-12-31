@@ -93,7 +93,7 @@ extension 📱AppModel {
     }
 }
 
-extension 📱AppModel: WCSessionDelegate {
+extension 📱AppModel: @preconcurrency WCSessionDelegate {
     //Required
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         self.ⓒontext.sendToWatchApp()

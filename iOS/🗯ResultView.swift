@@ -3,9 +3,8 @@ import HealthKit
 
 struct 🗯ResultView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    private var ⓒanceled: Bool { 📱.🚩completedCancellation }
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Rectangle()
                     .foregroundColor(.pink)
@@ -44,14 +43,17 @@ struct 🗯ResultView: View {
             }
             .animation(.default, value: self.ⓒanceled)
             .navigationBarTitleDisplayMode(.inline)
+            .preferredColorScheme(.dark)
         }
-        .preferredColorScheme(.dark)
         .modifier(🚨CancellationErrorAlert())
         .modifier(💬RequestUserReview())
     }
 }
 
 private extension 🗯ResultView {
+    private var ⓒanceled: Bool {
+        📱.🚩completedCancellation
+    }
     private func summaryText() -> some View {
         Group {
             Text(📱.ⓡesultSummaryDescription)
