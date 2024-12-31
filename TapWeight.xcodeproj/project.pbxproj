@@ -18,6 +18,10 @@
 		126B3ECE282E15E5009BD28B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126B3ED0282E15E5009BD28B /* InfoPlist.strings */; };
 		1299C3B9288D77270086522B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1299C3B8288D77270086522B /* Launch Screen.storyboard */; };
 		12BA83CE28606047009E7E3F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12BA83CD28606047009E7E3F /* StoreKit.framework */; };
+		1D39EBD72D23F4BE0082E59C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1D39EBD62D23F4BE0082E59C /* PrivacyInfo.xcprivacy */; };
+		1D39EBD82D23F4BE0082E59C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1D39EBD62D23F4BE0082E59C /* PrivacyInfo.xcprivacy */; };
+		1D39EBD92D23F4BE0082E59C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1D39EBD62D23F4BE0082E59C /* PrivacyInfo.xcprivacy */; };
+		1D39EBDA2D23F4BE0082E59C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1D39EBD62D23F4BE0082E59C /* PrivacyInfo.xcprivacy */; };
 		F50961F22AA4B1A8005B5CAB /* 🚨ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50961F12AA4B1A8005B5CAB /* 🚨ErrorMessage.swift */; };
 		F50961F42AA4B1CE005B5CAB /* 🔐AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50961F32AA4B1CE005B5CAB /* 🔐AuthManager.swift */; };
 		F50961F62AA4B206005B5CAB /* 🗯ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50961F52AA4B206005B5CAB /* 🗯ResultView.swift */; };
@@ -344,6 +348,7 @@
 		129CBE11284C9D7C00C73F4D /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		12AF80E0288ECA8F0047324A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12BA83CD28606047009E7E3F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		1D39EBD62D23F4BE0082E59C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		F50961F12AA4B1A8005B5CAB /* 🚨ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚨ErrorMessage.swift"; sourceTree = "<group>"; };
 		F50961F32AA4B1CE005B5CAB /* 🔐AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🔐AuthManager.swift"; sourceTree = "<group>"; };
 		F50961F52AA4B206005B5CAB /* 🗯ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗯ResultView.swift"; sourceTree = "<group>"; };
@@ -551,6 +556,14 @@
 			path = "🌐Localization";
 			sourceTree = "<group>";
 		};
+		1D39EBD52D23F4A80082E59C /* 🧰SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				1D39EBD62D23F4BE0082E59C /* PrivacyInfo.xcprivacy */,
+			);
+			path = "🧰SupportingFiles";
+			sourceTree = "<group>";
+		};
 		F50961EE2AA4A52F005B5CAB /* 🧰SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,6 +613,7 @@
 				F5BBB56829B6113A00424A66 /* 💥Feedback.swift */,
 				F5414EE72AA5ABC3002B6603 /* 🔢NumberFormatter.swift */,
 				F50962192AA4BAC4005B5CAB /* 🗒️StaticInfo.swift */,
+				1D39EBD52D23F4A80082E59C /* 🧰SupportingFiles */,
 				F567AE4B2AAD53B100A404F8 /* ForREADME */,
 			);
 			path = "🗄️Rest";
@@ -775,7 +789,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					126B3EA6282DFEDF009BD28B = {
 						CreatedOnToolsVersion = 13.3;
@@ -837,6 +851,7 @@
 				1299C3B9288D77270086522B /* Launch Screen.storyboard in Resources */,
 				126B3ECE282E15E5009BD28B /* InfoPlist.strings in Resources */,
 				F50962292AA4BBF5005B5CAB /* 🌐ADAppDescription.xcstrings in Resources */,
+				1D39EBD72D23F4BE0082E59C /* PrivacyInfo.xcprivacy in Resources */,
 				F50962272AA4BBF5005B5CAB /* 🌐AD&InAppPurchase.xcstrings in Resources */,
 				F509622D2AA4BEB0005B5CAB /* 🌐AppStoreDescription.xcstrings in Resources */,
 				126B3EAF282DFEE0009BD28B /* Assets.xcassets in Resources */,
@@ -849,6 +864,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D39EBD92D23F4BE0082E59C /* PrivacyInfo.xcprivacy in Resources */,
 				F50962772AA588AD005B5CAB /* Assets.xcassets in Resources */,
 				F509628E2AA5A176005B5CAB /* InfoPlist.strings in Resources */,
 			);
@@ -861,6 +877,7 @@
 				F5D19D4629B769900069A81E /* InfoPlist.strings in Resources */,
 				F50962682AA58129005B5CAB /* Localizable.xcstrings in Resources */,
 				F5BBB55929B60F5900424A66 /* Assets.xcassets in Resources */,
+				1D39EBD82D23F4BE0082E59C /* PrivacyInfo.xcprivacy in Resources */,
 				F56DDCE22AA99A8D002BD832 /* 🌐AboutApp.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -871,6 +888,7 @@
 			files = (
 				F5D19D8629B840050069A81E /* Assets.xcassets in Resources */,
 				F5D19D9629B843CC0069A81E /* InfoPlist.strings in Resources */,
+				1D39EBDA2D23F4BE0082E59C /* PrivacyInfo.xcprivacy in Resources */,
 				F50962692AA58129005B5CAB /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1144,7 +1162,6 @@
 		126B3EB6282DFEE0009BD28B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "iOS/🧰SupportingFiles/iOS.entitlements";
@@ -1181,7 +1198,6 @@
 		126B3EB7282DFEE0009BD28B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "iOS/🧰SupportingFiles/iOS.entitlements";
@@ -1289,7 +1305,6 @@
 		F5BBB55E29B60F5900424A66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1324,7 +1339,6 @@
 		F5BBB55F29B60F5900424A66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
