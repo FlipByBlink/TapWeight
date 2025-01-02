@@ -76,8 +76,8 @@ Contact
 sear_pandora_0x@icloud.com
 
 
-AppStore link
---------------
+App Store link
+----------------
 [apps.apple.com/app/id1624159721](https://apps.apple.com/app/id1624159721)
 
 * * *
@@ -87,7 +87,7 @@ AppStore link
 <br>
 <br>
 
-Privacy Policy for AppStore
+Privacy Policy for App Store
 ----------------------------
 2022-05-22
 
@@ -105,4 +105,4 @@ This application don't collect user infomation.
 <!-- URL "Support page for AppStore" -->
 <!-- https://flipbyblink.github.io/TapWeight/ -->
 <!-- URL "Privacy Policy for AppStore" -->
-<!-- https://github.com/FlipByBlink/TapWeight#privacy-policy-for-appstore -->
+<!-- https://github.com/FlipByBlink/TapWeight#privacy-policy-for-app-store -->

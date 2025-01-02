@@ -9,8 +9,8 @@ struct 🛠ReminderMenu: View {
                 Toggle(isOn: $📱.🚩ableReminder) {
                     Label("Reminder notification", systemImage: "bell")
                 }
-                .onChange(of: 📱.🚩ableReminder) {
-                    if $0 == true { 📱.🔔setupNotification() }
+                .onChange(of: 📱.🚩ableReminder) { _, newValue in
+                    if newValue == true { 📱.🔔setupNotification() }
                 }
                 Text("\"Number of days passed since last registration\" is displayed as a badge on this app icon.")
                 self.ⓔxampleNotificationBadge()
@@ -29,12 +29,12 @@ struct 🛠ReminderMenu: View {
             }
         }
         .navigationTitle("Reminder")
-        .onChange(of: 📱.🚩ableReminder) { _ in
+        .onChange(of: 📱.🚩ableReminder) { _, _ in
             self.ⓒheckAlertAboutAuthDenied()
             Task { await 📱.🔔refreshNotification() }
         }
-        .onChange(of: 📱.🚩ableBannerNotification) { _ in Task { await 📱.🔔refreshNotification() } }
-        .onChange(of: 📱.🔢periodOfNonDisplay) { _ in Task { await 📱.🔔refreshNotification() } }
+        .onChange(of: 📱.🚩ableBannerNotification) { _, _ in Task { await 📱.🔔refreshNotification() } }
+        .onChange(of: 📱.🔢periodOfNonDisplay) { _, _ in Task { await 📱.🔔refreshNotification() } }
         .alert("⚠️ Notification auth denied", isPresented: self.$🚩alertSettingDelied) { EmptyView() }
         .task { self.ⓒheckAlertAboutAuthDenied() }
     }

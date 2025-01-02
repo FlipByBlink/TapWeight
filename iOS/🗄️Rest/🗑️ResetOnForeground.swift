@@ -5,8 +5,8 @@ struct 🗑️ResetOnForeground: ViewModifier {
     @Environment(\.scenePhase) var scenePhase
     func body(content: Content) -> some View {
         content
-            .onChange(of: self.scenePhase) {
-                if $0 == .active {
+            .onChange(of: self.scenePhase) { _, newValue in
+                if newValue == .active {
                     📱.📝resetInputValues()
                     📱.📅resetDatePickerValue()
                 }

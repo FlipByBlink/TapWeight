@@ -160,13 +160,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Fixed an issue where the screen flickered after tapping the checkmark button.\n- Support dark app icon. (iOS 18)"
+            "value" : "- Fixed an issue where the screen flickered after tapping the checkmark button.\n- Support dark app icon. (iOS 18)\n- Unsupport iOS 16.x"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "・チェックマークボタンをタップした後に画面が乱れる不具合を修正しました。\n・ダークなアプリアイコンに対応しました。(iOS 18)"
+            "value" : "・チェックマークボタンをタップした後に画面が乱れる不具合を修正しました。\n・ダークなアプリアイコンに対応しました。(iOS 18)\n・iOS 16.xを非対応にしました。"
           }
         }
       }

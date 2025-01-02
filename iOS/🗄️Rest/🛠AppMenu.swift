@@ -29,8 +29,8 @@ private struct 🛠AppMenu: View {
                     Toggle(isOn: $📱.🚩ableBodyFat) {
                         Label("Body Fat Percentage", systemImage: "percent")
                     }
-                    .onChange(of: 📱.🚩ableBodyFat) {
-                        if $0 == false { 📱.🚩ableLBM = false }
+                    .onChange(of: 📱.🚩ableBodyFat) { _, newValue in
+                        if newValue == false { 📱.🚩ableLBM = false }
                     }
                     NavigationLink {
                         🛠LBMMenu()
@@ -40,7 +40,7 @@ private struct 🛠AppMenu: View {
                     Toggle(isOn: $📱.🚩ableDatePicker) {
                         Label("Date picker", systemImage: "calendar.badge.clock")
                     }
-                    .onChange(of: 📱.🚩ableDatePicker) { _ in
+                    .onChange(of: 📱.🚩ableDatePicker) { _, _ in
                         📱.📅datePickerValue = .now
                     }
                     if 📱.ⓜassUnit == .gramUnit(with: .kilo) {
@@ -58,7 +58,9 @@ private struct 🛠AppMenu: View {
                 } header: {
                     Text("Option")
                 }
-                .onChange(of: 📱.ⓒontext) { $0.sendToWatchApp() }
+                .onChange(of: 📱.ⓒontext) { _, newValue in
+                    newValue.sendToWatchApp()
+                }
                 💟OpenHealthAppButton.onMenuView()
                 self.aboutAppMenuLink()
                 🛒InAppPurchaseMenuLink()

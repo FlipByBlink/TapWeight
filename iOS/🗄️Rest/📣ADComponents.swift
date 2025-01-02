@@ -24,10 +24,12 @@ struct 📣ADView: View {
     var body: some View {
         NavigationStack { self.appADContent() }
             .presentationDetents([.height(640)])
-            .onChange(of: self.scenePhase) {
-                if $0 == .background { self.dismiss() }
+            .onChange(of: self.scenePhase) { _, newValue in
+                if newValue == .background { self.dismiss() }
             }
-            .onChange(of: 🛒.purchased) { if $0 { self.disableDismiss = false } }
+            .onChange(of: 🛒.purchased) { _, newValue in
+                if newValue { self.disableDismiss = false }
+            }
             .interactiveDismissDisabled(self.disableDismiss)
             .onReceive(self.timer) { _ in
                 if self.countDown > 1 {

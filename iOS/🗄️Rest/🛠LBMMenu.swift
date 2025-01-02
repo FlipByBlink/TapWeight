@@ -9,8 +9,8 @@ struct 🛠LBMMenu: View {
                     Label("Lean Body Mass", systemImage: "person.badge.minus")
                 }
                 .disabled(!📱.🚩ableBodyFat)
-                .onChange(of: 📱.🚩ableLBM) {
-                    if $0 == true { 📱.🚩ableBodyFat = true }
+                .onChange(of: 📱.🚩ableLBM) { _, newValue in
+                    if newValue == true { 📱.🚩ableBodyFat = true }
                 }
             } header: {
                 Text("Option")
