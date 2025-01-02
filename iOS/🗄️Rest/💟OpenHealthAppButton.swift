@@ -16,7 +16,7 @@ enum 💟OpenHealthAppButton {
             }
             .accessibilityLabel(Self.title)
             .font(.title)
-            .tint(.primary)
+            .foregroundStyle(.white)
         }
     }
     static func onMenuView() -> some View {

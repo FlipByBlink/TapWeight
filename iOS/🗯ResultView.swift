@@ -26,13 +26,14 @@ struct 🗯ResultView: View {
                 .minimumScaleFactor(0.3)
                 .padding()
                 .padding(.bottom, 120)
-                .foregroundColor(.white)
+                .foregroundStyle(.white)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .opacity(self.ⓒanceled ? 0.5 : 1)
                 .overlay(alignment: .bottom) {
                     if self.ⓒanceled {
                         Text("Canceled")
                             .font(.headline)
+                            .foregroundStyle(.white)
                     }
                 }
                 .toolbar {
@@ -43,7 +44,6 @@ struct 🗯ResultView: View {
             }
             .animation(.default, value: self.ⓒanceled)
             .navigationBarTitleDisplayMode(.inline)
-            .preferredColorScheme(.dark)
         }
         .modifier(🚨CancellationErrorAlert())
         .modifier(💬RequestUserReview())
@@ -80,7 +80,7 @@ private extension 🗯ResultView {
             } label: {
                 Image(systemName: "xmark.circle.fill")
                     .symbolRenderingMode(.hierarchical)
-                    .foregroundColor(.primary)
+                    .foregroundStyle(.white)
                     .font(.title)
             }
             .accessibilityLabel("Dismiss")
@@ -93,7 +93,7 @@ private extension 🗯ResultView {
             } label: {
                 Image(systemName: "arrow.uturn.backward.circle.fill")
                     .symbolRenderingMode(.hierarchical)
-                    .foregroundColor(.primary)
+                    .foregroundStyle(.white)
                     .font(.title)
             }
             .offset(y: -12)
